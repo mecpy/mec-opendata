@@ -1,0 +1,45 @@
+<table class="table table-striped table-bordered table-hover">
+
+  <tr>
+    <th>C&oacute;digo de local</th>
+    <td><%= establecimiento.codigo_establecimiento %></td>
+  </tr>
+
+  <tr>
+    <th>Departamento</th>
+    <td><%= establecimiento.nombre_departamento %></td>
+  </tr>
+
+  <tr>
+    <th>Distrito</th>
+    <td><%= establecimiento.nombre_distrito %></td>
+  </tr>
+
+  <tr>
+    <th>Zona</th>
+    <td><%= establecimiento.nombre_zona %></td>
+  </tr>
+
+  <tr>
+    <th>Localidad/Barrio</th>
+    <td><%= establecimiento.nombre_barrio_localidad %></td>
+  </tr>
+
+  <tr>
+    <th>Direcci&oacute;n</th>
+    <td><%= establecimiento.direccion %></td>
+  </tr>
+
+  <tr>
+    <th colspan="2"><%= link_to "Ver Instituciones del Establecimiento", "#", :id => "ver_instituciones" , :onclick => "
+    mostrar_establecimientos_instituciones('#{establecimiento.codigo_establecimiento}');return false;" %>
+    </th>
+  </tr>
+
+  <tr>
+    <th colspan="2" id="establecimientos_instituciones"></th>
+  </tr>
+
+</table>
+
+

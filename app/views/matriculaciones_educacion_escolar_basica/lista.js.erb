@@ -1,0 +1,27 @@
+$("#lista").html("<%= escape_javascript(render :partial => "lista", :locals => { :matriculaciones_educacion_escolar_basica => @matriculaciones_educacion_escolar_basica}) %>");
+
+<% if @matriculaciones_educacion_escolar_basica.present? %>
+
+  <% parametros = "?form_buscar_matriculaciones_educacion_escolar_basica[anio]=#{params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio]}"
+     parametros += "&form_buscar_matriculaciones_educacion_escolar_basica_nombre_departamento=#{params[:form_buscar_matriculaciones_educacion_escolar_basica_nombre_departamento]}"
+     parametros += "&form_buscar_matriculaciones_educacion_escolar_basica_nombre_distrito=#{params[:form_buscar_matriculaciones_educacion_escolar_basica_nombre_distrito]}"
+     parametros += "&form_buscar_matriculaciones_educacion_escolar_basica_nombre_barrio_localidad=#{params[:form_buscar_matriculaciones_educacion_escolar_basica_nombre_barrio_localidad]}"
+     parametros += "&form_buscar_matriculaciones_educacion_escolar_basica_nombre_zona=#{params[:form_buscar_matriculaciones_educacion_escolar_basica_nombre_zona]}"
+     parametros += "&form_buscar_matriculaciones_educacion_escolar_basica_codigo_establecimiento=#{params[:form_buscar_matriculaciones_educacion_escolar_basica_codigo_establecimiento]}"
+     parametros += "&form_buscar_matriculaciones_educacion_escolar_basica_nombre_institucion=#{params[:form_buscar_matriculaciones_educacion_escolar_basica_nombre_institucion]}"
+     parametros += "&form_buscar_matriculaciones_educacion_escolar_basica_sector_o_tipo_gestion=#{params[:form_buscar_matriculaciones_educacion_escolar_basica_sector_o_tipo_gestion]}"
+     parametros += "&form_buscar_matriculaciones_educacion_escolar_basica_primer_grado=#{params[:form_buscar_matriculaciones_educacion_escolar_basica_primer_grado]}"
+     parametros += "&form_buscar_matriculaciones_educacion_escolar_basica_segundo_grado=#{params[:form_buscar_matriculaciones_educacion_escolar_basica_segundo_grado]}" 
+     parametros += "&form_buscar_matriculaciones_educacion_escolar_basica_tercer_grado=#{params[:form_buscar_matriculaciones_educacion_escolar_basica_tercer_grado]}"
+     parametros += "&form_buscar_matriculaciones_educacion_escolar_basica_cuarto_grado=#{params[:form_buscar_matriculaciones_educacion_escolar_basica_cuarto_grado]}" 
+     parametros += "&form_buscar_matriculaciones_educacion_escolar_basica_quinto_grado=#{params[:form_buscar_matriculaciones_educacion_escolar_basica_quinto_grado]}"
+     parametros += "&form_buscar_matriculaciones_educacion_escolar_basica_sexto_grado=#{params[:form_buscar_matriculaciones_educacion_escolar_basica_sexto_grado]}" 
+     parametros += "&form_buscar_matriculaciones_educacion_escolar_basica_septimo_grado=#{params[:form_buscar_matriculaciones_educacion_escolar_basica_septimo_grado]}"
+     parametros += "&form_buscar_matriculaciones_educacion_escolar_basica_octavo_grado=#{params[:form_buscar_matriculaciones_educacion_escolar_basica_octavo_grado]}" 
+     parametros += "&form_buscar_matriculaciones_educacion_escolar_basica_noveno_grado=#{params[:form_buscar_matriculaciones_educacion_escolar_basica_noveno_grado]}" 
+     parametros += "&form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados=#{params[:form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados]}" 
+     parametros += "&page=#{(params[:page].present? ? params[:page] : 1)}" %>
+
+<% end %>
+
+$("#matriculaciones-educacion-escolar-basica-footer").html("<%= escape_javascript(render :partial => "footer", :locals => { :matriculaciones_educacion_escolar_basica => @matriculaciones_educacion_escolar_basica}) %>");

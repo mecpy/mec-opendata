@@ -1,0 +1,48 @@
+<td colspan='8'>
+  <% if @establecimiento.latitud.present? && @establecimiento.longitud.present? %>
+    
+    <br/>
+
+    <% lat = "-#{(@establecimiento.latitud.split(" ").first.to_i + (@establecimiento.latitud.split(" ").second.to_f / 60.to_f) + (@establecimiento.latitud.split(" ").third.to_f / 3600))}" %>
+    <% lng = "-#{(@establecimiento.longitud.split(" ").first.to_i + (@establecimiento.longitud.split(" ").second.to_f / 60.to_f) + (@establecimiento.longitud.split(" ").third.to_f / 3600))}" %>
+
+    <script type="text/javascript">
+  
+      $(document).ready(function(){
+      
+        var map;
+      
+        map = new GMaps({
+          el: '#map',
+          lat: "<%= lat %>",
+          lng: "<%= lng %>"
+        });
+        
+        map.addMarker({
+          lat: "<%= lat %>",
+          lng: "<%= lng %>",
+          title: 'Datos del Establecimiento',
+          infoWindow: {
+            content: "<%= escape_javascript(render :partial => 'data/infowindow_establecimiento', :locals => {:establecimiento => @establecimiento})  %>"
+          }
+        });
+      });
+    
+    </script>
+
+  <div id="map">
+    <br/>
+    <br/>
+  </div>
+  
+  <br/>
+
+  <% else %>
+
+    <div style="font-size: 11px; color: #000; margin-left:15px; "><br />No se encontr&oacute;n las coordenadas geogr&aacute;ficas.<br /><br /></div>
+
+  <% end %>
+
+</td>
+
+

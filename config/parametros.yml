@@ -1,0 +1,6 @@
+development:
+  diccionario_datos: /diccionario_datos/OPEN_DICCIONARIO.xlsx
+  subdominio: "http://datos.mec.gov.py/"
+production:
+  diccionario_datos: /data/diccionario_datos/OPEN_DICCIONARIO.xlsx
+  subdominio: "http://datos.mec.gov.py/"

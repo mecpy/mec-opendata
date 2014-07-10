@@ -1,0 +1,18 @@
+<div style="clear:both;"></div>
+<div>
+  
+  <div style="height:100px">
+    <div style="float:left;"><%= link_to image_tag("logo_left.png"), "http://www.mec.gov.py" %></div>
+    <div style="float:right;"><%= link_to image_tag("logo_right.png"), "http://www.mec.gov.py" %></div>
+  </div>
+  <div style="clear:both;"></div>
+  
+  <div id="toolbar" style="clear:both;background-color:#CCC">
+    Asunción - <%= l Date.today, :format => "%d de %B de %Y" %> 
+    <div style="float:right">
+      <%= link_to "Webmail", "http://www.mec.gov.py/webmail/", :target => "_blank" %> | <%= link_to "Intramec", "http://www.mec.gov.py/intramec", :target => "_blank" %> | <%= link_to "SIGMEC", "http://www.mec.gov.py/atenea-web/login.jsp", :target => "_blank" %>
+    </div>
+  </div>
+</div>
+<div style="clear:both;"></div>
+

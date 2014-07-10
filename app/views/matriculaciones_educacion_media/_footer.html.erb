@@ -1,0 +1,84 @@
+<% if matriculaciones_educacion_media.present? %>
+<tr>
+
+      <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate matriculaciones_educacion_media, :params => params %></div></td>
+    
+    </tr>
+
+    <tr><td colspan="12">Cantidad de registros encontrados: <%= @matriculaciones_educacion_media_todos.size %> de <%= @total_registros %></td></tr>
+
+    <tr>
+
+      <%  
+          parametros_csv = { :format => 'csv' }
+          parametros_csv = parametros_csv.merge(params) 
+          parametros_csv_todos = { :format => 'csv', "form_buscar_matriculaciones_educacion_media[anio]" => params[:form_buscar_matriculaciones_educacion_media][:anio]}
+      %>
+
+      <% 
+          parametros_xls = { :format => 'xlsx'}
+          parametros_xls = parametros_xls.merge(params) 
+          parametros_xls_todos = { :format => 'xlsx', "form_buscar_matriculaciones_educacion_media[anio]" => params[:form_buscar_matriculaciones_educacion_media][:anio] }
+      %>
+
+      <%  %>
+
+      <% 
+          parametros_json = { :format => 'json' }
+          parametros_json = parametros_json.merge(params) 
+          parametros_json_todos = { :format => 'json', "form_buscar_matriculaciones_educacion_media[anio]" => params[:form_buscar_matriculaciones_educacion_media][:anio] }
+      %>
+
+      <% 
+          parametros_pdf = { :format => 'pdf' }
+          parametros_pdf = parametros_pdf.merge(params) 
+          parametros_pdf_todos = { :format => 'pdf', "form_buscar_matriculaciones_educacion_media[anio]" => params[:form_buscar_matriculaciones_educacion_media][:anio] }
+      %>
+
+      <%= parametros_pdf %>
+
+      <td colspan="12" class="row-descargar">
+        
+        <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
+        <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a></br>
+        <span>Descargar Matriculaciones Filtradas:</span>
+
+        <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
+
+        <%= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_educacion_media_lista_url(parametros_pdf)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat'%>
+        <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_matriculaciones_educacion_media_lista_url(parametros_xls)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
+        <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_matriculaciones_educacion_media_lista_url(parametros_csv)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
+        <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_matriculaciones_educacion_media_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+        <br /><br />
+        
+        <span>Descargar todas las Matriculaciones:</span>
+        <span itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_educacion_media_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
+        <meta itemprop="name" content="Matriculaciones Educación Media 2012">
+        <meta itemprop="description" content="Listado de matriculaciones en educación media correspondiente al año 2012">
+        <meta itemprop="encodingFormat" content="pdf">
+        </span>
+        <span itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_matriculaciones_educacion_media_lista_url(parametros_xls_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url"%>
+        <meta itemprop="name" content="Matriculaciones Educación Media 2012">
+        <meta itemprop="description" content="Listado de matriculaciones en educación media correspondiente al año 2012">
+        <meta itemprop="encodingFormat" content="xls">
+        </span>
+        <span itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_matriculaciones_educacion_media_lista_url(parametros_csv_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url"%>
+        <meta itemprop="name" content="Matriculaciones Educación Media 2012">
+        <meta itemprop="description" content="Listado de matriculaciones en educación media correspondiente al año 2012">
+        <meta itemprop="encodingFormat" content="csv">
+        </span>
+        <span itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_matriculaciones_educacion_media_lista_url(parametros_json_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url"%>
+        <meta itemprop="name" content="Matriculaciones Educación Media 2012">
+        <meta itemprop="description" content="Listado de matriculaciones en educación media correspondiente al año 2012">
+        <meta itemprop="encodingFormat" content="json">
+        </span>
+    
+      </td>
+ 
+    </tr>
+
+<% end %>

@@ -1,0 +1,37 @@
+
+<% if matriculaciones_educacion_escolar_basica.present? %>
+  
+  <% matriculaciones_educacion_escolar_basica.each do |meeb| %>
+
+    <tr>
+
+      <td class="text-min"><%= meeb.anio %></td>
+      <td class="text-min"><%= meeb.codigo_establecimiento %></td>
+      <td class="text-min"><%= meeb.nombre_departamento %></td>
+      <td class="text-min"><%= meeb.nombre_distrito %></td>
+      <td class="text-min"><%= meeb.nombre_barrio_localidad %></td>
+      <td class="text-min"><%= meeb.nombre_zona %></td>
+      <td class="text-min"><%= meeb.sector_o_tipo_gestion %></td>
+      <td class="text-min"><%= meeb.primer_grado %></td>
+      <td class="text-min"><%= meeb.segundo_grado %></td>
+      <td class="text-min"><%= meeb.tercer_grado %></td>
+      <td class="text-min"><%= meeb.cuarto_grado %></td>
+      <td class="text-min"><%= meeb.quinto_grado %></td>  
+      <td class="text-min"><%= meeb.sexto_grado %></td>
+      <td class="text-min"><%= meeb.septimo_grado %></td>
+      <td class="text-min"><%= meeb.octavo_grado %></td>
+      <td class="text-min"><%= meeb.noveno_grado %></td>
+      <td class="text-min"><%= meeb.total_matriculados %></td>
+    </tr>
+  
+  <% end %>
+
+  <% else %>
+
+  <tr>
+    
+    <td colspan="11"><p class='none-result'>No se han encontrado resultados.</p></td>
+  
+  </tr>
+
+<% end %>

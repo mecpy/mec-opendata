@@ -1,0 +1,185 @@
+<h2>
+	
+  <span itemprop="name">Matriculaciones por Educación Inclusiva</span>
+  <meta itemprop="description" content="
+    Corresponde a la cantidad de matriculados por ciclo/niveles/programas especiales de educación inclusiva con sus correspondientes códigos identificatorios."/>
+  <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+  <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+    <meta itemprop="name" content="Ministerio de Educación y Cultura">
+    <meta itemprop="url" content="http://www.mec.gov.py/">
+    <meta itemprop="email" content="datosabiertos@mec.gov.py">
+  </span>
+  <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+    <meta itemprop="name" content="Juan Barrios">
+    <meta itemprop="email" content="datosabiertos@mec.gov.py">
+  </span>
+  <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+  <meta itemprop="keywords" style="display: none;" content="educación,matriculaciones,educación inclusiva"/>
+  <meta itemprop="version" style="display: none;" content="1.0"/>
+  <span style="float:right;">
+    <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_educacion_inclusiva_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
+    <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), mec_custom_url(def_matriculaciones_educacion_inclusiva_url), :title => "Ir al diccionario" %>
+    <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
+    <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
+  </span>
+
+</h2>
+ 
+<div class="table-outter">
+  <table id="matriculaciones-educacion-inclusiva-table" class="table table-striped table-bordered table-hover" style="margin-bottom: 0px; width: 2000px; max-width: none">
+  <tr>
+
+    <%= form_tag mec_custom_url(data_matriculaciones_educacion_inclusiva_lista_url(nil,nil)), :remote => true, :id => "form-buscar-matriculaciones-educacion-inclusiva" do  %>
+
+      <th style="width:6%;" class="text-min celda-derecha">
+        <%= label_tag "Periodo" %><br />
+        <%= select :form_buscar_matriculaciones_educacion_inclusiva, :anio, [2012], {:class => 'text-min'} %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_inclusiva_anio').val('2012');$('#form-buscar-matriculaciones-educacion-inclusiva').submit();" ,:style => "color:#fff;"%>
+      </th>
+      <th style="width:8%;" class="text-min">
+        <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe%><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_codigo_establecimiento, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_inclusiva_codigo_establecimiento').val('');$('#form-buscar-matriculaciones-educacion-inclusiva').submit();" ,:style => "color:#fff;"%>
+      </th>
+
+      <th style="width:8%;" class="text-min">
+        <%= label_tag "Departamento"%><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento').val('');$('#form-buscar-matriculaciones-educacion-inclusiva').submit();" ,:style => "color:#fff;"%>
+      </th>
+
+      <th style="width:8%;" class="text-min">
+        <%= label_tag "Distrito"%><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito').val('');$('#form-buscar-matriculaciones-educacion-inclusiva').submit();" ,:style => "color:#fff;"%>
+      </th>
+
+      <th style="width:8%;" class="text-min">
+        <%= label_tag "Barrio/Localidad"%><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad').val('');$('#form-buscar-matriculaciones-educacion-inclusiva').submit();" ,:style => "color:#fff;"%>
+      </th>
+
+      <th style="width:6%;" class="text-min">
+        <%= label_tag "Zona"%><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_zona, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_inclusiva_nombre_zona').val('');$('#form-buscar-matriculaciones-educacion-inclusiva').submit();" ,:style => "color:#fff;"%>
+      </th>
+
+      <th style="width:8%;" class="text-min">
+        <%= label_tag nil, "C&oacute;digo Instituci&oacute;n".html_safe%><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_codigo_institucion, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_inclusiva_codigo_institucion').val('');$('#form-buscar-matriculaciones-educacion-inclusiva').submit();" ,:style => "color:#fff;"%>
+      </th>
+      
+      <th style="width:8%;" class="text-min">
+        <%= label_tag "Nombre de Institución"%><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion').val('');$('#form-buscar-matriculaciones-educacion-inclusiva').submit();" ,:style => "color:#fff;"%>
+      </th>
+      
+      <th style="width:8%;" class="text-min">
+        <%= label_tag "Sector o Tipo de Gestión"%><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_sector_o_tipo_gestion, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_inclusiva_sector_o_tipo_gestion').val('');$('#form-buscar-matriculaciones-educacion-inclusiva').submit();" ,:style => "color:#fff;"%>
+      </th>
+      <th style="width:8%;" class="text-min">
+        <%= label_tag nil, "Matricula Inicial Especial".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial').val('');$('#form-buscar-matriculaciones-educacion-inclusiva').submit();" ,:style => "color:#fff;"%>
+      </th>
+          
+      <th style="width:8%;" class="text-min">
+        <%= label_tag nil, "Matricula 1er y 2do Ciclo Especial".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial').val('');$('#form-buscar-matriculaciones-educacion-inclusiva').submit();" ,:style => "color:#fff;"%>
+      </th>
+      
+      <th style="width:8%;" class="text-min">
+        <%= label_tag nil, "Matricula 3er Ciclo Especial".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial').val('');$('#form-buscar-matriculaciones-educacion-inclusiva').submit();" ,:style => "color:#fff;"%>
+      </th>
+
+      <th style="width:8%;" class="text-min">
+        <%= label_tag nil, "Matricula Programas Especiales".html_safe%><br />
+         <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales').val('');$('#form-buscar-matriculaciones-educacion-inclusiva').submit();" ,:style => "color:#fff;"%>
+      </th>
+
+    <% end %>
+
+<tbody id="matriculaciones-educacion-inclusiva-lista"></tbody>
+
+  </table>
+  </div>
+
+   <table class="table table-striped table-bordered table-hover">
+    <tbody id="matriculaciones-educacion-inclusiva-footer"></tbody>
+  </table>
+<script type="text/javascript">
+
+  $("#form-buscar-matriculaciones-educacion-inclusiva").bind("submit", function(){
+
+      $("#matriculaciones-educacion-inclusiva-lista").html("<%= escape_javascript("<tr><td style='7'><p class='none-result'>#{image_tag('ajax-loader0.gif')}</p>").html_safe %></td></tr>")    
+  
+  })
+
+  $("#form_buscar_matriculaciones_educacion_inclusiva_anio").bind('change',function(){
+      
+    $("#form-buscar-matriculaciones-educacion-inclusiva").submit();
+      
+  })
+
+ $(".table-bordered :input").bind('change',function(){
+      
+    $("#form-buscar-matriculaciones-educacion-inclusiva").submit();
+      
+  })
+
+  //LIMPIAR FORMULARIO DE BUSQUEDA
+  function limpiar_form_buscar_matriculaciones_educacion_inclusiva(){
+    
+    $("#form_buscar_matriculaciones_educacion_inclusiva_anio").val("2012");
+    $("#form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento").val("");
+    $("#form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito").val("");
+    $("#form_buscar_matriculaciones_educacion_inclusiva_nombre_zona").val("");
+    $("#form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad").val("");
+    $("#form_buscar_matriculaciones_educacion_inclusiva_codigo_establecimiento").val("");
+    $("#form_buscar_matriculaciones_educacion_inclusiva_codigo_institucion").val("");
+    $("#form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion").val("");
+    $("#form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial").val("");
+    $("#form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial").val("");
+    $("#form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial").val("");
+    $("#form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales").val("");
+    $("#form-buscar-matriculaciones-educacion-inclusiva").submit();
+
+  }  
+  
+
+  limpiar_form_buscar_matriculaciones_educacion_inclusiva();
+
+</script>
+
+<style>
+
+  .text-min {font-size:9px !important; color: #000; text-align:center !important;}
+  #cbue-menu1 {background:#e9e9e9;}
+  .text-min input[type="text"], .text-min select {
+    border: 1px solid silver;
+    padding: 3px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    color:#000;
+  }
+  .text-min input[type="text"] { width: 80px;}
+  #tablaContenedor{width:100%;}
+ 
+</style>
+
+
+

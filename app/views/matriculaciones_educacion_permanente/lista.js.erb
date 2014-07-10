@@ -1,0 +1,22 @@
+$("#lista").html("<%= escape_javascript(render :partial => "lista", :locals => { :matriculaciones_educacion_permanente => @matriculaciones_educacion_permanente}) %>");
+
+<% if @matriculaciones_educacion_permanente.present? %>
+
+  <% parametros = "?form_buscar_matriculaciones_educacion_permanente[anio]=#{params[:form_buscar_matriculaciones_educacion_permanente][:anio]}"
+     parametros += "&form_buscar_matriculaciones_educacion_permanente_nombre_departamento=#{params[:form_buscar_matriculaciones_educacion_permanente_nombre_departamento]}"
+     parametros += "&form_buscar_matriculaciones_educacion_permanente_nombre_distrito=#{params[:form_buscar_matriculaciones_educacion_permanente_nombre_distrito]}"
+     parametros += "&form_buscar_matriculaciones_educacion_permanente_nombre_barrio_localidad=#{params[:form_buscar_matriculaciones_educacion_permanente_nombre_barrio_localidad]}"
+     parametros += "&form_buscar_matriculaciones_educacion_permanente_nombre_zona=#{params[:form_buscar_matriculaciones_educacion_permanente_nombre_zona]}"
+     parametros += "&form_buscar_matriculaciones_educacion_permanente_codigo_establecimiento=#{params[:form_buscar_matriculaciones_educacion_permanente_codigo_establecimiento]}"
+     parametros += "&form_buscar_matriculaciones_educacion_permanente_nombre_institucion=#{params[:form_buscar_matriculaciones_educacion_permanente_nombre_institucion]}"
+     parametros += "&form_buscar_matriculaciones_educacion_permanente_sector_o_tipo_gestion=#{params[:form_buscar_matriculaciones_educacion_permanente_sector_o_tipo_gestion]}"
+     parametros += "&form_buscar_matriculaciones_educacion_permanente_matricula_ebbja=#{params[:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja]}"
+     parametros += "&form_buscar_matriculaciones_educacion_permanente_matricula_fpi=#{params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi]}" 
+     parametros += "&form_buscar_matriculaciones_educacion_permanente_matricula_emapja=#{params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja]}"
+     parametros += "&form_buscar_matriculaciones_educacion_permanente_matricula_emdja=#{params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja]}" 
+     parametros += "&form_buscar_matriculaciones_educacion_permanente_matricula_fp=#{params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp]}"
+     parametros += "&page=#{(params[:page].present? ? params[:page] : 1)}" %>
+
+<% end %>
+
+$("#matriculaciones-educacion-permanente-footer").html("<%= escape_javascript(render :partial => "footer", :locals => { :matriculaciones_educacion_permanente => @matriculaciones_educacion_permanente}) %>");

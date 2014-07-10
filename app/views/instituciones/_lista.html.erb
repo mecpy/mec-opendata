@@ -1,0 +1,39 @@
+
+<% if instituciones.present? %>
+  
+  <% instituciones.each do |i| %>
+
+    <tr>
+
+      <td class="text-min"><%= i.anio %></td>
+      <td class="text-min"><%= i.codigo_institucion %></td>
+      <td class="text-min"><%= i.nombre_institucion %></td>
+      <td class="text-min"><%= i.codigo_establecimiento %></td>
+      <td class="text-min"><%= i.nombre_departamento %></td>
+      <td class="text-min"><%= i.nombre_distrito %></td>
+      <td class="text-min"><%= i.nombre_barrio_localidad %></td>
+      <td class="text-min"><%= i.nombre_zona %></td>
+      <td class="text-min"><%= i.sector_o_tipo_gestion %></td>       
+      <td class="text-min"><%= i.nombre_region_administrativa %></td>       
+      <td class="text-min"><%= i.nombre_supervisor %></td>       
+      <td class="text-min"><%= i.niveles_modalidades %></td>       
+      <td class="text-min"><%= i.nombre_tipo_organizacion %></td>       
+      <td class="text-min"><%= i.participacion_comunitaria %></td>       
+      <td class="text-min"><%= i.direccion %></td>       
+      <td class="text-min"><%= i.nro_telefono %></td>       
+      <td class="text-min"><%= i.tiene_internet %></td>       
+      <td class="text-min"><%= i.paginaweb %></td>       
+      <td class="text-min"><%= i.correo_electronico %></td>       
+    </tr>
+  
+  <% end %>
+  
+  <% else %>
+
+  <tr>
+    
+    <td colspan="19"><p class='none-result'>No se han encontrado resultados.</p></td>
+  
+  </tr>
+
+<% end %>

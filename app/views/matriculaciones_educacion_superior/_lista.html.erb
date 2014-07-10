@@ -1,0 +1,32 @@
+
+<% if matriculaciones_educacion_superior.present? %>
+  
+  <% matriculaciones_educacion_superior.each do |e| %>
+
+    <tr>
+
+      <td class="text-min"><%= e.anio %></td>
+      <td class="text-min"><%= e.nombre_departamento %></td>
+      <td class="text-min"><%= e.nombre_distrito %></td>
+      <td class="text-min"><%= e.nombre_barrio_localidad %></td>
+      <td class="text-min"><%= e.nombre_zona %></td>
+      <td class="text-min"><%= e.codigo_establecimiento %></td>
+      <td class="text-min"><%= e.nombre_institucion %></td>
+      <td class="text-min"><%= e.sector_o_tipo_gestion %></td>
+      <td class="text-min"><%= e.matricula_ets %></td>       
+      <td class="text-min"><%= e.matricula_fed %></td>       
+      <td class="text-min"><%= e.matricula_fdes %></td>       
+      <td class="text-min"><%= e.matricula_pd %></td>       
+    </tr>
+  
+  <% end %>
+  
+  <% else %>
+
+  <tr>
+    
+    <td colspan="11"><p class='none-result'>No se han encontrado resultados.</p></td>
+  
+  </tr>
+
+<% end %>

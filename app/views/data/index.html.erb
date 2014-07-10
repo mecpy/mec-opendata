@@ -1,0 +1,345 @@
+  <center><h1>Datos Abiertos del Ministerio de Educación y Cultura</h1><%= image_tag "datos-abiertos-nuevo.png", :style => "width:320px;" %></center>
+  <div class="container">
+    <div class="row">
+      
+      <h2>Datasets</h2>
+      
+      La siguiente tabla presenta la lista de datasets disponibles correspondientes al Ministerio de Educación y Cultura.<br>
+      Para cada dataset se presenta un enlace para visitar la página del dataset, un enlace para visualizar el diccionario de datos y una breve descripción de los datos contenidos en el dataset.
+      <br /><br /><br />
+      
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          
+          <tr>
+            <th title="Field #1">#</th>
+						<th title="Field #2" colspan=2>Nombre del Dataset</th>
+						<th title="Field #3">Descripción del dataset, como será puesto en la página web</th>
+					</tr>
+        
+        </thead>
+        
+        <tbody itemscope itemtype="http://schema.org/DataCatalog">
+          <tr itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura" style="display: none;"/>
+          <tr itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura" style="display: none;"/>
+          <tr itemprop="url" style="display: none;" content="http://www.mec.gov.py/"/>
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">  
+            <td style="vertical-align:middle;">1</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">ESTABLECIMIENTOS ESCOLARES</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <%= link_to "Ver diccionario", mec_custom_url(def_establecimientos_url), :title => "Ir al diccionario" %>
+              <%= link_to image_tag("def_icon.png"), mec_custom_url(def_establecimientos_url) , :title => "Ir al diccionario" %><br /><br />
+              <%= link_to "Ver datos", mec_custom_url(data_establecimientos_url), :title => "Ir al dataset" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_establecimientos_url), :title => "Ir al dataset", :itemprop => "url"%>
+            </td>
+						<td itemprop="description">
+							Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación.
+						</td>
+						<td itemprop="temporal" style="display: none;">2012-01-01/2012-12-31</td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;">educación,establecimientos,escolar,geografico</td>
+						<td itemprop="version" style="display: none;">1.0</td>
+          </tr>
+          
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">2</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">INSTITUCIONES EDUCATIVAS</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <%= link_to "Ver diccionario", mec_custom_url(def_instituciones_url), :title => "Ir al diccionario" %>
+              <%= link_to image_tag("def_icon.png"), mec_custom_url(def_instituciones_url), :title => "Ir al diccionario" %><br /><br />
+              <%= link_to "Ver datos", mec_custom_url(data_instituciones_url), :title => "Ir al dataset"%>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_instituciones_url), :title => "Ir al dataset", :itemprop => "url" %>
+            </td>
+						<td itemprop="description">
+								Contiene datos de los niveles/modalidades de educación ofertados por las instituciones educativas; región administrativa a la que pertenece la institución educativa; tipo de organización, participación comunitaria, dirección del establecimiento escolar, servicio disponible (internet, telefono, correo electronico, etc.). Una institución educativa puede poseer diferentes locales escolares ubicados en un mismo o en diferentes departamentos geográficos. El SIEC considera una misma institución cuando varios niveles o modalidades tienen una organización, gestión y administración única. Por ejemplo: Centro Regional de Educación Gral. Patricio Escobar de Encarnación, Colegio Santa Clara de Asunción.
+						</td>
+						<td itemprop="temporal" style="display: none;">2012-01-01/2012-12-31</td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;">educación,instituciones</td>
+						<td itemprop="version" style="display: none;">1.0</td>
+					</tr>
+          
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">3</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">MATRICULA EDUCACION ESCOLAR BASICA - CICLOS</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_educacion_escolar_basica_url), :title => "Ir al diccionario" %>
+              <%= link_to image_tag("def_icon.png"), mec_custom_url(def_matriculaciones_educacion_escolar_basica_url), :title => "Ir al diccionario" %><br /><br />
+              <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_educacion_escolar_basica_url), :title => "Ir al dataset" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_escolar_basica_url), :title => "Ir al dataset", :itemprop => "url" %>
+            </td>
+						<td itemprop="description">
+						  Se refiere a la cantidad de alumnos matriculados del 1.º al 9.º grado con sus correspondientes códigos identificatorios.
+						</td>
+						<td itemprop="temporal" style="display: none;">2012-01-01/2012-12-31</td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;">educación,matriculaciones,escolar básica</td>
+						<td itemprop="version" style="display: none;">1.0</td>
+					</tr>
+          
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">4</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">MATRICULA EDUCACION INCLUSIVA</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <%= link_to "Ver diccionario",mec_custom_url(def_matriculaciones_educacion_inclusiva_url), :title => "Ir al diccionario" %>
+              <%= link_to image_tag("def_icon.png"), mec_custom_url(def_matriculaciones_educacion_inclusiva_url), :title => "Ir al diccionario" %><br /><br />
+              <%= link_to "Ver datos", data_matriculaciones_educacion_inclusiva_url, :title => "Ir al dataset" %>
+              <%= link_to image_tag("datos_ico.jpg"), data_matriculaciones_educacion_inclusiva_url, :title => "Ir al dataset", :itemprop => "url" %>
+            </td>
+						<td itemprop="description">
+							Corresponde a la cantidad de matriculados por ciclo/niveles/programas especiales de educación inclusiva con sus correspondientes códigos identificatorios.
+						</td>
+						<td itemprop="temporal" style="display: none;">2012-01-01/2012-12-31</td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;">educación,matriculaciones,educación inclusiva</td>
+						<td itemprop="version" style="display: none;">1.0</td>
+					</tr>
+          
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">5</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">MATRICULA EDUCACION PERMANENTE</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_educacion_permanente_url), :title => "Ir al diccionario" %>
+              <%= link_to image_tag("def_icon.png"), mec_custom_url(def_matriculaciones_educacion_permanente_url), :title => "Ir al diccionario" %><br /><br />
+              <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_educacion_permanente_url), :title => "Ir al dataset" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_permanente_url), :title => "Ir al dataset", :itemprop => "url" %>
+            </td>
+						<td itemprop="description">
+						  Se refiere a la cantidad de matriculados en las diferentes modalidades de educación permanente con sus correspondientes códigos identificatorios.
+						</td>
+						<td itemprop="temporal" style="display: none;">2012-01-01/2012-12-31</td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;">educación,matriculaciones,educación permanente</td>
+						<td itemprop="version" style="display: none;">1.0</td>
+					</tr>
+          
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">6</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">MATRICULA EDUCACION SUPERIOR</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_educacion_superior_url), :title => "Ir al diccionario" %>
+              <%= link_to image_tag("def_icon.png"), mec_custom_url(def_matriculaciones_educacion_superior_url), :title => "Ir al diccionario" %><br /><br />
+              <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_educacion_superior_url), :title => "Ir al dataset" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_superior_url), :title => "Ir al dataset", :itemprop => "url" %>
+            </td>
+						<td itemprop="description">
+								Se refiere a la cantidad de matriculados en las diferentes modalidades de educación superior con sus correspondientes códigos identificatorios.
+						</td>
+						<td itemprop="temporal" style="display: none;">2012-01-01/2012-12-31</td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;">educación,matriculaciones,educación superior</td>
+						<td itemprop="version" style="display: none;">1.0</td>
+					</tr>
+          
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">7</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">MATRICULA EDUCACION INICIAL</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_inicial_url), :title => "Ir al diccionario" %>
+              <%= link_to image_tag("def_icon.png"), mec_custom_url(def_matriculaciones_inicial_url), :title => "Ir al diccionario" %><br /><br />
+              <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_inicial_url), :title => "Ir al dataset" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_inicial_url), :title => "Ir al dataset", :itemprop => "url" %>
+            </td>
+						<td itemprop="description">
+							Se refiere a la cantidad de matriculados en las etapas maternal, prejardín, jardín y preescolar con sus correspondientes códigos identificatorios.
+						</td>
+						<td itemprop="temporal" style="display: none;">2012-01-01/2012-12-31</td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;">educación,matriculaciones,educación inicial</td>
+						<td itemprop="version" style="display: none;">1.0</td>
+					</tr>
+          
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">8</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">MATRICULA EDUCACION MEDIA</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_educacion_media_url), :title => "Ir al diccionario" %>
+              <%= link_to image_tag("def_icon.png"), mec_custom_url(def_matriculaciones_educacion_media_url), :title => "Ir al diccionario" %><br /><br />
+              <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_educacion_media_url), :title => "Ir al dataset" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_media_url), :title => "Ir al dataset", :itemprop => "url" %>
+            </td>
+						<td itemprop="description">
+							Se refiere a la cantidad de matriculados del 1.º al 3er. curso en las diferentes modalidades de educación media con sus correspondientes códigos identificatorios.
+						</td>
+						<td itemprop="temporal" style="display: none;">2012-01-01/2012-12-31</td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;">educación,matriculaciones,educación media</td>
+						<td itemprop="version" style="display: none;">1.0</td>
+					</tr>
+          
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">9</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">MATRICULA POR DEPARTAMENTO Y DISTRITO</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_departamentos_distritos_url), :title => "Ir al diccionario" %>
+              <%= link_to image_tag("def_icon.png"), mec_custom_url(def_matriculaciones_departamentos_distritos_url), :title => "Ir al diccionario" %><br /><br />
+              <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_departamentos_distritos_url), :title => "Ir al dataset" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_departamentos_distritos_url), :title => "Ir al dataset", :itemprop => "url" %>
+            </td>
+						<td itemprop="description">
+						  Se refiere a la cantidad total de matriculados por departamento/distrito según sector y zona.
+						</td>
+						<td itemprop="temporal" style="display: none;">2012-01-01/2012-12-31</td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;">educación,matriculaciones,departamentos, distritos</td>
+						<td itemprop="version" style="display: none;">1.0</td>
+					</tr>
+        
+        </tbody>
+			
+      </table>
+    
+    </div>
+			<div class="row">
+				<h2>
+					Referencia
+				</h2>La siguiente tabla presenta una breve descripción de los atributos incluídos en el diccionario de datos de cada dataset.<br>
+				Básicamente, un diccionario de datos describe los atributos que contiene un dataset, incluyendo el tipo de dato y las restricciones se apliquen a cada uno.<br>
+				<br>
+				<br>
+				<table class="table table-striped table-bordered table-hover">
+					<thead>
+						<tr>
+							<th title="Field #1">
+								Nombre de la columna
+							</th>
+							<th title="Field #2">
+								Descripción
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								Nombre del Atributo
+							</td>
+							<td>
+								Esteblace el nombre del atributo exactamente como se encuentra definido en el archivo de datos a ser publicado
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Descripción
+							</td>
+							<td>
+								Describe con más detalles los datos que se encuentran en el atributo
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Tipo de datos
+							</td>
+							<td>
+								El tipo de dato esperado de los valores del attributo. Por ejemplo: String, Integer, Float, …. Idealmente se deben utilizar los tipos de datos definidos en el Estándar XML Schema Datatypes de la W3C. <a href="http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes">http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes</a>, por ejemplo: xsd:string, xsd:boolean, xsd:dateTime
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Restricciones
+							</td>
+							<td>
+								En caso que existan, se especifican las restricciones de los datos
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Referencia
+							</td>
+							<td>
+								En caso que exista, se agrega un link a un documento de referencia para los datos. Por ejemplo, si los datos están definidos utilizando un estándar o formato diferente a XSD, se lo referencia, como ser la Latitud y Longitud en formato de Google maps
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Ejemplo
+							</td>
+							<td>
+								Los valores de ejemplo
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+  </div>

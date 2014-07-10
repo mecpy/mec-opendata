@@ -1,0 +1,27 @@
+$("#matriculaciones-educacion-superior-lista").html("<%= escape_javascript(render :partial => "lista", :locals => { :matriculaciones_educacion_superior => @matriculaciones_educacion_superior}) %>");
+
+
+<% if @matriculaciones_educacion_superior.present? %>
+
+  <% parametros = "?form_buscar_matriculaciones_educacion_superior[anio]=#{params[:form_buscar_matriculaciones_educacion_superior][:anio]}"
+     parametros += "&form_buscar_matriculaciones_educacion_superior_nombre_departamento=#{params[:form_buscar_matriculaciones_educacion_superior_nombre_departamento]}"
+     parametros += "&form_buscar_matriculaciones_educacion_superior_nombre_distrito=#{params[:form_buscar_matriculaciones_educacion_superior_nombre_distrito]}"
+     parametros += "&form_buscar_matriculaciones_educacion_superior_nombre_barrio_localidad=#{params[:form_buscar_matriculaciones_educacion_superior_nombre_barrio_localidad]}"
+     parametros += "&form_buscar_matriculaciones_educacion_superior_nombre_zona=#{params[:form_buscar_matriculaciones_educacion_superior_nombre_zona]}"
+     parametros += "&form_buscar_matriculaciones_educacion_superior_codigo_establecimiento=#{params[:form_buscar_matriculaciones_educacion_superior_codigo_establecimiento]}"
+     parametros += "&form_buscar_matriculaciones_educacion_superior_nombre_institucion=#{params[:form_buscar_matriculaciones_educacion_superior_nombre_institucion]}"
+     parametros += "&form_buscar_matriculaciones_educacion_superior_sector_o_tipo_gestion=#{params[:form_buscar_matriculaciones_educacion_superior_sector_o_tipo_gestion]}"
+     parametros += "&form_buscar_matriculaciones_educacion_superior_matriculados_terciario_mayor=#{params[:form_buscar_matriculaciones_educacion_superior_matriculados_terciario_mayor]}"
+     parametros += "&form_buscar_matriculaciones_educacion_superior_matriculados_terciario_menor=#{params[:form_buscar_matriculaciones_educacion_superior_matriculados_terciario_menor]}" 
+     parametros += "&form_buscar_matriculaciones_educacion_superior_profesorado_mayor=#{params[:form_buscar_matriculaciones_educacion_superior_profesorado_mayor]}"
+     parametros += "&form_buscar_matriculaciones_educacion_superior_profesorado_menor=#{params[:form_buscar_matriculaciones_educacion_superior_profesorado_menor]}" 
+     parametros += "&form_buscar_matriculaciones_educacion_superior_formacion_docente_mayor=#{params[:form_buscar_matriculaciones_educacion_superior_formacion_docente_mayor]}"
+     parametros += "&form_buscar_matriculaciones_educacion_superior_formacion_docente_menor=#{params[:form_buscar_matriculaciones_educacion_superior_formacion_docente_menor]}" 
+     parametros += "&form_buscar_matriculaciones_educacion_superior_profesionalizacion_mayor=#{params[:form_buscar_matriculaciones_educacion_superior_profesionalizacion_mayor]}"
+     parametros += "&form_buscar_matriculaciones_educacion_superior_profesionalizacion_menor=#{params[:form_buscar_matriculaciones_educacion_superior_profesionalizacion_menor]}" 
+     parametros += "&page=#{(params[:page].present? ? params[:page] : 1)}" %>
+
+<% end %>
+
+
+$("#matriculaciones-educacion-superior-footer").html("<%= escape_javascript(render :partial => "footer", :locals => { :matriculaciones_educacion_superior => @matriculaciones_educacion_superior}) %>");

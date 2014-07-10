@@ -1,0 +1,23 @@
+$("#matriculaciones-educacion-inclusiva-lista").html("<%= escape_javascript(render :partial => "lista", :locals => { :matriculaciones_educacion_inclusiva => @matriculaciones_educacion_inclusiva}) %>");
+
+<% if @matriculaciones_educacion_inclusiva.present? %>
+
+  <% parametros = "?form_buscar_matriculaciones_educacion_inclusiva[anio]=#{params[:form_buscar_matriculaciones_educacion_inclusiva][:anio]}"
+     parametros += "&form_buscar_matriculaciones_educacion_inclusiva_codigo_establecimiento=#{params[:form_buscar_matriculaciones_educacion_inclusiva_codigo_establecimiento]}"
+     parametros += "&form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento=#{params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento]}"
+     parametros += "&form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito=#{params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito]}"
+     parametros += "&form_buscar_matriculaciones_educacion_inclusiva_nombre_zona=#{params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_zona]}"
+     parametros += "&form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad=#{params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad]}"
+     parametros += "&form_buscar_matriculaciones_educacion_inclusiva_codigo_institucion=#{params[:form_buscar_matriculaciones_educacion_inclusiva_codigo_institucion]}" 
+	parametros += "&form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion=#{params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion]}"
+     parametros += "&form_buscar_matriculaciones_educacion_inclusiva_sector_o_tipo_gestion=#{params[:form_buscar_matriculaciones_educacion_inclusiva_sector_o_tipo_gestion]}"
+     parametros += "&form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial=#{params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial]}"
+     parametros += "&form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial=#{params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial]}" 
+     parametros += "&form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial=#{params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial]}"
+     parametros += "&form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales=#{params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales]}" 
+     parametros += "&page=#{(params[:page].present? ? params[:page] : 1)}" %>
+
+<% end %>
+
+
+$("#matriculaciones-educacion-inclusiva-footer").html("<%= escape_javascript(render :partial => "footer", :locals => { :matriculaciones_educacion_inclusiva => @matriculaciones_educacion_inclusiva}) %>");

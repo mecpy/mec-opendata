@@ -1,0 +1,11 @@
+<div style="padding-top:10px">
+  <p align="center" style="font-size:11px;color:#999;border-top:1px">
+    <%= link_to image_tag("http://i.creativecommons.org/l/by/4.0/80x15.png"), "http://creativecommons.org/licenses/by/4.0/", :target => "_blank" %>
+    <%= link_to "Aviso Legal", mec_custom_url(legal_url), :target => '_blank', :style => "padding-left:5px;"%>
+    <%= link_to "Acerca de", mec_custom_url(about_url), :style => "padding-left:5px;"%>
+    <br />
+    <%= Time.now.year %> - Portal construido y mantenido por la Direcci&oacute;n de Inform&aacute;tica del <%= link_to "MEC", "http://www.mec.gov.py", :target => '_blank'%><br />
+    con el apoyo del <%= link_to "Programa de Democracia y Gobernabilidad (USAID-CEAMSO)", "http://ceamso.org.py/es/proyectos/20-programa-de-democracia-y-gobernabilidad ", :target => "_blank" %>
+    
+  </p>
+</div>

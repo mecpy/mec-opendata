@@ -1,0 +1,23 @@
+$("#lista").html("<%= escape_javascript(render :partial => "lista", :locals => { :matriculaciones_inicial => @matriculaciones_inicial}) %>");
+
+<% if @matriculaciones_inicial.present? %>
+
+  <% parametros = "?form_buscar_matriculaciones_inicial[anio]=#{params[:form_buscar_matriculaciones_inicial][:anio]}"
+     parametros += "&form_buscar_matriculaciones_inicial_nombre_departamento=#{params[:form_buscar_matriculaciones_inicial_nombre_departamento]}"
+     parametros += "&form_buscar_matriculaciones_inicial_nombre_distrito=#{params[:form_buscar_matriculaciones_inicial_nombre_distrito]}"
+     parametros += "&form_buscar_matriculaciones_inicial_nombre_barrio_localidad=#{params[:form_buscar_matriculaciones_inicial_nombre_barrio_localidad]}"
+     parametros += "&form_buscar_matriculaciones_inicial_nombre_zona=#{params[:form_buscar_matriculaciones_inicial_nombre_zona]}"
+     parametros += "&form_buscar_matriculaciones_inicial_codigo_establecimiento=#{params[:form_buscar_matriculaciones_inicial_codigo_establecimiento]}"
+     parametros += "&form_buscar_matriculaciones_inicial_nombre_institucion=#{params[:form_buscar_matriculaciones_inicial_nombre_institucion]}"
+     parametros += "&form_buscar_matriculaciones_inicial_sector_o_tipo_gestion=#{params[:form_buscar_matriculaciones_inicial_sector_o_tipo_gestion]}"
+     parametros += "&form_buscar_matriculaciones_inicial_maternal=#{params[:form_buscar_matriculaciones_inicial_maternal]}"
+     parametros += "&form_buscar_matriculaciones_inicial_segundo_grado=#{params[:form_buscar_matriculaciones_inicial_segundo_grado]}" 
+     parametros += "&form_buscar_matriculaciones_inicial_prejardin=#{params[:form_buscar_matriculaciones_inicial_prejardin]}"
+     parametros += "&form_buscar_matriculaciones_inicial_jardin=#{params[:form_buscar_matriculaciones_inicial_jardin]}" 
+     parametros += "&form_buscar_matriculaciones_inicial_preescolar=#{params[:form_buscar_matriculaciones_inicial_preescolar]}"
+	 parametros += "&form_buscar_matriculaciones_inicial_total_matriculados=#{params[:form_buscar_matriculaciones_inicial_total_matriculados]}" 
+     parametros += "&page=#{(params[:page].present? ? params[:page] : 1)}" %>
+
+<% end %>
+
+$("#matriculaciones-inicial-footer").html("<%= escape_javascript(render :partial => "footer", :locals => { :matriculaciones_inicial => @matriculaciones_inicial}) %>");

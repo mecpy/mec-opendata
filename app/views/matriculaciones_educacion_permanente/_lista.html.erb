@@ -1,0 +1,34 @@
+
+<% if matriculaciones_educacion_permanente.present? %>
+  
+  <% matriculaciones_educacion_permanente.each do |p| %>
+
+    <tr>
+
+      <td class="text-min"><%= p.anio %></td>
+      <td class="text-min"><%= p.codigo_establecimiento %></td>
+      <td class="text-min"><%= p.nombre_departamento %></td>
+      <td class="text-min"><%= p.nombre_distrito %></td>
+      <td class="text-min"><%= p.nombre_zona %></td>
+      <td class="text-min"><%= p.nombre_barrio_localidad %></td>
+      <td class="text-min"><%= p.sector_o_tipo_gestion %></td>
+      <td class="text-min"><%= p.nombre_institucion %></td>
+      <td class="text-min"><%= p.matricula_ebbja %></td>
+      <td class="text-min"><%= p.matricula_fpi %></td>
+      <td class="text-min"><%= p.matricula_emapja %></td>
+      <td class="text-min"><%= p.matricula_emdja %></td>  
+      <td class="text-min"><%= p.matricula_fp %></td>
+
+    </tr>
+  
+  <% end %>
+
+  <% else %>
+
+  <tr>
+    
+    <td colspan="11"><p class='none-result'>No se han encontrado resultados.</p></td>
+  
+  </tr>
+
+<% end %>

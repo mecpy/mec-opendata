@@ -1,0 +1,35 @@
+
+<% if matriculaciones_educacion_inclusiva.present? %>
+  
+  <% matriculaciones_educacion_inclusiva.each do |e| %>
+
+    <tr>
+
+      <td class="text-min"><%= e.anio %></td>
+      <td class="text-min"><%= e.codigo_establecimiento %></td>
+      <td class="text-min"><%= e.nombre_departamento %></td>
+      <td class="text-min"><%= e.nombre_distrito %></td>
+      <td class="text-min"><%= e.nombre_barrio_localidad %></td>
+      <td class="text-min"><%= e.nombre_zona %></td>
+      <td class="text-min"><%= e.codigo_institucion%></td>
+      <td class="text-min"><%= e.nombre_institucion%></td>
+      <td class="text-min"><%= e.sector_o_tipo_gestion %></td>
+      <td class="text-min"><%= e.matricula_inicial_especial %></td>
+      <td class="text-min"><%= e.matricula_primer_y_segundo_ciclo_especial%></td>
+      <td class="text-min"><%= e.matricula_tercer_ciclo_especial%></td>
+      <td class="text-min"><%= e.matricula_programas_especiales%></td>
+       
+    </tr>
+      
+<% end %>
+  
+
+  <% else %>
+
+  <tr>
+    
+    <td colspan="11"><p class='none-result'>No se han encontrado resultados.</p></td>
+  
+  </tr>
+
+<% end %>

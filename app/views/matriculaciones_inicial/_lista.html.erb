@@ -1,0 +1,32 @@
+
+<% if matriculaciones_inicial.present? %>
+  
+  <% matriculaciones_inicial.each do |mi| %>
+
+    <tr>
+
+      <td class="text-min"><%= mi.anio %></td>
+      <td class="text-min"><%= mi.codigo_establecimiento %></td>
+      <td class="text-min"><%= mi.nombre_departamento %></td>
+      <td class="text-min"><%= mi.nombre_distrito %></td>
+      <td class="text-min"><%= mi.nombre_barrio_localidad %></td>
+      <td class="text-min"><%= mi.nombre_zona %></td>
+      <td class="text-min"><%= mi.sector_o_tipo_gestion %></td>
+      <td class="text-min"><%= mi.maternal %></td>
+      <td class="text-min"><%= mi.prejardin %></td>
+      <td class="text-min"><%= mi.jardin %></td>
+      <td class="text-min"><%= mi.preescolar %></td>
+      <td class="text-min"><%= mi.total_matriculados %></td>
+    </tr>
+  
+  <% end %>
+  
+  <% else %>
+
+  <tr>
+    
+    <td colspan="11"><p class='none-result'>No se han encontrado resultados.</p></td>
+  
+  </tr>
+
+<% end %>

@@ -1,0 +1,180 @@
+<h2>
+	<span itemprop="name">Matriculaciones Educación Superior</span>
+  <meta itemprop="description" content="Se refiere a la cantidad de matriculados en las diferentes modalidades de educación superior con sus correspondientes códigos identificatorios."/>
+  <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+  <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+    <meta itemprop="name" content="Ministerio de Educación y Cultura">
+    <meta itemprop="url" content="http://www.mec.gov.py/">
+    <meta itemprop="email" content="datosabiertos@mec.gov.py">
+  </span>
+  <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+    <meta itemprop="name" content="Juan Barrios">
+    <meta itemprop="email" content="datosabiertos@mec.gov.py">
+  </span>
+  <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+  <meta itemprop="keywords" style="display: none;" content="educación,matriculaciones,educación superior"/>
+  <meta itemprop="version" style="display: none;" content="1.0"/>
+  <span style="float:right;">
+    <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_educacion_superior_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
+    <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), mec_custom_url(def_matriculaciones_educacion_superior_url), :title => "Ir al diccionario" %>
+    <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
+    <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
+  </span>
+
+</h2>
+
+<div class="table-outter">
+  <table id="matriculaciones-educacion-superior-table" class="table table-striped table-bordered table-hover" style="margin-bottom: 0px; width: 1700px; max-width: none">
+
+    <tr>
+
+      <%= form_tag mec_custom_url(data_matriculaciones_educacion_superior_lista_url(nil,nil)), :remote => true, :id => "form-buscar-matriculaciones-educacion-superior" do  %>
+
+        <th style="width:8%" class="text-min celda-derecha">
+          <%= label_tag "Periodo" %><br />
+          <%= select :form_buscar_matriculaciones_educacion_superior, :anio, [2012], {:class => 'text-min'} %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_superior_anio').val('2012');$('#form-buscar-matriculaciones-educacion-superior').submit();" ,:style => "color:#fff;"%>
+        </th>
+
+        <th style="width:8%" class="text-min">
+          <%= label_tag "Departamento"%><br />
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_superior_nombre_departamento, nil, :class => 'text-min' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_superior_nombre_departamento').val('');$('#form-buscar-matriculaciones-educacion-superior').submit();" ,:style => "color:#fff;"%>
+        </th>
+
+        <th style="width:8%" class="text-min">
+          <%= label_tag "Distrito"%><br />
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_superior_nombre_distrito, nil, :class => 'text-min' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_superior_nombre_distrito').val('');$('#form-buscar-matriculaciones-educacion-superior').submit();" ,:style => "color:#fff;"%>
+        </th>
+
+        <th style="width:8%" class="text-min">
+          <%= label_tag "Barrio/Localidad"%><br />
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_superior_nombre_barrio_localidad, nil, :class => 'text-min' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_superior_nombre_barrio_localidad').val('');$('#form-buscar-matriculaciones-educacion-superior').submit();" ,:style => "color:#fff;"%>
+        </th>
+
+        <th style="width:8%" class="text-min">
+          <%= label_tag "Zona"%><br />
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_superior_nombre_zona, nil, :class => 'text-min' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_superior_nombre_zona').val('');$('#form-buscar-matriculaciones-educacion-superior').submit();" ,:style => "color:#fff;"%>
+        </th>
+
+        <th style="width:8%" class="text-min">
+          <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe%><br />
+          <%= text_field_tag :form_buscar_establecimientos_codigo_establecimiento, nil, :class => 'text-min' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_establecimientos_codigo_establecimiento').val('');$('#form-buscar-establecimientos').submit();" ,:style => "color:#fff;"%>
+        </th>
+
+        <th style="width:8%" class="text-min">
+          <%= label_tag "Sector o Tipo de Gestión"%><br />
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_superior_sector_o_tipo_gestion, nil, :class => 'text-min' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_superior_sector_o_tipo_gestion').val('');$('#form-buscar-matriculaciones-educacion-superior').submit();" ,:style => "color:#fff;"%>
+        </th>
+
+        <th style="width:8%" class="text-min">
+          <%= label_tag "Institución"%><br />
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_superior_nombre_institucion, nil, :class => 'text-min' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_superior_nombre_institucion').val('');$('#form-buscar-matriculaciones-educacion-superior').submit();" ,:style => "color:#fff;"%>
+        </th>
+
+      <th style="width:9%;" class="text-min">
+          <%= label_tag nil, "Cantidad de Matriculados\n Nivel Terciario".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_ets_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_ets, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_superior_matricula_ets').val('');$('#form-buscar-matriculaciones-educacion-superior').submit();" ,:style => "color:#fff;"%><br />
+      </th>
+
+      <th style="width:9%;" class="text-min">
+          <%= label_tag nil, "Cantidad de Matriculados\n Cursos de Profesorado".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_fed_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_fed, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_superior_matricula_fed').val('');$('#form-buscar-matriculaciones-educacion-superior').submit();" ,:style => "color:#fff;"%><br />
+      </th>
+
+      <th style="width:9%;" class="text-min">
+          <%= label_tag nil, "Cantidad de Matriculados\n Formación Docente".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_fdes_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_fdes, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_superior_matricula_fdes').val('');$('#form-buscar-matriculaciones-educacion-superior').submit();" ,:style => "color:#fff;"%><br />
+      </th>
+
+          <th style="width:9%;" class="text-min">
+          <%= label_tag nil, "Cantidad de Matriculados\n Profesionalización Docente".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_pd_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_pd, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_superior_matricula_pd').val('');$('#form-buscar-matriculaciones-educacion-superior').submit();" ,:style => "color:#fff;"%><br />
+      </th>
+      <% end %>
+
+    </tr>
+
+    <tbody id="matriculaciones-educacion-superior-lista"></tbody>
+
+  </table>
+  </div>
+
+   <table class="table table-striped table-bordered table-hover">
+    <tbody id="matriculaciones-educacion-superior-footer"></tbody>
+  </table>
+ 
+
+<script type="text/javascript">
+
+  $("#form-buscar-matriculaciones-educacion-superior").bind("submit", function(){
+
+      $("#matriculaciones-educacion-superior-lista").html("<%= escape_javascript("<tr><td style='7'><p class='none-result'>#{image_tag('ajax-loader0.gif')}</p>").html_safe %></td></tr>")    
+  
+  })
+
+  $("#form_buscar_matriculaciones_educacion_superior_anio").bind('change',function(){
+      
+    $("#form-buscar-matriculaciones-educacion-superior").submit();
+      
+  })
+
+  $(".table-bordered :input").bind('change',function(){
+      
+    $("#form-buscar-matriculaciones-educacion-superior").submit();
+      
+  })
+
+  //LIMPIAR FORMULARIO DE BUSQUEDA
+  function limpiar_form_buscar_matriculaciones_educacion_superior(){
+    
+    $("#form_buscar_matriculaciones_educacion_superior_anio").val("2012");
+    $("#form_buscar_matriculaciones_educacion_superior_nombre_departamento").val("");
+    $("#form_buscar_matriculaciones_educacion_superior_nombre_distrito").val("");
+    $("#form_buscar_matriculaciones_educacion_superior_nombre_barrio_localidad").val("");
+    $("#form_buscar_matriculaciones_educacion_superior_nombre_zona").val("");
+    $("#form_buscar_matriculaciones_educacion_superior_codigo_establecimiento").val("");
+    $("#form_buscar_matriculaciones_educacion_superior_nombre_institucion").val("");
+    $("#form_buscar_matriculaciones_educacion_superior_sector_o_tipo_gestion").val("");
+    $("#form_buscar_matriculaciones_educacion_superior_matriculados_matricula_ets").val("");
+    $("#form_buscar_matriculaciones_educacion_superior_matricula_fed").val("");
+    $("#form_buscar_matriculaciones_educacion_superior_matricula_fdes").val("");
+    $("#form_buscar_matriculaciones_educacion_superior_matricula_pd").val("");
+    $("#form-buscar-matriculaciones-educacion-superior").submit();
+
+  }  
+
+  limpiar_form_buscar_matriculaciones_educacion_superior();
+
+</script>
+
+<style>
+
+  .text-min {font-size:9px !important; color: #000; text-align:center !important;}
+  #cbue-menu1 {background:#e9e9e9;}
+  .text-min input[type="text"], .text-min select {
+    border: 1px solid silver;
+    padding: 3px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    color:#000;
+  }
+  .text-min input[type="text"] { width: 80px;}
+  #tablaContenedor{width:100%;}
+ 
+</style>
+

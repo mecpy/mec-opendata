@@ -1,0 +1,60 @@
+<td colspan='8'>
+
+  <% if establecimientos.present? %>
+
+    <script type="text/javascript">
+  
+        <% codigo_local = ""; %>
+        <% establecimientos.each_with_index do |e, i| %>
+
+          <% if e.latitud.present? && e.longitud.present? %>
+            
+            <% codigo_local = e.codigo_establecimiento if codigo_local == '' %>
+
+            <% lat = "-#{(e.latitud.split(" ").first.to_i + (e.latitud.split(" ").second.to_f / 60.to_f) + (e.latitud.split(" ").third.to_f / 3600)).round(7)}" %>
+            <% lng = "-#{(e.longitud.split(" ").first.to_i + (e.longitud.split(" ").second.to_f / 60.to_f) + (e.longitud.split(" ").third.to_f / 3600)).round(7)}" %> 
+
+            <% if codigo_local == e.codigo_establecimiento %>
+  
+              var map;
+      
+              map = new GMaps({
+                el: '#map',
+                lat: "<%= lat %>",
+                lng: "<%= lng %>",
+                zoom: 6,
+                markerClusterer: function(map) {
+                  return new MarkerClusterer(map);
+                }
+              });
+
+            <% end %>
+          
+            map.addMarker({
+              lat: "<%= lat %>",
+              lng: "<%= lng %>",
+              title: 'Datos del Establecimiento',
+              infoWindow: {
+                content: "<%= escape_javascript(render :partial => 'data/infowindow_establecimiento', :locals => {:establecimiento => e})  %>"
+              }
+            });
+          
+          <% end %>
+
+        <% end %>
+    
+    </script>
+
+    <div id="map" style="height:600px;"></div>
+  
+    <br/>
+
+  <% else %>
+
+    <div style="font-size: 11px; color: #000; margin-left:15px; "><br />No se encontr&oacute;n las coordenadas geogr&aacute;ficas.<br /><br /></div>
+
+  <% end %>
+
+</td>
+
+
