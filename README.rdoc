@@ -21,4 +21,4 @@ cualquiera.
 == Implementación del proyecto
 
 El proyecto fue desarrollado con el Framework para desarrollo agil de aplicaciones 
-web Ruby on Rails, la versión utilizada fue ruby es la 1.9.3 con rails 3.2.13
+web Ruby on Rails, la versión utilizada de ruby es la 1.9.3 con rails 3.2.13
