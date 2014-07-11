@@ -17,8 +17,9 @@
 #Database related files
 /config/database.yml
 *~
-/.svn/
 
+/.svn/
+/nbproject/*
 
 *.rbc
 capybara-*.html
