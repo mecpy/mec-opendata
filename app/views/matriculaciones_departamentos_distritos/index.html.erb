@@ -65,7 +65,7 @@
         <%= label_tag nil, "Cantidad de Matriculados".html_safe%><br />
         <%= select_tag(:form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados_operador, options_for_select(['>', '<', '='])) %>
         <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados, nil, :class => 'text-min' %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados_mayor').val('');$('#form-buscar-matriculaciones-departamentos-distritos').submit();" ,:style => "color:#fff;"%><br />
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados').val('');$('#form-buscar-matriculaciones-departamentos-distritos').submit();" ,:style => "color:#fff;"%><br />
       </th>
       
     <% end %>
