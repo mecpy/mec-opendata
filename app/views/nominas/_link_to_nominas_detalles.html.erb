@@ -1,0 +1,29 @@
+<%= link_to image_tag("folder_table.png"), "#", :id => "link-to-nominas-detalles-#{nomina.id_trabajador}-#{nomina.id_objeto_gasto}", :title => "Haga click para ver el detalle." %>
+
+<script type="text/javascript">
+
+  $("#link-to-nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>").bind("click", function(){
+      
+      var tr_size = $.trim($("#nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>").html()).length 
+
+			$('.nominas-detalles').remove();
+
+			if(tr_size == 0){
+
+        $(this).parent().parent().after("<tr id=\"nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>\" class=\"nominas-detalles\"></tr>"); 
+        
+        $("#nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>").html("<%= escape_javascript("<tr><td style='text-align:center;' colspan='8'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")  
+          
+          $.ajax({
+						  type: 'POST',
+						  url: "<%= mec_custom_url(data_nomina_administrativos_detalles_url) %>",
+              data: { id_trabajador:'<%= nomina.id_trabajador %>', id_objeto_gasto:'<%= nomina.id_objeto_gasto %>' },
+						  dataType: 'script'  
+						});
+
+      } 
+
+			return false; 
+	 });
+
+</script>

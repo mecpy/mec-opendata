@@ -1,0 +1,49 @@
+<td colspan="8">
+
+  <hr style="border-bottom: 2px dashed silver;" />
+  
+  <h3>Detalles de la Asignaci&oacute;n de <span style='color:#000;'><%= @nomina.first.nombre_trabajador %></span></h3>
+
+  <table class="table table-striped table-bordered table-hover" style="font-size:10px;">
+    <thead>
+
+      <tr>
+        <th>Concepto</th>
+        <th><%= @nomina.first.es_categoria_administrativa == 1 ? "Dependencia" : "Instituci&oacute;n".html_safe%></th>
+        <th>Cargo</th>
+        <th>Categor&iacute;a<br />Rubro</th>
+        <th style="text-align:right;">Asignaci&oacute;n <br />Categor&iacute;a<br />Rubro</th>
+        <th style="text-align:right;">Cantidad</th>
+        <th style="text-align:right;">Asignaci&oacute;n</th>
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      <% @nomina.each do |n| %>
+
+        <tr>
+          <td><%= n.nombre_concepto_nomina %></td>
+          <td><%= n.nombre_dependencia %></td>
+          <td><%= n.nombre_cargo %></td>
+          <td><%= n.codigo_categoria_rubro %></td>
+          <td style="text-align:right;"><%= number_to_currency(n.monto_categoria_rubro, :unit => '', :precision => 0) if n.monto_categoria_rubro.present? %></td>
+          <td style="text-align:right;"><%= n.cantidad.to_i %></td>
+          <td style="text-align:right;"><%= number_to_currency(n.asignacion, :unit => '', :precision => 0) if n.asignacion.present? %></td>
+        </tr>
+
+      <% end %>
+
+      <tr style="font-weight:bold;color:#000;">
+        <td colspan=6>Total</td>
+        <td style="text-align:right;"><%= number_to_currency(obtener_total_asignacion(@nomina.first.id_trabajador, @nomina.first.id_objeto_gasto, @nomina.first.es_categoria_administrativa), :unit => '', :precision => 0) %></td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+  <hr style="border-bottom: 2px dashed silver;" />
+
+</td>

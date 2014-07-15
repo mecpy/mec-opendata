@@ -1,0 +1,114 @@
+<% if nomina.present? %>
+  
+  <% nomina.each do |n| %>
+
+    <tr>
+
+      <td class="text-min"><%= n.ano_periodo_pago %></td>
+      <td class="text-min"><%= obtener_mes(n.mes_periodo_pago) %></td>
+      <td class="text-min"><%= n.codigo_trabajador %></td>
+      <td class="text-min"><%= n.nombre_trabajador %></td>
+      <td class="text-min"><%= n.nombre_objeto_gasto %></td>
+      <td class="text-min"><%= n.estado %></td>
+      <td class="text-min" style="text-align:right;"><%= number_to_currency(n.asignacion, :unit => '', :precision => 0) %></td>
+      <td style="width:20px;"><%= link_to_nominas_detalles(n) %></td>
+       
+    </tr>
+      
+  <% end %>
+
+    <tr>
+
+      <td colspan="8" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate nomina, :params => params %></div></td>
+    
+    </tr>
+
+    <!--
+    <tr><td colspan="11">Cantidad de registros encontrados: <%#= @total_registros_encontrados %> de <%#= @total_registros %></td></tr>
+    -->
+
+    <tr>
+
+      <%  
+          parametros_csv = { :format => 'csv' }
+          parametros_csv = parametros_csv.merge(params) 
+          parametros_csv_todos = { :format => 'csv', "form_buscar_nominas[ano_periodo_pago]" => params[:form_buscar_nominas][:ano_periodo_pago], "form_buscar_nominas[mes_periodo_pago]" => params[:form_buscar_nominas][:mes_periodo_pago] }
+      %>
+
+      <% 
+          parametros_xls = { :format => 'xlsx'}
+          parametros_xls = parametros_xls.merge(params) 
+          parametros_xls_todos = { :format => 'xlsx', "form_buscar_nominas[ano_periodo_pago]" => params[:form_buscar_nominas][:ano_periodo_pago], "form_buscar_nominas[mes_periodo_pago]" => params[:form_buscar_nominas][:mes_periodo_pago] }
+      %>
+
+      <%  %>
+
+      <% 
+          parametros_json = { :format => 'json' }
+          parametros_json = parametros_json.merge(params) 
+          parametros_json_todos = { :format => 'json', "form_buscar_nominas[ano_periodo_pago]" => params[:form_buscar_nominas][:ano_periodo_pago], "form_buscar_nominas[mes_periodo_pago]" => params[:form_buscar_nominas][:mes_periodo_pago] }
+      %>
+
+      <% 
+          parametros_pdf = { :format => 'pdf' }
+          parametros_pdf = parametros_pdf.merge(params) 
+          parametros_pdf_todos = { :format => 'pdf', "form_buscar_nominas[ano_periodo_pago]" => params[:form_buscar_nominas][:ano_periodo_pago], "form_buscar_nominas[mes_periodo_pago]" => params[:form_buscar_nominas][:mes_periodo_pago] }
+      %>
+
+      <%= parametros_pdf %>
+
+      <td colspan="9" class="row-descargar">
+     <!--  
+        <%#= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
+        <a href="http://www.w3.org/TR/microdata/"><%#= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a></br>
+        <span>Descargar N&oacute;mina de Funcionarios Filtrados:</span>
+        -->
+        <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
+
+        <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(PARAMETRO[:nomina_administrativos]) , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat'%>
+        <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_nominas_lista_url(parametros_pdf)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat'%>
+        <%#= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_nominas_lista_url(parametros_xls)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
+        <%#= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_nominas_lista_url(parametros_csv)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
+        <%#= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_nominas_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+        <br /><br />
+        
+        <span>Descargar la N&oacute;mina completa de funcionarios administrativos:</span>
+        <span itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%= link_to "PDF#{image_star}".html_safe, PARAMETRO[:nomina_administrativos] , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat'%>
+        <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_nominas_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
+          <meta itemprop="name" content="Establecimientos Escolares 2012">
+          <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año 2012">
+          <meta itemprop="encodingFormat" content="pdf">
+        </span>
+        <span itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%#= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_nominas_lista_url(parametros_xls_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url"%>
+          <meta itemprop="name" content="Establecimientos Escolares 2012">
+          <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año 2012">
+          <meta itemprop="encodingFormat" content="xls">
+        </span>
+        <span itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%#= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_nominas_lista_url(parametros_csv_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url"%>
+          <meta itemprop="name" content="Establecimientos Escolares 2012">
+          <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año 2012">
+          <meta itemprop="encodingFormat" content="csv">
+        </span>
+        <span itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%#= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_nominas_lista_url(parametros_json_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url"%>
+          <meta itemprop="name" content="Establecimientos Escolares 2012">
+          <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año 2012">
+          <meta itemprop="encodingFormat" content="json">
+         </span>
+      </td>
+ 
+    </tr>
+
+
+  <% else %>
+
+  <tr>
+    
+    <td colspan="11"><p class='none-result'>No se han encontrado resultados.</p></td>
+  
+  </tr>
+
+<% end %>
