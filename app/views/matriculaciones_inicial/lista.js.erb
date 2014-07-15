@@ -10,6 +10,8 @@ $("#lista").html("<%= escape_javascript(render :partial => "lista", :locals => {
      parametros += "&form_buscar_matriculaciones_inicial_codigo_establecimiento=#{params[:form_buscar_matriculaciones_inicial_codigo_establecimiento]}"
      parametros += "&form_buscar_matriculaciones_inicial_nombre_institucion=#{params[:form_buscar_matriculaciones_inicial_nombre_institucion]}"
      parametros += "&form_buscar_matriculaciones_inicial_sector_o_tipo_gestion=#{params[:form_buscar_matriculaciones_inicial_sector_o_tipo_gestion]}"
+     parametros += "&form_buscar_matriculaciones_inicial_codigo_institucion=#{params[:form_buscar_matriculaciones_inicial_codigo_institucion]}"
+     parametros += "&form_buscar_matriculaciones_inicial_nombre_institucion=#{params[:form_buscar_matriculaciones_inicial_nombre_institucion]}"
      parametros += "&form_buscar_matriculaciones_inicial_maternal=#{params[:form_buscar_matriculaciones_inicial_maternal]}"
      parametros += "&form_buscar_matriculaciones_inicial_segundo_grado=#{params[:form_buscar_matriculaciones_inicial_segundo_grado]}" 
      parametros += "&form_buscar_matriculaciones_inicial_prejardin=#{params[:form_buscar_matriculaciones_inicial_prejardin]}"

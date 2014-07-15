@@ -65,7 +65,7 @@
 
         <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
 
-        <%= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_departamentos_distritos_lista_url(parametros_pdf)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat'%>
+        <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_departamentos_distritos_lista_url(parametros_pdf)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat'%>
         <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_matriculaciones_departamentos_distritos_lista_url(parametros_xls)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
         <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_matriculaciones_departamentos_distritos_lista_url(parametros_csv)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
         <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_matriculaciones_departamentos_distritos_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
@@ -73,7 +73,7 @@
         
         <span>Descargar todas las Matriculaciones por Departamento y Distrito:</span>
         <span itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_departamentos_distritos_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
+        <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_departamentos_distritos_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
         <meta itemprop="name" content="Matriculaciones por Departamento y Distrito 2012">
         <meta itemprop="description" content="Listado de matriculaciones por departamento y distrito correspondiente al año 2012">
         <meta itemprop="encodingFormat" content="pdf">

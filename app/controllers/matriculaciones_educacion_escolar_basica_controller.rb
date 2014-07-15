@@ -63,6 +63,13 @@ class MatriculacionesEducacionEscolarBasicaController < ApplicationController
 
     end
 
+    if params[:form_buscar_matriculaciones_educacion_escolar_basica_codigo_institucion].present?
+
+      cond << "codigo_institucion = ?"
+      args << params[:form_buscar_matriculaciones_educacion_escolar_basica_codigo_institucion]
+
+    end
+
     if params[:form_buscar_matriculaciones_educacion_escolar_basica_nombre_institucion].present?
 
       cond << "nombre_institucion ilike ?"
@@ -163,12 +170,12 @@ class MatriculacionesEducacionEscolarBasicaController < ApplicationController
       csv = CSV.generate do |csv|
         # header row
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad",
-                "nombre_barrio_localidad", "sector_o_tipo_gestion", "primer_grado", "segundo_grado", "tercer_grado", "cuarto_grado", "quinto_grado", "sexto_grado", "septimo_grado", "octavo_grado", "noveno_grado", "total_matriculados"]
+                "nombre_barrio_localidad", "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "primer_grado", "segundo_grado", "tercer_grado", "cuarto_grado", "quinto_grado", "sexto_grado", "septimo_grado", "octavo_grado", "noveno_grado", "total_matriculados"]
  
         # data rows
         matriculaciones_educacion_escolar_basica_csv.each do |meeb|
-          csv << [meeb.anio, meeb.codigo_establecimiento, meeb.codigo_departamento, meeb.nombre_departamento, meeb.codigo_distrito, meeb.nombre_distrito, meeb.codigo_zona, meeb.nombre_zona, meeb.codigo_barrio_localidad, meeb.nombre_barrio_localidad, meeb.sector_o_tipo_gestion, meeb.primer_grado, meeb.segundo_grado, 
-      meeb.tercer_grado, meeb.cuarto_grado, meeb.quinto_grado, meeb.sexto_grado, meeb.septimo_grado, meeb.octavo_grado, meeb.noveno_grado, meeb.total_matriculados ]
+          csv << [meeb.anio, meeb.codigo_establecimiento, meeb.codigo_departamento, meeb.nombre_departamento, meeb.codigo_distrito, meeb.nombre_distrito, meeb.codigo_zona, meeb.nombre_zona, meeb.codigo_barrio_localidad, meeb.nombre_barrio_localidad, meeb.sector_o_tipo_gestion, meeb.codigo_institucion, meeb.nombre_institucion,
+           meeb.primer_grado, meeb.segundo_grado, meeb.tercer_grado, meeb.cuarto_grado, meeb.quinto_grado, meeb.sexto_grado, meeb.septimo_grado, meeb.octavo_grado, meeb.noveno_grado, meeb.total_matriculados ]
         end
 
       end

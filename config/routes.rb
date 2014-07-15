@@ -1,5 +1,14 @@
 OpenData::Application.routes.draw do
 
+  match "data/nomina_administrativos_detalles" => 'nominas#detalles', :as => :data_nomina_administrativos_detalles
+  match "data/nomina_administrativos_lista" => 'nominas#lista', :as => :data_nomina_administrativos_lista
+  match 'data/nomina_administrativos' => 'nominas#index', :as => :data_nomina_administrativos
+  match 'def/nomina_administrativos' => 'nominas#diccionario', :as => :def_nomina_administrativos
+
+  match "data/nomina_docentes_detalles" => 'nominas#docentes_detalles', :as => :data_nomina_docentes_detalles
+  match "data/nomina_docentes_lista" => 'nominas#docentes_lista', :as => :data_nomina_docentes_lista
+  match 'data/nomina_docentes' => 'nominas#docentes', :as => :data_nomina_docentes
+  match 'def/nomina_docentes' => 'nominas#docentes_diccionario', :as => :def_nomina_docentes
 
   match "data/matriculaciones_educacion_permanente_lista" => 'matriculaciones_educacion_permanente#lista', :as => :data_matriculaciones_educacion_permanente_lista
   match 'data/matriculaciones_educacion_permanente' => 'matriculaciones_educacion_permanente#index', :as => :data_matriculaciones_educacion_permanente

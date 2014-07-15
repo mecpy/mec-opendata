@@ -25,13 +25,13 @@
 
 <div class="table-outter">
 
-  <table class="table table-striped table-bordered table-hover" style="margin-bottom: 0px; width: 00px; max-width: none;">
+  <table class="table table-striped table-bordered table-hover" style="margin-bottom: 0px; width: 2200px; max-width: none;">
 
   <tr>
 
     <%= form_tag mec_custom_url(data_matriculaciones_educacion_permanente_lista_url(nil)), :remote => true, :id => "form-buscar-matriculaciones-educacion-permanente" do  %>
 
-      <th style="width:7%;" class="text-min celda-derecha">
+      <th style="width:4%;" class="text-min celda-derecha">
         <%= label_tag "Periodo" %><br />
         <%= select :form_buscar_matriculaciones_educacion_permanente, :anio, [2012], {:class => 'text-min'} %>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_permanente_anio').val('2012');$('#form-buscar-matriculaciones-educacion-permanente').submit();" ,:style => "color:#fff;"%>
@@ -42,20 +42,29 @@
         <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_codigo_establecimiento, nil, :class => 'text-min' %>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_permanente_codigo_establecimiento').val('');$('#form-buscar-matriculaciones-educacion-permanente').submit();" ,:style => "color:#fff;"%>
       </th>
-
+      <th style="width:7%;" class="text-min">
+        <%= label_tag nil, "C&oacute;digo Instituci&oacute;n".html_safe %><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_codigo_institucion, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_permanente_codigo_institucion').val('');$('#form-buscar-matriculaciones-educacion-permanente').submit();" ,:style => "color:#fff;"%>
+      </th>
+      <th style="width:7%;" class="text-min">
+        <%= label_tag "Nombre Institución"%><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_institucion, nil, :class => 'text-min' %>
+        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_permanente_nombre_institucion').val('');$('#form-buscar-matriculaciones-educacion-permanente').submit();" ,:style => "color:#fff;"%>
+      </th>
       <th style="width:7%;" class="text-min">
         <%= label_tag "Departamento"%><br />
         <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_departamento, nil, :class => 'text-min' %>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_permanente_nombre_departamento').val('');$('#form-buscar-matriculaciones-educacion-permanente').submit();" ,:style => "color:#fff;"%>
       </th>
 
-      <th style="width:7%;" class="text-min">
+      <th style="width:6%;" class="text-min">
         <%= label_tag "Distrito"%><br />
         <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_distrito, nil, :class => 'text-min' %>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_permanente_nombre_distrito').val('');$('#form-buscar-matriculaciones-educacion-permanente').submit();" ,:style => "color:#fff;"%>
       </th>
 
-      <th style="width:7%;" class="text-min">
+      <th style="width:6%;" class="text-min">
         <%= label_tag "Zona"%><br />
         <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_zona, nil, :class => 'text-min' %>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_permanente_nombre_zona').val('');$('#form-buscar-matriculaciones-educacion-permanente').submit();" ,:style => "color:#fff;"%>
@@ -71,33 +80,33 @@
         <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_sector_o_tipo_gestion, nil, :class => 'text-min' %>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_permanente_sector_o_tipo_gestion').val('');$('#form-buscar-matriculaciones-educacion-permanente').submit();" ,:style => "color:#fff;"%>
       </th>
-      <th style="width:7%;" class="text-min">
-        <%= label_tag "Nombre Institución"%><br />
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_institucion, nil, :class => 'text-min' %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_permanente_nombre_institucion').val('');$('#form-buscar-matriculaciones-educacion-permanente').submit();" ,:style => "color:#fff;"%>
-      </th>
-      <th style="width:7%;" class="text-min">
+      <th style="width:9%;" class="text-min">
         <%= label_tag "Matricula EBBJA", "Matricula EBBJA" %><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_operador, options_for_select(['>', '<', '='])) %>
         <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_ebbja, nil, :class => 'text-min' %>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_permanente_matricula_ebbja').val('');$('#form-buscar-matriculaciones-educacion-permanente').submit();" ,:style => "color:#fff;"%>
       </th>
       <th style="width:7%;" class="text-min">
         <%= label_tag "Matricula FPI", "Matricula FPI" %><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_operador, options_for_select(['>', '<', '='])) %>
         <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_fpi, nil, :class => 'text-min' %>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_permanente_matricula_fpi').val('');$('#form-buscar-matriculaciones-educacion-permanente').submit();" ,:style => "color:#fff;"%>
       </th>
       <th style="width:7%;" class="text-min">
         <%= label_tag "Matricula EMAPJA", "Matricula EMAPJA" %><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_operador, options_for_select(['>', '<', '='])) %>
         <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_emapja, nil, :class => 'text-min' %>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_permanente_matricula_emapja').val('');$('#form-buscar-matriculaciones-educacion-permanente').submit();" ,:style => "color:#fff;"%>
       </th>
       <th style="width:7%;" class="text-min">
         <%= label_tag "Matricula EMDJA"%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_operador, options_for_select(['>', '<', '='])) %>
         <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_emdja, nil, :class => 'text-min' %>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_permanente_matricula_emdja').val('');$('#form-buscar-matriculaciones-educacion-permanente').submit();" ,:style => "color:#fff;"%>
       </th>
       <th style="width:7%;" class="text-min">
         <%= label_tag "Matricula FP"%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_fp_operador, options_for_select(['>', '<', '='])) %>
         <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_fp, nil, :class => 'text-min' %>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_matriculaciones_educacion_permanente_matricula_fp').val('');$('#form-buscar-matriculaciones-educacion-permanente').submit();" ,:style => "color:#fff;"%>
       </th>
@@ -119,11 +128,41 @@
 
   $("#form-buscar-matriculaciones-educacion-permanente").bind("submit", function(){
 
-      $("#lista").html("<%= escape_javascript("<tr><td style='7'><p class='none-result'>#{image_tag('ajax-loader0.gif')}</p>").html_safe %></td></tr>")    
+      $("#lista").html("<%= escape_javascript("<tr><td colspan='14' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")    
   
   })
 
   $("#form_buscar_matriculaciones_educacion_permanente_anio").bind('change',function(){
+      
+    $("#form-buscar-matriculaciones-educacion-permanente").submit();
+      
+  })
+
+  $("#form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_operador").bind('change',function(){
+      
+    $("#form-buscar-matriculaciones-educacion-permanente").submit();
+      
+  })
+
+  $("#form_buscar_matriculaciones_educacion_permanente_matricula_fpi_operador").bind('change',function(){
+      
+    $("#form-buscar-matriculaciones-educacion-permanente").submit();
+      
+  })
+
+  $("#form_buscar_matriculaciones_educacion_permanente_matricula_emapja_operador").bind('change',function(){
+      
+    $("#form-buscar-matriculaciones-educacion-permanente").submit();
+      
+  })
+
+  $("#form_buscar_matriculaciones_educacion_permanente_matricula_emdja_operador").bind('change',function(){
+      
+    $("#form-buscar-matriculaciones-educacion-permanente").submit();
+      
+  })
+
+  $("#form_buscar_matriculaciones_educacion_permanente_matricula_fp_operador").bind('change',function(){
       
     $("#form-buscar-matriculaciones-educacion-permanente").submit();
       

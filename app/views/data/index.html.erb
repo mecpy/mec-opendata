@@ -110,8 +110,8 @@
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario",mec_custom_url(def_matriculaciones_educacion_inclusiva_url), :title => "Ir al diccionario" %>
               <%= link_to image_tag("def_icon.png"), mec_custom_url(def_matriculaciones_educacion_inclusiva_url), :title => "Ir al diccionario" %><br /><br />
-              <%= link_to "Ver datos", data_matriculaciones_educacion_inclusiva_url, :title => "Ir al dataset" %>
-              <%= link_to image_tag("datos_ico.jpg"), data_matriculaciones_educacion_inclusiva_url, :title => "Ir al dataset", :itemprop => "url" %>
+              <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_educacion_inclusiva_url), :title => "Ir al dataset" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_inclusiva_url), :title => "Ir al dataset", :itemprop => "url" %>
             </td>
 						<td itemprop="description">
 							Corresponde a la cantidad de matriculados por ciclo/niveles/programas especiales de educación inclusiva con sus correspondientes códigos identificatorios.
@@ -263,6 +263,60 @@
 						</td>
 						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
 						<td itemprop="keywords" style="display: none;">educación,matriculaciones,departamentos, distritos</td>
+						<td itemprop="version" style="display: none;">1.0</td>
+          </tr>
+
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">10</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">NOMINA DE FUNCIONARIOS DOCENTES</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <%= link_to "Ver diccionario", mec_custom_url(def_nomina_docentes_url), :title => "Ir al diccionario" %>
+              <%= link_to image_tag("def_icon.png"), mec_custom_url(def_nomina_docentes_url), :title => "Ir al diccionario" %><br /><br />
+              <%= link_to "Ver datos", mec_custom_url(data_nomina_docentes_url), :title => "Ir al dataset" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_nomina_docentes_url), :title => "Ir al dataset", :itemprop => "url" %>
+            </td>
+						<td itemprop="description">
+              Contiene todos los datos de la nómina de funcionarios docentes, conforme a lo establecido en la ley 5189/14.
+            </td>
+						<td itemprop="temporal" style="display: none;"></td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;"></td>
+						<td itemprop="version" style="display: none;">1.0</td>
+          </tr>
+
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">11</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">NOMINA DE FUNCIONARIOS ADMINISTRATIVOS</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <%= link_to "Ver diccionario", mec_custom_url(def_nomina_administrativos_url), :title => "Ir al diccionario" %>
+              <%= link_to image_tag("def_icon.png"), mec_custom_url(def_nomina_administrativos_url), :title => "Ir al diccionario" %><br /><br />
+              <%= link_to "Ver datos", mec_custom_url(data_nomina_administrativos_url), :title => "Ir al dataset" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_nomina_administrativos_url), :title => "Ir al dataset", :itemprop => "url" %>
+            </td>
+            <td itemprop="description">
+Contiene todos los datos de la nómina de funcionarios administrativos, conforme a lo establecido en la ley 5189/14.
+						</td>
+						<td itemprop="temporal" style="display: none;"></td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;"></td>
 						<td itemprop="version" style="display: none;">1.0</td>
 					</tr>
         

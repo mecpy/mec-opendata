@@ -166,7 +166,16 @@
       //$('#ocultar_instituciones').toggle();
   }
 
-  limpiar_form_buscar_establecimientos();
+  <% if params[:ce].present? %>
+
+    $("#form_buscar_establecimientos_codigo_establecimiento").val("<%= params[:ce] %>");
+    $("#form-buscar-establecimientos").submit();
+
+  <% else %>
+
+    limpiar_form_buscar_establecimientos();
+
+  <% end %>
 
 </script>
 

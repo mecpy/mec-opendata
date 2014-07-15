@@ -1,6 +1,8 @@
 development:
   diccionario_datos: /diccionario_datos/OPEN_DICCIONARIO.xlsx
+  nomina_administrativos: /data/nomina_funcionarios_administrativos.pdf
   subdominio: "http://datos.mec.gov.py/"
 production:
   diccionario_datos: /data/diccionario_datos/OPEN_DICCIONARIO.xlsx
+  nomina_administrativos: /data/nomina_funcionarios_administrativos.pdf
   subdominio: "http://datos.mec.gov.py/"

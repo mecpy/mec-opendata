@@ -6,7 +6,9 @@
     <tr>
 
       <td class="text-min"><%= meeb.anio %></td>
-      <td class="text-min"><%= meeb.codigo_establecimiento %></td>
+      <td class="text-min"><b><%= link_to meeb.codigo_establecimiento, mec_custom_url(data_establecimientos_path(:ce => meeb.codigo_establecimiento)), :target => "_blank", :title => "Ir al dataset de establecimientos" %></b></td>      
+      <td class="text-min"><b><%= link_to meeb.codigo_institucion, mec_custom_url(data_instituciones_path(:ci => meeb.codigo_institucion)), :target => "_target", :title => "Ir al dataset de instituciones" %></b></td>
+      <td class="text-min"><%= meeb.nombre_institucion %></td>
       <td class="text-min"><%= meeb.nombre_departamento %></td>
       <td class="text-min"><%= meeb.nombre_distrito %></td>
       <td class="text-min"><%= meeb.nombre_barrio_localidad %></td>

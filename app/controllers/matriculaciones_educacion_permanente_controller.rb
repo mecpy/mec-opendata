@@ -67,6 +67,13 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
 
     end
 
+    if params[:form_buscar_matriculaciones_educacion_permanente_codigo_institucion].present?
+
+      cond << "codigo_institucion = ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_codigo_institucion]
+
+    end
+
     if params[:form_buscar_matriculaciones_educacion_permanente_nombre_institucion].present?
 
       cond << "nombre_institucion ilike ?"
@@ -76,34 +83,34 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
 
     if params[:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja].present?
 
-      cond << "matricula_ebbja = ?"
+      cond << "matricula_ebbja #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja]
 
     end
 
     if params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi].present?
 
-      cond << "matricula_fpi = ?"
+      cond << "matricula_fpi #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi]
     end
 
     if params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja].present?
 
-      cond << "matricula_emapja = ?"
+      cond << "matricula_emapja #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja]
 
     end
    
     if params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja].present?
 
-      cond << "matricula_emdja = ?"
+      cond << "matricula_emdja #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja]
 
     end
    
     if params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp].present?
 
-      cond << "matricula_fp = ?"
+      cond << "matricula_fp #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp]
 
     end
@@ -129,7 +136,7 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
         # header row
         csv << ["anio", "codigo_departamento", "nombre_departamento",
          "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona",
-         "sector_o_tipo_gestion", "cantidad_matriculados", "nombre_institucion", "matricula_ebbja",
+         "sector_o_tipo_gestion", "cantidad_matriculados", "codigo_institucion","nombre_institucion", "matricula_ebbja",
          "matricula_fpi", "matricula_emapja", "matricula_emdja", "matricula_fp" ]
  
         # data rows
@@ -137,7 +144,7 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
           csv << [p.anio, p.codigo_departamento, 
                   p.nombre_departamento, p.codigo_distrito, p.nombre_distrito,
                   p.codigo_zona, p.nombre_zona,
-                  p.sector_o_tipo_gestion, p.nombre_institucion, p.matricula_ebbja,
+                  p.sector_o_tipo_gestion, p.codigo_institucion, p.nombre_institucion, p.matricula_ebbja,
                   p.matricula_fpi, p.matricula_emapja, p.matricula_emdja, p.matricula_fp ]
         end
 
@@ -156,7 +163,7 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
           
           columnas = [:anio, :codigo_departamento, :nombre_departamento, 
             :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona,
-            :sector_o_tipo_gestion, :nombre_institucion, :matricula_ebbja,
+            :sector_o_tipo_gestion, :codigo_institucion, :nombre_institucion, :matricula_ebbja,
             :matricula_fpi, :matricula_emapja, :matricula_emdja, :matricula_fp ] 
           
           send_data MatriculacionEducacionPermanente.orden_dep_dis.where(cond).
@@ -194,6 +201,7 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
                       codigo_zona: p.codigo_zona.to_s,       
                       nombre_zona: p.nombre_zona.to_s,
                       sector_o_tipo_gestion: p.sector_o_tipo_gestion.to_s,
+                      codigo_institucion: p.codigo_institucion.to_s,
                       nombre_institucion: p.nombre_institucion.to_s,
                       matricula_ebbja: p.matricula_ebbja.to_s,
                       matricula_fpi: p.matricula_fpi.to_s,

@@ -58,6 +58,13 @@ class MatriculacionesEducacionMediaController < ApplicationController
 
     end
 
+    if params[:form_buscar_matriculaciones_educacion_media_codigo_institucion].present?
+
+      cond << "codigo_institucion = ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_codigo_institucion]
+
+    end
+
     if params[:form_buscar_matriculaciones_educacion_media_nombre_institucion].present?
 
       cond << "nombre_institucion ilike ?"
