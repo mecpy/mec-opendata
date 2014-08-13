@@ -2,7 +2,12 @@
   <div class="container">
     <div class="row">
       
-      <h2>Datasets</h2>
+      <h2>Datasets
+        <span style="float:right;">
+          <%= link_to "<b>CIUDADANO !!.</b> Qu&eacute; tipo de informaci&oacute;n te gustar&iacute;a ver publicada en <b>datos.mec.gov.py</b> ?".html_safe, mec_custom_url(contactos_url), :title => "Ir al formulario de contactos", :style => "font-size:12px;" %>
+          <%= link_to image_tag("ayuda3.png", :style => "width:24px;" ), mec_custom_url(contactos_url), :title => "Ir al formulario de contactos." %>
+        </span>
+      </h2>
       
       La siguiente tabla presenta la lista de datasets disponibles correspondientes al Ministerio de Educación y Cultura.<br>
       Para cada dataset se presenta un enlace para visitar la página del dataset, un enlace para visualizar el diccionario de datos y una breve descripción de los datos contenidos en el dataset.
@@ -276,7 +281,7 @@
               <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_nomina_docentes_url), :title => "Ir al dataset", :itemprop => "url" %>
             </td>
 						<td itemprop="description">
-              Contiene todos los datos de la nómina de funcionarios docentes, conforme a lo establecido en la ley 5189/14.
+              Contiene todos los datos de la nómina de funcionarios docentes, conforme a lo establecido en la ley 5189/14. El formato de los datos sigue la <%= link_to "recomendaci&oacute;n propuesta por la Secretar&iacute;a de la Funci&oacute;n P&uacute;blica".html_safe, "http://www.sfp.gov.py/sfp/?node=page%2C4730%2Cu660&p_node=page%2C196", :target => "_blank" %>
             </td>
 						<td itemprop="temporal" style="display: none;"></td>
 						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
@@ -303,7 +308,7 @@
               <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_nomina_administrativos_url), :title => "Ir al dataset", :itemprop => "url" %>
             </td>
             <td itemprop="description">
-Contiene todos los datos de la nómina de funcionarios administrativos, conforme a lo establecido en la ley 5189/14.
+              Contiene todos los datos de la nómina de funcionarios administrativos, conforme a lo establecido en la ley 5189/14. El formato de los datos sigue la <%= link_to "recomendaci&oacute;n propuesta por la Secretar&iacute;a de la Funci&oacute;n P&uacute;blica".html_safe, "http://www.sfp.gov.py/sfp/?node=page%2C4730%2Cu660&p_node=page%2C196", :target => "_blank" %>
 						</td>
 						<td itemprop="temporal" style="display: none;"></td>
 						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
@@ -319,7 +324,121 @@ Contiene todos los datos de la nómina de funcionarios administrativos, conforme
 						<td itemprop="keywords" style="display: none;"></td>
 						<td itemprop="version" style="display: none;">1.0</td>
 					</tr>
-        
+
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">12</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">NOMINA DE FUNCIONARIOS COMISIONADOS DEL MEC A OTROS ORGANISMOS DEL ESTADO</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <%= link_to "N&oacute;mina".html_safe, "/data/comisionados_aa_oee_2014.xls" , :target => "_target"%>
+              <%= link_to image_tag("page_excel.png"), "/data/comisionados_aa_oee_2014.xls" , :target => "_target" %>
+              <br />
+              <span style="color:silver;">(157KB)</span>
+            </td>
+            <td itemprop="description">
+              Contiene todos los datos de la nómina de los funcionarios que fueron comisionados del MEC a otros organismos del Estado.
+						</td>
+						<td itemprop="temporal" style="display: none;"></td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;"></td>
+						<td itemprop="version" style="display: none;">1.0</td>
+					</tr>
+
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">13</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">NOMINA DE FUNCIONARIOS COMISIONADOS AL MEC DESDE OTROS ORGANISMOS DEL ESTADO</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+
+              <%= link_to "N&oacute;mina".html_safe, "/data/comisionados_de_oee_2014.xls" , :target => "_target"%>
+              <%= link_to image_tag("page_excel.png"), "/data/comisionados_de_oee_2014.xls" , :target => "_target" %>
+              <br />
+              <span style="color:silver;">(137KB)</span>
+
+            </td>
+            <td itemprop="description">
+              Contiene todos los datos de la nómina de los funcionarios que fueron comisionados desde otros organismos del Estado al MEC.
+						</td>
+						<td itemprop="temporal" style="display: none;"></td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;"></td>
+						<td itemprop="version" style="display: none;">1.0</td>
+					</tr>
+
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">14</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">INVENTARIO DE BIENES</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+
+              <%= link_to "Rodados e Inmuebles", "https://mega.co.nz/#!84IkjQTD!4FGj6gaMVE1tQL5h348uY1D3lRb_8xOnXB_KK9gNqWw", :title => "Descargar datos de rodados e inmuebles.", :target => "_blank" %>
+              <%= link_to image_tag('compress.png'), "https://mega.co.nz/#!84IkjQTD!4FGj6gaMVE1tQL5h348uY1D3lRb_8xOnXB_KK9gNqWw", :title => "Descargar datos de rodados e inmuebles.", :target => "_blank" %><br />
+              <span style="color:silver;">(4,4MB)</span>
+              <br /><br />
+              <%= link_to "Muebles", "https://mega.co.nz/#!10Y3BDgC!3IQr8etnRNkG02ReZ-OFjV6vXcQu-65KKj5_Rl--d8k", :title => "Descargar datos de muebles.", :target => "_blank" %>
+              <%= link_to image_tag('compress.png'), "https://mega.co.nz/#!10Y3BDgC!3IQr8etnRNkG02ReZ-OFjV6vXcQu-65KKj5_Rl--d8k", :title => "Descargar datos de muebles.", :target => "_blank" %><br />
+              <span style="color:silver;">(64,9MB)</span>
+
+            </td>
+            <td itemprop="description">
+              Contiene todos los datos del inventario de bienes, muebles, inmuebles y vehículos con que cuenta el MEC.
+						</td>
+						<td itemprop="temporal" style="display: none;"></td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;"></td>
+						<td itemprop="version" style="display: none;">1.0</td>
+          </tr>
+
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">15</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">CONTRATACIONES</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <%= link_to "Ver diccionario", mec_custom_url(def_contrataciones_url), :title => "Ir al diccionario" %>
+              <%= link_to image_tag("def_icon.png"), mec_custom_url(def_contrataciones_url), :title => "Ir al diccionario" %><br /><br />
+              <%= link_to "Ver datos", mec_custom_url(data_contrataciones_url), :title => "Ir al dataset" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_contrataciones_url), :title => "Ir al dataset", :itemprop => "url" %>
+            </td>
+						<td itemprop="description">
+						  Se refiere a los llamados para contrataciones de bienes y/o servicios del Ministerio de Educaci&oacute;n y Cultura.
+						</td>
+						<td itemprop="temporal" style="display: none;">2012-01-01/2012-12-31</td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;">educación,matriculaciones,departamentos, distritos,contrataciones</td>
+						<td itemprop="version" style="display: none;">1.0</td>
+          </tr>
         </tbody>
 			
       </table>

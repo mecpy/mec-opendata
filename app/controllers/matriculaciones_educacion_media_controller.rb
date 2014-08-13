@@ -131,7 +131,7 @@ class MatriculacionesEducacionMediaController < ApplicationController
          "nombre_barrio_localidad", "codigo_zona", "nombre_zona",
          "codigo_establecimiento", "codigo_institucion", "nombre_institucion",
          "sector_o_tipo_gestion", "matricula_cientifico", "matricula_tecnico", 
-         "matricula_media_abierta", "matricula_formacion_profesional_media"]
+         "matricula_media_abierta", "matricula_formacion_profesional_media", "anho_cod_geo" ]
  
         # data rows
         matriculaciones_educacion_media_csv.each do |e|
@@ -141,7 +141,7 @@ class MatriculacionesEducacionMediaController < ApplicationController
                   e.codigo_zona, e.nombre_zona, e.codigo_establecimiento,
                   e.codigo_institucion, e.nombre_institucion,
                   e.sector_o_tipo_gestion, e.matricula_cientifico, e.matricula_tecnico,
-                  e.matricula_media_abierta, e.matricula_formacion_profesional_media]
+                  e.matricula_media_abierta, e.matricula_formacion_profesional_media, e.anho_cod_geo ]
         end
 
       end
@@ -162,7 +162,7 @@ class MatriculacionesEducacionMediaController < ApplicationController
             :nombre_barrio_localidad, :codigo_zona, :nombre_zona, 
             :codigo_establecimiento, :codigo_institucion, :nombre_institucion,
             :sector_o_tipo_gestion, :matricula_cientifico, :matricula_tecnico,
-            :matricula_media_abierta, :matricula_formacion_profesional_media] 
+            :matricula_media_abierta, :matricula_formacion_profesional_media, :anho_cod_geo ] 
           
           send_data MatriculacionEducacionMedia.orden_dep_dis.where(cond).
             to_xlsx(:columns => columnas, :name => "Matriculaciones").to_stream.read, 

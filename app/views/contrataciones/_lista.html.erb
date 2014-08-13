@@ -1,0 +1,30 @@
+<% if contrataciones.present? %>
+  
+  <% contrataciones.each do |c| %>
+
+    <tr>
+
+      <td class="text-min"><%= c.ejercicio_fiscal %></td>
+      <td class="text-min"><%= c.llamado_publico %></td>
+      <td class="text-min"><%= c.nombre %></td>
+      <td class="text-min"><%= c.descripcion %></td>
+      <td class="text-min"><%= c.fecha_contrato %></td>
+      <td class="text-min"><%= c.fecha_vigencia_contrato %></td>
+      <td class="text-min"><%= c.estado_llamado %></td>
+      <td class="text-min"><%= c.modalidad %></td>       
+      <td class="text-min"><%= c.categoria %></td>       
+      <td class="text-min" style="text-align:right !important;"><%= c.monto_adjudicado.present? ? number_to_currency(c.monto_adjudicado, :unit => '', :precision => 0) : 0 %></td>
+ 
+    </tr>
+  
+  <% end %>
+  
+  <% else %>
+
+  <tr>
+    
+    <td colspan="10"><p class='none-result'>No se han encontrado resultados.</p></td>
+  
+  </tr>
+
+<% end %>

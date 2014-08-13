@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class DataController < ApplicationController
   
   def index
@@ -12,6 +13,126 @@ class DataController < ApplicationController
 
   end
 
+  def contactos
+
+  end
+
+  def contactos_lista
+
+    cond = []
+    args = []
+    cond = cond.join(" and ").lines.to_a + args if cond.size > 0
+
+    if params[:form_ordenar_contactos]
+
+      ordenado = "fecha desc, hora desc" if params[:form_ordenar_contactos][:orden] == '1'
+      ordenado = "asunto" if params[:form_ordenar_contactos][:orden] == '2'
+
+    else
+
+      ordenado = "fecha desc, hora desc"
+    
+    end
+
+    @contactos = Contacto.paginate :per_page => 10, :page => params[:page], :order => ordenado
+
+    @total_registros = Contacto.count 
+
+     
+    respond_to do |f|
+
+      f.js
+
+    end 
+
+  end
+
+  def contactos_guardar
+
+    @contacto = Contacto.new(params[:contacto])
+    @valido = true
+    @msg = ""
+
+    if params[:contacto] && params[:contacto][:nombre].present?
+      @contacto.nombre = params[:contacto][:nombre]
+    else
+      @valido = false
+      @msg += "El campo nombre no puede quedar vacio."
+    end
+
+    if params[:contacto] && params[:contacto][:apellido].present?
+      @contacto.apellido = params[:contacto][:apellido]
+    else
+      @valido = false
+      @msg += "El campo nombre no puede quedar vacio."
+    end
+
+    if params[:contacto] && params[:contacto][:email].present?
+
+      if @contacto.email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+
+        @contacto.email = params[:contacto][:email]
+
+      else
+
+        @valido = false
+        @msg += "Formato de email no valido."
+
+      end
+    else
+      @valido = false
+      @msg += "El campo email no puede quedar vacio."
+    end
+
+    if params[:contacto] && params[:contacto][:asunto].present?
+      @contacto.asunto = params[:contacto][:asunto]
+    else
+      @valido = false
+      @msg += "El campo asunto no puede quedar vacio."
+    end
+
+    if params[:contacto] && params[:contacto][:categoria_contacto_id].present?
+      @contacto.categoria_contacto_id = params[:contacto][:categoria_contacto_id]
+    else
+      @valido = false
+      @msg += "Seleccione la categoria."
+    end
+
+    if params[:contacto] && params[:contacto][:mensaje].present?
+      @contacto.mensaje = params[:contacto][:mensaje]
+    else
+      @valido = false
+      @msg += "El campo mensaje no puede quedar vacio."
+    end
+
+    #unless verify_recaptcha
+    #  @valido = false
+    #  @msg += "Código de verificación no valido.".html_safe   
+    #end
+
+    if @valido
+
+      @contacto.fecha = Time.now.strftime("%Y-%m-%d")
+      @contacto.hora = Time.now.strftime("%H:%M:%S")
+      
+      if @contacto.save
+        
+        @enviado = true 
+
+      else
+        
+        @enviado = false
+      
+      end
+
+    end
+
+    respond_to do |f|
+      f.js
+    end
+
+  end
+
   def diccionario_establecimientos
 
   end
@@ -19,6 +140,12 @@ class DataController < ApplicationController
   def establecimientos
 
     @establecimientos = Establecimiento.orden_dep_dis.paginate :per_page => 15, :page => params[:page]
+
+    respond_to do |f|
+
+      f.html {render :layout => 'application_wide'}
+
+    end
 
   end
 
@@ -77,11 +204,16 @@ class DataController < ApplicationController
 
     end
 
+    if params[:form_buscar_establecimientos] && params[:form_buscar_establecimientos][:programa].present?
+
+      cond << "programa = ?"
+      args << params[:form_buscar_establecimientos][:programa]
+
+    end
+
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
 
-    @establecimientos = cond.size > 0 ? (Establecimiento.orden_dep_dis.paginate :conditions => cond, 
-                                                                               :per_page => 15,
-                                                                               :page => params[:page]) : {}
+    @establecimientos = cond.size > 0 ? (Establecimiento.orden_dep_dis.paginate :conditions => cond, :per_page => 15, :page => params[:page]) : {}
 
     @total_registros = Establecimiento.count 
 
@@ -94,12 +226,12 @@ class DataController < ApplicationController
       csv = CSV.generate do |csv|
         # header row
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad",
-                "nombre_barrio_localidad", "direccion", "coordenadas_y", "coordenadas_x", "latitud", "longitud"]
+                "nombre_barrio_localidad", "direccion", "coordenadas_y", "coordenadas_x", "latitud", "longitud", "anho_cod_geo"]
  
         # data rows
         establecimientos_csv.each do |e|
           csv << [e.anio, e.codigo_establecimiento, e.codigo_departamento, e.nombre_departamento, e.codigo_distrito, e.nombre_distrito, e.codigo_zona, e.nombre_zona, e.codigo_barrio_localidad,
-                  e.nombre_barrio_localidad, e.direccion, e.coordenadas_y, e.coordenadas_x, e.latitud, e.longitud ]
+                  e.nombre_barrio_localidad, e.direccion, e.coordenadas_y, e.coordenadas_x, e.latitud, e.longitud, e.anho_cod_geo ]
         end
 
       end
@@ -246,6 +378,13 @@ class DataController < ApplicationController
 
     end
 
+    if params[:form_buscar_establecimientos] && params[:form_buscar_establecimientos][:programa].present?
+
+      cond << "programa = ?"
+      args << params[:form_buscar_establecimientos][:programa]
+
+    end
+
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
 
     #@establecimientos = cond.size > 0 ? ( Establecimiento.orden_dep_dis.paginate :conditions => cond, 
@@ -269,6 +408,10 @@ class DataController < ApplicationController
     respond_to do |f|
       f.js
     end
+
+  end
+
+  def ejemplo_anio_cod_geo
 
   end
 

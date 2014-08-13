@@ -76,14 +76,14 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
         # header row
         csv << ["anio", "codigo_departamento", "nombre_departamento",
          "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona",
-         "sector_o_tipo_gestion", "cantidad_matriculados"]
+         "sector_o_tipo_gestion", "cantidad_matriculados", "anho_cod_geo" ]
  
         # data rows
         matriculaciones_departamentos_distritos_csv.each do |e|
           csv << [e.anio, e.codigo_departamento, 
                   e.nombre_departamento, e.codigo_distrito, e.nombre_distrito,
                   e.codigo_zona, e.nombre_zona,
-                  e.sector_o_tipo_gestion, e.cantidad_matriculados]
+                  e.sector_o_tipo_gestion, e.cantidad_matriculados, e.anho_cod_geo ]
         end
 
       end
@@ -101,7 +101,7 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
           
           columnas = [:anio, :codigo_departamento, :nombre_departamento, 
             :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona,
-            :sector_o_tipo_gestion, :cantidad_matriculados] 
+            :sector_o_tipo_gestion, :cantidad_matriculados, :anho_cod_geo ] 
           
           send_data MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond).
             to_xlsx(:columns => columnas, :name => "Matriculaciones").to_stream.read, 

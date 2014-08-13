@@ -120,14 +120,14 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", "codigo_zona", 
           "nombre_zona", "codigo_barrio_localidad","nombre_barrio_localidad", "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", 
           "matricula_inicial_especial", "matricula_primer_y_segundo_ciclo_especial", "matricula_tercer_ciclo_especial", 
-          "matricula_programas_especiales"]
+          "matricula_programas_especiales", "anho_cod_geo" ]
  
         # data rows
         matriculaciones_educacion_inclusiva_csv.each do |e|
           csv << [e.anio, e.codigo_establecimiento, e.codigo_departamento, e.nombre_departamento, e.codigo_distrito, e.nombre_distrito, e.codigo_zona, 
           e.nombre_zona, e.codigo_barrio_localidad,e.nombre_barrio_localidad, e.codigo_institucion, e.nombre_institucion, e.sector_o_tipo_gestion, 
           e.matricula_inicial_especial, e.matricula_primer_y_segundo_ciclo_especial, e.matricula_tercer_ciclo_especial, 
-          e.matricula_programas_especiales ]
+          e.matricula_programas_especiales, e.anho_cod_geo ]
        
         end
 
@@ -147,7 +147,7 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
           columnas = [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, 
           :nombre_zona, :codigo_barrio_localidad,:nombre_barrio_localidad, :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, 
           :matricula_inicial_especial, :matricula_primer_y_segundo_ciclo_especial, :matricula_tercer_ciclo_especial, 
-          :matricula_programas_especiales ] 
+          :matricula_programas_especiales, :anho_cod_geo ] 
           
           send_data MatriculacionEducacionInclusiva.orden_dep_dis.where(cond).to_xlsx(:columns => columnas, :name=>"Matriculaciones").to_stream.read, 
                     :filename => "matriculaciones_educacion_inclusiva_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 

@@ -170,12 +170,12 @@ class MatriculacionesEducacionEscolarBasicaController < ApplicationController
       csv = CSV.generate do |csv|
         # header row
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad",
-                "nombre_barrio_localidad", "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "primer_grado", "segundo_grado", "tercer_grado", "cuarto_grado", "quinto_grado", "sexto_grado", "septimo_grado", "octavo_grado", "noveno_grado", "total_matriculados"]
+                "nombre_barrio_localidad", "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "primer_grado", "segundo_grado", "tercer_grado", "cuarto_grado", "quinto_grado", "sexto_grado", "septimo_grado", "octavo_grado", "noveno_grado", "total_matriculados", "anho_cod_geo" ]
  
         # data rows
         matriculaciones_educacion_escolar_basica_csv.each do |meeb|
           csv << [meeb.anio, meeb.codigo_establecimiento, meeb.codigo_departamento, meeb.nombre_departamento, meeb.codigo_distrito, meeb.nombre_distrito, meeb.codigo_zona, meeb.nombre_zona, meeb.codigo_barrio_localidad, meeb.nombre_barrio_localidad, meeb.sector_o_tipo_gestion, meeb.codigo_institucion, meeb.nombre_institucion,
-           meeb.primer_grado, meeb.segundo_grado, meeb.tercer_grado, meeb.cuarto_grado, meeb.quinto_grado, meeb.sexto_grado, meeb.septimo_grado, meeb.octavo_grado, meeb.noveno_grado, meeb.total_matriculados ]
+           meeb.primer_grado, meeb.segundo_grado, meeb.tercer_grado, meeb.cuarto_grado, meeb.quinto_grado, meeb.sexto_grado, meeb.septimo_grado, meeb.octavo_grado, meeb.noveno_grado, meeb.total_matriculados, meeb.anho_cod_geo ]
         end
 
       end
@@ -191,7 +191,7 @@ class MatriculacionesEducacionEscolarBasicaController < ApplicationController
         format.xlsx {
           
           #columnas = [:codigo, :descripcion, :tipo_articulo, :objeto_gasto, :tipo_medida, :medida, :valor_unitario, :activo ] 
-          columnas = [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad, :sector_o_tipo_gestion, :primer_grado, :segundo_grado, :tercer_grado, :cuarto_grado, :quinto_grado, :sexto_grado, :septimo_grado, :octavo_grado, :noveno_grado, :total_matriculados ] 
+          columnas = [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad, :sector_o_tipo_gestion, :primer_grado, :segundo_grado, :tercer_grado, :cuarto_grado, :quinto_grado, :sexto_grado, :septimo_grado, :octavo_grado, :noveno_grado, :total_matriculados, :anho_cod_geo ] 
           
           send_data MatriculacionEducacionEscolarBasica.ordenado_institucion.where(cond).to_xlsx(:columns => columnas, name: "Matriculaciones EEB").to_stream.read, 
                     :filename => "matriculaciones_educacion_escolar_basica_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 

@@ -1,4 +1,4 @@
-<td colspan="8">
+<td colspan="10">
 
   <hr style="border-bottom: 2px dashed silver;" />
   
@@ -25,8 +25,8 @@
 
         <tr>
           <td><%= n.nombre_concepto_nomina %></td>
-          <td><%= n.nombre_dependencia %></td>
-          <td><%= n.nombre_cargo %></td>
+          <td><%= n.nombre_dependencia_efectiva %></td>
+          <td><%= n.nombre_cargo_efectivo %></td>
           <td><%= n.codigo_categoria_rubro %></td>
           <td style="text-align:right;"><%= number_to_currency(n.monto_categoria_rubro, :unit => '', :precision => 0) if n.monto_categoria_rubro.present? %></td>
           <td style="text-align:right;"><%= n.cantidad.to_i %></td>

@@ -51,31 +51,39 @@
         <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_matriculaciones_educacion_permanente_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
         <br /><br />
         
-        <span>Descargar todas las Matriculaciones Filtradas:<span>
-        <span itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+     <div style="float:left;">Descargar todas las Matriculaciones filtradas:</div>
+        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
         <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_educacion_permanente_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url" %>
         <meta itemprop="name" content="Matriculaciones Educación Permanente 2012">
         <meta itemprop="description" content="Listado de matriculaciones en educación permanente correspondiente al año 2012">
         <meta itemprop="encodingFormat" content="pdf">
-        </span>
-        <span itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_matriculaciones_educacion_permanente_lista_url(parametros_xls_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url"%>
+        </div>
+        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%= link_to "XLS#{image_star * 2}".html_safe, PARAMETRO[:matriculaciones_educacion_permanente_xlsx], :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url"%>
+         <br />
+        <span style="color:silver;">(112,2KB)</span>
         <meta itemprop="name" content="Matriculaciones Educación Permanente 2012">
         <meta itemprop="description" content="Listado de matriculaciones en educación permanente correspondiente al año 2012">
         <meta itemprop="encodingFormat" content="xls">
-        </span>
-        <span itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_matriculaciones_educacion_permanente_lista_url(parametros_csv_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url"%>
+         </div>
+        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%= link_to "CSV#{image_star * 3}".html_safe, PARAMETRO[:matriculaciones_educacion_permanente_csv], :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url"%>
+          <br />
+        <span style="color:silver;">(133,1KB)</span>
         <meta itemprop="name" content="Matriculaciones Educación Permanente 2012">
         <meta itemprop="description" content="Listado de matriculaciones en educación permanente correspondiente al año 2012">
         <meta itemprop="encodingFormat" content="csv">
-        </span>
-        <span itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_matriculaciones_educacion_permanente_lista_url(parametros_json_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url"%>
+        </div>
+        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%= link_to "JSON#{image_star * 3}".html_safe, PARAMETRO[:matriculaciones_educacion_permanente_json], :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url"%>
+          <br />
+        <span style="color:silver;">(787,4KB)</span>
         <meta itemprop="name" content="Matriculaciones Educación Permanente 2012">
         <meta itemprop="description" content="Listado de matriculaciones en educación permanente correspondiente al año 2012">
         <meta itemprop="encodingFormat" content="json">
-        </span>
+      </div>
+
+      <div style="clear:both;"></div>
       </td>
  
     </tr>

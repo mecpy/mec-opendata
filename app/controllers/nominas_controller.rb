@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class NominasController < ApplicationController
   
   def diccionario
@@ -56,6 +57,13 @@ class NominasController < ApplicationController
 
     end
 
+    if params[:form_buscar_nominas_antiguedad_administrativo].present?
+
+      cond << "antiguedad_administrativo ilike ?"
+      args << "%#{params[:form_buscar_nominas_antiguedad_administrativo]}%"
+
+    end
+
     if params[:form_buscar_nominas_asignacion].present?
 
       cond << "asignacion #{params[:form_buscar_nominas_asignacion_operador]} ?"
@@ -107,10 +115,30 @@ class NominasController < ApplicationController
 
     elsif params[:format] == 'pdf'
 
-      report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'nomina.tlf')
+      report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'funcionario_administrativo.tlf')
 
-      nomina = Nomina.ordenado_anio_mes_nombre.where(cond)
+      nomina = Nomina.es_administrativo.ordenado_anio_mes_nombre.where(cond)
+   
+      report.layout.config.list(:nomina) do
+        
+        # Define the variables used in list.
+        use_stores :total_page => 0
+
+        # Dispatched at list-page-footer insertion.
+        events.on :page_footer_insert do |e|
+          e.section.item(:asignacion_total).value(e.store.total_page)
+          #e.store.total_report += e.store.total_page
+          #e.store.total_page = 0;
+        end
+
+        #Dispatched at list-footer insertion.
+        events.on :footer_insert do |e|
+          #e.section.item(:jerarquia).value(solicitud.jerarquia.descripcion)
+          #e.section.item(:solicitante).value(solicitud.solicitante.nombre_completo)
+        end
     
+      end
+
       report.start_new_page do |page|
       
         page.item(:fecha_hora).value("Fecha y Hora: #{Time.now.strftime('%d/%m/%Y - %H:%M')}")
@@ -123,31 +151,31 @@ class NominasController < ApplicationController
 
           row.values  mes_periodo_pago: n.mes_periodo_pago,
                       ano_periodo_pago: n.ano_periodo_pago,
-                      codigo_concepto_nomina: n.codigo_concepto_nomina,        
-                      nombre_concepto_nomina: n.nombre_concepto_nomina,       
-                      codigo_trabajador: n.codigo_trabajador,       
+                      codigo_trabajador: n.codigo_trabajador,        
                       nombre_trabajador: n.nombre_trabajador,       
-                      anhos_antiguedad_administrativo: n.anhos_antiguedad_administrativo,       
-                      meses_antiguedad_administrativo: n.meses_antiguedad_administrativo,       
-                      anhos_antiguedad_docente: n.anhos_antiguedad_docente,       
-                      meses_antiguedad_docente: n.meses_antiguedad_docente,       
-                      codigo_puesto: n.codigo_puesto,       
-                      numero_tipo_presupuesto_puesto: n.numero_tipo_presupuesto_puesto,       
-                      codigo_dependencia: n.codigo_dependencia,       
-                      nombre_dependencia: n.nombre_dependencia,       
-                      codigo_cargo: n.codigo_cargo,
-                      nombre_cargo: n.nombre_cargo,
-                      codigo_categoria_rubro: n.codigo_categoria_rubro,
-                      monto_categoria_rubro: n.monto_categoria_rubro,
-                      cantidad: n.cantidad,
+                      nombre_objeto_gasto: "#{n.nombre_objeto_gasto} (#{n.codigo_objeto_gasto})",       
+                      estado: obtener_estado_funcionario(n.numero_tipo_presupuesto_puesto),
+                      antiguedad: "#{n.anhos_antiguedad_administrativo} año/s y #{n.meses_antiguedad_administrativo} mes/es",       
+                      nombre_concepto_nomina: n.nombre_concepto_nomina,       
+                      nombre_dependencia: n.nombre_dependencia_efectiva,       
+                      nombre_cargo: n.nombre_cargo_efectivo,       
+                      codigo_categoria_rubro: n.codigo_categoria_rubro,       
+                      monto_categoria_rubro: n.monto_categoria_rubro,       
+                      cantidad: n.cantidad.to_i,     
                       asignacion: n.asignacion
+
+        end
+
+        report.page.list(:nomina) do |list|
+        
+          list.store.total_page +=  n.asignacion
 
         end
 
       end
 
 
-      send_data report.generate, filename: "nomina_#{Time.now.strftime('%d%m%Y__%H%M')}.pdf", 
+      send_data report.generate, filename: "funcionario_administrativo_#{Time.now.strftime('%d%m%Y__%H%M')}.pdf", 
                                  type: 'application/pdf', 
                                  disposition: 'attachment'
 
@@ -184,6 +212,12 @@ class NominasController < ApplicationController
   end
 
   def docentes
+
+    respond_to do |f|
+
+      f.html {render :layout => 'application_wide'}
+
+    end
 
   end
 
@@ -232,6 +266,20 @@ class NominasController < ApplicationController
 
       cond << "estado ilike ?"
       args << "%#{params[:form_buscar_nominas_estado]}%"
+
+    end
+
+    if params[:form_buscar_nominas_antiguedad_docente].present?
+
+      cond << "antiguedad_docente ilike ?"
+      args << "%#{params[:form_buscar_nominas_antiguedad_docente]}%"
+
+    end
+
+    if params[:form_buscar_nominas_numero_matriculacion].present?
+
+      cond << "numero_matriculacion = ?"
+      args << params[:form_buscar_nominas_numero_matriculacion]
 
     end
 
@@ -286,10 +334,30 @@ class NominasController < ApplicationController
 
     elsif params[:format] == 'pdf'
 
-      report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'nomina.tlf')
+      report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'funcionario_docente.tlf')
 
-      nomina = Nomina.ordenado_anio_mes_nombre.where(cond)
+      nomina = Nomina.es_docente.ordenado_anio_mes_nombre.where(cond)
+   
+      report.layout.config.list(:nomina) do
+        
+        # Define the variables used in list.
+        use_stores :total_page => 0
+
+        # Dispatched at list-page-footer insertion.
+        events.on :page_footer_insert do |e|
+          e.section.item(:asignacion_total).value(e.store.total_page)
+          #e.store.total_report += e.store.total_page
+          #e.store.total_page = 0;
+        end
+
+        #Dispatched at list-footer insertion.
+        events.on :footer_insert do |e|
+          #e.section.item(:jerarquia).value(solicitud.jerarquia.descripcion)
+          #e.section.item(:solicitante).value(solicitud.solicitante.nombre_completo)
+        end
     
+      end
+
       report.start_new_page do |page|
       
         page.item(:fecha_hora).value("Fecha y Hora: #{Time.now.strftime('%d/%m/%Y - %H:%M')}")
@@ -302,35 +370,37 @@ class NominasController < ApplicationController
 
           row.values  mes_periodo_pago: n.mes_periodo_pago,
                       ano_periodo_pago: n.ano_periodo_pago,
-                      codigo_concepto_nomina: n.codigo_concepto_nomina,        
-                      nombre_concepto_nomina: n.nombre_concepto_nomina,       
-                      codigo_trabajador: n.codigo_trabajador,       
+                      codigo_trabajador: n.codigo_trabajador,        
                       nombre_trabajador: n.nombre_trabajador,       
-                      anhos_antiguedad_administrativo: n.anhos_antiguedad_administrativo,       
-                      meses_antiguedad_administrativo: n.meses_antiguedad_administrativo,       
-                      anhos_antiguedad_docente: n.anhos_antiguedad_docente,       
-                      meses_antiguedad_docente: n.meses_antiguedad_docente,       
-                      codigo_puesto: n.codigo_puesto,       
-                      numero_tipo_presupuesto_puesto: n.numero_tipo_presupuesto_puesto,       
-                      codigo_dependencia: n.codigo_dependencia,       
-                      nombre_dependencia: n.nombre_dependencia,       
-                      codigo_cargo: n.codigo_cargo,
-                      nombre_cargo: n.nombre_cargo,
-                      codigo_categoria_rubro: n.codigo_categoria_rubro,
-                      monto_categoria_rubro: n.monto_categoria_rubro,
-                      cantidad: n.cantidad,
+                      nombre_objeto_gasto: "#{n.nombre_objeto_gasto} (#{n.codigo_objeto_gasto})",       
+                      estado: obtener_estado_funcionario(n.numero_tipo_presupuesto_puesto),
+                      antiguedad: "#{n.anhos_antiguedad_docente} año/s y #{n.meses_antiguedad_docente} mes/es",       
+                      nombre_concepto_nomina: n.nombre_concepto_nomina,       
+                      nombre_dependencia: n.nombre_dependencia_efectiva,       
+                      nombre_cargo: n.nombre_cargo_efectivo,       
+                      codigo_categoria_rubro: n.codigo_categoria_rubro,       
+                      monto_categoria_rubro: n.monto_categoria_rubro,       
+                      cantidad: n.cantidad.to_i, 
+                      numero_matriculacion: n.numero_matriculacion,       
                       asignacion: n.asignacion
+
+        end
+
+        report.page.list(:nomina) do |list|
+        
+          list.store.total_page +=  n.asignacion
 
         end
 
       end
 
 
-      send_data report.generate, filename: "nomina_#{Time.now.strftime('%d%m%Y__%H%M')}.pdf", 
+      send_data report.generate, filename: "funcionario_docente_#{Time.now.strftime('%d%m%Y__%H%M')}.pdf", 
                                  type: 'application/pdf', 
                                  disposition: 'attachment'
 
     else
+
 
       #nomina = Nomina.ordenado_anio_mes_nombre.where(cond)
       #@nomina_todos = VNomina.ordenado_anio_mes_nombre.where(cond)

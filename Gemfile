@@ -52,4 +52,5 @@ gem 'acts_as_xlsx'
 gem 'csv_builder'
 gem 'rake', '10.0.4'
 gem 'jquery-ui-rails'
+gem "recaptcha", :require => "recaptcha/rails"
 

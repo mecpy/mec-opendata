@@ -1,4 +1,10 @@
 OpenData::Application.routes.draw do
+ 
+  match 'app/mapa_matriculaciones' => 'mapa_matriculaciones#index', :as => :app_mapa_matriculaciones
+
+  match "data/contrataciones_lista" => 'contrataciones#lista', :as => :data_contrataciones_lista
+  match 'data/contrataciones' => 'contrataciones#index', :as => :data_contrataciones
+  match 'def/contrataciones' => 'contrataciones#diccionario', :as => :def_contrataciones
 
   match "data/nomina_administrativos_detalles" => 'nominas#detalles', :as => :data_nomina_administrativos_detalles
   match "data/nomina_administrativos_lista" => 'nominas#lista', :as => :data_nomina_administrativos_lista
@@ -53,7 +59,11 @@ OpenData::Application.routes.draw do
   match "data/establecimientos_lista", :as => :data_establecimientos_lista
   match 'data/establecimientos' => 'data#establecimientos', :as => :data_establecimientos
   match 'def/establecimientos' => 'data#diccionario_establecimientos', :as => :def_establecimientos
+  match 'def/ejemplo_anio_cod_geo' => 'data#ejemplo_anio_cod_geo', :as => :def_ejemplo_anio_cod_geo
 
+  match "contactos_guardar" => "data#contactos_guardar", :as => :contactos_guardar
+  match "contactos_lista" => "data#contactos_lista", :as => :contactos_lista
+  match "contactos" => "data#contactos", :as => :contactos
   match "index" => "data#index", :as => :index
   match "about" => "data#about", :as => :about
   match "legal" => "data#legal", :as => :legal

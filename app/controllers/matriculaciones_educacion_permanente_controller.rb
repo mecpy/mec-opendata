@@ -137,7 +137,7 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
         csv << ["anio", "codigo_departamento", "nombre_departamento",
          "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona",
          "sector_o_tipo_gestion", "cantidad_matriculados", "codigo_institucion","nombre_institucion", "matricula_ebbja",
-         "matricula_fpi", "matricula_emapja", "matricula_emdja", "matricula_fp" ]
+         "matricula_fpi", "matricula_emapja", "matricula_emdja", "matricula_fp", "anho_cod_geo" ]
  
         # data rows
         matriculaciones_educacion_permanente_csv.each do |p|
@@ -145,7 +145,7 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
                   p.nombre_departamento, p.codigo_distrito, p.nombre_distrito,
                   p.codigo_zona, p.nombre_zona,
                   p.sector_o_tipo_gestion, p.codigo_institucion, p.nombre_institucion, p.matricula_ebbja,
-                  p.matricula_fpi, p.matricula_emapja, p.matricula_emdja, p.matricula_fp ]
+                  p.matricula_fpi, p.matricula_emapja, p.matricula_emdja, p.matricula_fp, p.anho_cod_geo ]
         end
 
       end
@@ -164,7 +164,7 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
           columnas = [:anio, :codigo_departamento, :nombre_departamento, 
             :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona,
             :sector_o_tipo_gestion, :codigo_institucion, :nombre_institucion, :matricula_ebbja,
-            :matricula_fpi, :matricula_emapja, :matricula_emdja, :matricula_fp ] 
+            :matricula_fpi, :matricula_emapja, :matricula_emdja, :matricula_fp, :anho_cod_geo ] 
           
           send_data MatriculacionEducacionPermanente.orden_dep_dis.where(cond).
             to_xlsx(:columns => columnas, :name => "Matriculaciones").to_stream.read, 

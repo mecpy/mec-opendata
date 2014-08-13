@@ -1,0 +1,184 @@
+<div class="container">
+  <div class="row ">
+        <div class="col-md-12">
+        <h2>Mapa de Matriculaciones del Paraguay al Año 2012</h2>  
+        <div class="map-container">
+          <div id="map" class="map"></div>
+        </div><!--/span-->
+        </div>
+  </div><!--/row-->
+  <%= form_tag mec_custom_url(app_mapa_matriculaciones_url), :id => "form-buscar-matriculaciones" do  %>
+
+  <!--<div class="row">
+    <div class="col-md-1" role="navigation">
+        <h3 style="text-align: right;">Año</h3>
+    </div>
+    <div id="anho-row" class="col-md-11" role="navigation">
+     Opción 1: slider
+        <input id="anho" data-slider-id='anho' type="text" data-slider-min="2012" data-slider-max="2012" data-slider-step="1" data-slider-value="2012"/> 
+
+        Opción 2: botón
+        <div class="btn-group btn-group btn-col" data-toggle="buttons">
+            <label class="btn btn-default active">
+                <input type="checkbox"  value="RURAL" name="nombre_zona" checked="checked">2012</input>
+            </label>
+        </div> 
+    </div>
+  </div>-->
+  <input type="hidden" value="2012" name="anho"></input>
+  <div class="row">
+    <div class="col-md-2" role="navigation">
+        <div class="btn-group-vertical btn-group-sm btn-col zona" data-toggle="buttons">
+            <h3>Zona</h3>
+            <label class="btn btn-default">
+                <input type="checkbox"  value="RURAL" name="nombre_zona">Rural</input>
+            </label>
+            <label class="btn btn-default">
+                <input type="checkbox"  value="URBANA" name="nombre_zona">Urbana</input>
+            </label>
+        </div>
+    </div>
+    <div class="col-md-3" role="navigation">
+        <div class="btn-group-vertical btn-group-sm btn-col tipo-gestion" data-toggle="buttons">
+            <h3>Tipo de Gestión</h3>
+            <label class="btn btn-default">
+                <input type="checkbox" value="OFICIAL" name="sector_o_tipo_gestion">Oficial</input>
+            </label>
+            <label class="btn btn-default">
+                <input type="checkbox" value="PRIVADA" name="sector_o_tipo_gestion">Privada</input>
+            </label>
+            <label class="btn btn-default">
+                <input type="checkbox" value="PRIV.SUBVENCIONADA" name="sector_o_tipo_gestion">Privada - Subvencionada</input>
+            </label>
+        </div>
+    </div>
+    <div class="col-md-3" role="navigation">
+
+        <div class="btn-group-vertical btn-group-sm btn-col" data-toggle="buttons">
+            <h3>Nivel</h3>
+            <label class="btn btn-default">
+                <input type="checkbox" name="nivel" value="matriculaciones_educacion_inclusiva">Educación Inclusiva</input>
+            </label>
+            <label class="btn btn-default">
+                <input type="checkbox" name="nivel" value="matriculaciones_inicial">Educación Inicial</input>
+            </label>
+            <label class="btn btn-default">
+                <input type="checkbox" name="nivel" value="matriculaciones_educacion_escolar_basica">Educación Escolar Básica</input>
+            </label>
+            <label class="btn btn-default">
+                <input type="checkbox" name="nivel" value="matriculaciones_media">Educación Media</input>
+            </label>
+            <label class="btn btn-default">
+                <input type="checkbox" name="nivel" value="matriculaciones_educacion_permanente">Educación Permanente</input>
+            </label>
+            <label class="btn btn-default">
+                <input type="checkbox" name="nivel" value="matriculaciones_educacion_superior">Educación Superior</input>
+            </label>
+        </div>
+    </div>
+    <div class="col-md-4" role="navigation">
+        <div class="btn-group-vertical btn-group-sm btn-col subnivel" data-toggle="buttons">
+            <h3 class="grado">Grado / Curso</h3>
+            <h3 class="modalidad">Modalidad</h3>
+            <label class="btn btn-default subnivel-basica">
+                <input type="checkbox" value="primer_grado" name="subnivel">Primer Grado</input>
+            </label>
+            <label class="btn btn-default subnivel-basica">
+                <input type="checkbox" value="segundo_grado" name="subnivel">Segundo Grado</input>
+            </label>
+            <label class="btn btn-default subnivel-basica">
+               <input type="checkbox" value="tercer_grado" name="subnivel">Tercer Grado</input>
+            </label>
+            <label class="btn btn-default subnivel-basica">
+               <input type="checkbox" value="cuarto_grado" name="subnivel">Cuarto Grado</input>
+            </label>
+            <label class="btn btn-default subnivel-basica">
+               <input type="checkbox" value="quinto_grado" name="subnivel">Quinto Grado</input>
+            </label>
+            <label class="btn btn-default subnivel-basica">
+              <input type="checkbox" value="sexto_grado" name="subnivel">Sexto Grado</input>
+            </label>
+            <label class="btn btn-default subnivel-basica">
+                <input type="checkbox" value="septimo_grado" name="subnivel">Septimo Grado</input>
+            </label>
+            <label class="btn btn-default subnivel-basica">
+               <input type="checkbox" value="octavo_grado" name="subnivel">Octavo Grado</input>
+            </label>
+            <label class="btn btn-default subnivel-basica">
+               <input type="checkbox" value="noveno_grado" name="subnivel">Noveno Grado</input>
+            </label>
+
+            <label  class="btn btn-default subnivel-inclusiva" > 
+                <input type="checkbox" value="matricula_inicial_especial" name="subnivel">Inicial Especial</input>
+            </label>
+            <label class="btn btn-default subnivel-inclusiva">
+                <input type="checkbox" value="matricula_primer_y_segundo_ciclo_especial" name="subnivel">1er y 2do Ciclo Especial</input>
+            </label>
+            <label class="btn btn-default subnivel-inclusiva">
+                <input type="checkbox" value="matricula_tercer_ciclo_especial" name="subnivel">3er Ciclo Especial</input>
+            </label>
+            <label class="btn btn-default subnivel-inclusiva">
+                <input type="checkbox" value="matricula_programas_especiales" name="subnivel">Programas Especiales</input>
+            </label>
+
+            <label class="btn btn-default subnivel-permanente">
+                <input type="checkbox" value="matricula_ebbja" name="subnivel">EBB Jóvenes y Adultos</input>
+            </label>
+            <label class="btn btn-default subnivel-permanente">
+                <input type="checkbox" value="matricula_emapja" name="subnivel">Educación Media Alternativa</input>
+            </label>
+            <label class="btn btn-default subnivel-permanente">
+                <input type="checkbox" value="matricula_fpi" name="subnivel">Formación Profesional Inicial</input>
+            </label>
+            <label class="btn btn-default subnivel-permanente">
+                <input type="checkbox" value="matricula_emdja" name="subnivel">Educación Media a Distancia</input>
+            </label>
+            <label class="btn btn-default subnivel-permanente">
+                <input type="checkbox" value="matricula_fp" name="subnivel">Formación Profesional</input>
+            </label>
+
+            <label class="btn btn-default subnivel-superior">
+                <input type="checkbox" value="matricula_ets" name="subnivel">Nivel Terciario</input>
+            </label>
+            <label class="btn btn-default subnivel-superior">
+                <input type="checkbox" value="matricula_fed" name="subnivel">Cursos de Profesorado</input>
+            </label>
+            <label class="btn btn-default subnivel-superior">
+                <input type="checkbox" value="matricula_fdes" name="subnivel">Formación Docente</input>
+            </label>
+            <label class="btn btn-default subnivel-superior">
+                <input type="checkbox" value="matricula_ps" name="subnivel">Profesionalización Docente</input>
+            </label>
+
+            <label class="btn btn-default subnivel-media">
+                <input type="checkbox" value="matricula_cientifico" name="subnivel">Bachillerato Científico</input>
+            </label>
+            <label class="btn btn-default subnivel-media">
+                <input type="checkbox" value="matricula_tecnico" name="subnivel">Bachillerato Técnico</input>
+            </label>
+            <label class="btn btn-default subnivel-media">
+                <input type="checkbox" value="matricula_media_abierta" name="subnivel">Educación Media Abierta</input>
+            </label>
+            <label class="btn btn-default subnivel-media">
+                <input type="checkbox" value="matricula_formacion_profesional_media" name="subnivel">Formación Profesional Media</input>
+            </label>
+
+            <label class="btn btn-default subnivel-inicial">
+                <input type="checkbox" value="maternal" name="subnivel">Maternal</input>
+            </label>
+            <label class="btn btn-default subnivel-inicial">
+                <input type="checkbox" value="prejardin" name="subnivel">Pre-jardín</input>
+            </label>
+            <label class="btn btn-default subnivel-inicial">
+                <input type="checkbox" value="jardin" name="subnivel">Jardín</input>
+            </label>
+            <label class="btn btn-default subnivel-inicial">
+                <input type="checkbox" value="preescolar" name="subnivel">Pre-escolar</input>
+            </label>
+
+        </div>
+    </div>
+  </div>
+  <% end %>  
+  <hr>
+</div><!--/.container-->

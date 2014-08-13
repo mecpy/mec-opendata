@@ -136,12 +136,12 @@ class MatriculacionesInicialController < ApplicationController
       csv = CSV.generate do |csv|
         # header row
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad",
-                "nombre_barrio_localidad", "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "maternal", "prejardin", "jardin", "preescolar",  "total_matriculados"]
+                "nombre_barrio_localidad", "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "maternal", "prejardin", "jardin", "preescolar",  "total_matriculados", "anho_cod_geo", "inicial_noformal"]
  
         # data rows
         matriculaciones_inicial_csv.each do |mi|
           csv << [mi.anio, mi.codigo_establecimiento, mi.codigo_departamento, mi.nombre_departamento, mi.codigo_distrito, mi.nombre_distrito, mi.codigo_zona, mi.nombre_zona, mi.codigo_barrio_localidad, mi.nombre_barrio_localidad, mi.sector_o_tipo_gestion, mi.maternal, mi.prejardin, 
-      mi.jardin, mi.preescolar, mi.total_matriculados ]
+      mi.jardin, mi.preescolar, mi.total_matriculados, mi.anho_cod_geo, mi.inicial_noformal ]
         end
 
       end
@@ -157,7 +157,7 @@ class MatriculacionesInicialController < ApplicationController
         format.xlsx {
           
           #columnas = [:codigo, :descripcion, :tipo_articulo, :objeto_gasto, :tipo_medida, :medida, :valor_unitario, :activo ] 
-          columnas = [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad, :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :maternal, :prejardin, :jardin, :preescolar, :total_matriculados ] 
+          columnas = [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad, :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :maternal, :prejardin, :jardin, :preescolar, :total_matriculados, :anho_cod_geo, :inicial_noformal ] 
           
           send_data MatriculacionInicial.ordenado_institucion.where(cond).to_xlsx(:columns => columnas, name: "Matriculaciones Inicial").to_stream.read, 
                     :filename => "matriculaciones_inicial_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 

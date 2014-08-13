@@ -8,6 +8,7 @@ $("#establecimientos-lista").html("<%= escape_javascript(render :partial => "est
      parametros += "&form_buscar_establecimientos_nombre_zona=#{params[:form_buscar_establecimientos_nombre_zona]}"
      parametros += "&form_buscar_establecimientos_nombre_barrio_localidad=#{params[:form_buscar_establecimientos_nombre_barrio_localidad]}"
      parametros += "&form_buscar_establecimientos_direccion=#{params[:form_buscar_establecimientos_direccion]}" 
+     parametros += "&form_buscar_establecimientos[programa]=#{params[:form_buscar_establecimientos][:programa]}" 
      parametros += "&page=#{(params[:page].present? ? params[:page] : 1)}" %>
 
   $("#ubicaciones-geograficas").html("<%= escape_javascript(render :partial => "link_to_ubicaciones_geograficas", :locals => {:parametros => parametros } )%>")

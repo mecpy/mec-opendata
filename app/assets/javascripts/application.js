@@ -13,25 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= stub matriculados
+//= stub leaflet
+//= stub bootstrap-slider
 // require jquery.ui.all
-
-$(function() {
-  mouse_sobre_boton();
-});
-
-function mouse_sobre_boton(){
-
-  $(".btn").bind("mouseover", function(){
-
-    $(this).attr('style', 'font-weight: bold; background-color: #b57300;')    
-      
-  })
-
-  $(".btn").bind("mouseout", function(){
-
-    $(this).attr('style', '')    
-      
-  })
-
-}
-

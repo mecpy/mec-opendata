@@ -10,6 +10,8 @@
  *
  *= require_self
  *= require_tree .
+ *= stub leaflet
+ *= stub slider
  */
 
 /*

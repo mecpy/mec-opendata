@@ -28,5 +28,9 @@ module ApplicationHelper
     end
 
   end
-  
+
+  def icon_delete
+    image_tag("delete-icon.png", :style => "width:16px;")
+  end
+
 end

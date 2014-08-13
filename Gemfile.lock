@@ -132,6 +132,7 @@ GEM
     rake (10.0.4)
     rdoc (3.12.2)
       json (~> 1.4)
+    recaptcha (0.3.6)
     ref (1.0.5)
     ruby-rc4 (0.1.5)
     rubyzip (1.0.0)
@@ -185,6 +186,7 @@ DEPENDENCIES
   pg (= 0.15.1)
   rails (= 3.2.13)
   rake (= 10.0.4)
+  recaptcha
   sass-rails (~> 3.2.3)
   therubyracer
   thin (= 1.5.1)

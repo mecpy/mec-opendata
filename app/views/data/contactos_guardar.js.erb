@@ -1,0 +1,12 @@
+<% if @enviado %>
+
+  alert("Enviado exitosamente!\nGracias por participar.")
+  limpiar_form_contacto();
+  $("#form_ordenar_contactos_orden").val(1);
+  $("#form-ordenar-contactos").submit();
+
+<% else %>
+
+  alert('<%= @msg.gsub('.','\n') %>');
+
+<% end %>

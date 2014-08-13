@@ -1,0 +1,91 @@
+<table class="table table-striped table-bordered table-hover">
+
+  <%= form_for Contacto.new, url: mec_custom_url(contactos_guardar_url), remote: true, html: { id: "form-guardar-contacto"} do |f|  %>
+
+    <tr>
+
+      <th colspan=2>
+        <div style="font-size:15;color:#000;">Colabora para tener un gobierno más transparente.</div>
+        <div style="font-size:11px;color:gray;font-family:Arial;margin-top:10px;">A través de este formulario cuéntanos como podemos mejorar el sitio, qué datos te gustaría que estuvieran disponibles, qué información debiéramos incluir o simplemente cómo podríamos hacer que tu experiencia sea más satisfactoria en una próxima visita.</div>
+      </th>
+
+    </tr>
+
+    <tr>
+      <th style='width:40%;'>Nombre <span class='required'>(*)</span></th>
+      <td style='width:40%;'><%= f.text_field :nombre, class: 'text-min' %></td>  
+    </tr>
+
+    <tr>
+      <th style='width:40%;'>Apellido <span class='required'>(*)</span></th>
+      <td style='width:40%;'><%= f.text_field :apellido, class: 'text-min' %></td>  
+    </tr>
+
+    <tr>
+      <th style='width:40%;'>Email <span class='required'>(*)</span></th>
+      <td style='width:40%;'><%= f.text_field :email, class: 'text-min' %></td>  
+    </tr>
+
+    <tr>
+      <th style='width:40%;'>Asunto <span class='required'>(*)</span></th>
+      <td style='width:40%;'><%= f.text_field :asunto, class: 'text-min' %></td>  
+    </tr>
+
+    <tr>
+      <th style='width:40%;'>Categor&iacute;a <span class='required'>(*)</span></th>
+      <td style='width:40%;'><%= f.select :categoria_contacto_id, categorias_contactos, class: 'text-min' %></td>  
+    </tr>
+
+    <tr>
+      <th style='width:40%;'>Mensaje <span class='required'>(*)</span></th>
+      <td style='width:40%;'><%= f.text_area :mensaje, style: "width:95%;height:200px;" %></td>  
+    </tr>
+<!--
+    <tr>
+      <td colspan=2><%#= recaptcha_tags %></td>
+    </tr>
+-->
+    <tr>
+      <th colspan=2 style="text-align:center;">
+        <%= link_to image_tag('cancelado1.png', style: 'width:32px;'), "#", id: "link-to-limpiar-contacto", title: "Cancelar Mensaje." %>
+        <%= link_to image_tag('contacto1.png', style: 'width:32px;margin-left:20px;'), "#", id: "link-to-guardar-contacto", title: "Enviar Mensaje." %>
+      </th>
+    </tr>
+
+  <% end %>
+
+</table>
+
+<script type="text/javascript">
+
+  $("#link-to-guardar-contacto").bind("click", function(){
+
+    var x = confirm("Confirma los datos a enviar ?");
+
+    if(x){
+      $("#form-guardar-contacto").submit();
+    }
+
+    return false;    
+  })
+
+  $("#link-to-limpiar-contacto").bind("click", function(){
+
+    limpiar_form_contacto();
+
+    return false;
+  })
+
+  function limpiar_form_contacto(){
+    
+    $("#contacto_nombre").val('');  
+    $("#contacto_apellido").val('');  
+    $("#contacto_email").val('');  
+    $("#contacto_asunto").val('');  
+    $("#contacto_categoria").val('');  
+    $("#contacto_mensaje").val('');  
+  
+  }
+
+</script>
+

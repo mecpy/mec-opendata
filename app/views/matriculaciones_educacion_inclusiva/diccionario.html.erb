@@ -194,7 +194,25 @@
 					<td>
 						93354
 					</td>
-				</tr>
+        </tr>
+						<tr>
+							<td>
+								ANHO_COD_GEO 
+							</td>
+							<td>
+								Se refiere al año de captura de los datos georreferenciados censales, teniendo en cuenta que por cada año censal pueden diferir los codigos de distritos o codigos de localidades, como a si también las descripciones. La cartografía nacional fue proveída por al Dirección General de Estadística, Encuestas y Censos (DGEEC - http://www.dgeec.gov.py/). 
+							</td>
+							<td>
+								xsd:gYear
+							</td>
+							<td>
+								Sólo permite datos del año de su captura censal.
+							</td>
+							<td></td>
+              <td>
+                <%= link_to "Ver ejemplo", mec_custom_url(def_ejemplo_anio_cod_geo_path), target: '_blank' %>
+              </td>
+						</tr>
 			</tbody>
 		</table>
 	</div>

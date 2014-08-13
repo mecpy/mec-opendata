@@ -351,7 +351,42 @@
 							<td>
 								255
 							</td>
-						</tr>
+            </tr>
+						<tr>
+							<td>
+								ANHO_COD_GEO 
+							</td>
+							<td>
+								Se refiere al año de captura de los datos georreferenciados censales, teniendo en cuenta que por cada año censal pueden diferir los codigos de distritos o codigos de localidades, como a si también las descripciones. La cartografía nacional fue proveída por al Dirección General de Estadística, Encuestas y Censos (DGEEC - http://www.dgeec.gov.py/). 
+							</td>
+							<td>
+								xsd:gYear
+							</td>
+							<td>
+								Sólo permite datos del año de su captura censal.
+							</td>
+							<td></td>
+              <td>
+                <%= link_to "Ver ejemplo", mec_custom_url(def_ejemplo_anio_cod_geo_path), target: '_blank' %>
+              </td>
+            </tr>
+						<tr>
+							<td>
+								NOFORMAL
+							</td>
+							<td>
+								Representa la cantidad de estudiantes inscriptos en la modalidad que atiende a niños/as menores de 6  años que no tienen acceso a la Educación Inicial Formal e implementada en Mitã Róga y otras organizaciones educativas que funcionan en casas de familias, escuelas, iglesias, municipalidades, etc., atendidos por voluntarios/as, como padres de familias, estudiantes, maestros/as o enfermeros/as. 
+							</td>
+							<td>
+								xsd:positiveInteger
+							</td>
+							<td></td>
+							<td></td>
+							<td>
+								36
+							</td>
+            </tr>
+						<tr>
 					</tbody>
 				</table>
 			</div>

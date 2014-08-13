@@ -1,0 +1,47 @@
+#map{height: 500px;}
+.legend {
+    text-align: right;
+    line-height: 18px;
+    color: #555;
+    }
+.legend i {
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.8;
+    }
+.leaflet-popup-close-button {
+    display: none;
+}
+.leaflet-popup-content-wrapper {
+    pointer-events: none;
+}
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 10 10 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 10 10 15px;
+    color: #777;
+}
+
+.subnivel-basica, .subnivel-inclusiva, 
+.subnivel-permanente, .subnivel-superior,
+.subnivel-media, .subnivel-inicial,
+h3.modalidad, h3.grado{
+    visibility: hidden;
+}
+
+.btn-col{
+    width:100%; 
+    text-align: center;
+}
+
+#anho-row{
+    margin-top: 25px;
+}

@@ -135,7 +135,7 @@ class MatriculacionesEducacionSuperiorController < ApplicationController
          "nombre_barrio_localidad", "codigo_zona", "nombre_zona",
          "codigo_establecimiento", "codigo_institucion", "nombre_institucion",
          "sector_o_tipo_gestion", "matricula_ets", "matricula_fed", 
-         "matricula_fdes", "matricula_pd"]
+         "matricula_fdes", "matricula_pd", "anho_cod_geo"]
  
         # data rows
         matriculaciones_educacion_superior_csv.each do |e|
@@ -145,7 +145,7 @@ class MatriculacionesEducacionSuperiorController < ApplicationController
                   e.codigo_zona, e.nombre_zona, e.codigo_establecimiento,
                   e.codigo_institucion, e.nombre_institucion,
                   e.sector_o_tipo_gestion, e.matricula_ets, e.matricula_fed,
-                  e.matricula_fdes, e.matricula_pd]
+                  e.matricula_fdes, e.matricula_pd, e.anho_cod_geo ]
         end
 
       end
@@ -166,7 +166,7 @@ class MatriculacionesEducacionSuperiorController < ApplicationController
             :nombre_barrio_localidad, :codigo_zona, :nombre_zona, 
             :codigo_establecimiento, :codigo_institucion, :nombre_institucion,
             :sector_o_tipo_gestion, :matricula_ets, :matricula_fed,
-            :matricula_fdes, :matricula_pd] 
+            :matricula_fdes, :matricula_pd, :anho_cod_geo ] 
           
           send_data MatriculacionEducacionSuperior.orden_dep_dis.where(cond).
             to_xlsx(:columns => columnas, :name => "Matriculaciones").to_stream.read, 
