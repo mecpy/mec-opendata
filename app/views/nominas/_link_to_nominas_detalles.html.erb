@@ -17,7 +17,10 @@
           $.ajax({
 						  type: 'POST',
 						  url: "<%= mec_custom_url(data_nomina_administrativos_detalles_url) %>",
-              data: { id_trabajador:'<%= nomina.id_trabajador %>', id_objeto_gasto:'<%= nomina.id_objeto_gasto %>' },
+              data: { id_trabajador:'<%= nomina.id_trabajador %>', 
+                      id_objeto_gasto:'<%= nomina.id_objeto_gasto %>', 
+                      ano_periodo_pago:'<%= nomina.ano_periodo_pago %>',
+                      mes_periodo_pago:'<%= nomina.mes_periodo_pago %>' },
 						  dataType: 'script'  
 						});
 

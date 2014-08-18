@@ -37,7 +37,7 @@
 
       <tr style="font-weight:bold;color:#000;">
         <td colspan=6>Total</td>
-        <td style="text-align:right;"><%= number_to_currency(obtener_total_asignacion(@nomina.first.id_trabajador, @nomina.first.id_objeto_gasto, @nomina.first.es_categoria_administrativa), :unit => '', :precision => 0) %></td>
+        <td style="text-align:right;"><%= number_to_currency(obtener_total_asignacion(@nomina.first.id_trabajador, @nomina.first.id_objeto_gasto, @nomina.first.es_categoria_administrativa, @nomina.first.ano_periodo_pago, @nomina.first.mes_periodo_pago), :unit => '', :precision => 0) %></td>
       </tr>
 
     </tbody>
