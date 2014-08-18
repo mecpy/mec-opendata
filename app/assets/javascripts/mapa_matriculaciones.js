@@ -264,6 +264,7 @@ $(function() {
             type: "POST",
             data : postData,
             dataType: 'json',
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
             success:function(data, textStatus, jqXHR) 
             {
                 for(var k in data){
