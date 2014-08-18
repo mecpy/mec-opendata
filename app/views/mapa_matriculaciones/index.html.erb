@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row ">
         <div class="col-md-12">
-        <h2>Mapa de Matriculaciones del Paraguay al Año 2012</h2>  
+        <h2>
+            Mapa de Matriculaciones del Paraguay al Año 2012
+            <span style="float:right;">
+            <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
+            <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
+          </span>
+        </h2>  
         <div class="map-container">
           <div id="map" class="map"></div>
         </div><!--/span-->
@@ -54,7 +60,7 @@
     </div>
     <div class="col-md-3" role="navigation">
 
-        <div class="btn-group-vertical btn-group-sm btn-col" data-toggle="buttons">
+        <div class="btn-group-vertical btn-group-sm btn-col nivel" data-toggle="buttons">
             <h3>Nivel</h3>
             <label class="btn btn-default">
                 <input type="checkbox" name="nivel" value="matriculaciones_educacion_inclusiva">Educación Inclusiva</input>
@@ -179,6 +185,14 @@
         </div>
     </div>
   </div>
-  <% end %>  
+  <% end %>
+  <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
+  </br>
+  </br>
+  <div style="float:left;">Descargar Matriculaciones por Departamento Filtradas:</div>
+        <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(index_url),
+        :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width',
+        :id => 'map-link'%>
+  </div>  
   <hr>
 </div><!--/.container-->
