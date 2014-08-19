@@ -2,13 +2,14 @@
 <html>
 <head>
   <title>Datos Abiertos del Ministerio de Educación y Cultura</title>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Datos Abiertos del Ministerio de Educación y Cultura</title>
 
-  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag "bootstrap", :media => "all" %>
   <%= stylesheet_link_tag "mapa_matriculaciones" %>
   <%= stylesheet_link_tag "leaflet" %>  
   <%= stylesheet_link_tag "slider" %>  
@@ -23,26 +24,15 @@
 <body>
 
   <table id="tablaContenedor" width="1000px" border="0" align="center" cellpadding="0" cellspacing="0">
-    <tr>
-      <td width="40px" height="40" class="spriteBordesTabla" id="topleft">&nbsp;</td>
-      <td width="920px" height="40" class="bordertop">&nbsp;</td>
-      <td width="40px" height="40" class="spriteBordesTabla" id="topright">&nbsp;</td>
-    </tr>
     <!--inicio-contenido-->
     <tr>
       <td width="40" class="borderleft">&nbsp;</td>
       <td width="920" bgcolor="white">
-        <%= render :partial => "layouts/header"%>
         <%= yield %>
       </td>
       <td width="40" class="borderright">&nbsp;</td>
     </tr>
     <!--fin-contenido-->
-    <tr>
-      <td width="40" height="40" class="borderleft">&nbsp;</td>
-      <td width="920" height="40" bgcolor="white"><%= render :partial => 'layouts/footer' %></td>
-      <td width="40" height="40" class="borderright">&nbsp;</td>
-    </tr>
   </table>
 </body>
 </html>

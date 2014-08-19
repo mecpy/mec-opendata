@@ -1,12 +1,51 @@
+/*
+* @author Rodrigo Parra
+* Desarrollado en base al trabajo previo de Rafael Palau y Pedro Amarilla
+* @copyright 2014 Governance and Democracy Program USAID-CEAMSO
+* @license http://www.gnu.org/licenses/gpl-2.0.html
+*
+* USAID-CEAMSO
+* Copyright (C) 2014 Governance and Democracy Program
+* http://ceamso.org.py/es/proyectos/20-programa-de-democracia-y-gobernabilidad
+*
+----------------------------------------------------------------------------
+* This file is part of the Governance and Democracy Program USAID-CEAMSO,
+* is distributed as free software in the hope that it will be useful, but WITHOUT
+* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+* FOR A PARTICULAR PURPOSE. You can redistribute it and/or modify it under the
+* terms of the GNU Lesser General Public License version 2 as published by the
+* Free Software Foundation, accessible from <http://www.gnu.org/licenses/> or write
+* to Free Software Foundation (FSF) Inc., 51 Franklin St, Fifth Floor, Boston,
+* MA 02111-1301, USA.
+---------------------------------------------------------------------------
+* Este archivo es parte del Programa de Democracia y Gobernabilidad USAID-CEAMSO,
+* es distribuido como software libre con la esperanza que sea de utilidad,
+* pero sin NINGUNA GARANTÍA; sin garantía alguna implícita de ADECUACION a cualquier
+* MERCADO o APLICACION EN PARTICULAR. Usted puede redistribuirlo y/o modificarlo
+* bajo los términos de la GNU Lesser General Public Licence versión 2 de la Free
+* Software Foundation, accesible en <http://www.gnu.org/licenses/> o escriba a la
+* Free Software Foundation (FSF) Inc., 51 Franklin St, Fifth Floor, Boston,
+* MA 02111-1301, USA.
+*/
+
 $(function() {
     /* Se inicializa y configura el mapa*/
-    var map = L.map('map', {attributionControl: false}).setView([-23.4, -57], 6);
+    var southWest = L.latLng(-26, -62),
+        northEast = L.latLng(-21, -52),
+        bounds = L.latLngBounds(southWest, northEast);    
+    var map = L.map('map', {
+        attributionControl: false,
+        maxZoom: 10,
+        minZoom: 5,
+        maxBounds: bounds
+    }).setView([-23.4, -57], 6);
     var legend = L.control({position: 'bottomright'});
     legend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info legend'),
-            grades = [0, 1000, 5000, 10000, 20000, 40000, 70000, 100000, 150000, 250000, 300000],
+            grades = [1, 100, 500, 1000, 5000, 10000, 20000, 40000, 70000, 100000, 150000, 250000, 300000],
             labels = [],
             from, to;
+        labels.push('<i style="background:' + getColor(0) + '"></i> ' + '0');
         for (var i = 0; i < grades.length; i++) {
             from = grades[i];
             to = grades[i + 1];
@@ -30,8 +69,18 @@ $(function() {
         if(props && props.cantidad){
           cantidad = props.cantidad;
         }
-        this._div.innerHTML = '<h4>Cantidad de Matriculados</h4>' +  (props ?
-            '<b>' + props.NAME_1 + '</b><br />' + cantidad + ' matriculados'
+        var zona = $('.zona label.active').text().trim();
+        var tipoGestion = $('.tipo-gestion label.active').text().trim();
+        var nivel = $('.nivel label.active').text().trim();
+        var subnivel = $('.subnivel label.active').text().trim();
+
+        this._div.innerHTML =  '<h4>Cantidad de Matriculados</h4>'
+            + (zona ? '<b>' + $('.zona > h3').text() + ': </b>' + zona + '</br>': '')
+            + (tipoGestion ? '<b>' + $('.tipo-gestion > h3').text() + ': </b>' + tipoGestion + '</br>': '') 
+            + (nivel ? '<b>' + $('.nivel > h3').text() + ': </b>' + nivel + '</br>': '') 
+            + (subnivel ? '<b>' + $('.subnivel > h3').filter(':visible').text() + ': </b>' + subnivel + '</br>': '')              
+            + (zona || tipoGestion || nivel || subnivel ? '</br>' : '')
+            +  (props ? '<b>' + props.NAME_1 + '</b><br />' + cantidad + ' matriculados'
             : 'Marque un departamento');
     };
     info.addTo(map)
@@ -46,17 +95,20 @@ $(function() {
 
     /*Color de cada departamento según la cantidad de matriculados*/
     function getColor(d) {
-        return    d > 300000    ? '#FE0539' :
-                d > 250000    ? '#FD1317' :
-                d > 150000    ? '#FD4921' :
-                d > 100000    ? '#FD7B2F' :
-                d > 70000    ? '#FDA93D' :
-                d > 40000    ? '#FDD14B' :
-                d > 20000    ? '#FDF458' :
-                d > 10000    ? '#E8FD66' :
-                d > 5000    ? '#CFFD74' :
-                d > 1000    ? '#BCFD82' :
-                            '#DAFEBE';
+        return    d > 300000    ? '#FE0516' :
+                d > 250000    ? '#FD1E0F' :
+                d > 150000    ? '#FD4619' :
+                d > 100000    ? '#FD6C24' :
+                d > 70000    ? '#FD8E2E' :
+                d > 40000    ? '#FDAE39' :
+                d > 20000    ? '#FDCB43' :
+                d > 10000    ? '#FDE54E' :
+                d > 5000    ? '#FDFC58' :
+                d > 1000    ? '#E9FD62' :
+                d > 500    ? '#D7FD6D' :
+                d > 100    ? '#C8FD77' :
+                d > 1    ? '#BCFD82' :
+                            '#FFFFFF';
     }
 
     /*Eventos para cada departamento*/
@@ -135,6 +187,7 @@ $(function() {
         $('h3.modalidad').css('visibility', 'hidden');
         if(this.checked){
             $('.subnivel > label > input').attr('checked', false);
+            $('.subnivel > label').removeClass('active');
             switch($(this).val()) {
             case "matriculaciones_educacion_inclusiva":
                 $('.subnivel > *').css('display', 'none').css('visibility', 'hidden');
@@ -211,6 +264,7 @@ $(function() {
             type: "POST",
             data : postData,
             dataType: 'json',
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
             success:function(data, textStatus, jqXHR) 
             {
                 for(var k in data){
@@ -221,6 +275,8 @@ $(function() {
                 };
                 removeLayers();
                 redrawLayers();
+                info.update();
+                $('#map-link').attr('href', formURL + '.json?' + decodeURIComponent($.param(postData)));
             },
             error: function(jqXHR, textStatus, errorThrown) 
             {
@@ -238,7 +294,23 @@ $(function() {
         $("#form-buscar-matriculaciones").submit(); //Submit  the FORM
     });
 
-    /*Se carga inicialmente el mapa*/
-    $("#form-buscar-matriculaciones").submit();
+    function getQueryVariable(variable)
+    {
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+        }
+       return(false);
+    }
 
+    /*Se carga inicialmente el mapa*/
+    var nivel = getQueryVariable('nivel');
+    if(nivel){
+        $("[value=" + nivel + "]").click();
+    }else{
+        $("#form-buscar-matriculaciones").submit();
+
+    }
 });

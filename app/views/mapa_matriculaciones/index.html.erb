@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row ">
         <div class="col-md-12">
-        <h2>Mapa de Matriculaciones del Paraguay al Año 2012</h2>  
+        <h2>
+            Mapa de Matriculaciones del Paraguay al Año 2012
+            <span style="float:right;">
+            <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" unless params[:embedded]%>
+            <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" unless params[:embedded]%>
+          </span>
+        </h2>  
         <div class="map-container">
           <div id="map" class="map"></div>
         </div><!--/span-->
@@ -54,7 +60,7 @@
     </div>
     <div class="col-md-3" role="navigation">
 
-        <div class="btn-group-vertical btn-group-sm btn-col" data-toggle="buttons">
+        <div class="btn-group-vertical btn-group-sm btn-col nivel" data-toggle="buttons">
             <h3>Nivel</h3>
             <label class="btn btn-default">
                 <input type="checkbox" name="nivel" value="matriculaciones_educacion_inclusiva">Educación Inclusiva</input>
@@ -179,6 +185,33 @@
         </div>
     </div>
   </div>
-  <% end %>  
+  <div class="row">
+    
+  </div>
+  <% end %>
+  </br>
+  </br>
+  <h3 style="float:left;">Descargas: </h3>
+    <div class="btn-group" style="margin-top:18px;">
+        <%= link_to "Matriculaciones Filtradas ( JSON )", mec_custom_url(index_url),
+            :target => "_blank", :class => 'btn btn-default', :style => "margin-left:20px;", :id => 'map-link'%>
+        <a href="#embedder" role="button" class="btn btn-default" data-toggle="modal">Widget Reutilizable ( HTML )</a>
+    </div>
+    <div id="embedder" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Descarga</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Puedes incluir la visualización en tu sitio copiando y pegando el siguiente código:</p>
+                    <textarea id="embedcode" class="xlarge" rows="2">&lt;iframe src=&quot;http://datos.mec.gov.py/app/mapa_matriculaciones&quot; style=&quot;width: 90%; height: 900px; border: none; padding: 0; margin: 0;&quot;&gt;&lt;/iframe&gt;</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+  <%unless params[:embedded]%>
   <hr>
+  <% end-%>
 </div><!--/.container-->
