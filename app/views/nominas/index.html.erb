@@ -41,7 +41,7 @@
 
       <th style="width:100px;text-align:center;" class="text-min celda-derecha">
         <%= label_tag "Mes" %><br />
-        <%= select :form_buscar_nominas, :mes_periodo_pago, [["junio", 6]], {:class => 'text-min'} %>
+        <%= select :form_buscar_nominas, :mes_periodo_pago, [["julio", 7], ["junio", 6]], {:class => 'text-min'} %>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_mes_periodo_pago').val('2014');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
       </th>
       
@@ -133,7 +133,7 @@
   function limpiar_form_buscar_nominas(){
     
     $("#form_buscar_nominas_ano_periodo_pago").val("2014");
-    $("#form_buscar_nominas_mes_periodo_pago").val("6");
+    $("#form_buscar_nominas_mes_periodo_pago").val("7");
     $("#form_buscar_nominas_codigo_trabajador").val("");
     $("#form_buscar_nominas_nombre_trabajador").val("");
     $("#form_buscar_nominas_asignacion").val("");

@@ -80,14 +80,25 @@
         <br /><br />
       
         <div style="float:left;">Descargar la N&oacute;mina completa de docentes:</div>
+        
         <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
           <%= link_to "PDF#{image_star}".html_safe, "https://mega.co.nz/#!dk5F0Cxb!oJgF9cQ_3gC8N4bHPqKER1eiOzsV81N7gdf-PMbBOzY", :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
           <br />
-          <span style="color:silver;">(61,8MB)</span>
-          <meta itemprop="name" content="Establecimientos Escolares 2012">
-          <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año 2012">
+          <span style="color:silver;">61,8MB <br /> junio 2014</span>
+          <meta itemprop="name" content="Nomina de funcionarios docentes junio 2014">
+          <meta itemprop="description" content="Listado de funcionarios docentes de junio del año 2014">
           <meta itemprop="encodingFormat" content="pdf">
         </div>
+         
+        <div style="float:left;text-align:center;margin-left:10px;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+          <%= link_to "PDF#{image_star}".html_safe, "https://mega.co.nz/#!FoByxCpC!kqiue2krvjtukETMOx4QHj7iXkprIly96LjGpA9AqkQ", :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
+          <br />
+          <span style="color:silver;">61,6MB <br /> junio 2014</span>
+          <meta itemprop="name" content="Nomina de funcionarios docentes julio 2014">
+          <meta itemprop="description" content="Listado de funcionarios docentes de julio del año 2014">
+          <meta itemprop="encodingFormat" content="pdf">
+        </div>       
+ 
         <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
         <%#= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_nominas_lista_url(parametros_xls_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url"%>
           <meta itemprop="name" content="Establecimientos Escolares 2012">

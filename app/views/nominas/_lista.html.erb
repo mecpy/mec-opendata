@@ -77,14 +77,25 @@
         <br /><br />
         
         <div style="float:left;">Descargar la N&oacute;mina completa de funcionarios administrativos:</div>
+        
         <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
           <%= link_to "PDF#{image_star}".html_safe, "https://mega.co.nz/#!M5hh1SzR!T8sOSki9cIs6YJJ0LORy1CdguEs2GwH93mSJIksvEP0" , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat'%><br />
-          <span style="color:silver;">(1,6MB)</span>
+          <span style="color:silver;">1,6MB <br /> junio 2014</span>
         <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_nominas_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
-          <meta itemprop="name" content="Establecimientos Escolares 2012">
-          <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año 2012">
+          <meta itemprop="name" content="Funcionarios Administrativos junio 2014">
+          <meta itemprop="description" content="Listado de funcionarios administrativos al mes de junio del año 2014">
           <meta itemprop="encodingFormat" content="pdf">
         </div>
+
+        <div style="float:left;text-align:center;margin-left:10px;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+          <%= link_to "PDF#{image_star}".html_safe, "https://mega.co.nz/#!NhhQQaoY!fzeYi5SVkDn2NS_urLjp_u0mkm1h7DoGZP4_7VvXQtA" , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat'%><br />
+          <span style="color:silver;">1,6MB <br /> julio 2014</span>
+        <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_nominas_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
+          <meta itemprop="name" content="Funcionarios Administrativos julio 2014">
+          <meta itemprop="description" content="Listado de funcionarios administrativos al mes de julio del año 2014">
+          <meta itemprop="encodingFormat" content="pdf">
+        </div>
+      
         <div itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
         <%#= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_nominas_lista_url(parametros_xls_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url"%>
           <meta itemprop="name" content="Establecimientos Escolares 2012">

@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 //= stub matriculados
+//= stub mapa_matriculaciones
 //= stub leaflet
 //= stub bootstrap-slider
 // require jquery.ui.all

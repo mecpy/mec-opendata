@@ -197,7 +197,7 @@ class NominasController < ApplicationController
 
   def detalles
 
-    @nomina = Nomina.es_administrativo.where("id_trabajador = ? and id_objeto_gasto = ?", params[:id_trabajador], params[:id_objeto_gasto])
+    @nomina = Nomina.es_administrativo.where("id_trabajador = ? and id_objeto_gasto = ? and ano_periodo_pago = ? and mes_periodo_pago = ?", params[:id_trabajador], params[:id_objeto_gasto], params[:ano_periodo_pago], params[:mes_periodo_pago])
 
     respond_to do |f|
 
@@ -418,7 +418,7 @@ class NominasController < ApplicationController
 
   def docentes_detalles
 
-    @nomina = Nomina.es_docente.where("id_trabajador = ? and id_objeto_gasto = ?", params[:id_trabajador], params[:id_objeto_gasto])
+    @nomina = Nomina.es_docente.where("id_trabajador = ? and id_objeto_gasto = ? and ano_periodo_pago = ? and mes_periodo_pago = ?", params[:id_trabajador], params[:id_objeto_gasto], params[:ano_periodo_pago], params[:mes_periodo_pago])
 
     respond_to do |f|
 
