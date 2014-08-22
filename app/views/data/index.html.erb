@@ -2,13 +2,15 @@
   <div class="container">
     <div class="row">
       
-      <h2>Datasets
-        <span style="float:right;">
-          <%= link_to "<b>CIUDADANO !!.</b> Qu&eacute; tipo de informaci&oacute;n te gustar&iacute;a ver publicada en <b>datos.mec.gov.py</b> ?".html_safe, mec_custom_url(contactos_url), :title => "Ir al formulario de contactos", :style => "font-size:12px;" %>
-          <%= link_to image_tag("ayuda3.png", :style => "width:24px;" ), mec_custom_url(contactos_url), :title => "Ir al formulario de contactos." %>
-        </span>
-      </h2>
-      
+      <div class="menu-tab">
+        <div style="background:silver;"><%= link_to "Datasets", mec_custom_url(index_url) %></div>
+        <div><%= link_to "Visualizaciones".html_safe, mec_custom_url(app_mapa_matriculaciones_url) %></div>
+      </div>
+      <div style="clear:both;"></div>
+  
+      <%= link_to "<b>CIUDADANO !!.</b> Qu&eacute; tipo de informaci&oacute;n te gustar&iacute;a ver publicada en <b>datos.mec.gov.py</b> ?".html_safe, mec_custom_url(contactos_url), :title => "Ir al formulario de contactos", :style => "font-size:12px;" %>
+      <%= link_to image_tag("ayuda3.png", :style => "width:24px;" ), mec_custom_url(contactos_url), :title => "Ir al formulario de contactos." %>
+      <br />
       La siguiente tabla presenta la lista de datasets disponibles correspondientes al Ministerio de Educación y Cultura.<br>
       Para cada dataset se presenta un enlace para visitar la página del dataset, un enlace para visualizar el diccionario de datos y una breve descripción de los datos contenidos en el dataset.
       <br /><br /><br />
@@ -89,7 +91,9 @@
               <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_educacion_escolar_basica_url), :title => "Ir al diccionario" %>
               <%= link_to image_tag("def_icon.png"), mec_custom_url(def_matriculaciones_educacion_escolar_basica_url), :title => "Ir al diccionario" %><br /><br />
               <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_educacion_escolar_basica_url), :title => "Ir al dataset" %>
-              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_escolar_basica_url), :title => "Ir al dataset", :itemprop => "url" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_escolar_basica_url), :title => "Ir al dataset", :itemprop => "url" %> <br /><br />
+              <%= link_to "Ver mapa".html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_escolar_basica')), :title => "Ir al dataset" %>
+              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_escolar_basica')), :title => "Ir al dataset", :itemprop => "url" %>
             </td>
 						<td itemprop="description">
 						  Se refiere a la cantidad de alumnos matriculados del 1.º al 9.º grado con sus correspondientes códigos identificatorios.
@@ -116,7 +120,10 @@
               <%= link_to "Ver diccionario",mec_custom_url(def_matriculaciones_educacion_inclusiva_url), :title => "Ir al diccionario" %>
               <%= link_to image_tag("def_icon.png"), mec_custom_url(def_matriculaciones_educacion_inclusiva_url), :title => "Ir al diccionario" %><br /><br />
               <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_educacion_inclusiva_url), :title => "Ir al dataset" %>
-              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_inclusiva_url), :title => "Ir al dataset", :itemprop => "url" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_inclusiva_url), :title => "Ir al dataset", :itemprop => "url" %><br /><br />
+              <%= link_to "Ver mapa".html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_inclusiva')), :title => "Ir al dataset" %>
+              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_inclusiva')), :title => "Ir al dataset", :itemprop => "url" %>
+ 
             </td>
 						<td itemprop="description">
 							Corresponde a la cantidad de matriculados por ciclo/niveles/programas especiales de educación inclusiva con sus correspondientes códigos identificatorios.
@@ -143,7 +150,10 @@
               <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_educacion_permanente_url), :title => "Ir al diccionario" %>
               <%= link_to image_tag("def_icon.png"), mec_custom_url(def_matriculaciones_educacion_permanente_url), :title => "Ir al diccionario" %><br /><br />
               <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_educacion_permanente_url), :title => "Ir al dataset" %>
-              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_permanente_url), :title => "Ir al dataset", :itemprop => "url" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_permanente_url), :title => "Ir al dataset", :itemprop => "url" %><br /><br />
+              <%= link_to "Ver mapa".html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_permanente')), :title => "Ir al dataset" %>
+              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_permanente')), :title => "Ir al dataset", :itemprop => "url" %>
+ 
             </td>
 						<td itemprop="description">
 						  Se refiere a la cantidad de matriculados en las diferentes modalidades de educación permanente con sus correspondientes códigos identificatorios.
@@ -170,7 +180,10 @@
               <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_educacion_superior_url), :title => "Ir al diccionario" %>
               <%= link_to image_tag("def_icon.png"), mec_custom_url(def_matriculaciones_educacion_superior_url), :title => "Ir al diccionario" %><br /><br />
               <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_educacion_superior_url), :title => "Ir al dataset" %>
-              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_superior_url), :title => "Ir al dataset", :itemprop => "url" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_superior_url), :title => "Ir al dataset", :itemprop => "url" %><br /><br />
+              <%= link_to "Ver mapa".html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_superior')), :title => "Ir al dataset" %>
+              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_superior')), :title => "Ir al dataset", :itemprop => "url" %>
+ 
             </td>
 						<td itemprop="description">
 								Se refiere a la cantidad de matriculados en las diferentes modalidades de educación superior con sus correspondientes códigos identificatorios.
@@ -197,7 +210,10 @@
               <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_inicial_url), :title => "Ir al diccionario" %>
               <%= link_to image_tag("def_icon.png"), mec_custom_url(def_matriculaciones_inicial_url), :title => "Ir al diccionario" %><br /><br />
               <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_inicial_url), :title => "Ir al dataset" %>
-              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_inicial_url), :title => "Ir al dataset", :itemprop => "url" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_inicial_url), :title => "Ir al dataset", :itemprop => "url" %><br /><br />
+              <%= link_to "Ver mapa".html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_inicial')), :title => "Ir al dataset" %>
+              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_inicial')), :title => "Ir al dataset", :itemprop => "url" %>
+ 
             </td>
 						<td itemprop="description">
 							Se refiere a la cantidad de matriculados en las etapas maternal, prejardín, jardín y preescolar con sus correspondientes códigos identificatorios.
@@ -224,7 +240,10 @@
               <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_educacion_media_url), :title => "Ir al diccionario" %>
               <%= link_to image_tag("def_icon.png"), mec_custom_url(def_matriculaciones_educacion_media_url), :title => "Ir al diccionario" %><br /><br />
               <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_educacion_media_url), :title => "Ir al dataset" %>
-              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_media_url), :title => "Ir al dataset", :itemprop => "url" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_media_url), :title => "Ir al dataset", :itemprop => "url" %><br /><br />
+              <%= link_to "Ver mapa".html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_media')), :title => "Ir al dataset" %>
+              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_media')), :title => "Ir al dataset", :itemprop => "url" %>
+ 
             </td>
 						<td itemprop="description">
 							Se refiere a la cantidad de matriculados del 1.º al 3er. curso en las diferentes modalidades de educación media con sus correspondientes códigos identificatorios.
@@ -516,3 +535,33 @@
 			</div>
 		</div>
   </div>
+
+  <style type="text/css">
+    
+    .menu-tab { 
+      width:100%;
+      margin-top:10px;
+      margin-bottom:10px;
+    }
+
+    .menu-tab div {
+      width:50%;
+      float:left;
+      font-size:25px;
+      text-align:center;
+      border:1px solid silver;
+      -moz-border-radius-topleft: 5px;
+      -moz-border-radius-topright:5px;
+      -moz-border-radius-bottomleft:5px;
+      -moz-border-radius-bottomright:5px;
+      -webkit-border-top-left-radius:5px;
+      -webkit-border-top-right-radius:5px;
+      -webkit-border-bottom-left-radius:5px;
+      -webkit-border-bottom-right-radius:5px;
+      border-top-left-radius:5px;
+      border-top-right-radius:5px;
+      border-bottom-left-radius:5px;
+      border-bottom-right-radius:5px;
+    }
+
+  </style>
