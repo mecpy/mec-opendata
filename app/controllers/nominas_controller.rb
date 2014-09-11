@@ -6,7 +6,9 @@ class NominasController < ApplicationController
   end
 
   def index
+    respond_to do |f|
 
+      f.html {render :layout => 'application_dataset'}
   end
 
   def lista

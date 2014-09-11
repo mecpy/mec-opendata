@@ -2,6 +2,9 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
   def index
     @matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.
                                                 orden_dep_dis.paginate :per_page => 15, :page => params[:page]
+    respond_to do |f|
+
+      f.html {render :layout => 'application_dataset'}
   end
 
   def lista

@@ -27,9 +27,9 @@
         </thead>
         
         <tbody itemscope itemtype="http://schema.org/DataCatalog">
-          <tr itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura" style="display: none;"/>
-          <tr itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura" style="display: none;"/>
-          <tr itemprop="url" style="display: none;" content="http://www.mec.gov.py/"/>
+          <td itemprop="name" style="display: none;">Datos Abiertos del Ministerio de Educación y Cultura</td>
+          <td itemprop="description" style="display: none;">Datos Abiertos del Ministerio de Educación y Cultura</td>
+          <td itemprop="url" style="display: none;">http://datos.mec.gov.py/</td>
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">  
             <td style="vertical-align:middle;">1</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">ESTABLECIMIENTOS ESCOLARES</td>
@@ -93,7 +93,7 @@
               <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_educacion_escolar_basica_url), :title => "Ir al dataset" %>
               <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_escolar_basica_url), :title => "Ir al dataset", :itemprop => "url" %> <br /><br />
               <%= link_to "Ver mapa".html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_escolar_basica')), :title => "Ir al dataset" %>
-              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_escolar_basica')), :title => "Ir al dataset", :itemprop => "url" %>
+              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_escolar_basica')), :title => "Ir al dataset" %>
             </td>
 						<td itemprop="description">
 						  Se refiere a la cantidad de alumnos matriculados del 1.º al 9.º grado con sus correspondientes códigos identificatorios.
@@ -122,7 +122,7 @@
               <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_educacion_inclusiva_url), :title => "Ir al dataset" %>
               <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_inclusiva_url), :title => "Ir al dataset", :itemprop => "url" %><br /><br />
               <%= link_to "Ver mapa".html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_inclusiva')), :title => "Ir al dataset" %>
-              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_inclusiva')), :title => "Ir al dataset", :itemprop => "url" %>
+              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_inclusiva')), :title => "Ir al dataset" %>
  
             </td>
 						<td itemprop="description">
@@ -152,7 +152,7 @@
               <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_educacion_permanente_url), :title => "Ir al dataset" %>
               <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_permanente_url), :title => "Ir al dataset", :itemprop => "url" %><br /><br />
               <%= link_to "Ver mapa".html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_permanente')), :title => "Ir al dataset" %>
-              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_permanente')), :title => "Ir al dataset", :itemprop => "url" %>
+              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_permanente')), :title => "Ir al dataset" %>
  
             </td>
 						<td itemprop="description">
@@ -182,7 +182,7 @@
               <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_educacion_superior_url), :title => "Ir al dataset" %>
               <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_superior_url), :title => "Ir al dataset", :itemprop => "url" %><br /><br />
               <%= link_to "Ver mapa".html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_superior')), :title => "Ir al dataset" %>
-              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_superior')), :title => "Ir al dataset", :itemprop => "url" %>
+              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_superior')), :title => "Ir al dataset" %>
  
             </td>
 						<td itemprop="description">
@@ -212,7 +212,7 @@
               <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_inicial_url), :title => "Ir al dataset" %>
               <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_inicial_url), :title => "Ir al dataset", :itemprop => "url" %><br /><br />
               <%= link_to "Ver mapa".html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_inicial')), :title => "Ir al dataset" %>
-              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_inicial')), :title => "Ir al dataset", :itemprop => "url" %>
+              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_inicial')), :title => "Ir al dataset" %>
  
             </td>
 						<td itemprop="description">
@@ -242,7 +242,7 @@
               <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_educacion_media_url), :title => "Ir al dataset" %>
               <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_matriculaciones_educacion_media_url), :title => "Ir al dataset", :itemprop => "url" %><br /><br />
               <%= link_to "Ver mapa".html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_media')), :title => "Ir al dataset" %>
-              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_media')), :title => "Ir al dataset", :itemprop => "url" %>
+              <%= link_to image_tag("mapa_sitio.png"), mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_media')), :title => "Ir al dataset" %>
  
             </td>
 						<td itemprop="description">
@@ -347,8 +347,9 @@
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
             <td style="vertical-align:middle;">12</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">NOMINA DE FUNCIONARIOS COMISIONADOS DEL MEC A OTROS ORGANISMOS DEL ESTADO</td>
-            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
-              <%= link_to "N&oacute;mina".html_safe, "/data/comisionados_aa_oee_2014.xls" , :target => "_target"%>
+            <td itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload" style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <meta itemprop="encodingFormat" content="xls">
+              <%= link_to "N&oacute;mina".html_safe, "/data/comisionados_aa_oee_2014.xls" , :target => "_target", :itemprop => "url"%>
               <%= link_to image_tag("page_excel.png"), "/data/comisionados_aa_oee_2014.xls" , :target => "_target" %>
               <br />
               <span style="color:silver;">(157KB)</span>
@@ -369,14 +370,16 @@
 						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
 						<td itemprop="keywords" style="display: none;"></td>
 						<td itemprop="version" style="display: none;">1.0</td>
+						<td itemprop="url" style="display: none;">http://datos.mec.gov.py/</td>
 					</tr>
 
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
             <td style="vertical-align:middle;">13</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">NOMINA DE FUNCIONARIOS COMISIONADOS AL MEC DESDE OTROS ORGANISMOS DEL ESTADO</td>
-            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+            <td itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload" style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+        	  <meta itemprop="encodingFormat" content="xls">
 
-              <%= link_to "N&oacute;mina".html_safe, "/data/comisionados_de_oee_2014.xls" , :target => "_target"%>
+              <%= link_to "N&oacute;mina".html_safe, "/data/comisionados_de_oee_2014.xls" , :target => "_target", :itemprop => "url"%>
               <%= link_to image_tag("page_excel.png"), "/data/comisionados_de_oee_2014.xls" , :target => "_target" %>
               <br />
               <span style="color:silver;">(137KB)</span>
@@ -398,19 +401,26 @@
 						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
 						<td itemprop="keywords" style="display: none;"></td>
 						<td itemprop="version" style="display: none;">1.0</td>
+						<td itemprop="url" style="display: none;">http://datos.mec.gov.py/</td>						
 					</tr>
 
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
             <td style="vertical-align:middle;">14</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">INVENTARIO DE BIENES</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+            <span itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+			  <meta itemprop="encodingFormat" content="zip">
 
-              <%= link_to "Rodados e Inmuebles", "https://mega.co.nz/#!84IkjQTD!4FGj6gaMVE1tQL5h348uY1D3lRb_8xOnXB_KK9gNqWw", :title => "Descargar datos de rodados e inmuebles.", :target => "_blank" %>
+              <%= link_to "Rodados e Inmuebles", "https://mega.co.nz/#!84IkjQTD!4FGj6gaMVE1tQL5h348uY1D3lRb_8xOnXB_KK9gNqWw", :title => "Descargar datos de rodados e inmuebles.", :target => "_blank", :itemprop => "url" %>
               <%= link_to image_tag('compress.png'), "https://mega.co.nz/#!84IkjQTD!4FGj6gaMVE1tQL5h348uY1D3lRb_8xOnXB_KK9gNqWw", :title => "Descargar datos de rodados e inmuebles.", :target => "_blank" %><br />
+            </span>
               <span style="color:silver;">(4,4MB)</span>
               <br /><br />
-              <%= link_to "Muebles", "https://mega.co.nz/#!10Y3BDgC!3IQr8etnRNkG02ReZ-OFjV6vXcQu-65KKj5_Rl--d8k", :title => "Descargar datos de muebles.", :target => "_blank" %>
-              <%= link_to image_tag('compress.png'), "https://mega.co.nz/#!10Y3BDgC!3IQr8etnRNkG02ReZ-OFjV6vXcQu-65KKj5_Rl--d8k", :title => "Descargar datos de muebles.", :target => "_blank" %><br />
+            <span itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+			  <meta itemprop="encodingFormat" content="zip">
+              <%= link_to "Muebles", "https://mega.co.nz/#!10Y3BDgC!3IQr8etnRNkG02ReZ-OFjV6vXcQu-65KKj5_Rl--d8k", :title => "Descargar datos de muebles.", :target => "_blank", :itemprop => "url" %>
+              <%= link_to image_tag('compress.png'), "https://mega.co.nz/#!10Y3BDgC!3IQr8etnRNkG02ReZ-OFjV6vXcQu-65KKj5_Rl--d8k", :title => "Descargar datos de muebles.", :target => "_blank" %>
+              </span><br />
               <span style="color:silver;">(64,9MB)</span>
 
             </td>
@@ -430,6 +440,7 @@
 						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
 						<td itemprop="keywords" style="display: none;"></td>
 						<td itemprop="version" style="display: none;">1.0</td>
+						<td itemprop="url" style="display: none;">http://datos.mec.gov.py/</td>
           </tr>
 
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
