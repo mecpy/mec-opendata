@@ -46,16 +46,40 @@
           <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_llamado_publico');return false;" %>
         </th>
 
+        <th style="width:7%;" class="text-min">
+          <%= label_tag nil, "Modalidad".html_safe%><br />
+          <%= text_field_tag :form_buscar_contrataciones_modalidad, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_modalidad');return false;" %>
+        </th>
+<!--
+        <th style="width:7%" class="text-min">
+          <%#= label_tag nil, "Nombre".html_safe %><br />
+          <%#= text_field_tag :form_buscar_contrataciones_nombre, nil, :class => 'text-min' %>
+          <%#= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_nombre');return false;" %>
+        </th>
+-->
         <th style="width:10%" class="text-min">
-          <%= label_tag nil, "Nombre".html_safe %><br />
-          <%= text_field_tag :form_buscar_contrataciones_nombre, nil, :class => 'text-min', style: 'width:120px;' %>
-          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_nombre');return false;" %>
+          <%= label_tag nil, "Descripci&oacute;n".html_safe%><br />
+          <%= text_field_tag :form_buscar_contrataciones_descripcion, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_descripcion');return false;" %>
         </th>
 
-        <th style="width:15%" class="text-min">
-          <%= label_tag nil, "Descripci&oacute;n".html_safe%><br />
-          <%= text_field_tag :form_buscar_contrataciones_descripcion, nil, :class => 'text-min', style: 'width:180px;'%>
-          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_descripcion');return false;" %>
+        <th style="width:7%" class="text-min">
+          <%= label_tag nil, "Fecha de Apertura de Ofertas".html_safe%><br />
+          <%= text_field_tag :form_buscar_contrataciones_fecha_apertura_oferta, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_fecha_apertura_oferta');return false;" %>
+        </th>
+
+        <th style="width:7%" class="text-min">
+          <%= label_tag "Estado" %><br />
+          <%= text_field_tag :form_buscar_contrataciones_estado_llamado, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_estado_llamado'); return false;" %>
+        </th>
+
+        <th style="width:10%" class="text-min">
+          <%= label_tag nil, "Proveedor Adjudicado".html_safe %><br />
+          <%= text_field_tag :form_buscar_contrataciones_proveedor_adjudicado, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_proveedor_adjudicado');return false;" %>
         </th>
 
         <th style="width:7%" class="text-min">
@@ -69,31 +93,20 @@
           <%= text_field_tag :form_buscar_contrataciones_fecha_vigencia_contrato, nil, :class => 'text-min' %>
           <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_fecha_contrato_vigencia');return false;" %>
         </th>
-
-        <th style="width:7%" class="text-min">
-          <%= label_tag "Estado" %><br />
-          <%= text_field_tag :form_buscar_contrataciones_estado_llamado, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_estado_llamado'); return false;" %>
-        </th>
-
+<!--
         <th style="width:7%;" class="text-min">
-          <%= label_tag nil, "Modalidad".html_safe%><br />
-          <%= text_field_tag :form_buscar_contrataciones_modalidad, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_modalidad');return false;" %>
+          <%#= label_tag nil, "Categor&iacute;a".html_safe %><br />
+          <%#= text_field_tag :form_buscar_categorias, nil, :class => 'text-min' %>
+          <%#= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_categoria');return false;" %>
         </th>
-
-        <th style="width:7%;" class="text-min">
-          <%= label_tag nil, "Categor&iacute;a".html_safe %><br />
-          <%= text_field_tag :form_buscar_categorias, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_categoria');return false;" %>
-        </th>
-
+        -->
         <th style="width:10%;" class="text-min">
           <%= label_tag nil, "Monto Adjudicado".html_safe%><br />
           <%= select_tag(:form_buscar_contrataciones_monto_adjudicado_operador, options_for_select(['>', '<', '='])) %>
           <%= text_field_tag :form_buscar_contrataciones_monto_adjudicado, nil, :class => 'text-min' %>
           <%= link_to icon_delete, '#', onclick: "limpiar_por_columna('form_buscar_contrataciones_monto_adjudicado');return false;" %>
         </th>
+
       <% end %>
 
     </tr>

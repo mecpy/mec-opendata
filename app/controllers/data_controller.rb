@@ -211,6 +211,20 @@ class DataController < ApplicationController
 
     end
 
+    if params[:form_buscar_establecimientos] && params[:form_buscar_establecimientos][:proyecto_111].present?
+
+      cond << "proyecto_111 = ?"
+      args << params[:form_buscar_establecimientos][:proyecto_111]
+
+    end
+
+    if params[:form_buscar_establecimientos] && params[:form_buscar_establecimientos][:proyecto_822].present?
+
+      cond << "proyecto_822 = ?"
+      args << params[:form_buscar_establecimientos][:proyecto_822]
+
+    end
+
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
 
     @establecimientos = cond.size > 0 ? (Establecimiento.orden_dep_dis.paginate :conditions => cond, :per_page => 15, :page => params[:page]) : {}
@@ -226,12 +240,12 @@ class DataController < ApplicationController
       csv = CSV.generate do |csv|
         # header row
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad",
-                "nombre_barrio_localidad", "direccion", "coordenadas_y", "coordenadas_x", "latitud", "longitud", "anho_cod_geo"]
+                "nombre_barrio_localidad", "direccion", "coordenadas_y", "coordenadas_x", "latitud", "longitud", "anho_cod_geo", "programa", "proyecto_111", "proyecto_822" ]
  
         # data rows
         establecimientos_csv.each do |e|
           csv << [e.anio, e.codigo_establecimiento, e.codigo_departamento, e.nombre_departamento, e.codigo_distrito, e.nombre_distrito, e.codigo_zona, e.nombre_zona, e.codigo_barrio_localidad,
-                  e.nombre_barrio_localidad, e.direccion, e.coordenadas_y, e.coordenadas_x, e.latitud, e.longitud, e.anho_cod_geo ]
+                  e.nombre_barrio_localidad, e.direccion, e.coordenadas_y, e.coordenadas_x, e.latitud, e.longitud, e.anho_cod_geo, e.programa, e.proyecto_111, e.proyecto_822 ]
         end
 
       end
@@ -247,7 +261,7 @@ class DataController < ApplicationController
         format.xlsx {
           
           #columnas = [:codigo, :descripcion, :tipo_articulo, :objeto_gasto, :tipo_medida, :medida, :valor_unitario, :activo ] 
-          columnas = [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad, :direccion, :coordenadas_y, :coordenadas_x, :latitud, :longitud] 
+          columnas = [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad, :direccion, :coordenadas_y, :coordenadas_x, :latitud, :longitud, :programa, :proyecto_111, :proyecto_822] 
           
           send_data Establecimiento.orden_dep_dis.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
                     :filename => "establecimientos_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
