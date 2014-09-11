@@ -6,7 +6,7 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
                                                 orden_dep_dis.paginate :per_page => 15, :page => params[:page]
     respond_to do |f|
 
-      f.html {render :layout => 'application_dataset'}
+      f.html {render :layout => 'layouts/application_dataset'}
     end
 
   end
