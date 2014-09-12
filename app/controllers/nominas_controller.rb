@@ -9,7 +9,7 @@ class NominasController < ApplicationController
     
     respond_to do |f|
 
-      f.html {render :layout => 'application_dataset'}
+      f.html {render :layout => 'layouts/application_dataset'}
   
     end
   end
