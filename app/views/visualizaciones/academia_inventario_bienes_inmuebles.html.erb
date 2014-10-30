@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row ">
+    <div class="col-md-12">
+      <h2 style="border-bottom: 2px solid gray;">
+        Inventario de Bienes - Inmuebles
+        <span style="float:right;">
+          <%= link_to "Visualizaciones", mec_custom_url(data_visualizaciones_url), :title => "Ir a Visualizaciones", :style => "font-size:12px;" unless params[:embedded]%>
+          <%= link_to image_tag("noticias.png", :style => "width:24px;"), mec_custom_url(data_visualizaciones_url), :title => "Ir a Visualizaciones" unless params[:embedded]%>
+          <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" unless params[:embedded]%>
+          <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" unless params[:embedded]%>
+        </span>
+      </h2> 
+      <div style="clear:both;"></div> 
+      <div class="map-container">
+
+        <br />
+        <h4 style="border-bottom:2px solid gray;">Visualizaci&oacute;n por tamaño de superficie de cada inmueble.</h4>
+
+<script type='text/javascript' src='https://public.tableausoftware.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 773px; height: 467px;'><noscript><a href='http:&#47;&#47;opendata.pol.una.py&#47;?p=191'><img alt='Sheet 1 ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;KS&#47;KSKQ4ZSQB&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='773' height='467' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableausoftware.com%2F' /> <param name='path' value='shared&#47;KSKQ4ZSQB' /> <param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;KS&#47;KSKQ4ZSQB&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='showVizHome' value='no' /></object></div><div style='width:773px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'><div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/shared/KSKQ4ZSQB' target='_blank'>Obtener información sobre Tableau</a></div></div>
+
+      <br />
+      <h4 style="border-bottom:2px solid gray;">Suma de superficie por distrito.</h4>
+<script type='text/javascript' src='https://public.tableausoftware.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 706px; height: 467px;'><noscript><a href='#'><img alt='Sheet 1 ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;KM&#47;KMN9ZZ24G&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='706' height='467' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableausoftware.com%2F' /> <param name='path' value='shared&#47;KMN9ZZ24G' /> <param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;KM&#47;KMN9ZZ24G&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='showVizHome' value='no' /></object></div><div style='width:706px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'><div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/shared/KMN9ZZ24G' target='_blank'>Obtener información sobre Tableau</a></div></div>
+
+
+
+      <br />
+      <h4 style="border-bottom:2px solid gray;">Inmuebles por departamento.</h4>
+      <iframe width="100%" height="150" src="http://bl.ocks.org/sgip/raw/1844cfeca7e02d2cd9d7" style="min-height: 1200px;border:none;"></iframe>
+
+      <br />
+      <h4 style="border-bottom:2px solid gray;">Inmuebles por departamento.</h4>
+      <iframe width="100%" height="150" src="http://bl.ocks.org/sgip/raw/42df046d5da989429da2/" style="min-height: 555px;border:none;"></iframe>
+
+
+    </div>
+  
+  </div><!--/row-->
+
+</div><!--/.container-->

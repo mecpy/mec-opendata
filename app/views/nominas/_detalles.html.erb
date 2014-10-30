@@ -15,6 +15,7 @@
         <th style="text-align:right;">Asignaci&oacute;n <br />Categor&iacute;a<br />Rubro</th>
         <th style="text-align:right;">Cantidad</th>
         <th style="text-align:right;">Asignaci&oacute;n</th>
+        <th style="text-align:right;">Devuelto</th>
       </tr>
 
     </thead>
@@ -31,6 +32,7 @@
           <td style="text-align:right;"><%= number_to_currency(n.monto_categoria_rubro, :unit => '', :precision => 0) if n.monto_categoria_rubro.present? %></td>
           <td style="text-align:right;"><%= n.cantidad.to_i %></td>
           <td style="text-align:right;"><%= number_to_currency(n.asignacion, :unit => '', :precision => 0) if n.asignacion.present? %></td>
+          <td style="text-align:right;"><%= number_to_currency(n.monto_devuelto, :unit => '', :precision => 0) if n.monto_devuelto.present? %></td>
         </tr>
 
       <% end %>

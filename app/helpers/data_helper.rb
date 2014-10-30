@@ -43,4 +43,8 @@ module DataHelper
 
   end
 
+  def periodos_establecimientos
+    [2012]
+  end
+
 end

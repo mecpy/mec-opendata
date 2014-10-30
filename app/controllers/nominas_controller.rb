@@ -167,7 +167,8 @@ class NominasController < ApplicationController
                       codigo_categoria_rubro: n.codigo_categoria_rubro,       
                       monto_categoria_rubro: n.monto_categoria_rubro,       
                       cantidad: n.cantidad.to_i,     
-                      asignacion: n.asignacion
+                      asignacion: n.asignacion,
+                      monto_devuelto: n.monto_devuelto
 
         end
 

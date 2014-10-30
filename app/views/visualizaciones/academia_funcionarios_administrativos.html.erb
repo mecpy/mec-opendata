@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row ">
+    <div class="col-md-12">
+      <h2 style="border-bottom: 2px solid gray;">
+        Funcionarios Administrativos
+        <span style="float:right;">
+          <%= link_to "Visualizaciones", mec_custom_url(data_visualizaciones_url), :title => "Ir a Visualizaciones", :style => "font-size:12px;" unless params[:embedded]%>
+          <%= link_to image_tag("noticias.png", :style => "width:24px;"), mec_custom_url(data_visualizaciones_url), :title => "Ir a Visualizaciones" unless params[:embedded]%>
+          <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" unless params[:embedded]%>
+          <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" unless params[:embedded]%>
+        </span>
+      </h2> 
+      <div style="clear:both;"></div> 
+      <div class="map-container">
+
+        <script id="infogram_0_mec-8461720775812" src="//e.infogr.am/js/embed.js" type="text/javascript"></script><div style="width:100%;border-top:1px solid #acacac;padding-top:3px;font-family:Arial;font-size:10px;text-align:center;"><a style="color:#acacac;text-decoration:none;" href="//infogr.am" target="_blank">Create Infographics</a></div>
+
+      </div><!--/span-->
+    
+    </div>
+  
+  </div><!--/row-->
+
+</div><!--/.container-->

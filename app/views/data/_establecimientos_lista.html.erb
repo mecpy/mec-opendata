@@ -6,7 +6,7 @@
     <tr>
 
       <td class="text-min"><%= e.anio %></td>
-      <td class="text-min"><%= e.codigo_establecimiento %></td>
+      <td class="text-min"><%= link_to e.codigo_establecimiento, mec_custom_url(id_establecimientos_path(e.codigo_establecimiento)), target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %></td>
       <td class="text-min"><%= e.nombre_departamento %></td>
       <td class="text-min"><%= e.nombre_distrito %></td>
       <td class="text-min"><%= e.nombre_zona %></td>
@@ -79,9 +79,9 @@
         
         <div style="float:left;">Descargar todos los Establecimientos:</div>
         <div itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload" style="float:left;text-align:center;">
-          <%= link_to "PDF#{image_star}".html_safe, "https://mega.co.nz/#!x0InHDpZ!5VZp63YKAvfP3qm2absgZO-kpqK-qEYXxnjqePcRf-Q", :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
+          <%= link_to "PDF#{image_star}".html_safe, "https://mega.co.nz/#!84gjFSjT!Tx_gIHhtqFC5lworhkqIxI8nDsrNbfJGS16f27NlQjM", :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
           <br />
-          <span style="color:silver;">(23MB)</span>
+          <span style="color:silver;">(28,5MB)</span>
           <meta itemprop="name" content="Establecimientos Escolares 2012">
           <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año 2012">
           <meta itemprop="encodingFormat" content="pdf">
@@ -89,7 +89,7 @@
         <div itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload" style="float:left;text-align:center;">
           <%= link_to "XLS#{image_star * 2}".html_safe, PARAMETRO[:establecimientos_xlsx] , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url"%>
           <br />
-          <span style="color:silver;">(880,3KB)</span>
+          <span style="color:silver;">(1MB)</span>
           <meta itemprop="name" content="Establecimientos Escolares 2012">
           <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año 2012">
           <meta itemprop="encodingFormat" content="xls">
@@ -97,7 +97,7 @@
         <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
           <%= link_to "CSV#{image_star * 3}".html_safe, PARAMETRO[:establecimientos_csv], :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url"%>
           <br />
-          <span style="color:silver;">(1,4MB)</span>
+          <span style="color:silver;">(2MB)</span>
           <meta itemprop="name" content="Establecimientos Escolares 2012">
           <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año 2012">
           <meta itemprop="encodingFormat" content="csv">
@@ -105,7 +105,7 @@
         <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
           <%= link_to "JSON#{image_star * 3}".html_safe, PARAMETRO[:establecimientos_json] , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url"%>
           <br />
-          <span style="color:silver;">(4,1MB)</span>
+          <span style="color:silver;">(5MB)</span>
           <meta itemprop="name" content="Establecimientos Escolares 2012">
           <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año 2012">
           <meta itemprop="encodingFormat" content="json">

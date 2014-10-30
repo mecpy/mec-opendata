@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 class DataController < ApplicationController
   
+  before_filter :redireccionar_uri
+
   def index
     
   end
@@ -240,12 +242,12 @@ class DataController < ApplicationController
       csv = CSV.generate do |csv|
         # header row
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad",
-                "nombre_barrio_localidad", "direccion", "coordenadas_y", "coordenadas_x", "latitud", "longitud", "anho_cod_geo", "programa", "proyecto_111", "proyecto_822" ]
+                "nombre_barrio_localidad", "direccion", "coordenadas_y", "coordenadas_x", "latitud", "longitud", "anho_cod_geo", "programa", "proyecto_111", "proyecto_822", "uri"]
  
         # data rows
         establecimientos_csv.each do |e|
-          csv << [e.anio, e.codigo_establecimiento, e.codigo_departamento, e.nombre_departamento, e.codigo_distrito, e.nombre_distrito, e.codigo_zona, e.nombre_zona, e.codigo_barrio_localidad,
-                  e.nombre_barrio_localidad, e.direccion, e.coordenadas_y, e.coordenadas_x, e.latitud, e.longitud, e.anho_cod_geo, e.programa, e.proyecto_111, e.proyecto_822 ]
+          csv << [e.anio, e.codigo_establecimiento, "#{e.codigo_departamento} ", e.nombre_departamento, e.codigo_distrito, e.nombre_distrito, e.codigo_zona, e.nombre_zona, e.codigo_barrio_localidad,
+                  e.nombre_barrio_localidad, e.direccion, e.coordenadas_y, e.coordenadas_x, e.latitud, e.longitud, e.anho_cod_geo, e.programa, e.proyecto_111, e.proyecto_822, e.uri ]
         end
 
       end
@@ -261,7 +263,7 @@ class DataController < ApplicationController
         format.xlsx {
           
           #columnas = [:codigo, :descripcion, :tipo_articulo, :objeto_gasto, :tipo_medida, :medida, :valor_unitario, :activo ] 
-          columnas = [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad, :direccion, :coordenadas_y, :coordenadas_x, :latitud, :longitud, :programa, :proyecto_111, :proyecto_822] 
+          columnas = [:anio, :codigo_establecimiento_, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad, :direccion, :coordenadas_y, :coordenadas_x, :latitud, :longitud, :programa, :proyecto_111, :proyecto_822, :uri] 
           
           send_data Establecimiento.orden_dep_dis.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
                     :filename => "establecimientos_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
@@ -301,7 +303,10 @@ class DataController < ApplicationController
                       coordenadas_y: e.coordenadas_y.to_s,       
                       coordenadas_x: e.coordenadas_x.to_s,       
                       latitud: e.latitud.to_s,       
-                      longitud: e.longitud.to_s       
+                      longitud: e.longitud.to_s,
+                      proyecto_111: e.proyecto_111,       
+                      proyecto_822: e.proyecto_822,       
+                      uri: e.uri       
         end
 
       end
@@ -317,7 +322,7 @@ class DataController < ApplicationController
       respond_to do |f|
 
         f.js
-        f.json {render :json => @establecimientos_todos }
+        f.json {render :json => @establecimientos_todos, :methods => :uri }
 
       end 
 
@@ -427,6 +432,26 @@ class DataController < ApplicationController
 
   def ejemplo_anio_cod_geo
 
+  end
+
+  def establecimientos_doc
+
+    if params[:establecimiento] && params[:establecimiento][:anio].present?
+      anio = params[:establecimiento][:anio]
+    else
+      anio = 2012
+    end
+
+    @establecimiento = Establecimiento.find_by_codigo_establecimiento_and_anio(params[:codigo_establecimiento], anio)
+    @instituciones = Institucion.where('codigo_establecimiento = ? and anio = ?', @establecimiento.codigo_establecimiento, anio) if @establecimiento.present?
+
+    respond_to do |f|
+
+      f.html
+      f.json {render :json => @establecimiento }
+
+    end 
+  
   end
 
 end

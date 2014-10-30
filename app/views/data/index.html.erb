@@ -4,11 +4,11 @@
       
       <div class="menu-tab">
         <div style="background:silver;"><%= link_to "Datasets", mec_custom_url(index_url) %></div>
-        <div><%= link_to "Visualizaciones".html_safe, mec_custom_url(app_mapa_matriculaciones_url) %></div>
+        <div><%= link_to "Visualizaciones".html_safe, mec_custom_url(data_visualizaciones_url) %></div>
       </div>
       <div style="clear:both;"></div>
   
-      <%= link_to "<b>CIUDADANO !!.</b> Qu&eacute; tipo de informaci&oacute;n te gustar&iacute;a ver publicada en <b>datos.mec.gov.py</b> ?".html_safe, mec_custom_url(contactos_url), :title => "Ir al formulario de contactos", :style => "font-size:12px;" %>
+      <%= link_to "<b>CIUDADANO/A !!.</b> Qu&eacute; tipo de informaci&oacute;n te gustar&iacute;a ver publicada en <b>datos.mec.gov.py</b> ?".html_safe, mec_custom_url(contactos_url), :title => "Ir al formulario de contactos", :style => "font-size:12px;" %>
       <%= link_to image_tag("ayuda3.png", :style => "width:24px;" ), mec_custom_url(contactos_url), :title => "Ir al formulario de contactos." %>
       <br />
       La siguiente tabla presenta la lista de datasets disponibles correspondientes al Ministerio de Educación y Cultura.<br>
@@ -469,6 +469,34 @@
 						<td itemprop="keywords" style="display: none;">educación,matriculaciones,departamentos, distritos,contrataciones</td>
 						<td itemprop="version" style="display: none;">1.0</td>
           </tr>
+
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">16</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">REGISTRO DE TITULOS</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <%= link_to "Ver diccionario", mec_custom_url(def_registros_titulos_url), :title => "Ir al diccionario" %>
+              <%= link_to image_tag("def_icon.png"), mec_custom_url(def_registros_titulos_url), :title => "Ir al diccionario" %><br /><br />
+              <%= link_to "Ver datos", mec_custom_url(data_registros_titulos_url), :title => "Ir al dataset" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_registros_titulos_url), :title => "Ir al dataset", :itemprop => "url" %>
+            </td>
+						<td itemprop="description">
+						  Contiene datos de la nómina de personas cuyos títulos de grado y postgrado fueron registrados en el Ministerio de Educación y Cultura.
+						</td>
+						<td itemprop="temporal" style="display: none;">2012-12-01/2014-09-30</td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;">educación,títulos</td>
+						<td itemprop="version" style="display: none;">1.0</td>
+          </tr>
+
         </tbody>
 			
       </table>

@@ -1,0 +1,206 @@
+  <center><h1>Datos Abiertos del Ministerio de Educación y Cultura</h1><%= image_tag "datos-abiertos-nuevo.png", :style => "width:320px;" %></center>
+  <div class="container">
+    <div class="row">
+      
+      <div class="menu-tab">
+        <div><%= link_to "Datasets", mec_custom_url(index_url) %></div>
+        <div style="background:silver;"><%= link_to "Visualizaciones".html_safe, mec_custom_url(data_visualizaciones_url) %></div>
+      </div>
+      <div style="clear:both;"></div>
+
+      <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Visualizaciones del MEC
+                    </br>
+                    <small>Desarrolladas por nuestro equipo técnico</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Project One -->
+        <div class="row">
+            <div class="col-md-7">
+              <!--
+              <a href="http://datos.mec.gov.py/app/mapa_matriculaciones">
+                  <%#= image_tag "viz/mapa_matriculados.png", class: 'img-responsive'%>
+                </a>
+              -->
+                <%= link_to image_tag('viz/mapa_matriculados.png', class: 'img-responsive'), mec_custom_url(app_mapa_matriculaciones_url) %>
+            </div>
+            <div class="col-md-5">
+                <h3>Mapa de Matriculaciones</h3>
+                <h4>Al año 2012</h4>
+                <p></p>
+                <%= link_to "Ir a la visualizaci&oacute;n<span class='glyphicon glyphicon-chevron-right'></span>".html_safe, mec_custom_url(app_mapa_matriculaciones_url), class: 'btn btn-primary' %>
+                <!--
+                  <a class="btn btn-primary" href="http://datos.mec.gov.py/app/mapa_matriculaciones">Ir a la visualización<span class="glyphicon glyphicon-chevron-right"></span></a>
+                -->
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Visualizaciones de la Comunidad
+                    </br>
+                    <small>Desarrolladas por la Academia</small>
+                </h1>
+            </div>
+        </div>
+
+        <!-- Project Two -->
+        <div class="row">
+          <div class="col-md-7">
+                <!--
+                <a href="http://opendata.pol.una.py/?p=75#visualizacion" target="_blank">
+                  <%#= image_tag "viz/docentes.png", class: 'img-responsive'%>
+                </a>
+                -->
+                <%= link_to image_tag('viz/docentes.png', class: 'img-responsive'), mec_custom_url(app_academia_funcionarios_docentes_url) %>
+            </div>
+            <div class="col-md-5">
+                <h3>Funcionarios Docentes</h3>
+                <h4>Del MEC</h4>
+                <p></p>
+                <%= link_to "Ir a la visualizaci&oacute;n<span class='glyphicon glyphicon-chevron-right'></span>".html_safe, mec_custom_url(app_academia_funcionarios_docentes_url), class: 'btn btn-primary' %>
+                <!--
+                <a class="btn btn-primary" href="http://opendata.pol.una.py/?p=75#visualizacion" target="_blank">Ir a la visualización<span class="glyphicon glyphicon-chevron-right"></span></a>
+                -->
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Project Three -->
+        <div class="row">
+            <div class="col-md-7">
+              <!--
+              <a href="http://opendata.pol.una.py/?p=88#visualizacion" target="_blank">
+                  <%#= image_tag 'viz/administrativos.png', class: 'img-responsive' %>
+                </a>
+              -->
+              <%= link_to image_tag('viz/administrativos.png', class: 'img-responsive'), mec_custom_url(app_academia_funcionarios_administrativos_url) %>
+            </div>
+            <div class="col-md-5">
+                <h3>Funcionarios Administrativos</h3>
+                <h4>Del MEC</h4>
+                <p></p>
+                <%= link_to "Ir a la visualizaci&oacute;n<span class='glyphicon glyphicon-chevron-right'></span>".html_safe, mec_custom_url(app_academia_funcionarios_administrativos_url), class: 'btn btn-primary' %>
+                <!--
+                <a class="btn btn-primary" href="http://opendata.pol.una.py/?p=88#visualizacion" target="_blank">Ir a la visualización<span class="glyphicon glyphicon-chevron-right"></span></a>
+                -->
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Project Four -->
+        <div class="row">
+
+            <div class="col-md-7">
+              <!--
+              <a href="http://opendata.pol.una.py/?p=53#visualizacion" target="_blank">
+                  <%#= image_tag 'viz/rodados.png', class: 'img-responsive' %>
+                </a>
+              -->
+              <%= link_to image_tag('viz/rodados.png', class: 'img-responsive'), mec_custom_url(app_academia_inventario_bienes_rodados_url) %>
+            </div>
+            <div class="col-md-5">
+                <h3>Inventario de Bienes</h3>
+                <h4>Rodados</h4>
+                <p></p>
+                <%= link_to "Ir a la visualizaci&oacute;n<span class='glyphicon glyphicon-chevron-right'></span>".html_safe, mec_custom_url(app_academia_inventario_bienes_rodados_url), class: 'btn btn-primary' %>
+                <!--
+                <a class="btn btn-primary" href="http://opendata.pol.una.py/?p=53#visualizacion" target="_blank">Ir a la visualización<span class="glyphicon glyphicon-chevron-right"></span></a>
+                -->
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Project Five -->
+        <div class="row">
+            <div class="col-md-7">
+                <!--
+                <a href="http://opendata.pol.una.py/?p=191#visualizacion" target="_blank">
+                  <%#= image_tag 'viz/inmuebles.png', class: 'img-responsive'%>
+                </a>
+                -->
+                <%= link_to image_tag('viz/inmuebles.png', class: 'img-responsive'), mec_custom_url(app_academia_inventario_bienes_inmuebles_url) %>
+            </div>
+            <div class="col-md-5">
+                <h3>Inventario de Bienes</h3>
+                <h4>Inmuebles</h4>
+                <p></p>
+                <%= link_to "Ir a la visualizaci&oacute;n<span class='glyphicon glyphicon-chevron-right'></span>".html_safe, mec_custom_url(app_academia_inventario_bienes_inmuebles_url), class: 'btn btn-primary' %>
+                <!--
+                <a class="btn btn-primary" href="http://opendata.pol.una.py/?p=191#visualizacion" target="_blank">Ir a la visualización<span class="glyphicon glyphicon-chevron-right"></span></a>
+                -->
+            </div>
+        </div>
+        <hr>
+
+        <!-- Project Five -->
+        <div class="row">
+            <div class="col-md-7">
+              <!--
+              <a href="http://opendata.pol.una.py/OpenDataGui/Graficos.seam" target="_blank">
+                  <%= image_tag 'viz/muebles.png', class: 'img-responsive' %>
+                </a>
+              -->
+              <%= link_to image_tag('viz/muebles.png', class: 'img-responsive'), mec_custom_url(app_academia_inventario_bienes_muebles_url) %>
+
+            </div>
+            <div class="col-md-5">
+                <h3>Inventario de Bienes</h3>
+                <h4>Muebles</h4>
+                <%= link_to "Ir a la visualizaci&oacute;n<span class='glyphicon glyphicon-chevron-right'></span>".html_safe, mec_custom_url(app_academia_inventario_bienes_muebles_url), class: 'btn btn-primary' %>
+                <!--
+                <p>Ver el <a href="http://opendata.pol.una.py/?p=114" target="_blank">blog</a></p>
+                <a class="btn btn-primary" href="http://opendata.pol.una.py/OpenDataGui/Graficos.seam" target="_blank">Ir a la visualización<span class="glyphicon glyphicon-chevron-right"></span></a>
+                -->
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+
+		</div>
+  </div>
+
+  <style type="text/css">
+    
+    .menu-tab { 
+      width:100%;
+      margin-top:10px;
+      margin-bottom:10px;
+    }
+
+    .menu-tab div {
+      width:50%;
+      float:left;
+      font-size:25px;
+      text-align:center;
+      border:1px solid silver;
+      -moz-border-radius-topleft: 5px;
+      -moz-border-radius-topright:5px;
+      -moz-border-radius-bottomleft:5px;
+      -moz-border-radius-bottomright:5px;
+      -webkit-border-top-left-radius:5px;
+      -webkit-border-top-right-radius:5px;
+      -webkit-border-bottom-left-radius:5px;
+      -webkit-border-bottom-right-radius:5px;
+      border-top-left-radius:5px;
+      border-top-right-radius:5px;
+      border-bottom-left-radius:5px;
+      border-bottom-right-radius:5px;
+    }
+
+  </style>

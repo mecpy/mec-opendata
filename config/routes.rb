@@ -1,5 +1,16 @@
 OpenData::Application.routes.draw do
- 
+
+  match 'app/academia/inventario_bienes_muebles' => 'visualizaciones#academia_inventario_bienes_muebles', :as => :app_academia_inventario_bienes_muebles
+  match 'app/academia/inventario_bienes_inmuebles' => 'visualizaciones#academia_inventario_bienes_inmuebles', :as => :app_academia_inventario_bienes_inmuebles
+  match 'app/academia/inventario_bienes_rodados' => 'visualizaciones#academia_inventario_bienes_rodados', :as => :app_academia_inventario_bienes_rodados
+  match 'app/academia/funcionarios_administrativos' => 'visualizaciones#academia_funcionarios_administrativos', :as => :app_academia_funcionarios_administrativos
+  match 'app/academia/funcionarios_docentes' => 'visualizaciones#academia_funcionarios_docentes', :as => :app_academia_funcionarios_docentes
+  match "data/visualizaciones" => 'visualizaciones#index', :as => :data_visualizaciones
+  
+  match "data/registros_titulos_lista" => 'registros_titulos#lista', :as => :data_registros_titulos_lista
+  match 'data/registros_titulos' => 'registros_titulos#index', :as => :data_registros_titulos
+  match 'def/registros_titulos' => 'registros_titulos#diccionario', :as => :def_registros_titulos
+
   match 'app/mapa_matriculaciones' => 'mapa_matriculaciones#index', :as => :app_mapa_matriculaciones
 
   match "data/contrataciones_lista" => 'contrataciones#lista', :as => :data_contrataciones_lista
@@ -49,10 +60,14 @@ OpenData::Application.routes.draw do
   match 'data/matriculaciones_educacion_superior' => 'matriculaciones_educacion_superior#index', :as => :data_matriculaciones_educacion_superior
   match 'def/matriculaciones_educacion_superior' => 'matriculaciones_educacion_superior#diccionario', :as => :def_matriculaciones_educacion_superior
 
+  match "id/instituciones/:codigo_institucion" => "instituciones#doc", :as => :id_instituciones
+  match "doc/instituciones/:codigo_institucion" => "instituciones#doc", :as => :doc_instituciones
   match "data/instituciones_lista" => 'instituciones#lista', :as => :data_instituciones_lista
   match 'data/instituciones' => 'instituciones#index', :as => :data_instituciones
   match 'def/instituciones' => 'instituciones#diccionario', :as => :def_instituciones
 
+  match "id/establecimientos/:codigo_establecimiento" => "data#establecimientos_doc", :as => :id_establecimientos
+  match "doc/establecimientos/:codigo_establecimiento" => "data#establecimientos_doc", :as => :doc_establecimientos  
   match "data/establecimientos_instituciones", :as => :data_establecimientos_instituciones
   match "data/establecimientos_ubicaciones_geograficas", :as => :data_establecimientos_ubicaciones_geograficas
   match "data/establecimientos_ubicacion_geografica", :as => :data_establecimientos_ubicacion_geografica
