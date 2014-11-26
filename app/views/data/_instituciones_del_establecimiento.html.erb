@@ -1,4 +1,4 @@
-Instituciones del Establecimiento Educativo
+Instituciones del Establecimiento Educativohsjdhsjdhj
 <table class="table table-striped table-bordered table-hover">
 
   <tr>
@@ -13,7 +13,14 @@ Instituciones del Establecimiento Educativo
 
     <tr>
 
-      <td><%= link_to i.codigo_institucion, mec_custom_url(data_instituciones_path(:ci => i.codigo_institucion)), :target => "_blank", :title => 'ir al dataset de instituciones.' %></td>
+       
+       
+      <td><%#= link_to i.codigo_institucion.gsub(".","").to_i, mec_custom_url(data_instituciones_path(:ci => i.codigo_institucion)), :target => "_blank", :title => 'ir al dataset de instituciones.' %>
+      
+      <%= link_to i.codigo_institucion.gsub(".","").to_i, mec_custom_url(id_instituciones_path(i.codigo_institucion.gsub(".","").to_i)), target: '_blank',
+       style: 'font-weight:bold;', title: 'Visualizar URI' %>
+      
+      </td>
       <td><%= link_to i.nombre_institucion, mec_custom_url(data_instituciones_path(:ci => i.codigo_institucion)), :target => "_blank", :title => 'ir al dataset de instituciones.' %></td>
       <td style="text-align:right;"><%= cantidad_total_matriculados(i.codigo_institucion.to_s.gsub('.','').to_i, i.codigo_establecimiento) %></td>
     </tr>

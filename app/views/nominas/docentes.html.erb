@@ -41,56 +41,56 @@
       <th style="width:100px;text-align:center;" class="text-min">
         <%= label_tag nil, "A&ntilde;o".html_safe %><br />
         <%= select :form_buscar_nominas, :ano_periodo_pago, [2014], {:class => 'text-min'} %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_ano_periodo_pago').val('2014');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_ano_periodo_pago'));"%>
       </th>
 
       <th style="width:100px;text-align:center;" class="text-min">
         <%= label_tag "Mes" %><br />
-        <%= select :form_buscar_nominas, :mes_periodo_pago, [["setiembre", 9], ["agosto", 8], ["julio", 7], ["junio", 6]], {:class => 'text-min'} %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_mes_periodo_pago').val('2014');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
+        <%= select :form_buscar_nominas, :mes_periodo_pago, [["octubre", 10],["setiembre", 9], ["agosto", 8], ["julio", 7], ["junio", 6]], {:class => 'text-min'} %>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_mes_periodo_pago'));" %>
       </th>
       
       <th style="width:10%;text-align:center;" class="text-min">
         <%= label_tag nil, "N° Documento".html_safe%><br />
         <%= text_field_tag :form_buscar_nominas_codigo_trabajador, nil, :class => 'text-min', :style => "width: 100px;" %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_codigo_trabajador').val('');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_codigo_trabajador'));" %>
       </th>
 
       <th style="width:14%;text-align:center;" class="text-min">
         <%= label_tag "Nombre completo"%><br />
         <%= text_field_tag :form_buscar_nominas_nombre_trabajador, nil, :class => 'text-min' , :style => "width: 100px;"%>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_nombre_trabajador').val('');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_nombre_trabajador'));" %>
       </th>
 
       <th style="width:12%;text-align:center;" class="text-min">
         <%= label_tag "Objeto de Gasto"%><br />
         <%= text_field_tag :form_buscar_nominas_nombre_objeto_gasto, nil, :class => 'text-min' , :style => "width: 100px;"%>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_nombre_objeto_gasto').val('');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_nombre_objeto_gasto'));" %>
       </th>
 
       <th style="width:12%;text-align:center;" class="text-min">
         <%= label_tag "Estado"%><br />
         <%= text_field_tag :form_buscar_nominas_estado, nil, :class => 'text-min', :style => "width: 100px;" %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_estado').val('');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_estado'));" %>
       </th>
 
       <th style="width:12%;text-align:center;" class="text-min">
         <%= label_tag "Antigüedad"%><br />
         <%= text_field_tag :form_buscar_nominas_antiguedad_docente, nil, :class => 'text-min' , :style => "width: 100px;"%>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_antiguedad_docente').val('');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_antiguedad_docente'));" %>
       </th>
 
       <th style="width:12%;text-align:center;" class="text-min">
         <%= label_tag "Numero Matriculación" %><br />
         <%= text_field_tag :form_buscar_nominas_numero_matriculacion, nil, :class => 'text-min' , :style => "width: 100px;"%>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_numero_matriculacion').val('');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_numero_matriculacion'));" %>
       </th>
 
       <th style="width:12%;text-align:center;" class="text-min">
         <%= label_tag nil, "Asignaci&oacute;n".html_safe %><br />
         <%= select_tag(:form_buscar_nominas_asignacion_operador, options_for_select(['>', '<', '='])) %>
         <%= text_field_tag :form_buscar_nominas_asignacion, nil, :class => 'text-min', :style => "width: 100px;" %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_asignacion').val('');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_asignacion'));" %>
       </th>
 
       <th style="width:16px;"></th>
@@ -108,13 +108,14 @@
   $("#form-buscar-nominas").bind("submit", function(){
 
 			$('.nominas-detalles').html('');
-      $("#nominas-lista").html("<%= escape_javascript("<tr><td colspan='8' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")    
+      $("#nominas-lista").html("<%= escape_javascript("<tr><td colspan='10' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")    
   
   })
 
   $("#form_buscar_nominas_ano_periodo_pago").bind('change',function(){
       
 		$(".nominas-detalles").html('');
+    $.ajaxQ.abortAll();
     $("#form-buscar-nominas").submit();
       
   })
@@ -122,6 +123,7 @@
   $("#form_buscar_nominas_mes_periodo_pago").bind('change',function(){
       
 		$(".nominas-detalles").html('');
+    $.ajaxQ.abortAll();
     $("#form-buscar-nominas").submit();
       
   })
@@ -129,6 +131,7 @@
   $("#form_buscar_nominas_asignacion_operador").bind('change',function(){
       
 		$(".nominas-detalles").html('');
+    $.ajaxQ.abortAll();
     $("#form-buscar-nominas").submit();
       
   })
@@ -136,20 +139,32 @@
   $(".table-bordered input").bind('change',function(){
   
     $(".nominas-detalles").html('');
+    $.ajaxQ.abortAll();
     $("#form-buscar-nominas").submit();    
     
   })
+
+  //--------------- QUITAR FILTRO -------------------//
+  function quitar_filtro(id){
+    
+    id.val('');
+    $.ajaxQ.abortAll();
+    $('#form-buscar-nominas').submit();
+  
+  }
+  //-------------------------------------------------//
 
   //LIMPIAR FORMULARIO DE BUSQUEDA
   function limpiar_form_buscar_nominas(){
     
     $("#form_buscar_nominas_ano_periodo_pago").val("2014");
-    $("#form_buscar_nominas_mes_periodo_pago").val("9");
+    $("#form_buscar_nominas_mes_periodo_pago").val("10");
     $("#form_buscar_nominas_codigo_trabajador").val("");
     $("#form_buscar_nominas_nombre_trabajador").val("");
     $("#form_buscar_nominas_numero_matriculacion").val("");
     $("#form_buscar_nominas_asignacion").val("");
     $(".nominas-detalles").html('');
+    $.ajaxQ.abortAll();
     $("#form-buscar-nominas").submit();    
 
   }  

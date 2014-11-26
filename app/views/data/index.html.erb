@@ -32,12 +32,20 @@
           <td itemprop="url" style="display: none;">http://datos.mec.gov.py/</td>
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">  
             <td style="vertical-align:middle;">1</td>
-					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">ESTABLECIMIENTOS ESCOLARES</td>
+			<td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">ESTABLECIMIENTOS ESCOLARES
+				</br>
+				<%#= image_tag("star.png")%>
+				<%#= image_tag("star.png")%>
+				<%#= image_tag("star.png")%>
+				<%#= image_tag("star.png")%>
+			</td>
+			
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario", mec_custom_url(def_establecimientos_url), :title => "Ir al diccionario" %>
               <%= link_to image_tag("def_icon.png"), mec_custom_url(def_establecimientos_url) , :title => "Ir al diccionario" %><br /><br />
               <%= link_to "Ver datos", mec_custom_url(data_establecimientos_url), :title => "Ir al dataset" %>
               <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_establecimientos_url), :title => "Ir al dataset", :itemprop => "url"%>
+            
             </td>
 						<td itemprop="description">
 							Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación.
@@ -59,7 +67,13 @@
           
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
             <td style="vertical-align:middle;">2</td>
-					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">INSTITUCIONES EDUCATIVAS</td>
+			<td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">INSTITUCIONES EDUCATIVAS
+				</br>
+				<%#= image_tag("star.png")%>
+				<%#= image_tag("star.png")%>
+				<%#= image_tag("star.png")%>	
+				<%#= image_tag("star.png")%>
+			</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario", mec_custom_url(def_instituciones_url), :title => "Ir al diccionario" %>
               <%= link_to image_tag("def_icon.png"), mec_custom_url(def_instituciones_url), :title => "Ir al diccionario" %><br /><br />
@@ -481,6 +495,31 @@
             </td>
 						<td itemprop="description">
 						  Contiene datos de la nómina de personas cuyos títulos de grado y postgrado fueron registrados en el Ministerio de Educación y Cultura.
+						</td>
+						<td itemprop="temporal" style="display: none;">2012-12-01/2014-09-30</td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;">educación,títulos</td>
+						<td itemprop="version" style="display: none;">1.0</td>
+          </tr>
+
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">17</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <%= link_to "Ver Cat&aacute;logo".html_safe, mec_custom_url(data_requerimientos_infraestructuras_catalogo_url), :title => "Ir al Catálogo" %>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_requerimientos_infraestructuras_catalogo_url), :title => "Ir al Catálogo ", :itemprop => "url" %>
+            </td>
+						<td itemprop="description">
+						  Contiene información sobre establecimientos escolares priorizados y elegibles para la inversión de  proyectos de infraestructura en educación a ser financiados con recursos provenientes del Fondo Nacional de Inversión Pública y Desarrollo (FONACIDE) transferidos a las Gobernaciones y Municipalidades, que han reportado sus requerimientos a través de la metodología de Microplanificación de la oferta educativa.
 						</td>
 						<td itemprop="temporal" style="display: none;">2012-12-01/2014-09-30</td>
 						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">

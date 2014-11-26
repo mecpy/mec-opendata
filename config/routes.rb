@@ -1,5 +1,7 @@
 OpenData::Application.routes.draw do
 
+  match "data/establecimientos_escolares_priorizados_elegibles_fonacide" => 'requerimientos_infraestructuras#catalogo', :as => :data_requerimientos_infraestructuras_catalogo
+
   match 'app/academia/inventario_bienes_muebles' => 'visualizaciones#academia_inventario_bienes_muebles', :as => :app_academia_inventario_bienes_muebles
   match 'app/academia/inventario_bienes_inmuebles' => 'visualizaciones#academia_inventario_bienes_inmuebles', :as => :app_academia_inventario_bienes_inmuebles
   match 'app/academia/inventario_bienes_rodados' => 'visualizaciones#academia_inventario_bienes_rodados', :as => :app_academia_inventario_bienes_rodados

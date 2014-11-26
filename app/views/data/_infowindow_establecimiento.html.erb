@@ -2,7 +2,11 @@
 
   <tr>
     <th>C&oacute;digo de local</th>
-    <td><%= establecimiento.codigo_establecimiento %></td>
+    <td><%#= establecimiento.codigo_establecimiento %>
+    <%= link_to establecimiento.codigo_establecimiento, mec_custom_url(id_establecimientos_path(establecimiento.codigo_establecimiento)), 
+    target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %>
+    </td>
+    
   </tr>
 
   <tr>

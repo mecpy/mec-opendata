@@ -36,61 +36,61 @@
       <th style="width:100px;" class="text-min celda-derecha">
         <%= label_tag "Periodo" %><br />
         <%= select :form_buscar_establecimientos, :anio, [2012], {:class => 'text-min'} %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_establecimientos_anio').val('2012');$('#form-buscar-establecimientos').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_anio'));" %>
       </th>
 
       <th style="width:10%;" class="text-min">
         <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe%><br />
         <%= text_field_tag :form_buscar_establecimientos_codigo_establecimiento, nil, :class => 'text-min' %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_establecimientos_codigo_establecimiento').val('');$('#form-buscar-establecimientos').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_codigo_establecimiento'));"%>
       </th>
 
       <th style="width:10%;" class="text-min">
         <%= label_tag "Departamento"%><br />
         <%= text_field_tag :form_buscar_establecimientos_nombre_departamento, nil, :class => 'text-min' %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_establecimientos_nombre_departamento').val('');$('#form-buscar-establecimientos').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_nombre_departamento'));" %>
       </th>
 
       <th style="width:10%;" class="text-min">
         <%= label_tag "Distrito"%><br />
         <%= text_field_tag :form_buscar_establecimientos_nombre_distrito, nil, :class => 'text-min' %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_establecimientos_nombre_distrito').val('');$('#form-buscar-establecimientos').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_nombre_distrito'));" %>
       </th>
 
       <th style="width:10%;" class="text-min">
         <%= label_tag "Zona"%><br />
         <%= text_field_tag :form_buscar_establecimientos_nombre_zona, nil, :class => 'text-min' %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_establecimientos_nombre_zona').val('');$('#form-buscar-establecimientos').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_nombre_zona'));" %>
       </th>
 
       <th style="width:10%;" class="text-min">
         <%= label_tag "Barrio/Localidad"%><br />
         <%= text_field_tag :form_buscar_establecimientos_nombre_barrio_localidad, nil, :class => 'text-min' %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_establecimientos_nombre_barrio_localidad').val('');$('#form-buscar-establecimientos').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_nombre_barrio_localidad'));" %>
       </th>
 
       <th style="width:10%;" class="text-min">
         <%= label_tag nil, "Direcci&oacute;n".html_safe%><br />
         <%= text_field_tag :form_buscar_establecimientos_direccion, nil, :class => 'text-min' %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_establecimientos_direccion').val('');$('#form-buscar-establecimientos').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_direccion'));" %>
       </th>
 
       <th style="width:14%;" class="text-min">
         <%= label_tag nil, "Programa".html_safe%><br />
         <%= select :form_buscar_establecimientos, :programa, [["",""],["Jornada Extendida", 1]] %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_establecimientos_programa').val('');$('#form-buscar-establecimientos').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_programa'));" %>
       </th>
 
       <th style="width:10%;" class="text-min">
         <%= label_tag nil, "Proyecto 111".html_safe%><br />
         <%= select :form_buscar_establecimientos, :proyecto_111, [["",""],["NO","NO"],["SI", 'SI']] %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_establecimientos_proyecto_811').val('');$('#form-buscar-establecimientos').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_proyecto_811'));" %>
       </th>
 
       <th style="width:10%;" class="text-min">
         <%= label_tag nil, "Proyecto 822".html_safe%><br />
         <%= select :form_buscar_establecimientos, :proyecto_822, [["",""],["NO","NO"],["SI", 'SI']] %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_establecimientos_proyecto_822').val('');$('#form-buscar-establecimientos').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_proyecto_822'));" %>
       </th>
 
       <th style="width:16px;" id="ubicaciones-geograficas"></th>
@@ -109,7 +109,7 @@
 
 			$('.establecimiento-ubicacion-geografica').html('');
 		  $("#establecimientos-ubicaciones-geograficas").html('');
-      $("#establecimientos-lista").html("<%= escape_javascript("<tr><td colspan='9' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")    
+      $("#establecimientos-lista").html("<%= escape_javascript("<tr><td colspan='11' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")    
   
   })
 
@@ -117,6 +117,7 @@
       
 		$('.establecimiento-ubicacion-geografica').html('');
 		$("#establecimientos-ubicaciones-geograficas").html('');
+    $.ajaxQ.abortAll();
     $("#form-buscar-establecimientos").submit();
       
   })
@@ -125,6 +126,7 @@
       
 		$('.establecimiento-ubicacion-geografica').html('');
 		$("#establecimientos-ubicaciones-geograficas").html('');
+    $.ajaxQ.abortAll();
     $("#form-buscar-establecimientos").submit();
       
   })
@@ -133,6 +135,7 @@
       
 		$('.establecimiento-ubicacion-geografica').html('');
 		$("#establecimientos-ubicaciones-geograficas").html('');
+    $.ajaxQ.abortAll();
     $("#form-buscar-establecimientos").submit();
       
   })
@@ -141,6 +144,7 @@
       
 		$('.establecimiento-ubicacion-geografica').html('');
 		$("#establecimientos-ubicaciones-geograficas").html('');
+    $.ajaxQ.abortAll();
     $("#form-buscar-establecimientos").submit();
       
   })
@@ -149,6 +153,7 @@
       
 		$('.establecimiento-ubicacion-geografica').html('');
 		$("#establecimientos-ubicaciones-geograficas").html('');
+    $.ajaxQ.abortAll();
     $("#form-buscar-establecimientos").submit();
       
   })
@@ -168,6 +173,7 @@
     $("#form_buscar_establecimientos_proyecto_822").val("");
 		$('.establecimiento-ubicacion-geografica').html('');
 		$("#establecimientos-ubicaciones-geograficas").html('');
+    $.ajaxQ.abortAll();
     $("#form-buscar-establecimientos").submit();
 
   }  
@@ -182,8 +188,10 @@
 
       $("#link-to-ubicaciones-geograficas").parent().parent().after("<tr id=\"establecimientos-ubicaciones-geograficas\" class=\"establecimientos-ubicaciones-geograficas\"></tr>"); 
         
-      $("#establecimientos-ubicaciones-geograficas").html("<%= escape_javascript("<tr><td colspan='9' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")  
+      $("#establecimientos-ubicaciones-geograficas").html("<%= escape_javascript("<tr><td colspan='11' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")  
           
+      $.ajaxQ.abortAll();
+      
       $.ajax({
 			  type: 'POST',
 				url: "<%= url_for(mec_custom_url(data_establecimientos_ubicaciones_geograficas_url)) %>"+parametros,
@@ -215,6 +223,7 @@
   <% if params[:ce].present? %>
 
     $("#form_buscar_establecimientos_codigo_establecimiento").val("<%= params[:ce] %>");
+    $.ajaxQ.abortAll();
     $("#form-buscar-establecimientos").submit();
 
   <% else %>
@@ -222,6 +231,16 @@
     limpiar_form_buscar_establecimientos();
 
   <% end %>
+
+  //--------------- QUITAR FILTRO -------------------//
+  function quitar_filtro(id){
+    
+    id.val('');
+    $.ajaxQ.abortAll();
+    $('#form-buscar-establecimientos').submit();
+  
+  }
+  //-------------------------------------------------//
 
 </script>
 

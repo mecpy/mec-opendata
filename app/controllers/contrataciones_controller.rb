@@ -84,6 +84,13 @@ class ContratacionesController < ApplicationController
 
     end
 
+    if params[:form_buscar_contrataciones_proveedor_adjudicado].present?
+
+      cond << "proveedor_ruc || ' ' || proveedor  ilike ?"
+      args << "%#{params[:form_buscar_contrataciones_proveedor_adjudicado]}%"
+
+    end
+
     if params[:form_buscar_contrataciones_monto_adjudicado].present?
 
       cond << "monto_adjudicado #{params[:form_buscar_contrataciones_monto_adjudicado_operador]} ?"
@@ -105,11 +112,11 @@ class ContratacionesController < ApplicationController
 
       csv = CSV.generate do |csv|
         # header row
-        csv << ["llamado_publico", "estado_llamado_id", "estado_llamado", "ejercicio_fiscal", "categoria_id", "categoria", "nombre", "descripcion", "modalidad_id", "modalidad", "monto_adjudicado"]
+        csv << ["llamado_publico", "estado_llamado_id", "estado_llamado", "ejercicio_fiscal", "categoria_id", "categoria", "nombre", "descripcion", "fecha_apertura_oferta", "fecha_contrato", "fecha_vigencia_contrato", "proveedor_id", "proveedor_ruc", "proveedor", "modalidad_id", "modalidad", "monto_adjudicado"]
  
         # data rows
         contrataciones_csv.each do |c|
-          csv << [ c.llamado_publico, c.estado_llamado_id, c.estado_llamado, c.ejercicio_fiscal, c.categoria_id, c.categoria, c.nombre, c.descripcion, c.modalidad_id, c.modalidad, c.monto_adjudicado ]
+          csv << [ c.llamado_publico, c.estado_llamado_id, c.estado_llamado, c.ejercicio_fiscal, c.categoria_id, c.categoria, c.nombre, c.descripcion, c.fecha_apertura_oferta, c.fecha_contrato,c.fecha_vigencia_contrato, c.proveedor_id, c.proveedor_ruc, c.proveedor, c.modalidad_id, c.modalidad, c.monto_adjudicado ]
         end
 
       end
@@ -124,7 +131,7 @@ class ContratacionesController < ApplicationController
       
         format.xlsx {
 
-          columnas = [:llamado_publico, :estado_llamado_id, :estado_llamado, :ejercicio_fiscal, :categoria_id, :categoria, :nombre, :descripcion, :modalidad_id, :modalidad, :monto_adjudicado]
+          columnas = [:llamado_publico, :estado_llamado_id, :estado_llamado, :ejercicio_fiscal, :categoria_id, :categoria, :nombre, :descripcion, :fecha_apertura_oferta, :fecha_contrato, :fecha_vigencia_contrato, :proveedor_id, :proveedor_ruc, :proveedor, :modalidad_id, :modalidad, :monto_adjudicado]
          
           send_data Contratacion.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
                     :filename => "contrataciones_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
