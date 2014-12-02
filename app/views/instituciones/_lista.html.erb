@@ -12,7 +12,7 @@
       <td class="text-min"><%= link_to i.codigo_institucion.gsub(".","").to_i, mec_custom_url(id_instituciones_path(i.codigo_institucion.gsub(".","").to_i)), target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %></td>
       <td class="text-min"><%= i.nombre_institucion %></td>
       <td class="text-min"><%= i.nombre_departamento %></td>
-      <td class="text-min"><%= i.nombre_distrito %></td>
+      <td class="text-min"><div><%= i.nombre_distrito %></div></td>
       <td class="text-min"><%= i.nombre_barrio_localidad %></td>
       <td class="text-min"><%= i.nombre_zona %></td>
       <td class="text-min"><%= i.sector_o_tipo_gestion %></td>       
