@@ -1,4 +1,7 @@
 var MDTable = (function(){
+	var rowCount = 0;
+	var rowBackground = ['#f9f9f9','#fff'];
+
 	var keyCells = function(row, key){
 		return _.filter($(row).children().toArray(),
 		 		function(e, i){ return _.contains(key, i); });
@@ -23,6 +26,8 @@ var MDTable = (function(){
 	};
 
 	var transformFirstRow = function(row, key){
+		rowCount++;
+
 		_.each(keyCells(row, key), function(cell){
 			$(cell).css('border-width', '1px 1px 0px 1px');
 		});
@@ -38,6 +43,10 @@ var MDTable = (function(){
 			if(i > 0 && masterEquals(row, rows[i-1], key)){
 				transformRow(row, key);
 			}
+
+			_.each($(row).children(), function(cell){
+				$(cell).css('background-color', rowBackground[(rowCount - 1) % 2]);
+			});
 		});
 	}
 
