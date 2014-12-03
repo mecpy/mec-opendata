@@ -1,11 +1,11 @@
 
-<% if instituciones.present? %>
+<% if requerimientos_otros_espacios.present? %>
   
-  <% instituciones.each do |i| %>
+  <% requerimientos_otros_espacios.each do |i| %>
 
     <tr>
-
-      <td class="text-min"><%= i.anio %></td>
+      <td class="text-min"><%= i.periodo %></td>
+      <td class="text-min"><%= i.numero_prioridad %></td>
       <td class="text-min" style="font-weight:bold;">
         <%= link_to i.codigo_establecimiento, mec_custom_url(id_establecimientos_path(i.codigo_establecimiento)), target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %>
       </td>  
@@ -15,17 +15,13 @@
       <td class="text-min"><%= i.nombre_distrito %></td>
       <td class="text-min"><%= i.nombre_barrio_localidad %></td>
       <td class="text-min"><%= i.nombre_zona %></td>
-      <td class="text-min"><%= i.sector_o_tipo_gestion %></td>       
-      <td class="text-min"><%= i.nombre_region_administrativa %></td>       
-      <td class="text-min"><%= i.nombre_supervisor %></td>       
-      <td class="text-min"><%= i.niveles_modalidades %></td>       
-      <td class="text-min"><%= i.nombre_tipo_organizacion %></td>       
-      <td class="text-min"><%= i.participacion_comunitaria %></td>       
-      <td class="text-min"><%= i.direccion %></td>       
-      <td class="text-min"><%= i.nro_telefono %></td>       
-      <td class="text-min"><%= i.tiene_internet %></td>       
-      <td class="text-min"><%= i.paginaweb %></td>       
-      <td class="text-min"><%= i.correo_electronico %></td>       
+      <td class="text-min"><%= i.nivel_educativo_beneficiado %></td>       
+      <td class="text-min"><%= i.cuenta_espacio_para_construccion %></td>
+      <td class="text-min"><%= i.nombre_espacio %></td>
+      <td class="text-min"><%= i.tipo_requerimiento_infraestructura %></td>       
+      <td class="text-min"><%= i.cantidad_requerida %></td>       
+      <td class="text-min"><%= i.justificacion %></td>       
+      <td class="text-min"><%= i.numero_beneficiados %></td>  
     </tr>
   
   <% end %>

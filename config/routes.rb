@@ -67,6 +67,26 @@ OpenData::Application.routes.draw do
   match "data/instituciones_lista" => 'instituciones#lista', :as => :data_instituciones_lista
   match 'data/instituciones' => 'instituciones#index', :as => :data_instituciones
   match 'def/instituciones' => 'instituciones#diccionario', :as => :def_instituciones
+  
+  match "data/requerimientos_aulas_lista" => 'requerimientos_aulas#lista', :as => :data_requerimientos_aulas_lista
+  match 'data/requerimientos_aulas' => 'requerimientos_aulas#index', :as => :data_requerimientos_aulas
+  match 'def/requerimientos_aulas' => 'requerimientos_aulas#diccionario', :as => :def_requerimientos_aulas
+  
+  match "data/requerimientos_sanitarios_lista" => 'requerimientos_sanitarios#lista', :as => :data_requerimientos_sanitarios_lista
+  match 'data/requerimientos_sanitarios' => 'requerimientos_sanitarios#index', :as => :data_requerimientos_sanitarios
+  match 'def/requerimientos_sanitarios' => 'requerimientos_sanitarios#diccionario', :as => :def_requerimientos_sanitarios
+  
+  match "data/requerimientos_mobiliarios_lista" => 'requerimientos_mobiliarios#lista', :as => :data_requerimientos_mobiliarios_lista
+  match 'data/requerimientos_mobiliarios' => 'requerimientos_mobiliarios#index', :as => :data_requerimientos_mobiliarios
+  match 'def/requerimientos_mobiliarios' => 'requerimientos_mobiliarios#diccionario', :as => :def_requerimientos_mobiliarios
+  
+  match "data/requerimientos_otros_espacios_lista" => 'requerimientos_otros_espacios#lista', :as => :data_requerimientos_otros_espacios_lista
+  match 'data/requerimientos_otros_espacios' => 'requerimientos_otros_espacios#index', :as => :data_requerimientos_otros_espacios
+  match 'def/requerimientos_otros_espacios' => 'requerimientos_otros_espacios#diccionario', :as => :def_requerimientos_otros_espacios
+  
+  match "data/estados_locales_lista" => 'estados_locales#lista', :as => :data_estados_locales_lista
+  match 'data/estados_locales' => 'estados_locales#index', :as => :data_estados_locales
+  match 'def/estados_locales' => 'estados_locales#diccionario', :as => :def_estados_locales
 
   match "id/establecimientos/:codigo_establecimiento" => "data#establecimientos_doc", :as => :id_establecimientos
   match "doc/establecimientos/:codigo_establecimiento" => "data#establecimientos_doc", :as => :doc_establecimientos  

@@ -40,7 +40,7 @@
 
       <%= form_tag mec_custom_url(data_instituciones_lista_url), :remote => true, :id => "form-buscar-instituciones" do  %>
 
-        <th style="width3%" class="text-min celda-derecha">
+        <th style="width:3%" class="text-min celda-derecha">
           <%= label_tag "Periodo" %><br />
           <%= select :form_buscar_instituciones, :anio, [2012], {:class => 'text-min'} %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_instituciones_anio').val('2012');$('#form-buscar-instituciones').submit();" ,:style => "color:#fff;"%>

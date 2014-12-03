@@ -1,11 +1,11 @@
 
-<% if instituciones.present? %>
+<% if estados_locales.present? %>
   
-  <% instituciones.each do |i| %>
+  <% estados_locales.each do |i| %>
 
     <tr>
 
-      <td class="text-min"><%= i.anio %></td>
+      <td class="text-min"><%= i.periodo %></td>
       <td class="text-min" style="font-weight:bold;">
         <%= link_to i.codigo_establecimiento, mec_custom_url(id_establecimientos_path(i.codigo_establecimiento)), target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %>
       </td>  
