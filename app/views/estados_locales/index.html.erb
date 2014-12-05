@@ -1,8 +1,8 @@
 <h2>
   <span itemprop="name">Estados Locales</span>
-  <meta itemprop="url" content="http://datos.mec.gov.py/data/instituciones">  
+  <meta itemprop="url" content="http://datos.mec.gov.py/data/estados_locales">  
   <meta itemprop="description"
-                content="Contiene datos de los niveles/modalidades de educación ofertados por las instituciones educativas; región administrativa a la que pertenece la institución educativa; tipo de organización, participación comunitaria, dirección del establecimiento escolar, servicio disponible (internet, telefono, correo electronico, etc.). Una institución educativa puede poseer diferentes locales escolares ubicados en un mismo o en diferentes departamentos geográficos. El SIEC considera una misma institución cuando varios niveles o modalidades tienen una organización, gestión y administración única. Por ejemplo: Centro Regional de Educación Gral. Patricio Escobar de Encarnación, Colegio Santa Clara de Asunción."
+                content="Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación. Se contiene inforamaci&oacute; sobre su estructura actual, abastecimiento de agua, severvicio de sanitario acutal, suministro de energ&iacute;a el&eacute;ctrica, si cuenta con plano, t&iacute;tulo de propiedad y mecanismo de prevenci&oac&oacute;n de incendio."
             />
   <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
   <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
@@ -20,7 +20,7 @@
     <meta itemprop="email" content="datosabiertos@mec.gov.py">
   </span>
   <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
-  <meta itemprop="keywords" style="display: none;" content="educación,instituciones"/>
+  <meta itemprop="keywords" style="display: none;" content="educación,establecimientos,escolar,estado,local"/>
   <meta itemprop="version" style="display: none;" content="1.0">
 
   <span style="float:right;">
@@ -40,10 +40,10 @@
 
       <%= form_tag mec_custom_url(data_estados_locales_lista_url), :remote => true, :id => "form-buscar-estados-locales" do  %>
 
-        <th style="width:3%" class="text-min celda-derecha">
+        <th style="width:5%" class="text-min celda-derecha">
           <%= label_tag "Periodo" %><br />
-          <%= select :form_buscar_estados_locales, :periodo, [2012], {:class => 'text-min'} %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_periodo').val('2012');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
+          <%= select :form_buscar_estados_locales, :periodo, [2014,2012], {:class => 'text-min'} %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_periodo').val('2014');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
         </th>
 
         <th style="width:7%" class="text-min">
@@ -89,69 +89,45 @@
         </th>
 
         <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Sector".html_safe%><br />
-          <%= text_field_tag :form_buscar_estados_locales_sector_o_tipo_gestion, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_sector_o_tipo_gestion').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
+          <%= label_tag nil, "Nombre de Asentamiento o Colonia".html_safe%><br />
+          <%= text_field_tag :form_buscar_estados_locales_nombre_asentamiento_colonia, nil, :class => 'text-min' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_nombre_asentamiento_colonia').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
         </th>
-
-        <th style="width:8%;" class="text-min">
-          <%= label_tag nil, "Regi&oacute;n Administrativa".html_safe%><br />
-          <%= text_field_tag :form_buscar_estados_locales_nombre_region_administrativa, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_nombre_region_administrativa').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
-        </th>
-
+        
         <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Supervisor/a".html_safe%><br />
-          <%= text_field_tag :form_buscar_estados_locales_nombre_supervisor, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_nombre_supervisor').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
+          <%= label_tag nil, "Suministro Energ&iacute;a El&eacute;ctrica".html_safe%><br />
+          <%= text_field_tag :form_buscar_estados_locales_suministro_energia_electrica, nil, :class => 'text-min' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_suministro_energia_electrica').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
         </th>
-
+        
         <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Nivel/Modalidad".html_safe%><br />
-          <%= text_field_tag :form_buscar_estados_locales_niveles_modalidades, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_niveles_modalidades').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
+          <%= label_tag nil, "Abastecimiento de Agua".html_safe%><br />
+          <%= text_field_tag :form_buscar_estados_locales_abastecimiento_agua, nil, :class => 'text-min' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_abastecimiento_agua').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
         </th>
-
+        
         <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Tipo Organizaci&oacute;n".html_safe%><br />
-          <%= text_field_tag :form_buscar_estados_locales_nombre_tipo_organizacion, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_nombre_tipo_organizacion').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
+          <%= label_tag nil, "Servicio Sanitario Actual".html_safe%><br />
+          <%= text_field_tag :form_buscar_estados_locales_servicio_sanitario_actual, nil, :class => 'text-min' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_servicio_sanitario_actual').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
         </th>
-
+        
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "T&iacute;tulo de Propiedad".html_safe%><br />
+          <%= text_field_tag :form_buscar_estados_locales_titulo_de_propiedad, nil, :class => 'text-min' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_titulo_de_propiedad').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
+        </th>
+        
         <th style="width:5%;" class="text-min celda-derecha">
-          <%= label_tag "Participación Comunitaria" %><br />
-          <%= select :form_buscar_estados_locales, :participacion_comunitaria, ['','SI','NO'], {:class => 'text-min'} %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_participacion_comunitaria').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
+          <%= label_tag nil,"Cuenta con Plano".html_safe %><br />
+          <%= select :form_buscar_estados_locales, :cuenta_plano, ['','SI','NO'], {:class => 'text-min'} %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_cuenta_plano').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
         </th>
-
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Direcci&oacute;n".html_safe%><br />
-          <%= text_field_tag :form_buscar_estados_locales_direccion, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_direccion').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
-        </th>
-
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Tel&eacute;fono".html_safe%><br />
-          <%= text_field_tag :form_buscar_estados_locales_nro_telefono, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_nro_telefono').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
-        </th>
-
+        
         <th style="width:5%;" class="text-min celda-derecha">
-          <%= label_tag "Tiene Internet?" %><br />
-          <%= select :form_buscar_estados_locales, :tiene_internet, ['', 'SI', 'NO'], {:class => 'text-min'} %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_tiene_internet').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
-        </th>
-
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "P&aacute;gina Web".html_safe%><br />
-          <%= text_field_tag :form_buscar_estados_locales_paginaweb, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_paginaweb').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
-        </th>
-
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Correo Electr&oacute;nico".html_safe%><br />
-          <%= text_field_tag :form_buscar_estados_locales_correo_electronico, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_correo_electronico').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
+          <%= label_tag nil,"Cuenta con Prevenci&oacute;n de Incendio".html_safe %><br />
+          <%= select :form_buscar_estados_locales, :prevencion_incendio, ['','SI','NO'], {:class => 'text-min'} %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_prevencion_incendio').val('');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
         </th>
 
       <% end %>
@@ -182,13 +158,13 @@
       
   })
 
-  $("#form_buscar_estados_locales_tiene_internet").bind('change',function(){
+  $("#form_buscar_estados_locales_cuenta_plano").bind('change',function(){
       
     $("#form-buscar-estados-locales").submit();
       
   })
 
-  $("#form_buscar_estados_locales_participacion_comunitaria").bind('change',function(){
+  $("#form_buscar_estados_locales_prevencion_incendio").bind('change',function(){
       
     $("#form-buscar-estados-locales").submit();
       
@@ -204,7 +180,7 @@
   //LIMPIAR FORMULARIO DE BUSQUEDA
   function limpiar_form_buscar_estados_locales(){
     
-    $("#form_buscar_estados_locales_periodo").val("2012");
+    $("#form_buscar_estados_locales_periodo").val("2014");
     $("#form_buscar_estados_locales_codigo_institucion").val("");
     $("#form_buscar_estados_locales_nombre_institucion").val("");
     $("#form_buscar_estados_locales_codigo_establecimiento").val("");
@@ -212,17 +188,13 @@
     $("#form_buscar_estados_locales_nombre_distrito").val("");
     $("#form_buscar_estados_locales_nombre_barrio_localidad").val("");
     $("#form_buscar_estados_locales_nombre_zona").val("");
-    $("#form_buscar_estados_locales_sector_o_tipo_gestion").val("");
-    $("#form_buscar_estados_locales_nombre_region_administrativa").val("");
-    $("#form_buscar_estados_locales_nombre_supervisor").val("");
-    $("#form_buscar_estados_locales_niveles_modalidades").val("");
-    $("#form_buscar_estados_locales_nombre_tipo_organizacion").val("");
-    $("#form_buscar_estados_locales_participacion_comunitaria").val("");
-    $("#form_buscar_estados_locales_direccion").val("");
-    $("#form_buscar_estados_locales_nro_telefono").val("");
-    $("#form_buscar_estados_locales_tiene_internet").val("");
-    $("#form_buscar_estados_locales_paginaweb").val("");
-    $("#form_buscar_estados_locales_correo_electronico").val("");
+    $("#form_buscar_estados_locales_nombre_asentamiento_colonia").val("");
+    $("#form_buscar_estados_locales_suministro_energia_electrica").val("");
+    $("#form_buscar_estados_locales_abastecimiento_agua").val("");
+    $("#form_buscar_estados_locales_servicio_sanitario_actual").val("");
+    $("#form_buscar_estados_locales_titulo_de_propiedad").val("");
+    $("#form_buscar_estados_locales_cuenta_plano").val("");
+    $("#form_buscar_estados_locales_prevencion_incendio").val("");
     
     $("#form-buscar-estados-locales").submit();
 

@@ -1,8 +1,8 @@
 <h2>
   <span itemprop="name">Requerimientos de Aulas</span>
-  <meta itemprop="url" content="http://datos.mec.gov.py/data/instituciones">  
+  <meta itemprop="url" content="http://datos.mec.gov.py/data/requerimientos_aulas">  
   <meta itemprop="description"
-        content="Contiene datos de los niveles/modalidades de educación ofertados por las instituciones educativas; región administrativa a la que pertenece la institución educativa; tipo de organización, participación comunitaria, dirección del establecimiento escolar, servicio disponible (internet, telefono, correo electronico, etc.). Una institución educativa puede poseer diferentes locales escolares ubicados en un mismo o en diferentes departamentos geográficos. El SIEC considera una misma institución cuando varios niveles o modalidades tienen una organización, gestión y administración única. Por ejemplo: Centro Regional de Educación Gral. Patricio Escobar de Encarnación, Colegio Santa Clara de Asunción."
+        content="Contiene datos de los requerimientos de aulas con que se cuentan en las distintas Intstituciones Educativas. Los requerimientos son priorizados por distrito, de modo a saber el grado de necesidad con que se los solicita."
         />
   <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
   <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
@@ -20,7 +20,7 @@
     <meta itemprop="email" content="datosabiertos@mec.gov.py">
   </span>
   <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
-  <meta itemprop="keywords" style="display: none;" content="educación,instituciones"/>
+  <meta itemprop="keywords" style="display: none;" content="educación,instituciones,requerimientos,aulas"/>
   <meta itemprop="version" style="display: none;" content="1.0">
 
   <span style="float:right;">
@@ -99,10 +99,10 @@
           <%= text_field_tag :form_buscar_requerimientos_aulas_nivel_educativo_beneficiado, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_nivel_educativo_beneficiado').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
         </th>
-
-        <th style="width:5%;" class="text-min celda-derecha">
-          <%= label_tag nil,"Cuenta con Espacio de Construcci&oacute;n".html_safe %><br />
-          <%= select :form_buscar_requerimientos_aulas, :cuenta_espacio_para_construccion, ['','SI','NO'], {:class => 'text-min'} %>
+        
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "Cuenta con Espacio de Construcci&oacute;n".html_safe%><br />
+          <%= text_field_tag :form_buscar_requerimientos_aulas_cuenta_espacio_para_construccion, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_cuenta_espacio_para_construccion').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
         </th>
 
@@ -158,11 +158,6 @@
 
   })
 
-  $("#form_buscar_requerimientos_aulas_cuenta_espacio_para_construccion").bind('change', function() {
-
-    $("#form-buscar-requerimientos-aulas").submit();
-
-  })
 
   $("#form_buscar_requerimientos_aulas_tipo_requerimiento_infraestructura").bind('change', function() {
 
