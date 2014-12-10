@@ -1,2 +1,4 @@
 $("#requerimientos-otros-espacios-lista").html("<%= escape_javascript(render :partial => "lista", :locals => { :requerimientos_otros_espacios => @requerimientos_otros_espacios}) %>");
 $("#requerimientos-otros-espacios-footer").html("<%= escape_javascript(render :partial => "footer", :locals => { :requerimientos_otros_espacios => @requerimientos_otros_espacios}) %>");
+
+MDTable.create('#requerimientos-otros-espacios-lista', [0,1,2,3,4,5,6,7,8]);

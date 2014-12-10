@@ -1,5 +1,9 @@
-<h2>
-  <span itemprop="name">Requerimientos de Aulas</span>
+<h3>
+  <span itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: AULAS</span><br/>
+  <span style="font-size: 12px;color:silver;"><i>
+      La cantidad de Requerimientos de Aulas procesada actualmente no es la totalidad de la misma.<br/>
+      Para m&aacute;s informaci&oacute;n sobre los requerimientos de aulas puede ir a las planillas de establecimientos escolares priorizados elegibles visitando: <A href="http://datos.mec.gov.py/data/establecimientos_escolares_priorizados_elegibles_fonacide">este sitio</A>
+    </i></span>
   <meta itemprop="url" content="http://datos.mec.gov.py/data/requerimientos_aulas">  
   <meta itemprop="description"
         content="Contiene datos de los requerimientos de aulas con que se cuentan en las distintas Intstituciones Educativas. Los requerimientos son priorizados por distrito, de modo a saber el grado de necesidad con que se los solicita."
@@ -30,7 +34,7 @@
     <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
   </span>
 
-</h2>
+</h3>
 
 <div class="table-outter">
 
@@ -40,95 +44,91 @@
 
       <%= form_tag mec_custom_url(data_requerimientos_aulas_lista_url), :remote => true, :id => "form-buscar-requerimientos-aulas" do  %>
 
-        <th style="width:5%" class="text-min celda-derecha">
-          <%= label_tag "Periodo" %><br />
-          <%= select :form_buscar_requerimientos_aulas, :periodo, [2014,2012], {:class => 'text-min'} %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_periodo').val('2014');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
+        <th style="width:2%" class="text-min celda-derecha">
+          <%= label_tag "Periodo" %><br /><br />
+          <%= select :form_buscar_requerimientos_aulas, :periodo, [2015,2012], {:class => 'text-min'} %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:12px;"), "$('#form_buscar_requerimientos_aulas_periodo').val('2015');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
         </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "N&uacute;mero Prioridad".html_safe%><br />
-          <%= text_field_tag :form_buscar_requerimientos_aulas_numero_prioridad, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_numero_prioridad').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
-        </th>
-
-        <th style="width:7%" class="text-min">
-          <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe %><br />
-          <%= text_field_tag :form_buscar_requerimientos_aulas_codigo_establecimiento, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_codigo_establecimiento').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
-        </th>
-
-        <th style="width:5%" class="text-min">
-          <%= label_tag nil, "C&oacute;digo Instituci&oacute;n".html_safe%><br />
-          <%= text_field_tag :form_buscar_requerimientos_aulas_codigo_institucion, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_codigo_institucion').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
-        </th>
-
-        <th style="width:5%" class="text-min">
-          <%= label_tag nil, "Instituci&oacute;n".html_safe%><br />
-          <%= text_field_tag :form_buscar_requerimientos_aulas_nombre_institucion, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_nombre_institucion').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
-        </th>
-
-        <th style="width:5%" class="text-min">
-          <%= label_tag "Departamento"%><br />
+        <th style="width:4%" class="text-min">
+          <%= label_tag "Departamento"%><br /><br />
           <%= text_field_tag :form_buscar_requerimientos_aulas_nombre_departamento, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_nombre_departamento').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:12px;"), "$('#form_buscar_requerimientos_aulas_nombre_departamento').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
+        </th>
+
+        <th style="width:4%" class="text-min">
+          <%= label_tag "Distrito" %><br /><br />
+          <%= text_field_tag :form_buscar_requerimientos_aulas_nombre_distrito, nil, :class => 'text-min' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:12px;"), "$('#form_buscar_requerimientos_aulas_nombre_distrito').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
+        </th>
+
+        <th style="width:2%" class="text-prioridad">
+          <%= label_tag nil, "N&uacute;mero<br/>Prioridad".html_safe%><br />
+          <%= text_field_tag :form_buscar_requerimientos_aulas_numero_prioridad, nil, :class => 'text-prioridad' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:12px;"), "$('#form_buscar_requerimientos_aulas_numero_prioridad').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
+        </th>
+
+        <th style="width:4%" class="text-min">
+          <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe %><br /><br />
+          <%= text_field_tag :form_buscar_requerimientos_aulas_codigo_establecimiento, nil, :class => 'text-min' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:12px;"), "$('#form_buscar_requerimientos_aulas_codigo_establecimiento').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
+        </th>
+
+        <th style="width:4%" class="text-min">
+          <%= label_tag nil, "C&oacute;digo Instituci&oacute;n".html_safe%><br /><br />
+          <%= text_field_tag :form_buscar_requerimientos_aulas_codigo_institucion, nil, :class => 'text-min' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:12px;"), "$('#form_buscar_requerimientos_aulas_codigo_institucion').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
         </th>
 
         <th style="width:5%" class="text-min">
-          <%= label_tag "Distrito" %><br />
-          <%= text_field_tag :form_buscar_requerimientos_aulas_nombre_distrito, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_nombre_distrito').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
+          <%= label_tag nil, "Instituci&oacute;n".html_safe%><br /><br />
+          <%= text_field_tag :form_buscar_requerimientos_aulas_nombre_institucion, nil, :class => 'text-min' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:12px;"), "$('#form_buscar_requerimientos_aulas_nombre_institucion').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
         </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Localidad/Barrio".html_safe%><br />
-          <%= text_field_tag :form_buscar_requerimientos_aulas_nombre_barrio_localidad, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_nombre_barrio_localidad').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
-        </th>
-
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Zona".html_safe%><br />
+        <th style="width:3%;" class="text-min">
+          <%= label_tag nil, "Zona".html_safe%><br /><br />
           <%= text_field_tag :form_buscar_requerimientos_aulas_nombre_zona, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_nombre_zona').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:12px;"), "$('#form_buscar_requerimientos_aulas_nombre_zona').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
         </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Nivel Educativo Beneficiado".html_safe%><br />
+        <th style="width:4%;" class="text-min">
+          <%= label_tag nil, "Nivel Educativo<br/>Beneficiado".html_safe%><br />
           <%= text_field_tag :form_buscar_requerimientos_aulas_nivel_educativo_beneficiado, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_nivel_educativo_beneficiado').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:12px;"), "$('#form_buscar_requerimientos_aulas_nivel_educativo_beneficiado').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
         </th>
-        
-        <th style="width:5%;" class="text-min">
+
+        <th style="width:4%;" class="text-min">
           <%= label_tag nil, "Cuenta con Espacio de Construcci&oacute;n".html_safe%><br />
           <%= text_field_tag :form_buscar_requerimientos_aulas_cuenta_espacio_para_construccion, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_cuenta_espacio_para_construccion').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:12px;"), "$('#form_buscar_requerimientos_aulas_cuenta_espacio_para_construccion').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
         </th>
 
         <th style="width:5%;" class="text-min celda-derecha">
           <%= label_tag nil,"Tipo de Requerimiento de Insfraestrutura".html_safe %><br />
           <%= select :form_buscar_requerimientos_aulas, :tipo_requerimiento_infraestructura, ['','NUEVO','REPARACION','ADECUACION'], {:class => 'text-min'} %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_tipo_requerimiento_infraestructura').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:12px;"), "$('#form_buscar_requerimientos_aulas_tipo_requerimiento_infraestructura').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
         </th>
-
+        
         <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Cantidad Requerida".html_safe%><br />
+          <%= label_tag nil, "Cantidad Requerida".html_safe%><br /><br />
+          <%= select_tag(:form_buscar_requerimientos_aulas_cantidad_requerida_operador, options_for_select(['>', '<', '='])) %>
           <%= text_field_tag :form_buscar_requerimientos_aulas_cantidad_requerida, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_cantidad_requerida').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
         </th>
 
         <th style="width:5%;" class="text-min">
-          <%= label_tag nil,"Justificaci&oacute;n".html_safe%><br />
-          <%= text_field_tag :form_buscar_requerimientos_aulas_justificacion, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_justificacion').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
-        </th>
-
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "N&uacute;mero de Beneficiados".html_safe%><br />
+          <%= label_tag nil, "N&uacute;mero de Beneficiados".html_safe%><br /><br />
+          <%= select_tag(:form_buscar_requerimientos_aulas_numero_beneficiados_operador, options_for_select(['>', '<', '='])) %>
           <%= text_field_tag :form_buscar_requerimientos_aulas_numero_beneficiados, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_numero_beneficiados').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
-        </th>        
+        </th>
+
+        <th style="width:10%;" class="text-justificacion">
+          <%= label_tag nil,"Justificaci&oacute;n".html_safe%><br /><br />
+          <%= text_field_tag :form_buscar_requerimientos_aulas_justificacion, nil, :class => 'text-justificacion' %>
+          <%= link_to_function image_tag("delete-icon.png", :style => "width:12px;"), "$('#form_buscar_requerimientos_aulas_justificacion').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
+        </th>
 
       <% end %>
 
@@ -164,6 +164,18 @@
     $("#form-buscar-requerimientos-aulas").submit();
 
   })
+  
+  $("#form_buscar_requerimientos_aulas_numero_beneficiados_operador").bind('change',function(){
+      
+   $("#form-buscar-requerimientos-aulas").submit();
+   
+  })
+  
+  $("#form_buscar_requerimientos_aulas_cantidad_requerida_operador").bind('change',function(){
+      
+    $("#form-buscar-requerimientos-aulas").submit();
+      
+  })
 
 
   $(".table-bordered input").bind('change', function() {
@@ -175,13 +187,12 @@
   //LIMPIAR FORMULARIO DE BUSQUEDA
   function limpiar_form_buscar_requerimientos_aulas() {
 
-    $("#form_buscar_requerimientos_aulas_periodo").val("2014");
+    $("#form_buscar_requerimientos_aulas_periodo").val("2015");
     $("#form_buscar_requerimientos_aulas_codigo_institucion").val("");
     $("#form_buscar_requerimientos_aulas_nombre_institucion").val("");
     $("#form_buscar_requerimientos_aulas_codigo_establecimiento").val("");
     $("#form_buscar_requerimientos_aulas_nombre_departamento").val("");
     $("#form_buscar_requerimientos_aulas_nombre_distrito").val("");
-    $("#form_buscar_requerimientos_aulas_nombre_barrio_localidad").val("");
     $("#form_buscar_requerimientos_aulas_nombre_zona").val("");
     $("#form_buscar_requerimientos_aulas_nivel_educativo_beneficiado").val("");
     $("#form_buscar_requerimientos_aulas_cuenta_espacio_para_construccion").val("");
@@ -210,9 +221,9 @@
 
 <style>
 
-  .text-min {font-size:9px !important; color: #000; text-align:center !important;}
+  .text-min, .text-justificacion, .text-prioridad{font-size:9px !important; color: #000; text-align:center !important;}
   #cbue-menu1 {background:#e9e9e9;}
-  .text-min input[type="text"], .text-min select {
+  .text-min input[type="text"], .text-justificacion, .text-prioridad, .text-min select {
     border: 1px solid silver;
     padding: 3px;
     -webkit-border-radius: 5px 5px 5px 5px;
@@ -220,6 +231,9 @@
     color:#000;
   }
   .text-min input[type="text"] { width: 80px;}
+  
+  .text-prioridad input[type="text"] {width: 30px;}
+  .text-justificacion input[type="text"] { width: 250px;}
 
   #tablaContenedor{width:100%;}
 

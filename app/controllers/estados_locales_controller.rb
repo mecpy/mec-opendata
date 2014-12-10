@@ -35,20 +35,6 @@ class EstadosLocalesController < ApplicationController
       args << "%#{params[:form_buscar_estados_locales_codigo_establecimiento]}%"
 
     end
-    
-    if params[:form_buscar_estados_locales_codigo_institucion].present? #OK
-
-      cond << "codigo_institucion ilike ?"
-      args << "%#{params[:form_buscar_estados_locales_codigo_institucion]}%"
-
-    end
-    
-    if params[:form_buscar_estados_locales_nombre_institucion].present? #OK
-
-      cond << "nombre_institucion ilike ?"
-      args << "%#{params[:form_buscar_estados_locales_nombre_institucion]}%"
-
-    end
 
     if params[:form_buscar_estados_locales_nombre_departamento].present? #OK
 
@@ -61,14 +47,6 @@ class EstadosLocalesController < ApplicationController
 
       cond << "nombre_distrito ilike ?"
       args << "%#{params[:form_buscar_estados_locales_nombre_distrito]}%"
-
-    end
-
-
-    if params[:form_buscar_estados_locales_nombre_barrio_localidad].present? #OK
-
-      cond << "nombre_barrio_localidad ilike ?"
-      args << "%#{params[:form_buscar_estados_locales_nombre_barrio_localidad]}%"
 
     end
 
@@ -114,17 +92,17 @@ class EstadosLocalesController < ApplicationController
 
     end
     
-    if params[:form_buscar_estados_locales][:cuenta_plano].present?
+    if params[:form_buscar_estados_locales_cuenta_plano].present? #OK
 
-      cond << "cuenta_plano = ?"
-      args << "#{params[:form_buscar_estados_locales][:cuenta_plano]}"
+      cond << "cuenta_plano ilike ?"
+      args << "%#{params[:form_buscar_estados_locales_cuenta_plano]}%"
 
     end
     
-    if params[:form_buscar_estados_locales][:prevencion_incendio].present?
+    if params[:form_buscar_estados_locales_prevencion_incendio].present? #OK
 
-      cond << "prevencion_incendio = ?"
-      args << "#{params[:form_buscar_estados_locales][:prevencion_incendio]}"
+      cond << "prevencion_incendio ilike ?"
+      args << "%#{params[:form_buscar_estados_locales_prevencion_incendio]}%"
 
     end
 
@@ -133,7 +111,7 @@ class EstadosLocalesController < ApplicationController
     @estados_locales = cond.size > 0 ? (VEstadoLocal.orden_dep_dis.paginate :conditions => cond, 
                                                                                :per_page => 15,
                                                                                :page => params[:page]) : {}
-
+                                               
     @total_registros = VEstadoLocal.count 
 
     if params[:format] == 'csv'
@@ -144,18 +122,20 @@ class EstadosLocalesController < ApplicationController
 
       csv = CSV.generate do |csv|
         # header row
-        csv << ["periodo", "codigo_establecimiento", "codigo_institucion","nombre_institucion",
-          "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", "codigo_barrio_localidad", "nombre_barrio_localidad", "codigo_zona", "nombre_zona",
+        csv << ["periodo", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito",
+          "codigo_establecimiento",
+          "codigo_zona", "nombre_zona",
           "nombre_asentamiento_colonia", "suministro_energia_electrica","abastecimiento_agua","servicio_sanitario_actual",
-          "titulo_de_propiedad","cuenta_plano","prevencion_incendio"
+          "titulo_de_propiedad","cuenta_plano","prevencion_incendio","uri_establecimiento"
           ]
  
         # data rows
         estados_locales_csv.each do |i|
-          csv << [i.periodo, i.codigo_establecimiento, i.codigo_institucion, i.nombre_institucion,
-            i.codigo_departamento, i.nombre_departamento, i.codigo_distrito, i.nombre_distrito,i.codigo_barrio_localidad,i.nombre_barrio_localidad,i.codigo_zona,i.nombre_zona,
+          csv << [i.periodo, i.codigo_departamento, i.nombre_departamento, i.codigo_distrito, i.nombre_distrito,
+            i.codigo_establecimiento,
+            i.codigo_zona,i.nombre_zona,
             i.nombre_asentamiento_colonia, i.suministro_energia_electrica, i.abastecimiento_agua, i.servicio_sanitario_actual,
-            i.titulo_de_propiedad, i.cuenta_plano,i.prevencion_incendio
+            i.titulo_de_propiedad, i.cuenta_plano,i.prevencion_incendio,i.uri_establecimiento
           ]
         end
 
@@ -171,10 +151,11 @@ class EstadosLocalesController < ApplicationController
       
         format.xlsx {
 
-          columnas = [:periodo, :codigo_establecimiento, :codigo_institucion, :nombre_institucion,
-            :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito,:codigo_barrio_localidad,:nombre_barrio_localidad,:codigo_zona,:nombre_zona,
+          columnas = [:periodo, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito,
+            :codigo_establecimiento,
+            :codigo_zona,:nombre_zona,
             :nombre_asentamiento_colonia, :suministro_energia_electrica, :abastecimiento_agua, :servicio_sanitario_actual,
-            :titulo_de_propiedad, :cuenta_plano, :prevencion_incendio ]
+            :titulo_de_propiedad, :cuenta_plano, :prevencion_incendio, :uri_establecimiento]
          
           send_data VEstadoLocal.orden_dep_dis.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
                     :filename => "estados_locales_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
@@ -191,7 +172,7 @@ class EstadosLocalesController < ApplicationController
       respond_to do |f|
 
         f.js
-        f.json {render :json => @estados_locales_todos }
+        f.json {render :json => @estados_locales_todos, :methods => :uri_establecimiento}
 
       end 
 

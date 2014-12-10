@@ -1,2 +1,4 @@
 $("#requerimientos-mobiliarios-lista").html("<%= escape_javascript(render :partial => "lista", :locals => { :requerimientos_mobiliarios => @requerimientos_mobiliarios}) %>");
 $("#requerimientos-mobiliarios-footer").html("<%= escape_javascript(render :partial => "footer", :locals => { :requerimientos_mobiliarios => @requerimientos_mobiliarios}) %>");
+
+MDTable.create('#requerimientos-mobiliarios-lista', [0,1,2,3,4,5,6,7,8]);

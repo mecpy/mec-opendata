@@ -4,24 +4,22 @@
   <% requerimientos_aulas.each do |i| %>
 
     <tr>
-
       <td class="text-min"><div><%= i.periodo %></div></td>
+      <td class="text-min"><div><%= i.nombre_departamento %></div></td>
+      <td class="text-min"><div><%= i.nombre_distrito %></div></td>
       <td class="text-min"><div><%= i.numero_prioridad %></div></td>
       <td class="text-min" style="font-weight:bold;">
         <div><%= link_to i.codigo_establecimiento, mec_custom_url(id_establecimientos_path(i.codigo_establecimiento)), target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %>
       </td>  
       <td class="text-min"><div><%= link_to i.codigo_institucion.gsub(".","").to_i, mec_custom_url(id_instituciones_path(i.codigo_institucion.gsub(".","").to_i)), target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %></div></td>
       <td class="text-min"><div><%= i.nombre_institucion %></div></td>
-      <td class="text-min"><div><%= i.nombre_departamento %></div></td>
-      <td class="text-min"><div><%= i.nombre_distrito %></div></td>
-      <td class="text-min"><div><%= i.nombre_barrio_localidad %></div></td>
       <td class="text-min"><div><%= i.nombre_zona %></div></td>
       <td class="text-min"><div><%= i.nivel_educativo_beneficiado %></div></td>       
       <td class="text-min"><%= i.cuenta_espacio_para_construccion %></td>       
       <td class="text-min"><%= i.tipo_requerimiento_infraestructura %></td>       
-      <td class="text-min"><%= i.cantidad_requerida %></td>       
-      <td class="text-min"><%= i.justificacion %></td>       
+      <td class="text-min"><%= i.cantidad_requerida %></td>              
       <td class="text-min"><%= i.numero_beneficiados %></td>
+      <td class="text-min"><%= i.justificacion %></td>
     </tr>
   
   <% end %>

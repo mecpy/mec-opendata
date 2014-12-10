@@ -71,14 +71,6 @@ class RequerimientosOtrosEspaciosController < ApplicationController
 
     end
 
-
-    if params[:form_buscar_requerimientos_otros_espacios_nombre_barrio_localidad].present? #OK
-
-      cond << "nombre_barrio_localidad ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_otros_espacios_nombre_barrio_localidad]}%"
-
-    end
-
     if params[:form_buscar_requerimientos_otros_espacios_nombre_zona].present? #OK
 
       cond << "nombre_zona ilike ?"
@@ -116,22 +108,22 @@ class RequerimientosOtrosEspaciosController < ApplicationController
 
     if params[:form_buscar_requerimientos_otros_espacios_cantidad_requerida].present?
 
-      cond << "cantidad_requerida = ?"
+      cond << "cantidad_requerida #{params[:form_buscar_requerimientos_otros_espacios_cantidad_requerida_operador]} ?"
       args << params[:form_buscar_requerimientos_otros_espacios_cantidad_requerida]
 
     end
+    
+    if params[:form_buscar_requerimientos_otros_espacios_numero_beneficiados].present?
 
+      cond << "numero_beneficiados #{params[:form_buscar_requerimientos_otros_espacios_numero_beneficiados_operador]} ?"
+      args << params[:form_buscar_requerimientos_otros_espacios_numero_beneficiados]
+
+    end
+    
     if params[:form_buscar_requerimientos_otros_espacios_justificacion].present?
 
       cond << "justificacion ilike ?"
       args << "%#{params[:form_buscar_requerimientos_otros_espacios_justificacion]}%"
-
-    end
-
-    if params[:form_buscar_requerimientos_otros_espacios_numero_beneficiados].present?
-
-      cond << "numero_beneficiados = ?"
-      args << params[:form_buscar_requerimientos_otros_espacios_numero_beneficiados]
 
     end
 
@@ -151,18 +143,20 @@ class RequerimientosOtrosEspaciosController < ApplicationController
 
       csv = CSV.generate do |csv|
         # header row
-        csv << ["periodo", "numero_prioridad","codigo_establecimiento", "codigo_institucion","nombre_institucion",
-          "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", "codigo_barrio_localidad", "nombre_barrio_localidad", "codigo_zona", "nombre_zona",
+        csv << ["periodo", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito","numero_prioridad",
+          "codigo_establecimiento", "codigo_institucion","nombre_institucion",
+          "codigo_zona", "nombre_zona",
           "nivel_educativo_beneficiado", "cuenta_espacio_para_construccion","nombre_espacio","tipo_requerimiento_infraestructura","cantidad_requerida",
-          "justificacion","numero_beneficiados"
+          "numero_beneficiados", "justificacion", "uri_establecimiento", "uri_institucion"
           ]
  
         # data rows
         requerimientos_otros_espacios_csv.each do |i|
-          csv << [i.periodo, i.numero_prioridad, i.codigo_establecimiento, i.codigo_institucion, i.nombre_institucion,
-            i.codigo_departamento, i.nombre_departamento, i.codigo_distrito, i.nombre_distrito,i.codigo_barrio_localidad,i.nombre_barrio_localidad,i.codigo_zona,i.nombre_zona,
+          csv << [i.periodo,i.codigo_departamento, i.nombre_departamento, i.codigo_distrito, i.nombre_distrito, i.numero_prioridad,
+            i.codigo_establecimiento, i.codigo_institucion, i.nombre_institucion,
+            i.codigo_zona,i.nombre_zona,
             i.nivel_educativo_beneficiado, i.cuenta_espacio_para_construccion, i.nombre_espacio, i.tipo_requerimiento_infraestructura, i.cantidad_requerida,
-            i.justificacion, i.numero_beneficiados  
+            i.numero_beneficiados, i.justificacion, i.uri_establecimiento,i.uri_institucion
           ]
         end
 
@@ -178,10 +172,11 @@ class RequerimientosOtrosEspaciosController < ApplicationController
       
         format.xlsx {
 
-          columnas = [:periodo, :numero_prioridad, :codigo_establecimiento, :codigo_institucion, :nombre_institucion,
-            :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito,:codigo_barrio_localidad,:nombre_barrio_localidad,:codigo_zona,:nombre_zona,
+          columnas = [:periodo, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :numero_prioridad, 
+            :codigo_establecimiento, :codigo_institucion, :nombre_institucion,
+            :codigo_zona,:nombre_zona,
             :nivel_educativo_beneficiado, :cuenta_espacio_para_construccion, :nombre_espacio, :tipo_requerimiento_infraestructura, :cantidad_requerida,
-            :justificacion, :numero_beneficiados  ]
+            :numero_beneficiados, :justificacion, :uri_establecimiento, :uri_institucion]
          
           send_data VRequerimientoOtroEspacio.orden_dep_dis.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
                     :filename => "requerimientos_otros_espacios_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
@@ -198,7 +193,7 @@ class RequerimientosOtrosEspaciosController < ApplicationController
       respond_to do |f|
 
         f.js
-        f.json {render :json => @requerimientos_otros_espacios_todos }
+        f.json {render :json => @requerimientos_otros_espacios_todos,:methods => [:uri_establecimiento, :uri_institucion]}
 
       end 
 
