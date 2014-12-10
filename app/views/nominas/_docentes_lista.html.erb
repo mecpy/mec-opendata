@@ -6,7 +6,9 @@
 
       <td class="text-min" style="text-align:right;"><%= n.ano_periodo_pago %></td>
       <td class="text-min" style="text-align:left;"><%= obtener_mes(n.mes_periodo_pago) %></td>
-      <td class="text-min" style="text-align:right;"><%= n.codigo_trabajador %></td>
+      <!--<td class="text-min" style="text-align:right;"><%#= n.codigo_trabajador %></td>-->
+     <td class="text-min" style="text-align:right;"><%= link_to n.codigo_trabajador,mec_custom_url(id_nomimas_docentes_path(n.codigo_trabajador)),target:'_blank',style: 'font-weight:bold;', title: 'Visualizar URI' %></td>
+      <!--<td class="text-min" style="text-align:right;"><%#= link_to n.codigo_trabajador, onclick :"mostrar_datos_docente(#{n.codigo_trabajador})",target:'_blank',style: 'font-weight:bold;', title: 'Visualizar URI' %></td>-->
       <td class="text-min" style="text-align:left;"><%= n.nombre_trabajador %></td>
       <td class="text-min" style="text-align:left;"><%= "#{n.nombre_objeto_gasto} (#{n.codigo_objeto_gasto})" %></td>
       <td class="text-min" style="text-align:left;"><%= n.estado %></td>
@@ -17,7 +19,7 @@
        
     </tr>
       
-  <% end %>
+<% end %>
 
     <tr>
 
@@ -174,3 +176,12 @@
   </tr>
 
 <% end %>
+
+<script>
+	
+	
+	
+</script>
+
+
+

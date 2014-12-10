@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
-class NominasController < ApplicationController
-  
+class NominasController< ApplicationController
+  before_filter :redireccionar_uri
   def diccionario
 
   end
@@ -203,7 +203,9 @@ class NominasController < ApplicationController
 
   def detalles
 
-    @nomina = Nomina.es_administrativo.where("id_trabajador = ? and id_objeto_gasto = ? and ano_periodo_pago = ? and mes_periodo_pago = ?", params[:id_trabajador], params[:id_objeto_gasto], params[:ano_periodo_pago], params[:mes_periodo_pago])
+    @nomina = Nomina.es_administrativo.where("id_trabajador = ? and id_objeto_gasto = ? 
+    and ano_periodo_pago = ? and mes_periodo_pago = ?", 
+    params[:id_trabajador], params[:id_objeto_gasto], params[:ano_periodo_pago], params[:mes_periodo_pago])
 
     respond_to do |f|
 
@@ -216,7 +218,7 @@ class NominasController < ApplicationController
   def docentes_diccionario
 
   end
-
+  
   def docentes
 
     respond_to do |f|
@@ -424,7 +426,9 @@ class NominasController < ApplicationController
 
   def docentes_detalles
 
-    @nomina = Nomina.es_docente.where("id_trabajador = ? and id_objeto_gasto = ? and ano_periodo_pago = ? and mes_periodo_pago = ?", params[:id_trabajador], params[:id_objeto_gasto], params[:ano_periodo_pago], params[:mes_periodo_pago])
+    @nomina = Nomina.es_docente.where("id_trabajador = ? and id_objeto_gasto = ? and ano_periodo_pago = ? 
+    and mes_periodo_pago = ?", params[:id_trabajador], params[:id_objeto_gasto],
+     params[:ano_periodo_pago], params[:mes_periodo_pago])
 
     respond_to do |f|
 
@@ -433,5 +437,37 @@ class NominasController < ApplicationController
     end
 
   end
+  
+    
+  
+  def docentes_doc
+   
+     @cnomina = VNomina.find_by_codigo_trabajador(params[:codigo_trabajador],:order => 'mes_periodo_pago DESC')
+     @dnomina = VNomina.where("codigo_trabajador = ? ",@cnomina.codigo_trabajador) if @cnomina.present? 
+    
+    respond_to do |f|
+
+      f.html
+      #f.js
+
+    end
+    
+         
+   end
+   
+   def administrativo_doc
+   
+     @adminnomina = VNomina.find_by_codigo_trabajador(params[:codigo_trabajador],:order => 'mes_periodo_pago DESC')
+     @adnomina = VNomina.where("codigo_trabajador = ? ",@adminnomina.codigo_trabajador) if @adminnomina.present? 
+    
+    respond_to do |f|
+
+      f.html
+
+    end
+    
+         
+   end
+  
 
 end

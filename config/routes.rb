@@ -19,11 +19,14 @@ OpenData::Application.routes.draw do
   match 'data/contrataciones' => 'contrataciones#index', :as => :data_contrataciones
   match 'def/contrataciones' => 'contrataciones#diccionario', :as => :def_contrataciones
 
+  match "id/nomina_administrativos/:codigo_trabajador" => "nominas#administrativo_doc", :as => :id_nomimas_administrativo
+  match "doc/nomina_administrativos/:codigo_trabajador" =>"nominas#administrativo_doc", :as => :doc_nomimas_administrativo
   match "data/nomina_administrativos_detalles" => 'nominas#detalles', :as => :data_nomina_administrativos_detalles
   match "data/nomina_administrativos_lista" => 'nominas#lista', :as => :data_nomina_administrativos_lista
   match 'data/nomina_administrativos' => 'nominas#index', :as => :data_nomina_administrativos
   match 'def/nomina_administrativos' => 'nominas#diccionario', :as => :def_nomina_administrativos
-
+  match "id/nomina_docentes/:codigo_trabajador" => "nominas#docentes_doc", :as => :id_nomimas_docentes
+  match "doc/nomina_docentes/:codigo_trabajador" =>"nominas#docentes_doc", :as => :doc_nomimas_docentes
   match "data/nomina_docentes_detalles" => 'nominas#docentes_detalles', :as => :data_nomina_docentes_detalles
   match "data/nomina_docentes_lista" => 'nominas#docentes_lista', :as => :data_nomina_docentes_lista
   match 'data/nomina_docentes' => 'nominas#docentes', :as => :data_nomina_docentes
