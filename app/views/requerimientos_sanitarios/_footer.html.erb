@@ -1,0 +1,92 @@
+<% if requerimientos_sanitarios.present? %>
+
+  <tr>
+    <td colspan="19" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate requerimientos_sanitarios, :params => params %></div></td>
+  </tr>
+
+  <tr>
+    <td colspan="19">Cantidad de registros encontrados: <%= @requerimientos_sanitarios_todos.size %> de <%= @total_registros %></td>
+  </tr>
+
+  <tr>
+
+    <%  
+    parametros_csv = { :format => 'csv' }
+    parametros_csv = parametros_csv.merge(params) 
+    parametros_csv_todos = { :format => 'csv', "form_buscar_requerimientos_sanitarios[periodo]" => params[:form_buscar_requerimientos_sanitarios][:periodo]}
+  %>
+
+    <% 
+    parametros_xls = { :format => 'xlsx'}
+    parametros_xls = parametros_xls.merge(params) 
+    parametros_xls_todos = { :format => 'xlsx', "form_buscar_requerimientos_sanitarios[periodo]" => params[:form_buscar_requerimientos_sanitarios][:periodo] }
+  %>
+
+    <% 
+    parametros_json = { :format => 'json' }
+    parametros_json = parametros_json.merge(params) 
+    parametros_json_todos = { :format => 'json', "form_buscar_requerimientos_sanitarios[periodo]" => params[:form_buscar_requerimientos_sanitarios][:periodo] }
+  %>
+
+    <% 
+    parametros_pdf = { :format => 'pdf' }
+    parametros_pdf = parametros_pdf.merge(params) 
+    parametros_pdf_todos = { :format => 'pdf', "form_buscar_requerimientos_sanitarios[periodo]" => params[:form_buscar_requerimientos_sanitarios][:periodo] }
+  %>
+
+    <td colspan="12" class="row-descargar">
+      <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
+      <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a></br>
+      <span>Descargar Requerimientos de Sanitarios Procesados Filtrados:</span>
+
+      <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
+
+  <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_instituciones_lista_url(parametros_pdf)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat'%>
+      <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_requerimientos_sanitarios_lista_url(parametros_xls)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
+      <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_sanitarios_lista_url(parametros_csv)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
+      <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_sanitarios_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+      <br />
+      <div style="float:right; text-align: center">Descargar las Planillas de Establecimientos Escolares Priorizadas Elegibles visitando:<br/>
+        <A href="http://datos.mec.gov.py/data/establecimientos_escolares_priorizados_elegibles_fonacide">este sitio</A>
+      </div>
+      <br /> 
+
+      <div style="float:left;">Descargar todos los Requerimientos de Sanitarios Procesados:</div>
+      <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+  <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_instituciones_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
+        <meta itemprop="name" content="Requerimientos de Sanitarios 2015">
+        <meta itemprop="description" content="Listado de requerimientos de sanitarios correspondientes al año 2015">
+        <meta itemprop="encodingFormat" content="pdf">
+      </div>
+      <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_requerimientos_sanitarios_lista_url(parametros_xls_todos)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
+        <br />
+        <span style="color:silver;">(333,9KB)</span>
+        <meta itemprop="name" content="Requerimientos de Sanitarios 2015">
+        <meta itemprop="description" content="Listado de requerimientos de sanitarios correspondientes al año 2015">
+        <meta itemprop="encodingFormat" content="xls">
+      </div>
+      <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_sanitarios_lista_url(parametros_csv_todos)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
+        <br />
+        <span style="color:silver;">(777,7KB)</span>
+        <meta itemprop="name" content="Requerimientos de Sanitarios 2015">
+        <meta itemprop="description" content="Listado de requerimientos de sanitarios correspondientes al año 2015">
+        <meta itemprop="encodingFormat" content="csv">
+      </div>
+      <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_sanitarios_lista_url(parametros_json_todos)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+        <br />
+        <span style="color:silver;">(2,1MB)</span>
+        <meta itemprop="name" content="Requerimientos de Sanitarios 2015">
+        <meta itemprop="description" content="Listado de requerimientos de sanitarios correspondientes al año 2015">
+        <meta itemprop="encodingFormat" content="json">
+      </div>
+
+      <div style="clear:both;"></div>
+
+    </td>
+
+  </tr>
+
+<% end %>

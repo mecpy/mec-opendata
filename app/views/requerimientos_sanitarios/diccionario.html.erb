@@ -1,0 +1,463 @@
+<div class="container">
+  <div class="row">
+    <h3>
+      ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE:<br/>SANITARIOS
+
+      <span style="float:right;">
+        <%= link_to "Ver datos", mec_custom_url(data_requerimientos_sanitarios_url), :title => "Ir al dataset", :style => "font-size:12px;" %>
+        <%= link_to image_tag("datos_ico.jpg",:style => "width:24px;"), mec_custom_url(data_requerimientos_sanitarios_url), :title => "Ir al dataset" %>
+        <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
+        <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
+      </span>
+
+    </h3>
+    
+    <style>
+      .atributo{
+        font-size:10px;
+        width: 3%;
+      }
+      .descripcion{
+        font-size:10px;
+        width: 90%;
+      };
+    </style>
+
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th title="Field #1">
+            Nombre del Atributo
+          </th>
+          <th title="Field #2">
+            Descripción
+          </th>
+          <th title="Field #3">
+            Tipo de datos
+          </th>
+          <th title="Field #4">
+            Restricciones
+          </th>
+          <th title="Field #5">
+            Referencia
+          </th>
+          <th title="Field #6">
+            Ejemplo
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="atributo"><!-- ENCABEZADO -->
+            PERIODO
+          </td>
+          <td class="descripcion">
+            Indica el año al cual corresponde el requerimiento. Los requerimientos de las instituciones educativas se recepcionan de forma anual. Todos los requerimientos para un año específico se reciben durante el año anterior.
+          </td>
+          <td class="atributo">
+            xsd:gYear
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            2015
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            CODIGO_DEPARTAMENTO
+          </td>
+          <td class="descripcion">
+            Corresponde al código asignado según la cartografía nacional al departamento geográfico donde esta localizado el establecimiento escolar.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 2 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            00
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            NOMBRE_DEPARTAMENTO
+          </td>
+          <td class="descripcion">
+            Corresponde a la descripción del nombre del departamento geográfico correspondiente al código.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 40 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            ASUNCION
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            CODIGO_DISTRITO
+          </td>
+          <td class="descripcion">
+            Corresponde al código asignado al distrito del departamento geográfico donde esta localizado el establecimiento escolar..
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 2 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            00
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            NOMBRE_DISTRITO
+          </td>
+          <td class="descripcion">
+            Corresponde a la descripción del nombre del distrito correspondiente al código.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 40 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            ASUNCION
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo"><!-- ENCABEZADO -->
+            NUMERO_PRIORIDAD
+          </td>
+          <td class="descripcion">
+            Indica el número de prioridad del requerimiento. Los requerimientos se priorizan por cada distrito de cada departamento para el período correspondiente. El número de prioridad de un requerimiento indica su orden de importancia en relación con los demás requerimientos del mismo tipo. Los requerimientos priorizados se ejecutan desde el requerimiento con número de prioridad 1 hasta el requerimiento con el mayor número de prioridad posible en base al presupuesto disponible destinado.
+          </td>
+          <td class="atributo">
+            xsd:positiveInteger
+          </td>
+          <td class="atributo">
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            1
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo"><!-- ENCABEZADO -->
+            CODIGO_ESTABLECIMIENTO
+          </td>
+          <td class="descripcion">
+            Código de establecimiento permite identificar en forma única los diferentes establecimientos educativos que se encuentran en el país. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 7 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            0406005
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo"><!-- ENCABEZADO -->
+            CODIGO_INSTITUCION
+          </td>
+          <td class="descripcion">
+            Identifica a la institución como una entidad y organización independiente que funciona dentro de un establecimiento escolar. Una institución educativa puede poseer diferentes locales escolares ubicados en un mismo o en diferentes departamentos geográficos. El código está compuesto por un número secuencial. El SIEC considera una misma institución cuando varios niveles o modalidades tienen una organización, gestión y administración única. Por ejemplo: Centro Regional de Educación Gral. Patricio Escobar de Encarnación, Colegio Santa Clara de Asunción.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 5 caracteres 
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            2875
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo"><!-- ENCABEZADO -->
+            NOMBRE_INSTITUCION
+          </td>
+          <td class="descripcion">
+            Corresponde a la descripción del nombre de la institución correspondiente al código.
+          </td>
+          <td class="atributo">
+            xsd:string 
+          </td>
+          <td class="atributo">
+            No más de 40 caracteres 
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            1183 ALBERTO SCHWEITZER
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            CODIGO_ZONA
+          </td>
+          <td class="descripcion">
+            Corresponde a la ubicación del establecimiento escolar, sea en la zona urbana o rural. Se considera: Código 1 .Zona Urbana: Área geográfica que abarca todas las cabeceras distritales de la República y sus viviendas generalmente estan organizadas en manzanas.<br>
+            Código 2. Zona Rural: Área geográfica que se encuentran fuera de las cabeceras distritales y las viviendas se localizan en forma dispersa pudiendo existir zonas amanzanadas pero que no tienen la categoría de Cabeceras Distritales por la cual se consideraran como rurales.<br>
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            Valores que pueden ser: Código 1: cuando el código de localidad es menor 100. Código 6: cuando el código de localidad es mayor o igual a 100
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            1
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            NOMBRE_ZONA
+          </td>
+          <td class="descripcion">
+            Corresponde a la descripción del nombre de la zona correspondiente al código
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 7 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            URBANA
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            NIVEL_EDUCATIVO_BENEFICIADO
+          </td>
+          <td class="descripcion">
+            Indica el nivel educativo que resultaría beneficiado en caso de atenderse (satisfacerse) la necesidad de la institución educativa indicada por el requerimiento.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            EDUCACIÓN ESCOLAR BASICA
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            ABASTECIMIENTO_AGUA
+          </td>
+          <td class="descripcion">
+            Indica el nombre del servicio de abstecimiento de agua potable que utiliza el establecimiento escolar.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            <!--Valores en el rango: ESSAP, SENASA, Privado, Sin suministro-->
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            ESSAP
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            SERVICIO_SANITARIO_ACTUAL
+          </td>
+          <td class="descripcion">
+            Indica el nombre del servicio sanitario que utiliza el establecimiento escolar.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            <!--Valores en el rango: WC conectado a red publica, WC con pozo ciego, Excusado municipal, Letrina común-->
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            WC conectado a red publica
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            CUENTA_ESPACIO_PARA_CONSTRUCCION
+          </td>
+          <td class="descripcion">
+            Especifica si el local escolar donde está situada la institución educativa cuenta o no con espacio disponible para construcción.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            SI
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            TIPO_REQUERIMIENTO_INFRAESTRUCTURA
+          </td>
+          <td class="descripcion">
+            Especifica el tipo del requerimiento. Los requerimientos pueden ser de tres tipos: Construcción Nueva, Reparación, y Adecuación.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            Valores en el rango: NUEVO, REPARACION, ADECUACION
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            NUEVO
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            CANTIDAD_REQUERIDA
+          </td>
+          <td class="descripcion">
+            Corresponde a la cantidad de sanitarios a construir, a reparar, o a adecuar (dependiendo del tipo de requerimiento) requeridas por la institución educativa.
+          </td>
+          <td class="atributo">
+            xsd:positiveInteger
+          </td>
+          <td class="atributo">
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            2
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            NUMERO_BENEFICIADOS
+          </td>
+          <td class="descripcion">
+            Indica la cantidad de personas que resultarían beneficiadas en caso de atenderse (satisfacerse) la necesidad de la institución educativa indicada por el requerimiento.
+          </td>
+          <td class="atributo">
+            xsd:positiveInteger
+          </td>
+          <td class="atributo">
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            100
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            JUSTIFICACION
+          </td>
+          <td class="descripcion">
+            Corresponde a la descripción de la justificación del requerimiento especificada por la institución educativa.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+  <div class="row">
+
+
+    <h2>
+      Referencia
+    </h2>La siguiente tabla presenta una breve descripción de los atributos incluídos en el diccionario de datos del dataset.<br>
+    Básicamente, un diccionario de datos describe los atributos que contiene un dataset, incluyendo el tipo de dato y las restricciones se apliquen a cada uno.<br>
+    <br>
+    <br>
+
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th title="Field #1">
+            Nombre de la columna
+          </th>
+          <th title="Field #2">
+            Descripción
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Nombre del Atributo
+          </td>
+          <td>
+            Esteblace el nombre del atributo exactamente como se encuentra definido en el archivo de datos a ser publicado
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Descripción
+          </td>
+          <td>
+            Describe con más detalles los datos que se encuentran en el atributo
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Tipo de datos
+          </td>
+          <td>
+            El tipo de dato esperado de los valores del attributo. Por ejemplo: String, Integer, Float, …. Idealmente se deben utilizar los tipos de datos definidos en el Estándar XML Schema Datatypes de la W3C. <a href="http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes">http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes</a>, por ejemplo: xsd:string, xsd:boolean, xsd:dateTime
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Restricciones
+          </td>
+          <td>
+            En caso que existan, se especifican las restricciones de los datos
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Referencia
+          </td>
+          <td>
+            En caso que exista, se agrega un link a un documento de referencia para los datos. Por ejemplo, si los datos están definidos utilizando un estándar o formato diferente a XSD, referenciarlo, como ser la Latitud y Longitud en formato de Google maps
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Ejemplo
+          </td>
+          <td>
+            Los valores de ejemplo
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

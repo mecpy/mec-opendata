@@ -1,2 +1,4 @@
 $("#instituciones-lista").html("<%= escape_javascript(render :partial => "lista", :locals => { :instituciones => @instituciones}) %>");
 $("#instituciones-footer").html("<%= escape_javascript(render :partial => "footer", :locals => { :instituciones => @instituciones}) %>");
+
+//MDTable.create('#instituciones-lista', [5,6]);
