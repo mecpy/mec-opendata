@@ -1,8 +1,8 @@
 <h3>
-  <span itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: MOBILIARIOS</span><br/>
+  <span itemprop="name">Establecimientos Escolares Priorizados Elegibles - FONACIDE: MOBILIARIOS</span><br/>
   <span style="font-size: 12px;color:silver;"><i>
-      La cantidad de Requerimientos de Mobiliarios procesada actualmente no es la totalidad de la misma.<br/>
-      Para m&aacute;s informaci&oacute;n sobre los requerimientos de mobiliarios puede ir a las planillas de establecimientos escolares priorizados elegibles visitando: <A href="http://datos.mec.gov.py/data/establecimientos_escolares_priorizados_elegibles_fonacide">este sitio</A>
+      La informaci&oacute;n presentada en la p&aacute;gina puede presentar diferencias con las planillas remitidas, esto es debido a que los datos de las planillas se encuentran en proceso de validaci&oacute;n de c&oacute;digos.<br/>
+      Si desea acceder a las planillas remitidas, las mismas est&aacute;n <a href="http://datos.mec.gov.py/data/establecimientos_escolares_priorizados_elegibles_fonacide" target="_blank">disponibles en formato EXCEL en el Catalogo de datos.</a>
     </i></span>
   <meta itemprop="url" content="http://datos.mec.gov.py/data/requerimientos_mobiliarios">  
   <meta itemprop="description"
@@ -44,9 +44,9 @@
 
       <%= form_tag mec_custom_url(data_requerimientos_mobiliarios_lista_url), :remote => true, :id => "form-buscar-requerimientos-mobiliarios" do  %>
 
-        <th style="width:2%" class="text-min celda-derecha">
+        <th style="width:3%" class="text-min celda-derecha">
           <%= label_tag "Periodo" %><br /><br />
-          <%= select :form_buscar_requerimientos_mobiliarios, :periodo, [2015,2012], {:class => 'text-min'} %>
+          <%= select :form_buscar_requerimientos_mobiliarios, :periodo, [2015], {:class => 'text-min'} %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_mobiliarios_periodo').val('2015');$('#form-buscar-requerimientos-mobiliarios').submit();" ,:style => "color:#fff;"%>
         </th>
         
@@ -62,20 +62,20 @@
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_mobiliarios_nombre_distrito').val('');$('#form-buscar-requerimientos-mobiliarios').submit();" ,:style => "color:#fff;"%>
         </th>
 
-        <th style="width:2%;" class="text-prioridad">
+        <th style="width:3%;" class="text-prioridad">
           <%= label_tag nil, "N&uacute;mero<br/>Prioridad".html_safe%><br />
           <%= text_field_tag :form_buscar_requerimientos_mobiliarios_numero_prioridad, nil, :class => 'text-prioridad' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_mobiliarios_numero_prioridad').val('');$('#form-buscar-requerimientos-mobiliarios').submit();" ,:style => "color:#fff;"%>
         </th>
 
-        <th style="width:3%" class="text-min">
-          <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe %><br /><br />
+        <th style="width:4%" class="text-min">
+          <%= label_tag nil, "C&oacute;digo<br />Establecimiento".html_safe %><br />
           <%= text_field_tag :form_buscar_requerimientos_mobiliarios_codigo_establecimiento, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_mobiliarios_codigo_establecimiento').val('');$('#form-buscar-requerimientos-mobiliarios').submit();" ,:style => "color:#fff;"%>
         </th>
 
-        <th style="width:3%" class="text-min">
-          <%= label_tag nil, "C&oacute;digo Instituci&oacute;n".html_safe%><br /><br />
+        <th style="width:4%" class="text-min">
+          <%= label_tag nil, "C&oacute;digo<br />Instituci&oacute;n".html_safe%><br />
           <%= text_field_tag :form_buscar_requerimientos_mobiliarios_codigo_institucion, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_mobiliarios_codigo_institucion').val('');$('#form-buscar-requerimientos-mobiliarios').submit();" ,:style => "color:#fff;"%>
         </th>
@@ -92,33 +92,33 @@
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_mobiliarios_nombre_zona').val('');$('#form-buscar-requerimientos-mobiliarios').submit();" ,:style => "color:#fff;"%>
         </th>
 
-        <th style="width:4%;" class="text-min">
+        <th style="width:5%;" class="text-min">
           <%= label_tag nil, "Nivel Educativo<br/>Beneficiado".html_safe%><br />
           <%= text_field_tag :form_buscar_requerimientos_mobiliarios_nivel_educativo_beneficiado, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_mobiliarios_nivel_educativo_beneficiado').val('');$('#form-buscar-requerimientos-mobiliarios').submit();" ,:style => "color:#fff;"%>
         </th>
 
-        <th style="width:3%;" class="text-min">
+        <th style="width:4%;" class="text-min">
           <%= label_tag nil,"Nombre del Mobiliario".html_safe%><br /><br />
           <%= text_field_tag :form_buscar_requerimientos_mobiliarios_nombre_mobiliario, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_mobiliarios_nombre_mobiliario').val('');$('#form-buscar-requerimientos-mobiliarios').submit();" ,:style => "color:#fff;"%>
         </th>
 
-        <th style="width:4%;" class="text-min">
-          <%= label_tag nil, "Cantidad Requerida".html_safe%><br /><br />
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "Cantidad <br/>Requerida".html_safe%><br />
           <%= select_tag(:form_buscar_requerimientos_mobiliarios_cantidad_requerida_operador, options_for_select(['>', '<', '='])) %>
           <%= text_field_tag :form_buscar_requerimientos_mobiliarios_cantidad_requerida, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_mobiliarios_cantidad_requerida').val('');$('#form-buscar-requerimientos-mobiliarios').submit();" ,:style => "color:#fff;"%>
         </th>
 
-        <th style="width:4%;" class="text-min">
-          <%= label_tag nil, "N&uacute;mero de Beneficiados".html_safe%><br /><br />
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "N&uacute;mero de<br />Beneficiados".html_safe%><br />
           <%= select_tag(:form_buscar_requerimientos_mobiliarios_numero_beneficiados_operador, options_for_select(['>', '<', '='])) %>
           <%= text_field_tag :form_buscar_requerimientos_mobiliarios_numero_beneficiados, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_mobiliarios_numero_beneficiados').val('');$('#form-buscar-requerimientos-mobiliarios').submit();" ,:style => "color:#fff;"%>
         </th>
         
-        <th style="width:4%;" class="text-justificacion">
+        <th style="width:14%;" class="text-justificacion">
           <%= label_tag nil,"Justificaci&oacute;n".html_safe%><br /><br />
           <%= text_field_tag :form_buscar_requerimientos_mobiliarios_justificacion, nil, :class => 'text-justificacion' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_mobiliarios_justificacion').val('');$('#form-buscar-requerimientos-mobiliarios').submit();" ,:style => "color:#fff;"%>

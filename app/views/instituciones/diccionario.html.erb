@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 		<h2>
-      Instituciones Educativas
+      Datos Espec&iacute;ficos de Instituciones Educativas
           
       <span style="float:right;">
         <%= link_to "Ver datos", mec_custom_url(data_instituciones_url), :title => "Ir al dataset", :style => "font-size:12px;" %>
@@ -125,17 +125,17 @@
 								CODIGO_BARRIO_LOCALIDAD
 							</td>
 							<td>
-								Corresponde al código asignado a la localidad o barrio del distrito donde esta localizado el establecimiento escolar..
+								Corresponde al código asignado a la localidad o barrio del distrito donde esta localizado el establecimiento escolar.
 							</td>
 							<td>
-								xsd:string
+								xsd:positiveInteger
 							</td>
 							<td>
 								No más de 40 caracteres
 							</td>
 							<td></td>
 							<td>
-								SAN ANTONIO
+								1
 							</td>
 						</tr>
 						<tr>
@@ -146,14 +146,14 @@
 								Corresponde a la descripción del nombre del barrio o localidad correspondiente al código.
 							</td>
 							<td>
-								xsd:positiveInteger
+								xsd:string
 							</td>
 							<td>
 								Valores que pueden ser: Código 1: cuando el código de localidad es menor 100 Código 6: cuando el código de localidade es mayor o igual a 100
 							</td>
 							<td></td>
 							<td>
-								1
+								SAN ANTONIO
 							</td>
 						</tr>
 						<tr>

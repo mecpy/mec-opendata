@@ -1,8 +1,8 @@
 <h3>
-  <span itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: OTROS ESPACIOS</span><br/>
+  <span itemprop="name">Establecimientos Escolares Priorizados Elegibles - FONACIDE: OTROS ESPACIOS</span><br/>
   <span style="font-size: 12px;color:silver;"><i>
-      La cantidad de Requerimientos de Otros Espacios procesada actualmente no es la totalidad de la misma.<br/>
-      Para m&aacute;s informaci&oacute;n sobre los requerimientos de otros espacios puede ir a las planillas de establecimientos escolares priorizados elegibles visitando: <A href="http://datos.mec.gov.py/data/establecimientos_escolares_priorizados_elegibles_fonacide">este sitio</A>
+      La informaci&oacute;n presentada en la p&aacute;gina puede presentar diferencias con las planillas remitidas, esto es debido a que los datos de las planillas se encuentran en proceso de validaci&oacute;n de c&oacute;digos.<br/>
+      Si desea acceder a las planillas remitidas, las mismas est&aacute;n <a href="http://datos.mec.gov.py/data/establecimientos_escolares_priorizados_elegibles_fonacide" target="_blank">disponibles en formato EXCEL en el Catalogo de datos.</a>
     </i></span>
   <meta itemprop="url" content="http://datos.mec.gov.py/data/requerimientos_otros_espacios">  
   <meta itemprop="description"
@@ -46,7 +46,7 @@
 
         <th style="width:3%" class="text-min celda-derecha">
           <%= label_tag "Periodo" %><br /><br />
-          <%= select :form_buscar_requerimientos_otros_espacios, :periodo, [2015,2012], {:class => 'text-min'} %>
+          <%= select :form_buscar_requerimientos_otros_espacios, :periodo, [2015], {:class => 'text-min'} %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_otros_espacios_periodo').val('2015');$('#form-buscar-requerimientos-otros-espacios').submit();" ,:style => "color:#fff;"%>
         </th>
         
@@ -69,13 +69,13 @@
         </th>
 
         <th style="width:4%" class="text-min">
-          <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe %><br /><br />
+          <%= label_tag nil, "C&oacute;digo<br />Establecimiento".html_safe %><br />
           <%= text_field_tag :form_buscar_requerimientos_otros_espacios_codigo_establecimiento, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_otros_espacios_codigo_establecimiento').val('');$('#form-buscar-requerimientos-otros-espacios').submit();" ,:style => "color:#fff;"%>
         </th>
 
         <th style="width:4%" class="text-min">
-          <%= label_tag nil, "C&oacute;digo Instituci&oacute;n".html_safe%><br /><br />
+          <%= label_tag nil, "C&oacute;digo<br />Instituci&oacute;n".html_safe%><br />
           <%= text_field_tag :form_buscar_requerimientos_otros_espacios_codigo_institucion, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_otros_espacios_codigo_institucion').val('');$('#form-buscar-requerimientos-otros-espacios').submit();" ,:style => "color:#fff;"%>
         </th>
@@ -117,14 +117,14 @@
         </th>
 
         <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Cantidad Requerida".html_safe%><br /><br />
+          <%= label_tag nil, "Cantidad<br />Requerida".html_safe%><br />
           <%= select_tag(:form_buscar_requerimientos_otros_espacios_cantidad_requerida_operador, options_for_select(['>', '<', '='])) %>
           <%= text_field_tag :form_buscar_requerimientos_otros_espacios_cantidad_requerida, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_otros_espacios_cantidad_requerida').val('');$('#form-buscar-requerimientos-otros-espacios').submit();" ,:style => "color:#fff;"%>
         </th>
 
         <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "N&uacute;mero de Beneficiados".html_safe%><br /><br />
+          <%= label_tag nil, "N&uacute;mero de<br />Beneficiados".html_safe%><br />
           <%= select_tag(:form_buscar_requerimientos_otros_espacios_numero_beneficiados_operador, options_for_select(['>', '<', '='])) %>
           <%= text_field_tag :form_buscar_requerimientos_otros_espacios_numero_beneficiados, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_otros_espacios_numero_beneficiados').val('');$('#form-buscar-requerimientos-otros-espacios').submit();" ,:style => "color:#fff;"%>
