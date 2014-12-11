@@ -49,6 +49,13 @@ class EstadosLocalesController < ApplicationController
       args << "%#{params[:form_buscar_estados_locales_nombre_distrito]}%"
 
     end
+    
+    if params[:form_buscar_estados_locales_nombre_barrio_localidad].present? #OK
+
+      cond << "nombre_barrio_localidad ilike ?"
+      args << "%#{params[:form_buscar_estados_locales_nombre_barrio_localidad]}%"
+
+    end
 
     if params[:form_buscar_estados_locales_nombre_zona].present? #OK
 
@@ -123,7 +130,7 @@ class EstadosLocalesController < ApplicationController
       csv = CSV.generate do |csv|
         # header row
         csv << ["periodo", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito",
-          "codigo_establecimiento",
+          "codigo_establecimiento","codigo_barrio_localidad", "nombre_barrio_localidad",
           "codigo_zona", "nombre_zona",
           "nombre_asentamiento_colonia", "suministro_energia_electrica","abastecimiento_agua","servicio_sanitario_actual",
           "titulo_de_propiedad","cuenta_plano","prevencion_incendio","uri_establecimiento"
@@ -132,7 +139,7 @@ class EstadosLocalesController < ApplicationController
         # data rows
         estados_locales_csv.each do |i|
           csv << [i.periodo, i.codigo_departamento, i.nombre_departamento, i.codigo_distrito, i.nombre_distrito,
-            i.codigo_establecimiento,
+            i.codigo_establecimiento, i.codigo_barrio_localidad, i.nombre_barrio_localidad,
             i.codigo_zona,i.nombre_zona,
             i.nombre_asentamiento_colonia, i.suministro_energia_electrica, i.abastecimiento_agua, i.servicio_sanitario_actual,
             i.titulo_de_propiedad, i.cuenta_plano,i.prevencion_incendio,i.uri_establecimiento
@@ -152,7 +159,7 @@ class EstadosLocalesController < ApplicationController
         format.xlsx {
 
           columnas = [:periodo, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito,
-            :codigo_establecimiento,
+            :codigo_establecimiento, :codigo_barrio_localidad, :nombre_barrio_localidad,
             :codigo_zona,:nombre_zona,
             :nombre_asentamiento_colonia, :suministro_energia_electrica, :abastecimiento_agua, :servicio_sanitario_actual,
             :titulo_de_propiedad, :cuenta_plano, :prevencion_incendio, :uri_establecimiento]

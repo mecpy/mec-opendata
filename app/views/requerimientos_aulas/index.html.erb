@@ -1,8 +1,8 @@
 <h3>
-  <span itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: AULAS</span><br/>
+  <span itemprop="name">Establecimientos Escolares Priorizados Elegibles - FONACIDE: AULAS</span><br/>
   <span style="font-size: 12px;color:silver;"><i>
-      La cantidad de Requerimientos de Aulas procesada actualmente no es la totalidad de la misma.<br/>
-      Para m&aacute;s informaci&oacute;n sobre los requerimientos de aulas puede ir a las planillas de establecimientos escolares priorizados elegibles visitando: <A href="http://datos.mec.gov.py/data/establecimientos_escolares_priorizados_elegibles_fonacide">este sitio</A>
+      La informaci&oacute;n presentada en la p&aacute;gina puede presentar diferencias con las planillas remitidas, esto es debido a que los datos de las planillas se encuentran en proceso de validaci&oacute;n de c&oacute;digos.<br/>
+      Si desea acceder a las planillas remitidas, las mismas est&aacute;n <a href="http://datos.mec.gov.py/data/establecimientos_escolares_priorizados_elegibles_fonacide" target="_blank">disponibles en formato EXCEL en el Catalogo de datos.</a>
     </i></span>
   <meta itemprop="url" content="http://datos.mec.gov.py/data/requerimientos_aulas">  
   <meta itemprop="description"
@@ -69,13 +69,13 @@
         </th>
 
         <th style="width:4%" class="text-min">
-          <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe %><br /><br />
+          <%= label_tag nil, "C&oacute;digo<br />Establecimiento".html_safe %><br />
           <%= text_field_tag :form_buscar_requerimientos_aulas_codigo_establecimiento, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:12px;"), "$('#form_buscar_requerimientos_aulas_codigo_establecimiento').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
         </th>
 
         <th style="width:4%" class="text-min">
-          <%= label_tag nil, "C&oacute;digo Instituci&oacute;n".html_safe%><br /><br />
+          <%= label_tag nil, "C&oacute;digo<br />Instituci&oacute;n".html_safe%><br />
           <%= text_field_tag :form_buscar_requerimientos_aulas_codigo_institucion, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:12px;"), "$('#form_buscar_requerimientos_aulas_codigo_institucion').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
         </th>
@@ -86,7 +86,7 @@
           <%= link_to_function image_tag("delete-icon.png", :style => "width:12px;"), "$('#form_buscar_requerimientos_aulas_nombre_institucion').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
         </th>
 
-        <th style="width:3%;" class="text-min">
+        <th style="width:2%;" class="text-min">
           <%= label_tag nil, "Zona".html_safe%><br /><br />
           <%= text_field_tag :form_buscar_requerimientos_aulas_nombre_zona, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:12px;"), "$('#form_buscar_requerimientos_aulas_nombre_zona').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
@@ -111,14 +111,14 @@
         </th>
         
         <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Cantidad Requerida".html_safe%><br /><br />
+          <%= label_tag nil, "Cantidad<br />Requerida".html_safe%><br />
           <%= select_tag(:form_buscar_requerimientos_aulas_cantidad_requerida_operador, options_for_select(['>', '<', '='])) %>
           <%= text_field_tag :form_buscar_requerimientos_aulas_cantidad_requerida, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_cantidad_requerida').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
         </th>
 
         <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "N&uacute;mero de Beneficiados".html_safe%><br /><br />
+          <%= label_tag nil, "N&uacute;mero de<br />Beneficiados".html_safe%><br />
           <%= select_tag(:form_buscar_requerimientos_aulas_numero_beneficiados_operador, options_for_select(['>', '<', '='])) %>
           <%= text_field_tag :form_buscar_requerimientos_aulas_numero_beneficiados, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_aulas_numero_beneficiados').val('');$('#form-buscar-requerimientos-aulas').submit();" ,:style => "color:#fff;"%>
