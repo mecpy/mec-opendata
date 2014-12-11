@@ -42,7 +42,7 @@
 
         <th style="width:3%" class="text-min celda-derecha">
           <%= label_tag "Periodo" %><br />
-          <%= select :form_buscar_instituciones, :anio, [2012], {:class => 'text-min'} %>
+          <%= select :form_buscar_instituciones, :anio, [2014, 2012], {:class => 'text-min'} %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_instituciones_anio').val('2012');$('#form-buscar-instituciones').submit();" ,:style => "color:#fff;"%>
         </th>
 
@@ -204,7 +204,7 @@
   //LIMPIAR FORMULARIO DE BUSQUEDA
   function limpiar_form_buscar_instituciones(){
     
-    $("#form_buscar_instituciones_anio").val("2012");
+    $("#form_buscar_instituciones_anio").val("2014");
     $("#form_buscar_instituciones_codigo_institucion").val("");
     $("#form_buscar_instituciones_nombre_institucion").val("");
     $("#form_buscar_instituciones_codigo_establecimiento").val("");

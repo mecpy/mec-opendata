@@ -46,7 +46,7 @@
 
         <th style="width:2%" class="text-min celda-derecha">
           <%= label_tag "Periodo" %><br /><br />
-          <%= select :form_buscar_requerimientos_mobiliarios, :periodo, [2015,2012], {:class => 'text-min'} %>
+          <%= select :form_buscar_requerimientos_mobiliarios, :periodo, [2015], {:class => 'text-min'} %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_mobiliarios_periodo').val('2015');$('#form-buscar-requerimientos-mobiliarios').submit();" ,:style => "color:#fff;"%>
         </th>
         

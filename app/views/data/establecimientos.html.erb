@@ -35,7 +35,7 @@
 
       <th style="width:100px;" class="text-min celda-derecha">
         <%= label_tag "Periodo" %><br />
-        <%= select :form_buscar_establecimientos, :anio, [2012], {:class => 'text-min'} %>
+        <%= select :form_buscar_establecimientos, :anio, [2014, 2012], {:class => 'text-min'} %>
         <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_anio'));" %>
       </th>
 
@@ -161,7 +161,7 @@
   //LIMPIAR FORMULARIO DE BUSQUEDA
   function limpiar_form_buscar_establecimientos(){
     
-    $("#form_buscar_establecimientos_anio").val("2012");
+    $("#form_buscar_establecimientos_anio").val("2014");
     $("#form_buscar_establecimientos_codigo_establecimiento").val("");
     $("#form_buscar_establecimientos_nombre_departamento").val("");
     $("#form_buscar_establecimientos_nombre_distrito").val("");

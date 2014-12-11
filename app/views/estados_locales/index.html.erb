@@ -42,7 +42,7 @@
 
         <th style="width:2%" class="text-min celda-derecha">
           <%= label_tag "Periodo" %><br /><br />
-          <%= select :form_buscar_estados_locales, :periodo, [2015,2012], {:class => 'text-min'} %>
+          <%= select :form_buscar_estados_locales, :periodo, [2014,2012], {:class => 'text-min'} %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_periodo').val('2015');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
         </th>
         
@@ -149,7 +149,7 @@
   //LIMPIAR FORMULARIO DE BUSQUEDA
   function limpiar_form_buscar_estados_locales(){
     
-    $("#form_buscar_estados_locales_periodo").val("2015");
+    $("#form_buscar_estados_locales_periodo").val("2014");
     $("#form_buscar_estados_locales_codigo_establecimiento").val("");
     $("#form_buscar_estados_locales_nombre_departamento").val("");
     $("#form_buscar_estados_locales_nombre_distrito").val("");
