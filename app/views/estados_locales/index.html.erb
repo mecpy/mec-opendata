@@ -42,13 +42,10 @@
 
         <th style="width:3%" class="text-min celda-derecha">
           <%= label_tag "Periodo" %><br /><br />
-<<<<<<< HEAD
-          <%= select :form_buscar_estados_locales, :periodo, [2014,2012], {:class => 'text-min'} %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_periodo').val('2015');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
-=======
+          
           <%= select :form_buscar_estados_locales, :periodo, [2014], {:class => 'text-min'} %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_estados_locales_periodo').val('2014');$('#form-buscar-estados-locales').submit();" ,:style => "color:#fff;"%>
->>>>>>> 61414966c97003b36a3dda46658fab0c9d72ba3f
+          
         </th>
         
         <th style="width:6%" class="text-min">

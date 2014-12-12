@@ -34,7 +34,7 @@
     parametros_pdf_todos = { :format => 'pdf', "form_buscar_requerimientos_otros_espacios[periodo]" => params[:form_buscar_requerimientos_otros_espacios][:periodo] }
   %>
 
-    <td colspan="12" class="row-descargar">
+    <td colspan="12" class="row-descargar" style="width: 70%">
       <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
       <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a></br>
       <span>Descargar Requerimientos de Otros Espacios Procesados Filtrados:</span>
@@ -46,9 +46,6 @@
       <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_otros_espacios_lista_url(parametros_csv)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
       <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_otros_espacios_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
       <br />
-      <div style="float:right; text-align: center">Descargar las Planillas de Establecimientos Escolares Priorizadas Elegibles visitando:<br/>
-        <A href="http://datos.mec.gov.py/data/establecimientos_escolares_priorizados_elegibles_fonacide">este sitio</A>
-      </div>
       <br /> 
 
       <div style="float:left;">Descargar todos los Requerimientos de Otros Espacios Procesados:</div>
@@ -61,7 +58,7 @@
       <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
         <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_requerimientos_otros_espacios_lista_url(parametros_xls_todos)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
         <br />
-        <span style="color:silver;">(363,5KB)</span>
+        <span style="color:silver;">(356,2KB)</span>
         <meta itemprop="name" content="Requerimientos de Otros Espacios 2015">
         <meta itemprop="description" content="Listado de requerimientos de otros_espacios correspondientes al año 2015">
         <meta itemprop="encodingFormat" content="xls">
@@ -69,7 +66,7 @@
       <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
         <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_otros_espacios_lista_url(parametros_csv_todos)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
         <br />
-        <span style="color:silver;">(912,8KB)</span>
+        <span style="color:silver;">(1,2MB)</span>
         <meta itemprop="name" content="Requerimientos de Otros Espacios 2015">
         <meta itemprop="description" content="Listado de requerimientos de otros_espacios correspondientes al año 2015">
         <meta itemprop="encodingFormat" content="csv">
@@ -77,7 +74,7 @@
       <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
         <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_otros_espacios_lista_url(parametros_json_todos)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
         <br />
-        <span style="color:silver;">(2,2MB)</span>
+        <span style="color:silver;">(2,5MB)</span>
         <meta itemprop="name" content="Requerimientos de Otros Espacios 2015">
         <meta itemprop="description" content="Listado de requerimientos de otros_espacios correspondientes al año 2015">
         <meta itemprop="encodingFormat" content="json">
@@ -85,6 +82,13 @@
 
       <div style="clear:both;"></div>
 
+    </td>
+    
+    <td colspan="12" class="row-descargar" style="text-align:center; width: 30%">
+      <br/><br/>
+      <div style="float:right; text-align: center;">Descargar las Planillas de Establecimientos Escolares Priorizadas Elegibles visitando:
+        <A href="http://datos.mec.gov.py/data/establecimientos_escolares_priorizados_elegibles_fonacide">este sitio</A>
+      </div>
     </td>
 
   </tr>
