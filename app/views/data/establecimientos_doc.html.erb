@@ -73,7 +73,7 @@
 
           <td><%= link_to i.codigo_institucion.gsub(".","").to_i, mec_custom_url(id_instituciones_path(i.codigo_institucion.gsub(".","").to_i)), target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %></td>
           <td><%= link_to i.nombre_institucion, mec_custom_url(data_instituciones_path(:ci => i.codigo_institucion)), :target => "_blank", :title => 'ir al dataset de instituciones.' %></td>
-          <td style="text-align:right;"><%= cantidad_total_matriculados(i.codigo_institucion.to_s.gsub('.','').to_i, i.codigo_establecimiento) %></td>
+          <td style="text-align:right;"><%= cantidad_total_matriculados_por_anio(i.codigo_institucion.to_s.gsub('.','').to_i, i.codigo_establecimiento, i.anio) %></td>
         
         </tr>
 
@@ -196,3 +196,12 @@
 
 </style>
 
+<script type="text/javascript">
+
+  $("#establecimiento_anio").bind('change', function(){
+
+      location.href="<%= url_for(mec_custom_url(id_establecimientos_path(@establecimiento.codigo_establecimiento))) %>?establecimiento[anio]="+$(this).val();    
+      
+  })
+
+</script>

@@ -439,7 +439,7 @@ class DataController < ApplicationController
     if params[:establecimiento] && params[:establecimiento][:anio].present?
       anio = params[:establecimiento][:anio]
     else
-      anio = 2012
+      anio = 2014
     end
 
     @establecimiento = Establecimiento.find_by_codigo_establecimiento_and_anio(params[:codigo_establecimiento], anio)
@@ -448,7 +448,7 @@ class DataController < ApplicationController
     respond_to do |f|
 
       f.html
-      f.json {render :json => @establecimiento }
+      f.json {render :json => @establecimiento , :methods => :uri}
 
     end 
   
