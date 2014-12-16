@@ -38,7 +38,7 @@
 
 <div class="table-outter">
   
-  <table class="table table-bordered table-hover" style="margin-bottom: 0px; width: 2500px; max-width: none;">
+  <table class="table table-bordered table-hover" style="margin-bottom: 0px; width: 1900px; max-width: none;">
 
     <tr>
 
@@ -86,7 +86,7 @@
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_mobiliarios_nombre_institucion').val('');$('#form-buscar-requerimientos-mobiliarios').submit();" ,:style => "color:#fff;"%>
         </th>
 
-        <th style="width:2%;" class="text-min">
+        <th style="width:3%;" class="text-min">
           <%= label_tag nil, "Zona".html_safe%><br /><br />
           <%= text_field_tag :form_buscar_requerimientos_mobiliarios_nombre_zona, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_mobiliarios_nombre_zona').val('');$('#form-buscar-requerimientos-mobiliarios').submit();" ,:style => "color:#fff;"%>
@@ -104,15 +104,15 @@
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_mobiliarios_nombre_mobiliario').val('');$('#form-buscar-requerimientos-mobiliarios').submit();" ,:style => "color:#fff;"%>
         </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Cantidad <br/>Requerida".html_safe%><br />
+        <th style="width:6%;" class="text-min">
+          <%= label_tag nil, "Cantidad Requerida".html_safe%><br /><br/>
           <%= select_tag(:form_buscar_requerimientos_mobiliarios_cantidad_requerida_operador, options_for_select(['>', '<', '='])) %>
           <%= text_field_tag :form_buscar_requerimientos_mobiliarios_cantidad_requerida, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_mobiliarios_cantidad_requerida').val('');$('#form-buscar-requerimientos-mobiliarios').submit();" ,:style => "color:#fff;"%>
         </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "N&uacute;mero de<br />Beneficiados".html_safe%><br />
+        <th style="width:6%;" class="text-min">
+          <%= label_tag nil, "N&uacute;mero de Beneficiados".html_safe%><br /><br />
           <%= select_tag(:form_buscar_requerimientos_mobiliarios_numero_beneficiados_operador, options_for_select(['>', '<', '='])) %>
           <%= text_field_tag :form_buscar_requerimientos_mobiliarios_numero_beneficiados, nil, :class => 'text-min' %>
           <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_mobiliarios_numero_beneficiados').val('');$('#form-buscar-requerimientos-mobiliarios').submit();" ,:style => "color:#fff;"%>
@@ -218,7 +218,7 @@
   .text-min input[type="text"] { width: 80px;}
   
   .text-prioridad input[type="text"] {
-    width: 30px;
+    width: 35px;
   }
   .text-justificacion input[type="text"] { width: 200px;}
 
