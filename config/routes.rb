@@ -71,6 +71,14 @@ OpenData::Application.routes.draw do
   match 'data/instituciones' => 'instituciones#index', :as => :data_instituciones
   match 'def/instituciones' => 'instituciones#diccionario', :as => :def_instituciones
   
+=begin
+  match "id/directorios_instituciones/:codigo_institucion" => "directorios_instituciones#doc", :as => :id_instituciones
+  match "doc/directorios_instituciones/:codigo_institucion" => "directorios_instituciones#doc", :as => :doc_directorios_instituciones
+=end
+  match "data/directorios_instituciones_lista" => 'directorios_instituciones#lista', :as => :data_directorios_instituciones_lista
+  match 'data/directorios_instituciones' => 'directorios_instituciones#index', :as => :data_directorios_instituciones
+  match 'def/directorios_instituciones' => 'directorios_instituciones#diccionario', :as => :def_directorios_instituciones
+  
   match "data/requerimientos_aulas_lista" => 'requerimientos_aulas#lista', :as => :data_requerimientos_aulas_lista
   match 'data/requerimientos_aulas' => 'requerimientos_aulas#index', :as => :data_requerimientos_aulas
   match 'def/requerimientos_aulas' => 'requerimientos_aulas#diccionario', :as => :def_requerimientos_aulas

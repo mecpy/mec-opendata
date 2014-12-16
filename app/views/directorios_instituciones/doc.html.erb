@@ -1,0 +1,235 @@
+<h2>
+	<span itemprop="name">Directorio de Instituciones</span>
+  <meta itemprop="description"
+    content="Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación."/>
+  <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31">
+  <meta itemprop="url" content="http://datos.mec.gov.py/data/directorios_instituciones">  
+  <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+    <meta itemprop="name" content="Ministerio de Educación y Cultura">
+    <meta itemprop="url" content="http://www.mec.gov.py/">
+    <meta itemprop="email" content="datosabiertos@mec.gov.py">
+  </span>
+  <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+    <meta itemprop="name" content="Juan Barrios">
+    <meta itemprop="email" content="datosabiertos@mec.gov.py">
+  </span>
+  <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+  <meta itemprop="keywords" style="display: none;" content="educación,instituciones,establecimientos,escolar,geografico"/>
+  <meta itemprop="version" style="display: none;" content="1.0"/>
+  <span style="float:right;">
+    <%= link_to "Ver dataset", mec_custom_url(data_directorios_instituciones_url), :title => "Ir al Dataset", :style => "font-size:12px;" %>
+    <%= link_to image_tag("datos_ico.jpg", :style => "width:24px;" ), mec_custom_url(data_directorios_instituciones_url), :title => "Ir al Dataset" %> 
+    <%= link_to "Ver diccionario", mec_custom_url(def_directorios_instituciones_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
+    <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), mec_custom_url(def_directorios_instituciones_url), :title => "Ir al diccionario" %>
+    <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
+    <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
+  </span>
+
+</h2>
+
+<% if @directorios_institucion.present? %>
+
+  <div class="uri-data-filter">
+    <%= label_tag "Periodo" %>
+    <%= select :directorios_institucion, :periodo, periodos_directorios_instituciones %>
+  </div>
+  
+  <br />
+  
+  <div class='uri-data-left'>
+
+    <h4>Datos de la Instituci&oacute;n</h4>
+    
+    <div class='uri-titulo' style='border-top:1px solid silver;'>Periodo</div><div class='uri-valor first'><%= @institucion.periodo %></div><br />
+    <div class='uri-titulo'>C&oacute;digo de Establecimiento</div><div class='uri-valor'><%= @directorios_institucion.codigo_establecimiento %></div><br />
+    <div class='uri-titulo'>C&oacute;digo de Institucion</div><div class='uri-valor'><%= @directorios_institucion.codigo_institucion %></div><br />
+    <div class='uri-titulo'>Institución</div><div class='uri-valor'><%= @directorios_institucion.nombre_institucion %></div><br />
+    <div class='uri-titulo'>Departamento</div><div class='uri-valor'><%= @directorios_institucion.nombre_departamento %></div><br />
+    <div class='uri-titulo'>Distrito</div><div class='uri-valor'><%= @directorios_institucion.nombre_distrito %></div><br />
+    <div class='uri-titulo'>Localidad/Barrio</div><div class='uri-valor'><%= @directorios_institucion.nombre_barrio_localidad %></div><br />
+    <div class='uri-titulo'>Zona</div><div class='uri-valor'><%= @directorios_institucion.nombre_zona %></div><br />
+    <div class='uri-titulo'>Sector</div><div class='uri-valor'><%= @directorios_institucion.sector_o_tipo_gestion %></div><br />
+    <div class='uri-titulo'>Regi&oacute;n administrativa</div><div class='uri-valor'><%= @directorios_institucion.nombre_region_administrativa %></div><br />
+
+  </div>
+
+  <div class="uri-data-right"> 
+ 
+    <h4>Matriculaciones de la Instituci&oacute;n</h4>
+    
+    <table class="table table-striped table-bordered table-hover">
+
+      <tr>
+
+        <th>Nivel</th>
+        <th style="text-align:right;">Cantidad de Matriculados</th>
+
+      </tr>
+
+        <tr>
+
+         
+          <td><%= link_to "MATRICULA EDUCACION ESCOLAR BASICA - CICLOS", mec_custom_url(data_matriculaciones_educacion_escolar_basica_url), :target => "_blank",:title => "Ir al dataset" %></td>
+      
+          <td style="text-align:right;"><%=@total_eeb%></td>
+		         
+        </tr>
+        
+        <tr>
+
+         
+          <td><%= link_to "MATRICULA EDUCACION INCLUSIVA", mec_custom_url(data_matriculaciones_educacion_inclusiva_url),:target => "_blank", :title => "Ir al dataset" %>    </td>
+      
+          <td style="text-align:right;"><%=@total_ei%></td>
+		     
+        </tr>
+        
+        <tr>
+        	<td><%= link_to "MATRICULA EDUCACION PERMANENTE", mec_custom_url(data_matriculaciones_educacion_permanente_url),:target => "_blank", :title => "Ir al dataset" %></td>
+      
+          <td style="text-align:right;"><%=@total_ep%></td>
+        	
+        </tr>
+        
+        <tr>
+        	<td><%= link_to "MATRICULA EDUCACION SUPERIOR", mec_custom_url(data_matriculaciones_educacion_superior_url), :target => "_blank", :title => "Ir al dataset" %></td>
+      
+          <td style="text-align:right;"><%=@total_es%></td>
+        	
+        </tr>
+        <tr>
+        	<td><%= link_to "MATRICULA EDUCACION INICIAL", mec_custom_url(data_matriculaciones_inicial_url),:target => "_blank", :title => "Ir al dataset" %></td>
+      
+          <td style="text-align:right;"><%=@total_i%></td>
+        	
+        </tr>
+        
+        <tr>
+        	<td><%= link_to "MATRICULA EDUCACION MEDIA", mec_custom_url(data_matriculaciones_educacion_media_url),:target => "_blank", :title => "Ir al dataset" %></td>
+      
+          <td style="text-align:right;"><%=@total_em%></td>
+        	
+        </tr>
+         <tr>
+        	<th>TOTAL</th>
+      
+          <td style="text-align:right;"><%= @resultado %></td>
+        	
+        </tr>
+
+    </table>
+	
+    <h4>Ubicaci&oacute;n Geografica</h4>
+    
+    <% if @establecimiento.latitud.present? && @establecimiento.longitud.present? %>
+    
+      <% lat = "-#{(@establecimiento.latitud.split(" ").first.to_i + (@establecimiento.latitud.split(" ").second.to_f / 60.to_f) + (@establecimiento.latitud.split(" ").third.to_f / 3600))}" %>
+      <% lng = "-#{(@establecimiento.longitud.split(" ").first.to_i + (@establecimiento.longitud.split(" ").second.to_f / 60.to_f) + (@establecimiento.longitud.split(" ").third.to_f / 3600))}" %>
+
+      <script type="text/javascript">
+  
+        $(document).ready(function(){
+      
+          var map;
+      
+          map = new GMaps({
+            el: '#map',
+            lat: "<%= lat %>",
+            lng: "<%= lng %>"
+          });
+        
+          map.addMarker({
+            lat: "<%= lat %>",
+            lng: "<%= lng %>",
+            title: 'Datos de la Institución',
+            infoWindow: {
+              content: "<%= escape_javascript(render :partial => 'directorios_instituciones/infowindow_institucion_doc', :locals => {:directorios_institucion => @directorios_institucion})  %>"
+            }
+          });
+        });
+    
+      </script>
+
+      <div id="map" style="height:400px;"></div>
+      
+      <br />
+      
+    <% else %>
+
+      <div style="font-size: 11px; color: #000; margin-left:15px; "><br />No se encontrar&oacute;n las coordenadas geogr&aacute;ficas.<br /><br /></div>
+    <% end %>
+
+  </div>
+ 
+
+  <div style="clear:both;"></div>
+  <div class="uri-data-fin">
+
+    <br />
+    <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
+    <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a>
+    </br>
+    <span>Descargar Instituci&oacute;n:</span>
+
+    <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
+    <% if params[:directorios_institucion] && params[:directorios_institucion][:periodo].present? %>
+      <% ruta = mec_custom_url(id_directorios_instituciones_url(params[:codigo_directorios_institucion], periodo: { periodo: params[:directorios_institucion][:periodo]}, format: 'json'))%>
+    <% else %>
+      <% ruta = mec_custom_url(id_directorios_instituciones_url(params[:codigo_institucion], format: 'json'))%>
+    <% end %>
+    <%= link_to "JSON#{image_star * 3}".html_safe, ruta, :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+
+  </div>
+
+<% else %>
+
+  <div>No se ha encontrado la instituci&oacute;n educativo</div>
+
+<% end %>
+
+<style>
+
+  h2 {border-bottom: 3px solid gray;}
+  h4 {border-bottom: 1px dashed silver;}
+  div.uri-data-filter { width:100%; border-bottom: 4px solid silver;margin-top:30px;padding-bottom:10px;}
+  div.uri-data-left { width:45%; float:left;}
+  div.uri-data-right { width:52%; float:right; border-left: 4px solid silver; padding-left:20px;}
+  div.uri-data-fin { width:100%; border-top: 4px solid silver;margin-bottom:30px;clear:both;margin-top:20px;}
+  div.uri-data-left br {clear:both;}
+  div.uri-titulo, div.uri-valor { font-size: 12px; float:left; padding:5px; height:40px;}
+  div.uri-titulo { border-bottom: 1px solid silver;width:30%; border-left:6px solid silver; background-color: #efefef; color: #5a86a5;}
+  div.uri-valor { border-bottom: 1px solid silver;border-right: 1px solid silver; width:70%; -moz-box-shadow: 9px -4px 11px #878787;}
+
+  div.first{
+    border-top:solid 1px silver;
+    -moz-border-radius-topleft: 0px;
+    -moz-border-radius-topright:21px;
+    -moz-border-radius-bottomleft:0px;
+    -moz-border-radius-bottomright:0px;
+    -webkit-border-top-left-radius:0px;
+    -webkit-border-top-right-radius:21px;
+    -webkit-border-bottom-left-radius:0px;
+    -webkit-border-bottom-right-radius:0px;
+    border-top-left-radius:0px;
+    border-top-right-radius:21px;
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius:0px;
+  }
+
+  div.last{
+    border-bottom:solid 1px silver;
+    -moz-border-radius-topleft: 0px;
+    -moz-border-radius-topright:0px;
+    -moz-border-radius-bottomleft:0px;
+    -moz-border-radius-bottomright:21px;
+    -webkit-border-top-left-radius:0px;
+    -webkit-border-top-right-radius:0px;
+    -webkit-border-bottom-left-radius:0px;
+    -webkit-border-bottom-right-radius:21px;
+    border-top-left-radius:0px;
+    border-top-right-radius:0px;
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius:21px;
+  } 
+
+</style>
