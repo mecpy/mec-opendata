@@ -673,6 +673,40 @@
 						<td itemprop="keywords" style="display: none;">educación,establecimientos,escolar,estado,local</td>
 						<td itemprop="version" style="display: none;">1.0</td>
           </tr>
+          
+          
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">23</td>
+            <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">DIRECTORIO DE INSTITUCIONES
+				</br>
+				<%#= image_tag("star.png")%>
+				<%#= image_tag("star.png")%>
+				<%#= image_tag("star.png")%>	
+				<%#= image_tag("star.png")%>
+			</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <%= link_to "Ver diccionario", mec_custom_url(def_directorios_instituciones_url), :title => "Ir al diccionario" %>
+              <%= link_to image_tag("def_icon.png"), mec_custom_url(def_directorios_instituciones_url), :title => "Ir al diccionario" %><br /><br />
+              <%= link_to "Ver datos", mec_custom_url(data_directorios_instituciones_url), :title => "Ir al dataset"%>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_directorios_instituciones_url), :title => "Ir al dataset", :itemprop => "url" %>
+            </td>
+						<td itemprop="description">
+								Contiene datos básicos acerca de las instituciones educativas, como el departamento, distrito y zona a la que pertenecen las mismas.
+						</td>
+						<td itemprop="temporal" style="display: none;">2012-01-01/2012-12-31</td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;">educación,directorio,instituciones</td>
+						<td itemprop="version" style="display: none;">1.0</td>
+					</tr>
 
         </tbody>
 			
