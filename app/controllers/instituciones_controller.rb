@@ -175,14 +175,14 @@ class InstitucionesController < ApplicationController
         csv << ["anio", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", "codigo_barrio_localidad", "nombre_barrio_localidad", "codigo_zona", "nombre_zona",
                 "codigo_establecimiento", "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "codigo_region_administrativa", "nombre_region_administrativa", 
                 "nombre_supervisor", "niveles_modalidades", "codigo_tipo_organizacion", "nombre_tipo_organizacion", "participacion_comunitaria", "direccion", "nro_telefono", "tiene_internet",
-                "paginaweb", "correo_electronico"]
+                "paginaweb", "correo_electronico", "uri_establecimiento", "uri_institucion"]
  
         # data rows
         instituciones_csv.each do |i|
           csv << [i.anio, i.codigo_departamento, i.nombre_departamento, i.codigo_distrito, i.nombre_distrito, i.codigo_barrio_localidad, i.nombre_barrio_localidad, i.codigo_zona, i.nombre_zona,
                 i.codigo_establecimiento, i.codigo_institucion, i.nombre_institucion, i.sector_o_tipo_gestion, i.codigo_region_administrativa, i.nombre_region_administrativa, 
                 i.nombre_supervisor, i.niveles_modalidades, i.codigo_tipo_organizacion, i.nombre_tipo_organizacion, i.participacion_comunitaria, i.direccion, i.nro_telefono, i.tiene_internet,
-                i.paginaweb, i.correo_electronico]
+                i.paginaweb, i.correo_electronico, i.uri_establecimiento, i.uri_institucion]
         end
 
       end
@@ -200,7 +200,7 @@ class InstitucionesController < ApplicationController
           columnas = [:anio, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_barrio_localidad, :nombre_barrio_localidad, :codigo_zona, :nombre_zona,
                 :codigo_establecimiento, :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :codigo_region_administrativa, :nombre_region_administrativa, 
                 :nombre_supervisor, :niveles_modalidades, :codigo_tipo_organizacion, :nombre_tipo_organizacion, :participacion_comunitaria, :direccion, :nro_telefono, :tiene_internet,
-                :paginaweb, :correo_electronico]
+                :paginaweb, :correo_electronico, :uri_establecimiento, :uri_institucion]
          
           send_data Institucion.orden_dep_dis.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
                     :filename => "instituciones_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
@@ -217,7 +217,7 @@ class InstitucionesController < ApplicationController
       respond_to do |f|
 
         f.js
-        f.json {render :json => @instituciones_todos }
+        f.json {render :json => @instituciones_todos, :methods => [:uri_establecimiento, :uri_institucion]}
 
       end 
 

@@ -97,14 +97,14 @@ class DirectoriosInstitucionesController < ApplicationController
         # header row
         csv << ["periodo", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", 
                 "codigo_barrio_localidad","nombre_barrio_localidad", "codigo_zona", "nombre_zona",
-                "codigo_establecimiento", "codigo_institucion", "nombre_institucion", 
+                "codigo_establecimiento", "codigo_institucion", "nombre_institucion", "anho_cod_geo", 
                 "uri_establecimiento", "uri_institucion"]
  
         # data rows
         directorios_instituciones_csv.each do |i|
           csv << [i.periodo, i.codigo_departamento, i.nombre_departamento, i.codigo_distrito, i.nombre_distrito,
                 i.codigo_barrio_localidad, i.nombre_barrio_localidad, i.codigo_zona, i.nombre_zona,
-                i.codigo_establecimiento, i.codigo_institucion, i.nombre_institucion, 
+                i.codigo_establecimiento, i.codigo_institucion, i.nombre_institucion, i.anho_cod_geo, 
                 i.uri_establecimiento,i.uri_institucion]
         end
 
@@ -122,7 +122,7 @@ class DirectoriosInstitucionesController < ApplicationController
 
           columnas = [:periodo, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito,
                 :codigo_barrio_localidad, :nombre_barrio_localidad, :codigo_zona, :nombre_zona,
-                :codigo_establecimiento, :codigo_institucion, :nombre_institucion,
+                :codigo_establecimiento, :codigo_institucion, :nombre_institucion, :anho_cod_geo,
                 :uri_establecimiento,:uri_institucion]
          
           send_data VDirectorioInstitucion.orden_dep_dis.where(cond).to_xlsx(:columns => columnas).to_stream.read, 

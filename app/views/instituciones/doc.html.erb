@@ -1,7 +1,7 @@
 <h2>
-	<span itemprop="name">Datos Espec&iacute;ficos de Instituciones Educativas</span>
+  <span itemprop="name">Datos Espec&iacute;ficos de Instituciones Educativas</span>
   <meta itemprop="description"
-    content="Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación."/>
+        content="Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación."/>
   <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31">
   <meta itemprop="url" content="http://datos.mec.gov.py/data/establecimientos">  
   <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
@@ -33,15 +33,17 @@
     <%= label_tag "Periodo" %>
     <%= select :institucion, :anio, periodos_instituciones %>
   </div>
-  
+
   <br />
-  
+
   <div class='uri-data-left'>
 
     <h4>Datos de la Instituci&oacute;n</h4>
-    
+
     <div class='uri-titulo' style='border-top:1px solid silver;'>Periodo</div><div class='uri-valor first'><%= @institucion.anio %></div><br />
-    <div class='uri-titulo'>C&oacute;digo de Establecimiento</div><div class='uri-valor'><%= @institucion.codigo_establecimiento %></div><br />
+    <div class='uri-titulo'>C&oacute;digo de Establecimiento</div><div class='uri-valor'>
+      <%= link_to @institucion.codigo_establecimiento, mec_custom_url(id_establecimientos_path(@institucion.codigo_establecimiento)), target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %>
+    </div><br />
     <div class='uri-titulo'>C&oacute;digo de Institucion</div><div class='uri-valor'><%= @institucion.codigo_institucion %></div><br />
     <div class='uri-titulo'>Institución</div><div class='uri-valor'><%= @institucion.nombre_institucion %></div><br />
     <div class='uri-titulo'>Departamento</div><div class='uri-valor'><%= @institucion.nombre_departamento %></div><br />
@@ -54,9 +56,9 @@
   </div>
 
   <div class="uri-data-right"> 
- 
+
     <h4>Matriculaciones de la Instituci&oacute;n</h4>
-    
+
     <table class="table table-striped table-bordered table-hover">
 
       <tr>
@@ -66,78 +68,78 @@
 
       </tr>
 
-        <tr>
+      <tr>
 
-         
-          <td><%= link_to "MATRICULA EDUCACION ESCOLAR BASICA - CICLOS", mec_custom_url(data_matriculaciones_educacion_escolar_basica_url), :target => "_blank",:title => "Ir al dataset" %></td>
-      
-          <td style="text-align:right;"><%=@total_eeb%></td>
-		         
-        </tr>
-        
-        <tr>
 
-         
-          <td><%= link_to "MATRICULA EDUCACION INCLUSIVA", mec_custom_url(data_matriculaciones_educacion_inclusiva_url),:target => "_blank", :title => "Ir al dataset" %>    </td>
-      
-          <td style="text-align:right;"><%=@total_ei%></td>
-		     
-        </tr>
-        
-        <tr>
-        	<td><%= link_to "MATRICULA EDUCACION PERMANENTE", mec_custom_url(data_matriculaciones_educacion_permanente_url),:target => "_blank", :title => "Ir al dataset" %></td>
-      
-          <td style="text-align:right;"><%=@total_ep%></td>
-        	
-        </tr>
-        
-        <tr>
-        	<td><%= link_to "MATRICULA EDUCACION SUPERIOR", mec_custom_url(data_matriculaciones_educacion_superior_url), :target => "_blank", :title => "Ir al dataset" %></td>
-      
-          <td style="text-align:right;"><%=@total_es%></td>
-        	
-        </tr>
-        <tr>
-        	<td><%= link_to "MATRICULA EDUCACION INICIAL", mec_custom_url(data_matriculaciones_inicial_url),:target => "_blank", :title => "Ir al dataset" %></td>
-      
-          <td style="text-align:right;"><%=@total_i%></td>
-        	
-        </tr>
-        
-        <tr>
-        	<td><%= link_to "MATRICULA EDUCACION MEDIA", mec_custom_url(data_matriculaciones_educacion_media_url),:target => "_blank", :title => "Ir al dataset" %></td>
-      
-          <td style="text-align:right;"><%=@total_em%></td>
-        	
-        </tr>
-         <tr>
-        	<th>TOTAL</th>
-      
-          <td style="text-align:right;"><%= @resultado %></td>
-        	
-        </tr>
+        <td><%= link_to "MATRICULA EDUCACION ESCOLAR BASICA - CICLOS", mec_custom_url(data_matriculaciones_educacion_escolar_basica_url), :target => "_blank",:title => "Ir al dataset" %></td>
+
+        <td style="text-align:right;"><%=@total_eeb%></td>
+
+      </tr>
+
+      <tr>
+
+
+        <td><%= link_to "MATRICULA EDUCACION INCLUSIVA", mec_custom_url(data_matriculaciones_educacion_inclusiva_url),:target => "_blank", :title => "Ir al dataset" %>    </td>
+
+        <td style="text-align:right;"><%=@total_ei%></td>
+
+      </tr>
+
+      <tr>
+        <td><%= link_to "MATRICULA EDUCACION PERMANENTE", mec_custom_url(data_matriculaciones_educacion_permanente_url),:target => "_blank", :title => "Ir al dataset" %></td>
+
+        <td style="text-align:right;"><%=@total_ep%></td>
+
+      </tr>
+
+      <tr>
+        <td><%= link_to "MATRICULA EDUCACION SUPERIOR", mec_custom_url(data_matriculaciones_educacion_superior_url), :target => "_blank", :title => "Ir al dataset" %></td>
+
+        <td style="text-align:right;"><%=@total_es%></td>
+
+      </tr>
+      <tr>
+        <td><%= link_to "MATRICULA EDUCACION INICIAL", mec_custom_url(data_matriculaciones_inicial_url),:target => "_blank", :title => "Ir al dataset" %></td>
+
+        <td style="text-align:right;"><%=@total_i%></td>
+
+      </tr>
+
+      <tr>
+        <td><%= link_to "MATRICULA EDUCACION MEDIA", mec_custom_url(data_matriculaciones_educacion_media_url),:target => "_blank", :title => "Ir al dataset" %></td>
+
+        <td style="text-align:right;"><%=@total_em%></td>
+
+      </tr>
+      <tr>
+        <th>TOTAL</th>
+
+        <td style="text-align:right;"><%= @resultado %></td>
+
+      </tr>
 
     </table>
-	
+
     <h4>Ubicaci&oacute;n Geografica</h4>
-    
+
     <% if @establecimiento.latitud.present? && @establecimiento.longitud.present? %>
-    
+
       <% lat = "-#{(@establecimiento.latitud.split(" ").first.to_i + (@establecimiento.latitud.split(" ").second.to_f / 60.to_f) + (@establecimiento.latitud.split(" ").third.to_f / 3600))}" %>
       <% lng = "-#{(@establecimiento.longitud.split(" ").first.to_i + (@establecimiento.longitud.split(" ").second.to_f / 60.to_f) + (@establecimiento.longitud.split(" ").third.to_f / 3600))}" %>
 
       <script type="text/javascript">
-  
-        $(document).ready(function(){
-      
+
+        $(document).ready(function() {
+
           var map;
-      
+
           map = new GMaps({
             el: '#map',
             lat: "<%= lat %>",
             lng: "<%= lng %>"
           });
-        
+
           map.addMarker({
             lat: "<%= lat %>",
             lng: "<%= lng %>",
@@ -147,20 +149,20 @@
             }
           });
         });
-    
+
       </script>
 
       <div id="map" style="height:400px;"></div>
-      
+
       <br />
-      
+
     <% else %>
 
       <div style="font-size: 11px; color: #000; margin-left:15px; "><br />No se encontrar&oacute;n las coordenadas geogr&aacute;ficas.<br /><br /></div>
     <% end %>
 
   </div>
- 
+
 
   <div style="clear:both;"></div>
   <div class="uri-data-fin">

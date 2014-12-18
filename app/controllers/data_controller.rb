@@ -422,7 +422,7 @@ class DataController < ApplicationController
 
   def establecimientos_instituciones
 
-    @instituciones = Institucion.where("codigo_establecimiento = ?", params[:codigo_establecimiento]) 
+    @instituciones = VDirectorioInstitucion.where("codigo_establecimiento = ?", params[:codigo_establecimiento]) 
 
     respond_to do |f|
       f.js
@@ -441,9 +441,10 @@ class DataController < ApplicationController
     else
       anio = 2014
     end
-
+    
     @establecimiento = Establecimiento.find_by_codigo_establecimiento_and_anio(params[:codigo_establecimiento], anio)
-    @instituciones = Institucion.where('codigo_establecimiento = ? and anio = ?', @establecimiento.codigo_establecimiento, anio) if @establecimiento.present?
+    @codigo_establecimiento_doc=params[:codigo_establecimiento]
+    @instituciones = VDirectorioInstitucion.where('codigo_establecimiento = ? and periodo = ?', @establecimiento.codigo_establecimiento, anio).order('codigo_institucion')if @establecimiento.present?
 
     respond_to do |f|
 

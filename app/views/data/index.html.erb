@@ -65,8 +65,43 @@
 						<td itemprop="version" style="display: none;">1.0</td>
           </tr>
           
+          
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
             <td style="vertical-align:middle;">2</td>
+            <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">DIRECTORIO DE INSTITUCIONES
+				</br>
+				<%#= image_tag("star.png")%>
+				<%#= image_tag("star.png")%>
+				<%#= image_tag("star.png")%>	
+				<%#= image_tag("star.png")%>
+			</td>
+            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+              <%= link_to "Ver diccionario", mec_custom_url(def_directorios_instituciones_url), :title => "Ir al diccionario" %>
+              <%= link_to image_tag("def_icon.png"), mec_custom_url(def_directorios_instituciones_url), :title => "Ir al diccionario" %><br /><br />
+              <%= link_to "Ver datos", mec_custom_url(data_directorios_instituciones_url), :title => "Ir al dataset"%>
+              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_directorios_instituciones_url), :title => "Ir al dataset", :itemprop => "url" %>
+            </td>
+						<td itemprop="description">
+								Contiene datos básicos acerca de las instituciones educativas, como el departamento, distrito y zona a la que pertenecen las mismas.
+						</td>
+						<td itemprop="temporal" style="display: none;">2012-01-01/2012-12-31</td>
+						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+							<meta itemprop="name" content="Ministerio de Educación y Cultura">
+							<meta itemprop="url" content="http://www.mec.gov.py/">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+						  <meta itemprop="name" content="Juan Barrios">
+							<meta itemprop="email" content="datosabiertos@mec.gov.py">
+						</td>
+						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+						<td itemprop="keywords" style="display: none;">educación,directorio,instituciones</td>
+						<td itemprop="version" style="display: none;">1.0</td>
+					</tr>
+          
+          
+          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+            <td style="vertical-align:middle;">3</td>
             <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">DATOS ESPEC&Iacute;FICOS DE INSTITUCIONES EDUCATIVAS
 				</br>
 				<%#= image_tag("star.png")%>
@@ -99,7 +134,7 @@
 					</tr>
           
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">3</td>
+            <td style="vertical-align:middle;">4</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">MATRICULA EDUCACION ESCOLAR BASICA - CICLOS</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_educacion_escolar_basica_url), :title => "Ir al diccionario" %>
@@ -128,7 +163,7 @@
 					</tr>
           
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">4</td>
+            <td style="vertical-align:middle;">5</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">MATRICULA EDUCACION INCLUSIVA</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario",mec_custom_url(def_matriculaciones_educacion_inclusiva_url), :title => "Ir al diccionario" %>
@@ -158,7 +193,7 @@
 					</tr>
           
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">5</td>
+            <td style="vertical-align:middle;">6</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">MATRICULA EDUCACION PERMANENTE</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_educacion_permanente_url), :title => "Ir al diccionario" %>
@@ -188,7 +223,7 @@
 					</tr>
           
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">6</td>
+            <td style="vertical-align:middle;">7</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">MATRICULA EDUCACION SUPERIOR</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_educacion_superior_url), :title => "Ir al diccionario" %>
@@ -218,7 +253,7 @@
 					</tr>
           
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">7</td>
+            <td style="vertical-align:middle;">8</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">MATRICULA EDUCACION INICIAL</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_inicial_url), :title => "Ir al diccionario" %>
@@ -248,7 +283,7 @@
 					</tr>
           
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">8</td>
+            <td style="vertical-align:middle;">9</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">MATRICULA EDUCACION MEDIA</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_educacion_media_url), :title => "Ir al diccionario" %>
@@ -278,7 +313,7 @@
 					</tr>
           
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">9</td>
+            <td style="vertical-align:middle;">10</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">MATRICULA POR DEPARTAMENTO Y DISTRITO</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_departamentos_distritos_url), :title => "Ir al diccionario" %>
@@ -305,7 +340,7 @@
           </tr>
 
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">10</td>
+            <td style="vertical-align:middle;">11</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">NOMINA DE FUNCIONARIOS DOCENTES</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario", mec_custom_url(def_nomina_docentes_url), :title => "Ir al diccionario" %>
@@ -332,7 +367,7 @@
           </tr>
 
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">11</td>
+            <td style="vertical-align:middle;">12</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">NOMINA DE FUNCIONARIOS ADMINISTRATIVOS</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario", mec_custom_url(def_nomina_administrativos_url), :title => "Ir al diccionario" %>
@@ -359,7 +394,7 @@
 					</tr>
 
           <tr id="comisionados-del-mec" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">12</td>
+            <td style="vertical-align:middle;">13</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">NOMINA DE FUNCIONARIOS COMISIONADOS DEL MEC A OTROS ORGANISMOS DEL ESTADO</td>
             <td itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload" style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <meta itemprop="encodingFormat" content="xls">
@@ -388,7 +423,7 @@
 					</tr>
 
           <tr id="comisionados-al-mec" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">13</td>
+            <td style="vertical-align:middle;">14</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">NOMINA DE FUNCIONARIOS COMISIONADOS AL MEC DESDE OTROS ORGANISMOS DEL ESTADO</td>
             <td itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload" style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
         	  <meta itemprop="encodingFormat" content="xls">
@@ -419,7 +454,7 @@
 					</tr>
 
           <tr id="inventario" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">14</td>
+            <td style="vertical-align:middle;">15</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">INVENTARIO DE BIENES</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
             <span itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
@@ -458,7 +493,7 @@
           </tr>
 
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">15</td>
+            <td style="vertical-align:middle;">16</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">CONTRATACIONES</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario", mec_custom_url(def_contrataciones_url), :title => "Ir al diccionario" %>
@@ -485,7 +520,7 @@
           </tr>
 
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">16</td>
+            <td style="vertical-align:middle;">17</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">REGISTRO DE TITULOS</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario", mec_custom_url(def_registros_titulos_url), :title => "Ir al diccionario" %>
@@ -512,7 +547,7 @@
           </tr>
 
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">17</td>
+            <td style="vertical-align:middle;">18</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">PLANILLAS DE ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver Cat&aacute;logo".html_safe, mec_custom_url(data_requerimientos_infraestructuras_catalogo_url), :title => "Ir al Catálogo" %>
@@ -537,7 +572,7 @@
           </tr>
           
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">18</td>
+            <td style="vertical-align:middle;">19</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: AULAS</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario", mec_custom_url(def_requerimientos_aulas_url), :title => "Ir al diccionario" %>
@@ -564,7 +599,7 @@
           </tr>
           
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">19</td>
+            <td style="vertical-align:middle;">20</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: SANITARIOS</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario", mec_custom_url(def_requerimientos_sanitarios_url), :title => "Ir al diccionario" %>
@@ -592,7 +627,7 @@
           
           
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">20</td>
+            <td style="vertical-align:middle;">21</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: OTROS ESPACIOS</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario", mec_custom_url(def_requerimientos_otros_espacios_url), :title => "Ir al diccionario" %>
@@ -620,7 +655,7 @@
           
           
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">21</td>
+            <td style="vertical-align:middle;">22</td>
 					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: MOBILIARIOS</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario", mec_custom_url(def_requerimientos_mobiliarios_url), :title => "Ir al diccionario" %>
@@ -648,8 +683,8 @@
           
           
           <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">22</td>
-					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">ESTADOS DE ESTABLECIMIENTOS - FONACIDE</td>
+            <td style="vertical-align:middle;">23</td>
+					  <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">Servicios Básicos de los Establecimientos según FONACIDE</td>
             <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
               <%= link_to "Ver diccionario", mec_custom_url(def_estados_locales_url), :title => "Ir al diccionario" %>
               <%= link_to image_tag("def_icon.png"), mec_custom_url(def_estados_locales_url), :title => "Ir al diccionario" %><br /><br />
@@ -673,40 +708,6 @@
 						<td itemprop="keywords" style="display: none;">educación,establecimientos,escolar,estado,local</td>
 						<td itemprop="version" style="display: none;">1.0</td>
           </tr>
-          
-          
-          <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-            <td style="vertical-align:middle;">23</td>
-            <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">DIRECTORIO DE INSTITUCIONES
-				</br>
-				<%#= image_tag("star.png")%>
-				<%#= image_tag("star.png")%>
-				<%#= image_tag("star.png")%>	
-				<%#= image_tag("star.png")%>
-			</td>
-            <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
-              <%= link_to "Ver diccionario", mec_custom_url(def_directorios_instituciones_url), :title => "Ir al diccionario" %>
-              <%= link_to image_tag("def_icon.png"), mec_custom_url(def_directorios_instituciones_url), :title => "Ir al diccionario" %><br /><br />
-              <%= link_to "Ver datos", mec_custom_url(data_directorios_instituciones_url), :title => "Ir al dataset"%>
-              <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_directorios_instituciones_url), :title => "Ir al dataset", :itemprop => "url" %>
-            </td>
-						<td itemprop="description">
-								Contiene datos básicos acerca de las instituciones educativas, como el departamento, distrito y zona a la que pertenecen las mismas.
-						</td>
-						<td itemprop="temporal" style="display: none;">2012-01-01/2012-12-31</td>
-						<td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
-							<meta itemprop="name" content="Ministerio de Educación y Cultura">
-							<meta itemprop="url" content="http://www.mec.gov.py/">
-							<meta itemprop="email" content="datosabiertos@mec.gov.py">
-						</td>
-						<td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
-						  <meta itemprop="name" content="Juan Barrios">
-							<meta itemprop="email" content="datosabiertos@mec.gov.py">
-						</td>
-						<td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
-						<td itemprop="keywords" style="display: none;">educación,directorio,instituciones</td>
-						<td itemprop="version" style="display: none;">1.0</td>
-					</tr>
 
         </tbody>
 			

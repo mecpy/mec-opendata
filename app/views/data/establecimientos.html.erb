@@ -33,8 +33,8 @@
 
     <%= form_tag mec_custom_url(data_establecimientos_lista_url(nil)), :remote => true, :id => "form-buscar-establecimientos" do  %>
 
-      <th style="width:100px;" class="text-min celda-derecha">
-        <%= label_tag "Periodo" %><br />
+      <th style="width:8%;" class="text-min celda-derecha">
+        <%= label_tag "Periodo" %><br /><br />
         <%= select :form_buscar_establecimientos, :anio, [2014, 2012], {:class => 'text-min'} %>
         <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_anio'));" %>
       </th>
@@ -46,49 +46,49 @@
       </th>
 
       <th style="width:10%;" class="text-min">
-        <%= label_tag "Departamento"%><br />
+        <%= label_tag "Departamento"%><br /><br />
         <%= text_field_tag :form_buscar_establecimientos_nombre_departamento, nil, :class => 'text-min' %>
         <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_nombre_departamento'));" %>
       </th>
 
       <th style="width:10%;" class="text-min">
-        <%= label_tag "Distrito"%><br />
+        <%= label_tag "Distrito"%><br /><br />
         <%= text_field_tag :form_buscar_establecimientos_nombre_distrito, nil, :class => 'text-min' %>
         <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_nombre_distrito'));" %>
       </th>
 
       <th style="width:10%;" class="text-min">
-        <%= label_tag "Zona"%><br />
+        <%= label_tag "Zona"%><br /><br />
         <%= text_field_tag :form_buscar_establecimientos_nombre_zona, nil, :class => 'text-min' %>
         <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_nombre_zona'));" %>
       </th>
 
       <th style="width:10%;" class="text-min">
-        <%= label_tag "Barrio/Localidad"%><br />
+        <%= label_tag "Barrio/Localidad"%><br /><br />
         <%= text_field_tag :form_buscar_establecimientos_nombre_barrio_localidad, nil, :class => 'text-min' %>
         <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_nombre_barrio_localidad'));" %>
       </th>
 
       <th style="width:10%;" class="text-min">
-        <%= label_tag nil, "Direcci&oacute;n".html_safe%><br />
+        <%= label_tag nil, "Direcci&oacute;n".html_safe%><br /><br />
         <%= text_field_tag :form_buscar_establecimientos_direccion, nil, :class => 'text-min' %>
         <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_direccion'));" %>
       </th>
 
       <th style="width:14%;" class="text-min">
-        <%= label_tag nil, "Programa".html_safe%><br />
+        <%= label_tag nil, "Programa".html_safe%><br /><br />
         <%= select :form_buscar_establecimientos, :programa, [["",""],["Jornada Extendida", 1]] %>
         <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_programa'));" %>
       </th>
 
       <th style="width:10%;" class="text-min">
-        <%= label_tag nil, "Proyecto 111".html_safe%><br />
+        <%= label_tag nil, "Proyecto 111".html_safe%><br /><br />
         <%= select :form_buscar_establecimientos, :proyecto_111, [["",""],["NO","NO"],["SI", 'SI']] %>
         <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_proyecto_811'));" %>
       </th>
 
       <th style="width:10%;" class="text-min">
-        <%= label_tag nil, "Proyecto 822".html_safe%><br />
+        <%= label_tag nil, "Proyecto 822".html_safe%><br /><br />
         <%= select :form_buscar_establecimientos, :proyecto_822, [["",""],["NO","NO"],["SI", 'SI']] %>
         <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_proyecto_822'));" %>
       </th>

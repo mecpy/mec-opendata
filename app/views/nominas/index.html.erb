@@ -38,37 +38,37 @@
 
     <%= form_tag mec_custom_url(data_nomina_administrativos_lista_url(nil)), :remote => true, :id => "form-buscar-nominas" do  %>
 
-      <th style="width:100px;text-align:center;" class="text-min">
+      <th style="width:10%;text-align:center;" class="text-min">
         <%= label_tag nil, "A&ntilde;o".html_safe %><br />
         <%= select :form_buscar_nominas, :ano_periodo_pago, [2014], {:class => 'text-min'} %>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_ano_periodo_pago').val('2014');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
       </th>
 
-      <th style="width:100px;text-align:center;" class="text-min celda-derecha">
+      <th style="width:14%;text-align:center;" class="text-min celda-derecha">
         <%= label_tag "Mes" %><br />
         <%= select :form_buscar_nominas, :mes_periodo_pago, [["octubre", 10],["setiembre", 9], ["agosto", 8], ["julio", 7], ["junio", 6]], {:class => 'text-min'} %>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_mes_periodo_pago').val('2014');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
       </th>
       
-      <th style="width:12%;text-align:center;" class="text-min">
+      <th style="width:11%;text-align:center;" class="text-min">
         <%= label_tag nil, "N° Documento".html_safe%><br />
         <%= text_field_tag :form_buscar_nominas_codigo_trabajador, nil, :class => 'text-min' , :style => "width: 60px;"%>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_codigo_trabajador').val('');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
       </th>
 
-      <th style="width:12%;text-align:center;" class="text-min">
+      <th style="width:13%;text-align:center;" class="text-min">
         <%= label_tag "Nombre completo"%><br />
         <%= text_field_tag :form_buscar_nominas_nombre_trabajador, nil, :class => 'text-min' , :style => "width: 60px;"%>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_nombre_trabajador').val('');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
       </th>
 
-      <th style="width:12%;text-align:center;" class="text-min">
+      <th style="width:13%;text-align:center;" class="text-min">
         <%= label_tag "Objeto de Gasto"%><br />
         <%= text_field_tag :form_buscar_nominas_nombre_objeto_gasto, nil, :class => 'text-min' , :style => "width: 60px;"%>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_nombre_objeto_gasto').val('');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
       </th>
 
-      <th style="width:12%;text-align:center;" class="text-min">
+      <th style="width:11%;text-align:center;" class="text-min">
         <%= label_tag "Estado"%><br />
         <%= text_field_tag :form_buscar_nominas_estado, nil, :class => 'text-min' , :style => "width: 60px;"%>
         <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_estado').val('');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
