@@ -422,7 +422,7 @@ class DataController < ApplicationController
 
   def establecimientos_instituciones
 
-    @instituciones = VDirectorioInstitucion.where("codigo_establecimiento = ?", params[:codigo_establecimiento]) 
+    @instituciones = VDirectorioInstitucion.where('codigo_establecimiento = ? and periodo = ?', params[:codigo_establecimiento],params[:periodo]) 
 
     respond_to do |f|
       f.js

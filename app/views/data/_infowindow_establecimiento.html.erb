@@ -33,10 +33,10 @@
     <th>Direcci&oacute;n</th>
     <td><%= establecimiento.direccion %></td>
   </tr>
-
+  
   <tr>
     <th colspan="2"><%= link_to "Ver Instituciones del Establecimiento", "#", :id => "ver_instituciones" , :onclick => "
-    mostrar_establecimientos_instituciones('#{establecimiento.codigo_establecimiento}');return false;" %>
+    mostrar_establecimientos_instituciones('#{establecimiento.codigo_establecimiento}','#{establecimiento.anio}');return false;" %>
     </th>
   </tr>
 

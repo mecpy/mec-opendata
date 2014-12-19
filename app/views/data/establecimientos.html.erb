@@ -204,14 +204,16 @@
 
   }
 
-  function mostrar_establecimientos_instituciones(codigo_establecimiento){
+  function mostrar_establecimientos_instituciones(codigo_establecimiento,anio){
       if($('#establecimientos_instituciones').children().length === 0){
         $.ajax({
         type: 'GET',
         url: '<%= mec_custom_url(data_establecimientos_instituciones_path) %>',
-        data: { codigo_establecimiento:codigo_establecimiento },
+        data: { codigo_establecimiento:codigo_establecimiento,
+              periodo:anio
+        },
         dataType: 'script'  
-        }) 
+        }); 
         $('#ver_instituciones').text('Ocultar Instituciones del Establecimiento');
       }else{
         $('#establecimientos_instituciones').html('');
