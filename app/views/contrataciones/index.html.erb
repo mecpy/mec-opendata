@@ -1,8 +1,8 @@
 <h2>
   <span itemprop="name">Contrataciones</span>
   <meta itemprop="description"
-                content=""
-            />
+        content=""
+        />
   <meta itemprop="url" content="http://datos.mec.gov.py/data/contrataciones">
   <meta itemprop="temporal" style="display: none;" content="2014-01-01/2014-12-31"/>
   <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
@@ -28,84 +28,84 @@
 </h2>
 
 <div class="table-outter">
-  
+
   <table class="table table-striped table-bordered table-hover" style="margin-bottom: 0px; width: 1400px; max-width: none;">
 
     <tr>
 
-      <%= form_tag mec_custom_url(data_contrataciones_lista_url), :remote => true, :id => "form-buscar-contrataciones" do  %>
+      <%= form_tag mec_custom_url(data_contrataciones_lista_url(nil)), :remote => true, :id => "form-buscar-contrataciones" do  %>
 
         <th style="width:5%" class="text-min celda-derecha">
           <%= label_tag "Ejercicio Fiscal" %><br /><br />
-          <%= select :form_buscar_contrataciones, :ejercicio_fiscal, [2014], {:class => 'text-min'} %>
-          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_ejercicio_fiscar');return false;" %>
+          <%= select :form_buscar_contrataciones, :ejercicio_fiscal, [2015,2014], {:class => 'text-min'} %>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_contrataciones_ejercicio_fiscal'),1);" %>
         </th>
 
         <th style="width:5%;" class="text-min">
           <%= label_tag nil, "Id DNCP".html_safe%><br /><br />
           <%= text_field_tag :form_buscar_contrataciones_llamado_publico, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_llamado_publico');return false;" %>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_contrataciones_llamado_publico'));" %>
         </th>
 
         <th style="width:7%;" class="text-min">
           <%= label_tag nil, "Modalidad".html_safe%><br /><br />
           <%= text_field_tag :form_buscar_contrataciones_modalidad, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_modalidad');return false;" %>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_contrataciones_modalidad'));" %>
         </th>
-<!--
-        <th style="width:7%" class="text-min">
-          <%#= label_tag nil, "Nombre".html_safe %><br />
-          <%#= text_field_tag :form_buscar_contrataciones_nombre, nil, :class => 'text-min' %>
-          <%#= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_nombre');return false;" %>
-        </th>
--->
+        <!--
+                <th style="width:7%" class="text-min">
+  <%#= label_tag nil, "Nombre".html_safe %><br />
+  <%#= text_field_tag :form_buscar_contrataciones_nombre, nil, :class => 'text-min' %>
+  <%#= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_nombre');return false;" %>
+                </th>
+        -->
         <th style="width:10%" class="text-min">
           <%= label_tag nil, "Descripci&oacute;n".html_safe%><br /><br />
           <%= text_field_tag :form_buscar_contrataciones_descripcion, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_descripcion');return false;" %>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_contrataciones_descripcion'));" %>
         </th>
 
         <th style="width:7%" class="text-min">
           <%= label_tag nil, "Fecha de Apertura<br />de Ofertas".html_safe%><br />
           <%= text_field_tag :form_buscar_contrataciones_fecha_apertura_oferta, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_fecha_apertura_oferta');return false;" %>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_contrataciones_fecha_apertura_oferta'));" %>
         </th>
 
         <th style="width:7%" class="text-min">
           <%= label_tag "Estado" %><br /><br />
           <%= text_field_tag :form_buscar_contrataciones_estado_llamado, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_estado_llamado'); return false;" %>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_contrataciones_estado_llamado'));" %>
         </th>
 
         <th style="width:7%" class="text-min">
           <%= label_tag nil, "Proveedor Adjudicado".html_safe %><br /><br />
           <%= text_field_tag :form_buscar_contrataciones_proveedor_adjudicado, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_proveedor_adjudicado');return false;" %>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_contrataciones_proveedor_adjudicado'));" %>
         </th>
 
         <th style="width:7%" class="text-min">
           <%= label_tag nil, "Fecha Contrato".html_safe%><br /><br />
           <%= text_field_tag :form_buscar_contrataciones_fecha_contrato, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_fecha_contrato');return false;" %>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_contrataciones_fecha_contrato'));" %>
         </th>
 
         <th style="width:7%" class="text-min">
           <%= label_tag nil,"Fecha Vigencia<br/> de Contrato".html_safe %><br />
           <%= text_field_tag :form_buscar_contrataciones_fecha_vigencia_contrato, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_fecha_contrato_vigencia');return false;" %>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_contrataciones_fecha_vigencia_contrato'));" %>
         </th>
-<!--
-        <th style="width:7%;" class="text-min">
-          <%#= label_tag nil, "Categor&iacute;a".html_safe %><br />
-          <%#= text_field_tag :form_buscar_categorias, nil, :class => 'text-min' %>
-          <%#= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_categoria');return false;" %>
-        </th>
+        <!--
+                <th style="width:7%;" class="text-min">
+  <%#= label_tag nil, "Categor&iacute;a".html_safe %><br />
+  <%#= text_field_tag :form_buscar_categorias, nil, :class => 'text-min' %>
+  <%#= link_to icon_delete, "#", onclick: "limpiar_por_columna('form_buscar_contrataciones_categoria');return false;" %>
+                </th>
         -->
         <th style="width:8%;" class="text-min">
           <%= label_tag nil, "Monto Adjudicado".html_safe%><br /><br />
           <%= select_tag(:form_buscar_contrataciones_monto_adjudicado_operador, options_for_select(['>', '<', '='])) %>
           <%= text_field_tag :form_buscar_contrataciones_monto_adjudicado, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, '#', onclick: "limpiar_por_columna('form_buscar_contrataciones_monto_adjudicado');return false;" %>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_contrataciones_monto_adjudicado'));" %>
         </th>
 
       <% end %>
@@ -124,55 +124,64 @@
 
 <script type="text/javascript">
 
-  $("#form-buscar-contrataciones").bind("submit", function(){
+  $("#form-buscar-contrataciones").bind("submit", function() {
 
-    $("#contrataciones-lista").html("<%= escape_javascript("<tr><td colspan='10' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")    
-  
+    $("#contrataciones-lista").html("<%= escape_javascript("<tr><td colspan='10' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")
+
   })
 
-  $("#form_buscar_contrataciones_ejercicio_fiscal").bind('change',function(){
-      
+  $("#form_buscar_contrataciones_ejercicio_fiscal").bind('change', function() {
+    $.ajaxQ.abortAll();
     $("#form-buscar-contrataciones").submit();
-      
-  })
-  
-  $("#form_buscar_contrataciones_monto_adjudicado_operador").bind('change',function(){
-      
-    $("#form-buscar-contrataciones").submit();
-      
+
   })
 
-  $(".table-bordered input").bind('change',function(){
-      
+  $("#form_buscar_contrataciones_monto_adjudicado_operador").bind('change', function() {
+    $.ajaxQ.abortAll();
     $("#form-buscar-contrataciones").submit();
-      
+
+  })
+
+  $(".table-bordered input").bind('change', function() {
+    $.ajaxQ.abortAll();
+    $("#form-buscar-contrataciones").submit();
+
   })
 
   //LIMPIAR FORMULARIO DE BUSQUEDA
-  function limpiar_form_buscar_contrataciones(){
-    
-    $("#form_buscar_contrataciones_ejercicio_fiscal").val("2014");
+  function limpiar_form_buscar_contrataciones() {
+
+    $("#form_buscar_contrataciones_ejercicio_fiscal").val("2015");
     $("#form_buscar_contrataciones_llamado_publico").val("");
     $("#form_buscar_contrataciones_nombre").val("");
     $("#form_buscar_contrataciones_descripcion").val("");
+    $("#form_buscar_contrataciones_fecha_apertura_oferta").val("");
     $("#form_buscar_contrataciones_fecha_contrato").val("");
     $("#form_buscar_contrataciones_fecha_vigencia_contrato").val("");
     $("#form_buscar_contrataciones_estado_llamado").val("");
     $("#form_buscar_contrataciones_modalidad").val("");
     $("#form_buscar_contrataciones_categoria").val("");
     $("#form_buscar_contrataciones_monto_adjudicado").val("");
-   
+    $.ajaxQ.abortAll();
     $("#form-buscar-contrataciones").submit();
 
-  } 
-
-  function limpiar_por_columna(id){
-    $('#'+id).val('');
-    $('#form-buscar-contrataciones').submit();
   }
-
+  
   limpiar_form_buscar_contrataciones();
+  
+  //--------------- QUITAR FILTRO -------------------//
+  function quitar_filtro(id,ban) {
+    if (ban === 1){
+      id.val("2015");
+    }else{
+      id.val('');
+    }
+    $.ajaxQ.abortAll();
+    $('#form-buscar-contrataciones').submit();
 
+  }
+  //-------------------------------------------------//
+  
 </script>
 
 <style>

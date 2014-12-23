@@ -40,67 +40,67 @@
         <th style="width:5%;" class="text-min celda-derecha">
           <%= label_tag "Año" %><br />
           <%= select :form_buscar_registros_titulos, :anio, [nil, 2012, 2013, 2014], {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "$('#form_buscar_registros_titulos_anio').val('');$('#form-buscar-registros-titulos').submit();" %>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_registros_titulos_anio'));" %>
         </th>
 
         <th style="width:8%;" class="text-min celda-derecha">
           <%= label_tag "Mes" %><br />
           <%= select :form_buscar_registros_titulos, :mes, options_meses, {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "$('#form_buscar_registros_titulos_mes').val('');$('#form-buscar-registros-titulos').submit();" %>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_registros_titulos_mes'));" %>
         </th>
 
         <th style="width:8%;" class="text-min">
           <%= label_tag "Documento" %><br />
           <%= text_field_tag :form_buscar_registros_titulos_documento, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "$('#form_buscar_registros_titulos_documento').val('');$('#form-buscar-matriculaciones-departamentos-distritos').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_registros_titulos_documento'));" %>
         </th>
 
         <th style="width:8%;" class="text-min">
           <%= label_tag "Nombre completo"%><br />
           <%= text_field_tag :form_buscar_registros_titulos_nombre_completo, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "$('#form_buscar_registros_titulos_nombre_completo').val('');$('#form-buscar-registros-titulos').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_registros_titulos_nombre_completo'));" %>
         </th>
 
         <th style="width:8%;" class="text-min">
           <%= label_tag "Carrera" %><br />
           <%= text_field_tag :form_buscar_registros_titulos_carrera, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "$('#form_buscar_registros_titulos_carrera').val('');$('#form-buscar-registros-titulos').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_registros_titulos_carrera'));" %>
         </th>
 
         <th style="width:6%;" class="text-min">
           <%= label_tag nil, "T&iacute;tulo".html_safe %><br />
           <%= text_field_tag :form_buscar_registros_titulos_titulo, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "$('#form_buscar_registros_titulos_titulo').val('');$('#form-buscar-registros-titulos').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_registros_titulos_titulo'));" %>
         </th>
 
         <th style="width:8%;" class="text-min">
           <%= label_tag nil, "N&uacute;mero de Resoluci&oacute;n".html_safe %><br />
           <%= text_field_tag :form_buscar_registros_titulos_numero_resolucion, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "$('#form_buscar_registros_titulos_numero_resolucion').val('');$('#form-buscar-registros-titulos').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_registros_titulos_numero_resolucion'));" %>
         </th>
 
         <th style="width:8%;" class="text-min">
           <%= label_tag nil, "Fecha de Resoluci&oacute;n".html_safe %><br />
           <%= text_field_tag :form_buscar_registros_titulos_fecha_resolucion, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "$('#form_buscar_registros_titulos_fecha_resolucion').val('');$('#form-buscar-registros-titulos').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_registros_titulos_fecha_resolucion'));" %>
         </th>
 
         <th style="width:8%;" class="text-min">
           <%= label_tag nil, "Tipo de Instituci&oacute;n".html_safe %><br />
           <%= text_field_tag :form_buscar_registros_titulos_tipo_institucion, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "$('#form_buscar_registros_titulos_tipo_institucion').val('');$('#form-buscar-registros-titulos').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_registros_titulos_tipo_institucion'));" %>
         </th>
 
         <th style="width:8%;" class="text-min">
           <%= label_tag nil, "Instituci&oacute;n".html_safe %><br />
           <%= text_field_tag :form_buscar_registros_titulos_institucion, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "$('#form_buscar_registros_titulos_institucion').val('');$('#form-buscar-registros-titulos').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_registros_titulos_institucion'));" %>
         </th>
 
         <th style="width:6%;" class="text-min celda-derecha">
           <%= label_tag "Gobierno actual" %><br />
           <%= select :form_buscar_registros_titulos, :gobierno_actual, [["Todos", 1], ["Si", 2], ["No", 3]], {:class => 'text-min'}, onchange: "filtrar_gobierno_actual();" %>
-          <%= link_to_function icon_delete, "$('#form_buscar_registros_titulos_gobierno_actual').val('');$('#form-buscar-registros-titulos').submit();" %>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_registros_titulos_gobierno_actual'));" %>
         </th>
 
       <% end %>
@@ -119,7 +119,7 @@
   })
 
   $(".table-bordered :input").bind('change', function() {
-
+    $.ajaxQ.abortAll();
     $("#form-buscar-registros-titulos").submit();
 
   })
@@ -129,12 +129,14 @@
     if ($("#form_buscar_registros_titulos_gobierno_actual").val() == '3') {
       $('#form_buscar_registros_titulos_anio').val('');
       $('#form_buscar_registros_titulos_mes').val('');
+      $.ajaxQ.abortAll();
       $("#form-buscar-registros-titulos").submit();
     }
 
     if ($("#form_buscar_registros_titulos_gobierno_actual").val() == '2') {
       $('#form_buscar_registros_titulos_anio').val('');
       $('#form_buscar_registros_titulos_mes').val('');
+      $.ajaxQ.abortAll();
       $("#form-buscar-registros-titulos").submit();
     }
 
@@ -154,11 +156,21 @@
     $("#form_buscar_registros_titulos_tipo_institucion").val("");
     $("#form_buscar_registros_titulos_institucion").val("");
     $("#form_buscar_registros_titulos_gobierno_actual").val("");
+    $.ajaxQ.abortAll();
     $("#form-buscar-registros-titulos").submit();
 
   }
 
   limpiar_form_buscar_registros_titulos();
+  
+  //--------------- QUITAR FILTRO -------------------//
+  function quitar_filtro(id) {
+    id.val('');
+    $.ajaxQ.abortAll();
+    $("#form-buscar-registros-titulos").submit();
+  
+  }
+  //-------------------------------------------------//
 
 </script>
 

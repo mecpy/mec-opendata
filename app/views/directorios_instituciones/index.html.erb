@@ -38,54 +38,54 @@
 
     <tr>
 
-      <%= form_tag mec_custom_url(data_directorios_instituciones_lista_url), :remote => true, :id => "form-buscar-directorios-instituciones" do  %>
+      <%= form_tag mec_custom_url(data_directorios_instituciones_lista_url(nil)), :remote => true, :id => "form-buscar-directorios-instituciones" do  %>
 
         <th style="width: 3%;" class="text-min celda-derecha">
           <%= label_tag "Periodo" %><br />
           <%= select :form_buscar_directorios_instituciones, :periodo, [2014,2012], {:class => 'text-min'} %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_directorios_instituciones_periodo').val('2014');$('#form-buscar-directorios-instituciones').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_directorios_instituciones_periodo'),1);" %>
         </th>
 
         <th style="width:5%;" class="text-min">
           <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe %><br />
           <%= text_field_tag :form_buscar_directorios_instituciones_codigo_establecimiento, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_directorios_instituciones_codigo_establecimiento').val('');$('#form-buscar-directorios-instituciones').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_directorios_instituciones_codigo_establecimiento'));" %>
         </th>
 
         <th style="width:5%;" class="text-min">
           <%= label_tag nil, "C&oacute;digo Instituci&oacute;n".html_safe%><br />
           <%= text_field_tag :form_buscar_directorios_instituciones_codigo_institucion, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_directorios_instituciones_codigo_institucion').val('');$('#form-buscar-directorios-instituciones').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_directorios_instituciones_codigo_institucion'));" %>
         </th>
 
         <th style="width:5%;" class="text-min">
           <%= label_tag nil, "Instituci&oacute;n".html_safe%><br />
           <%= text_field_tag :form_buscar_directorios_instituciones_nombre_institucion, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_directorios_instituciones_nombre_institucion').val('');$('#form-buscar-directorios-instituciones').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_directorios_instituciones_nombre_institucion'));" %>
         </th>
 
         <th style="width:5%;" class="text-min">
           <%= label_tag "Departamento"%><br />
           <%= text_field_tag :form_buscar_directorios_instituciones_nombre_departamento, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_directorios_instituciones_nombre_departamento').val('');$('#form-buscar-directorios-instituciones').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_directorios_instituciones_nombre_departamento'));" %>
         </th>
 
         <th style="width:5%;" class="text-min">
           <%= label_tag "Distrito" %><br />
           <%= text_field_tag :form_buscar_directorios_instituciones_nombre_distrito, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_directorios_instituciones_nombre_distrito').val('');$('#form-buscar-directorios-instituciones').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_directorios_instituciones_nombre_distrito'));" %>
         </th>
 
         <th style="width:5%;" class="text-min">
           <%= label_tag nil, "Localidad/Barrio".html_safe%><br />
           <%= text_field_tag :form_buscar_directorios_instituciones_nombre_barrio_localidad, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_directorios_instituciones_nombre_barrio_localidad').val('');$('#form-buscar-directorios-instituciones').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_directorios_instituciones_nombre_barrio_localidad'));" %>
         </th>
 
         <th style="width:5%;" class="text-min">
           <%= label_tag nil, "Zona".html_safe%><br />
           <%= text_field_tag :form_buscar_directorios_instituciones_nombre_zona, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_directorios_instituciones_nombre_zona').val('');$('#form-buscar-directorios-instituciones').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_directorios_instituciones_nombre_zona'));" %>
         </th>
 
       <% end %>
@@ -112,6 +112,7 @@
 
   $("#form_buscar_directorios_instituciones_periodo").bind('change', function() {
 
+    $.ajaxQ.abortAll();
     $("#form-buscar-directorios-instituciones").submit();
 
   })
@@ -119,6 +120,7 @@
 
   $(".table-bordered input").bind('change', function() {
 
+    $.ajaxQ.abortAll();
     $("#form-buscar-directorios-instituciones").submit();
 
   })
@@ -134,7 +136,7 @@
     $("#form_buscar_directorios_instituciones_nombre_distrito").val("");
     $("#form_buscar_directorios_instituciones_nombre_barrio_localidad").val("");
     $("#form_buscar_directorios_instituciones_nombre_zona").val("");
-
+    $.ajaxQ.abortAll();
     $("#form-buscar-directorios-instituciones").submit();
 
   }
@@ -142,6 +144,7 @@
 <% if params[:ci].present? %>
 
     $("#form_buscar_directorios_instituciones_codigo_institucion").val("<%= params[:ci] %>");
+    $.ajaxQ.abortAll();
     $("#form-buscar-directorios-instituciones").submit();
 
 <% else %>
@@ -149,6 +152,19 @@
     limpiar_form_buscar_directorios_instituciones();
 
 <% end %>
+
+  //--------------- QUITAR FILTRO -------------------//
+  function quitar_filtro(id,ban) {
+    if (ban === 1){
+      id.val("2014");
+    }else{
+      id.val('');
+    }
+    $.ajaxQ.abortAll();
+    $("#form-buscar-directorios-instituciones").submit();
+
+  }
+  //-------------------------------------------------//
 
 </script>
 

@@ -3,7 +3,7 @@
   <span style="font-size: 12px;color:silver;"><i>La información presentada para el último periodo está sujeta a ajustes por parte de MEC debido a la dinámica de movimientos mensual de funcionarios.</i></span>
   <meta itemprop="url" content="http://datos.mec.gov.py/data/nomina_administrativos">  	
   <meta itemprop="description"
-    content="Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación."/>
+        content="Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación."/>
   <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31">
   <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
     <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
@@ -22,9 +22,9 @@
   <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
   <meta itemprop="keywords" style="display: none;" content="educación,establecimientos,escolar,geografico"/>
   <meta itemprop="version" style="display: none;" content="1.0"/>
-  
+
   <span style="float:right;">
-    <%= link_to "Ver diccionario", mec_custom_url(def_nomina_administrativos_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
+    <%= link_to "Ver diccionario", mec_custom_url(def_nomina_administrativos_url(nil)), :title => "Ir al diccionario", :style => "font-size:12px;" %>
     <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), mec_custom_url(def_nomina_administrativos_url), :title => "Ir al diccionario" %>
     <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
     <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
@@ -41,54 +41,54 @@
       <th style="width:10%;text-align:center;" class="text-min">
         <%= label_tag nil, "A&ntilde;o".html_safe %><br />
         <%= select :form_buscar_nominas, :ano_periodo_pago, [2014], {:class => 'text-min'} %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_ano_periodo_pago').val('2014');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_ano_periodo_pago'),1);" %>
       </th>
 
       <th style="width:14%;text-align:center;" class="text-min celda-derecha">
         <%= label_tag "Mes" %><br />
         <%= select :form_buscar_nominas, :mes_periodo_pago, [["octubre", 10],["setiembre", 9], ["agosto", 8], ["julio", 7], ["junio", 6]], {:class => 'text-min'} %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_mes_periodo_pago').val('2014');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_mes_periodo_pago'),2);" %>
       </th>
-      
+
       <th style="width:11%;text-align:center;" class="text-min">
         <%= label_tag nil, "N° Documento".html_safe%><br />
         <%= text_field_tag :form_buscar_nominas_codigo_trabajador, nil, :class => 'text-min' , :style => "width: 60px;"%>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_codigo_trabajador').val('');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_codigo_trabajador'));" %>
       </th>
 
       <th style="width:13%;text-align:center;" class="text-min">
         <%= label_tag "Nombre completo"%><br />
         <%= text_field_tag :form_buscar_nominas_nombre_trabajador, nil, :class => 'text-min' , :style => "width: 60px;"%>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_nombre_trabajador').val('');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_nombre_trabajador'));" %>
       </th>
 
       <th style="width:13%;text-align:center;" class="text-min">
         <%= label_tag "Objeto de Gasto"%><br />
         <%= text_field_tag :form_buscar_nominas_nombre_objeto_gasto, nil, :class => 'text-min' , :style => "width: 60px;"%>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_nombre_objeto_gasto').val('');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_nombre_objeto_gasto'));" %>
       </th>
 
       <th style="width:11%;text-align:center;" class="text-min">
         <%= label_tag "Estado"%><br />
         <%= text_field_tag :form_buscar_nominas_estado, nil, :class => 'text-min' , :style => "width: 60px;"%>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_estado').val('');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_estado'));" %>
       </th>
 
       <th style="width:12%;" class="text-min">
         <%= label_tag "Antigüedad"%><br />
         <%= text_field_tag :form_buscar_nominas_antiguedad_administrativo, nil, :class => 'text-min' , :style => "width: 60px;"%>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_antiguedad_administrativo').val('');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_antiguedad_administrativo'));" %>
       </th>
 
       <th style="width:16%;text-align:center;" class="text-min">
         <%= label_tag nil, "Asignaci&oacute;n".html_safe %><br />
         <%= select_tag(:form_buscar_nominas_asignacion_operador, options_for_select(['>', '<', '='])) %>
         <%= text_field_tag :form_buscar_nominas_asignacion, nil, :class => 'text-min', :style => "width: 60px;" %>
-        <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_nominas_asignacion').val('');$('#form-buscar-nominas').submit();" ,:style => "color:#fff;"%>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_asignacion'));" %>
       </th>
 
       <th style="width:16px;"></th>
-      
+
     <% end %>
 
   </tr>
@@ -99,55 +99,75 @@
 
 <script type="text/javascript">
 
-  $("#form-buscar-nominas").bind("submit", function(){
+  $("#form-buscar-nominas").bind("submit", function() {
 
-			$('.nominas-detalles').html('');
-      $("#nominas-lista").html("<%= escape_javascript("<tr><td colspan='8' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")    
-  
+    $('.nominas-detalles').html('');
+    $("#nominas-lista").html("<%= escape_javascript("<tr><td colspan='8' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")
+
   })
 
-  $("#form_buscar_nominas_ano_periodo_pago").bind('change',function(){
-      
-		$(".nominas-detalles").html('');
-    $("#form-buscar-nominas").submit();
-      
-  })
+  $("#form_buscar_nominas_ano_periodo_pago").bind('change', function() {
 
-  $("#form_buscar_nominas_mes_periodo_pago").bind('change',function(){
-      
-		$(".nominas-detalles").html('');
-    $("#form-buscar-nominas").submit();
-      
-  })
-
-  $("#form_buscar_nominas_asignacion_operador").bind('change',function(){
-      
-		$(".nominas-detalles").html('');
-    $("#form-buscar-nominas").submit();
-      
-  })
-
-  $(".table-bordered input").bind('change',function(){
-  
     $(".nominas-detalles").html('');
-    $("#form-buscar-nominas").submit();    
-    
+    $.ajaxQ.abortAll();
+    $("#form-buscar-nominas").submit();
+
+  })
+
+  $("#form_buscar_nominas_mes_periodo_pago").bind('change', function() {
+
+    $(".nominas-detalles").html('');
+    $.ajaxQ.abortAll();
+    $("#form-buscar-nominas").submit();
+
+  })
+
+  $("#form_buscar_nominas_asignacion_operador").bind('change', function() {
+
+    $(".nominas-detalles").html('');
+    $.ajaxQ.abortAll();
+    $("#form-buscar-nominas").submit();
+
+  })
+
+  $(".table-bordered input").bind('change', function() {
+
+    $(".nominas-detalles").html('');
+    $.ajaxQ.abortAll();
+    $("#form-buscar-nominas").submit();
+
   })
 
   //LIMPIAR FORMULARIO DE BUSQUEDA
-  function limpiar_form_buscar_nominas(){
-    
+  function limpiar_form_buscar_nominas() {
+
     $("#form_buscar_nominas_ano_periodo_pago").val("2014");
     $("#form_buscar_nominas_mes_periodo_pago").val("10");
     $("#form_buscar_nominas_codigo_trabajador").val("");
     $("#form_buscar_nominas_nombre_trabajador").val("");
     $("#form_buscar_nominas_asignacion").val("");
     $(".nominas-detalles").html('');
-    $("#form-buscar-nominas").submit();    
+    $.ajaxQ.abortAll();
+    $("#form-buscar-nominas").submit();
 
-  }  
+  }
 
   limpiar_form_buscar_nominas();
+
+  //--------------- QUITAR FILTRO -------------------//
+  function quitar_filtro(id, ban) {
+    if (ban === 1) {
+      id.val("2014");
+    } else if (ban === 2) {
+      id.val("10");
+    } else {
+      id.val('');
+    }
+    $.ajaxQ.abortAll();
+    $('#form-buscar-nominas').submit();
+
+  }
+  //-------------------------------------------------//
 
 </script>
 
@@ -164,6 +184,6 @@
   }
   .text-min input[type="text"] { width: 80px;}
   #tablaContenedor{width:1000px;}
- 
+
 </style>
 

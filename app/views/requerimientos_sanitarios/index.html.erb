@@ -6,8 +6,8 @@
     </i></span>
   <meta itemprop="url" content="http://datos.mec.gov.py/data/requerimientos_sanitarios">  
   <meta itemprop="description"
-                content="Contiene datos de los requerimientos de sanitarios con que se cuentan en las distintas Intstituciones Educativas. Los requerimientos son priorizados por distrito, de modo a saber el grado de necesidad con que se los solicita."
-            />
+        content="Contiene datos de los requerimientos de sanitarios con que se cuentan en las distintas Intstituciones Educativas. Los requerimientos son priorizados por distrito, de modo a saber el grado de necesidad con que se los solicita."
+        />
   <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
   <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
     <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
@@ -37,109 +37,109 @@
 </h3>
 
 <div class="table-outter">
-  
+
   <table class="table table-bordered table-hover" style="margin-bottom: 0px; width: 2200px; max-width: none;">
 
     <tr>
 
-      <%= form_tag mec_custom_url(data_requerimientos_sanitarios_lista_url), :remote => true, :id => "form-buscar-requerimientos-sanitarios" do  %>
+      <%= form_tag mec_custom_url(data_requerimientos_sanitarios_lista_url(nil)), :remote => true, :id => "form-buscar-requerimientos-sanitarios" do  %>
 
         <th style="width:4%" class="text-min celda-derecha">
           <%= label_tag "Periodo" %><br /><br />
           <%= select :form_buscar_requerimientos_sanitarios, :periodo, [2015], {:class => 'text-min'} %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_sanitarios_periodo').val('2015');$('#form-buscar-requerimientos-sanitarios').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_sanitarios_periodo'),1);" %>
         </th>
-        
+
         <th style="width:5%" class="text-min">
           <%= label_tag "Departamento"%><br /><br />
           <%= text_field_tag :form_buscar_requerimientos_sanitarios_nombre_departamento, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_sanitarios_nombre_departamento').val('');$('#form-buscar-requerimientos-sanitarios').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_sanitarios_nombre_departamento'));" %>
         </th>
 
         <th style="width:5%" class="text-min">
           <%= label_tag "Distrito" %><br /><br />
           <%= text_field_tag :form_buscar_requerimientos_sanitarios_nombre_distrito, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_sanitarios_nombre_distrito').val('');$('#form-buscar-requerimientos-sanitarios').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_sanitarios_nombre_distrito'));" %>
         </th>
-        
+
         <th style="width:4%;" class="text-prioridad">
           <%= label_tag nil, "N&uacute;mero<br/>Prioridad".html_safe%><br />
           <%= text_field_tag :form_buscar_requerimientos_sanitarios_numero_prioridad, nil, :class => 'text-prioridad' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_sanitarios_numero_prioridad').val('');$('#form-buscar-requerimientos-sanitarios').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_sanitarios_numero_prioridad'));" %>
         </th>
 
         <th style="width:5%" class="text-min">
           <%= label_tag nil, "C&oacute;digo<br />Establecimiento".html_safe %><br />
           <%= text_field_tag :form_buscar_requerimientos_sanitarios_codigo_establecimiento, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_sanitarios_codigo_establecimiento').val('');$('#form-buscar-requerimientos-sanitarios').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_sanitarios_codigo_establecimiento'));" %>
         </th>
 
         <th style="width:5%" class="text-min">
           <%= label_tag nil, "C&oacute;digo<br />Instituci&oacute;n".html_safe%><br />
           <%= text_field_tag :form_buscar_requerimientos_sanitarios_codigo_institucion, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_sanitarios_codigo_institucion').val('');$('#form-buscar-requerimientos-sanitarios').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_sanitarios_codigo_institucion'));" %>
         </th>
 
         <th style="width:6%" class="text-min">
           <%= label_tag nil, "Instituci&oacute;n".html_safe%><br /><br />
           <%= text_field_tag :form_buscar_requerimientos_sanitarios_nombre_institucion, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_sanitarios_nombre_institucion').val('');$('#form-buscar-requerimientos-sanitarios').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_sanitarios_nombre_institucion'));" %>
         </th>
 
         <th style="width:5%;" class="text-min">
           <%= label_tag nil, "Zona".html_safe%><br /><br />
           <%= text_field_tag :form_buscar_requerimientos_sanitarios_nombre_zona, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_sanitarios_nombre_zona').val('');$('#form-buscar-requerimientos-sanitarios').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_sanitarios_nombre_zona'));" %>
         </th>
 
         <th style="width:5%;" class="text-min">
           <%= label_tag nil, "Nivel Educativo<br/> Beneficiado".html_safe%><br />
           <%= text_field_tag :form_buscar_requerimientos_sanitarios_nivel_educativo_beneficiado, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_sanitarios_nivel_educativo_beneficiado').val('');$('#form-buscar-requerimientos-sanitarios').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_sanitarios_nivel_educativo_beneficiado'));" %>
         </th>
-        
+
         <th style="width:5%;" class="text-min">
           <%= label_tag nil, "Abastecimiento de Agua".html_safe%><br />
           <%= text_field_tag :form_buscar_requerimientos_sanitarios_abastecimiento_agua, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_sanitarios_abastecimiento_agua').val('');$('#form-buscar-requerimientos-sanitarios').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_sanitarios_abastecimiento_agua'));" %>
         </th>
-        
+
         <th style="width:5%;" class="text-min">
           <%= label_tag nil, "Servicio Sanitario Actual".html_safe%><br />
           <%= text_field_tag :form_buscar_requerimientos_sanitarios_servicio_sanitario_actual, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_sanitarios_servicio_sanitario_actual').val('');$('#form-buscar-requerimientos-sanitarios').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_sanitarios_servicio_sanitario_actual'));" %>
         </th>
-        
+
         <th style="width:5%;" class="text-min">
           <%= label_tag nil, "Cuenta con Espacio de Construcci&oacute;n".html_safe%><br />
           <%= text_field_tag :form_buscar_requerimientos_sanitarios_cuenta_espacio_para_construccion, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_sanitarios_cuenta_espacio_para_construccion').val('');$('#form-buscar-requerimientos-sanitarios').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_sanitarios_cuenta_espacio_para_construccion'));" %>
         </th>
 
         <th style="width:6%;" class="text-min celda-derecha">
           <%= label_tag nil,"Tipo de Requerimiento de Insfraestrutura".html_safe %><br />
           <%= select :form_buscar_requerimientos_sanitarios, :tipo_requerimiento_infraestructura, ['','NUEVO','REPARACION','ADECUACION'], {:class => 'text-min'} %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_sanitarios_tipo_requerimiento_infraestructura').val('');$('#form-buscar-requerimientos-sanitarios').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_sanitarios_tipo_requerimiento_infraestructura'));" %>
         </th>
 
         <th style="width:7%;" class="text-min">
           <%= label_tag nil, "Cantidad Requerida".html_safe%><br /><br />
           <%= select_tag(:form_buscar_requerimientos_sanitarios_cantidad_requerida_operador, options_for_select(['>', '<', '='])) %>
           <%= text_field_tag :form_buscar_requerimientos_sanitarios_cantidad_requerida, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_sanitarios_cantidad_requerida').val('');$('#form-buscar-requerimientos-sanitarios').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_sanitarios_cantidad_requerida'));" %>
         </th>
 
         <th style="width:7%;" class="text-min">
           <%= label_tag nil, "N&uacute;mero de Beneficiados".html_safe%><br /><br />
           <%= select_tag(:form_buscar_requerimientos_sanitarios_numero_beneficiados_operador, options_for_select(['>', '<', '='])) %>
           <%= text_field_tag :form_buscar_requerimientos_sanitarios_numero_beneficiados, nil, :class => 'text-min' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_sanitarios_numero_beneficiados').val('');$('#form-buscar-requerimientos-sanitarios').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_sanitarios_numero_beneficiados'));" %>
         </th>
-        
+
         <th style="width:12%;" class="text-justificacion">
           <%= label_tag nil,"Justificaci&oacute;n".html_safe%><br /><br />
           <%= text_field_tag :form_buscar_requerimientos_sanitarios_justificacion, nil, :class => 'text-justificacion' %>
-          <%= link_to_function image_tag("delete-icon.png", :style => "width:16px;"), "$('#form_buscar_requerimientos_sanitarios_justificacion').val('');$('#form-buscar-requerimientos-sanitarios').submit();" ,:style => "color:#fff;"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_sanitarios_justificacion'));" %>
         </th>
 
       <% end %>
@@ -158,47 +158,47 @@
 
 <script type="text/javascript">
 
-  $("#form-buscar-requerimientos-sanitarios").bind("submit", function(){
+  $("#form-buscar-requerimientos-sanitarios").bind("submit", function() {
 
-    $("#requerimientos-sanitarios-lista").html("<%= escape_javascript("<tr><td colspan='19' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")    
-  
+    $("#requerimientos-sanitarios-lista").html("<%= escape_javascript("<tr><td colspan='19' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")
+
   })
 
-  $("#form_buscar_requerimientos_sanitarios_periodo").bind('change',function(){
-      
+  $("#form_buscar_requerimientos_sanitarios_periodo").bind('change', function() {
+    $.ajaxQ.abortAll();
     $("#form-buscar-requerimientos-sanitarios").submit();
-      
+
   })
 
 
-  $("#form_buscar_requerimientos_sanitarios_tipo_requerimiento_infraestructura").bind('change',function(){
-      
+  $("#form_buscar_requerimientos_sanitarios_tipo_requerimiento_infraestructura").bind('change', function() {
+    $.ajaxQ.abortAll();
     $("#form-buscar-requerimientos-sanitarios").submit();
-      
+
   })
-  
-  $("#form_buscar_requerimientos_sanitarios_numero_beneficiados_operador").bind('change',function(){
-      
-   $("#form-buscar-requerimientos-sanitarios").submit();
-   
-  })
-  
-  $("#form_buscar_requerimientos_sanitarios_cantidad_requerida_operador").bind('change',function(){
-      
+
+  $("#form_buscar_requerimientos_sanitarios_numero_beneficiados_operador").bind('change', function() {
+    $.ajaxQ.abortAll();
     $("#form-buscar-requerimientos-sanitarios").submit();
-      
+
+  })
+
+  $("#form_buscar_requerimientos_sanitarios_cantidad_requerida_operador").bind('change', function() {
+    $.ajaxQ.abortAll();
+    $("#form-buscar-requerimientos-sanitarios").submit();
+
   })
 
 
-  $(".table-bordered input").bind('change',function(){
-      
+  $(".table-bordered input").bind('change', function() {
+    $.ajaxQ.abortAll();
     $("#form-buscar-requerimientos-sanitarios").submit();
-      
+
   })
 
   //LIMPIAR FORMULARIO DE BUSQUEDA
-  function limpiar_form_buscar_requerimientos_sanitarios(){
-    
+  function limpiar_form_buscar_requerimientos_sanitarios() {
+
     $("#form_buscar_requerimientos_sanitarios_periodo").val("2015");
     $("#form_buscar_requerimientos_sanitarios_codigo_institucion").val("");
     $("#form_buscar_requerimientos_sanitarios_nombre_institucion").val("");
@@ -215,22 +215,34 @@
     $("#form_buscar_requerimientos_sanitarios_justificacion").val("");
     $("#form_buscar_requerimientos_sanitarios_numero_beneficiados").val("");
     $("#form_buscar_requerimientos_sanitarios_numero_prioridad").val("");
-    
+    $.ajaxQ.abortAll();
     $("#form-buscar-requerimientos-sanitarios").submit();
 
-  } 
+  }
 
-  <% if params[:ci].present? %>
+<% if params[:ci].present? %>
 
     $("#form_buscar_requerimientos_sanitarios_codigo_institucion").val("<%= params[:ci] %>");
+    $.ajaxQ.abortAll();
     $("#form-buscar-requerimientos-sanitarios").submit();
-  
-  <% else %>
+
+<% else %>
 
     limpiar_form_buscar_requerimientos_sanitarios();
-  
-  <% end %>
 
+<% end %>
+  //--------------- QUITAR FILTRO -------------------//
+  function quitar_filtro(id,ban) {
+    if (ban === 1){
+      id.val("2015");
+    }else{
+      id.val('');
+    }
+    $.ajaxQ.abortAll();
+    $('#form-buscar-requerimientos-sanitarios').submit();
+
+  }
+  //-------------------------------------------------//
 </script>
 
 <style>
@@ -250,5 +262,5 @@
 
   #tablaContenedor{width:100%;}
 
- 
+
 </style>

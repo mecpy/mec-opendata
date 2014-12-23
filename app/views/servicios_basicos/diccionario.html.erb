@@ -1,0 +1,492 @@
+<div class="container">
+  <div class="row">
+    <h2>
+      Servicios Básicos de los Establecimientos según FONACIDE
+
+      <span style="float:right;">
+        <%= link_to "Ver datos", mec_custom_url(data_servicios_basicos_url), :title => "Ir al dataset", :style => "font-size:12px;" %>
+        <%= link_to image_tag("datos_ico.jpg",:style => "width:24px;"), mec_custom_url(data_servicios_basicos_url), :title => "Ir al dataset" %>
+        <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
+        <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
+      </span>
+
+    </h2>
+    
+    <style>
+      .atributo{
+        font-size:11px;
+        width: 5%;
+      }
+      .descripcion{
+        font-size:11px;
+        width: 90%;
+      };
+    </style>
+
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th title="Field #1">Nombre del Atributo</th>
+          <th title="Field #2">
+            Descripción
+          </th>
+          <th title="Field #3">
+            Tipo de datos
+          </th>
+          <th title="Field #4">
+            Restricciones
+          </th>
+          <th title="Field #5">
+            Referencia
+          </th>
+          <th title="Field #6">
+            Ejemplo
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="atributo"><!-- ENCABEZADO -->
+            PERIODO
+          </td>
+          <td class="descripcion">
+            Indica el año al cual corresponde el estado o situación actual en que se encuentra el establecimiento. Los establecimientos pueden contar con modificaciones en su estructura en forma anual.
+          </td>
+          <td class="atributo">
+            xsd:gYear
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            2014
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            CODIGO_DEPARTAMENTO
+          </td>
+          <td class="descripcion">
+            Corresponde al código asignado según la cartografía nacional al departamento geográfico donde esta localizado el establecimiento escolar.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 2 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            00
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            NOMBRE_DEPARTAMENTO
+          </td>
+          <td class="descripcion">
+            Corresponde a la descripción del nombre del departamento geográfico correspondiente al código.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 40 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            ASUNCION
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            CODIGO_DISTRITO
+          </td>
+          <td class="descripcion">
+            Corresponde al código asignado al distrito del departamento geográfico donde esta localizado el establecimiento escolar..
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 2 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            00
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            NOMBRE_DISTRITO
+          </td>
+          <td class="descripcion">
+            Corresponde a la descripción del nombre del distrito correspondiente al código.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 40 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            ASUNCION
+          </td>
+        </tr>       
+        <tr>
+          <td class="atributo">
+            CODIGO_ESTABLECIMIENTO
+          </td>
+          <td class="descripcion">
+            Código de establecimiento permite identificar en forma única los diferentes establecimientos educativos que se encuentran en el país. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 7 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            0406005
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            CODIGO_BARRIO_LOCALIDAD
+          </td>
+          <td class="descripcion">
+            Corresponde al código asignado a la localidad o barrio del distrito donde esta localizado el establecimiento escolar.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            033
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            NOMBRE_BARRIO_LOCALIDAD
+          </td>
+          <td class="descripcion">
+            Corresponde a la descripción del nombre del barrio o localidad del distrito donde está localizado el establecimiento escolar.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 40 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            SAN ANTONIO
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            CODIGO_ZONA
+          </td>
+          <td class="descripcion">
+            Corresponde a la ubicación del establecimiento escolar, sea en la zona urbana o rural. Se considera: Código 1 .Zona Urbana: Área geográfica que abarca todas las cabeceras distritales de la República y sus viviendas generalmente estan organizadas en manzanas.<br>
+            Código 2. Zona Rural: Área geográfica que se encuentran fuera de las cabeceras distritales y las viviendas se localizan en forma dispersa pudiendo existir zonas amanzanadas pero que no tienen la categoría de Cabeceras Distritales por la cual se consideraran como rurales.<br>
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            Valores que pueden ser: Código 1: cuando el código de localidad es menor 100. Código 6: cuando el código de localidad es mayor o igual a 100
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            1
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            NOMBRE_ZONA
+          </td>
+          <td class="descripcion">
+            Corresponde a la descripción del nombre de la zona correspondiente al código
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 7 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            URBANA
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            COORDENADAS_X
+          </td>
+          <td class="descripcion">
+            Corresponde a las coordenadas planas (en metros).Valores de las coordenadas X , cuyo valor será siempre menor a 1.000.000 m.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 7 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            433358
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            COORDENADAS_Y
+          </td>
+          <td class="descripcion">
+            Corresponde a las coordenadas planas (en metros). Las coordenadas "Y" , cuyo valor es mayor a 7.000.000 m, salvo al sur en el límite con la República Argentina donde podrían aparecer valores cercanos a 6.950.000 m.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 7 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            7202502
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            LATITUD
+          </td>
+          <td class="descripcion">
+            Corresponde a los valores de coordenadas geográficas, es decir la Latitud , las cuales se expresan en Grados (Gra), minutos (min) y segundos (seg).
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+          </td>
+          <td class="atributo">
+            <a href="https://support.google.com/maps/answer/18539?hl=es">Referencia de Google Maps</a>
+          </td>
+          <td class="atributo">
+            25° 17' 32.903" S
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            LONGITUD
+          </td>
+          <td class="descripcion">
+            Corresponde a los valores de coordenadas geográficas, es decir la Longitud , las cuales se expresan en Grados (Gra), minutos (min) y segundos (seg).
+          </td>
+          <td class="atributo">
+          </td>
+          <td class="atributo">
+          </td>
+          <td class="atributo">
+            <a href="https://support.google.com/maps/answer/18539?hl=es">Referencia de Google Maps</a>
+          </td>
+          <td class="atributo">
+            57° 39' 43.122" W
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            NOMBRE_ASENTAMIENTO_COLONIA
+          </td>
+          <td class="descripcion">
+            Corresponde a la descripción del nombre del asentamiento o colonia donde está ubicado el establecimiento escolar.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            ABASTECIMIENTO_AGUA
+          </td>
+          <td class="descripcion">
+            Indica el nombre del servicio de abstecimiento de agua potable que utiliza el establecimiento escolar.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 40 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            ESSAP
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            SUMINISTRO_ENERGIA_ELECTRICA
+          </td>
+          <td class="descripcion">
+            Indica el nombre del servicio de suministro de energía eléctrica que utiliza el establecimiento escolar.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 40 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            ANDE
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            SERVICIO_SANITARIO_ACTUAL
+          </td>
+          <td class="descripcion">
+            Indica el nombre del servicio sanitario que utiliza el establecimiento escolar.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+            No más de 60 caracteres
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            WC CONECTADO A RED PÚBLICA
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            TITULO_DE_PROPIEDAD
+          </td>
+          <td class="descripcion">
+            Indica el establecimiento escolar cuenta o no con título de propiedad.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            MEC
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            CUENTA_PLANO
+          </td>
+          <td class="descripcion">
+            Indica si el establecimiento escolar cuenta o no con el plano de su edificación.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            SI
+          </td>
+        </tr>
+        <tr>
+          <td class="atributo">
+            PREVENCION_INCENDIO
+          </td>
+          <td class="descripcion">
+            Indica si el establecimiento escolar cuenta o no con un mecanismo de segurirdad de prevención contra incendios para casos de emergencias.
+          </td>
+          <td class="atributo">
+            xsd:string
+          </td>
+          <td class="atributo">
+          </td>
+          <td class="atributo"></td>
+          <td class="atributo">
+            SI
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <h2>
+      Referencia
+    </h2>La siguiente tabla presenta una breve descripción de los atributos incluídos en el diccionario de datos del dataset.<br>
+    Básicamente, un diccionario de datos describe los atributos que contiene un dataset, incluyendo el tipo de dato y las restricciones se apliquen a cada uno.<br>
+    <br>
+    <br>
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th title="Field #1">
+            Nombre de la columna
+          </th>
+          <th title="Field #2">
+            Descripción
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Nombre del Atributo
+          </td>
+          <td>
+            Esteblace el nombre del atributo exactamente como se encuentra definido en el archivo de datos a ser publicado
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Descripción
+          </td>
+          <td>
+            Describe con más detalles los datos que se encuentran en el atributo
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Tipo de datos
+          </td>
+          <td>
+            El tipo de dato esperado de los valores del attributo. Por ejemplo: String, Integer, Float, …. Idealmente se deben utilizar los tipos de datos definidos en el Estándar XML Schema Datatypes de la W3C. <a href="http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes">http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes</a>, por ejemplo: xsd:string, xsd:boolean, xsd:dateTime
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Restricciones
+          </td>
+          <td>
+            En caso que existan, se especifican las restricciones de los datos
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Referencia
+          </td>
+          <td>
+            En caso que exista, se agrega un link a un documento de referencia para los datos. Por ejemplo, si los datos están definidos utilizando un estándar o formato diferente a XSD, referenciarlo, como ser la Latitud y Longitud en formato de Google maps
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Ejemplo
+          </td>
+          <td>
+            Los valores de ejemplo
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

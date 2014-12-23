@@ -55,7 +55,14 @@ class ContratacionesController < ApplicationController
       args << params[:form_buscar_contrataciones_fecha_contrato]
 
     end
+    
+    if params[:form_buscar_contrataciones_fecha_apertura_oferta].present?
 
+      cond << "fecha_apertura_oferta = ?"
+      args << params[:form_buscar_contrataciones_fecha_apertura_oferta]
+
+    end
+    
     if params[:form_buscar_contrataciones_fecha_vigencia_contrato].present?
 
       cond << "fecha_vigencia_contrato = ?"

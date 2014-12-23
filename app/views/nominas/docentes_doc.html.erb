@@ -1,7 +1,7 @@
 <h2>
-	<span itemprop="name">Docentes</span>
+  <span itemprop="name">Docentes</span>
   <meta itemprop="description"
-    content="Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación."/>
+        content="Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación."/>
   <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31">
   <meta itemprop="url" content="http://datos.mec.gov.py/data/establecimientos">  
   <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
@@ -31,15 +31,15 @@
 
 
   <div class="uri-data-filter">
-  	<%= label_tag "Periodo" %>
+    <%= label_tag "Periodo" %>
     <%= select :form_buscar_nominas, :ano_periodo_pago, [2014], {:class => 'text-min'} %>
     <%= label_tag "Mes" %>
     <%= select :form_buscar_nominas, :mes_periodo_pago, [["octubre", 10]], {:class => 'text-min'} %>
-  	
+
   </div>
-  
+
   <br />
-  
+
   <div class='uri-data-left'>
 
     <h4>Datos del docente </h4>
@@ -50,83 +50,83 @@
     <div class='uri-titulo'>Antiguedad docente</div><div class='uri-valor'><%=@cnomina.antiguedad_docente%></div><br />
     <div class='uri-titulo'>Antiguedad administrativa</div><div class='uri-valor'><%=@cnomina.antiguedad_administrativo%></div><br />
     <div class='uri-titulo'>Número matriculación</div><div class='uri-valor'><%=@cnomina.numero_matriculacion %></div><br />
-    
+
   </div>
- 
- 
- <!--  begin detalles    -->
+
+
+  <!--  begin detalles    -->
 
   <!--<div class="uri-data-right"> 
-  	
- 
-    <h4>Detalle de la asignación</h4>
     
+
+    <h4>Detalle de la asignación</h4>
+
     <table class="table table-striped table-bordered table-hover">
-    	
-      
-	        <th>nn</th>
+    
+  
+                <th>nn</th>
         <th style="text-align:right;">nn</th>
 
       </tr>
 
         <tr>
 
-         
+     
           <td></td>
-      
+  
           <td style="text-align:right;"></td>
-		         
+                     
         </tr>
-        
+    
         <tr>
 
-         
+     
           <td>    </td>
-      
+  
           <td style="text-align:right;"></td>
-		     
+                 
         </tr>
-        
+    
         <tr>
-        	<td></td>
-      
+                <td></td>
+  
           <td style="text-align:right;"></td>
-        	
+            
         </tr>
-        
+    
         <tr>
-        	<td></td>
-      
+                <td></td>
+  
           <td style="text-align:right;"></td>
-        	
+            
         </tr>
         <tr>
-        	<td></td>
-      
+                <td></td>
+  
           <td style="text-align:right;"></td>
-        	
+            
         </tr>
-        
+    
         <tr>
-        	<td></td>
-      
+                <td></td>
+  
           <td style="text-align:right;"></td>
-        	
+            
         </tr>
          <tr>
-        	<th>nn</th>
-      
+                <th>nn</th>
+  
           <td style="text-align:right;"></td>
-        	
+            
         </tr>
 
     </table>
-	
-    
     
 
-</div>-->
- <!--  end detalles    -->
+
+
+  </div>-->
+  <!--  end detalles    -->
 
   <div style="clear:both;"></div>
   <div class="uri-data-fin">
@@ -136,34 +136,34 @@
     <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a>
     </br>
     <span>Descargar Docente:</span>
-	<% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
+    <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
     <% if params[:codigo_trabajador].present? %>
-    	<% ruta = mec_custom_url(id_nomimas_docentes_url(params[:codigo_trabajador], format: 'json'))%>
+      <% ruta = mec_custom_url(id_nomimas_docentes_url(params[:codigo_trabajador], format: 'json'))%>
     <% else %>
       <% ruta = mec_custom_url(id_nominas_docentes_url(params[:codigo_trabajador], format: 'json'))%>
     <% end %>
     <%= link_to "JSON#{image_star * 3}".html_safe, ruta, :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
 
-    <%# image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
-    <%# if params[:institucion] && params[:institucion][:anio].present? %>
-      <%# ruta = mec_custom_url(id_instituciones_url(params[:codigo_institucion], 
-      periodo: { anio: params[:institucion][:anio]}, format: 'json'))%>
-    <%# else %>
-      <%# ruta = mec_custom_url(id_instituciones_url(params[:codigo_institucion], format: 'json'))%>
-    <%# end %>
-    <%#= link_to "JSON#{image_star * 3}".html_safe, ruta, :target => "_target", 
-    :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+  <%# image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
+  <%# if params[:institucion] && params[:institucion][:anio].present? %>
+  <%# ruta = mec_custom_url(id_instituciones_url(params[:codigo_institucion], 
+  periodo: { anio: params[:institucion][:anio]}, format: 'json'))%>
+  <%# else %>
+  <%# ruta = mec_custom_url(id_instituciones_url(params[:codigo_institucion], format: 'json'))%>
+  <%# end %>
+  <%#= link_to "JSON#{image_star * 3}".html_safe, ruta, :target => "_target", 
+  :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
 
-    
+
 
   </div>
 
- <% else %>
+<% else %>
 
   <div>No se ha encontrado el docente</div>
 
 <% end %>
- 
+
 
 <style>
 

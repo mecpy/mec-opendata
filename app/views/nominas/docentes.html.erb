@@ -41,13 +41,13 @@
         <th style="width:7%;text-align:center;" class="text-min">
           <%= label_tag nil, "A&ntilde;o".html_safe %><br />
           <%= select :form_buscar_nominas, :ano_periodo_pago, [2014], {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_ano_periodo_pago'));"%>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_ano_periodo_pago'),1);"%>
         </th>
 
         <th style="width:9%;text-align:center;" class="text-min">
           <%= label_tag "Mes" %><br />
           <%= select :form_buscar_nominas, :mes_periodo_pago, [["octubre", 10],["setiembre", 9], ["agosto", 8], ["julio", 7], ["junio", 6]], {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_mes_periodo_pago'));" %>
+          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_mes_periodo_pago'),2);" %>
         </th>
 
         <th style="width:12%;text-align:center;" class="text-min">
@@ -145,9 +145,14 @@
   })
 
   //--------------- QUITAR FILTRO -------------------//
-  function quitar_filtro(id) {
-
-    id.val('');
+  function quitar_filtro(id, ban) {
+    if (ban === 1) {
+      id.val("2014");
+    } else if (ban === 2) {
+      id.val("10");
+    } else {
+      id.val('');
+    }
     $.ajaxQ.abortAll();
     $('#form-buscar-nominas').submit();
 

@@ -95,9 +95,9 @@ OpenData::Application.routes.draw do
   match 'data/requerimientos_otros_espacios' => 'requerimientos_otros_espacios#index', :as => :data_requerimientos_otros_espacios
   match 'def/requerimientos_otros_espacios' => 'requerimientos_otros_espacios#diccionario', :as => :def_requerimientos_otros_espacios
   
-  match "data/estados_locales_lista" => 'estados_locales#lista', :as => :data_estados_locales_lista
-  match 'data/estados_locales' => 'estados_locales#index', :as => :data_estados_locales
-  match 'def/estados_locales' => 'estados_locales#diccionario', :as => :def_estados_locales
+  match "data/servicios_basicos_lista" => 'servicios_basicos#lista', :as => :data_servicios_basicos_lista
+  match 'data/servicios_basicos' => 'servicios_basicos#index', :as => :data_servicios_basicos
+  match 'def/servicios_basicos' => 'servicios_basicos#diccionario', :as => :def_servicios_basicos
 
   match "id/establecimientos/:codigo_establecimiento" => "data#establecimientos_doc", :as => :id_establecimientos
   match "doc/establecimientos/:codigo_establecimiento" => "data#establecimientos_doc", :as => :doc_establecimientos  
