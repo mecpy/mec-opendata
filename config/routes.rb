@@ -95,6 +95,10 @@ OpenData::Application.routes.draw do
   match 'data/requerimientos_otros_espacios' => 'requerimientos_otros_espacios#index', :as => :data_requerimientos_otros_espacios
   match 'def/requerimientos_otros_espacios' => 'requerimientos_otros_espacios#diccionario', :as => :def_requerimientos_otros_espacios
   
+  match "data/requerimientos_alimentacion_lista" => 'requerimientos_alimentacion#lista', :as => :data_requerimientos_alimentacion_lista
+  match 'data/requerimientos_alimentacion' => 'requerimientos_alimentacion#index', :as => :data_requerimientos_alimentacion
+  match 'def/requerimientos_alimentacion' => 'requerimientos_alimentacion#diccionario', :as => :def_requerimientos_alimentacion
+  
   match "data/servicios_basicos_lista" => 'servicios_basicos#lista', :as => :data_servicios_basicos_lista
   match 'data/servicios_basicos' => 'servicios_basicos#index', :as => :data_servicios_basicos
   match 'def/servicios_basicos' => 'servicios_basicos#diccionario', :as => :def_servicios_basicos
