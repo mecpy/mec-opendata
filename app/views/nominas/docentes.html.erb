@@ -32,7 +32,7 @@
 
 </h2>
 <div class="table-outter">
-  <table class="table table-striped table-bordered table-hover" style="margin-bottom: 0px; width: 1400px; max-width: none;">
+  <table class="table table-striped table-bordered table-hover" style="margin-bottom: 0px; width: 1600px;">
 
     <tr>
 
@@ -46,7 +46,7 @@
 
         <th style="width:9%;text-align:center;" class="text-min">
           <%= label_tag "Mes" %><br />
-          <%= select :form_buscar_nominas, :mes_periodo_pago, [["octubre", 10],["setiembre", 9], ["agosto", 8], ["julio", 7], ["junio", 6]], {:class => 'text-min'} %>
+          <%= select :form_buscar_nominas, :mes_periodo_pago, [["noviembre", 11],["octubre", 10],["setiembre", 9], ["agosto", 8], ["julio", 7], ["junio", 6]], {:class => 'text-min'} %>
           <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_nominas_mes_periodo_pago'),2);" %>
         </th>
 
@@ -149,7 +149,7 @@
     if (ban === 1) {
       id.val("2014");
     } else if (ban === 2) {
-      id.val("10");
+      id.val("11");
     } else {
       id.val('');
     }
@@ -163,7 +163,7 @@
   function limpiar_form_buscar_nominas() {
 
     $("#form_buscar_nominas_ano_periodo_pago").val("2014");
-    $("#form_buscar_nominas_mes_periodo_pago").val("10");
+    $("#form_buscar_nominas_mes_periodo_pago").val("11");
     $("#form_buscar_nominas_codigo_trabajador").val("");
     $("#form_buscar_nominas_nombre_trabajador").val("");
     $("#form_buscar_nominas_numero_matriculacion").val("");

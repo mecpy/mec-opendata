@@ -18,6 +18,8 @@
 //= stub mapa_matriculaciones
 //= stub leaflet
 //= stub bootstrap-slider
+//= stub gmaps/gmaps.js
+//= stub gmaps/markerclusterer.js
 // require jquery.ui.all
 
 $.ajaxQ = (function(){
