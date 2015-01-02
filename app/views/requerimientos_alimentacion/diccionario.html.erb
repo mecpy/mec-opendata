@@ -248,7 +248,7 @@
             ESPACIO_COCINA_COMEDOR
           </td>
           <td class="descripcion">
-            Indica el nivel educativo que resultaría beneficiado en caso de atenderse (satisfacerse) la necesidad de la institución educativa indicada por el requerimiento.
+            Especifica si el local escolar donde está situada la institución educativa cuenta o no con espacio disponible para construcción de cocina y/o comedor.
           </td>
           <td class="atributo">
             xsd:string
@@ -265,12 +265,13 @@
             DOBLE_ESCOLARIDAD
           </td>
           <td class="descripcion">
-            Especifica si el local escolar donde está situada la institución educativa cuenta o no con espacio disponible para construcción.
+            Indica si la institución educativa es de doble escolaridad.
           </td>
           <td class="atributo">
             xsd:string
           </td>
           <td class="atributo">
+            Valores que pueden ser: -SI: cuando la institución tiene doble escolaridad. -NO: cuando la institución no tiene doble escolaridad.
           </td>
           <td class="atributo"></td>
           <td class="atributo">
@@ -282,13 +283,13 @@
             PORCENTAJE_AUSENTISMO
           </td>
           <td class="descripcion">
-            Especifica el tipo del requerimiento. Los requerimientos pueden ser de tres tipos: Construcción Nueva, Reparación, y Adecuación.
+            Especifica el rango de porcentaje de ausentismo de los alumnos de la institución educativa
           </td>
           <td class="atributo">
             xsd:string
           </td>
           <td class="atributo">
-            Valores en el rango: NUEVO, REPARACION, ADECUACION
+            Valores que pueden ser: 0-10%, 11 al 25%, > 25%            
           </td>
           <td class="atributo"></td>
           <td class="atributo">
@@ -300,12 +301,13 @@
             TIPO_ALIMENTACION_ESCOLAR
           </td>
           <td class="descripcion">
-            Corresponde a la cantidad de aulas a construir, a reparar, o a adecuar (dependiendo del tipo de requerimiento) requeridas por la institución educativa.
+            Indica el tipo de alimentación requerido y solicitada por la institución educativa.
           </td>
           <td class="atributo">
             xsd:string
           </td>
           <td class="atributo">
+            Valores que pueden ser: -MERIENDA: cuando el requerimiento es para merienda. -ALMUERZO: cuando el requerimiento es para almuerzo.
           </td>
           <td class="atributo"></td>
           <td class="atributo">
@@ -317,7 +319,7 @@
             TIPO_MERIENDA
           </td>
           <td class="descripcion">
-            Corresponde a la cantidad de aulas a construir, a reparar, o a adecuar (dependiendo del tipo de requerimiento) requeridas por la institución educativa.
+            Indica el tipo de alimento requerido como parte de la merienda escolar solicitada por la institución educativa.
           </td>
           <td class="atributo">
             xsd:string
@@ -334,12 +336,13 @@
             PROVEEDOR_MERIENDA
           </td>
           <td class="descripcion">
-            Corresponde a la cantidad de aulas a construir, a reparar, o a adecuar (dependiendo del tipo de requerimiento) requeridas por la institución educativa.
+            Indica si los alimentos para la merienda escolar recibidos por la institución educativa son proveidas por el municipio o la gobernación, en caso de que la institución ya estuviera beneficiada con la merienda escolar.
           </td>
           <td class="atributo">
             xsd:string
           </td>
           <td class="atributo">
+            Valores que pueden ser: -MUNICIPIO: cuando el requerimiento proviene desde el municipio. -GOBERNACION: cuando el requerimiento proviene desde la gobernación.
           </td>
           <td class="atributo"></td>
           <td class="atributo">
@@ -351,7 +354,7 @@
             CANTIDAD_MESES_MERIENDA
           </td>
           <td class="descripcion">
-            Corresponde a la cantidad de aulas a construir, a reparar, o a adecuar (dependiendo del tipo de requerimiento) requeridas por la institución educativa.
+            Indica la cantidad de meses que la institución educativa ha recibido los alimentos para la merienda escolar de los alumnos.
           </td>
           <td class="atributo">
             xsd:positiveInteger
@@ -368,12 +371,13 @@
             TIPO_ALMUERZO
           </td>
           <td class="descripcion">
-            Corresponde a la cantidad de aulas a construir, a reparar, o a adecuar (dependiendo del tipo de requerimiento) requeridas por la institución educativa.
+            Indica el tipo de alimento requerido como parte del almuerzo escolar solicitado por la institución educativa.
           </td>
           <td class="atributo">
             xsd:string
           </td>
           <td class="atributo">
+            Valores que pueden ser: ALIMENTO SOLIDO, ALIMENTO DESHIDRATADO.
           </td>
           <td class="atributo"></td>
           <td class="atributo">
@@ -385,12 +389,13 @@
             PROVEEDOR_ALMUERZO
           </td>
           <td class="descripcion">
-            Corresponde a la cantidad de aulas a construir, a reparar, o a adecuar (dependiendo del tipo de requerimiento) requeridas por la institución educativa.
+            Indica si los alimentos para el almuerzo escolar recibidos por la institución educativa son proveidas por el municipio o la gobernación, en caso de que la institución ya estuviera beneficiada con el almuerzo escolar.
           </td>
           <td class="atributo">
             xsd:string
           </td>
           <td class="atributo">
+            Valores que pueden ser: -MUNICIPIO: cuando el requerimiento proviene desde el municipio. -GOBERNACION: cuando el requerimiento proviene desde la gobernación.
           </td>
           <td class="atributo"></td>
           <td class="atributo">
@@ -402,7 +407,7 @@
             CANTIDAD_MESES_ALMUERZO
           </td>
           <td class="descripcion">
-            Corresponde a la cantidad de aulas a construir, a reparar, o a adecuar (dependiendo del tipo de requerimiento) requeridas por la institución educativa.
+            Indica la cantidad de meses que la institución educativa ha recibido los alimentos para el almuerzo escolar de los alumnos.
           </td>
           <td class="atributo">
             xsd:positiveInteger
@@ -419,7 +424,7 @@
             FORMA_OBTENCION_ALMUERZO
           </td>
           <td class="descripcion">
-            Corresponde a la cantidad de aulas a construir, a reparar, o a adecuar (dependiendo del tipo de requerimiento) requeridas por la institución educativa.
+            Especifica personas/servicios encargados de preparar el almuerzo escolar y/o la forma en que el almuerzo se distribuye hasta el local escolar.
           </td>
           <td class="atributo">
             xsd:string
