@@ -1,95 +1,97 @@
 <% if requerimientos_mobiliarios.present? %>
 
-  <tr>
-    <td colspan="19" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate requerimientos_mobiliarios, :params => params %></div></td>
+  <tr id="tab-paginacion">
+      <td colspan="19" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate requerimientos_mobiliarios, :params => params %></div></td>
+  </tr>
+
+  <tr id="tab-cantidad-registros">
+      <td colspan="19">Cantidad de registros encontrados: <%= @requerimientos_mobiliarios_todos.size %> de <%= @total_registros %></td>
   </tr>
 
   <tr>
-    <td colspan="19">Cantidad de registros encontrados: <%= @requerimientos_mobiliarios_todos.size %> de <%= @total_registros %></td>
-  </tr>
 
-  <tr>
+      <%  
+      parametros_csv = { :format => 'csv' }
+      parametros_csv = parametros_csv.merge(params) 
+      parametros_csv_todos = { :format => 'csv', "form_buscar_requerimientos_mobiliarios[periodo]" => params[:form_buscar_requerimientos_mobiliarios][:periodo]}
+    %>
 
-    <%  
-    parametros_csv = { :format => 'csv' }
-    parametros_csv = parametros_csv.merge(params) 
-    parametros_csv_todos = { :format => 'csv', "form_buscar_requerimientos_mobiliarios[periodo]" => params[:form_buscar_requerimientos_mobiliarios][:periodo]}
-  %>
+      <% 
+      parametros_xls = { :format => 'xlsx'}
+      parametros_xls = parametros_xls.merge(params) 
+      parametros_xls_todos = { :format => 'xlsx', "form_buscar_requerimientos_mobiliarios[periodo]" => params[:form_buscar_requerimientos_mobiliarios][:periodo] }
+    %>
 
-    <% 
-    parametros_xls = { :format => 'xlsx'}
-    parametros_xls = parametros_xls.merge(params) 
-    parametros_xls_todos = { :format => 'xlsx', "form_buscar_requerimientos_mobiliarios[periodo]" => params[:form_buscar_requerimientos_mobiliarios][:periodo] }
-  %>
+      <% 
+      parametros_json = { :format => 'json' }
+      parametros_json = parametros_json.merge(params) 
+      parametros_json_todos = { :format => 'json', "form_buscar_requerimientos_mobiliarios[periodo]" => params[:form_buscar_requerimientos_mobiliarios][:periodo] }
+    %>
 
-    <% 
-    parametros_json = { :format => 'json' }
-    parametros_json = parametros_json.merge(params) 
-    parametros_json_todos = { :format => 'json', "form_buscar_requerimientos_mobiliarios[periodo]" => params[:form_buscar_requerimientos_mobiliarios][:periodo] }
-  %>
+      <% 
+      parametros_pdf = { :format => 'pdf' }
+      parametros_pdf = parametros_pdf.merge(params) 
+      parametros_pdf_todos = { :format => 'pdf', "form_buscar_requerimientos_mobiliarios[periodo]" => params[:form_buscar_requerimientos_mobiliarios][:periodo] }
+    %>
 
-    <% 
-    parametros_pdf = { :format => 'pdf' }
-    parametros_pdf = parametros_pdf.merge(params) 
-    parametros_pdf_todos = { :format => 'pdf', "form_buscar_requerimientos_mobiliarios[periodo]" => params[:form_buscar_requerimientos_mobiliarios][:periodo] }
-  %>
+      <td colspan="12" class="row-descargar" style="width: 70%">
+          <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
+          <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", id:'tab-microdata', :style => "width:32px; margin-bottom:10px;" %></a></br>
+          <div id="tab-descargas-filtradas">
+              <span>Descargar Requerimientos Mobiliarios Procesados Filtrados:</span>
 
-    <td colspan="12" class="row-descargar" style="width: 70%">
-      <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
-      <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a></br>
-      <span>Descargar Requerimientos Mobiliarios Procesados Filtrados:</span>
-
-      <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
+              <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
 
   <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_instituciones_lista_url(parametros_pdf)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat'%>
-      <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_requerimientos_mobiliarios_lista_url(parametros_xls)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
-      <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_mobiliarios_lista_url(parametros_csv)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
-      <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_mobiliarios_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
-      <br />
-      <br /> 
-
-      <div style="float:left;">Descargar todos los Requerimientos Mobiliarios Procesados:</div>
-      <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+              <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_requerimientos_mobiliarios_lista_url(parametros_xls)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
+              <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_mobiliarios_lista_url(parametros_csv)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
+              <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_mobiliarios_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+          </div>
+          <br />
+          <br /> 
+          <div id="tab-descargas-total">
+              <div style="float:left;">Descargar todos los Requerimientos Mobiliarios Procesados:</div>
+              <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
   <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_instituciones_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
-        <meta itemprop="name" content="Requerimientos de Mobiliarios 2015">
-        <meta itemprop="description" content="Listado de requerimientos de mobiliarios correspondientes al año 2015">
-        <meta itemprop="encodingFormat" content="pdf">
-      </div>
-      <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_requerimientos_mobiliarios_lista_url(parametros_xls_todos)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
-        <br />
-        <span style="color:silver;">(483,1KB)</span>
-        <meta itemprop="name" content="Requerimientos de Mobiliarios 2015">
-        <meta itemprop="description" content="Listado de requerimientos de mobiliarios correspondientes al año 2015">
-        <meta itemprop="encodingFormat" content="xls">
-      </div>
-      <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_mobiliarios_lista_url(parametros_csv_todos)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
-        <br />
-        <span style="color:silver;">(1,2MB)</span>
-        <meta itemprop="name" content="Requerimientos de Mobiliarios 2015">
-        <meta itemprop="description" content="Listado de requerimientos de mobiliarios correspondientes al año 2015">
-        <meta itemprop="encodingFormat" content="csv">
-      </div>
-      <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_mobiliarios_lista_url(parametros_json_todos)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
-        <br />
-        <span style="color:silver;">(3,0MB)</span>
-        <meta itemprop="name" content="Requerimientos de Mobiliarios 2015">
-        <meta itemprop="description" content="Listado de requerimientos de mobiliarios correspondientes al año 2015">
-        <meta itemprop="encodingFormat" content="json">
-      </div>
+                  <meta itemprop="name" content="Requerimientos de Mobiliarios 2015">
+                  <meta itemprop="description" content="Listado de requerimientos de mobiliarios correspondientes al año 2015">
+                  <meta itemprop="encodingFormat" content="pdf">
+              </div>
+              <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+                  <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_requerimientos_mobiliarios_lista_url(parametros_xls_todos)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
+                  <br />
+                  <span style="color:silver;">(483,1KB)</span>
+                  <meta itemprop="name" content="Requerimientos de Mobiliarios 2015">
+                  <meta itemprop="description" content="Listado de requerimientos de mobiliarios correspondientes al año 2015">
+                  <meta itemprop="encodingFormat" content="xls">
+              </div>
+              <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+                  <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_mobiliarios_lista_url(parametros_csv_todos)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
+                  <br />
+                  <span style="color:silver;">(1,2MB)</span>
+                  <meta itemprop="name" content="Requerimientos de Mobiliarios 2015">
+                  <meta itemprop="description" content="Listado de requerimientos de mobiliarios correspondientes al año 2015">
+                  <meta itemprop="encodingFormat" content="csv">
+              </div>
+              <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+                  <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_mobiliarios_lista_url(parametros_json_todos)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+                  <br />
+                  <span style="color:silver;">(3,0MB)</span>
+                  <meta itemprop="name" content="Requerimientos de Mobiliarios 2015">
+                  <meta itemprop="description" content="Listado de requerimientos de mobiliarios correspondientes al año 2015">
+                  <meta itemprop="encodingFormat" content="json">
+              </div>
 
-      <div style="clear:both;"></div>
+              <div style="clear:both;"></div>
+          </div>
+      </td>
 
-    </td>
-    
-    <td colspan="12" class="row-descargar" style="text-align:center; width: 30%">
-      <br/><br/><br/>
-      <div style="float:right; text-align: center;">Descargar las Planillas de Establecimientos Escolares Priorizadas Elegibles visitando:
-        <A href="http://datos.mec.gov.py/data/establecimientos_escolares_priorizados_elegibles_fonacide">este sitio</A>
-      </div>
-    </td>
+      <td colspan="12" class="row-descargar" style="text-align:center; width: 30%" id="tab-descargas-planillas">
+          <br/><br/><br/>
+          <div style="float:right; text-align: center;">Descargar las Planillas de Establecimientos Escolares Priorizadas Elegibles visitando:
+              <A href="http://datos.mec.gov.py/data/establecimientos_escolares_priorizados_elegibles_fonacide">este sitio</A>
+          </div>
+      </td>
 
   </tr>
 

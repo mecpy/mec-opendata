@@ -12,6 +12,7 @@
  *= require_tree .
  *= stub leaflet
  *= stub slider
+ *= require introjs.min
  */
 
 /*

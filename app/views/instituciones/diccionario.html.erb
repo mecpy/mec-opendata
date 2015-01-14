@@ -1,586 +1,699 @@
 <div class="container">
-  <div class="row">
-    <h2>
-      Datos Espec&iacute;ficos de Instituciones Educativas
+    <div class="row">
+        <h2>
+            <span id="tab-titulo">Datos Espec&iacute;ficos de Instituciones Educativas</span>
 
-      <span style="float:right;">
-        <%= link_to "Ver datos", mec_custom_url(data_instituciones_url), :title => "Ir al dataset", :style => "font-size:12px;" %>
-        <%= link_to image_tag("datos_ico.jpg",:style => "width:24px;"), mec_custom_url(data_instituciones_url), :title => "Ir al dataset" %>
-        <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
-        <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
-      </span>
+            <span style="float:right;">
+                <div style="display: inline-block" id="start-tour"><a style="font-size:12px;" title="Ir a la ayuda">Ayuda</a> <a title="Ir a la ayuda"><img alt="Ayuda3" height="24px" width="24px" src="/assets/ayuda3.png"></a></div>
+                <div style="display: inline-block" id="tab-datos"><%= link_to "Ver datos", mec_custom_url(data_instituciones_url), :title => "Ir al dataset", :style => "font-size:12px;" %>
+                    <%= link_to image_tag("datos_ico.jpg",:style => "width:24px;"), mec_custom_url(data_instituciones_url), :title => "Ir al dataset" %></div>
+                <div style="display: inline-block" id="tab-inicio"><%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
+                    <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %></div>
+            </span>
 
-    </h2>
+        </h2>
 
-    <table class="table table-striped table-bordered table-hover">
-      <thead>
-        <tr>
-          <th title="Field #1">Nombre del Atributo</th>
-          <th title="Field #2">
-            Descripción
-          </th>
-          <th title="Field #3">
-            Tipo de datos
-          </th>
-          <th title="Field #4">
-            Restricciones
-          </th>
-          <th title="Field #5">
-            Referencia
-          </th>
-          <th title="Field #6">
-            Ejemplo
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            AÑO
-          </td>
-          <td>
-            Se refiere al año de captura de los datos
-          </td>
-          <td>
-            xsd:gYear
-          </td>
-          <td></td>
-          <td></td>
-          <td>
-            2012
-          </td>
-        </tr>
-        <tr>
-          <td>
-            CODIGO_DEPARTAMENTO
-          </td>
-          <td>
-            Corresponde al código asignado según la cartografía nacional al departamento geográfico donde esta localizado el establecimiento escolar.
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-            No más de 2 caracteres 
-          </td>
-          <td></td>
-          <td>
-            00
-          </td>
-        </tr>
-        <tr>
-          <td>
-            NOMBRE_DEPARTAMENTO
-          </td>
-          <td>
-            Corresponde a la descripción del nombre del departamento geográfico correspondiente al código.
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-            No más de 40 caracteres
-          </td>
-          <td></td>
-          <td>
-            ASUNCION
-          </td>
-        </tr>
-        <tr>
-          <td>
-            CODIGO_DISTRITO
-          </td>
-          <td>
-            Corresponde al código asignado al distrito del departamento geográfico donde esta localizado el establecimiento escolar..
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-            No más de 2 caracteres
-          </td>
-          <td></td>
-          <td>
-            00
-          </td>
-        </tr>
-        <tr>
-          <td>
-            NOMBRE_DISTRITO
-          </td>
-          <td>
-            Corresponde a la descripción del nombre del distrito correspondiente al código.
-          </td>
-          <td>
-            xsd:string  
-          </td>
-          <td>
-            No más de 40 caracteres
-          </td>
-          <td></td>
-          <td>
-            ASUNCION 
-          </td>
-        </tr>
-        <tr>
-          <td>
-            CODIGO_BARRIO_LOCALIDAD
-          </td>
-          <td>
-            Corresponde al código asignado a la localidad o barrio del distrito donde esta localizado el establecimiento escolar.
-          </td>
-          <td>
-            xsd:positiveInteger
-          </td>
-          <td></td>
-          <td></td>
-          <td>
-            033
-          </td>
-        </tr>
-        <tr>
-          <td>
-            NOMBRE_BARRIO_LOCALIDAD
-          </td>
-          <td>
-            Corresponde a la descripción del nombre del barrio o localidad correspondiente al código.
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-          </td>
-          <td></td>
-          <td>
-            SAN ANTONIO
-          </td>
-        </tr>
-        <tr>
-          <td>
-            CODIGO_ZONA
-          </td>
-          <td>
-            Corresponde a la ubicación del establecimiento escolar, sea en la zona urbana o rural. Se considera: Código 1 .Zona Urbana: Área geográfica que abarca todas las cabeceras distritales de la República y sus viviendas generalmente estan organizadas en manzanas.
-            Código 2. Zona Rural: Área geográfica que se encuentran fuera de las cabeceras distritales y las viviendas se localizan en forma dispersa pudiendo existir zonas amanzanadas pero que no tienen la categoría de Cabeceras Distritales por la cual se consideraran como rurales.
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-            Valores que pueden ser: Código 1: cuando el código de localidad es menor 100 Código 6: cuando el código de localidade es mayor o igual a 100
-          </td>
-          <td></td>
-          <td>
-            1
-          </td>
-        </tr>
-        <tr>
-          <td>
-            NOMBRE_ZONA
-          </td>
-          <td>
-            Corresponde a la descripción del nombre de la zona correspondiente al código
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-            No más de 7 caracteres
-          </td>
-          <td></td>
-          <td>
-            URBANA
-          </td>
-        </tr>
-        <tr>
-          <td>
-            CODIGO_ESTABLECIMIENTO
-          </td>
-          <td>
-            Código de establecimiento permite identificar en forma única los diferentes establecimientos educativos que se encuentran en el país.<br>
-            El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación.<br>
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-            No más de 7 caracteres
-          </td>
-          <td></td>
-          <td>
-            0010010
-          </td>
-        </tr>
-        <tr>
-          <td>
-            CODIGO_INSTITUCION
-          </td>
-          <td>
-            Identifica a la institución como una entidad y organización independiente que funciona dentro de un establecimiento escolar. Una institución educativa puede poseer diferentes locales escolares ubicados en un mismo o en diferentes departamentos geográficos. El código está compuesto por un número secuencial.<br>
-            El SIEC considera una misma institución cuando varios niveles o modalidades tienen una organización, gestión y administración única. Por ejemplo: Centro Regional de Educación Gral. Patricio Escobar de Encarnación, Colegio Santa Clara de Asunción.<br>
-          </td>
-          <td>
-            xsd:positiveInteger
-          </td>
-          <td>
-            No más de 5 caracteres
-          </td>
-          <td></td>
-          <td>
-            10
-          </td>
-        </tr>
-        <tr>
-          <td>
-            NOMBRE_INSTITUCION
-          </td>
-          <td>
-            Corresponde a la descripción del nombre de la institución correspondiente al código
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-            No más de 40 caracteres
-          </td>
-          <td></td>
-          <td>
-            1183 ALBERTO SCHWEITZER
-          </td>
-        </tr>
-        <tr>
-          <td>
-            SECTOR O TIPO DE GESTION
-          </td>
-          <td>
-            Sector al que pertenece una institución educativa.<br>
-            Se considera :<br>
-            OFICIAL: Sector o tipo de gestión al que pertenece una institución educativa cuya organización y administración está a cargo del Estado paraguayo (Ministerio de Educación y Cultura, gobernaciones, municipios, binacionales). PRIVADA: Sector o tipo de gestión al que pertenece una institución educativa cuya organización y administración está a cargo de un organismo no estatal.<br>
-            PRIVADA SUBVENCIONADA: Sector o tipo de gestión al que pertenece una institución de gestión privada que recibe algún aporte del Estado, como ser rubros para docentes, monto en guaraníes, etc.<br>
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-            Valores en el rango: OFICIAL, PRIVADA ,PRIVADA SUBVENCIONADA
-          </td>
-          <td></td>
-          <td>
-            PRIVADA
-          </td>
-        </tr>
-        <tr>
-          <td>
-            CODIGO_REGION _ADMINISTRATIVA
-          </td>
-          <td>
-            Corresponde a la región administrativa al cual pertenece los establecimientos escolares.el código de local está compuesto por tres grupos de números. 1) el primer par de dígitos corresponde al código de departamento (del 00 que corresponde a Asunción al 17 que corresponde a Alto Paraguay), 2) el segundo par de dígitos corresponde al código de la coordinación al cual pertenecen y 3) los tres últimos dígitos son los códigos de la region.
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-            No más de 10 caracteres
-          </td>
-          <td></td>
-          <td>
-            00C1R4
-          </td>
-        </tr>
-        <tr>
-          <td>
-            NOMBRE_REGION_ADMINISTRATIVA
-          </td>
-          <td>
-            Corresponde a la descripción del nombre de la región administrativa correspondiente al código
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-            No más de 40 caracteres
-          </td>
-          <td></td>
-          <td>
-            CAPITAL COORDINACION REGION 4
-          </td>
-        </tr>
-        <tr>
-          <td>
-            NOMBRE_SUPERVISOR
-          </td>
-          <td>
-            Persona encargada en el departamento de las gestiones tanto administrativas como pedagógicas de las isntituciones escolares.
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-            No más de 60 caracteres
-          </td>
-          <td></td>
-          <td>
-            LORENZA VALLEJOS QUIÑONEZ
-          </td>
-        </tr>
-        <tr>
-          <td>
-            NIVELES_MODALIDADES
-          </td>
-          <td>
-            Cada institución educativa ofrece algún nivel o modalidad, el código de nivel se relaciona con la oferta educativa y permite identificar en forma única los niveles/modalidades que funcionan en una institución, siempre debe estar vinculada a un código de institución educativa y establecimiento escolar.
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-            Valores en el rango: EEB -Educación Escolar Básica<br>
-            EI - Educación Media<br>
-            FED - Formación Docente<br>
-            ETS - Educación Superior<br>
-            EJA - Educación de Jovenes y Adultos<br>
-            ET - Educación Técnica<br>
-            EE - Educación Especial<br>
-            EMDJA - Educación Media a Distancia de Jovenes y Adultos<br>
-            EMAPJA - Educación Media Alternativa para Jovenes y Adultos<br>
-            EMA - Educación Media Abierta<br>
-          </td>
-          <td></td>
-          <td>
-            EI,EEB,EM
-          </td>
-        </tr>
-        <tr>
-          <td>
-            CODIGO_TIPO_ORGANIZACION
-          </td>
-          <td>
-            Corresponde al tipo de organización de cada institucion pueden ser escuelas centros ,escuelas asociadas o escuelas independientes
-          </td>
-          <td>
-            xsd:positiveInteger
-          </td>
-          <td></td>
-          <td></td>
-          <td>
-            2
-          </td>
-        </tr>
-        <tr>
-          <td>
-            NOMBRE_TIPO_ORGANIZACION
-          </td>
-          <td>
-            Corresponde a la descripción del tipo de organización de la institución correspondiente al código
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-            No más de 20 caracteres
-          </td>
-          <td></td>
-          <td>
-            ESCUELA ASOCIADA
-          </td>
-        </tr>
-        <tr>
-          <td>
-            PARTICIPACION_COMUNITARIA
-          </td>
-          <td>
-            Especifica si la institución cuenta con comisión de padres
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-            Valores en el rango:
-          </td>
-          <td></td>
-          <td>
-            NO
-          </td>
-        </tr>
-        <tr>
-          <td>
-            DIRECCION
-          </td>
-          <td>
-            Corresponde al nombre de la calle, avenida, carretera, etc., del establecimiento escolar.
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-            No más de 50 caracteres
-          </td>
-          <td></td>
-          <td>
-            MELO DE PORTUGAL E/ MAYOR MARTINEZ Y CPTAN. ARANDA
-          </td>
-        </tr>
-        <tr>
-          <td>
-            NRO_TELEFONO
-          </td>
-          <td>
-            Número de teléfono de la institución
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-            No más de 15 caracteres
-          </td>
-          <td></td>
-          <td>
-            425-429
-          </td>
-        </tr>
-        <tr>
-          <td>
-            TIENE_INTERNET
-          </td>
-          <td>
-            Especifica si la institución cuenta con internet
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td>
-            Valores en el rango: 1 - SI / 6 - No
-          </td>
-          <td></td>
-          <td>
-            SI
-          </td>
-        </tr>
-        <tr>
-          <td>
-            PAGINAWEB
-          </td>
-          <td>
-            Especifica la página web de la institución
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td></td>
-          <td>
-            <a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a>
-          </td>
-          <td>
-            www.cas.edu.py
-          </td>
-        </tr>
-        <tr>
-          <td>
-            CORREO_ELECTRONICO
-          </td>
-          <td>
-            Especifica el correo electrónico de la institución
-          </td>
-          <td>
-            xsd:string
-          </td>
-          <td></td>
-          <td>
-            <a href="http://tools.ietf.org/html/rfc3696">RFC 3696</a>
-          </td>
-          <td>
-            cas@click.com.py
-          </td>
-        </tr>
-        <tr>
-          <td>
-            ANHO_COD_GEO 
-          </td>
-          <td>
-            Se refiere al año de captura de los datos georreferenciados censales, teniendo en cuenta que por cada año censal pueden diferir los codigos de distritos o codigos de localidades, como a si también las descripciones. La cartografía nacional fue proveída por al Dirección General de Estadística, Encuestas y Censos (DGEEC - http://www.dgeec.gov.py/). 
-          </td>
-          <td>
-            xsd:gYear
-          </td>
-          <td>
-            Sólo permite datos del año de su captura censal.
-          </td>
-          <td></td>
-          <td>
-            <%= link_to "Ver ejemplo", mec_custom_url(def_ejemplo_anio_cod_geo_path), target: '_blank' %>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="row">
-    <h2>
-      Referencia
-    </h2>La siguiente tabla presenta una breve descripción de los atributos incluídos en el diccionario de datos del dataset.<br>
-    Básicamente, un diccionario de datos describe los atributos que contiene un dataset, incluyendo el tipo de dato y las restricciones se apliquen a cada uno.<br>
-    <br>
-    <br>
-    <table class="table table-striped table-bordered table-hover">
-      <thead>
-        <tr>
-          <th title="Field #1">
-            Nombre de la columna
-          </th>
-          <th title="Field #2">
-            Descripción
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            Nombre del Atributo
-          </td>
-          <td>
-            Esteblace el nombre del atributo exactamente como se encuentra definido en el archivo de datos a ser publicado
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Descripción
-          </td>
-          <td>
-            Describe con más detalles los datos que se encuentran en el atributo
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Tipo de datos
-          </td>
-          <td>
-            El tipo de dato esperado de los valores del attributo. Por ejemplo: String, Integer, Float, …. Idealmente se deben utilizar los tipos de datos definidos en el Estándar XML Schema Datatypes de la W3C. <a href="http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes">http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes</a>, por ejemplo: xsd:string, xsd:boolean, xsd:dateTime
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Restricciones
-          </td>
-          <td>
-            En caso que existan, se especifican las restricciones de los datos
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Referencia
-          </td>
-          <td>
-            En caso que exista, se agrega un link a un documento de referencia para los datos. Por ejemplo, si los datos están definidos utilizando un estándar o formato diferente a XSD, referenciarlo, como ser la Latitud y Longitud en formato de Google maps
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Ejemplo
-          </td>
-          <td>
-            Los valores de ejemplo
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr id="tab-atributos">
+                    <th title="Field #1">Nombre del Atributo</th>
+                    <th title="Field #2">
+                        Descripci&oacute;n
+                    </th>
+                    <th title="Field #3">
+                        Tipo de datos
+                    </th>
+                    <th title="Field #4">
+                        Restricciones
+                    </th>
+                    <th title="Field #5">
+                        Referencia
+                    </th>
+                    <th title="Field #6">
+                        Ejemplo
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        AÑO
+                    </td>
+                    <td>
+                        Se refiere al año de captura de los datos
+                    </td>
+                    <td>
+                        xsd:gYear
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        2012
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        CODIGO_DEPARTAMENTO
+                    </td>
+                    <td>
+                        Corresponde al código asignado según la cartografía nacional al departamento geográfico donde esta localizado el establecimiento escolar.
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td>
+                        No más de 2 caracteres 
+                    </td>
+                    <td></td>
+                    <td>
+                        00
+                    </td>
+                </tr>
+                <tr>
+                    <td id="tab-contenido-nombre">
+                        NOMBRE_DEPARTAMENTO
+                    </td>
+                    <td id="tab-contenido-descripcion">
+                        Corresponde a la descripción del nombre del departamento geográfico correspondiente al código.
+                    </td>
+                    <td id="tab-contenido-tipo">
+                        xsd:string
+                    </td>
+                    <td id="tab-contenido-restriccion">
+                        No más de 40 caracteres
+                    </td>
+                    <td id="tab-contenido-referencia"></td>
+                    <td id="tab-contenido-ejemplo">
+                        ASUNCION
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        CODIGO_DISTRITO
+                    </td>
+                    <td>
+                        Corresponde al código asignado al distrito del departamento geográfico donde esta localizado el establecimiento escolar..
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td>
+                        No más de 2 caracteres
+                    </td>
+                    <td></td>
+                    <td>
+                        00
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        NOMBRE_DISTRITO
+                    </td>
+                    <td>
+                        Corresponde a la descripción del nombre del distrito correspondiente al código.
+                    </td>
+                    <td>
+                        xsd:string  
+                    </td>
+                    <td>
+                        No más de 40 caracteres
+                    </td>
+                    <td></td>
+                    <td>
+                        ASUNCION 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        CODIGO_BARRIO_LOCALIDAD
+                    </td>
+                    <td>
+                        Corresponde al código asignado a la localidad o barrio del distrito donde esta localizado el establecimiento escolar.
+                    </td>
+                    <td>
+                        xsd:positiveInteger
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        033
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        NOMBRE_BARRIO_LOCALIDAD
+                    </td>
+                    <td>
+                        Corresponde a la descripción del nombre del barrio o localidad correspondiente al código.
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td>
+                    </td>
+                    <td></td>
+                    <td>
+                        SAN ANTONIO
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        CODIGO_ZONA
+                    </td>
+                    <td>
+                        Corresponde a la ubicación del establecimiento escolar, sea en la zona urbana o rural. Paraguay utiliza criterios político-administrativos para definir el área urbana y rural.</br>
+                        Se considera: Código 1 .Zona Urbana: Área geográfica que abarca todas las cabeceras distritales de la República y sus viviendas generalmente estan organizadas en manzanas.</br>
+                        Código 2. Zona Rural: Área geográfica que se encuentran fuera de las cabeceras distritales y las viviendas se localizan en forma dispersa pudiendo existir zonas amanzanadas pero que no tienen la categoría de Cabeceras Distritales por la cual se consideraran como rurales.</br>
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td>
+                        Valores que pueden ser: Código 1: cuando el código de localidad es menor 100 Código 6: cuando el código de localidade es mayor o igual a 100
+                    </td>
+                    <td></td>
+                    <td>
+                        1
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        NOMBRE_ZONA
+                    </td>
+                    <td>
+                        Corresponde a la descripción del nombre de la zona correspondiente al código
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td>
+                        No más de 7 caracteres
+                    </td>
+                    <td></td>
+                    <td>
+                        URBANA
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        CODIGO_ESTABLECIMIENTO
+                    </td>
+                    <td>
+                        Código de establecimiento permite identificar en forma única los diferentes establecimientos educativos que se encuentran en el país.<br>
+                        El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación.<br>
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td>
+                        No más de 7 caracteres
+                    </td>
+                    <td></td>
+                    <td>
+                        0010010
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        CODIGO_INSTITUCION
+                    </td>
+                    <td>
+                        Identifica a la institución como una entidad y organización independiente que funciona dentro de un establecimiento escolar. Una institución educativa puede poseer diferentes locales escolares ubicados en un mismo o en diferentes departamentos geográficos. El código está compuesto por un número secuencial.<br>
+                        El SIEC considera una misma institución cuando varios niveles o modalidades tienen una organización, gestión y administración única. Por ejemplo: Centro Regional de Educación Gral. Patricio Escobar de Encarnación, Colegio Santa Clara de Asunción.<br>
+                    </td>
+                    <td>
+                        xsd:positiveInteger
+                    </td>
+                    <td>
+                        No más de 5 caracteres
+                    </td>
+                    <td></td>
+                    <td>
+                        10
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        NOMBRE_INSTITUCION
+                    </td>
+                    <td>
+                        Corresponde a la descripción del nombre de la institución correspondiente al código
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td>
+                        No más de 40 caracteres
+                    </td>
+                    <td></td>
+                    <td>
+                        1183 ALBERTO SCHWEITZER
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        SECTOR_O_TIPO_GESTION
+                    </td>
+                    <td>
+                        Sector al que pertenece una institución educativa.<br>
+                        Se considera :<br>
+                        OFICIAL: Sector o tipo de gestión al que pertenece una institución educativa cuya organización y administración está a cargo del Estado paraguayo (Ministerio de Educación y Cultura, gobernaciones, municipios, binacionales). PRIVADA: Sector o tipo de gestión al que pertenece una institución educativa cuya organización y administración está a cargo de un organismo no estatal.<br>
+                        PRIVADA SUBVENCIONADA: Sector o tipo de gestión al que pertenece una institución de gestión privada que recibe algún aporte del Estado, como ser rubros para docentes, monto en guaraníes, etc.<br>
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td>
+                        Valores en el rango: OFICIAL, PRIVADA ,PRIVADA SUBVENCIONADA
+                    </td>
+                    <td></td>
+                    <td>
+                        PRIVADA
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        CODIGO_REGION _ADMINISTRATIVA
+                    </td>
+                    <td>
+                        Corresponde a la región administrativa al cual pertenece los establecimientos escolares.el código de local está compuesto por tres grupos de números. 1) el primer par de dígitos corresponde al código de departamento (del 00 que corresponde a Asunción al 17 que corresponde a Alto Paraguay), 2) el segundo par de dígitos corresponde al código de la coordinación al cual pertenecen y 3) los tres últimos dígitos son los códigos de la region.
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td>
+                        No más de 10 caracteres
+                    </td>
+                    <td></td>
+                    <td>
+                        00C1R4
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        NOMBRE_REGION_ADMINISTRATIVA
+                    </td>
+                    <td>
+                        Corresponde a la descripción del nombre de la región administrativa correspondiente al código
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td>
+                        No más de 40 caracteres
+                    </td>
+                    <td></td>
+                    <td>
+                        CAPITAL COORDINACION REGION 4
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        NOMBRE_SUPERVISOR
+                    </td>
+                    <td>
+                        Persona encargada en el departamento de las gestiones tanto administrativas como pedagógicas de las isntituciones escolares.
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td>
+                        No más de 60 caracteres
+                    </td>
+                    <td></td>
+                    <td>
+                        LORENZA VALLEJOS QUIÑONEZ
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        NIVELES_MODALIDADES
+                    </td>
+                    <td>
+                        Cada institución educativa ofrece algún nivel o modalidad, el código de nivel se relaciona con la oferta educativa y permite identificar en forma única los niveles/modalidades que funcionan en una institución, siempre debe estar vinculada a un código de institución educativa y establecimiento escolar.
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td>
+                        Valores en el rango: EEB -Educación Escolar Básica<br>
+                        EI - Educación Media<br>
+                        FED - Formación Docente<br>
+                        ETS - Educación Superior<br>
+                        EJA - Educación de Jovenes y Adultos<br>
+                        ET - Educación Técnica<br>
+                        EE - Educación Especial<br>
+                        EMDJA - Educación Media a Distancia de Jovenes y Adultos<br>
+                        EMAPJA - Educación Media Alternativa para Jovenes y Adultos<br>
+                        EMA - Educación Media Abierta<br>
+                    </td>
+                    <td></td>
+                    <td>
+                        EI,EEB,EM
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        CODIGO_TIPO_ORGANIZACION
+                    </td>
+                    <td>
+                        Corresponde al tipo de organización de cada institucion pueden ser escuelas centros ,escuelas asociadas o escuelas independientes
+                    </td>
+                    <td>
+                        xsd:positiveInteger
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        2
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        NOMBRE_TIPO_ORGANIZACION
+                    </td>
+                    <td>
+                        Corresponde a la descripción del tipo de organización de la institución correspondiente al código
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td>
+                        No más de 20 caracteres
+                    </td>
+                    <td></td>
+                    <td>
+                        ESCUELA ASOCIADA
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        PARTICIPACION_COMUNITARIA
+                    </td>
+                    <td>
+                        Especifica si la institución cuenta con comisión de padres
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td>
+                        Valores que pueden ser:  SI - NO
+                    </td>
+                    <td></td>
+                    <td>
+                        NO
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        DIRECCION
+                    </td>
+                    <td>
+                        Corresponde al nombre de la calle, avenida, carretera, etc., del establecimiento escolar.
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td>
+                        No más de 50 caracteres
+                    </td>
+                    <td></td>
+                    <td>
+                        MELO DE PORTUGAL E/ MAYOR MARTINEZ Y CPTAN. ARANDA
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        NRO_TELEFONO
+                    </td>
+                    <td>
+                        Número de teléfono de la institución
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td>
+                        No más de 15 caracteres
+                    </td>
+                    <td></td>
+                    <td>
+                        425-429
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        TIENE_INTERNET
+                    </td>
+                    <td>
+                        Especifica si la institución cuenta con internet
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td>
+                        Valores en el rango: 1 - SI / 6 - No
+                    </td>
+                    <td></td>
+                    <td>
+                        SI
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        PAGINAWEB
+                    </td>
+                    <td>
+                        Especifica la página web de la institución
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td></td>
+                    <td>
+                        <a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a>
+                    </td>
+                    <td>
+                        www.cas.edu.py
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        CORREO_ELECTRONICO
+                    </td>
+                    <td>
+                        Especifica el correo electrónico de la institución
+                    </td>
+                    <td>
+                        xsd:string
+                    </td>
+                    <td></td>
+                    <td>
+                        <a href="http://tools.ietf.org/html/rfc3696">RFC 3696</a>
+                    </td>
+                    <td>
+                        cas@click.com.py
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ANHO_COD_GEO 
+                    </td>
+                    <td>
+                        Se refiere al año de captura de los datos georreferenciados censales, teniendo en cuenta que por cada año censal pueden diferir los codigos de distritos o codigos de localidades, como a si también las descripciones. La cartografía nacional fue proveída por al Dirección General de Estadística, Encuestas y Censos (DGEEC - http://www.dgeec.gov.py/). 
+                    </td>
+                    <td>
+                        xsd:gYear
+                    </td>
+                    <td>
+                        Sólo permite datos del año de su captura censal.
+                    </td>
+                    <td></td>
+                    <td>
+                        <%= link_to "Ver ejemplo", mec_custom_url(def_ejemplo_anio_cod_geo_path), target: '_blank' %>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div id="tab-referencias">
+            <h2>
+                Referencia
+            </h2>La siguiente tabla presenta una breve descripción de los atributos incluídos en el diccionario de datos del dataset.<br>
+            Básicamente, un diccionario de datos describe los atributos que contiene un dataset, incluyendo el tipo de dato y las restricciones que se apliquen a cada uno.<br>
+        </div>
+        <br>
+        <br>
+        <table class="table table-striped table-bordered table-hover" id="tab-referencias-tabla">
+            <thead>
+                <tr>
+                    <th title="Field #1">
+                        Nombre de la columna
+                    </th>
+                    <th title="Field #2">
+                        Descripci&oacute;n
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        Nombre del Atributo
+                    </td>
+                    <td>
+                        Establece el nombre del atributo exactamente como se encuentra definido en el archivo de datos a ser publicado
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Descripci&oacute;n
+                    </td>
+                    <td>
+                        Describe con más detalles los datos que se encuentran en el atributo
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Tipo de datos
+                    </td>
+                    <td>
+                        El tipo de dato esperado de los valores del attributo. Por ejemplo: String, Integer, Float, …. Idealmente se deben utilizar los tipos de datos definidos en el Estándar XML Schema Datatypes de la W3C. <a href="http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes">http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes</a>, por ejemplo: xsd:string, xsd:boolean, xsd:dateTime
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Restricciones
+                    </td>
+                    <td>
+                        En caso que existan, se especifican las restricciones de los datos
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Referencia
+                    </td>
+                    <td>
+                        En caso que exista, se agrega un link a un documento de referencia para los datos. Por ejemplo, si los datos están definidos utilizando un estándar o formato diferente a XSD, referenciarlo, como ser la Latitud y Longitud en formato de Google maps
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Ejemplo
+                    </td>
+                    <td>
+                        Los valores de ejemplo
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+<script>
+  var stepsListado = [
+      {
+          intro: "Esta ayuda te mostrar&aacute; los elementos del Diccionario del Conjunto de Datos:\
+          </br><b>Datos Espec&iacute;ficos de Instituciones Educativas</b>.\
+          </br></br>Este tutorial te guiará paso a paso a través de las diferentes funcionalidades disponibles. \
+          </br></br>Podr&aacute;s navegar fácilmente a través de la guía por medio del mouse, o por medio del teclado haciendo simplemente uso de las teclas:\
+          </br></br><u><i>Para Navegar</i></u>\
+          </br>* <b>→</b>\
+          </br>* <b>←</b>\
+          </br>* <b>ENTER</b>\
+          </br></br><u><i>Para Salir</i></u>\
+          </br>* <b>ESC</b>\
+          </br></br>Pulsa en siguiente para comenzar.\
+          </br>Y, ¡COMENCEMOS!"
+      },
+      {
+          element: "#tab-titulo",
+          intro: "En esta sección, puedes ver el Nombre del Conjunto de Datos.",
+          position: "right"
+      },
+      {
+          element: '#tab-datos',
+          intro: "Mientras que en esta otra sección, puedes acceder al Conjunto de Datos.</br></br>En este apartado podr&aacute;s realizar filtros y descargas de la informaci&oacute;m de tu inter&eacute;s.",
+          position: "left"
+      },
+      {
+          element: '#tab-inicio',
+          intro: "En este apartado, puedes volver al listado de todos los Conjuntos de Datos con que cuenta el Portal del MEC.",
+          position: "left"
+      },
+      {
+          element: '#tab-atributos',
+          intro: "Aqu&iacute; puedes obervar todos los atributos que componen el Diccionario del Conjunto de Datos.",
+          position: "bottom"
+      },
+      {
+          element: '#tab-contenido-nombre',
+          intro: "El <b>Nombre del Atributo</b>, establece el identificador del atributo exactamente como \
+          se encuentra definido en el archivo de datos a ser publicado.",
+          position: "right"
+      },
+      {
+          element: '#tab-contenido-descripcion',
+          intro: "La <b>Descripci&oacute;n</b>, describe con más detalles los datos que se encuentran en el atributo.",
+          position: "right"
+      },
+      {
+          element: '#tab-contenido-tipo',
+          intro: "Los <b>Tipo de datos</b>, representan el tipo de dato esperado de los valores del atributo.\
+          Por ejemplo: String, Integer, Float, …. \n\
+          </br></br>Idealmente se deben utilizar los tipos de datos definidos en el Estándar XML Schema Datatypes de la W3C. \
+          <a>http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes</a>, por ejemplo: xsd:string, xsd:boolean, xsd:dateTime.",
+          position: "left"
+      },
+      {
+          element: '#tab-contenido-restriccion',
+          intro: "Las <b>Restricciones</b>, en caso que existan, especifican las limitaciones de los datos.",
+          position: "left"
+      },
+      {
+          element: '#tab-contenido-referencia',
+          intro: "La <b>Referencia</b>, en caso que exista, agrega un link a un documento de menci&oacute;n para los datos.\
+          </br></br>Por ejemplo, si los datos están definidos utilizando un estándar o formato diferente a XSD, referenciarlos, como pueden ser la Latitud y Longitud en formato de Google maps.",
+          position: "left"
+      },
+      {
+          element: '#tab-contenido-ejemplo',
+          intro: "El <b>Ejemplo</b>, representa	los valores de ejemplo.",
+          position: "left"
+      },
+      {
+          element: '#tab-referencias',
+          intro: "¿Ten&iacute;as idea de que es un Diccionario de Datos?\
+          </br>¡F&iacute;jate en esta secci&oacute;n!",
+          position: "top"
+      },
+      {
+          element: '#tab-referencias-tabla',
+          intro: "Por &uacute;ltimo, si tienes dudas acerca del significado de alg&uacute;n atributo que se encuentra en el Diccionario.\
+          </br>¡Te recomendamos que le eches un vistazo a esta tabla! \
+          </br></br>Aqu&iacute; encontrar&aacute;s una breve descripci&oacute;n\
+          de cada atributo inclu&iacute;do en el Diccionario del Conjunto de Datos.",
+          position: "top"
+      }
+  ];
+
+  $('#start-tour').click(function () {
+
+      introJs().setOptions({
+          doneLabel: 'Salir',
+          nextLabel: 'Siguiente &rarr;',
+          prevLabel: '&larr; Anterior',
+          skipLabel: 'Salir',
+          steps: stepsListado
+      }).start();
+
+  });
+</script>
+<style>
+    .introjs-helperNumberLayer{
+        width: 23px;
+        height: 23px;
+        padding: 0px;
+    }
+    #start-tour{
+        cursor: pointer;
+    }
+</style>
