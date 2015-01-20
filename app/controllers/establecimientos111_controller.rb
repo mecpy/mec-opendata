@@ -32,6 +32,13 @@ class Establecimientos111Controller < ApplicationController
 
     end
 
+    if params[:form_buscar_establecimientos_nombre_institucion].present?
+
+      cond << "nombre_institucion ilike ?"
+      args << "%#{params[:form_buscar_establecimientos_nombre_institucion]}%"
+
+    end
+
     if params[:form_buscar_establecimientos_codigo_establecimiento].present?
 
       cond << "codigo_establecimiento ilike ?"
@@ -74,24 +81,87 @@ class Establecimientos111Controller < ApplicationController
 
     end
 
-    if params[:form_buscar_establecimientos] && params[:form_buscar_establecimientos][:programa].present?
+    if params[:form_buscar_establecimientos_asentamientos_priorizados].present?
 
-      cond << "programa = ?"
-      args << params[:form_buscar_establecimientos][:programa]
-
-    end
-
-    if params[:form_buscar_establecimientos] && params[:form_buscar_establecimientos][:proyecto_111].present?
-
-      cond << "proyecto_111 = ?"
-      args << params[:form_buscar_establecimientos][:proyecto_111]
+      cond << "preescolar #{params[:form_buscar_establecimientos_asentamientos_priorizados_operador]} ?"
+      args << params[:form_buscar_establecimientos_asentamientos_priorizados]
 
     end
 
-    if params[:form_buscar_establecimientos] && params[:form_buscar_establecimientos][:proyecto_822].present?
+    if params[:form_buscar_establecimientos_ampliacion_comedor].present?
 
-      cond << "proyecto_822 = ?"
-      args << params[:form_buscar_establecimientos][:proyecto_822]
+      cond << "a_comedor #{params[:form_buscar_establecimientos_ampliacion_comedor_operador]} ?"
+      args << params[:form_buscar_establecimientos_ampliacion_comedor]
+
+    end
+
+    if params[:form_buscar_establecimientos_ampliacion_aulas].present?
+
+      cond << "a_aulas #{params[:form_buscar_establecimientos_ampliacion_aulas_operador]} ?"
+      args << params[:form_buscar_establecimientos_ampliacion_aulas]
+
+    end
+
+    if params[:form_buscar_establecimientos_ampliacion_aula_preescolar].present?
+
+      cond << "a_aula_de_pe #{params[:form_buscar_establecimientos_ampliacion_aula_preescolar_operador]} ?"
+      args << params[:form_buscar_establecimientos_ampliacion_aula_preescolar]
+
+    end
+
+    if params[:form_buscar_establecimientos_ampliacion_centro_aprendizaje].present?
+
+      cond << "a_cra #{params[:form_buscar_establecimientos_ampliacion_centro_aprendizaje_operador]} ?"
+      args << params[:form_buscar_establecimientos_ampliacion_centro_aprendizaje]
+
+    end
+
+    if params[:form_buscar_establecimientos_ampliacion_laboratorios].present?
+
+      cond << "a_lab #{params[:form_buscar_establecimientos_ampliacion_laboratorios_operador]} ?"
+      args << params[:form_buscar_establecimientos_ampliacion_laboratorios]
+
+    end
+
+    if params[:form_buscar_establecimientos_ampliacion_bloque_administrativo].present?
+
+      cond << "a_bloq_adm #{params[:form_buscar_establecimientos_ampliacion_bloque_administrativo_operador]} ?"
+      args << params[:form_buscar_establecimientos_ampliacion_bloque_administrativo]
+
+    end 
+
+    if params[:form_buscar_establecimientos_ampliacion_servicios_higienicos].present?
+
+      cond << "a_sshh #{params[:form_buscar_establecimientos_ampliacion_servicios_higienicos_operador]} ?"
+      args << params[:form_buscar_establecimientos_ampliacion_servicios_higienicos]
+
+    end
+
+    if params[:form_buscar_establecimientos_reparacion_aulas].present?
+
+      cond << "r_aulas #{params[:form_buscar_establecimientos_reparacion_aulas_operador]} ?"
+      args << params[:form_buscar_establecimientos_reparacion_aulas]
+
+    end
+
+    if params[:form_buscar_establecimientos_reparacion_servicios_higienicos].present?
+
+      cond << "r_sshh #{params[:form_buscar_establecimientos_reparacion_servicios_higienicos_operador]} ?"
+      args << params[:form_buscar_establecimientos_reparacion_servicios_higienicos]
+
+    end
+
+    if params[:form_buscar_establecimientos_obras_exteriores].present?
+
+      cond << "obras_exteriores #{params[:form_buscar_establecimientos_obras_exteriores_operador]} ?"
+      args << params[:form_buscar_establecimientos_obras_exteriores]
+
+    end
+
+    if params[:form_buscar_establecimientos_cercado].present?
+
+      cond << "cercado #{params[:form_buscar_establecimientos_cercado_operador]} ?"
+      args << params[:form_buscar_establecimientos_cercado]
 
     end
 
@@ -110,12 +180,14 @@ class Establecimientos111Controller < ApplicationController
       csv = CSV.generate do |csv|
         # header row
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad",
-                "nombre_barrio_localidad", "direccion", "coordenadas_y", "coordenadas_x", "latitud", "longitud", "anho_cod_geo", "programa", "proyecto_111", "proyecto_822", "uri"]
+                "nombre_barrio_localidad", "direccion", "latitud", "longitud", "uri", "asentamientos_priorizados", "a_comedor", "a_aulas", "a_aula_de_pe", "a_cra", "a_lab", "a_bloq_adm",
+                "r_aulas", "r_sshh", "obras_exteriores", "cercado" ]
  
         # data rows
         establecimientos_csv.each do |e|
-          csv << [e.anio, e.codigo_establecimiento, "#{e.codigo_departamento} ", e.nombre_departamento, e.codigo_distrito, e.nombre_distrito, e.codigo_zona, e.nombre_zona, e.codigo_barrio_localidad,
-                  e.nombre_barrio_localidad, e.direccion, e.coordenadas_y, e.coordenadas_x, e.latitud, e.longitud, e.anho_cod_geo, e.programa, e.proyecto_111, e.proyecto_822, e.uri ]
+          csv << [e.anio, e.codigo_establecimiento, "#{e.codigo_departamento}", e.nombre_departamento, e.codigo_distrito, e.nombre_distrito, e.codigo_zona, e.nombre_zona, e.codigo_barrio_localidad,
+                  e.nombre_barrio_localidad, e.direccion, e.latitud, e.longitud, e.uri, e.asentamientos_priorizados, e.a_comedor, e.a_aulas, e.a_aula_de_pe, e.a_cra, e.a_lab, e.a_bloq_adm,
+                  e.r_aulas, e.r_sshh, e.obras_exteriores, e.cercado]
         end
 
       end
@@ -131,7 +203,8 @@ class Establecimientos111Controller < ApplicationController
         format.xlsx {
           
           #columnas = [:codigo, :descripcion, :tipo_articulo, :objeto_gasto, :tipo_medida, :medida, :valor_unitario, :activo ] 
-          columnas = [:anio, :codigo_establecimiento_, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad, :direccion, :coordenadas_y, :coordenadas_x, :latitud, :longitud, :programa, :proyecto_111, :proyecto_822, :uri] 
+          columnas = [:anio, :codigo_institucion, :codigo_establecimiento_, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad,
+            :nombre_barrio_localidad, :direccion, :asentamientos_priorizados, :a_comedor, :a_aulas, :a_aula_de_pe, :a_cra, :a_lab, :a_bloq_adm, :r_aulas, :r_sshh, :obras_exteriores, :cercado, :uri] 
           
           send_data Establecimiento111.orden_dep_dis.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
                     :filename => "establecimientos_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
@@ -198,9 +271,8 @@ class Establecimientos111Controller < ApplicationController
 
   end
 
-  def establecimientos_ubicacion_geografica
-
-    @establecimiento = Establecimiento111.find(params[:id])
+  def ubicacion_geografica
+    @establecimiento = Establecimiento.find(params[:id])
 
     respond_to do |f|
 
@@ -210,7 +282,7 @@ class Establecimientos111Controller < ApplicationController
 
   end
 
-  def establecimientos_ubicaciones_geograficas
+  def ubicaciones_geograficas
 
     cond = []
     args = []

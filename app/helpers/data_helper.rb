@@ -6,6 +6,18 @@ module DataHelper
 
 	end
 
+  def link_to_ubicacion_geografica_111(establecimiento)
+
+    render :partial => 'establecimientos111/link_to_ubicacion_geografica', :locals => {:establecimiento => establecimiento }
+
+  end
+
+  def link_to_ubicacion_geografica_822(establecimiento)
+
+    render :partial => 'establecimientos822/link_to_ubicacion_geografica', :locals => {:establecimiento => establecimiento }
+
+  end
+
   def instituciones_del_establecimiento(establecimiento)
 
     instituciones = Institucion.where("codigo_establecimiento = ?", establecimiento.codigo_establecimiento) 

@@ -115,18 +115,18 @@ OpenData::Application.routes.draw do
 
   match "id/establecimientos111/:codigo_establecimiento" => "data#establecimientos111_doc", :as => :id_establecimientos111
   match "doc/establecimientos111/:codigo_establecimiento" => "data#establecimientos111_doc", :as => :doc_establecimientos111  
-  match "data/establecimientos111_instituciones", :as => :data_establecimientos111_instituciones
-  match "data/establecimientos111_ubicaciones_geograficas", :as => :data_establecimientos111_ubicaciones_geograficas
-  match "data/establecimientos111_ubicacion_geografica", :as => :data_establecimientos111_ubicacion_geografica
+  match "data/establecimientos111_instituciones" => 'establecimientos111#instituciones', :as => :data_establecimientos111_instituciones
+  match "data/establecimientos111_ubicaciones_geograficas" => 'establecimientos111#ubicaciones_geograficas', :as => :data_establecimientos111_ubicaciones_geograficas
+  match "data/establecimientos111_ubicacion_geografica" => 'establecimientos111#ubicacion_geografica', :as => :data_establecimientos111_ubicacion_geografica
   match "data/establecimientos111_lista" => 'establecimientos111#lista', :as => :data_establecimientos111_lista
   match 'data/establecimientos111' => 'establecimientos111#index', :as => :data_establecimientos111
   match 'def/establecimientos111' => 'establecimientos111#diccionario', :as => :def_establecimientos111
 
   match "id/establecimientos822/:codigo_establecimiento" => "data#establecimientos822_doc", :as => :id_establecimientos822
   match "doc/establecimientos822/:codigo_establecimiento" => "data#establecimientos822_doc", :as => :doc_establecimientos822  
-  match "data/establecimientos822_instituciones", :as => :data_establecimientos822_instituciones
-  match "data/establecimientos822_ubicaciones_geograficas", :as => :data_establecimientos822_ubicaciones_geograficas
-  match "data/establecimientos822_ubicacion_geografica", :as => :data_establecimientos822_ubicacion_geografica
+  match "data/establecimientos822_instituciones" => 'establecimientos822#instituciones', :as => :data_establecimientos822_instituciones
+  match "data/establecimientos822_ubicaciones_geograficas" => 'establecimientos822#ubicaciones_geograficas', :as => :data_establecimientos822_ubicaciones_geograficas
+  match "data/establecimientos822_ubicacion_geografica" => 'establecimientos822#ubicacion_geografica', :as => :data_establecimientos822_ubicacion_geografica
   match "data/establecimientos822_lista" => 'establecimientos822#lista', :as => :data_establecimientos822_lista
   match 'data/establecimientos822' => 'establecimientos822#index', :as => :data_establecimientos822
   match 'def/establecimientos822' => 'establecimientos822#diccionario', :as => :def_establecimientos822

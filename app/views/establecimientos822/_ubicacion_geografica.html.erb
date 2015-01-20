@@ -1,4 +1,4 @@
-<td colspan='11'>
+<td colspan='23'>
   <% if @establecimiento.latitud.present? && @establecimiento.longitud.present? %>
     
     <br/>
@@ -7,7 +7,6 @@
     <% lng = "-#{(@establecimiento.longitud.split(" ").first.to_i + (@establecimiento.longitud.split(" ").second.to_f / 60.to_f) + (@establecimiento.longitud.split(" ").third.to_f / 3600))}" %>
 
     <script type="text/javascript">
-  
       $(document).ready(function(){
       
         var map;

@@ -1,5 +1,5 @@
 class Establecimiento822 < ActiveRecord::Base
-	self.table_name = "establecimientos"
+	self.table_name = "v_proyecto_822"
 
   acts_as_xlsx 
 
