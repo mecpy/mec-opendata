@@ -122,6 +122,15 @@ OpenData::Application.routes.draw do
   match 'data/establecimientos111' => 'establecimientos111#index', :as => :data_establecimientos111
   match 'def/establecimientos111' => 'establecimientos111#diccionario', :as => :def_establecimientos111
 
+  match "id/establecimientos822/:codigo_establecimiento" => "data#establecimientos822_doc", :as => :id_establecimientos822
+  match "doc/establecimientos822/:codigo_establecimiento" => "data#establecimientos822_doc", :as => :doc_establecimientos822  
+  match "data/establecimientos822_instituciones", :as => :data_establecimientos822_instituciones
+  match "data/establecimientos822_ubicaciones_geograficas", :as => :data_establecimientos822_ubicaciones_geograficas
+  match "data/establecimientos822_ubicacion_geografica", :as => :data_establecimientos822_ubicacion_geografica
+  match "data/establecimientos822_lista" => 'establecimientos822#lista', :as => :data_establecimientos822_lista
+  match 'data/establecimientos822' => 'establecimientos822#index', :as => :data_establecimientos822
+  match 'def/establecimientos822' => 'establecimientos822#diccionario', :as => :def_establecimientos822
+
 
   match "contactos_guardar" => "data#contactos_guardar", :as => :contactos_guardar
   match "contactos_lista" => "data#contactos_lista", :as => :contactos_lista
