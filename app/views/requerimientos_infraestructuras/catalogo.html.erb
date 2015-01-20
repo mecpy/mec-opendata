@@ -1,8 +1,9 @@
 <h2>
-  ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE
+  <span id="tab-titulo">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE</span>
   <span style="float:right;">
-    <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
-    <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
+    <div style="display: inline-block" id="start-tour"><a style="font-size:12px;" title="Ir a la ayuda">Ayuda</a> <a title="Ir a la ayuda"><img alt="Ayuda3" height="24px" width="24px" src="/assets/ayuda3.png"></a></div>
+        <div style="display: inline-block" id="tab-inicio"><%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
+    <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %></div>
   </span>
 
 </h2>      
@@ -12,7 +13,7 @@
   <thead>
           
     <tr>
-      <th>2012</th>
+      <th id="tab-periodo">2012</th>
       <th>2013</th>
       <th>2014</th>
       <th>2015</th>
@@ -23,7 +24,7 @@
   <tbody>
 
     <tr>
-      <td style='font-size:12px;width:25%;'>
+      <td style='font-size:12px;width:25%;' id="tab-descargas">
         <%= link_to "1- Concepci&oacute;n".html_safe, "https://mega.co.nz/#!IwQhCKaK!_8EP-oxU-gwGX96WcGPhsQP1T8-5RkmT15URymCeYhs", class: 'titulo', target: '_blank' %>
         <%= link_to image_tag('down_icon.png').html_safe, "https://mega.co.nz/#!IwQhCKaK!_8EP-oxU-gwGX96WcGPhsQP1T8-5RkmT15URymCeYhs", class: 'icon', target: '_blank' %> <span>(7.0 MB)</span><br />
         <%= link_to "2- San Pedro".html_safe, "https://mega.co.nz/#!05wx1DhC!MAh_aKp-mTOujFDc8LPSTwOpJNkV71zBcNo4B4xXtTo", class: 'titulo', target: '_blank' %>
@@ -203,4 +204,78 @@
   table.infra td span{width:60px;float:left;color:silver;}
   table.infra td a img{width:24px;}
   table.infra td br {clear:both;}
+</style>
+<script>
+  var stepsListado = [
+      {
+          intro: "Esta ayuda te mostrar&aacute; los elementos del Conjunto de Datos:\
+          </br><b>ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE</b>.\
+          </br></br>Este tutorial te guiará paso a paso a través de las diferentes funcionalidades disponibles. \
+          </br></br>Podr&aacute;s navegar fácilmente a través de la guía por medio del mouse, o por medio del teclado haciendo simplemente uso de las teclas:\
+          <p><u><i>Para Navegar:</i></u></p>\
+          <ul>\
+            <li><img alt='Intro_right' height='22px' width='22px' src='/assets/intro_images/right.png'> IZQ</li>\
+            <li><img alt='Intro_left' height='22px' width='22px' src='/assets/intro_images/left.png'> DER</li>\
+            <li><img alt='Intro_enter' height='22px' width='22px' src='/assets/intro_images/enter.png'> ENTER</li>\
+          </ul>\
+          <p><u><i>Para Salir:</i></u></p>\
+          <ul>\
+            <li><img alt='Intro_esc' height='22px' width='22px' src='/assets/intro_images/esc.png'>ESC</li>\
+          </ul>\
+          Pulsa en siguiente para comenzar.\
+          </br>Y, ¡COMENCEMOS!"
+      },
+      {
+          element: "#tab-titulo",
+          intro: "En esta sección, puedes ver el Nombre del Conjunto de Datos.",
+          position: "bottom"
+      },
+      {
+          element: '#tab-inicio',
+          intro: "En este apartado, puedes volver al listado de todos los Conjuntos de Datos con que cuenta el Portal del MEC.",
+          position: "left"
+      },
+      {
+          element: '#tab-periodo',
+          intro: "¡Presta mucha atenci&oacuten aqu&iacute;! \
+          </br>Est&aacute; columna indica el periodo al cual correponden las planillas que se encuentran por debajo.",
+          position: "right"
+      },
+      {
+          element: '#tab-descargas',
+          intro: "Haciendo click sobre cualquiera de estos enlaces, puedes obtener la planilla de requerimientos \
+          correspondiente al departamento que hayas seleccionado.",
+          position: "right"
+      },
+      {
+          intro: "Por &uacute;ltimo, si estas buscando informaci&oacute;n muy espec&iacute;fica, \
+          recomendamos que visites los Conjuntos de Datos de los ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE de acuerdo \
+          al tipo de requerimiento que estes necesitando, ya sea de Aulas, Sanitarios, Mobiliarios u Otros Espacios.\
+          </br></br>All&iacute; podr&aacute;s encontrar los datos que buscas de una manera m&aacute;s r&aacute;pida y efectiva.\
+          </br></br>¡Echales un vistazo!",
+          position: "top"
+      }
+  ];
+
+  $('#start-tour').click(function () {
+
+      introJs().setOptions({
+          doneLabel: 'Salir',
+          nextLabel: 'Siguiente &rarr;',
+          prevLabel: '&larr; Anterior',
+          skipLabel: 'Salir',
+          steps: stepsListado
+      }).start();
+
+  });
+</script>
+<style>
+    .introjs-helperNumberLayer{
+        width: 23px;
+        height: 23px;
+        padding: 0px;
+    }
+    #start-tour{
+        cursor: pointer;
+    }
 </style>

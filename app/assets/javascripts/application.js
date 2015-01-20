@@ -21,28 +21,53 @@
 //= stub gmaps/gmaps.js
 //= stub gmaps/markerclusterer.js
 // require jquery.ui.all
+//= require firsttime
+//= require intro.min.js
 
-$.ajaxQ = (function(){
+$.ajaxQ = (function () {
 
-  var id = 0, Q = {};
+    var id = 0, Q = {};
 
-  $(document).ajaxSend(function(e, jqx){
-    jqx._id = ++id;
-    Q[jqx._id] = jqx;
-  });
-  $(document).ajaxComplete(function(e, jqx){
-    delete Q[jqx._id];
-  });
+    $(document).ajaxSend(function (e, jqx) {
+        jqx._id = ++id;
+        Q[jqx._id] = jqx;
+    });
+    $(document).ajaxComplete(function (e, jqx) {
+        delete Q[jqx._id];
+    });
 
-  return {
-    abortAll: function(){
-      var r = [];
-      $.each(Q, function(i, jqx){
-        r.push(jqx._id);
-        jqx.abort();
-      });
-      return r;
-    }
-  };
+    return {
+        abortAll: function () {
+            var r = [];
+            $.each(Q, function (i, jqx) {
+                r.push(jqx._id);
+                jqx.abort();
+            });
+            return r;
+        }
+    };
 
 })();
+$(function () {
+    if ($('#start-tour').length) {
+        if ($.cookie('firstVisit') === undefined) {
+            $.cookie('firstVisit', 'true');
+        } else {
+            $.cookie('firstVisit', 'false');
+        }
+        var firstVisit = $.cookie('firstVisit');
+        if (firstVisit === 'true') {
+            introJs().setOptions({
+                doneLabel: 'Salir',
+                nextLabel: 'Siguiente &rarr;',
+                prevLabel: '&larr; Anterior',
+                skipLabel: 'Salir',
+                steps: stepsListado
+            }).start();
+        } else {
+            //nothing to do
+        }
+    } else {
+        //nothing to do
+    }
+});

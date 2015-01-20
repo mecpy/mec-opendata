@@ -1,230 +1,231 @@
 <h2>
-  <span itemprop="name">Datos Espec&iacute;ficos de Instituciones Educativas</span>
-  <meta itemprop="url" content="http://datos.mec.gov.py/data/instituciones">  
-  <meta itemprop="description"
-        content="Contiene datos de los niveles/modalidades de educación ofertados por las instituciones educativas; región administrativa a la que pertenece la institución educativa; tipo de organización, participación comunitaria, dirección del establecimiento escolar, servicio disponible (internet, telefono, correo electronico, etc.). Una institución educativa puede poseer diferentes locales escolares ubicados en un mismo o en diferentes departamentos geográficos. El SIEC considera una misma institución cuando varios niveles o modalidades tienen una organización, gestión y administración única. Por ejemplo: Centro Regional de Educación Gral. Patricio Escobar de Encarnación, Colegio Santa Clara de Asunción."
-        />
-  <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
-  <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
-    <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
-    <meta itemprop="url" content="http://datos.mec.gov.py/">
-    <meta itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura">
-  </span>
-  <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
-    <meta itemprop="name" content="Ministerio de Educación y Cultura">
-    <meta itemprop="url" content="http://www.mec.gov.py/">
-    <meta itemprop="email" content="datosabiertos@mec.gov.py">
-  </span>
-  <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
-    <meta itemprop="name" content="Juan Barrios">
-    <meta itemprop="email" content="datosabiertos@mec.gov.py">
-  </span>
-  <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
-  <meta itemprop="keywords" style="display: none;" content="educación,instituciones"/>
-  <meta itemprop="version" style="display: none;" content="1.0">
+    <span itemprop="name" id="tab-titulo">Datos Espec&iacute;ficos de Instituciones Educativas</span>
+    <meta itemprop="url" content="http://datos.mec.gov.py/data/instituciones">  
+    <meta itemprop="description"
+          content="Contiene datos de los niveles/modalidades de educación ofertados por las instituciones educativas; región administrativa a la que pertenece la institución educativa; tipo de organización, participación comunitaria, dirección del establecimiento escolar, servicio disponible (internet, telefono, correo electronico, etc.). Una institución educativa puede poseer diferentes locales escolares ubicados en un mismo o en diferentes departamentos geográficos. El SIEC considera una misma institución cuando varios niveles o modalidades tienen una organización, gestión y administración única. Por ejemplo: Centro Regional de Educación Gral. Patricio Escobar de Encarnación, Colegio Santa Clara de Asunción."
+          />
+    <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+    <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
+        <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
+        <meta itemprop="url" content="http://datos.mec.gov.py/">
+        <meta itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura">
+    </span>
+    <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+        <meta itemprop="name" content="Ministerio de Educación y Cultura">
+        <meta itemprop="url" content="http://www.mec.gov.py/">
+        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+    </span>
+    <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+        <meta itemprop="name" content="Juan Barrios">
+        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+    </span>
+    <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+    <meta itemprop="keywords" style="display: none;" content="educación,instituciones"/>
+    <meta itemprop="version" style="display: none;" content="1.0">
 
-  <span style="float:right;">
-    <%= link_to "Ver diccionario", mec_custom_url(def_instituciones_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
-    <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), mec_custom_url(def_instituciones_url), :title => "Ir al diccionario" %>
-    <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
-    <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
-  </span>
+    <span style="float:right;">
+        <div style="display: inline-block" id="start-tour"><a style="font-size:12px;" title="Ir a la ayuda">Ayuda</a> <a title="Ir a la ayuda"><img alt="Ayuda3" height="24px" width="24px" src="/assets/ayuda3.png"></a></div>
+        <div style="display: inline-block" id="tab-diccionario"><%= link_to "Ver diccionario", mec_custom_url(def_instituciones_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
+            <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), mec_custom_url(def_instituciones_url), :title => "Ir al diccionario" %></div>
+        <div style="display: inline-block" id="tab-inicio"><%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
+            <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %></div>
+    </span>
 
 </h2>
 
 <div class="table-outter">
 
-  <table class="table table-striped table-bordered table-hover" style="margin-bottom: 0px; width: 2500px; max-width: none;">
+    <table class="table table-striped table-bordered table-hover" style="margin-bottom: 0px; width: 2500px; max-width: none;">
 
-    <tr>
+        <tr>
 
-      <%= form_tag mec_custom_url(data_instituciones_lista_url(nil)), :remote => true, :id => "form-buscar-instituciones" do  %>
+            <%= form_tag mec_custom_url(data_instituciones_lista_url(nil)), :remote => true, :id => "form-buscar-instituciones" do  %>
 
-        <th style="width:4%" class="text-min celda-derecha">
-          <%= label_tag "Periodo" %><br /><br />
-          <%= select :form_buscar_instituciones, :anio, [2012], {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_anio'),1);" %>
-        </th>
+              <th style="width:4%" class="text-min celda-derecha tab-filtros-lista">
+                  <%= label_tag "Periodo" %><br /><br />
+                  <%= select :form_buscar_instituciones, :anio, [2012], {:class => 'text-min'} %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_anio'),1);" %>
+              </th>
 
-        <th style="width:6%" class="text-min">
-          <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe %><br /><br />
-          <%= text_field_tag :form_buscar_instituciones_codigo_establecimiento, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_codigo_establecimiento'));" %>
-        </th>
+              <th style="width:6%" class="text-min">
+                  <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe %><br /><br />
+                  <%= text_field_tag :form_buscar_instituciones_codigo_establecimiento, nil, :class => 'text-min' %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_codigo_establecimiento'));" %>
+              </th>
 
-        <th style="width:5%" class="text-min">
-          <%= label_tag nil, "C&oacute;digo Instituci&oacute;n".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_instituciones_codigo_institucion, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_codigo_institucion'));" %>
-        </th>
+              <th style="width:5%" class="text-min">
+                  <%= label_tag nil, "C&oacute;digo Instituci&oacute;n".html_safe%><br /><br />
+                  <%= text_field_tag :form_buscar_instituciones_codigo_institucion, nil, :class => 'text-min' %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_codigo_institucion'));" %>
+              </th>
 
-        <th style="width:5%" class="text-min">
-          <%= label_tag nil, "Instituci&oacute;n".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_instituciones_nombre_institucion, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_institucion'));" %>
-        </th>
+              <th style="width:5%" class="text-min tab-filtros-texto">
+                  <%= label_tag nil, "Instituci&oacute;n".html_safe%><br /><br />
+                  <%= text_field_tag :form_buscar_instituciones_nombre_institucion, nil, :class => 'text-min' %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_institucion'));" %>
+              </th>
 
-        <th style="width:5%" class="text-min">
-          <%= label_tag "Departamento"%><br /><br />
-          <%= text_field_tag :form_buscar_instituciones_nombre_departamento, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_departamento'));" %>
-        </th>
+              <th style="width:5%" class="text-min">
+                  <%= label_tag "Departamento"%><br /><br />
+                  <%= text_field_tag :form_buscar_instituciones_nombre_departamento, nil, :class => 'text-min' %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_departamento'));" %>
+              </th>
 
-        <th style="width:5%" class="text-min">
-          <%= label_tag "Distrito" %><br /><br />
-          <%= text_field_tag :form_buscar_instituciones_nombre_distrito, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_distrito'));" %>
-        </th>
+              <th style="width:5%" class="text-min">
+                  <%= label_tag "Distrito" %><br /><br />
+                  <%= text_field_tag :form_buscar_instituciones_nombre_distrito, nil, :class => 'text-min' %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_distrito'));" %>
+              </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Localidad/Barrio".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_instituciones_nombre_barrio_localidad, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_barrio_localidad'));" %>
-        </th>
+              <th style="width:5%;" class="text-min">
+                  <%= label_tag nil, "Localidad/Barrio".html_safe%><br /><br />
+                  <%= text_field_tag :form_buscar_instituciones_nombre_barrio_localidad, nil, :class => 'text-min' %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_barrio_localidad'));" %>
+              </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Zona".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_instituciones_nombre_zona, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_zona'));" %>
-        </th>
+              <th style="width:5%;" class="text-min">
+                  <%= label_tag nil, "Zona".html_safe%><br /><br />
+                  <%= text_field_tag :form_buscar_instituciones_nombre_zona, nil, :class => 'text-min' %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_zona'));" %>
+              </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Sector".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_instituciones_sector_o_tipo_gestion, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_sector_o_tipo_gestion'));" %>
-        </th>
+              <th style="width:5%;" class="text-min">
+                  <%= label_tag nil, "Sector".html_safe%><br /><br />
+                  <%= text_field_tag :form_buscar_instituciones_sector_o_tipo_gestion, nil, :class => 'text-min' %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_sector_o_tipo_gestion'));" %>
+              </th>
 
-        <th style="width:8%;" class="text-min">
-          <%= label_tag nil, "Regi&oacute;n Administrativa".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_instituciones_nombre_region_administrativa, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_region_administrativa'));" %>
-        </th>
+              <th style="width:8%;" class="text-min">
+                  <%= label_tag nil, "Regi&oacute;n Administrativa".html_safe%><br /><br />
+                  <%= text_field_tag :form_buscar_instituciones_nombre_region_administrativa, nil, :class => 'text-min' %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_region_administrativa'));" %>
+              </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Supervisor/a".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_instituciones_nombre_supervisor, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_supervisor'));" %>
-        </th>
+              <th style="width:5%;" class="text-min">
+                  <%= label_tag nil, "Supervisor/a".html_safe%><br /><br />
+                  <%= text_field_tag :form_buscar_instituciones_nombre_supervisor, nil, :class => 'text-min' %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_supervisor'));" %>
+              </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Nivel/Modalidad".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_instituciones_niveles_modalidades, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_niveles_modalidades'));" %>
-        </th>
+              <th style="width:5%;" class="text-min">
+                  <%= label_tag nil, "Nivel/Modalidad".html_safe%><br /><br />
+                  <%= text_field_tag :form_buscar_instituciones_niveles_modalidades, nil, :class => 'text-min' %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_niveles_modalidades'));" %>
+              </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Tipo Organizaci&oacute;n".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_instituciones_nombre_tipo_organizacion, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_tipo_organizacion'));" %>
-        </th>
+              <th style="width:5%;" class="text-min">
+                  <%= label_tag nil, "Tipo Organizaci&oacute;n".html_safe%><br /><br />
+                  <%= text_field_tag :form_buscar_instituciones_nombre_tipo_organizacion, nil, :class => 'text-min' %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_tipo_organizacion'));" %>
+              </th>
 
-        <th style="width:5%;" class="text-min celda-derecha">
-          <%= label_tag "Participación Comunitaria" %><br />
-          <%= select :form_buscar_instituciones, :participacion_comunitaria, ['','SI','NO'], {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_participacion_comunitaria'));" %>
-        </th>
+              <th style="width:5%;" class="text-min celda-derecha">
+                  <%= label_tag "Participación Comunitaria" %><br />
+                  <%= select :form_buscar_instituciones, :participacion_comunitaria, ['','SI','NO'], {:class => 'text-min'} %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_participacion_comunitaria'));" %>
+              </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Direcci&oacute;n".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_instituciones_direccion, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_direccion'));" %>
-        </th>
+              <th style="width:5%;" class="text-min">
+                  <%= label_tag nil, "Direcci&oacute;n".html_safe%><br /><br />
+                  <%= text_field_tag :form_buscar_instituciones_direccion, nil, :class => 'text-min' %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_direccion'));" %>
+              </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Tel&eacute;fono".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_instituciones_nro_telefono, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nro_telefono'));" %>
-        </th>
+              <th style="width:5%;" class="text-min">
+                  <%= label_tag nil, "Tel&eacute;fono".html_safe%><br /><br />
+                  <%= text_field_tag :form_buscar_instituciones_nro_telefono, nil, :class => 'text-min' %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nro_telefono'));" %>
+              </th>
 
-        <th style="width:5%;" class="text-min celda-derecha">
-          <%= label_tag "Tiene Internet?" %><br /><br />
-          <%= select :form_buscar_instituciones, :tiene_internet, ['', 'SI', 'NO'], {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_tiene_internet'));" %>
-        </th>
+              <th style="width:5%;" class="text-min celda-derecha">
+                  <%= label_tag "Tiene Internet?" %><br /><br />
+                  <%= select :form_buscar_instituciones, :tiene_internet, ['', 'SI', 'NO'], {:class => 'text-min'} %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_tiene_internet'));" %>
+              </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "P&aacute;gina Web".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_instituciones_paginaweb, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_paginaweb'));" %>
-        </th>
+              <th style="width:5%;" class="text-min">
+                  <%= label_tag nil, "P&aacute;gina Web".html_safe%><br /><br />
+                  <%= text_field_tag :form_buscar_instituciones_paginaweb, nil, :class => 'text-min' %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_paginaweb'));" %>
+              </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Correo Electr&oacute;nico".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_instituciones_correo_electronico, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_correo_electronico'));" %>
-        </th>
+              <th style="width:5%;" class="text-min">
+                  <%= label_tag nil, "Correo Electr&oacute;nico".html_safe%><br /><br />
+                  <%= text_field_tag :form_buscar_instituciones_correo_electronico, nil, :class => 'text-min' %>
+                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_correo_electronico'));" %>
+              </th>
 
-      <% end %>
+            <% end %>
 
-    </tr>
+        </tr>
 
-    <tbody id="instituciones-lista"></tbody>
+        <tbody id="instituciones-lista"></tbody>
 
-  </table>
+    </table>
 
 </div>
 
 <table class="table table-striped table-bordered table-hover">
-  <tbody id="instituciones-footer"></tbody>
+    <tbody id="instituciones-footer"></tbody>
 </table>
 
 <script type="text/javascript">
 
-  $("#form-buscar-instituciones").bind("submit", function() {
+  $("#form-buscar-instituciones").bind("submit", function () {
 
-    $("#instituciones-lista").html("<%= escape_javascript("<tr><td colspan='19' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")
-
-  })
-
-  $("#form_buscar_instituciones_anio").bind('change', function() {
-    $.ajaxQ.abortAll();
-    $("#form-buscar-instituciones").submit();
+      $("#instituciones-lista").html("<%= escape_javascript("<tr><td colspan='19' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")
 
   })
 
-  $("#form_buscar_instituciones_tiene_internet").bind('change', function() {
-    $.ajaxQ.abortAll();
-    $("#form-buscar-instituciones").submit();
+  $("#form_buscar_instituciones_anio").bind('change', function () {
+      $.ajaxQ.abortAll();
+      $("#form-buscar-instituciones").submit();
 
   })
 
-  $("#form_buscar_instituciones_participacion_comunitaria").bind('change', function() {
-    $.ajaxQ.abortAll();
-    $("#form-buscar-instituciones").submit();
+  $("#form_buscar_instituciones_tiene_internet").bind('change', function () {
+      $.ajaxQ.abortAll();
+      $("#form-buscar-instituciones").submit();
+
+  })
+
+  $("#form_buscar_instituciones_participacion_comunitaria").bind('change', function () {
+      $.ajaxQ.abortAll();
+      $("#form-buscar-instituciones").submit();
 
   })
 
 
-  $(".table-bordered input").bind('change', function() {
-    $.ajaxQ.abortAll();
-    $("#form-buscar-instituciones").submit();
+  $(".table-bordered input").bind('change', function () {
+      $.ajaxQ.abortAll();
+      $("#form-buscar-instituciones").submit();
 
   })
 
   //LIMPIAR FORMULARIO DE BUSQUEDA
   function limpiar_form_buscar_instituciones() {
 
-    $("#form_buscar_instituciones_anio").val("2012");
-    $("#form_buscar_instituciones_codigo_institucion").val("");
-    $("#form_buscar_instituciones_nombre_institucion").val("");
-    $("#form_buscar_instituciones_codigo_establecimiento").val("");
-    $("#form_buscar_instituciones_nombre_departamento").val("");
-    $("#form_buscar_instituciones_nombre_distrito").val("");
-    $("#form_buscar_instituciones_nombre_barrio_localidad").val("");
-    $("#form_buscar_instituciones_nombre_zona").val("");
-    $("#form_buscar_instituciones_sector_o_tipo_gestion").val("");
-    $("#form_buscar_instituciones_nombre_region_administrativa").val("");
-    $("#form_buscar_instituciones_nombre_supervisor").val("");
-    $("#form_buscar_instituciones_niveles_modalidades").val("");
-    $("#form_buscar_instituciones_nombre_tipo_organizacion").val("");
-    $("#form_buscar_instituciones_participacion_comunitaria").val("");
-    $("#form_buscar_instituciones_direccion").val("");
-    $("#form_buscar_instituciones_nro_telefono").val("");
-    $("#form_buscar_instituciones_tiene_internet").val("");
-    $("#form_buscar_instituciones_paginaweb").val("");
-    $("#form_buscar_instituciones_correo_electronico").val("");
-    $.ajaxQ.abortAll();
-    $("#form-buscar-instituciones").submit();
+      $("#form_buscar_instituciones_anio").val("2012");
+      $("#form_buscar_instituciones_codigo_institucion").val("");
+      $("#form_buscar_instituciones_nombre_institucion").val("");
+      $("#form_buscar_instituciones_codigo_establecimiento").val("");
+      $("#form_buscar_instituciones_nombre_departamento").val("");
+      $("#form_buscar_instituciones_nombre_distrito").val("");
+      $("#form_buscar_instituciones_nombre_barrio_localidad").val("");
+      $("#form_buscar_instituciones_nombre_zona").val("");
+      $("#form_buscar_instituciones_sector_o_tipo_gestion").val("");
+      $("#form_buscar_instituciones_nombre_region_administrativa").val("");
+      $("#form_buscar_instituciones_nombre_supervisor").val("");
+      $("#form_buscar_instituciones_niveles_modalidades").val("");
+      $("#form_buscar_instituciones_nombre_tipo_organizacion").val("");
+      $("#form_buscar_instituciones_participacion_comunitaria").val("");
+      $("#form_buscar_instituciones_direccion").val("");
+      $("#form_buscar_instituciones_nro_telefono").val("");
+      $("#form_buscar_instituciones_tiene_internet").val("");
+      $("#form_buscar_instituciones_paginaweb").val("");
+      $("#form_buscar_instituciones_correo_electronico").val("");
+      $.ajaxQ.abortAll();
+      $("#form-buscar-instituciones").submit();
 
   }
 
@@ -241,14 +242,14 @@
 <% end %>
 
   //--------------- QUITAR FILTRO -------------------//
-  function quitar_filtro(id,ban) {
-    if (ban === 1){
-      id.val("2012");
-    }else{
-      id.val('');
-    }
-    $.ajaxQ.abortAll();
-    $("#form-buscar-instituciones").submit();
+  function quitar_filtro(id, ban) {
+      if (ban === 1) {
+          id.val("2012");
+      } else {
+          id.val('');
+      }
+      $.ajaxQ.abortAll();
+      $("#form-buscar-instituciones").submit();
 
   }
   //-------------------------------------------------//
@@ -257,18 +258,145 @@
 
 <style>
 
-  .text-min {font-size:9px !important; color: #000; text-align:center !important;}
-  #cbue-menu1 {background:#e9e9e9;}
-  .text-min input[type="text"], .text-min select {
-    border: 1px solid silver;
-    padding: 3px;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
-    color:#000;
-  }
-  .text-min input[type="text"] { width: 80px;}
+    .text-min {font-size:9px !important; color: #000; text-align:center !important;}
+    #cbue-menu1 {background:#e9e9e9;}
+    .text-min input[type="text"], .text-min select {
+        border: 1px solid silver;
+        padding: 3px;
+        -webkit-border-radius: 5px 5px 5px 5px;
+        border-radius: 5px 5px 5px 5px;
+        color:#000;
+    }
+    .text-min input[type="text"] { width: 80px;}
 
-  #tablaContenedor{width:100%;}
+    #tablaContenedor{width:100%;}
 
 
+</style>
+<script>
+  var stepsListado = [
+      {
+          intro: "Esta ayuda te mostrar&aacute; los elementos del Conjunto de Datos:\
+          </br><b>Datos Espec&iacute;ficos de Instituciones Educativas</b>.\
+          </br></br>Este tutorial te guiará paso a paso a través de las diferentes funcionalidades disponibles. \
+          </br></br>Podr&aacute;s navegar fácilmente a través de la guía por medio del mouse, o por medio del teclado haciendo simplemente uso de las teclas:\
+          <p><u><i>Para Navegar:</i></u></p>\
+          <ul>\
+            <li><img alt='Intro_right' height='22px' width='22px' src='/assets/intro_images/right.png'> IZQ</li>\
+            <li><img alt='Intro_left' height='22px' width='22px' src='/assets/intro_images/left.png'> DER</li>\
+            <li><img alt='Intro_enter' height='22px' width='22px' src='/assets/intro_images/enter.png'> ENTER</li>\
+          </ul>\
+          <p><u><i>Para Salir:</i></u></p>\
+          <ul>\
+            <li><img alt='Intro_esc' height='22px' width='22px' src='/assets/intro_images/esc.png'>ESC</li>\
+          </ul>\
+          Pulsa en siguiente para comenzar.\
+          </br>Y, ¡COMENCEMOS!"
+      },
+      {
+          element: "#tab-titulo",
+          intro: "En esta sección, puedes ver el Nombre del Conjunto de Datos.",
+          position: "right"
+      },
+      {
+          element: "#tab-diccionario",
+          intro: "Si tienes dudas acerca del significado de alg&uacute;n atributo del Conjunto de Datos, puedes ir al Diccionario siguiendo este enlace.\
+          </br></br>El Diccionario de Datos describe los atributos que contiene un Conjunto de Datos, incluyendo el tipo de dato y las restricciones que se apliquen a cada uno.",
+          position: "left"
+      },
+      {
+          element: '#tab-inicio',
+          intro: "En este apartado, puedes volver al listado de todos los Conjuntos de Datos con que cuenta el Portal del MEC.",
+          position: "left"
+      },
+      {
+          element: '.tab-filtros-lista',
+          intro: "Echemos un vistazo a los filtros. ¿Alguna vez los has utilizado?</br> ¡Son muy &uacute;tiles \
+          cuando buscas informaci&oacute;n espec&iacute;fica! \
+          </br></br>Este filtro utiliza una lista desplegable. Permite realizar las b&uacute;squedas de acuerdo al item que selecciones.\
+          </br>¡Intentalo!",
+          position: "right"
+      },
+      {
+          element: '.tab-filtros-texto',
+          intro: "Este filtro permite realizar las b&uacute;squedas de acuerdo al texto que escribas en su secci&oacute;n.\
+          </br>¡Tienes que Probarlo!",
+          position: "right"
+      },
+      {
+          element: "#tab-establecimiento",
+          intro: "Si te interesan los datos de un Establecimiento, haciendo click sobre este enlace podr&iacute;as obtener\
+          informaci&oacute;n espec&iacute;fica del mismo.\
+          </br><img alt='Resumen_establecimientos' width=280 height=280 src='/assets/intro_images/resumen_establecimiento.png'>\n\
+          </br></br>Por ejemplo: Datos del Establecimiento, Instituciones del Establecimiento y la Ubicaci&oacute;n Geogr&aacute;fica.",
+          position: "bottom-left-aligned"
+      },
+      {
+          element: "#tab-institucion",
+          intro: "As&iacute; tambi&eacute;n, si te interesan los datos de una Instituci&oacute;n, haciendo click sobre este enlace podr&iacute;as obtener\
+          informaci&oacute;n espec&iacute;fica de la misma.\
+          </br><img alt='Resumen_institucion' width=280 height=280 src='/assets/intro_images/resumen_institucion.png'> \
+          </br></br>Por ejemplo: Datos de la Instituci&oacute;n, Matriculaciones en la Instituci&oacute;n y la Ubicaci&oacute;n Geogr&aacute;fica.",
+          position: "bottom-left-aligned"
+      },
+      {
+          element: '#tab-cantidad-registros',
+          intro: "A modo de informaci&oacute;n, aquí puedes ver un resumen de los resultados de tu búsqueda dentro del Conjunto de Datos.",
+          position: "top"
+      },
+      {
+          element: '#tab-paginacion',
+          intro: "Cuando la lista de resultados es muy extensa, solo se muestran 15 registros. El resto se encuentra en las dem&aacute;s p&aacute;ginas de la tabla.\
+          </br></br>¡Desplázate entre las páginas para acceder a todos los resultados de tu b&uacute;squeda!",
+          position: "top"
+      },
+      {
+          element: '#tab-descargas-filtradas',
+          intro: "Seg&uacute;n tu b&uacute;squeda, descarga los resultados en formato XLS, CSV o JSON.\
+          </br></br>El formato <b>XLS</b>, se abre normalmente con Microsoft Excel. \
+          Es un formato cotidiano que podemos encontrar, \
+          aunque no resulta ser del todo ventajoso, ya que se trata de un formato propietario.\
+          </br></br>El formato <b>CSV</b>, es un tipo de documento de texto plano, en el cual los datos son tabulados en columnas separadas por comas (o punto y coma) y filas separadas por saltos de l&iacute;nea.\
+          Puede ser exportada a una hoja de c&aacute;lculo Excel. As&iacute; tambi&eacute;n, provee agilidad para realizar importaciones y exportaciones sobre Bases de Datos.\
+          </br></br>El formato <b>JSON</b>, es un formato de archivo muy fácil de leer por cualquier lenguaje de programación.\
+          Esta simplicidad facilita su procesamiento para las computadoras en comparación a otros formatos.",
+          position: "top"
+      },
+      {
+          element: '#tab-descargas-total',
+          intro: "Si necesitas todos los datos, puedes descargarlos haciendo click sobre el formato que te sea de mayor utilidad.\
+          </br></br>Ten en cuenta nuestras recomendaciones del punto anterior.\
+          </br></br>Los formatos que tienes disponibles son: XLS, CSV y JSON",
+          position: "top"
+      },
+      {
+          element: '#tab-microdata',
+          intro: "Por &uacute;ltimo, ¿Has escuchado sobre los Microdatos en HTML? \
+          </br></br>Para obtener m&aacute;s informaci&oacuten sobre ellos, puedes hacer click sobre este icono. \
+          </br></br>Esta especificaci&oacute;n define el mecanismo de Microdatos HTML, el cual facilita el procesamiento autom&aacute;tico de los Documentos HTML.",
+          position: "top"
+      }
+  ];
+
+  $('#start-tour').click(function () {
+
+      introJs().setOptions({
+          doneLabel: 'Salir',
+          nextLabel: 'Siguiente &rarr;',
+          prevLabel: '&larr; Anterior',
+          skipLabel: 'Salir',
+          steps: stepsListado
+      }).start();
+
+  });
+</script>
+<style>
+    .introjs-helperNumberLayer{
+        width: 23px;
+        height: 23px;
+        padding: 0px;
+    }
+    #start-tour{
+        cursor: pointer;
+    }
 </style>
