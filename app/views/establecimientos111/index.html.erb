@@ -1,0 +1,269 @@
+<%= javascript_include_tag "http://maps.google.com/maps/api/js?sensor=true" %>
+<%= javascript_include_tag "gmaps/gmaps.js", "gmaps/markerclusterer.js" %>
+<%= render :partial => "layouts/gmaps", :locals => { :ancho_maps => "100%", :altura_maps => "350px"} %>
+
+<h2>
+	<span itemprop="name">Establecimientos Escolares</span>
+  <meta itemprop="description"
+              content="Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación."/>
+  <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31">
+  <meta itemprop="url" content="http://datos.mec.gov.py/data/establecimientos">  
+  <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+    <meta itemprop="name" content="Ministerio de Educación y Cultura">
+    <meta itemprop="url" content="http://www.mec.gov.py/">
+    <meta itemprop="email" content="datosabiertos@mec.gov.py">
+  </span>
+  <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+    <meta itemprop="name" content="Juan Barrios">
+    <meta itemprop="email" content="datosabiertos@mec.gov.py">
+  </span>
+  <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+  <meta itemprop="keywords" style="display: none;" content="educación,establecimientos,escolar,geografico"/>
+  <meta itemprop="version" style="display: none;" content="1.0"/>
+  <span style="float:right;">
+    <%= link_to "Ver diccionario", mec_custom_url(def_establecimientos111_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
+    <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), mec_custom_url(def_establecimientos111_url), :title => "Ir al diccionario" %>
+    <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
+    <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
+  </span>
+
+</h2>
+
+<table class="table table-striped table-bordered table-hover">
+
+  <tr>
+
+    <%= form_tag mec_custom_url(data_establecimientos111_lista_url(nil)), :remote => true, :id => "form-buscar-establecimientos" do  %>
+
+      <th style="width:8%;" class="text-min celda-derecha">
+        <%= label_tag "Periodo" %><br /><br />
+        <%= select :form_buscar_establecimientos, :anio, [2014, 2012], {:class => 'text-min'} %>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_anio'),1);" %>
+      </th>
+
+      <th style="width:10%;" class="text-min">
+        <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe%><br />
+        <%= text_field_tag :form_buscar_establecimientos_codigo_establecimiento, nil, :class => 'text-min' %>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_codigo_establecimiento'));"%>
+      </th>
+
+      <th style="width:10%;" class="text-min">
+        <%= label_tag "Departamento"%><br /><br />
+        <%= text_field_tag :form_buscar_establecimientos_nombre_departamento, nil, :class => 'text-min' %>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_nombre_departamento'));" %>
+      </th>
+
+      <th style="width:10%;" class="text-min">
+        <%= label_tag "Distrito"%><br /><br />
+        <%= text_field_tag :form_buscar_establecimientos_nombre_distrito, nil, :class => 'text-min' %>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_nombre_distrito'));" %>
+      </th>
+
+      <th style="width:10%;" class="text-min">
+        <%= label_tag "Zona"%><br /><br />
+        <%= text_field_tag :form_buscar_establecimientos_nombre_zona, nil, :class => 'text-min' %>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_nombre_zona'));" %>
+      </th>
+
+      <th style="width:10%;" class="text-min">
+        <%= label_tag "Barrio/Localidad"%><br /><br />
+        <%= text_field_tag :form_buscar_establecimientos_nombre_barrio_localidad, nil, :class => 'text-min' %>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_nombre_barrio_localidad'));" %>
+      </th>
+
+      <th style="width:10%;" class="text-min">
+        <%= label_tag nil, "Direcci&oacute;n".html_safe%><br /><br />
+        <%= text_field_tag :form_buscar_establecimientos_direccion, nil, :class => 'text-min' %>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_direccion'));" %>
+      </th>
+
+      <th style="width:14%;" class="text-min">
+        <%= label_tag nil, "Programa".html_safe%><br /><br />
+        <%= select :form_buscar_establecimientos, :programa, [["",""],["Jornada Extendida", 1]] %>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_programa'));" %>
+      </th>
+
+      <th style="width:10%;" class="text-min">
+        <%= label_tag nil, "Proyecto 111".html_safe%><br /><br />
+        <%= select :form_buscar_establecimientos, :proyecto_111, [["",""],["NO","NO"],["SI", 'SI']] %>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_proyecto_811'));" %>
+      </th>
+
+      <th style="width:10%;" class="text-min">
+        <%= label_tag nil, "Proyecto 822".html_safe%><br /><br />
+        <%= select :form_buscar_establecimientos, :proyecto_822, [["",""],["NO","NO"],["SI", 'SI']] %>
+        <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_establecimientos_proyecto_822'));" %>
+      </th>
+
+      <th style="width:16px;" id="ubicaciones-geograficas"></th>
+      
+    <% end %>
+
+  </tr>
+
+  <tbody id="establecimientos-lista"></tbody>
+
+</table>
+
+<script type="text/javascript">
+
+  $("#form-buscar-establecimientos").bind("submit", function(){
+
+			$('.establecimiento-ubicacion-geografica').html('');
+		  $("#establecimientos-ubicaciones-geograficas").html('');
+      $("#establecimientos-lista").html("<%= escape_javascript("<tr><td colspan='11' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")    
+  
+  })
+
+  $("#form_buscar_establecimientos_anio").bind('change',function(){
+      
+		$('.establecimiento-ubicacion-geografica').html('');
+		$("#establecimientos-ubicaciones-geograficas").html('');
+    $.ajaxQ.abortAll();
+    $("#form-buscar-establecimientos").submit();
+      
+  })
+
+  $("#form_buscar_establecimientos_programa").bind('change',function(){
+      
+		$('.establecimiento-ubicacion-geografica').html('');
+		$("#establecimientos-ubicaciones-geograficas").html('');
+    $.ajaxQ.abortAll();
+    $("#form-buscar-establecimientos").submit();
+      
+  })
+
+  $("#form_buscar_establecimientos_proyecto_111").bind('change',function(){
+      
+		$('.establecimiento-ubicacion-geografica').html('');
+		$("#establecimientos-ubicaciones-geograficas").html('');
+    $.ajaxQ.abortAll();
+    $("#form-buscar-establecimientos").submit();
+      
+  })
+
+  $("#form_buscar_establecimientos_proyecto_822").bind('change',function(){
+      
+		$('.establecimiento-ubicacion-geografica').html('');
+		$("#establecimientos-ubicaciones-geograficas").html('');
+    $.ajaxQ.abortAll();
+    $("#form-buscar-establecimientos").submit();
+      
+  })
+
+  $(".table-bordered input").bind('change',function(){
+      
+		$('.establecimiento-ubicacion-geografica').html('');
+		$("#establecimientos-ubicaciones-geograficas").html('');
+    $.ajaxQ.abortAll();
+    $("#form-buscar-establecimientos").submit();
+      
+  })
+
+  //LIMPIAR FORMULARIO DE BUSQUEDA
+  function limpiar_form_buscar_establecimientos(){
+    
+    $("#form_buscar_establecimientos_anio").val("2014");
+    $("#form_buscar_establecimientos_codigo_establecimiento").val("");
+    $("#form_buscar_establecimientos_nombre_departamento").val("");
+    $("#form_buscar_establecimientos_nombre_distrito").val("");
+    $("#form_buscar_establecimientos_nombre_zona").val("");
+    $("#form_buscar_establecimientos_nombre_barrio_localidad").val("");
+    $("#form_buscar_establecimientos_direccion").val("");
+    $("#form_buscar_establecimientos_programa").val("");
+    $("#form_buscar_establecimientos_proyecto_111").val("");
+    $("#form_buscar_establecimientos_proyecto_822").val("");
+		$('.establecimiento-ubicacion-geografica').html('');
+		$("#establecimientos-ubicaciones-geograficas").html('');
+    $.ajaxQ.abortAll();
+    $("#form-buscar-establecimientos").submit();
+
+  }  
+
+  function mostrar_mapa(parametros){
+
+    var tr_size = $.trim($("#establecimientos-ubicaciones-geograficas").html()).length 
+
+		$('.establecimientos-ubicaciones-geograficas').remove();
+
+		if(tr_size == 0){
+
+      $("#link-to-ubicaciones-geograficas").parent().parent().after("<tr id=\"establecimientos-ubicaciones-geograficas\" class=\"establecimientos-ubicaciones-geograficas\"></tr>"); 
+        
+      $("#establecimientos-ubicaciones-geograficas").html("<%= escape_javascript("<tr><td colspan='11' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")  
+          
+      $.ajaxQ.abortAll();
+      
+      $.ajax({
+			  type: 'POST',
+				url: "<%= url_for(mec_custom_url(data_establecimientos_ubicaciones_geograficas_url)) %>"+parametros,
+				dataType: 'script'  
+			});
+
+    }else{
+			$("#establecimientos-ubicaciones-geograficas").remove();
+    } 
+
+  }
+
+  function mostrar_establecimientos_instituciones(codigo_establecimiento,anio){
+      if($('#establecimientos_instituciones').children().length === 0){
+        $.ajax({
+        type: 'GET',
+        url: '<%= mec_custom_url(data_establecimientos_instituciones_path) %>',
+        data: { codigo_establecimiento:codigo_establecimiento,
+              periodo:anio
+        },
+        dataType: 'script'  
+        }); 
+        $('#ver_instituciones').text('Ocultar Instituciones del Establecimiento');
+      }else{
+        $('#establecimientos_instituciones').html('');
+        $('#ver_instituciones').text('Ver Instituciones del Establecimiento');
+      }
+      //$('#ocultar_instituciones').toggle();
+  }
+
+  <% if params[:ce].present? %>
+
+    $("#form_buscar_establecimientos_codigo_establecimiento").val("<%= params[:ce] %>");
+    $.ajaxQ.abortAll();
+    $("#form-buscar-establecimientos").submit();
+
+  <% else %>
+
+    limpiar_form_buscar_establecimientos();
+
+  <% end %>
+
+  //--------------- QUITAR FILTRO -------------------//
+  function quitar_filtro(id,ban) {
+    if (ban === 1){
+      id.val("2014");
+    }else{
+      id.val('');
+    }
+    $.ajaxQ.abortAll();
+    $('#form-buscar-establecimientos').submit();
+  
+  }
+  //-------------------------------------------------//
+
+</script>
+
+<style>
+
+  .text-min {font-size:9px !important; color: #000; text-align:center !important;}
+  #cbue-menu1 {background:#e9e9e9;}
+  .text-min input[type="text"], .text-min select {
+    border: 1px solid silver;
+    padding: 3px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    color:#000;
+  }
+  .text-min input[type="text"] { width: 80px;}
+  #tablaContenedor{width:100%;}
+ 
+</style>
+
