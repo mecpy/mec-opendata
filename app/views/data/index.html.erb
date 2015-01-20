@@ -10,7 +10,7 @@
         <div>
             <div style="display: inline-block" id="tab-contacto"><%= link_to "<b>CIUDADANO/A !!.</b> Qu&eacute; tipo de informaci&oacute;n te gustar&iacute;a ver publicada en <b>datos.mec.gov.py</b> ?".html_safe, mec_custom_url(contactos_url), :title => "Ir al formulario de contactos", :style => "font-size:12px;" %>
                 <%= link_to image_tag("ayuda3.png", :style => "width:24px;" ), mec_custom_url(contactos_url), :title => "Ir al formulario de contactos." %></div>
-            <div style="float:right;display: inline-block" id="start-tour"><a style="font-size:12px;" title="Ir a la ayuda">Ayuda</a> <a title="Ir a la ayuda"><img alt="Ayuda3" height="24px" width="24px" src="/assets/ayuda3.png"></a></div>
+              <div style="float:right;display: inline-block" id="start-tour"><a style="font-size:12px;" title="Ir a la ayuda">Ayuda</a> <a title="Ir a la ayuda"><%= image_tag "ayuda3.png", style: 'width:24px;' %></a></div>
         </div>
         La siguiente tabla presenta la lista de datasets disponibles correspondientes al Ministerio de Educación y Cultura.<br>
         Para cada dataset se presenta un enlace para visitar la página del dataset, un enlace para visualizar el diccionario de datos y una breve descripción de los datos contenidos en el dataset.
@@ -681,15 +681,15 @@
                 <td itemprop="keywords" style="display: none;">educación,instituciones,requerimientos,mobiliarios</td>
                 <td itemprop="version" style="display: none;">1.0</td>
             </tr>
-
+<!--
             <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
                 <td style="vertical-align:middle;">23</td>
                 <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: ALIMENTACI&Oacute;N</td>
                 <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
-                    <%= link_to "Ver diccionario", mec_custom_url(def_requerimientos_alimentacion_url), :title => "Ir al diccionario" %>
-                    <%= link_to image_tag("def_icon.png"), mec_custom_url(def_requerimientos_alimentacion_url), :title => "Ir al diccionario" %><br /><br />
-                    <%= link_to "Ver datos", mec_custom_url(data_requerimientos_alimentacion_url), :title => "Ir al dataset" %>
-                    <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_requerimientos_alimentacion_url), :title => "Ir al dataset", :itemprop => "url" %>
+                    <%#= link_to "Ver diccionario", mec_custom_url(def_requerimientos_alimentacion_url), :title => "Ir al diccionario" %>
+                    <%#= link_to image_tag("def_icon.png"), mec_custom_url(def_requerimientos_alimentacion_url), :title => "Ir al diccionario" %><br /><br />
+                    <%#= link_to "Ver datos", mec_custom_url(data_requerimientos_alimentacion_url), :title => "Ir al dataset" %>
+                    <%#= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_requerimientos_alimentacion_url), :title => "Ir al dataset", :itemprop => "url" %>
                 </td>
                 <td itemprop="description">
                     Corresponde a los requerimientos de merienda y almuerzo escolares correspondientes a las instituciones educativas del país priorizadas por distrito y por periodo.
@@ -708,10 +708,10 @@
                 <td itemprop="keywords" style="display: none;">educación,instituciones,requerimientos,alimentación</td>
                 <td itemprop="version" style="display: none;">1.0</td>
             </tr>
-
+-->
 
             <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
-                <td style="vertical-align:middle;">24</td>
+                <td style="vertical-align:middle;">23</td>
                 <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">Servicios B&aacute;sicos de los Establecimientos seg&uacute;n FONACIDE</td>
                 <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
                     <%= link_to "Ver diccionario", mec_custom_url(def_servicios_basicos_url), :title => "Ir al diccionario" %>
