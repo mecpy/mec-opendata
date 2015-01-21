@@ -737,6 +737,60 @@
                 <td itemprop="version" style="display: none;">1.0</td>
             </tr>
 
+            <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+                <td style="vertical-align:middle;">24</td>
+                <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">Proyecto 111</td>
+                <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+                    <%= link_to "Ver diccionario", mec_custom_url(def_establecimientos111_url), :title => "Ir al diccionario" %>
+                    <%= link_to image_tag("def_icon.png"), mec_custom_url(def_establecimientos111_url), :title => "Ir al diccionario" %><br /><br />
+                    <%= link_to "Ver datos", mec_custom_url(data_establecimientos111_url), :title => "Ir al dataset" %>
+                    <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_establecimientos111_url), :title => "Ir al dataset", :itemprop => "url" %>
+                </td>
+                <td itemprop="description">
+                    Contiene la datos del proyecto de "Ampliación y reposición de espacios escolares en 111 Establecimientos Educativos del MEC, en Asunción y 10 departamentos geográficos del país". Dicho proyecto tiene como propósito culminar las obras iniciadas en los años 2011 y 2012 –que cuentan con contratos vigentes– considerando los requerimientos pedagógicos y socioculturales. Las intervenciones consisten en ampliar la infraestructura edilicia escolar para aumentar la capacidad del servicio educacional, sin modificación de lo existente, así como la reposición que implica la renovación parcial o total de los espacios educativos existentes. El proyecto es financiado por el Fondo para la Excelencia de la Educación y la Investigación y totaliza una inversión de 6.663.596 dólares americanos (tipo de cambio: 4.500). 
+                </td>
+                <td itemprop="temporal" style="display: none;">2014-01-01/2014-12-31</td>
+                <td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+                    <meta itemprop="name" content="Ministerio de Educación y Cultura">
+                    <meta itemprop="url" content="http://www.mec.gov.py/">
+                    <meta itemprop="email" content="datosabiertos@mec.gov.py">
+                </td>
+                <td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+                    <meta itemprop="name" content="Juan Barrios">
+                    <meta itemprop="email" content="datosabiertos@mec.gov.py">
+                </td>
+                <td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+                <td itemprop="keywords" style="display: none;">educación,establecimientos,escolar,estado,local</td>
+                <td itemprop="version" style="display: none;">1.0</td>
+            </tr>
+
+            <tr itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+                <td style="vertical-align:middle;">25</td>
+                <td style="width:20%;vertical-align:middle;border-right:0px;" itemprop="name">Proyecto 822</td>
+                <td style="width:20%;vertical-align:middle;border-left:0px;text-align:right;">
+                    <%= link_to "Ver diccionario", mec_custom_url(def_establecimientos822_url), :title => "Ir al diccionario" %>
+                    <%= link_to image_tag("def_icon.png"), mec_custom_url(def_establecimientos822_url), :title => "Ir al diccionario" %><br /><br />
+                    <%= link_to "Ver datos", mec_custom_url(data_establecimientos822_url), :title => "Ir al dataset" %>
+                    <%= link_to image_tag("datos_ico.jpg"), mec_custom_url(data_establecimientos822_url), :title => "Ir al dataset", :itemprop => "url" %>
+                </td>
+                <td itemprop="description">
+Contiene datos del proyecto de “Ampliación y reposición de espacios escolares en 822 Establecimientos Educativos del MEC, en Asunción y los 17 departamentos geográficos del país”. Dicho proyecto busca mejorar la estructura edilicia de 822 establecimientos educativos según las normas estandarizadas de infraestructura escolar, acorde a los requerimientos pedagógicos actuales. Además de ampliar los espacios educativos, se proveerán de mobiliarios acorde con la demanda de la matrícula para asegurar las condiciones adecuadas para el desarrollo de las situaciones de enseñanza- aprendizaje en las instituciones educativas. El proyecto es financiado por el Fondo para la Excelencia de la Educación y la Investigación y totaliza una inversión de 42.791.803 dólares americanos (Tipo de cambio: 4.500).
+                </td>
+                <td itemprop="temporal" style="display: none;">2014-01-01/2014-12-31</td>
+                <td itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+                    <meta itemprop="name" content="Ministerio de Educación y Cultura">
+                    <meta itemprop="url" content="http://www.mec.gov.py/">
+                    <meta itemprop="email" content="datosabiertos@mec.gov.py">
+                </td>
+                <td itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+                    <meta itemprop="name" content="Juan Barrios">
+                    <meta itemprop="email" content="datosabiertos@mec.gov.py">
+                </td>
+                <td itemprop="license" style="display: none;">https://creativecommons.org/licenses/by/4.0/legalcode</td>
+                <td itemprop="keywords" style="display: none;">educación,establecimientos,escolar,estado,local</td>
+                <td itemprop="version" style="display: none;">1.0</td>
+            </tr>
+
             </tbody>
 
         </table>
@@ -847,6 +901,9 @@
 
 </style>
 <script>
+
+  var img_right = '<%= image_tag "right.png", style: "width:22px;" %>';
+
   var stepsListado = [
       {
           intro: "Bienvenido al Portal de Datos Abiertos del Ministerio de Educaci&oacute;n y Cultura.\
@@ -854,13 +911,13 @@
           </br></br>Podr&aacute;s navegar fácilmente a través de la guía por medio del mouse, o por medio del teclado haciendo simplemente uso de las teclas:\
           <p><u><i>Para Navegar:</i></u></p>\
           <ul>\
-            <li><img alt='Intro_right' height='22px' width='22px' src='/assets/intro_images/right.png'> IZQ</li>\
-            <li><img alt='Intro_left' height='22px' width='22px' src='/assets/intro_images/left.png'> DER</li>\
-            <li><img alt='Intro_enter' height='22px' width='22px' src='/assets/intro_images/enter.png'> ENTER</li>\
+          <li><%= image_tag('intro_images/right.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %>  IZQ</li>\
+            <li><%= image_tag('intro_images/left.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %> DER</li>\
+            <li><%= image_tag('intro_images/enter.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %> ENTER</li>\
           </ul>\
           <p><u><i>Para Salir:</i></u></p>\
           <ul>\
-            <li><img alt='Intro_esc' height='22px' width='22px' src='/assets/intro_images/esc.png'>ESC</li>\
+            <li><%= image_tag('intro_images/esc.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %>ESC</li>\
           </ul>\
           Pulsa en siguiente para comenzar.\
           </br>Y, ¡COMENCEMOS!"
@@ -881,7 +938,7 @@
           intro: "Si te interesan las gr&aacute;ficas y estad&iacute;sticas, puedes hacer click en este apartado.\
           <img alt='Mapa_matriculados' class='img-responsive' src='/assets/intro_images/mapa_matriculados.png'>\
           </br></br>Aqu&iacute;, encontrar&aacute;s todo lo relacionado a visualizaciones. \
-          <img alt='Docentes' class='img-responsive' src='/assets/intro_images/docentes.png'> \
+          <%= image_tag('intro_images/docentes.png', style: 'width:22px;', class: 'img-responsive').to_s.gsub("\"", "'").html_safe %> \
           </br></br>¡No dejes de visitarlas!",
           position: "left"
       },

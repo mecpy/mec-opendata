@@ -28,7 +28,7 @@
     <meta itemprop="version" style="display: none;" content="1.0">
 
     <span style="float:right;">
-        <div style="display: inline-block" id="start-tour"><a style="font-size:12px;" title="Ir a la ayuda">Ayuda</a> <a title="Ir a la ayuda"><img alt="Ayuda3" height="24px" width="24px" src="/assets/ayuda3.png"></a></div>
+      <div style="display: inline-block" id="start-tour"><a style="font-size:12px;" title="Ir a la ayuda">Ayuda</a> <a title="Ir a la ayuda"><%= image_tag('ayuda3.png', style: 'width:24px;') %></a></div>
         <div style="display: inline-block" id="tab-diccionario"><%= link_to "Ver diccionario", mec_custom_url(def_requerimientos_aulas_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
             <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), mec_custom_url(def_requerimientos_aulas_url), :title => "Ir al diccionario" %></div>
         <div style="display: inline-block" id="tab-inicio"><%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
