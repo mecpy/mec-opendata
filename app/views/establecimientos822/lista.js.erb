@@ -1,0 +1,34 @@
+$("#establecimientos-lista").html("<%= escape_javascript(render :partial => "lista", :locals => { :establecimientos => @establecimientos}) %>");
+$("#establecimientos-822-footer").html("<%= escape_javascript(render :partial => "footer", :locals => { :establecimientos => @establecimientos}) %>");
+
+<% if @establecimientos.present? %>
+
+  <% parametros = "?form_buscar_establecimientos[anio]=#{params[:form_buscar_establecimientos][:anio]}"
+     parametros += "&form_buscar_establecimientos_codigo_establecimiento=#{params[:form_buscar_establecimientos_codigo_establecimiento]}"
+     parametros += "&form_buscar_establecimientos_nombre_departamento=#{params[:form_buscar_establecimientos_nombre_departamento]}"
+     parametros += "&form_buscar_establecimientos_nombre_distrito=#{params[:form_buscar_establecimientos_nombre_distrito]}"
+     parametros += "&form_buscar_establecimientos_nombre_zona=#{params[:form_buscar_establecimientos_nombre_zona]}"
+     parametros += "&form_buscar_establecimientos_nombre_barrio_localidad=#{params[:form_buscar_establecimientos_nombre_barrio_localidad]}"
+     parametros += "&form_buscar_establecimientos_direccion=#{params[:form_buscar_establecimientos_direccion]}" 
+     parametros += "&form_buscar_establecimientos_asentamientos_priorizados=#{params[:form_buscar_establecimientos_asentamientos_priorizados]}" 
+     parametros += "&form_buscar_establecimientos_ampliacion_comedor=#{params[:form_buscar_establecimientos_ampliacion_comedor]}" 
+     parametros += "&form_buscar_establecimientos_ampliacion_aulas=#{params[:form_buscar_establecimientos_ampliacion_aulas]}" 
+     parametros += "&form_buscar_establecimientos_ampliacion_aula_preescolar=#{params[:form_buscar_establecimientos_ampliacion_aula_preescolar]}" 
+     parametros += "&form_buscar_establecimientos_ampliacion_centro_aprendizaje=#{params[:form_buscar_establecimientos_ampliacion_centro_aprendizaje]}" 
+     parametros += "&form_buscar_establecimientos_ampliacion_laboratorios=#{params[:form_buscar_establecimientos_ampliacion_laboratorios]}" 
+     parametros += "&form_buscar_establecimientos_ampliacion_bloque_administrativo=#{params[:form_buscar_establecimientos_ampliacion_bloque_administrativo]}" 
+     parametros += "&form_buscar_establecimientos_ampliacion_servicios_higienicos=#{params[:form_buscar_establecimientos_ampliacion_servicios_higienicos]}" 
+     parametros += "&form_buscar_establecimientos_reparacion_aulas=#{params[:form_buscar_establecimientos_reparacion_aulas]}" 
+     parametros += "&form_buscar_establecimientos_reparacion_comedor=#{params[:form_buscar_establecimientos_reparacion_comedor]}" 
+     parametros += "&form_buscar_establecimientos_reparacion_servicios_higienicos=#{params[:form_buscar_establecimientos_reparacion_servicios_higienicos]}" 
+     parametros += "&form_buscar_establecimientos_obras_exteriores_pozo=#{params[:form_buscar_establecimientos_obras_exteriores_pozo]}" 
+     parametros += "&form_buscar_establecimientos_obras_exteriores_indigenas=#{params[:form_buscar_establecimientos_obras_exteriores_indigenas]}" 
+     parametros += "&page=#{(params[:page].present? ? params[:page] : 1)}" %>
+
+  $("#ubicaciones-geograficas").html("<%= escape_javascript(render :partial => "link_to_ubicaciones_geograficas", :locals => {:parametros => parametros } )%>")
+
+<% else %>
+  
+  $("#ubicaciones-geograficas").html('');
+
+<% end %>

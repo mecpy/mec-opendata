@@ -1,0 +1,32 @@
+<%= link_to image_tag("marker.png", :style => "width:16px;"), "#", :id => "link-to-ubicacion-geografica-#{establecimiento.id}", :title => "Haga click para ver el mapa." %>
+
+<script type="text/javascript">
+
+  $("#link-to-ubicacion-geografica-<%= establecimiento.id %>").bind("click", function(){
+      
+      var tr_size = $.trim($("#establecimiento-ubicacion-geografica-<%= establecimiento.id %>").html()).length 
+
+			$('.establecimiento-ubicacion-geografica').remove();
+		  $("#establecimientos-ubicaciones-geograficas").html('');
+
+			if(tr_size == 0){
+
+        $(this).parent().parent().after("<tr id=\"establecimiento-ubicacion-geografica-<%= establecimiento.id %>\" class=\"establecimiento-ubicacion-geografica\"></tr>"); 
+        
+        $("#establecimiento-ubicacion-geografica-<%= establecimiento.id %>").html("<%= escape_javascript("<tr><td style='7'><p class='none-result'>#{image_tag('ajax-loader0.gif')}</p>").html_safe %></td></tr>")  
+          $.ajax({
+						  type: 'POST',
+						  url: "<%= url_for(mec_custom_url(data_establecimientos111_ubicacion_geografica_url)) %>",
+						  data: { id:<%= establecimiento.id %> },
+						  dataType: 'script'  
+						});
+
+      }else{
+				$("#establecimiento-ubicacion-geografica-<%= establecimiento.id %>").remove();
+      } 
+
+			return false; 
+	 });
+
+</script>
+

@@ -82,11 +82,10 @@ Rails.application.routes.draw do
   get 'def/instituciones' => 'instituciones#diccionario', :as => :def_instituciones
   get "id/instituciones/:codigo_institucion" => "instituciones#doc", :as => :id_instituciones
   get "doc/instituciones/:codigo_institucion" => "instituciones#doc", :as => :doc_instituciones
-
+  
   get "data/establecimientos_instituciones" => 'establecimientos#establecimientos_instituciones', :as => :data_establecimientos_instituciones
   post "data/establecimientos_ubicaciones_geograficas" => 'establecimientos#establecimientos_ubicaciones_geograficas', :as => :data_establecimientos_ubicaciones_geograficas
-  post "data/establecimientos_ubicacion_geografica" => 'establecimientos#establecimientos_ubicacion_geografica', :as => :data_establecimientos_ubicacion_geografica
-  
+  post "data/establecimientos_ubicacion_geografica" => 'establecimientos#establecimientos_ubicacion_geografica', :as => :data_establecimientos_ubicacion_geografica  
   get "data/establecimientos_lista" => 'establecimientos#lista', :as => :report_establecimientos_lista
   post "data/establecimientos_lista" => 'establecimientos#lista', :as => :data_establecimientos_lista
   get 'data/establecimientos' => 'establecimientos#index', :as => :data_establecimientos
@@ -94,6 +93,26 @@ Rails.application.routes.draw do
   get 'def/ejemplo_anio_cod_geo' => 'data#ejemplo_anio_cod_geo', :as => :def_ejemplo_anio_cod_geo  
   get "id/establecimientos/:codigo_establecimiento" => "establecimientos#establecimientos_doc", :as => :id_establecimientos
   get "doc/establecimientos/:codigo_establecimiento" => "establecimientos#establecimientos_doc", :as => :doc_establecimientos  
+   
+  get "data/establecimientos111_instituciones" => 'establecimientos111#instituciones', :as => :data_establecimientos111_instituciones
+  post "data/establecimientos111_ubicaciones_geograficas" => 'establecimientos111#ubicaciones_geograficas', :as => :data_establecimientos111_ubicaciones_geograficas
+  post "data/establecimientos111_ubicacion_geografica" => 'establecimientos111#ubicacion_geografica', :as => :data_establecimientos111_ubicacion_geografica
+  get "data/establecimientos111_lista" => 'establecimientos111#lista', :as => :report_establecimientos111_lista
+  post "data/establecimientos111_lista" => 'establecimientos111#lista', :as => :data_establecimientos111_lista
+  get 'data/establecimientos111' => 'establecimientos111#index', :as => :data_establecimientos111
+  get 'def/establecimientos111' => 'establecimientos111#diccionario', :as => :def_establecimientos111
+  get "id/establecimientos111/:codigo_establecimiento" => "data#establecimientos111_doc", :as => :id_establecimientos111
+  get "doc/establecimientos111/:codigo_establecimiento" => "data#establecimientos111_doc", :as => :doc_establecimientos111 
+
+  get "data/establecimientos822_instituciones" => 'establecimientos822#instituciones', :as => :data_establecimientos822_instituciones
+  post "data/establecimientos822_ubicaciones_geograficas" => 'establecimientos822#ubicaciones_geograficas', :as => :data_establecimientos822_ubicaciones_geograficas
+  post "data/establecimientos822_ubicacion_geografica" => 'establecimientos822#ubicacion_geografica', :as => :data_establecimientos822_ubicacion_geografica
+  get "data/establecimientos822_lista" => 'establecimientos822#lista', :as => :report_establecimientos822_lista
+  post "data/establecimientos822_lista" => 'establecimientos822#lista', :as => :data_establecimientos822_lista
+  get 'data/establecimientos822' => 'establecimientos822#index', :as => :data_establecimientos822
+  get 'def/establecimientos822' => 'establecimientos822#diccionario', :as => :def_establecimientos822
+  get "id/establecimientos822/:codigo_establecimiento" => "data#establecimientos822_doc", :as => :id_establecimientos822
+  get "doc/establecimientos822/:codigo_establecimiento" => "data#establecimientos822_doc", :as => :doc_establecimientos822  
   
   get "data/establecimientos_escolares_priorizados_elegibles_fonacide" => 'requerimientos_infraestructuras#catalogo', :as => :data_requerimientos_infraestructuras_catalogo
 
