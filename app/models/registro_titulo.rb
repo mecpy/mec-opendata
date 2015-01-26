@@ -1,8 +1,8 @@
 class RegistroTitulo < ActiveRecord::Base
    
-  acts_as_xlsx 
+  self.table_name = "registros_titulos"
 
-  scope :orden_anio_mes, :order => 'anio, mes'
+  scope :orden_anio_mes, -> { order('anio, mes')}
 
   def gobierno_actual
 

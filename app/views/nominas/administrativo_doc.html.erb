@@ -31,11 +31,15 @@
 
 
   <div class="uri-data-filter">
-  	<%= label_tag "Periodo" %>
-    <%= select :form_buscar_nominas, :ano_periodo_pago, [2014], {:class => 'text-min'} %>
-    <%= label_tag "Mes" %>
-    <%= select :form_buscar_nominas, :mes_periodo_pago, [["octubre", 10]], {:class => 'text-min'} %>
-  	
+      <div style="display: inline-block;">
+          <%= label_tag "Periodo" %></br>
+          <%= select :form_buscar_nominas, :ano_periodo_pago, [2014], {:class => 'text-min'} %>
+      </div>
+      <div style="display: inline-block;">
+          <%= label_tag "Mes" %></br>
+          <%= select :form_buscar_nominas, :mes_periodo_pago, [["octubre", 10]], {:class => 'text-min'} %>
+      </div>
+
   </div>
   
   <br />

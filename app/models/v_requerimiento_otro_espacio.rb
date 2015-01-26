@@ -1,8 +1,8 @@
 class VRequerimientoOtroEspacio < ActiveRecord::Base
   
-  acts_as_xlsx
+  self.table_name = "v_requerimientos_otros_espacios"
 
-  scope :orden_dep_dis, :order => 'nombre_departamento, nombre_distrito,numero_prioridad'
+  scope :orden_dep_dis, -> { order('nombre_departamento, nombre_distrito, numero_prioridad')}
   
   def uri_establecimiento
     "http://datos.mec.gov.py/id/establecimientos/#{self.codigo_establecimiento}"

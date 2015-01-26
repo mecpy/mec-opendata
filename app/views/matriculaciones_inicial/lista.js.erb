@@ -17,7 +17,7 @@ $("#lista").html("<%= escape_javascript(render :partial => "lista", :locals => {
      parametros += "&form_buscar_matriculaciones_inicial_prejardin=#{params[:form_buscar_matriculaciones_inicial_prejardin]}"
      parametros += "&form_buscar_matriculaciones_inicial_jardin=#{params[:form_buscar_matriculaciones_inicial_jardin]}" 
      parametros += "&form_buscar_matriculaciones_inicial_preescolar=#{params[:form_buscar_matriculaciones_inicial_preescolar]}"
-	 parametros += "&form_buscar_matriculaciones_inicial_total_matriculados=#{params[:form_buscar_matriculaciones_inicial_total_matriculados]}" 
+	parametros += "&form_buscar_matriculaciones_inicial_total_matriculados=#{params[:form_buscar_matriculaciones_inicial_total_matriculados]}" 
      parametros += "&page=#{(params[:page].present? ? params[:page] : 1)}" %>
 
 <% end %>

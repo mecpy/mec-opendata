@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
 
-  helper_method :redireccionar_uri
-
-  def obtener_estado_funcionario(estado)
+    def obtener_estado_funcionario(estado)
 
     case estado
     
@@ -16,20 +16,5 @@ class ApplicationController < ActionController::Base
 
   end
 
-  def redireccionar_uri
-    
-    if Rails.env.development?
-
-      if request.url.to_s.include? '/id/'
-
-        url = request.url.to_s.sub('/id/', '/doc/')
-
-        redirect_to url
-
-      end
-
-    end
-  
-  end
 
 end

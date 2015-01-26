@@ -4,11 +4,17 @@
             <span id="tab-titulo">Datos Espec&iacute;ficos de Instituciones Educativas</span>
 
             <span style="float:right;">
-                <div style="display: inline-block" id="start-tour"><a style="font-size:12px;" title="Ir a la ayuda">Ayuda</a> <a title="Ir a la ayuda"><img alt="Ayuda3" height="24px" width="24px" src="/assets/ayuda3.png"></a></div>
-                <div style="display: inline-block" id="tab-datos"><%= link_to "Ver datos", mec_custom_url(data_instituciones_url), :title => "Ir al dataset", :style => "font-size:12px;" %>
-                    <%= link_to image_tag("datos_ico.jpg",:style => "width:24px;"), mec_custom_url(data_instituciones_url), :title => "Ir al dataset" %></div>
-                <div style="display: inline-block" id="tab-inicio"><%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
-                    <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %></div>
+                <div style="display: inline-block" id="start-tour">
+                    <a style="font-size:12px;" title="Ir a la ayuda">Ayuda</a> <a title="Ir a la ayuda"><img alt="Ayuda3" height="24px" width="24px" src="/assets/ayuda3.png"></a>
+                </div>
+                <div style="display: inline-block" id="tab-datos">
+                    <%= link_to "Ver datos", mec_custom_url(data_instituciones_url), :title => "Ir al dataset", :style => "font-size:12px;" %>
+                    <%= link_to image_tag("datos_ico.jpg",:style => "width:24px;"), mec_custom_url(data_instituciones_url), :title => "Ir al dataset" %>
+                </div>
+                <div style="display: inline-block" id="tab-inicio">
+                    <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
+                    <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
+                </div>
             </span>
 
         </h2>
@@ -18,7 +24,7 @@
                 <tr id="tab-atributos">
                     <th title="Field #1">Nombre del Atributo</th>
                     <th title="Field #2">
-                        Descripci&oacute;n
+                        Descripción
                     </th>
                     <th title="Field #3">
                         Tipo de datos
@@ -62,11 +68,11 @@
                         xsd:string
                     </td>
                     <td>
-                        No más de 2 caracteres 
+                        No más de 40 caracteres
                     </td>
                     <td></td>
                     <td>
-                        00
+                        ASUNCION
                     </td>
                 </tr>
                 <tr>
@@ -80,11 +86,11 @@
                         xsd:string
                     </td>
                     <td id="tab-contenido-restriccion">
-                        No más de 40 caracteres
+                        No más de 2 caracteres
                     </td>
                     <td id="tab-contenido-referencia"></td>
-                    <td id="tab-contenido-ejemplo">
-                        ASUNCION
+                    <td id="tab-contenido-ejemplo"  >
+                        00
                     </td>
                 </tr>
                 <tr>
@@ -98,11 +104,11 @@
                         xsd:string
                     </td>
                     <td>
-                        No más de 2 caracteres
+                        No más de 40 caracteres
                     </td>
                     <td></td>
                     <td>
-                        00
+                        ASUNCION
                     </td>
                 </tr>
                 <tr>
@@ -113,14 +119,12 @@
                         Corresponde a la descripción del nombre del distrito correspondiente al código.
                     </td>
                     <td>
-                        xsd:string  
-                    </td>
-                    <td>
-                        No más de 40 caracteres
+                        xsd:positiveInteger
                     </td>
                     <td></td>
+                    <td></td>
                     <td>
-                        ASUNCION 
+                        002
                     </td>
                 </tr>
                 <tr>
@@ -128,15 +132,17 @@
                         CODIGO_BARRIO_LOCALIDAD
                     </td>
                     <td>
-                        Corresponde al código asignado a la localidad o barrio del distrito donde esta localizado el establecimiento escolar.
+                        Corresponde al código asignado a la localidad o barrio del distrito donde esta localizado el establecimiento escolar..
                     </td>
                     <td>
-                        xsd:positiveInteger
+                        xsd:string
+                    </td>
+                    <td>
+                        No más de 40 caracteres
                     </td>
                     <td></td>
-                    <td></td>
                     <td>
-                        033
+                        SAN ANTONIO
                     </td>
                 </tr>
                 <tr>
@@ -147,26 +153,7 @@
                         Corresponde a la descripción del nombre del barrio o localidad correspondiente al código.
                     </td>
                     <td>
-                        xsd:string
-                    </td>
-                    <td>
-                    </td>
-                    <td></td>
-                    <td>
-                        SAN ANTONIO
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        CODIGO_ZONA
-                    </td>
-                    <td>
-                        Corresponde a la ubicación del establecimiento escolar, sea en la zona urbana o rural. Paraguay utiliza criterios político-administrativos para definir el área urbana y rural.</br>
-                        Se considera: Código 1 .Zona Urbana: Área geográfica que abarca todas las cabeceras distritales de la República y sus viviendas generalmente estan organizadas en manzanas.</br>
-                        Código 2. Zona Rural: Área geográfica que se encuentran fuera de las cabeceras distritales y las viviendas se localizan en forma dispersa pudiendo existir zonas amanzanadas pero que no tienen la categoría de Cabeceras Distritales por la cual se consideraran como rurales.</br>
-                    </td>
-                    <td>
-                        xsd:string
+                        xsd:positiveInteger
                     </td>
                     <td>
                         Valores que pueden ser: Código 1: cuando el código de localidad es menor 100 Código 6: cuando el código de localidade es mayor o igual a 100
@@ -186,9 +173,7 @@
                     <td>
                         xsd:string
                     </td>
-                    <td>
-                        No más de 7 caracteres
-                    </td>
+                    <td></td>
                     <td></td>
                     <td>
                         URBANA
@@ -252,7 +237,7 @@
                 </tr>
                 <tr>
                     <td>
-                        SECTOR_O_TIPO_GESTION
+                        SECTOR O TIPO DE GESTION
                     </td>
                     <td>
                         Sector al que pertenece una institución educativa.<br>
@@ -397,7 +382,7 @@
                         xsd:string
                     </td>
                     <td>
-                        Valores que pueden ser:  SI - NO
+                        Valores en el rango:
                     </td>
                     <td></td>
                     <td>
@@ -520,7 +505,7 @@
             <h2>
                 Referencia
             </h2>La siguiente tabla presenta una breve descripción de los atributos incluídos en el diccionario de datos del dataset.<br>
-            Básicamente, un diccionario de datos describe los atributos que contiene un dataset, incluyendo el tipo de dato y las restricciones que se apliquen a cada uno.<br>
+            Básicamente, un diccionario de datos describe los atributos que contiene un dataset, incluyendo el tipo de dato y las restricciones se apliquen a cada uno.<br>
         </div>
         <br>
         <br>
@@ -531,7 +516,7 @@
                         Nombre de la columna
                     </th>
                     <th title="Field #2">
-                        Descripci&oacute;n
+                        Descripción
                     </th>
                 </tr>
             </thead>
@@ -541,12 +526,12 @@
                         Nombre del Atributo
                     </td>
                     <td>
-                        Establece el nombre del atributo exactamente como se encuentra definido en el archivo de datos a ser publicado
+                        Esteblace el nombre del atributo exactamente como se encuentra definido en el archivo de datos a ser publicado
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Descripci&oacute;n
+                        Descripción
                     </td>
                     <td>
                         Describe con más detalles los datos que se encuentran en el atributo

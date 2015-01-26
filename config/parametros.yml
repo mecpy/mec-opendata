@@ -46,46 +46,49 @@ development:
 
 production:
 
-  diccionario_datos: http://datos.mec.gov.py/data/diccionario_datos/OPEN_DICCIONARIO.xlsx
-  nomina_administrativos: http://datos.mec.gov.py/data/funcionarios_administrativos_201406.pdf
-  nomina_docentes: http://datos.mec.gov.py/data/funcionarios_docentes_201406.pdf
+  diccionario_datos: /data/diccionario_datos/OPEN_DICCIONARIO.xlsx
+  nomina_administrativos: /data/funcionarios_administrativos_201406.pdf
+  nomina_docentes: /data/funcionarios_docentes_201406.pdf
 
-  establecimientos_pdf: http://datos.mec.gov.py/data/establecimientos_2012.pdf
-  establecimientos_xlsx: http://datos.mec.gov.py/data/establecimientos_2012.xlsx
-  establecimientos_csv: http://datos.mec.gov.py/data/establecimientos_2012.csv
-  establecimientos_json: http://datos.mec.gov.py/data/establecimientos_2012.json
+  establecimientos_pdf: /data/establecimientos_2012.pdf
+  establecimientos_xlsx: /data/establecimientos_2012.xlsx
+  establecimientos_csv: /data/establecimientos_2012.csv
+  establecimientos_json: /data/establecimientos_2012.json
 
-  instituciones_xlsx: http://datos.mec.gov.py/data/instituciones_2012.xlsx
-  instituciones_csv: http://datos.mec.gov.py/data/instituciones_2012.csv
-  instituciones_json: http://datos.mec.gov.py/data/instituciones_2012.json
+  instituciones_xlsx: /data/instituciones_2012.xlsx
+  instituciones_csv: /data/instituciones_2012.csv
+  instituciones_json: /data/instituciones_2012.json
 
-  matriculaciones_educacion_escolar_basica_xlsx: http://datos.mec.gov.py/data/matriculaciones_educacion_escolar_basica_2012.xlsx
-  matriculaciones_educacion_escolar_basica_csv: http://datos.mec.gov.py/data/matriculaciones_educacion_escolar_basica_2012.csv
-  matriculaciones_educacion_escolar_basica_json: http://datos.mec.gov.py/data/matriculaciones_educacion_escolar_basica_2012.json
+  matriculaciones_educacion_escolar_basica_xlsx: /data/matriculaciones_educacion_escolar_basica_2012.xlsx
+  matriculaciones_educacion_escolar_basica_csv: /data/matriculaciones_educacion_escolar_basica_2012.csv
+  matriculaciones_educacion_escolar_basica_json: /data/matriculaciones_educacion_escolar_basica_2012.json
 
-  matriculaciones_educacion_inclusiva_xlsx: http://datos.mec.gov.py/data/matriculaciones_educacion_inclusiva_2012.xlsx
-  matriculaciones_educacion_inclusiva_csv: http://datos.mec.gov.py/data/matriculaciones_educacion_inclusiva_2012.csv
-  matriculaciones_educacion_inclusiva_json: http://datos.mec.gov.py/data/matriculaciones_educacion_inclusiva_2012.json
+  matriculaciones_educacion_inclusiva_xlsx: /data/matriculaciones_educacion_inclusiva_2012.xlsx
+  matriculaciones_educacion_inclusiva_csv: /data/matriculaciones_educacion_inclusiva_2012.csv
+  matriculaciones_educacion_inclusiva_json: /data/matriculaciones_educacion_inclusiva_2012.json
 
-  matriculaciones_educacion_permanente_xlsx: http://datos.mec.gov.py/data/matriculaciones_educacion_permanente_2012.xlsx
-  matriculaciones_educacion_permanente_csv: http://datos.mec.gov.py/data/matriculaciones_educacion_permanente_2012.csv
-  matriculaciones_educacion_permanente_json: http://datos.mec.gov.py/data/matriculaciones_educacion_permanente_2012.json
+  matriculaciones_educacion_permanente_xlsx: /data/matriculaciones_educacion_permanente_2012.xlsx
+  matriculaciones_educacion_permanente_csv: /data/matriculaciones_educacion_permanente_2012.csv
+  matriculaciones_educacion_permanente_json: /data/matriculaciones_educacion_permanente_2012.json
 
-  matriculaciones_educacion_superior_xlsx: http://datos.mec.gov.py/data/matriculaciones_educacion_superior_2012.xlsx
-  matriculaciones_educacion_superior_csv: http://datos.mec.gov.py/data/matriculaciones_educacion_superior_2012.csv
-  matriculaciones_educacion_superior_json: http://datos.mec.gov.py/data/matriculaciones_educacion_superior_2012.json
+  matriculaciones_educacion_superior_xlsx: /data/matriculaciones_educacion_superior_2012.xlsx
+  matriculaciones_educacion_superior_csv: /data/matriculaciones_educacion_superior_2012.csv
+  matriculaciones_educacion_superior_json: /data/matriculaciones_educacion_superior_2012.json
 
-  matriculaciones_inicial_xlsx: http://datos.mec.gov.py/data/matriculaciones_inicial_2012.xlsx
-  matriculaciones_inicial_csv: http://datos.mec.gov.py/data/matriculaciones_inicial_2012.csv
-  matriculaciones_inicial_json: http://datos.mec.gov.py/data/matriculaciones_inicial_2012.json
+  matriculaciones_inicial_xlsx: data/matriculaciones_inicial_2012.xlsx
+  matriculaciones_inicial_csv: data/matriculaciones_inicial_2012.csv
+  matriculaciones_inicial_json: data/matriculaciones_inicial_2012.json
 
 
-  matriculaciones_educacion_media_xlsx: http://datos.mec.gov.py/data/matriculaciones_educacion_media_2012.xlsx
-  matriculaciones_educacion_media_csv: http://datos.mec.gov.py/data/matriculaciones_educacion_media_2012.csv
-  matriculaciones_educacion_media_json: http://datos.mec.gov.py/data/matriculaciones_educacion_media_2012.json
+  matriculaciones_educacion_media_xlsx: /data/matriculaciones_educacion_media_2012.xlsx
+  matriculaciones_educacion_media_csv: /data/matriculaciones_educacion_media_2012.csv
+  matriculaciones_educacion_media_json: /data/matriculaciones_educacion_media_2012.json
 
-  matriculaciones_departamentos_distritos_xlsx: http://datos.mec.gov.py/data/matriculaciones_departamentos_distritos_2012.xlsx
-  matriculaciones_departamentos_distritos_csv: http://datos.mec.gov.py/data/matriculaciones_departamentos_distritos_2012.csv
-  matriculaciones_departamentos_distritos_json: http://datos.mec.gov.py/data/matriculaciones_departamentos_distritos_2012.json
+  matriculaciones_departamentos_distritos_xlsx: /data/matriculaciones_departamentos_distritos_2012.xlsx
+  matriculaciones_departamentos_distritos_csv: /data/matriculaciones_departamentos_distritos_2012.csv
+  matriculaciones_departamentos_distritos_json: /data/matriculaciones_departamentos_distritos_2012.json
+
+
+
 
   subdominio: "http://datos.mec.gov.py/"

@@ -1,5 +1,5 @@
 class RequerimientosOtrosEspaciosController < ApplicationController
-    before_filter :redireccionar_uri
+    #before_filter :redireccionar_uri
   def diccionario
 
   end
@@ -129,17 +129,15 @@ class RequerimientosOtrosEspaciosController < ApplicationController
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
 
-    @requerimientos_otros_espacios = cond.size > 0 ? (VRequerimientoOtroEspacio.orden_dep_dis.paginate :conditions => cond, 
-                                                                               :per_page => 15,
-                                                                               :page => params[:page]) : {}
+    @requerimientos_otros_espacios = VRequerimientoOtroEspacio.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
 
     @total_registros = VRequerimientoOtroEspacio.count 
 
     if params[:format] == 'csv'
 
       require 'csv'
-
-      requerimientos_otros_espacios_csv = VRequerimientoOtroEspacio.orden_dep_dis.find(:all, :conditions => cond)
+      
+      requerimientos_otros_espacios_csv = VRequerimientoOtroEspacio.orden_dep_dis.where(cond).all
 
       csv = CSV.generate do |csv|
         # header row
@@ -166,29 +164,38 @@ class RequerimientosOtrosEspaciosController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      @requerimientos_otros_espacios = VRequerimientoOtroEspacio.orden_dep_dis.find(:all, :conditions => cond)
-
-      respond_to do |format|
-      
-        format.xlsx {
-
-          columnas = [:periodo, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :numero_prioridad, 
+      requerimientos_otros_espacios_xlsx = VRequerimientoOtroEspacio.orden_dep_dis.where(cond).all
+       
+      p = Axlsx::Package.new
+        
+      p.workbook.add_worksheet(:name => "RequerimientosOtrosEspacios") do |sheet|
+          
+        sheet.add_row [:periodo, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :numero_prioridad, 
             :codigo_establecimiento, :codigo_institucion, :nombre_institucion,
             :codigo_zona,:nombre_zona,
             :nivel_educativo_beneficiado, :cuenta_espacio_para_construccion, :nombre_espacio, :tipo_requerimiento_infraestructura, :cantidad_requerida,
             :numero_beneficiados, :justificacion, :uri_establecimiento, :uri_institucion]
-         
-          send_data VRequerimientoOtroEspacio.orden_dep_dis.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
-                    :filename => "requerimientos_otros_espacios_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
-                    :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
-                    disposition: 'attachment'
-        }
-      
+
+        requerimientos_otros_espacios_xlsx.each do |i|
+              
+          sheet.add_row [i.periodo,i.codigo_departamento, i.nombre_departamento, i.codigo_distrito, i.nombre_distrito, i.numero_prioridad,
+            i.codigo_establecimiento, i.codigo_institucion, i.nombre_institucion,
+            i.codigo_zona,i.nombre_zona,
+            i.nivel_educativo_beneficiado, i.cuenta_espacio_para_construccion, i.nombre_espacio, i.tipo_requerimiento_infraestructura, i.cantidad_requerida,
+            i.numero_beneficiados, i.justificacion, i.uri_establecimiento,i.uri_institucion
+          ]
+                
+        end
+
       end
+            
+      p.use_shared_strings = true
+      
+      send_data p.to_stream.read, filename: "requerimientos_otros_espacios_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     else
-
-      @requerimientos_otros_espacios_todos = VRequerimientoOtroEspacio.orden_dep_dis.find(:all, :conditions => cond)
+      
+      @requerimientos_otros_espacios_todos = VRequerimientoOtroEspacio.orden_dep_dis.where(cond).all
       
       respond_to do |f|
 

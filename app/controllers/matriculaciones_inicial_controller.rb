@@ -120,10 +120,7 @@ class MatriculacionesInicialController < ApplicationController
   
          cond = cond.join(" and ").lines.to_a + args if cond.size > 0
 
-    @matriculaciones_inicial = cond.size > 0 ? (MatriculacionInicial.ordenado_institucion.paginate :conditions => cond, 
-                                                                               :per_page => 15,
-                                                                               :page => params[:page]) : {}
-
+    @matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond).paginate(page: params[:page], per_page: 15)
 
     @total_registros = MatriculacionInicial.count 
 
@@ -131,7 +128,7 @@ class MatriculacionesInicialController < ApplicationController
 
       require 'csv'
 
-      matriculaciones_inicial_csv = MatriculacionInicial.ordenado_institucion.find(:all, :conditions => cond)
+      matriculaciones_inicial_csv = MatriculacionInicial.ordenado_institucion.where(cond)
 
       csv = CSV.generate do |csv|
         # header row
@@ -150,28 +147,33 @@ class MatriculacionesInicialController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      @matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.find(:all, :conditions => cond)
+      @matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond)
 
-      respond_to do |format|
+      p = Axlsx::Package.new
       
-        format.xlsx {
+      p.workbook.add_worksheet(:name => "Matriculaciones EI") do |sheet|
           
-          #columnas = [:codigo, :descripcion, :tipo_articulo, :objeto_gasto, :tipo_medida, :medida, :valor_unitario, :activo ] 
-          columnas = [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad, :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :maternal, :prejardin, :jardin, :preescolar, :total_matriculados, :anho_cod_geo, :inicial_noformal ] 
+        sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad, :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :maternal, :prejardin, :jardin, :preescolar, :total_matriculados, :anho_cod_geo, :inicial_noformal ] 
           
-          send_data MatriculacionInicial.ordenado_institucion.where(cond).to_xlsx(:columns => columnas, name: "Matriculaciones Inicial").to_stream.read, 
-                    :filename => "matriculaciones_inicial_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
-                    :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
-                    disposition: 'attachment'
-        }
-      
+        @matriculaciones_inicial.each do |m|
+            
+          sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento, m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad, m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.maternal, m.prejardin, m.jardin, m.preescolar, m.total_matriculados, m.anho_cod_geo, m.inicial_noformal ] 
+          
+        end
+
       end
+      
+      p.use_shared_strings = true
+      
+      p.serialize('public/data/matriculaciones_inicial_2012.xlsx')
+        
+      send_file "public/data/matriculaciones_inicial_2012.xlsx", :filename => "matriculaciones_inicial_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     elsif params[:format] == 'pdf'
 
       report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'matriculaciones_inicial.tlf')
 
-      matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.find(:all, :conditions => cond)
+      matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond)
     
       report.start_new_page do |page|
       
@@ -210,7 +212,7 @@ class MatriculacionesInicialController < ApplicationController
 
     else
 
-      @matriculaciones_inicial_todos = MatriculacionInicial.ordenado_institucion.find(:all, :conditions => cond)
+      @matriculaciones_inicial_todos = MatriculacionInicial.ordenado_institucion.where(cond)
       
       respond_to do |f|
 

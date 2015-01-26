@@ -107,7 +107,7 @@ class ContratacionesController < ApplicationController
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
 
-    @contrataciones = cond.size > 0 ? (Contratacion.paginate :conditions => cond, :per_page => 15, :page => params[:page]) : (Contratacion.paginate :per_page => 15, :page => params[:page])
+    @contrataciones = Contratacion.where(cond).paginate(page: params[:page], per_page: 15)
 
     @total_registros = Contratacion.count 
 
@@ -132,21 +132,25 @@ class ContratacionesController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      @contrataciones = Contratacion.where(cond)
+      contrataciones_xlsx = Contratacion.where(cond)
+       
+      p = Axlsx::Package.new
+        
+      p.workbook.add_worksheet(:name => "Contrataciones") do |sheet|
+          
+        sheet.add_row ["llamado_publico", "estado_llamado_id", "estado_llamado", "ejercicio_fiscal", "categoria_id", "categoria", "nombre", "descripcion", "fecha_apertura_oferta", "fecha_contrato", "fecha_vigencia_contrato", "proveedor_id", "proveedor_ruc", "proveedor", "modalidad_id", "modalidad", "monto_adjudicado"]
 
-      respond_to do |format|
-      
-        format.xlsx {
+        contrataciones_xlsx.each do |c|
+              
+          sheet.add_row [ c.llamado_publico, c.estado_llamado_id, c.estado_llamado, c.ejercicio_fiscal, c.categoria_id, c.categoria, c.nombre, c.descripcion, c.fecha_apertura_oferta, c.fecha_contrato,c.fecha_vigencia_contrato, c.proveedor_id, c.proveedor_ruc, c.proveedor, c.modalidad_id, c.modalidad, c.monto_adjudicado ]
+                
+        end
 
-          columnas = [:llamado_publico, :estado_llamado_id, :estado_llamado, :ejercicio_fiscal, :categoria_id, :categoria, :nombre, :descripcion, :fecha_apertura_oferta, :fecha_contrato, :fecha_vigencia_contrato, :proveedor_id, :proveedor_ruc, :proveedor, :modalidad_id, :modalidad, :monto_adjudicado]
-         
-          send_data Contratacion.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
-                    :filename => "contrataciones_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
-                    :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
-                    disposition: 'attachment'
-        }
-      
       end
+            
+      p.use_shared_strings = true
+      
+      send_data p.to_stream.read, filename: "contrataciones_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     else
 

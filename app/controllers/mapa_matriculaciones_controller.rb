@@ -93,7 +93,9 @@ class MapaMatriculacionesController < ApplicationController
                                         group(:nombre_departamento).sum(:cantidad) :
                                        MapaMatriculacion.group(:nombre_departamento).sum(:cantidad)
     
-    render :json => @matriculaciones.to_json
+    respond_to do |f|
+      f.json { render :json => @matriculaciones.to_json}
+    end
 
   end
 

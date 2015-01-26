@@ -107,7 +107,7 @@
             lng: "<%= lng %>",
             title: 'Datos del Establecimiento',
             infoWindow: {
-              content: "<%= escape_javascript(render :partial => 'data/infowindow_establecimiento_doc', :locals => {:establecimiento => @establecimiento})  %>"
+              content: "<%= escape_javascript(render :partial => 'establecimientos/infowindow_establecimiento_doc', :locals => {:establecimiento => @establecimiento})  %>"
             }
           });
         });

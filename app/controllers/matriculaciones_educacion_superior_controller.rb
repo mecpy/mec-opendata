@@ -1,7 +1,6 @@
 class MatriculacionesEducacionSuperiorController < ApplicationController
   def index
-    @matriculaciones_educacion_superior = MatriculacionEducacionSuperior.
-                                                orden_dep_dis.paginate :per_page => 15, :page => params[:page]
+    @matriculaciones_educacion_superior = MatriculacionEducacionSuperior.orden_dep_dis.paginate :per_page => 15, :page => params[:page]
     respond_to do |f|
 
       f.html {render :layout => 'application_wide'}
@@ -113,11 +112,7 @@ class MatriculacionesEducacionSuperiorController < ApplicationController
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
 
-    @matriculaciones_educacion_superior = cond.size > 0 ?
-                                                (MatriculacionEducacionSuperior.
-                                                orden_dep_dis.paginate :conditions => cond, 
-                                                                               :per_page => 15,
-                                                                               :page => params[:page]) : {}
+    @matriculaciones_educacion_superior = MatriculacionEducacionSuperior.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
 
     @total_registros = MatriculacionEducacionSuperior.count 
 
@@ -125,8 +120,7 @@ class MatriculacionesEducacionSuperiorController < ApplicationController
 
       require 'csv'
 
-      matriculaciones_educacion_superior_csv = MatriculacionEducacionSuperior.
-                                                      orden_dep_dis.find(:all, :conditions => cond)
+      matriculaciones_educacion_superior_csv = MatriculacionEducacionSuperior.orden_dep_dis.where(cond)
 
       csv = CSV.generate do |csv|
         # header row
@@ -154,36 +148,44 @@ class MatriculacionesEducacionSuperiorController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      @matriculaciones_educacion_superior = MatriculacionEducacionSuperior.
-        orden_dep_dis.find(:all, :conditions => cond)
+      @matriculaciones_educacion_superior = MatriculacionEducacionSuperior.orden_dep_dis.where(cond)
 
-      respond_to do |format|
+      p = Axlsx::Package.new
       
-        format.xlsx {
+      p.workbook.add_worksheet(:name => "Matriculaciones ES") do |sheet|
           
-          columnas = [:anio, :codigo_departamento, :nombre_departamento, 
+        sheet.add_row [:anio, :codigo_departamento, :nombre_departamento, 
             :codigo_distrito, :nombre_distrito, :codigo_barrio_localidad,
             :nombre_barrio_localidad, :codigo_zona, :nombre_zona, 
             :codigo_establecimiento, :codigo_institucion, :nombre_institucion,
             :sector_o_tipo_gestion, :matricula_ets, :matricula_fed,
-            :matricula_fdes, :matricula_pd, :anho_cod_geo ] 
-          
-          send_data MatriculacionEducacionSuperior.orden_dep_dis.where(cond).
-            to_xlsx(:columns => columnas, :name => "Matriculaciones").to_stream.read, 
-            :filename => "matriculaciones_educacion_superior_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
-            :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
-            disposition: 'attachment'
-        }
-      
+            :matricula_fdes, :matricula_pd, :anho_cod_geo]
+
+        @matriculaciones_educacion_superior.each do |m|
+            
+          sheet.add_row [m.anio, m.codigo_departamento, m.nombre_departamento, 
+            m.codigo_distrito, m.nombre_distrito, m.codigo_barrio_localidad,
+            m.nombre_barrio_localidad, m.codigo_zona, m.nombre_zona, 
+            m.codigo_establecimiento, m.codigo_institucion, m.nombre_institucion,
+            m.sector_o_tipo_gestion, m.matricula_ets, m.matricula_fed,
+            m.matricula_fdes, m.matricula_pd, m.anho_cod_geo]
+
+        end
+
       end
+      
+      p.use_shared_strings = true
+      
+      p.serialize('public/data/matriculaciones_educacion_superior_2012.xlsx')
+        
+      send_file "public/data/matriculaciones_educacion_superior_2012.xlsx", :filename => "matriculaciones_educacion_superior_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     elsif params[:format] == 'pdf'
 
       report = ThinReports::Report.new layout: File.join(Rails.root, 'app',
         'reports', 'matriculaciones_educacion_superior.tlf')
 
-      matriculaciones_educacion_superior = MatriculacionEducacionSuperior.
-                                                  orden_dep_dis.find(:all, :conditions => cond)
+      matriculaciones_educacion_superior = MatriculacionEducacionSuperior.orden_dep_dis.where(cond)
     
       report.start_new_page do |page|
       
@@ -224,8 +226,7 @@ class MatriculacionesEducacionSuperiorController < ApplicationController
 
     else
 
-      @matriculaciones_educacion_superior_todos = MatriculacionEducacionSuperior.
-                                                        orden_dep_dis.find(:all, :conditions => cond)
+      @matriculaciones_educacion_superior_todos = MatriculacionEducacionSuperior.orden_dep_dis.where(cond)
       
       respond_to do |f|
 

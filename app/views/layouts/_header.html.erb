@@ -1,18 +1,46 @@
-<div style="clear:both;"></div>
-<div>
+<div id="enca_top1">
+
+</div> 
+
+<div id="top1">
   
-  <div style="height:100px">
-    <div style="float:left;"><%= link_to image_tag("logo_left.png"), "http://www.mec.gov.py" %></div>
-    <div style="float:right;"><%= link_to image_tag("logo_right.png"), "http://www.mec.gov.py" %></div>
+  <div style="margin-top:2px;float:left;width:282px;height:175px;box-shadow:0 0 15px #000000;background:#455f6e;
+margin:-17px 1px 8px;">
+    <div style="margin-top:2px;float:left;margin:40px 13px 0px;">
+          <%= link_to image_tag("logo_left.png", style: 'width:246px;'), root_path%>
+    </div>
+  
   </div>
-  <div style="clear:both;"></div>
-  
-  <div id="toolbar" style="clear:both;background-color:#CCC">
-    Asunción - <%= l Date.today, :format => "%d de %B de %Y" %> 
-    <div style="float:right">
-      <%= link_to "Webmail", "http://www.mec.gov.py/webmail/", :target => "_blank" %> | <%= link_to "Intramec", "http://www.mec.gov.py/intramec", :target => "_blank" %> | <%= link_to "SIGMEC", "http://www.mec.gov.py/atenea-web/login.jsp", :target => "_blank" %>
+
+  <div style="margin-top:-16px;float:right;width:302px;height:166px;">
+    <div style="margin-top:-14px;float:left;margin:40px 13px 0px;">
+      <%= link_to image_tag("logo_right.jpg", style: "width:280px;margin:-10px -32px 2px"), root_path %>
     </div>
   </div>
+  <div class="clear"></div>
 </div>
-<div style="clear:both;"></div>
+
+
+
+<div id="top2">
+
+  <div style="margin-top:8px;float:right;margin-right:15px;text-align:right;">
+    <%= link_to "Sigmec", "http://www.mec.gov.py/sigmec/faces/login.xhtml", :class => 'enlace-sistema-intramec', :target => '_blank' %>
+    <%= link_to "IntraMEC", "http://www.mec.gov.py/intramec", :class => 'enlace-sistema-intramec', :target => '_blank' %>
+    <%= link_to "MECDigital", "http://www.mec.gov.py", :class => 'enlace-sistema-intramec', :target => '_blank' %>
+    <%= link_to "WEBMAIL", "http://www.mec.gov.py/webmail/", :class => 'enlace-sistema-webmail', :target => '_blank' %>
+  </div>
+  
+  <div class="clear"></div>
+
+</div>
+
+<script type="text/javascript">
+  
+  $("#busqueda_normal").bind("click", function(){
+
+      $("#container").html("<%= (escape_javascript("<div class='loader'>#{image_tag('ajax-loader0.gif')}</div>")).html_safe %>")    
+  });
+
+</script>
 

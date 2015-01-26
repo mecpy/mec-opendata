@@ -1,5 +1,5 @@
 class RequerimientosAlimentacionController < ApplicationController
-  before_filter :redireccionar_uri
+  #before_filter :redireccionar_uri
   def diccionario
 
   end

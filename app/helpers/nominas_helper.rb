@@ -10,7 +10,7 @@ module NominasHelper
 
   def obtener_total_asignacion(id_trabajador, id_objeto_gasto, es_categoria_administrativa, ano_periodo_pago, mes_periodo_pago)
 
-    nomina = VNomina.find_all_by_id_trabajador_and_id_objeto_gasto_and_es_categoria_administrativa_and_ano_periodo_pago_and_mes_periodo_pago(id_trabajador, id_objeto_gasto, es_categoria_administrativa, ano_periodo_pago, mes_periodo_pago)
+    nomina=VNomina.where('id_trabajador = ? and id_objeto_gasto = ? and es_categoria_administrativa = ? and ano_periodo_pago = ? and mes_periodo_pago = ?', id_trabajador, id_objeto_gasto, es_categoria_administrativa, ano_periodo_pago, mes_periodo_pago)
     
     asignacion = 0
 

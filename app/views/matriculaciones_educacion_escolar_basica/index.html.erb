@@ -1,14 +1,8 @@
 <h2>
-  <span itemprop="name">Matriculaciones Educación Escolar Básica</span>
+	<span itemprop="name">Matriculaciones Educación Escolar Básica</span>
   <meta itemprop="description" content="
-        Se refiere a la cantidad de alumnos matriculados del 1.º al 9.º grado con sus correspondientes códigos identificatorios."/>
-  <meta itemprop="url" content="http://datos.mec.gov.py/data/matriculaciones_educacion_escolar_basica">
+    Se refiere a la cantidad de alumnos matriculados del 1.º al 9.º grado con sus correspondientes códigos identificatorios."/>
   <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
-  <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
-    <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
-    <meta itemprop="url" content="http://datos.mec.gov.py/">
-    <meta itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura">
-  </span>
   <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
     <meta itemprop="name" content="Ministerio de Educación y Cultura">
     <meta itemprop="url" content="http://www.mec.gov.py/">
@@ -34,171 +28,171 @@
 <div class="table-outter">
   <table id="matriculaciones-educacion-escolar-basica-table" class="table table-striped table-bordered table-hover" style="margin-bottom: 0px; width: 3000px; max-width: none">
 
-    <tr>
+  <tr>
 
-      <%= form_tag mec_custom_url(data_matriculaciones_educacion_escolar_basica_lista_url(nil)), :remote => true, :id => "form-buscar-matriculaciones-educacion-escolar-basica" do  %>
+    <%= form_tag mec_custom_url(data_matriculaciones_educacion_escolar_basica_lista_url(nil)), :remote => true, :id => "form-buscar-matriculaciones-educacion-escolar-basica" do  %>
 
-        <th style="width:3%;" class="text-min celda-derecha">
-          <%= label_tag "Periodo" %><br />
-          <%= select :form_buscar_matriculaciones_educacion_escolar_basica, :anio, [2012], {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_anio'),1);" %>
-        </th>
+      <th style="width:3%;" class="text-min celda-derecha">
+        <%= label_tag "Periodo" %><br />
+        <%= select :form_buscar_matriculaciones_educacion_escolar_basica, :anio, [2012], {:class => 'text-min'} %>
+        <%= link_to icon_delete, "#", onclick: "filtrar_form();return false;" %>
+      </th>
 
-        <th style="width:6%;" class="text-min">
-          <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe%><br />
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_codigo_establecimiento, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_codigo_establecimiento'));" %>
-        </th>
+      <th style="width:6%;" class="text-min">
+        <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe%><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_codigo_establecimiento, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_codigo_establecimiento').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
-        <th style="width:4%;" class="text-min">
-          <%= label_tag nil, "C&oacute;digo Instituci&oacute;n".html_safe%><br />
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_codigo_institucion, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_codigo_institucion'));" %>
-        </th>
+      <th style="width:4%;" class="text-min">
+        <%= label_tag nil, "C&oacute;digo Instituci&oacute;n".html_safe%><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_codigo_institucion, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_codigo_institucion').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
-        <th style="width:6%;" class="text-min">
-          <%= label_tag "Institución"%><br />
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_nombre_institucion, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_nombre_institucion'));" %>
-        </th>
+      <th style="width:6%;" class="text-min">
+        <%= label_tag "Institución"%><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_nombre_institucion, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_nombre_institucion').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag "Departamento"%><br />
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_nombre_departamento, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_nombre_departamento'));" %>
-        </th>
+      <th style="width:5%;" class="text-min">
+        <%= label_tag "Departamento"%><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_nombre_departamento, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_nombre_departamento').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag "Distrito"%><br />
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_nombre_distrito, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_nombre_distrito'));" %>
-        </th>
+      <th style="width:5%;" class="text-min">
+        <%= label_tag "Distrito"%><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_nombre_distrito, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_nombre_distrito').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag "Barrio/Localidad"%><br />
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_nombre_barrio_localidad, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_nombre_barrio_localidad'));" %>
-        </th>
+      <th style="width:5%;" class="text-min">
+        <%= label_tag "Barrio/Localidad"%><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_nombre_barrio_localidad, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_barrio_localidad').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
-        <th style="width:3%;" class="text-min">
-          <%= label_tag "Zona"%><br />
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_nombre_zona, nil, :class => 'text-min',:style => 'width:50px;' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_nombre_zona'));" %>
-        </th>
+      <th style="width:3%;" class="text-min">
+        <%= label_tag "Zona"%><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_nombre_zona, nil, :class => 'text-min',:style => 'width:50px;' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_nombre_zona').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag "Sector o Tipo Gestión"%><br />
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_sector_o_tipo_gestion, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_sector_o_tipo_gestion'));" %>
-        </th>
+      <th style="width:5%;" class="text-min">
+        <%= label_tag "Sector o Tipo Gestión"%><br />
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_sector_o_tipo_gestion, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_sector_o_tipo_gestion').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Primer Grado".html_safe%><br />
-          <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_primer_grado_operador, options_for_select(['>', '<', '='])) %>
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_primer_grado, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_primer_grado'));" %>
-        </th>
+      <th style="width:5%;" class="text-min">
+        <%= label_tag nil, "Primer Grado".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_primer_grado_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_primer_grado, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_primer_grado').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Segundo Grado".html_safe%><br />
-          <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_segundo_grado_operador, options_for_select(['>', '<', '='])) %>
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_segundo_grado, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_segundo_grado'));" %>
-        </th>
+      <th style="width:5%;" class="text-min">
+        <%= label_tag nil, "Segundo Grado".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_segundo_grado_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_segundo_grado, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_segundo_grado').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Tercer Grado".html_safe%><br />
-          <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_tercer_grado_operador, options_for_select(['>', '<', '='])) %>
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_tercer_grado, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_tercer_grado'));" %>
-        </th>
+      <th style="width:5%;" class="text-min">
+        <%= label_tag nil, "Tercer Grado".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_tercer_grado_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_tercer_grado, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_tercer_grado').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Cuarto Grado".html_safe%><br />
-          <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_cuarto_grado_operador, options_for_select(['>', '<', '='])) %>
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_cuarto_grado, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_cuarto_grado'));" %>
-        </th>
+      <th style="width:5%;" class="text-min">
+        <%= label_tag nil, "Cuarto Grado".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_cuarto_grado_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_cuarto_grado, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_cuarto_grado').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Quinto Grado".html_safe%><br />
-          <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_quinto_grado_operador, options_for_select(['>', '<', '='])) %>
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_quinto_grado, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_quinto_grado'));" %>
-        </th>
+      <th style="width:5%;" class="text-min">
+        <%= label_tag nil, "Quinto Grado".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_quinto_grado_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_quinto_grado, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_quinto_grado').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Sexto Grado".html_safe%><br />
-          <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_sexto_grado_operador, options_for_select(['>', '<', '='])) %>
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_sexto_grado, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_sexto_grado'));" %>
-        </th>
+      <th style="width:5%;" class="text-min">
+        <%= label_tag nil, "Sexto Grado".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_sexto_grado_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_sexto_grado, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_sexto_grado').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Septimo Grado".html_safe%><br />
-          <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_septimo_grado_operador, options_for_select(['>', '<', '='])) %>
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_septimo_grado, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_septimo_grado'));" %>
-        </th>
+      <th style="width:5%;" class="text-min">
+        <%= label_tag nil, "Septimo Grado".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_septimo_grado_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_septimo_grado, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_septimo_grado').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Octavo Grado".html_safe%><br />
-          <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_octavo_grado_operador, options_for_select(['>', '<', '='])) %>
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_octavo_grado, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_octavo_grado'));" %>
-        </th>
+      <th style="width:5%;" class="text-min">
+        <%= label_tag nil, "Octavo Grado".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_octavo_grado_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_octavo_grado, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_octavo_grado').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Noveno Grado".html_safe%><br />
-          <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_noveno_grado_operador, options_for_select(['>', '<', '='])) %>
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_noveno_grado, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_noveno_grado'));" %>
-        </th>
+      <th style="width:5%;" class="text-min">
+        <%= label_tag nil, "Noveno Grado".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_noveno_grado_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_noveno_grado, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_noveno_grado').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Total Matriculados".html_safe%><br />
-          <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados_operador, options_for_select(['>', '<', '='])) %>
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados'));" %>
-        </th>
+      <th style="width:5%;" class="text-min">
+        <%= label_tag nil, "Total Matriculados".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados').val(''); filtrar_form(); return false;" %><br />
+      </th>
 
-      <% end %>
+ <% end %>
 
     </tr>
 
     <tbody id="lista"></tbody>
 
   </table>
-</div>
+  </div>
 
-<table class="table table-striped table-bordered table-hover">
-  <tbody id="matriculaciones-educacion-escolar-basica-footer"></tbody>
-</table>
+   <table class="table table-striped table-bordered table-hover">
+    <tbody id="matriculaciones-educacion-escolar-basica-footer"></tbody>
+  </table>
 
 <script type="text/javascript">
 
-  $("#form-buscar-matriculaciones-educacion-escolar-basica").bind("submit", function() {
+  $("#form-buscar-matriculaciones-educacion-escolar-basica").bind("submit", function(){
 
-    $("#lista").html("<%= escape_javascript("<tr><td colspan='19' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")
-
+      $("#lista").html("<%= escape_javascript("<tr><td colspan='19' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")    
+  
   })
 
-  $("#form_buscar_matriculaciones_educacion_escolar_basica_anio").bind('change', function() {
-    $.ajaxQ.abortAll();
+  $("#form_buscar_matriculaciones_educacion_escolar_basica_anio").bind('change',function(){
+      
     $("#form-buscar-matriculaciones-educacion-escolar-basica").submit();
-
+      
   })
 
-  $(".table-bordered :input").bind('change', function() {
-    $.ajaxQ.abortAll();
+ $(".table-bordered :input").bind('change',function(){
+      
     $("#form-buscar-matriculaciones-educacion-escolar-basica").submit();
-
+      
   })
 
   //LIMPIAR FORMULARIO DE BUSQUEDA
-  function limpiar_form_buscar_matriculaciones_educacion_escolar_basica() {
-
+  function limpiar_form_buscar_matriculaciones_educacion_escolar_basica(){
+    
     $("#form_buscar_matriculaciones_educacion_escolar_basica_anio").val("2012");
     $("#form_buscar_matriculaciones_educacion_escolar_basica_codigo_establecimiento").val("");
     $("#form_buscar_matriculaciones_educacion_escolar_basica_nombre_departamento").val("");
@@ -217,25 +211,17 @@
     $("#form_buscar_matriculaciones_educacion_escolar_basica_octavo_grado").val("");
     $("#form_buscar_matriculaciones_educacion_escolar_basica_noveno_grado").val("");
     $("#form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados").val("");
-    $.ajaxQ.abortAll();
+    $("#form-buscar-matriculaciones-educacion-escolar-basica").submit();
+
+  }  
+
+  function filtrar_form(){
+
     $("#form-buscar-matriculaciones-educacion-escolar-basica").submit();
 
   }
 
   limpiar_form_buscar_matriculaciones_educacion_escolar_basica();
-
-//--------------- QUITAR FILTRO -------------------//
-  function quitar_filtro(id, ban) {
-    if (ban === 1) {
-      id.val("2012");
-    } else {
-      id.val('');
-    }
-    $.ajaxQ.abortAll();
-    $('#form-buscar-matriculaciones-educacion-escolar-basica').submit();
-
-  }
-  //-------------------------------------------------//
 
 </script>
 
@@ -251,7 +237,7 @@
     color:#000;
   }
   .text-min input[type="text"] { width: 80px;}
-  #tablaContenedor{width:100%;}
-
+  #tablaContenedor{width:900px;}
+ 
 </style>
 

@@ -1,8 +1,8 @@
 class VServicioBasico < ActiveRecord::Base
 
-  acts_as_xlsx
-
-  scope :orden_dep_dis, :order => 'nombre_departamento, nombre_distrito'
+  self.table_name = "v_servicios_basicos"
+  
+  scope :orden_dep_dis, -> { order('nombre_departamento, nombre_distrito')}
   
   def uri_establecimiento
     "http://datos.mec.gov.py/id/establecimientos/#{self.codigo_establecimiento}"

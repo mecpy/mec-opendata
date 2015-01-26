@@ -47,128 +47,128 @@
         <th style="width:3%" class="text-min celda-derecha">
           <%= label_tag "Periodo" %><br /><br />
           <%= select :form_buscar_requerimientos_alimentacion, :periodo, [2015], {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_periodo'),1);" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_periodo'),1);" %>
         </th>
 
         <th style="width:4%" class="text-min">
           <%= label_tag "Departamento"%><br /><br />
           <%= text_field_tag :form_buscar_requerimientos_alimentacion_nombre_departamento, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_nombre_departamento'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_nombre_departamento'));" %>
         </th>
 
         <th style="width:4%" class="text-min">
           <%= label_tag "Distrito" %><br /><br />
           <%= text_field_tag :form_buscar_requerimientos_alimentacion_nombre_distrito, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_nombre_distrito'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_nombre_distrito'));" %>
         </th>
 
         <th style="width:3%" class="text-prioridad">
           <%= label_tag nil, "N&uacute;mero<br/>Prioridad".html_safe%><br />
           <%= text_field_tag :form_buscar_requerimientos_alimentacion_numero_prioridad, nil, :class => 'text-prioridad' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_numero_prioridad'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_numero_prioridad'));" %>
         </th>
 
         <th style="width:4%" class="text-min">
           <%= label_tag nil, "C&oacute;digo<br />Establecimiento".html_safe %><br />
           <%= text_field_tag :form_buscar_requerimientos_alimentacion_codigo_establecimiento, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_codigo_establecimiento'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_codigo_establecimiento'));" %>
         </th>
 
         <th style="width:4%" class="text-min">
           <%= label_tag nil, "C&oacute;digo<br />Instituci&oacute;n".html_safe%><br />
           <%= text_field_tag :form_buscar_requerimientos_alimentacion_codigo_institucion, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_codigo_institucion'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_codigo_institucion'));" %>
         </th>
 
         <th style="width:5%" class="text-min">
           <%= label_tag nil, "Instituci&oacute;n".html_safe%><br /><br />
           <%= text_field_tag :form_buscar_requerimientos_alimentacion_nombre_institucion, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_nombre_institucion'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_nombre_institucion'));" %>
         </th>
 
         <th style="width:4%;" class="text-min">
           <%= label_tag nil, "Zona".html_safe%><br /><br />
           <%= text_field_tag :form_buscar_requerimientos_alimentacion_nombre_zona, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_nombre_zona'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_nombre_zona'));" %>
         </th>
 
         <th style="width:6%;" class="text-min celda-derecha">
           <%= label_tag nil,"Cuenta con Espacio para Construcci&oacute;n Cocina - Comedor".html_safe %><br />
           <%= select :form_buscar_requerimientos_alimentacion, :espacio_cocina_comedor, ['','SI','NO'], {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_espacio_cocina_comedor'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_espacio_cocina_comedor'));" %>
         </th>
 
         <th style="width:3%;" class="text-min celda-derecha">
           <%= label_tag nil,"Doble<br />Escolaridad".html_safe %><br />
           <%= select :form_buscar_requerimientos_alimentacion, :doble_escolaridad, ['','SI','NO'], {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_doble_escolaridad'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_doble_escolaridad'));" %>
         </th>
 
         <th style="width:4%;" class="text-min celda-derecha">
           <%= label_tag nil,"Porcentaje<br />Ausentismo".html_safe %><br />
           <%= select :form_buscar_requerimientos_alimentacion, :porcentaje_ausentismo, ['','0-10%','11-25%','>25%'], {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_porcentaje_ausentismo'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_porcentaje_ausentismo'));" %>
         </th>
 
         <th style="width:4%;" class="text-min celda-derecha">
           <%= label_tag nil,"Tipo de<br />Alimentaci&oacute;n".html_safe %><br />
           <%= select :form_buscar_requerimientos_alimentacion, :tipo_alimentacion_escolar, ['','MERIENDA','ALMUERZO'], {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_tipo_alimentacion_escolar'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_tipo_alimentacion_escolar'));" %>
         </th>
 
         <th style="width:7%;" class="text-min celda-derecha">
           <%= label_tag nil,"Tipo de Merienda".html_safe %><br /><br />
           <%= select :form_buscar_requerimientos_alimentacion, :tipo_merienda, ['','LECHE','GALLETITA','ALIMENTO DULCE/SALADO','PLAN LACTEADO','NO ESPECIFICADO'], {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_tipo_merienda'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_tipo_merienda'));" %>
         </th>
         
         <th style="width:5%;" class="text-min celda-derecha">
           <%= label_tag nil,"Proveedor de<br />Merienda".html_safe %><br />
           <%= select :form_buscar_requerimientos_alimentacion, :proveedor_merienda, ['','MUNICIPIO','GOBERNACION'], {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_proveedor_merienda'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_proveedor_merienda'));" %>
         </th>
         
         <th style="width:3%;" class="text-meses">
           <%= label_tag nil,"Meses con<br />Merienda".html_safe %><br />
           <%= text_field_tag :form_buscar_requerimientos_alimentacion_cantidad_meses_merienda, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_cantidad_meses_merienda'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_cantidad_meses_merienda'));" %>
         </th>
         
         <th style="width:7%;" class="text-min celda-derecha">
           <%= label_tag nil,"Tipo de Almuerzo".html_safe %><br /><br />
           <%= select :form_buscar_requerimientos_alimentacion, :tipo_almuerzo, ['','ALIMENTO FRESCO','ALIMENTO DESHIDRATADO'], {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_tipo_almuerzo'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_tipo_almuerzo'));" %>
         </th>
         
         <th style="width:5%;" class="text-min celda-derecha">
           <%= label_tag nil,"Proveedor de<br />Almuerzo".html_safe %><br />
           <%= select :form_buscar_requerimientos_alimentacion, :proveedor_almuerzo, ['','MUNICIPIO','GOBERNACION'], {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_proveedor_almuerzo'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_proveedor_almuerzo'));" %>
         </th>
         
         <th style="width:3%;" class="text-meses">
           <%= label_tag nil,"Meses con<br />Almuerzo".html_safe %><br />
           <%= text_field_tag :form_buscar_requerimientos_alimentacion_cantidad_meses_almuerzo, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_cantidad_meses_almuerzo'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_cantidad_meses_almuerzo'));" %>
         </th>
 
         <th style="width:8%;" class="text-min celda-derecha">
           <%= label_tag nil,"Forma de Obtenci&oacute;n Almuerzo".html_safe %><br /><br />
           <%= select :form_buscar_requerimientos_alimentacion, :forma_obtencion_almuerzo, ['','SERVICIO DE CATERING','PREPARADO EN EL LOCAL ESCOLAR','PREPARADO EN CASAS PARTICULARES','NO ESPECIFICADO','PREPARADO POR COMEPAR','PREPARADO EN CASAS VECINAS','COCINERA CONTRATADA','CATERING/PREPARADO EN EL LOCAL'], {:class => 'text-min'} %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_forma_obtencion_almuerzo'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_forma_obtencion_almuerzo'));" %>
         </th>
 
         <th style="width:5%;" class="text-min">
           <%= label_tag nil, "N&uacute;mero de Beneficiados".html_safe%><br /><br />
           <%= select_tag(:form_buscar_requerimientos_alimentacion_numero_beneficiados_operador, options_for_select(['>', '<', '='])) %>
           <%= text_field_tag :form_buscar_requerimientos_alimentacion_numero_beneficiados, nil, :class => 'text-min' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_numero_beneficiados'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_numero_beneficiados'));" %>
         </th>
 
         <th style="width:21%;" class="text-justificacion">
           <%= label_tag nil,"Justificaci&oacute;n".html_safe%><br /><br />
           <%= text_field_tag :form_buscar_requerimientos_alimentacion_justificacion, nil, :class => 'text-justificacion' %>
-          <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_justificacion'));" %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_requerimientos_alimentacion_justificacion'));" %>
         </th>
 
       <% end %>

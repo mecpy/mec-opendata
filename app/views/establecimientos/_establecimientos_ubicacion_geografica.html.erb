@@ -1,4 +1,4 @@
-<td colspan='11'>
+<td colspan='10'>
   <% if @establecimiento.latitud.present? && @establecimiento.longitud.present? %>
     
     <br/>
@@ -9,9 +9,7 @@
     <script type="text/javascript">
   
       $(document).ready(function(){
-      
         var map;
-      
         map = new GMaps({
           el: '#map',
           lat: "<%= lat %>",
@@ -23,7 +21,7 @@
           lng: "<%= lng %>",
           title: 'Datos del Establecimiento',
           infoWindow: {
-            content: "<%= escape_javascript(render :partial => 'data/infowindow_establecimiento', :locals => {:establecimiento => @establecimiento})  %>"
+            content: "<%= escape_javascript(render partial: 'establecimientos/infowindow_establecimiento', locals: {:establecimiento => @establecimiento })  %>"
           }
         });
       });
@@ -44,5 +42,3 @@
   <% end %>
 
 </td>
-
-

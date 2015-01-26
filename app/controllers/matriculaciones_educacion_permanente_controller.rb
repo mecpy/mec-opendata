@@ -1,8 +1,8 @@
 class MatriculacionesEducacionPermanenteController < ApplicationController
 
   def index
-    @matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.
-                                                orden_dep_dis.paginate :per_page => 15, :page => params[:page]
+    @matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.orden_dep_dis.paginate :per_page => 15, :page => params[:page]
+    
     respond_to do |f|
 
       f.html {render :layout => 'application_wide'}
@@ -117,11 +117,7 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
 
-    @matriculaciones_educacion_permanente = cond.size > 0 ?
-                                                (MatriculacionEducacionPermanente.
-                                                orden_dep_dis.paginate :conditions => cond, 
-                                                                               :per_page => 15,
-                                                                               :page => params[:page]) : {}
+    @matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
 
     @total_registros = MatriculacionEducacionPermanente.count 
 
@@ -129,8 +125,7 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
 
       require 'csv'
 
-      matriculaciones_educacion_permanente_csv = MatriculacionEducacionPermanente.
-                                                      orden_dep_dis.find(:all, :conditions => cond)
+      matriculaciones_educacion_permanente_csv = MatriculacionEducacionPermanente.orden_dep_dis.where(cond)
 
       csv = CSV.generate do |csv|
         # header row
@@ -154,34 +149,40 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      @matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.
-        orden_dep_dis.find(:all, :conditions => cond)
+      @matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.orden_dep_dis.where(cond)
 
-      respond_to do |format|
+      p = Axlsx::Package.new
       
-        format.xlsx {
+      p.workbook.add_worksheet(:name => "Matriculaciones EP") do |sheet|
           
-          columnas = [:anio, :codigo_departamento, :nombre_departamento, 
+        sheet.add_row [:anio, :codigo_departamento, :nombre_departamento, 
             :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona,
             :sector_o_tipo_gestion, :codigo_institucion, :nombre_institucion, :matricula_ebbja,
-            :matricula_fpi, :matricula_emapja, :matricula_emdja, :matricula_fp, :anho_cod_geo ] 
-          
-          send_data MatriculacionEducacionPermanente.orden_dep_dis.where(cond).
-            to_xlsx(:columns => columnas, :name => "Matriculaciones").to_stream.read, 
-            :filename => "matriculaciones_educacion_permanente_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
-            :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
-            disposition: 'attachment'
-        }
-      
+            :matricula_fpi, :matricula_emapja, :matricula_emdja, :matricula_fp, :anho_cod_geo]
+
+        @matriculaciones_educacion_permanente.each do |m|
+            
+          sheet.add_row [m.anio, m.codigo_departamento, m.nombre_departamento, 
+            m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona,
+            m.sector_o_tipo_gestion, m.codigo_institucion, m.nombre_institucion, m.matricula_ebbja,
+            m.matricula_fpi, m.matricula_emapja, m.matricula_emdja, m.matricula_fp, m.anho_cod_geo]
+
+        end
+
       end
+      
+      p.use_shared_strings = true
+      
+      p.serialize('public/data/matriculaciones_educacion_permanente_2012.xlsx')
+        
+      send_file "public/data/matriculaciones_educacion_permanente_2012.xlsx", :filename => "matriculaciones_educacion_permanente_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     elsif params[:format] == 'pdf'
 
       report = ThinReports::Report.new layout: File.join(Rails.root, 'app',
         'reports', 'matriculaciones_educacion_permanente.tlf')
 
-      matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.
-                                                  orden_dep_dis.find(:all, :conditions => cond)
+      matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.orden_dep_dis.where(cond)
     
       report.start_new_page do |page|
       
@@ -221,8 +222,7 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
 
     else
 
-      @matriculaciones_educacion_permanente_todos = MatriculacionEducacionPermanente.
-                                                        orden_dep_dis.find(:all, :conditions => cond)
+      @matriculaciones_educacion_permanente_todos = MatriculacionEducacionPermanente.orden_dep_dis.where(cond)
       
       respond_to do |f|
 

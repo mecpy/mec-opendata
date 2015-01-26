@@ -1,5 +1,5 @@
 class ServiciosBasicosController < ApplicationController
-    before_filter :redireccionar_uri
+    #before_filter :redireccionar_uri
   def diccionario
 
   end
@@ -114,18 +114,16 @@ class ServiciosBasicosController < ApplicationController
     end
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-
-    @servicios_basicos = cond.size > 0 ? (VServicioBasico.orden_dep_dis.paginate :conditions => cond, 
-                                                                               :per_page => 15,
-                                                                               :page => params[:page]) : {}
+    
+    @servicios_basicos = VServicioBasico.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
                                                
     @total_registros = VServicioBasico.count 
 
     if params[:format] == 'csv'
 
       require 'csv'
-
-      servicios_basicos_csv = VServicioBasico.orden_dep_dis.find(:all, :conditions => cond)
+      
+      servicios_basicos_csv = VServicioBasico.orden_dep_dis.where(cond).all
 
       csv = CSV.generate do |csv|
         # header row
@@ -152,29 +150,38 @@ class ServiciosBasicosController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      @servicios_basicos = VServicioBasico.orden_dep_dis.find(:all, :conditions => cond)
-
-      respond_to do |format|
-      
-        format.xlsx {
-
-          columnas = [:periodo, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito,
+      servicios_basicos_xlsx = VServicioBasico.orden_dep_dis.where(cond).all
+       
+      p = Axlsx::Package.new
+        
+      p.workbook.add_worksheet(:name => "ServiciosBasicos") do |sheet|
+          
+        sheet.add_row [:periodo, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito,
             :codigo_establecimiento, :codigo_barrio_localidad, :nombre_barrio_localidad,
             :codigo_zona,:nombre_zona,
             :nombre_asentamiento_colonia, :suministro_energia_electrica, :abastecimiento_agua, :servicio_sanitario_actual,
             :titulo_de_propiedad, :cuenta_plano, :prevencion_incendio, :uri_establecimiento]
-         
-          send_data VServicioBasico.orden_dep_dis.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
-                    :filename => "servicios_basicos_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
-                    :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
-                    disposition: 'attachment'
-        }
-      
+
+        servicios_basicos_xlsx.each do |i|
+              
+          sheet.add_row [i.periodo, i.codigo_departamento, i.nombre_departamento, i.codigo_distrito, i.nombre_distrito,
+            i.codigo_establecimiento, i.codigo_barrio_localidad, i.nombre_barrio_localidad,
+            i.codigo_zona,i.nombre_zona,
+            i.nombre_asentamiento_colonia, i.suministro_energia_electrica, i.abastecimiento_agua, i.servicio_sanitario_actual,
+            i.titulo_de_propiedad, i.cuenta_plano,i.prevencion_incendio,i.uri_establecimiento
+          ]
+                
+        end
+
       end
+            
+      p.use_shared_strings = true
+      
+      send_data p.to_stream.read, filename: "servicios_basicos_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     else
 
-      @servicios_basicos_todos = VServicioBasico.orden_dep_dis.find(:all, :conditions => cond)
+      @servicios_basicos_todos = VServicioBasico.orden_dep_dis.where(cond).all
       
       respond_to do |f|
 

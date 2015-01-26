@@ -2,31 +2,31 @@
 
 <script type="text/javascript">
 
-  $("#link-to-nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>").bind("click", function(){
-      
-      var tr_size = $.trim($("#nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>").html()).length 
+  $("#link-to-nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>").bind("click", function () {
 
-			$('.nominas-detalles').remove();
+      var tr_size = $.trim($("#nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>").html()).length
 
-			if(tr_size == 0){
+      $('.nominas-detalles').remove();
 
-        $(this).parent().parent().after("<tr id=\"nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>\" class=\"nominas-detalles\"></tr>"); 
-        
-        $("#nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>").html("<%= escape_javascript("<tr><td style='text-align:center;' colspan='9'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")  
-          
+      if (tr_size == 0) {
+
+          $(this).parent().parent().after("<tr id=\"nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>\" class=\"nominas-detalles\"></tr>");
+
+          $("#nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>").html("<%= escape_javascript("<tr><td colspan='9' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")
+
           $.ajax({
-						  type: 'POST',
-						  url: "<%= mec_custom_url(data_nomina_docentes_detalles_url) %>",
-              data: { id_trabajador:'<%= nomina.id_trabajador %>', 
-                      id_objeto_gasto:'<%= nomina.id_objeto_gasto %>', 
-                      ano_periodo_pago:'<%= nomina.ano_periodo_pago %>',
-                      mes_periodo_pago:'<%= nomina.mes_periodo_pago %>' },
-						  dataType: 'script'  
-						});
+              type: 'POST',
+              url: "<%= mec_custom_url(data_nomina_docentes_detalles_url) %>",
+              data: {id_trabajador: '<%= nomina.id_trabajador %>',
+                  id_objeto_gasto: '<%= nomina.id_objeto_gasto %>',
+                  ano_periodo_pago: '<%= nomina.ano_periodo_pago %>',
+                  mes_periodo_pago: '<%= nomina.mes_periodo_pago %>'},
+              dataType: 'script'
+          });
 
-      } 
+      }
 
-			return false; 
-	 });
+      return false;
+  });
 
 </script>

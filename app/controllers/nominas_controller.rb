@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class NominasController< ApplicationController
-  before_filter :redireccionar_uri
+  #before_filter :redireccionar_uri
   def diccionario
 
   end
@@ -9,7 +9,7 @@ class NominasController< ApplicationController
     
     respond_to do |f|
 
-      f.html {render :layout => 'layouts/application_dataset'}
+      f.html {render :layout => 'layouts/application_wide'}
   
     end
   end
@@ -77,8 +77,7 @@ class NominasController< ApplicationController
     end
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-
-    @nomina = cond.size > 0 ? (VNomina.es_administrativo.ordenado_anio_mes_nombre.paginate :conditions => cond, :per_page => 15, :page => params[:page]) : {}
+    @nomina = VNomina.es_administrativo.ordenado_anio_mes_nombre.where(cond).paginate(page: params[:page], per_page: 15)
 
     #@total_registros_encontrados = VNomina.count :conditions => cond
     #@total_registros = VNomina.count 
@@ -111,9 +110,9 @@ class NominasController< ApplicationController
           columnas = [:mes_periodo_pago, :ano_periodo_pago, :codigo_concepto_nomina, :nombre_concepto_nomina, :codigo_trabajador, :nombre_trabajador, :anhos_antiguedad_administrativo, :meses_antiguedad_administrativo, :anhos_antiguedad_docente, :meses_antiguedad_docente, :codigo_puesto, :numero_tipo_presupuesto_puesto, :codigo_dependencia, :nombre_dependencia, :codigo_cargo, :nombre_cargo, :codigo_categoria_rubro, :monto_categoria_rubro, :cantidad, :asignacion]
           
           send_data Nomina.ordenado_anio_mes_nombre.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
-                    :filename => "nomina_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
-                    :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
-                    disposition: 'attachment'
+          :filename => "nomina_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
+          :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
+          disposition: 'attachment'
         }
       
       end
@@ -155,20 +154,20 @@ class NominasController< ApplicationController
         report.list(:nomina).add_row do |row|
 
           row.values  mes_periodo_pago: n.mes_periodo_pago,
-                      ano_periodo_pago: n.ano_periodo_pago,
-                      codigo_trabajador: n.codigo_trabajador,        
-                      nombre_trabajador: n.nombre_trabajador,       
-                      nombre_objeto_gasto: "#{n.nombre_objeto_gasto} (#{n.codigo_objeto_gasto})",       
-                      estado: obtener_estado_funcionario(n.numero_tipo_presupuesto_puesto),
-                      antiguedad: "#{n.anhos_antiguedad_administrativo} año/s y #{n.meses_antiguedad_administrativo} mes/es",       
-                      nombre_concepto_nomina: n.nombre_concepto_nomina,       
-                      nombre_dependencia: n.nombre_dependencia_efectiva,       
-                      nombre_cargo: n.nombre_cargo_efectivo,       
-                      codigo_categoria_rubro: n.codigo_categoria_rubro,       
-                      monto_categoria_rubro: n.monto_categoria_rubro,       
-                      cantidad: n.cantidad.to_i,     
-                      asignacion: n.asignacion,
-                      monto_devuelto: n.monto_devuelto
+            ano_periodo_pago: n.ano_periodo_pago,
+            codigo_trabajador: n.codigo_trabajador,        
+            nombre_trabajador: n.nombre_trabajador,       
+            nombre_objeto_gasto: "#{n.nombre_objeto_gasto} (#{n.codigo_objeto_gasto})",       
+            estado: obtener_estado_funcionario(n.numero_tipo_presupuesto_puesto),
+            antiguedad: "#{n.anhos_antiguedad_administrativo} año/s y #{n.meses_antiguedad_administrativo} mes/es",       
+            nombre_concepto_nomina: n.nombre_concepto_nomina,       
+            nombre_dependencia: n.nombre_dependencia_efectiva,       
+            nombre_cargo: n.nombre_cargo_efectivo,       
+            codigo_categoria_rubro: n.codigo_categoria_rubro,       
+            monto_categoria_rubro: n.monto_categoria_rubro,       
+            cantidad: n.cantidad.to_i,     
+            asignacion: n.asignacion,
+            monto_devuelto: n.monto_devuelto
 
         end
 
@@ -182,8 +181,8 @@ class NominasController< ApplicationController
 
 
       send_data report.generate, filename: "funcionario_administrativo_#{Time.now.strftime('%d%m%Y__%H%M')}.pdf", 
-                                 type: 'application/pdf', 
-                                 disposition: 'attachment'
+        type: 'application/pdf', 
+        disposition: 'attachment'
 
     else
 
@@ -205,7 +204,7 @@ class NominasController< ApplicationController
 
     @nomina = Nomina.es_administrativo.where("id_trabajador = ? and id_objeto_gasto = ? 
     and ano_periodo_pago = ? and mes_periodo_pago = ?", 
-    params[:id_trabajador], params[:id_objeto_gasto], params[:ano_periodo_pago], params[:mes_periodo_pago])
+      params[:id_trabajador], params[:id_objeto_gasto], params[:ano_periodo_pago], params[:mes_periodo_pago])
 
     respond_to do |f|
 
@@ -299,8 +298,8 @@ class NominasController< ApplicationController
     end
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-
-    @nomina = cond.size > 0 ? (VNomina.es_docente.ordenado_anio_mes_nombre.paginate :conditions => cond, :per_page => 15, :page => params[:page]) : {}
+    
+    @nomina = VNomina.es_docente.ordenado_anio_mes_nombre.where(cond).paginate(page: params[:page], per_page: 15)
 
     #@total_registros_encontrados = VNomina.count :conditions => cond
     #@total_registros = VNomina.count 
@@ -333,9 +332,9 @@ class NominasController< ApplicationController
           columnas = [:mes_periodo_pago, :ano_periodo_pago, :codigo_concepto_nomina, :nombre_concepto_nomina, :codigo_trabajador, :nombre_trabajador, :anhos_antiguedad_administrativo, :meses_antiguedad_administrativo, :anhos_antiguedad_docente, :meses_antiguedad_docente, :codigo_puesto, :numero_tipo_presupuesto_puesto, :codigo_dependencia, :nombre_dependencia, :codigo_cargo, :nombre_cargo, :codigo_categoria_rubro, :monto_categoria_rubro, :cantidad, :asignacion]
           
           send_data Nomina.ordenado_anio_mes_nombre.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
-                    :filename => "nomina_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
-                    :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
-                    disposition: 'attachment'
+          :filename => "nomina_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
+          :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
+          disposition: 'attachment'
         }
       
       end
@@ -377,20 +376,20 @@ class NominasController< ApplicationController
         report.list(:nomina).add_row do |row|
 
           row.values  mes_periodo_pago: n.mes_periodo_pago,
-                      ano_periodo_pago: n.ano_periodo_pago,
-                      codigo_trabajador: n.codigo_trabajador,        
-                      nombre_trabajador: n.nombre_trabajador,       
-                      nombre_objeto_gasto: "#{n.nombre_objeto_gasto} (#{n.codigo_objeto_gasto})",       
-                      estado: obtener_estado_funcionario(n.numero_tipo_presupuesto_puesto),
-                      antiguedad: "#{n.anhos_antiguedad_docente} año/s y #{n.meses_antiguedad_docente} mes/es",       
-                      nombre_concepto_nomina: n.nombre_concepto_nomina,       
-                      nombre_dependencia: n.nombre_dependencia_efectiva,       
-                      nombre_cargo: n.nombre_cargo_efectivo,       
-                      codigo_categoria_rubro: n.codigo_categoria_rubro,       
-                      monto_categoria_rubro: n.monto_categoria_rubro,       
-                      cantidad: n.cantidad.to_i, 
-                      numero_matriculacion: n.numero_matriculacion,       
-                      asignacion: n.asignacion
+            ano_periodo_pago: n.ano_periodo_pago,
+            codigo_trabajador: n.codigo_trabajador,        
+            nombre_trabajador: n.nombre_trabajador,       
+            nombre_objeto_gasto: "#{n.nombre_objeto_gasto} (#{n.codigo_objeto_gasto})",       
+            estado: obtener_estado_funcionario(n.numero_tipo_presupuesto_puesto),
+            antiguedad: "#{n.anhos_antiguedad_docente} año/s y #{n.meses_antiguedad_docente} mes/es",       
+            nombre_concepto_nomina: n.nombre_concepto_nomina,       
+            nombre_dependencia: n.nombre_dependencia_efectiva,       
+            nombre_cargo: n.nombre_cargo_efectivo,       
+            codigo_categoria_rubro: n.codigo_categoria_rubro,       
+            monto_categoria_rubro: n.monto_categoria_rubro,       
+            cantidad: n.cantidad.to_i, 
+            numero_matriculacion: n.numero_matriculacion,       
+            asignacion: n.asignacion
 
         end
 
@@ -404,8 +403,8 @@ class NominasController< ApplicationController
 
 
       send_data report.generate, filename: "funcionario_docente_#{Time.now.strftime('%d%m%Y__%H%M')}.pdf", 
-                                 type: 'application/pdf', 
-                                 disposition: 'attachment'
+        type: 'application/pdf', 
+        disposition: 'attachment'
 
     else
 
@@ -428,7 +427,7 @@ class NominasController< ApplicationController
 
     @nomina = Nomina.es_docente.where("id_trabajador = ? and id_objeto_gasto = ? and ano_periodo_pago = ? 
     and mes_periodo_pago = ?", params[:id_trabajador], params[:id_objeto_gasto],
-     params[:ano_periodo_pago], params[:mes_periodo_pago])
+      params[:ano_periodo_pago], params[:mes_periodo_pago])
 
     respond_to do |f|
 
@@ -441,9 +440,8 @@ class NominasController< ApplicationController
     
   
   def docentes_doc
-   
-     @cnomina = VNomina.find_by_codigo_trabajador(params[:codigo_trabajador],:order => 'mes_periodo_pago DESC')
-     @dnomina = VNomina.where("codigo_trabajador = ? ",@cnomina.codigo_trabajador) if @cnomina.present? 
+    @cnomina = VNomina.order('mes_periodo_pago DESC').find_by_codigo_trabajador(params[:codigo_trabajador])
+    @dnomina = VNomina.where("codigo_trabajador = ? ",@cnomina.codigo_trabajador) if @cnomina.present? 
     
     respond_to do |f|
 
@@ -453,12 +451,12 @@ class NominasController< ApplicationController
     end
     
          
-   end
+  end
    
-   def administrativo_doc
+  def administrativo_doc
    
-     @adminnomina = VNomina.find_by_codigo_trabajador(params[:codigo_trabajador],:order => 'mes_periodo_pago DESC')
-     @adnomina = VNomina.where("codigo_trabajador = ? ",@adminnomina.codigo_trabajador) if @adminnomina.present? 
+    @adminnomina = VNomina.order('mes_periodo_pago DESC').find_by_codigo_trabajador(params[:codigo_trabajador])
+    @adnomina = VNomina.where("codigo_trabajador = ? ",@adminnomina.codigo_trabajador) if @adminnomina.present? 
     
     respond_to do |f|
 
@@ -467,7 +465,7 @@ class NominasController< ApplicationController
     end
     
          
-   end
+  end
   
 
 end

@@ -1,5 +1,5 @@
 class DirectoriosInstitucionesController < ApplicationController
-    before_filter :redireccionar_uri
+  #before_filter :redireccionar_uri
   def diccionario
 
   end
@@ -81,9 +81,7 @@ class DirectoriosInstitucionesController < ApplicationController
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
 
-    @directorios_instituciones = cond.size > 0 ? (VDirectorioInstitucion.orden_dep_dis.paginate :conditions => cond, 
-                                                                               :per_page => 15,
-                                                                               :page => params[:page]) : {}
+    @directorios_instituciones = VDirectorioInstitucion.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
 
     @total_registros = VDirectorioInstitucion.count 
 
@@ -91,21 +89,21 @@ class DirectoriosInstitucionesController < ApplicationController
 
       require 'csv'
 
-      directorios_instituciones_csv = VDirectorioInstitucion.orden_dep_dis.find(:all, :conditions => cond)
+      directorios_instituciones_csv = VDirectorioInstitucion.orden_dep_dis.where(cond).all
 
       csv = CSV.generate do |csv|
         # header row
         csv << ["periodo", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", 
-                "codigo_barrio_localidad","nombre_barrio_localidad", "codigo_zona", "nombre_zona",
-                "codigo_establecimiento", "codigo_institucion", "nombre_institucion", "anho_cod_geo", 
-                "uri_establecimiento", "uri_institucion"]
+          "codigo_barrio_localidad","nombre_barrio_localidad", "codigo_zona", "nombre_zona",
+          "codigo_establecimiento", "codigo_institucion", "nombre_institucion", "anho_cod_geo", 
+          "uri_establecimiento", "uri_institucion"]
  
         # data rows
         directorios_instituciones_csv.each do |i|
           csv << [i.periodo, i.codigo_departamento, i.nombre_departamento, i.codigo_distrito, i.nombre_distrito,
-                i.codigo_barrio_localidad, i.nombre_barrio_localidad, i.codigo_zona, i.nombre_zona,
-                i.codigo_establecimiento, i.codigo_institucion, i.nombre_institucion, i.anho_cod_geo, 
-                i.uri_establecimiento,i.uri_institucion]
+            i.codigo_barrio_localidad, i.nombre_barrio_localidad, i.codigo_zona, i.nombre_zona,
+            i.codigo_establecimiento, i.codigo_institucion, i.nombre_institucion, i.anho_cod_geo, 
+            i.uri_establecimiento,i.uri_institucion]
         end
 
       end
@@ -114,28 +112,35 @@ class DirectoriosInstitucionesController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      @directorios_instituciones = VDirectorioInstitucion.orden_dep_dis.find(:all, :conditions => cond)
+      directorios_instituciones_xlsx = VDirectorioInstitucion.orden_dep_dis.where(cond).all
+       
+      p = Axlsx::Package.new
+        
+      p.workbook.add_worksheet(:name => "DirectorioInstituciones") do |sheet|
+          
+        sheet.add_row [:periodo, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito,
+            :codigo_barrio_localidad, :nombre_barrio_localidad, :codigo_zona, :nombre_zona,
+            :codigo_establecimiento, :codigo_institucion, :nombre_institucion, :anho_cod_geo,
+            :uri_establecimiento,:uri_institucion]
 
-      respond_to do |format|
-      
-        format.xlsx {
+        directorios_instituciones_xlsx.each do |i|
+              
+          sheet.add_row [i.periodo, i.codigo_departamento, i.nombre_departamento, i.codigo_distrito, i.nombre_distrito,
+            i.codigo_barrio_localidad, i.nombre_barrio_localidad, i.codigo_zona, i.nombre_zona,
+            i.codigo_establecimiento, i.codigo_institucion, i.nombre_institucion, i.anho_cod_geo, 
+            i.uri_establecimiento,i.uri_institucion]
+                
+        end
 
-          columnas = [:periodo, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito,
-                :codigo_barrio_localidad, :nombre_barrio_localidad, :codigo_zona, :nombre_zona,
-                :codigo_establecimiento, :codigo_institucion, :nombre_institucion, :anho_cod_geo,
-                :uri_establecimiento,:uri_institucion]
-         
-          send_data VDirectorioInstitucion.orden_dep_dis.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
-                    :filename => "directorios_instituciones_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
-                    :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
-                    disposition: 'attachment'
-        }
-      
       end
+            
+      p.use_shared_strings = true
+      
+      send_data p.to_stream.read, filename: "directorios_instituciones_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     else
-
-      @directorios_instituciones_todos = VDirectorioInstitucion.orden_dep_dis.find(:all, :conditions => cond)
+      
+      @directorios_instituciones_todos = VDirectorioInstitucion.orden_dep_dis.where(cond).all
       
       respond_to do |f|
 

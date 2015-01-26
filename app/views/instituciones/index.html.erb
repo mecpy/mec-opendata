@@ -1,15 +1,9 @@
 <h2>
     <span itemprop="name" id="tab-titulo">Datos Espec&iacute;ficos de Instituciones Educativas</span>
-    <meta itemprop="url" content="http://datos.mec.gov.py/data/instituciones">  
     <meta itemprop="description"
           content="Contiene datos de los niveles/modalidades de educación ofertados por las instituciones educativas; región administrativa a la que pertenece la institución educativa; tipo de organización, participación comunitaria, dirección del establecimiento escolar, servicio disponible (internet, telefono, correo electronico, etc.). Una institución educativa puede poseer diferentes locales escolares ubicados en un mismo o en diferentes departamentos geográficos. El SIEC considera una misma institución cuando varios niveles o modalidades tienen una organización, gestión y administración única. Por ejemplo: Centro Regional de Educación Gral. Patricio Escobar de Encarnación, Colegio Santa Clara de Asunción."
           />
     <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
-    <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
-        <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
-        <meta itemprop="url" content="http://datos.mec.gov.py/">
-        <meta itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura">
-    </span>
     <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
         <meta itemprop="name" content="Ministerio de Educación y Cultura">
         <meta itemprop="url" content="http://www.mec.gov.py/">
@@ -24,11 +18,17 @@
     <meta itemprop="version" style="display: none;" content="1.0">
 
     <span style="float:right;">
-        <div style="display: inline-block" id="start-tour"><a style="font-size:12px;" title="Ir a la ayuda">Ayuda</a> <a title="Ir a la ayuda"><img alt="Ayuda3" height="24px" width="24px" src="/assets/ayuda3.png"></a></div>
-        <div style="display: inline-block" id="tab-diccionario"><%= link_to "Ver diccionario", mec_custom_url(def_instituciones_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
-            <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), mec_custom_url(def_instituciones_url), :title => "Ir al diccionario" %></div>
-        <div style="display: inline-block" id="tab-inicio"><%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
-            <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %></div>
+        <div style="display: inline-block" id="start-tour">
+            <a style="font-size:12px;" title="Ir a la ayuda">Ayuda</a> <a title="Ir a la ayuda"><img alt="Ayuda3" height="24px" width="24px" src="/assets/ayuda3.png"></a>
+        </div>
+        <div style="display: inline-block" id="tab-diccionario">
+            <%= link_to "Ver diccionario", mec_custom_url(def_instituciones_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
+            <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), mec_custom_url(def_instituciones_url), :title => "Ir al diccionario" %>
+        </div>
+        <div style="display: inline-block" id="tab-inicio">
+            <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
+            <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
+        </div>
     </span>
 
 </h2>
@@ -44,115 +44,115 @@
               <th style="width:4%" class="text-min celda-derecha tab-filtros-lista">
                   <%= label_tag "Periodo" %><br /><br />
                   <%= select :form_buscar_instituciones, :anio, [2012], {:class => 'text-min'} %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_anio'),1);" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_anio'),1);" %>
               </th>
 
               <th style="width:6%" class="text-min">
                   <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe %><br /><br />
                   <%= text_field_tag :form_buscar_instituciones_codigo_establecimiento, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_codigo_establecimiento'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_codigo_establecimiento'));" %>
               </th>
 
               <th style="width:5%" class="text-min">
                   <%= label_tag nil, "C&oacute;digo Instituci&oacute;n".html_safe%><br /><br />
                   <%= text_field_tag :form_buscar_instituciones_codigo_institucion, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_codigo_institucion'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_codigo_institucion'));" %>
               </th>
 
               <th style="width:5%" class="text-min tab-filtros-texto">
                   <%= label_tag nil, "Instituci&oacute;n".html_safe%><br /><br />
                   <%= text_field_tag :form_buscar_instituciones_nombre_institucion, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_institucion'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_nombre_institucion'));" %>
               </th>
 
               <th style="width:5%" class="text-min">
                   <%= label_tag "Departamento"%><br /><br />
                   <%= text_field_tag :form_buscar_instituciones_nombre_departamento, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_departamento'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_nombre_departamento'));" %>
               </th>
 
               <th style="width:5%" class="text-min">
                   <%= label_tag "Distrito" %><br /><br />
                   <%= text_field_tag :form_buscar_instituciones_nombre_distrito, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_distrito'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_nombre_distrito'));" %>
               </th>
 
               <th style="width:5%;" class="text-min">
                   <%= label_tag nil, "Localidad/Barrio".html_safe%><br /><br />
                   <%= text_field_tag :form_buscar_instituciones_nombre_barrio_localidad, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_barrio_localidad'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_nombre_barrio_localidad'));" %>
               </th>
 
               <th style="width:5%;" class="text-min">
                   <%= label_tag nil, "Zona".html_safe%><br /><br />
                   <%= text_field_tag :form_buscar_instituciones_nombre_zona, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_zona'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_nombre_zona'));" %>
               </th>
 
               <th style="width:5%;" class="text-min">
                   <%= label_tag nil, "Sector".html_safe%><br /><br />
                   <%= text_field_tag :form_buscar_instituciones_sector_o_tipo_gestion, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_sector_o_tipo_gestion'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_sector_o_tipo_gestion'));" %>
               </th>
 
               <th style="width:8%;" class="text-min">
                   <%= label_tag nil, "Regi&oacute;n Administrativa".html_safe%><br /><br />
                   <%= text_field_tag :form_buscar_instituciones_nombre_region_administrativa, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_region_administrativa'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_nombre_region_administrativa'));" %>
               </th>
 
               <th style="width:5%;" class="text-min">
                   <%= label_tag nil, "Supervisor/a".html_safe%><br /><br />
                   <%= text_field_tag :form_buscar_instituciones_nombre_supervisor, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_supervisor'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_nombre_supervisor'));" %>
               </th>
 
               <th style="width:5%;" class="text-min">
                   <%= label_tag nil, "Nivel/Modalidad".html_safe%><br /><br />
                   <%= text_field_tag :form_buscar_instituciones_niveles_modalidades, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_niveles_modalidades'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_niveles_modalidades'));" %>
               </th>
 
               <th style="width:5%;" class="text-min">
                   <%= label_tag nil, "Tipo Organizaci&oacute;n".html_safe%><br /><br />
                   <%= text_field_tag :form_buscar_instituciones_nombre_tipo_organizacion, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nombre_tipo_organizacion'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_nombre_tipo_organizacion'));" %>
               </th>
 
               <th style="width:5%;" class="text-min celda-derecha">
-                  <%= label_tag "Participación Comunitaria" %><br />
+                  <%= label_tag nil, "Participación<br />Comunitaria".html_safe %><br />
                   <%= select :form_buscar_instituciones, :participacion_comunitaria, ['','SI','NO'], {:class => 'text-min'} %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_participacion_comunitaria'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_participacion_comunitaria'));" %>
               </th>
 
               <th style="width:5%;" class="text-min">
                   <%= label_tag nil, "Direcci&oacute;n".html_safe%><br /><br />
                   <%= text_field_tag :form_buscar_instituciones_direccion, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_direccion'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_direccion'));" %>
               </th>
 
               <th style="width:5%;" class="text-min">
                   <%= label_tag nil, "Tel&eacute;fono".html_safe%><br /><br />
                   <%= text_field_tag :form_buscar_instituciones_nro_telefono, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_nro_telefono'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_nro_telefono'));" %>
               </th>
 
               <th style="width:5%;" class="text-min celda-derecha">
-                  <%= label_tag "Tiene Internet?" %><br /><br />
+                  <%= label_tag nil,"¿Tiene Internet?".html_safe %><br /><br />
                   <%= select :form_buscar_instituciones, :tiene_internet, ['', 'SI', 'NO'], {:class => 'text-min'} %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_tiene_internet'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_tiene_internet'));" %>
               </th>
 
               <th style="width:5%;" class="text-min">
                   <%= label_tag nil, "P&aacute;gina Web".html_safe%><br /><br />
                   <%= text_field_tag :form_buscar_instituciones_paginaweb, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_paginaweb'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_paginaweb'));" %>
               </th>
 
               <th style="width:5%;" class="text-min">
                   <%= label_tag nil, "Correo Electr&oacute;nico".html_safe%><br /><br />
                   <%= text_field_tag :form_buscar_instituciones_correo_electronico, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_instituciones_correo_electronico'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_correo_electronico'));" %>
               </th>
 
             <% end %>

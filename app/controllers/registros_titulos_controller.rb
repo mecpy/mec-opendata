@@ -104,9 +104,9 @@ class RegistrosTitulosController < ApplicationController
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
 
-    @registros_titulos = RegistroTitulo.orden_anio_mes.paginate :per_page => 15, :page => params[:page], :conditions => cond
+    @registros_titulos = RegistroTitulo.orden_anio_mes.where(cond).paginate(page: params[:page], per_page: 15)
 
-    @registros_titulos_todos = RegistroTitulo.where(cond)
+    @registros_titulos_todos = RegistroTitulo.orden_anio_mes.where(cond)
     @total_registros = RegistroTitulo.count 
 
     if params[:format] == 'csv'
@@ -130,22 +130,25 @@ class RegistrosTitulosController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      @registros_titulos_xls = RegistroTitulo.orden_anio_mes.where(cond)
+      registros_titulos_xls = RegistroTitulo.orden_anio_mes.where(cond)
+       
+      p = Axlsx::Package.new
+        
+      p.workbook.add_worksheet(:name => "RegistroTitulo") do |sheet|
+          
+        sheet.add_row ["anio", "mes", "documento", "nombre_completo", "carrera_id", "carrera", "titulo_id", "titulo", "numero_resolucion", "fecha_resolucion", "tipo_institucion_id", "tipo_institucion", "institucion_id","institucion", "gobierno_actual" ]
 
-      respond_to do |format|
-      
-        format.xlsx {
-          
-          columnas = [:anio, :mes, :documento, :nombre_completo, :carrera_id, :carrera, :titulo_id, :titulo, :numero_resolucion, :fecha_resolucion, :tipo_institucion_id, :tipo_institucion, :institucion, :gobierno_actual ] 
-          
-          send_data RegistroTitulo.orden_anio_mes.where(cond).
-            to_xlsx(:columns => columnas, :name => "registros_titulos").to_stream.read, 
-            :filename => "registros_titulos_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
-            :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
-            disposition: 'attachment'
-        }
-      
+        registros_titulos_xls.each do |rt|
+              
+          sheet.add_row [rt.anio, rt.mes, rt.documento, rt.nombre_completo, rt.carrera_id, rt.carrera, rt.titulo_id, rt.titulo, rt.numero_resolucion, rt.fecha_resolucion, rt.tipo_institucion_id, rt.tipo_institucion, rt.institucion_id, rt.institucion, rt.gobierno_actual ]
+                
+        end
+
       end
+            
+      p.use_shared_strings = true
+      
+      send_data p.to_stream.read, filename: "registros_titulos_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     elsif params[:format] == 'pdf'
 
@@ -164,12 +167,12 @@ class RegistrosTitulosController < ApplicationController
         report.list(:registros_titulos).add_row do |row|
 
           row.values  anio: rt.anio,
-                      mes: rt.mes,        
-                      documento: rt.documento,       
-                      nombre_completo: rt.nombre_completo ,       
-                      carrera: rt.carrera,       
-                      titulo: rt.titulo,       
-                      institucion: rt.institucion
+            mes: rt.mes,        
+            documento: rt.documento,       
+            nombre_completo: rt.nombre_completo ,       
+            carrera: rt.carrera,       
+            titulo: rt.titulo,       
+            institucion: rt.institucion
 
         end
 
@@ -177,8 +180,8 @@ class RegistrosTitulosController < ApplicationController
 
 
       send_data report.generate, filename: "registros_titulos_#{Time.now.strftime('%d%m%Y__%H%M')}.pdf", 
-                                 type: 'application/pdf', 
-                                 disposition: 'attachment'
+        type: 'application/pdf', 
+        disposition: 'attachment'
 
     else
 

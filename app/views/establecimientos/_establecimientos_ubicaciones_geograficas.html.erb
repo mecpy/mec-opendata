@@ -1,4 +1,4 @@
-<td colspan='11'>
+<td colspan='10'>
 
     <div style="width:100%;text-align:center;">
 
@@ -56,7 +56,7 @@
               lng: "<%= lng %>",
               title: 'Datos del Establecimiento',
               infoWindow: {
-                content: "<%= escape_javascript(render :partial => 'data/infowindow_establecimiento', :locals => {:establecimiento => e})  %>"
+                content: "<%= escape_javascript(render :partial => 'establecimientos/infowindow_establecimiento', :locals => {:establecimiento => e})  %>"
               }
             });
           

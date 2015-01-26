@@ -104,17 +104,15 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
     
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
 
-    @matriculaciones_educacion_inclusiva = cond.size > 0 ?  (MatriculacionEducacionInclusiva.
-                                                orden_dep_dis.paginate :conditions => cond, 
-                                                                               :per_page => 15,
-                                                                               :page => params[:page]) : {}
+    @matriculaciones_educacion_inclusiva = MatriculacionEducacionInclusiva.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+
     @total_registros = MatriculacionEducacionInclusiva.count 
 
     if params[:format] == 'csv'
 
       require 'csv'
 
-      matriculaciones_educacion_inclusiva_csv = MatriculacionEducacionInclusiva.orden_dep_dis.find(:all, :conditions => cond)
+      matriculaciones_educacion_inclusiva_csv = MatriculacionEducacionInclusiva.orden_dep_dis.where(cond)
       csv = CSV.generate do |csv|
         # header row
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", "codigo_zona", 
@@ -137,31 +135,39 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      @matriculaciones_educacion_inclusiva = MatriculacionEducacionInclusiva.orden_dep_dis.find(:all, :conditions => cond)
+      @matriculaciones_educacion_inclusiva = MatriculacionEducacionInclusiva.orden_dep_dis.where(cond)
 
-      respond_to do |format|
+      p = Axlsx::Package.new
       
-        format.xlsx {
+      p.workbook.add_worksheet(:name => "Matriculaciones EI") do |sheet|
           
-          #columnas = [:codigo, :descripcion, :tipo_articulo, :objeto_gasto, :tipo_medida, :medida, :valor_unitario, :activo ] 
-          columnas = [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, 
+        sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, 
           :nombre_zona, :codigo_barrio_localidad,:nombre_barrio_localidad, :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, 
           :matricula_inicial_especial, :matricula_primer_y_segundo_ciclo_especial, :matricula_tercer_ciclo_especial, 
-          :matricula_programas_especiales, :anho_cod_geo ] 
-          
-          send_data MatriculacionEducacionInclusiva.orden_dep_dis.where(cond).to_xlsx(:columns => columnas, :name=>"Matriculaciones").to_stream.read, 
-                    :filename => "matriculaciones_educacion_inclusiva_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
-                    :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
-                    disposition: 'attachment'
-        }
-      
+          :matricula_programas_especiales, :anho_cod_geo]
+
+        @matriculaciones_educacion_inclusiva.each do |m|
+            
+          sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento, m.codigo_distrito, m.nombre_distrito, m.codigo_zona, 
+          m.nombre_zona, m.codigo_barrio_localidad,m.nombre_barrio_localidad, m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, 
+          m.matricula_inicial_especial, m.matricula_primer_y_segundo_ciclo_especial, m.matricula_tercer_ciclo_especial, 
+          m.matricula_programas_especiales, m.anho_cod_geo]
+
+        end
+
       end
+      
+      p.use_shared_strings = true
+      
+      p.serialize('public/data/matriculaciones_educacion_inclusiva_2012.xlsx')
+        
+      send_file "public/data/matriculaciones_educacion_inclusiva_2012.xlsx", :filename => "matriculaciones_educacion_inclusiva_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     elsif params[:format] == 'pdf'
 
       report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'matriculaciones_educacion_inclusiva.tlf')
 
-      matriculaciones_educacion_inclusiva = MatriculacionEducacionInclusiva.orden_dep_dis.find(:all, :conditions => cond)
+      matriculaciones_educacion_inclusiva = MatriculacionEducacionInclusiva.orden_dep_dis.where(cond)
       
       report.start_new_page do |page|
       
@@ -202,7 +208,7 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
 
     else
       
-      @matriculaciones_educacion_inclusiva_todos = MatriculacionEducacionInclusiva.orden_dep_dis.find(:all, :conditions => cond)
+      @matriculaciones_educacion_inclusiva_todos = MatriculacionEducacionInclusiva.orden_dep_dis.where(cond)
       respond_to do |f|
         f.js
         f.json {render :json => @matriculaciones_educacion_inclusiva_todos }

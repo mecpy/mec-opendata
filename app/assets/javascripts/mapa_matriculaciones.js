@@ -182,7 +182,7 @@ $(function() {
     });
 
     /*Se hacen visibles los filtros de subnivel de acuerdo al nivel seleccionado*/
-    $('input[name="nivel"]').change(function(){
+    $('input[name="nivel"]').bind('change', function(){
         $('h3.grado').css('visibility', 'hidden');
         $('h3.modalidad').css('visibility', 'hidden');
         if(this.checked){
@@ -237,7 +237,7 @@ $(function() {
 
     /*Utilitario para eliminar acentos de la cadena, para poder comparar las claves
     (nombre del departamento) del servicio (BD MEC) con las del GEOJSON*/
-    function removeAccents(strAccents) {
+    function removeAccents(strAccents){
         var strAccents = strAccents.split('');
         var strAccentsOut = new Array();
         var strAccentsLen = strAccents.length;
@@ -254,10 +254,11 @@ $(function() {
     }
 
     /*Llamada AJAX para el submit del form de filtros*/
-    $("#form-buscar-matriculaciones").submit(function(e)
+    $("#form-buscar-matriculaciones").bind('submit', function(e)
     {
         var postData = $(this).serializeArray();
         var formURL = $(this).attr("action");
+        
         $.ajax(
         {
             url : formURL,
@@ -267,6 +268,7 @@ $(function() {
             headers: {'X-Requested-With': 'XMLHttpRequest'},
             success:function(data, textStatus, jqXHR) 
             {
+
                 for(var k in data){
                     data[removeAccents(k).toLowerCase()] = data[k]
                 }
@@ -290,8 +292,9 @@ $(function() {
     $('form').each(function() { this.reset() });
     
     /*Submit del form al cambiar el valor de cualquier checkbox*/
-    $('input').change(function(){
-        $("#form-buscar-matriculaciones").submit(); //Submit  the FORM
+    $("input[type='checkbox']").change(function(e){
+        //$("#form-buscar-matriculaciones").submit(); //Submit  the FORM
+        //alert(e);
     });
 
     function getQueryVariable(variable)
@@ -311,6 +314,5 @@ $(function() {
         $("[value=" + nivel + "]").click();
     }else{
         $("#form-buscar-matriculaciones").submit();
-
     }
 });

@@ -43,82 +43,81 @@
 
               <th style="width:4%;" class="text-min celda-derecha tab-filtros-lista">
                   <%= label_tag "Periodo" %><br /><br />
-
                   <%= select :form_buscar_servicios_basicos, :periodo, [2014], {:class => 'text-min'} %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_servicios_basicos_periodo'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_servicios_basicos_periodo'),1);" %>
 
               </th>
 
               <th style="width:4%" class="text-min tab-filtros-texto">
                   <%= label_tag "Departamento"%><br /><br />
                   <%= text_field_tag :form_buscar_servicios_basicos_nombre_departamento, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_servicios_basicos_nombre_departamento'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_servicios_basicos_nombre_departamento'));" %>
               </th>
 
               <th style="width:6%" class="text-min">
                   <%= label_tag "Distrito" %><br /><br />
                   <%= text_field_tag :form_buscar_servicios_basicos_nombre_distrito, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_servicios_basicos_nombre_distrito'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_servicios_basicos_nombre_distrito'));" %>
               </th>
 
               <th style="width:6%" class="text-min">
                   <%= label_tag nil, "C&oacute;digo<br />Establecimiento".html_safe %><br />
                   <%= text_field_tag :form_buscar_servicios_basicos_codigo_establecimiento, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_servicios_basicos_codigo_establecimiento'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_servicios_basicos_codigo_establecimiento'));" %>
               </th>
 
               <th style="width:6%" class="text-min">
                   <%= label_tag "Barrio/Localidad" %><br /><br />
                   <%= text_field_tag :form_buscar_servicios_basicos_nombre_barrio_localidad, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_servicios_basicos_nombre_barrio_localidad'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_servicios_basicos_nombre_barrio_localidad'));" %>
               </th>
 
               <th style="width:6%;" class="text-min">
                   <%= label_tag nil, "Zona".html_safe%><br /><br />
                   <%= text_field_tag :form_buscar_servicios_basicos_nombre_zona, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_servicios_basicos_nombre_zona'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_servicios_basicos_nombre_zona'));" %>
               </th>
 
               <th style="width:8%;" class="text-min">
                   <%= label_tag nil, "Nombre de Asentamiento<br/>o Colonia".html_safe%><br />
                   <%= text_field_tag :form_buscar_servicios_basicos_nombre_asentamiento_colonia, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_servicios_basicos_nombre_asentamiento_colonia'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_servicios_basicos_nombre_asentamiento_colonia'));" %>
               </th>
 
               <th style="width:6%;" class="text-min">
                   <%= label_tag nil, "Suministro Energ&iacute;a<br/>El&eacute;ctrica".html_safe%><br />
                   <%= text_field_tag :form_buscar_servicios_basicos_suministro_energia_electrica, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_servicios_basicos_suministro_energia_electrica'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_servicios_basicos_suministro_energia_electrica'));" %>
               </th>
 
               <th style="width:6%;" class="text-min">
                   <%= label_tag nil, "Abastecimiento de<br/>Agua".html_safe%><br />
                   <%= text_field_tag :form_buscar_servicios_basicos_abastecimiento_agua, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_servicios_basicos_abastecimiento_agua'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_servicios_basicos_abastecimiento_agua'));" %>
               </th>
 
               <th style="width:6%;" class="text-min">
                   <%= label_tag nil, "Servicio Sanitario<br/>Actual".html_safe%><br />
                   <%= text_field_tag :form_buscar_servicios_basicos_servicio_sanitario_actual, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_servicios_basicos_servicio_sanitario_actual'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_servicios_basicos_servicio_sanitario_actual'));" %>
               </th>
 
               <th style="width:6%;" class="text-min">
                   <%= label_tag nil, "T&iacute;tulo de<br/> Propiedad".html_safe%><br />
                   <%= text_field_tag :form_buscar_servicios_basicos_titulo_de_propiedad, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_servicios_basicos_titulo_de_propiedad'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_servicios_basicos_titulo_de_propiedad'));" %>
               </th>
 
               <th style="width:6%;" class="text-min">
                   <%= label_tag nil, "Cuenta con Plano".html_safe%><br /><br />
                   <%= text_field_tag :form_buscar_servicios_basicos_cuenta_plano, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_servicios_basicos_cuenta_plano'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_servicios_basicos_cuenta_plano'));" %>
               </th>
 
               <th style="width:6%;" class="text-min">
                   <%= label_tag nil, "Cuenta con Prevenci&oacute;n<br/> de Incendio".html_safe%><br />
                   <%= text_field_tag :form_buscar_servicios_basicos_prevencion_incendio, nil, :class => 'text-min' %>
-                  <%= link_to_function icon_delete, "quitar_filtro($('#form_buscar_servicios_basicos_prevencion_incendio'));" %>
+                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_servicios_basicos_prevencion_incendio'));" %>
               </th>
 
             <% end %>
@@ -181,10 +180,14 @@
     limpiar_form_buscar_servicios_basicos();
 
   //--------------- QUITAR FILTRO -------------------//
-  function quitar_filtro(id) {
-      id.val('');
+  function quitar_filtro(id, ban) {
+      if (ban === 1) {
+          id.val("2014");
+      } else {
+          id.val('');
+      }
       $.ajaxQ.abortAll();
-      $("#form-buscar-servicios-basicos").submit();
+      $('#form-buscar-servicios-basicos').submit();
 
   }
   //-------------------------------------------------//

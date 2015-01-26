@@ -1,14 +1,6 @@
 class MatriculacionesDepartamentosDistritosController < ApplicationController
-  
   def index
-    
-    @matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.
-                                                orden_dep_dis.paginate :per_page => 15, :page => params[:page]
-    respond_to do |f|
-
-      f.html {render :layout => 'layouts/application_dataset'}
-    end
-
+    @matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.orden_dep_dis.paginate :per_page => 15, :page => params[:page]
   end
 
   def lista
@@ -64,11 +56,7 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
     puts cond
 
-    @matriculaciones_departamentos_distritos = cond.size > 0 ?
-                                                (MatriculacionDepartamentoDistrito.
-                                                orden_dep_dis.paginate :conditions => cond, 
-                                                                               :per_page => 15,
-                                                                               :page => params[:page]) : {}
+    @matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
 
     @total_registros = MatriculacionDepartamentoDistrito.count 
 
@@ -76,8 +64,7 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
 
       require 'csv'
 
-      matriculaciones_departamentos_distritos_csv = MatriculacionDepartamentoDistrito.
-                                                      orden_dep_dis.find(:all, :conditions => cond)
+      matriculaciones_departamentos_distritos_csv = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
 
       csv = CSV.generate do |csv|
         # header row
@@ -99,33 +86,38 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      @matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.
-        orden_dep_dis.find(:all, :conditions => cond)
+      @matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
 
-      respond_to do |format|
+      p = Axlsx::Package.new
       
-        format.xlsx {
+      p.workbook.add_worksheet(:name => "Matriculaciones") do |sheet|
           
-          columnas = [:anio, :codigo_departamento, :nombre_departamento, 
+        sheet.add_row [:anio, :codigo_departamento, :nombre_departamento, 
             :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona,
-            :sector_o_tipo_gestion, :cantidad_matriculados, :anho_cod_geo ] 
+            :sector_o_tipo_gestion, :cantidad_matriculados, :anho_cod_geo ]
+
+        @matriculaciones_departamentos_distritos.each do |m|
+            
+          sheet.add_row [m.anio, m.codigo_departamento, m.nombre_departamento, 
+            m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona,
+            m.sector_o_tipo_gestion, m.cantidad_matriculados, m.anho_cod_geo ]
           
-          send_data MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond).
-            to_xlsx(:columns => columnas, :name => "Matriculaciones").to_stream.read, 
-            :filename => "matriculaciones_departamentos_distritos_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
-            :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
-            disposition: 'attachment'
-        }
-      
+        end
+
       end
+      
+      p.use_shared_strings = true
+      
+      p.serialize('public/data/matriculaciones_departamentos_distritos_2012.xlsx')
+        
+      send_file "public/data/matriculaciones_departamentos_distritos_2012.xlsx", :filename => "matriculaciones_departamentos_distritos_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     elsif params[:format] == 'pdf'
 
       report = ThinReports::Report.new layout: File.join(Rails.root, 'app',
         'reports', 'matriculaciones_departamentos_distritos.tlf')
 
-      matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.
-                                                  orden_dep_dis.find(:all, :conditions => cond)
+      matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
     
       report.start_new_page do |page|
       
@@ -158,8 +150,7 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
 
     else
 
-      @matriculaciones_departamentos_distritos_todos = MatriculacionDepartamentoDistrito.
-                                                        orden_dep_dis.find(:all, :conditions => cond)
+      @matriculaciones_departamentos_distritos_todos = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
       
       respond_to do |f|
 

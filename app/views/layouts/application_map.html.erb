@@ -21,27 +21,22 @@
 </head>
 <body>
 
-  <table id="tablaContenedor" width="1000px" border="0" align="center" cellpadding="0" cellspacing="0">
-    <tr>
-      <td width="40px" height="40" class="spriteBordesTabla" id="topleft">&nbsp;</td>
-      <td width="920px" height="40" class="bordertop">&nbsp;</td>
-      <td width="40px" height="40" class="spriteBordesTabla" id="topright">&nbsp;</td>
-    </tr>
-    <!--inicio-contenido-->
-    <tr>
-      <td width="40" class="borderleft">&nbsp;</td>
-      <td width="920" bgcolor="white">
-        <%= render :partial => "layouts/header"%>
+    <div id="main_container">
+      
+      <div id="header">
+        <%= render :partial => "layouts/header" %>
+      </div>
+
+      <div id="main_content">
+      
         <%= yield %>
-      </td>
-      <td width="40" class="borderright">&nbsp;</td>
-    </tr>
-    <!--fin-contenido-->
-    <tr>
-      <td width="40" height="40" class="borderleft">&nbsp;</td>
-      <td width="920" height="40" bgcolor="white"><%= render :partial => 'layouts/footer' %></td>
-      <td width="40" height="40" class="borderright">&nbsp;</td>
-    </tr>
-  </table>
+        
+        <div id="footer">
+          <%= render :partial => "layouts/footer" %>
+        </div>
+    
+      </div>
+
+    </div>
 </body>
 </html>

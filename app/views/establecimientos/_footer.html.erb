@@ -1,25 +1,4 @@
-
 <% if establecimientos.present? %>
-  
-  <% establecimientos.each do |e| %>
-
-    <tr>
-
-      <td class="text-min"><%= e.anio %></td>
-      <td class="text-min"><%= link_to e.codigo_establecimiento, mec_custom_url(id_establecimientos_path(e.codigo_establecimiento)), target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %></td>
-      <td class="text-min"><%= e.nombre_departamento %></td>
-      <td class="text-min"><%= e.nombre_distrito %></td>
-      <td class="text-min"><%= e.nombre_zona %></td>
-      <td class="text-min"><%= e.nombre_barrio_localidad %></td>
-      <td class="text-min"><%= e.direccion %></td>
-      <td class="text-min"><%= e.programa == 1 ? "Jornada Extendida" : "" %></td>
-      <td class="text-min"><%= e.proyecto_111 %></td>
-      <td class="text-min"><%= e.proyecto_822 %></td>
-      <td style="width:20px;"><%= link_to_ubicacion_geografica(e) %></td>
-       
-    </tr>
-      
-  <% end %>
 
     <tr>
 
@@ -115,13 +94,5 @@
       </td>
  
     </tr>
-  
-  <% else %>
-
-  <tr>
-    
-    <td colspan="13"><p class='none-result'>No se han encontrado resultados.</p></td>
-  
-  </tr>
 
 <% end %>

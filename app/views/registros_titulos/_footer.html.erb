@@ -1,0 +1,91 @@
+<% if registros_titulos.present? %>
+  <tr>
+
+      <td colspan="11" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate registros_titulos, :params => params %></div></td>
+
+  </tr>
+
+  <tr><td colspan="11">Cantidad de registros encontrados: <%= @registros_titulos_todos.size %> de <%= @total_registros %></td></tr>
+
+  <tr>
+
+      <%  
+      parametros_csv = { :format => 'csv' }
+      parametros_csv = parametros_csv.merge(params) 
+      parametros_csv_todos = { :format => 'csv', "form_buscar_registros_titulos[anio]" => params[:form_buscar_registros_titulos][:anio], "form_buscar_registros_titulos[mes]" => params[:form_buscar_registros_titulos][:mes], "form_buscar_registros_titulos[gobierno_actual]" => params[:form_buscar_registros_titulos][:gobierno_actual]}
+    %>
+
+      <% 
+      parametros_xls = { :format => 'xlsx'}
+      parametros_xls = parametros_xls.merge(params) 
+      parametros_xls_todos = { :format => 'xlsx', "form_buscar_registros_titulos[anio]" => params[:form_buscar_registros_titulos][:anio], "form_buscar_registros_titulos[mes]" => params[:form_buscar_registros_titulos][:mes], "form_buscar_registros_titulos[gobierno_actual]" => params[:form_buscar_registros_titulos][:gobierno_actual] }
+    %>
+
+      <%  %>
+
+      <% 
+      parametros_json = { :format => 'json' }
+      parametros_json = parametros_json.merge(params) 
+      parametros_json_todos = { :format => 'json', "form_buscar_registros_titulos[anio]" => params[:form_buscar_registros_titulos][:anio], "form_buscar_registros_titulos[mes]" => params[:form_buscar_registros_titulos][:mes], "form_buscar_registros_titulos[gobierno_actual]" => params[:form_buscar_registros_titulos][:gobierno_actual] }
+    %>
+
+      <% 
+      parametros_pdf = { :format => 'pdf' }
+      parametros_pdf = parametros_pdf.merge(params) 
+      parametros_pdf_todos = { :format => 'pdf', "form_buscar_registros_titulos[anio]" => params[:form_buscar_registros_titulos][:anio], "form_buscar_registros_titulos[mes]" => params[:form_buscar_registros_titulos][:mes], "form_buscar_registros_titulos[gobierno_actual]" => params[:form_buscar_registros_titulos][:gobierno_actual] }
+    %>
+
+      <%= parametros_pdf %>
+
+      <td colspan="8" class="row-descargar">
+
+          <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
+          <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a></br>
+          <span>Descargar Registros de T&iacute;tulos Filtrados:</span>
+
+          <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
+
+  <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_departamentos_distritos_lista_url(parametros_pdf)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat'%>
+          <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_registros_titulos_lista_url(parametros_xls)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
+          <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_registros_titulos_lista_url(parametros_csv)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
+          <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_registros_titulos_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+          <br /><br />
+
+          <div style="float:left;">Descargar todos los Registros de T&iacute;tulos:</div>
+          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">        <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_departamentos_distritos_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
+              <!-- <meta itemprop="name" content="Registro de Títulos hasta setiembre del 2014">
+               <meta itemprop="description" content="Listado de Títulos expedidos por el MEC a setiembre del 2014">
+               <meta itemprop="encodingFormat" content="pdf">
+               </div>
+               <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+              -->  
+              <%= link_to "XLS#{image_star * 2}".html_safe, "https://mega.co.nz/#!hg5ACbKI!p5Uzj-M7jJ_ME7qj4nMn-J1WC-swJhMfTKkF4uXWe2Q", :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url"%>
+              <br />
+              <span style="color:silver;">(4,5 MB)</span>
+              <meta itemprop="name" content="Registro de Títulos hasta setiembre del 2014">
+              <meta itemprop="description" content="Listado de Títulos expedidos por el MEC a setiembre del 2014">
+              <meta itemprop="encodingFormat" content="xls">
+          </div>
+          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+              <%= link_to "CSV#{image_star * 3}".html_safe, "https://mega.co.nz/#!k4QABCiC!LYSu1iW4XxiI9GpxTxM0JimxZslgHibGZ4U_rzHQIIg", :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url"%>
+              <br />
+              <span style="color:silver;">(8,5 MB)</span>
+              <meta itemprop="name" content="Registro de Títulos hasta setiembre del 2014">
+              <meta itemprop="description" content="Listado de Títulos expedidos por el MEC a setiembre del 2014">
+              <meta itemprop="encodingFormat" content="csv">
+          </div>
+          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+              <%= link_to "JSON#{image_star * 3}".html_safe, "https://mega.co.nz/#!l4wlFQAb!N65Ic-tsmTv3XoMq8cl3FHh_2SCwsRindEz0vH08uaQ", :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url"%>
+              <br />
+              <span style="color:silver;">(21 MB)</span>
+              <meta itemprop="name" content="Registro de Títulos hasta setiembre del 2014">
+              <meta itemprop="description" content="Listado de Títulos expedidos por el MEC a setiembre del 2014">
+              <meta itemprop="encodingFormat" content="json">
+          </div>
+
+          <div style="clear:both;"></div>
+
+      </td>
+
+  </tr>
+<% end %>
