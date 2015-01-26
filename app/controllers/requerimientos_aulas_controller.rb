@@ -1,5 +1,5 @@
 class RequerimientosAulasController < ApplicationController
-  
+  before_filter :redireccionar_uri
   def diccionario
 
   end
@@ -51,44 +51,44 @@ class RequerimientosAulasController < ApplicationController
     end
     
     if params[:form_buscar_requerimientos_aulas_nombre_institucion].present? 
-
+      
       cond << "nombre_institucion ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_aulas_nombre_institucion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_aulas_nombre_institucion])}%"
 
     end
 
     if params[:form_buscar_requerimientos_aulas_nombre_departamento].present? 
 
       cond << "nombre_departamento ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_aulas_nombre_departamento]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_aulas_nombre_departamento])}%"
 
     end
 
     if params[:form_buscar_requerimientos_aulas_nombre_distrito].present? 
 
       cond << "nombre_distrito ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_aulas_nombre_distrito]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_aulas_nombre_distrito])}%"
 
     end
 
     if params[:form_buscar_requerimientos_aulas_nombre_zona].present? 
 
       cond << "nombre_zona ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_aulas_nombre_zona]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_aulas_nombre_zona])}%"
 
     end
 
     if params[:form_buscar_requerimientos_aulas_nivel_educativo_beneficiado].present?
 
       cond << "nivel_educativo_beneficiado ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_aulas_nivel_educativo_beneficiado]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_aulas_nivel_educativo_beneficiado])}%"
 
     end
 
     if params[:form_buscar_requerimientos_aulas_cuenta_espacio_para_construccion].present?
 
       cond << "cuenta_espacio_para_construccion ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_aulas_cuenta_espacio_para_construccion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_aulas_cuenta_espacio_para_construccion])}%"
 
     end
 
@@ -116,7 +116,7 @@ class RequerimientosAulasController < ApplicationController
     if params[:form_buscar_requerimientos_aulas_justificacion].present?
 
       cond << "justificacion ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_aulas_justificacion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_aulas_justificacion])}%"
 
     end
 

@@ -35,35 +35,35 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
     if params[:form_buscar_matriculaciones_educacion_permanente_nombre_departamento].present?
 
       cond << "nombre_departamento ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_permanente_nombre_departamento]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_permanente_nombre_departamento])}%"
 
     end
 
     if params[:form_buscar_matriculaciones_educacion_permanente_nombre_distrito].present?
 
       cond << "nombre_distrito ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_permanente_nombre_distrito]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_permanente_nombre_distrito])}%"
 
     end
 
     if params[:form_buscar_matriculaciones_educacion_permanente_nombre_zona].present?
 
       cond << "nombre_zona ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_permanente_nombre_zona]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_permanente_nombre_zona])}%"
 
     end
 
     if params[:form_buscar_matriculaciones_educacion_permanente_nombre_barrio_localidad].present?
 
       cond << "nombre_barrio_localidad ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_permanente_nombre_barrio_localidad]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_permanente_nombre_barrio_localidad])}%"
 
     end
 
     if params[:form_buscar_matriculaciones_educacion_permanente_sector_o_tipo_gestion].present?
 
       cond << "sector_o_tipo_gestion ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_permanente_sector_o_tipo_gestion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_permanente_sector_o_tipo_gestion])}%"
 
     end
 
@@ -77,7 +77,7 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
     if params[:form_buscar_matriculaciones_educacion_permanente_nombre_institucion].present?
 
       cond << "nombre_institucion ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_permanente_nombre_institucion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_permanente_nombre_institucion])}%"
 
     end
 
@@ -130,17 +130,16 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
       csv = CSV.generate do |csv|
         # header row
         csv << ["anio", "codigo_departamento", "nombre_departamento",
-         "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona",
-         "sector_o_tipo_gestion", "cantidad_matriculados", "codigo_institucion","nombre_institucion", "matricula_ebbja",
-         "matricula_fpi", "matricula_emapja", "matricula_emdja", "matricula_fp", "anho_cod_geo" ]
+          "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona",
+          "sector_o_tipo_gestion", "codigo_institucion","nombre_institucion", "matricula_ebbja",
+          "matricula_fpi", "matricula_emapja", "matricula_emdja", "matricula_fp", "anho_cod_geo" ]
  
         # data rows
         matriculaciones_educacion_permanente_csv.each do |p|
-          csv << [p.anio, p.codigo_departamento, 
-                  p.nombre_departamento, p.codigo_distrito, p.nombre_distrito,
-                  p.codigo_zona, p.nombre_zona,
-                  p.sector_o_tipo_gestion, p.codigo_institucion, p.nombre_institucion, p.matricula_ebbja,
-                  p.matricula_fpi, p.matricula_emapja, p.matricula_emdja, p.matricula_fp, p.anho_cod_geo ]
+          csv << [p.anio, p.codigo_departamento, p.nombre_departamento,
+            p.codigo_distrito, p.nombre_distrito, p.codigo_zona, p.nombre_zona,
+            p.sector_o_tipo_gestion, p.codigo_institucion, p.nombre_institucion, p.matricula_ebbja,
+            p.matricula_fpi, p.matricula_emapja, p.matricula_emdja, p.matricula_fp, p.anho_cod_geo ]
         end
 
       end
@@ -156,9 +155,9 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
       p.workbook.add_worksheet(:name => "Matriculaciones EP") do |sheet|
           
         sheet.add_row [:anio, :codigo_departamento, :nombre_departamento, 
-            :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona,
-            :sector_o_tipo_gestion, :codigo_institucion, :nombre_institucion, :matricula_ebbja,
-            :matricula_fpi, :matricula_emapja, :matricula_emdja, :matricula_fp, :anho_cod_geo]
+          :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona,
+          :sector_o_tipo_gestion, :codigo_institucion, :nombre_institucion, :matricula_ebbja,
+          :matricula_fpi, :matricula_emapja, :matricula_emdja, :matricula_fp, :anho_cod_geo]
 
         @matriculaciones_educacion_permanente.each do |m|
             
@@ -173,9 +172,7 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
       
       p.use_shared_strings = true
       
-      p.serialize('public/data/matriculaciones_educacion_permanente_2012.xlsx')
-        
-      send_file "public/data/matriculaciones_educacion_permanente_2012.xlsx", :filename => "matriculaciones_educacion_permanente_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
+      send_data p.to_stream.read, filename: "matriculaciones_educacion_permanente_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     elsif params[:format] == 'pdf'
 
@@ -195,20 +192,20 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
         report.list(:matriculaciones_educacion_permanente).add_row do |row|
 
           row.values  anio: p.anio,
-                      codigo_departamento: p.codigo_departamento.to_s,        
-                      nombre_departamento: p.nombre_departamento.to_s,       
-                      codigo_distrito: p.codigo_distrito.to_s,       
-                      nombre_distrito: p.nombre_distrito.to_s,       
-                      codigo_zona: p.codigo_zona.to_s,       
-                      nombre_zona: p.nombre_zona.to_s,
-                      sector_o_tipo_gestion: p.sector_o_tipo_gestion.to_s,
-                      codigo_institucion: p.codigo_institucion.to_s,
-                      nombre_institucion: p.nombre_institucion.to_s,
-                      matricula_ebbja: p.matricula_ebbja.to_s,
-                      matricula_fpi: p.matricula_fpi.to_s,
-                      matricula_emapja: p.matricula_emapja.to_s,
-                      matricula_emdja: p.matricula_emdja.to_s,
-                      matricula_fp: p.matricula_fp.to_s   
+            codigo_departamento: p.codigo_departamento.to_s,        
+            nombre_departamento: p.nombre_departamento.to_s,       
+            codigo_distrito: p.codigo_distrito.to_s,       
+            nombre_distrito: p.nombre_distrito.to_s,       
+            codigo_zona: p.codigo_zona.to_s,       
+            nombre_zona: p.nombre_zona.to_s,
+            sector_o_tipo_gestion: p.sector_o_tipo_gestion.to_s,
+            codigo_institucion: p.codigo_institucion.to_s,
+            nombre_institucion: p.nombre_institucion.to_s,
+            matricula_ebbja: p.matricula_ebbja.to_s,
+            matricula_fpi: p.matricula_fpi.to_s,
+            matricula_emapja: p.matricula_emapja.to_s,
+            matricula_emdja: p.matricula_emdja.to_s,
+            matricula_fp: p.matricula_fp.to_s   
 
         end
  
@@ -217,8 +214,8 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
 
 
       send_data report.generate, filename: "matriculaciones_educacion_permanente_#{Time.now.strftime('%d%m%Y__%H%M')}.pdf", 
-                                 type: 'application/pdf', 
-                                 disposition: 'attachment'
+        type: 'application/pdf', 
+        disposition: 'attachment'
 
     else
 

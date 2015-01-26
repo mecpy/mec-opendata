@@ -1,5 +1,5 @@
 class InstitucionesController < ApplicationController
-    
+  before_filter :redireccionar_uri
   def diccionario
 
   end
@@ -32,14 +32,14 @@ class InstitucionesController < ApplicationController
     if params[:form_buscar_instituciones_nombre_departamento].present?
 
       cond << "nombre_departamento ilike ?"
-      args << "%#{params[:form_buscar_instituciones_nombre_departamento]}%"
+      args << "%#{quita_acentos(params[:form_buscar_instituciones_nombre_departamento])}%"
 
     end
 
     if params[:form_buscar_instituciones_nombre_distrito].present?
 
       cond << "nombre_distrito ilike ?"
-      args << "%#{params[:form_buscar_instituciones_nombre_distrito]}%"
+      args << "%#{quita_acentos(params[:form_buscar_instituciones_nombre_distrito])}%"
 
     end
 
@@ -47,14 +47,14 @@ class InstitucionesController < ApplicationController
     if params[:form_buscar_instituciones_nombre_barrio_localidad].present?
 
       cond << "nombre_barrio_localidad ilike ?"
-      args << "%#{params[:form_buscar_instituciones_nombre_barrio_localidad]}%"
+      args << "%#{quita_acentos(params[:form_buscar_instituciones_nombre_barrio_localidad])}%"
 
     end
 
     if params[:form_buscar_instituciones_nombre_zona].present?
 
       cond << "nombre_zona ilike ?"
-      args << "%#{params[:form_buscar_instituciones_nombre_zona]}%"
+      args << "%#{quita_acentos(params[:form_buscar_instituciones_nombre_zona])}%"
 
     end
 
@@ -75,42 +75,42 @@ class InstitucionesController < ApplicationController
     if params[:form_buscar_instituciones_nombre_institucion].present?
 
       cond << "nombre_institucion ilike ?"
-      args << "%#{params[:form_buscar_instituciones_nombre_institucion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_instituciones_nombre_institucion])}%"
 
     end
 
     if params[:form_buscar_instituciones_sector_o_tipo_gestion].present?
 
       cond << "sector_o_tipo_gestion ilike ?"
-      args << "%#{params[:form_buscar_instituciones_sector_o_tipo_gestion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_instituciones_sector_o_tipo_gestion])}%"
 
     end
 
     if params[:form_buscar_instituciones_nombre_region_administrativa].present?
 
       cond << "nombre_region_administrativa ilike ?"
-      args << "%#{params[:form_buscar_instituciones_nombre_region_administrativa]}%"
+      args << "%#{quita_acentos(params[:form_buscar_instituciones_nombre_region_administrativa])}%"
 
     end
 
     if params[:form_buscar_instituciones_nombre_supervisor].present?
 
       cond << "nombre_supervisor ilike ?"
-      args << "%#{params[:form_buscar_instituciones_nombre_supervisor]}%"
+      args << "%#{quita_acentos(params[:form_buscar_instituciones_nombre_supervisor])}%"
 
     end
 
     if params[:form_buscar_instituciones_niveles_modalidades].present?
 
       cond << "niveles_modalidades ilike ?"
-      args << "%#{params[:form_buscar_instituciones_niveles_modalidades]}%"
+      args << "%#{quita_acentos(params[:form_buscar_instituciones_niveles_modalidades])}%"
 
     end
 
     if params[:form_buscar_instituciones_nombre_tipo_organizacion].present?
 
       cond << "nombre_tipo_organizacion ilike ?"
-      args << "%#{params[:form_buscar_instituciones_nombre_tipo_organizacion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_instituciones_nombre_tipo_organizacion])}%"
 
     end
 
@@ -124,7 +124,7 @@ class InstitucionesController < ApplicationController
     if params[:form_buscar_instituciones_direccion].present?
 
       cond << "direccion ilike ?"
-      args << "%#{params[:form_buscar_instituciones_direccion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_instituciones_direccion])}%"
 
     end   
 
@@ -145,14 +145,14 @@ class InstitucionesController < ApplicationController
     if params[:form_buscar_instituciones_paginaweb].present?
 
       cond << "paginaweb ilike ?"
-      args << "%#{params[:form_buscar_instituciones_paginaweb]}%"
+      args << "%#{quita_acentos(params[:form_buscar_instituciones_paginaweb])}%"
 
     end
 
     if params[:form_buscar_instituciones_correo_electronico].present?
 
       cond << "correo_electronico ilike ?"
-      args << "%#{params[:form_buscar_instituciones_correo_electronico]}%"
+      args << "%#{quita_acentos(params[:form_buscar_instituciones_correo_electronico])}%"
 
     end
 

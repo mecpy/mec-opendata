@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class VisualizacionesController < ApplicationController
   
-  #before_filter :redireccionar_uri
+  before_filter :redireccionar_uri
 
   def index
     

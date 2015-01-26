@@ -1,5 +1,5 @@
 class RequerimientosMobiliariosController < ApplicationController
-   # before_filter :redireccionar_uri
+  before_filter :redireccionar_uri
   def diccionario
 
   end
@@ -53,42 +53,42 @@ class RequerimientosMobiliariosController < ApplicationController
     if params[:form_buscar_requerimientos_mobiliarios_nombre_institucion].present? #OK
 
       cond << "nombre_institucion ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_mobiliarios_nombre_institucion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_mobiliarios_nombre_institucion])}%"
 
     end
 
     if params[:form_buscar_requerimientos_mobiliarios_nombre_departamento].present? #OK
 
       cond << "nombre_departamento ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_mobiliarios_nombre_departamento]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_mobiliarios_nombre_departamento])}%"
 
     end
 
     if params[:form_buscar_requerimientos_mobiliarios_nombre_distrito].present? #OK
 
       cond << "nombre_distrito ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_mobiliarios_nombre_distrito]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_mobiliarios_nombre_distrito])}%"
 
     end
 
     if params[:form_buscar_requerimientos_mobiliarios_nombre_zona].present? #OK
 
       cond << "nombre_zona ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_mobiliarios_nombre_zona]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_mobiliarios_nombre_zona])}%"
 
     end
 
     if params[:form_buscar_requerimientos_mobiliarios_nivel_educativo_beneficiado].present?
 
       cond << "nivel_educativo_beneficiado ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_mobiliarios_nivel_educativo_beneficiado]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_mobiliarios_nivel_educativo_beneficiado])}%"
 
     end
     
     if params[:form_buscar_requerimientos_mobiliarios_nombre_mobiliario].present?
 
       cond << "nombre_mobiliario ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_mobiliarios_nombre_mobiliario]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_mobiliarios_nombre_mobiliario])}%"
 
     end
     
@@ -102,7 +102,7 @@ class RequerimientosMobiliariosController < ApplicationController
     if params[:form_buscar_requerimientos_mobiliarios_justificacion].present?
 
       cond << "justificacion ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_mobiliarios_justificacion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_mobiliarios_justificacion])}%"
 
     end
     
@@ -132,7 +132,7 @@ class RequerimientosMobiliariosController < ApplicationController
           "codigo_zona", "nombre_zona",
           "nivel_educativo_beneficiado", "nombre_mobiliario","cantidad_requerida",
           "numero_beneficiados", "justificacion", "uri_establecimiento", "uri_institucion"
-          ]
+        ]
  
         # data rows
         requerimientos_mobiliarios_csv.each do |i|
@@ -157,10 +157,10 @@ class RequerimientosMobiliariosController < ApplicationController
       p.workbook.add_worksheet(:name => "RequerimientosMobiliarios") do |sheet|
           
         sheet.add_row [:periodo, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito,:numero_prioridad,
-            :codigo_establecimiento, :codigo_institucion, :nombre_institucion,
-            :codigo_zona,:nombre_zona,
-            :nivel_educativo_beneficiado, :nombre_mobiliario, :cantidad_requerida,
-            :numero_beneficiados, :justificacion, :uri_establecimiento, :uri_institucion]
+          :codigo_establecimiento, :codigo_institucion, :nombre_institucion,
+          :codigo_zona,:nombre_zona,
+          :nivel_educativo_beneficiado, :nombre_mobiliario, :cantidad_requerida,
+          :numero_beneficiados, :justificacion, :uri_establecimiento, :uri_institucion]
 
         requerimientos_mobiliarios_xlsx.each do |i|
               

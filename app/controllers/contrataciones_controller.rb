@@ -1,5 +1,5 @@
 class ContratacionesController < ApplicationController
-
+  
   def diccionario
 
   end
@@ -37,7 +37,7 @@ class ContratacionesController < ApplicationController
     if params[:form_buscar_contrataciones_nombre].present?
 
       cond << "nombre ilike ?"
-      args << "%#{params[:form_buscar_contrataciones_nombre]}%"
+      args << "%#{quita_acentos(params[:form_buscar_contrataciones_nombre])}%"
 
     end
 
@@ -45,7 +45,7 @@ class ContratacionesController < ApplicationController
     if params[:form_buscar_contrataciones_descripcion].present?
 
       cond << "descripcion ilike ?"
-      args << "%#{params[:form_buscar_contrataciones_descripcion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_contrataciones_descripcion])}%"
 
     end
 
@@ -73,28 +73,28 @@ class ContratacionesController < ApplicationController
     if params[:form_buscar_contrataciones_estado_llamado].present?
 
       cond << "estado_llamado ilike ?"
-      args << "%#{params[:form_buscar_contrataciones_estado_llamado]}%"
+      args << "%#{quita_acentos(params[:form_buscar_contrataciones_estado_llamado])}%"
 
     end
 
     if params[:form_buscar_contrataciones_modalidad].present?
 
       cond << "modalidad ilike ?"
-      args << "%#{params[:form_buscar_contrataciones_modalidad]}%"
+      args << "%#{quita_acentos(params[:form_buscar_contrataciones_modalidad])}%"
 
     end
 
     if params[:form_buscar_contrataciones_categoria].present?
 
       cond << "categoria ilike ?"
-      args << "%#{params[:form_buscar_contrataciones_catetoria]}%"
+      args << "%#{quita_acentos(params[:form_buscar_contrataciones_catetoria])}%"
 
     end
 
     if params[:form_buscar_contrataciones_proveedor_adjudicado].present?
 
       cond << "proveedor_ruc || ' ' || proveedor  ilike ?"
-      args << "%#{params[:form_buscar_contrataciones_proveedor_adjudicado]}%"
+      args << "%#{quita_acentos(params[:form_buscar_contrataciones_proveedor_adjudicado])}%"
 
     end
 

@@ -1,5 +1,5 @@
 class DirectoriosInstitucionesController < ApplicationController
-  #before_filter :redireccionar_uri
+  before_filter :redireccionar_uri
   def diccionario
 
   end
@@ -32,14 +32,14 @@ class DirectoriosInstitucionesController < ApplicationController
     if params[:form_buscar_directorios_instituciones_nombre_departamento].present?
 
       cond << "nombre_departamento ilike ?"
-      args << "%#{params[:form_buscar_directorios_instituciones_nombre_departamento]}%"
+      args << "%#{quita_acentos(params[:form_buscar_directorios_instituciones_nombre_departamento])}%"
 
     end
 
     if params[:form_buscar_directorios_instituciones_nombre_distrito].present?
 
       cond << "nombre_distrito ilike ?"
-      args << "%#{params[:form_buscar_directorios_instituciones_nombre_distrito]}%"
+      args << "%#{quita_acentos(params[:form_buscar_directorios_instituciones_nombre_distrito])}%"
 
     end
 
@@ -47,14 +47,14 @@ class DirectoriosInstitucionesController < ApplicationController
     if params[:form_buscar_directorios_instituciones_nombre_barrio_localidad].present?
 
       cond << "nombre_barrio_localidad ilike ?"
-      args << "%#{params[:form_buscar_directorios_instituciones_nombre_barrio_localidad]}%"
+      args << "%#{quita_acentos(params[:form_buscar_directorios_instituciones_nombre_barrio_localidad])}%"
 
     end
 
     if params[:form_buscar_directorios_instituciones_nombre_zona].present?
 
       cond << "nombre_zona ilike ?"
-      args << "%#{params[:form_buscar_directorios_instituciones_nombre_zona]}%"
+      args << "%#{quita_acentos(params[:form_buscar_directorios_instituciones_nombre_zona])}%"
 
     end
 
@@ -75,7 +75,7 @@ class DirectoriosInstitucionesController < ApplicationController
     if params[:form_buscar_directorios_instituciones_nombre_institucion].present?
 
       cond << "nombre_institucion ilike ?"
-      args << "%#{params[:form_buscar_directorios_instituciones_nombre_institucion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_directorios_instituciones_nombre_institucion])}%"
 
     end
 

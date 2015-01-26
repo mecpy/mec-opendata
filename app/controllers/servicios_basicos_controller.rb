@@ -1,5 +1,5 @@
 class ServiciosBasicosController < ApplicationController
-    #before_filter :redireccionar_uri
+  before_filter :redireccionar_uri
   def diccionario
 
   end
@@ -39,77 +39,77 @@ class ServiciosBasicosController < ApplicationController
     if params[:form_buscar_servicios_basicos_nombre_departamento].present? #OK
 
       cond << "nombre_departamento ilike ?"
-      args << "%#{params[:form_buscar_servicios_basicos_nombre_departamento]}%"
+      args << "%#{quita_acentos(params[:form_buscar_servicios_basicos_nombre_departamento])}%"
 
     end
 
     if params[:form_buscar_servicios_basicos_nombre_distrito].present? #OK
 
       cond << "nombre_distrito ilike ?"
-      args << "%#{params[:form_buscar_servicios_basicos_nombre_distrito]}%"
+      args << "%#{quita_acentos(params[:form_buscar_servicios_basicos_nombre_distrito])}%"
 
     end
     
     if params[:form_buscar_servicios_basicos_nombre_barrio_localidad].present? #OK
 
       cond << "nombre_barrio_localidad ilike ?"
-      args << "%#{params[:form_buscar_servicios_basicos_nombre_barrio_localidad]}%"
+      args << "%#{quita_acentos(params[:form_buscar_servicios_basicos_nombre_barrio_localidad])}%"
 
     end
 
     if params[:form_buscar_servicios_basicos_nombre_zona].present? #OK
 
       cond << "nombre_zona ilike ?"
-      args << "%#{params[:form_buscar_servicios_basicos_nombre_zona]}%"
+      args << "%#{quita_acentos(params[:form_buscar_servicios_basicos_nombre_zona])}%"
 
     end
     
     if params[:form_buscar_servicios_basicos_nombre_asentamiento_colonia].present? #OK
 
       cond << "nombre_asentamiento_colonia ilike ?"
-      args << "%#{params[:form_buscar_servicios_basicos_nombre_asentamiento_colonia]}%"
+      args << "%#{quita_acentos(params[:form_buscar_servicios_basicos_nombre_asentamiento_colonia])}%"
 
     end
     
     if params[:form_buscar_servicios_basicos_suministro_energia_electrica].present? #OK
 
       cond << "suministro_energia_electrica ilike ?"
-      args << "%#{params[:form_buscar_servicios_basicos_suministro_energia_electrica]}%"
+      args << "%#{quita_acentos(params[:form_buscar_servicios_basicos_suministro_energia_electrica])}%"
 
     end
     
     if params[:form_buscar_servicios_basicos_abastecimiento_agua].present? #OK
 
       cond << "abastecimiento_agua ilike ?"
-      args << "%#{params[:form_buscar_servicios_basicos_abastecimiento_agua]}%"
+      args << "%#{quita_acentos(params[:form_buscar_servicios_basicos_abastecimiento_agua])}%"
 
     end
     
     if params[:form_buscar_servicios_basicos_servicio_sanitario_actual].present? #OK
 
       cond << "servicio_sanitario_actual ilike ?"
-      args << "%#{params[:form_buscar_servicios_basicos_servicio_sanitario_actual]}%"
+      args << "%#{quita_acentos(params[:form_buscar_servicios_basicos_servicio_sanitario_actual])}%"
 
     end
     
     if params[:form_buscar_servicios_basicos_titulo_de_propiedad].present? #OK
 
       cond << "titulo_de_propiedad ilike ?"
-      args << "%#{params[:form_buscar_servicios_basicos_titulo_de_propiedad]}%"
+      args << "%#{quita_acentos(params[:form_buscar_servicios_basicos_titulo_de_propiedad])}%"
 
     end
     
     if params[:form_buscar_servicios_basicos_cuenta_plano].present? #OK
 
       cond << "cuenta_plano ilike ?"
-      args << "%#{params[:form_buscar_servicios_basicos_cuenta_plano]}%"
+      args << "%#{quita_acentos(params[:form_buscar_servicios_basicos_cuenta_plano])}%"
 
     end
     
     if params[:form_buscar_servicios_basicos_prevencion_incendio].present? #OK
 
       cond << "prevencion_incendio ilike ?"
-      args << "%#{params[:form_buscar_servicios_basicos_prevencion_incendio]}%"
+      args << "%#{quita_acentos(params[:form_buscar_servicios_basicos_prevencion_incendio])}%"
 
     end
 
@@ -132,7 +132,7 @@ class ServiciosBasicosController < ApplicationController
           "codigo_zona", "nombre_zona",
           "nombre_asentamiento_colonia", "suministro_energia_electrica","abastecimiento_agua","servicio_sanitario_actual",
           "titulo_de_propiedad","cuenta_plano","prevencion_incendio","uri_establecimiento"
-          ]
+        ]
  
         # data rows
         servicios_basicos_csv.each do |i|
@@ -157,10 +157,10 @@ class ServiciosBasicosController < ApplicationController
       p.workbook.add_worksheet(:name => "ServiciosBasicos") do |sheet|
           
         sheet.add_row [:periodo, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito,
-            :codigo_establecimiento, :codigo_barrio_localidad, :nombre_barrio_localidad,
-            :codigo_zona,:nombre_zona,
-            :nombre_asentamiento_colonia, :suministro_energia_electrica, :abastecimiento_agua, :servicio_sanitario_actual,
-            :titulo_de_propiedad, :cuenta_plano, :prevencion_incendio, :uri_establecimiento]
+          :codigo_establecimiento, :codigo_barrio_localidad, :nombre_barrio_localidad,
+          :codigo_zona,:nombre_zona,
+          :nombre_asentamiento_colonia, :suministro_energia_electrica, :abastecimiento_agua, :servicio_sanitario_actual,
+          :titulo_de_propiedad, :cuenta_plano, :prevencion_incendio, :uri_establecimiento]
 
         servicios_basicos_xlsx.each do |i|
               

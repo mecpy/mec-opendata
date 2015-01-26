@@ -42,21 +42,21 @@ class RegistrosTitulosController < ApplicationController
     if params[:form_buscar_registros_titulos_nombre_completo].present?
 
       cond << "nombre_completo ilike ?"
-      args << "%#{params[:form_buscar_registros_titulos_nombre_completo]}%"
+      args << "%#{quita_acentos(params[:form_buscar_registros_titulos_nombre_completo])}%"
 
     end
 
     if params[:form_buscar_registros_titulos_carrera].present?
 
       cond << "carrera ilike ?"
-      args << "%#{params[:form_buscar_registros_titulos_carrera]}%"
+      args << "%#{quita_acentos(params[:form_buscar_registros_titulos_carrera])}%"
 
     end
 
     if params[:form_buscar_registros_titulos_titulo].present?
 
       cond << "titulo ilike ?"
-      args << "%#{params[:form_buscar_registros_titulos_titulo]}%"
+      args << "%#{quita_acentos(params[:form_buscar_registros_titulos_titulo])}%"
 
     end
 
@@ -77,14 +77,14 @@ class RegistrosTitulosController < ApplicationController
     if params[:form_buscar_registros_titulos_institucion].present?
 
       cond << "institucion ilike ?"
-      args << "%#{params[:form_buscar_registros_titulos_institucion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_registros_titulos_institucion])}%"
 
     end
 
     if params[:form_buscar_registros_titulos_tipo_institucion].present?
 
       cond << "tipo_institucion ilike ?"
-      args << "%#{params[:form_buscar_registros_titulos_tipo_institucion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_registros_titulos_tipo_institucion])}%"
 
     end
 

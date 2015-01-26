@@ -1,6 +1,6 @@
 class MatriculacionesEducacionMediaController < ApplicationController
   def index
-    @matriculaciones_departamentos_distritos = MatriculacionEducacionMedia.orden_dep_dis.paginate :per_page => 15, :page => params[:page]
+    @matriculaciones_educacion_media = MatriculacionEducacionMedia.orden_dep_dis.paginate :per_page => 15, :page => params[:page]
     respond_to do |f|
 
       f.html {render :layout => 'application_wide'}
@@ -25,28 +25,28 @@ class MatriculacionesEducacionMediaController < ApplicationController
     if params[:form_buscar_matriculaciones_educacion_media_nombre_departamento].present?
 
       cond << "nombre_departamento ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_media_nombre_departamento]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_media_nombre_departamento])}%"
 
     end
 
     if params[:form_buscar_matriculaciones_educacion_media_nombre_distrito].present?
 
       cond << "nombre_distrito ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_media_nombre_distrito]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_media_nombre_distrito])}%"
 
     end
 
     if params[:form_buscar_matriculaciones_educacion_media_nombre_barrio_localidad].present?
 
       cond << "nombre_barrio_localidad ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_media_nombre_barrio_localidad]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_media_nombre_barrio_localidad])}%"
 
     end
 
     if params[:form_buscar_matriculaciones_educacion_media_nombre_zona].present?
 
       cond << "nombre_zona ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_media_nombre_zona]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_media_nombre_zona])}%"
 
     end
 
@@ -67,14 +67,14 @@ class MatriculacionesEducacionMediaController < ApplicationController
     if params[:form_buscar_matriculaciones_educacion_media_nombre_institucion].present?
 
       cond << "nombre_institucion ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_media_nombre_institucion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_media_nombre_institucion])}%"
 
     end
 
     if params[:form_buscar_matriculaciones_educacion_media_sector_o_tipo_gestion].present?
 
       cond << "sector_o_tipo_gestion ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_media_sector_o_tipo_gestion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_media_sector_o_tipo_gestion])}%"
 
     end
 
@@ -121,21 +121,20 @@ class MatriculacionesEducacionMediaController < ApplicationController
       csv = CSV.generate do |csv|
         # header row
         csv << ["anio", "codigo_departamento", "nombre_departamento",
-         "codigo_distrito", "nombre_distrito", "codigo_barrio_localidad",
-         "nombre_barrio_localidad", "codigo_zona", "nombre_zona",
-         "codigo_establecimiento", "codigo_institucion", "nombre_institucion",
-         "sector_o_tipo_gestion", "matricula_cientifico", "matricula_tecnico", 
-         "matricula_media_abierta", "matricula_formacion_profesional_media", "anho_cod_geo" ]
+          "codigo_distrito", "nombre_distrito", "codigo_barrio_localidad",
+          "nombre_barrio_localidad", "codigo_zona", "nombre_zona",
+          "codigo_establecimiento", "codigo_institucion", "nombre_institucion",
+          "sector_o_tipo_gestion", "matricula_cientifico", "matricula_tecnico", 
+          "matricula_media_abierta", "matricula_formacion_profesional_media", "anio_cod_geo" ]
  
         # data rows
         matriculaciones_educacion_media_csv.each do |e|
-          csv << [e.anio, e.codigo_departamento, 
-                  e.nombre_departamento, e.codigo_distrito, e.nombre_distrito,
-                  e.codigo_barrio_localidad, e.nombre_barrio_localidad,
-                  e.codigo_zona, e.nombre_zona, e.codigo_establecimiento,
-                  e.codigo_institucion, e.nombre_institucion,
-                  e.sector_o_tipo_gestion, e.matricula_cientifico, e.matricula_tecnico,
-                  e.matricula_media_abierta, e.matricula_formacion_profesional_media, e.anho_cod_geo ]
+          csv << [e.anio, e.codigo_departamento, e.nombre_departamento,
+            e.codigo_distrito, e.nombre_distrito, e.codigo_barrio_localidad,
+            e.nombre_barrio_localidad, e.codigo_zona, e.nombre_zona,
+            e.codigo_establecimiento, e.codigo_institucion, e.nombre_institucion,
+            e.sector_o_tipo_gestion, e.matricula_cientifico, e.matricula_tecnico,
+            e.matricula_media_abierta, e.matricula_formacion_profesional_media, e.anio_cod_geo ]
         end
 
       end
@@ -151,11 +150,11 @@ class MatriculacionesEducacionMediaController < ApplicationController
       p.workbook.add_worksheet(:name => "Matriculaciones EM") do |sheet|
           
         sheet.add_row [:anio, :codigo_departamento, :nombre_departamento, 
-            :codigo_distrito, :nombre_distrito, :codigo_barrio_localidad,
-            :nombre_barrio_localidad, :codigo_zona, :nombre_zona, 
-            :codigo_establecimiento, :codigo_institucion, :nombre_institucion,
-            :sector_o_tipo_gestion, :matricula_cientifico, :matricula_tecnico,
-            :matricula_media_abierta, :matricula_formacion_profesional_media]
+          :codigo_distrito, :nombre_distrito, :codigo_barrio_localidad,
+          :nombre_barrio_localidad, :codigo_zona, :nombre_zona, 
+          :codigo_establecimiento, :codigo_institucion, :nombre_institucion,
+          :sector_o_tipo_gestion, :matricula_cientifico, :matricula_tecnico,
+          :matricula_media_abierta, :matricula_formacion_profesional_media, :anio_cod_geo]
 
         @matriculaciones_educacion_media.each do |m|
             
@@ -164,7 +163,7 @@ class MatriculacionesEducacionMediaController < ApplicationController
             m.nombre_barrio_localidad, m.codigo_zona, m.nombre_zona, 
             m.codigo_establecimiento, m.codigo_institucion, m.nombre_institucion,
             m.sector_o_tipo_gestion, m.matricula_cientifico, m.matricula_tecnico,
-            m.matricula_media_abierta, m.matricula_formacion_profesional_media]
+            m.matricula_media_abierta, m.matricula_formacion_profesional_media, m.anio_cod_geo]
 
         end
 
@@ -172,9 +171,7 @@ class MatriculacionesEducacionMediaController < ApplicationController
       
       p.use_shared_strings = true
       
-      p.serialize('public/data/matriculaciones_educacion_media_2012.xlsx')
-        
-      send_file "public/data/matriculaciones_educacion_media_2012.xlsx", :filename => "matriculaciones_educacion_media_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
+      send_data p.to_stream.read, filename: "matriculaciones_educacion_media_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     elsif params[:format] == 'pdf'
 
@@ -194,22 +191,22 @@ class MatriculacionesEducacionMediaController < ApplicationController
         report.list(:matriculaciones_educacion_media).add_row do |row|
 
           row.values  anio: e.anio,
-                      codigo_departamento: e.codigo_departamento.to_s,        
-                      nombre_departamento: e.nombre_departamento.to_s,       
-                      codigo_distrito: e.codigo_distrito.to_s,       
-                      nombre_distrito: e.nombre_distrito.to_s,
-                      codigo_barrio_localidad: e.codigo_barrio_localidad,
-                      nombre_barrio_localidad: e.nombre_barrio_localidad,       
-                      codigo_zona: e.codigo_zona.to_s,       
-                      nombre_zona: e.nombre_zona.to_s,
-                      codigo_establecimiento: e.codigo_establecimiento.to_s,
-                      codigo_institucion: e.codigo_institucion.to_s,
-                      nombre_institucion: e.nombre_institucion.to_s,
-                      sector_o_tipo_gestion: e.sector_o_tipo_gestion.to_s,
-                      matricula_cientifico: e.matricula_cientifico.to_s,
-                      matricula_tecnico: e.matricula_tecnico.to_s,
-                      matricula_media_abierta: e.matricula_media_abierta.to_s,
-                      matricula_formacion_profesional_media: e.matricula_formacion_profesional_media.to_s      
+            codigo_departamento: e.codigo_departamento.to_s,        
+            nombre_departamento: e.nombre_departamento.to_s,       
+            codigo_distrito: e.codigo_distrito.to_s,       
+            nombre_distrito: e.nombre_distrito.to_s,
+            codigo_barrio_localidad: e.codigo_barrio_localidad,
+            nombre_barrio_localidad: e.nombre_barrio_localidad,       
+            codigo_zona: e.codigo_zona.to_s,       
+            nombre_zona: e.nombre_zona.to_s,
+            codigo_establecimiento: e.codigo_establecimiento.to_s,
+            codigo_institucion: e.codigo_institucion.to_s,
+            nombre_institucion: e.nombre_institucion.to_s,
+            sector_o_tipo_gestion: e.sector_o_tipo_gestion.to_s,
+            matricula_cientifico: e.matricula_cientifico.to_s,
+            matricula_tecnico: e.matricula_tecnico.to_s,
+            matricula_media_abierta: e.matricula_media_abierta.to_s,
+            matricula_formacion_profesional_media: e.matricula_formacion_profesional_media.to_s      
 
         end
 
@@ -217,8 +214,8 @@ class MatriculacionesEducacionMediaController < ApplicationController
 
 
       send_data report.generate, filename: "matriculaciones_educacion_media_#{Time.now.strftime('%d%m%Y__%H%M')}.pdf", 
-                                 type: 'application/pdf', 
-                                 disposition: 'attachment'
+        type: 'application/pdf', 
+        disposition: 'attachment'
 
     else
 

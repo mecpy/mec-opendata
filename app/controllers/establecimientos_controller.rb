@@ -1,5 +1,7 @@
 class EstablecimientosController < ApplicationController
-
+  
+  before_filter :redireccionar_uri
+  
   def index
 
     @establecimientos = Establecimiento.orden_dep_dis.paginate :per_page => 15, :page => params[:page]
@@ -35,35 +37,35 @@ class EstablecimientosController < ApplicationController
     if params[:form_buscar_establecimientos_nombre_departamento].present?
 
       cond << "nombre_departamento ilike ?"
-      args << "%#{params[:form_buscar_establecimientos_nombre_departamento]}%"
+      args << "%#{quita_acentos(params[:form_buscar_establecimientos_nombre_departamento])}%"
 
     end
 
     if params[:form_buscar_establecimientos_nombre_distrito].present?
 
       cond << "nombre_distrito ilike ?"
-      args << "%#{params[:form_buscar_establecimientos_nombre_distrito]}%"
+      args << "%#{quita_acentos(params[:form_buscar_establecimientos_nombre_distrito])}%"
 
     end
 
     if params[:form_buscar_establecimientos_nombre_zona].present?
 
       cond << "nombre_zona ilike ?"
-      args << "%#{params[:form_buscar_establecimientos_nombre_zona]}%"
+      args << "%#{quita_acentos(params[:form_buscar_establecimientos_nombre_zona])}%"
 
     end
 
     if params[:form_buscar_establecimientos_nombre_barrio_localidad].present?
 
       cond << "nombre_barrio_localidad ilike ?"
-      args << "%#{params[:form_buscar_establecimientos_nombre_barrio_localidad]}%"
+      args << "%#{quita_acentos(params[:form_buscar_establecimientos_nombre_barrio_localidad])}%"
 
     end
 
     if params[:form_buscar_establecimientos_direccion].present?
 
       cond << "direccion ilike ?"
-      args << "%#{params[:form_buscar_establecimientos_direccion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_establecimientos_direccion])}%"
 
     end
 
@@ -156,7 +158,7 @@ class EstablecimientosController < ApplicationController
                       coordenadas_x: e.coordenadas_x.to_s,       
                       latitud: e.latitud.to_s,       
                       longitud: e.longitud.to_s,
-                      anho_cod_geo: e.anho_cod_geo.to_s,
+                      #anho_cod_geo: e.anho_cod_geo.to_s,
                       uri: e.uri.to_s
         end
 

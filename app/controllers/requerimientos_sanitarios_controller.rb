@@ -1,5 +1,5 @@
 class RequerimientosSanitariosController < ApplicationController
-    #before_filter :redireccionar_uri
+  before_filter :redireccionar_uri
   def diccionario
 
   end
@@ -53,56 +53,56 @@ class RequerimientosSanitariosController < ApplicationController
     if params[:form_buscar_requerimientos_sanitarios_nombre_institucion].present? #OK
 
       cond << "nombre_institucion ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_sanitarios_nombre_institucion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_sanitarios_nombre_institucion])}%"
 
     end
 
     if params[:form_buscar_requerimientos_sanitarios_nombre_departamento].present? #OK
 
       cond << "nombre_departamento ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_sanitarios_nombre_departamento]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_sanitarios_nombre_departamento])}%"
 
     end
 
     if params[:form_buscar_requerimientos_sanitarios_nombre_distrito].present? #OK
 
       cond << "nombre_distrito ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_sanitarios_nombre_distrito]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_sanitarios_nombre_distrito])}%"
 
     end
 
     if params[:form_buscar_requerimientos_sanitarios_nombre_zona].present? #OK
 
       cond << "nombre_zona ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_sanitarios_nombre_zona]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_sanitarios_nombre_zona])}%"
 
     end
 
     if params[:form_buscar_requerimientos_sanitarios_nivel_educativo_beneficiado].present?
 
       cond << "nivel_educativo_beneficiado ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_sanitarios_nivel_educativo_beneficiado]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_sanitarios_nivel_educativo_beneficiado])}%"
 
     end
     
     if params[:form_buscar_requerimientos_sanitarios_abastecimiento_agua].present?
 
       cond << "abastecimiento_agua ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_sanitarios_abastecimiento_agua]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_sanitarios_abastecimiento_agua])}%"
 
     end
     
     if params[:form_buscar_requerimientos_sanitarios_servicio_sanitario_actual].present?
 
       cond << "servicio_sanitario_actual ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_sanitarios_servicio_sanitario_actual]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_sanitarios_servicio_sanitario_actual])}%"
 
     end
     
     if params[:form_buscar_requerimientos_sanitarios_cuenta_espacio_para_construccion].present?
 
       cond << "cuenta_espacio_para_construccion ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_sanitarios_cuenta_espacio_para_construccion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_sanitarios_cuenta_espacio_para_construccion])}%"
 
     end
     
@@ -130,7 +130,7 @@ class RequerimientosSanitariosController < ApplicationController
     if params[:form_buscar_requerimientos_sanitarios_justificacion].present?
 
       cond << "justificacion ilike ?"
-      args << "%#{params[:form_buscar_requerimientos_sanitarios_justificacion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_requerimientos_sanitarios_justificacion])}%"
 
     end
 
@@ -154,7 +154,7 @@ class RequerimientosSanitariosController < ApplicationController
           "nivel_educativo_beneficiado", "abastecimiento_agua", "servicio_sanitario_actual", 
           "cuenta_espacio_para_construccion","tipo_requerimiento_infraestructura","cantidad_requerida",
           "numero_beneficiados","justificacion","uri_establecimiento","uri_institucion"
-          ]
+        ]
         # data rows
         requerimientos_sanitarios_csv.each do |i|
           csv << [i.periodo, i.codigo_departamento, i.nombre_departamento, i.codigo_distrito, i.nombre_distrito, i.numero_prioridad,
@@ -172,18 +172,18 @@ class RequerimientosSanitariosController < ApplicationController
 
     elsif params[:format] == 'xlsx'
         
-        requerimientos_sanitarios_xlsx = VRequerimientoSanitario.orden_dep_dis.where(cond).all
+      requerimientos_sanitarios_xlsx = VRequerimientoSanitario.orden_dep_dis.where(cond).all
        
       p = Axlsx::Package.new
         
       p.workbook.add_worksheet(:name => "RequerimientosSanitarios") do |sheet|
           
         sheet.add_row [:periodo, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :numero_prioridad,
-            :codigo_establecimiento, :codigo_institucion, :nombre_institucion,
-            :codigo_zona,:nombre_zona,
-            :nivel_educativo_beneficiado, :abastecimiento_agua, :servicio_sanitario_actual,
-            :cuenta_espacio_para_construccion, :tipo_requerimiento_infraestructura, :cantidad_requerida,
-            :numero_beneficiados, :justificacion, :uri_establecimiento, :uri_institucion]
+          :codigo_establecimiento, :codigo_institucion, :nombre_institucion,
+          :codigo_zona,:nombre_zona,
+          :nivel_educativo_beneficiado, :abastecimiento_agua, :servicio_sanitario_actual,
+          :cuenta_espacio_para_construccion, :tipo_requerimiento_infraestructura, :cantidad_requerida,
+          :numero_beneficiados, :justificacion, :uri_establecimiento, :uri_institucion]
 
         requerimientos_sanitarios_xlsx.each do |i|
               

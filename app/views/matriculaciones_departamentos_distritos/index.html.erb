@@ -1,8 +1,14 @@
 <h2>
-	<span itemprop="name">Matriculaciones por Departamento y Distrito</span>
+  <span itemprop="name">Matriculaciones por Departamento y Distrito</span>
   <meta itemprop="description" content="Se refiere a la cantidad total de matriculados por departamento/distrito según sector y zona."
-  />
+        />
+  <meta itemprop="url" content="http://datos.mec.gov.py/data/matriculaciones_departamentos_distritos">  
   <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+  <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
+    <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
+    <meta itemprop="url" content="http://datos.mec.gov.py/">
+    <meta itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura">
+  </span>
   <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
     <meta itemprop="name" content="Ministerio de Educación y Cultura">
     <meta itemprop="url" content="http://www.mec.gov.py/">
@@ -15,7 +21,7 @@
   <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
   <meta itemprop="keywords" style="display: none;" content="educación,matriculaciones,departamentos, distritos"/>
   <meta itemprop="version" style="display: none;" content="1.0"/>
-  
+
   <span style="float:right;">
     <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_departamentos_distritos_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
     <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), mec_custom_url(def_matriculaciones_departamentos_distritos_url), :title => "Ir al diccionario" %>
@@ -34,40 +40,40 @@
       <th style="width:100px;" class="text-min celda-derecha">
         <%= label_tag "Periodo" %><br />
         <%= select :form_buscar_matriculaciones_departamentos_distritos, :anio, [2012], {:class => 'text-min'} %>
-        <%= link_to icon_delete, "#", onclick: "filtrar_form();return false;" %>
+        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_departamentos_distritos_anio'),1);" %>
       </th>
 
       <th style="width:20%;" class="text-min">
         <%= label_tag "Departamento"%><br />
         <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_departamento, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_departamentos_distritos_nombre_departamento').val(''); filtrar_form(); return false;" %><br />
+        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_departamentos_distritos_nombre_departamento'));" %>
       </th>
 
       <th style="width:20%;" class="text-min">
         <%= label_tag "Distrito"%><br />
         <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_distrito, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_departamentos_distritos_nombre_distrito').val(''); filtrar_form(); return false;" %><br />
+        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_departamentos_distritos_nombre_distrito'));" %>
       </th>
 
       <th style="width:15%;" class="text-min">
         <%= label_tag "Zona"%><br />
         <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_zona, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_departamentos_distritos_nombre_zona').val(''); filtrar_form(); return false;" %><br />
+        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_departamentos_distritos_nombre_zona'));" %>
       </th>
 
       <th style="width:15%;" class="text-min">
         <%= label_tag "Sector o Tipo de Gestión"%><br />
         <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion').val(''); filtrar_form(); return false;" %><br />
+        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion'));" %>
       </th>
 
       <th style="width:20%;" class="text-min">
         <%= label_tag nil, "Cantidad de Matriculados".html_safe%><br />
         <%= select_tag(:form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados_operador, options_for_select(['>', '<', '='])) %>
         <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados').val(''); filtrar_form(); return false;" %><br />
+        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados'));" %>
       </th>
-      
+
     <% end %>
 
   </tr>
@@ -78,38 +84,46 @@
 
 <script type="text/javascript">
 
-  $("#form-buscar-matriculaciones-departamentos-distritos").bind("submit", function(){
+  $("#form-buscar-matriculaciones-departamentos-distritos").bind("submit", function() {
 
-      $("#matriculaciones-departamentos-distritos-lista").html("<%= escape_javascript("<tr><td style='7'><p class='none-result'>#{image_tag('ajax-loader0.gif')}</p>").html_safe %></td></tr>")    
-  
+    $("#matriculaciones-departamentos-distritos-lista").html("<%= escape_javascript("<tr><td style='7'><p class='none-result'>#{image_tag('ajax-loader0.gif')}</p>").html_safe %></td></tr>")
+
   })
 
-  $(".table-bordered :input").bind('change',function(){
-      
+  $(".table-bordered :input").bind('change', function() {
+    $.ajaxQ.abortAll();
     $("#form-buscar-matriculaciones-departamentos-distritos").submit();
-      
+
   })
 
   //LIMPIAR FORMULARIO DE BUSQUEDA
-  function limpiar_form_buscar_matriculaciones_departamentos_distritos(){
-    
+  function limpiar_form_buscar_matriculaciones_departamentos_distritos() {
+
     $("#form_buscar_matriculaciones_departamentos_distritos_anio").val("2012");
     $("#form_buscar_matriculaciones_departamentos_distritos_nombre_departamento").val("");
     $("#form_buscar_matriculaciones_departamentos_distritos_nombre_distrito").val("");
     $("#form_buscar_matriculaciones_departamentos_distritos_nombre_zona").val("");
     $("#form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion").val("");
     $("#form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados").val("");
-    $("#form-buscar-matriculaciones-departamentos-distritos").submit();
-
-  }  
-
-  function filtrar_form(){
-
+    $.ajaxQ.abortAll();
     $("#form-buscar-matriculaciones-departamentos-distritos").submit();
 
   }
 
   limpiar_form_buscar_matriculaciones_departamentos_distritos();
+
+  //--------------- QUITAR FILTRO -------------------//
+  function quitar_filtro(id, ban) {
+    if (ban === 1) {
+      id.val("2012");
+    } else {
+      id.val('');
+    }
+    $.ajaxQ.abortAll();
+    $('#form-buscar-matriculaciones-departamentos-distritos').submit();
+
+  }
+  //-------------------------------------------------//
 
 </script>
 
@@ -126,6 +140,6 @@
   }
   .text-min input[type="text"] { width: 80px;}
   #tablaContenedor{width:1000px;}
- 
+
 </style>
 

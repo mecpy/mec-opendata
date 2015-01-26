@@ -31,28 +31,28 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
     if params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento].present?
 
       cond << "nombre_departamento ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento])}%"
 
     end
 
     if params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito].present?
 
       cond << "nombre_distrito ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito])}%"
 
     end
 
     if params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_zona].present?
 
       cond << "nombre_zona ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_zona]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_zona])}%"
 
     end
 
     if params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad].present?
 
       cond << "nombre_barrio_localidad ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad])}%"
 
     end
 
@@ -65,14 +65,14 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
     if params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion].present?
 
       cond << "nombre_institucion ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion])}%"
 
     end
     
     if params[:form_buscar_matriculaciones_educacion_inclusiva_sector_o_tipo_gestion].present?
 
       cond << "sector_o_tipo_gestion ilike ?"
-      args << "%#{params[:form_buscar_matriculaciones_educacion_inclusiva_sector_o_tipo_gestion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_inclusiva_sector_o_tipo_gestion])}%"
 
     end
     
@@ -159,9 +159,7 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
       
       p.use_shared_strings = true
       
-      p.serialize('public/data/matriculaciones_educacion_inclusiva_2012.xlsx')
-        
-      send_file "public/data/matriculaciones_educacion_inclusiva_2012.xlsx", :filename => "matriculaciones_educacion_inclusiva_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
+      send_data p.to_stream.read, filename: "matriculaciones_educacion_inclusiva_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     elsif params[:format] == 'pdf'
 

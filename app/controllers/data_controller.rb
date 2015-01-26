@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class DataController < ApplicationController
   
+
   def index
     
   end

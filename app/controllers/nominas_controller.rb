@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class NominasController< ApplicationController
-  #before_filter :redireccionar_uri
+  before_filter :redireccionar_uri
   def diccionario
 
   end
@@ -44,21 +44,21 @@ class NominasController< ApplicationController
     if params[:form_buscar_nominas_nombre_trabajador].present?
 
       cond << "rtrim(nombre_trabajador, ' ') ilike ?"
-      args << "%#{params[:form_buscar_nominas_nombre_trabajador]}%"
+      args << "%#{quita_acentos(params[:form_buscar_nominas_nombre_trabajador])}%"
 
     end
 
     if params[:form_buscar_nominas_nombre_objeto_gasto].present?
 
       cond << "nombre_objeto_gasto ilike ?"
-      args << "%#{params[:form_buscar_nominas_nombre_objeto_gasto]}%"
+      args << "%#{quita_acentos(params[:form_buscar_nominas_nombre_objeto_gasto])}%"
 
     end
 
     if params[:form_buscar_nominas_estado].present?
 
       cond << "estado ilike ?"
-      args << "%#{params[:form_buscar_nominas_estado]}%"
+      args << "%#{quita_acentos(params[:form_buscar_nominas_estado])}%"
 
     end
 
@@ -258,21 +258,21 @@ class NominasController< ApplicationController
     if params[:form_buscar_nominas_nombre_trabajador].present?
 
       cond << "rtrim(nombre_trabajador, ' ') ilike ?"
-      args << "%#{params[:form_buscar_nominas_nombre_trabajador]}%"
+      args << "%#{quita_acentos(params[:form_buscar_nominas_nombre_trabajador])}%"
 
     end
 
     if params[:form_buscar_nominas_nombre_objeto_gasto].present?
 
       cond << "nombre_objeto_gasto ilike ?"
-      args << "%#{params[:form_buscar_nominas_nombre_objeto_gasto]}%"
+      args << "%#{quita_acentos(params[:form_buscar_nominas_nombre_objeto_gasto])}%"
 
     end
 
     if params[:form_buscar_nominas_estado].present?
 
       cond << "estado ilike ?"
-      args << "%#{params[:form_buscar_nominas_estado]}%"
+      args << "%#{quita_acentos(params[:form_buscar_nominas_estado])}%"
 
     end
 

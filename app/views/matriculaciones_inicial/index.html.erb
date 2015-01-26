@@ -1,7 +1,13 @@
 <h2>
-	<span itemprop="name">Matriculaciones Educación Inicial</span>
+  <span itemprop="name">Matriculaciones Educación Inicial</span>
   <meta itemprop="description" content="Se refiere a la cantidad de matriculados en las etapas maternal, prejardín, jardín y preescolar con sus correspondientes códigos identificatorios."/>
+  <meta itemprop="url" content="http://datos.mec.gov.py/data/matriculaciones_inicial">
   <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+  <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
+    <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
+    <meta itemprop="url" content="http://datos.mec.gov.py/">
+    <meta itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura">
+  </span>
   <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
     <meta itemprop="name" content="Ministerio de Educación y Cultura">
     <meta itemprop="url" content="http://www.mec.gov.py/">
@@ -14,7 +20,7 @@
   <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
   <meta itemprop="keywords" style="display: none;" content="educación,matriculaciones,educación inicial"/>
   <meta itemprop="version" style="display: none;" content="1.0"/>
-  
+
   <span style="float:right;">
     <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_inicial_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
     <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), url_def_matriculaciones_inicial, :title => "Ir al diccionario" %>
@@ -27,137 +33,137 @@
 <div class="table-outter">
   <table id="matriculaciones-inicial-table" class="table table-striped table-bordered table-hover" style="margin-bottom: 0px; width: 2500px; max-width: none">
 
-  <tr>
+    <tr>
 
-    <%= form_tag mec_custom_url(data_matriculaciones_inicial_lista_url(nil)), :remote => true, :id => "form-buscar-matriculaciones-inicial" do  %>
+      <%= form_tag mec_custom_url(data_matriculaciones_inicial_lista_url(nil)), :remote => true, :id => "form-buscar-matriculaciones-inicial" do  %>
 
-      <th style="width:5%;" class="text-min celda-derecha">
-        <%= label_tag "Periodo" %><br />
-        <%= select :form_buscar_matriculaciones_inicial, :anio, [2012], {:class => 'text-min'} %>
-        <%= link_to icon_delete, "#", onclick: "filtrar_form();return false;" %>
-      </th>
+        <th style="width:5%;" class="text-min celda-derecha">
+          <%= label_tag "Periodo" %><br />
+          <%= select :form_buscar_matriculaciones_inicial, :anio, [2012], {:class => 'text-min'} %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_inicial_anio'),1);" %>
+        </th>
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe%><br />
-        <%= text_field_tag :form_buscar_matriculaciones_inicial_codigo_establecimiento, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_inicial_codigo_establecimiento').val(''); filtrar_form(); return false;" %><br />
-      </th>
+        <th style="width:7%;" class="text-min">
+          <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe%><br />
+          <%= text_field_tag :form_buscar_matriculaciones_inicial_codigo_establecimiento, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_inicial_codigo_establecimiento'));" %>
+        </th>
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag nil, "C&oacute;digo Instituci&oacute;n".html_safe%><br />
-        <%= text_field_tag :form_buscar_matriculaciones_inicial_codigo_institucion, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_inicial_codigo_institucion').val(''); filtrar_form(); return false;" %><br />
-      </th>
+        <th style="width:7%;" class="text-min">
+          <%= label_tag nil, "C&oacute;digo Instituci&oacute;n".html_safe%><br />
+          <%= text_field_tag :form_buscar_matriculaciones_inicial_codigo_institucion, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_inicial_codigo_institucion'));" %>
+        </th>
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag "Nombre Institución"%><br />
-        <%= text_field_tag :form_buscar_matriculaciones_inicial_nombre_institucion, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_inicial_nombre_institucion').val(''); filtrar_form(); return false;" %><br />
-      </th>
+        <th style="width:7%;" class="text-min">
+          <%= label_tag "Nombre Institución"%><br />
+          <%= text_field_tag :form_buscar_matriculaciones_inicial_nombre_institucion, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_inicial_nombre_institucion'));" %>
+        </th>
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag "Departamento"%><br />
-        <%= text_field_tag :form_buscar_matriculaciones_inicial_nombre_departamento, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_inicial_nombre_departamento').val(''); filtrar_form(); return false;" %><br />
-      </th>
+        <th style="width:7%;" class="text-min">
+          <%= label_tag "Departamento"%><br />
+          <%= text_field_tag :form_buscar_matriculaciones_inicial_nombre_departamento, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_inicial_nombre_departamento'));" %>
+        </th>
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag "Distrito"%><br />
-        <%= text_field_tag :form_buscar_matriculaciones_inicial_nombre_distrito, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_inicial_nombre_distrito').val(''); filtrar_form(); return false;" %><br />
-      </th>
+        <th style="width:7%;" class="text-min">
+          <%= label_tag "Distrito"%><br />
+          <%= text_field_tag :form_buscar_matriculaciones_inicial_nombre_distrito, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_inicial_nombre_distrito'));" %>
+        </th>
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag "Barrio/Localidad"%><br />
-        <%= text_field_tag :form_buscar_matriculaciones_inicial_nombre_barrio_localidad, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_inicial_nombre_barrio_localidad').val(''); filtrar_form(); return false;" %><br />
-      </th>
-      
-      <th style="width:6%;" class="text-min">
-        <%= label_tag "Zona"%><br />
-        <%= text_field_tag :form_buscar_matriculaciones_inicial_nombre_zona, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_inicial_nombre_zona').val(''); filtrar_form(); return false;" %><br />
-      </th>
+        <th style="width:7%;" class="text-min">
+          <%= label_tag "Barrio/Localidad"%><br />
+          <%= text_field_tag :form_buscar_matriculaciones_inicial_nombre_barrio_localidad, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_inicial_nombre_barrio_localidad'));" %>
+        </th>
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag "Sector o Tipo Gestión"%><br />
-        <%= text_field_tag :form_buscar_matriculaciones_inicial_sector_o_tipo_gestion, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_inicial_sector_o_tipo_gestion').val(''); filtrar_form(); return false;" %><br />
-      </th>
+        <th style="width:6%;" class="text-min">
+          <%= label_tag "Zona"%><br />
+          <%= text_field_tag :form_buscar_matriculaciones_inicial_nombre_zona, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_inicial_nombre_zona'));" %>
+        </th>
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag nil, "Maternal".html_safe%><br />
-        <%= select_tag(:form_buscar_matriculaciones_inicial_maternal_operador, options_for_select(['>', '<', '='])) %>
-        <%= text_field_tag :form_buscar_matriculaciones_inicial_maternal, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_inicial_maternal').val(''); filtrar_form(); return false;" %><br />
-      </th>
+        <th style="width:7%;" class="text-min">
+          <%= label_tag "Sector o Tipo Gestión"%><br />
+          <%= text_field_tag :form_buscar_matriculaciones_inicial_sector_o_tipo_gestion, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_inicial_sector_o_tipo_gestion'));" %>
+        </th>
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag nil, "Pre-Jardin".html_safe%><br />
-        <%= select_tag(:form_buscar_matriculaciones_inicial_prejardin_operador, options_for_select(['>', '<', '='])) %>
-        <%= text_field_tag :form_buscar_matriculaciones_inicial_prejardin, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_inicial_prejardin').val(''); filtrar_form(); return false;" %><br />
-      </th>
+        <th style="width:7%;" class="text-min">
+          <%= label_tag nil, "Maternal".html_safe%><br />
+          <%= select_tag(:form_buscar_matriculaciones_inicial_maternal_operador, options_for_select(['>', '<', '='])) %>
+          <%= text_field_tag :form_buscar_matriculaciones_inicial_maternal, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_inicial_maternal'));" %>
+        </th>
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag nil, "Jardin".html_safe%><br />
-        <%= select_tag(:form_buscar_matriculaciones_inicial_jardin_operador, options_for_select(['>', '<', '='])) %>
-        <%= text_field_tag :form_buscar_matriculaciones_inicial_jardin, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_inicial_jardin').val(''); filtrar_form(); return false;" %><br />
-      </th>
+        <th style="width:7%;" class="text-min">
+          <%= label_tag nil, "Pre-Jardin".html_safe%><br />
+          <%= select_tag(:form_buscar_matriculaciones_inicial_prejardin_operador, options_for_select(['>', '<', '='])) %>
+          <%= text_field_tag :form_buscar_matriculaciones_inicial_prejardin, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_inicial_prejardin'));" %>
+        </th>
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag nil, "Pre-Escolar".html_safe%><br />
-        <%= select_tag(:form_buscar_matriculaciones_inicial_preescolar_operador, options_for_select(['>', '<', '='])) %>
-        <%= text_field_tag :form_buscar_matriculaciones_inicial_preescolar, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_inicial_preescolar').val(''); filtrar_form(); return false;" %><br />
-      </th>
+        <th style="width:7%;" class="text-min">
+          <%= label_tag nil, "Jardin".html_safe%><br />
+          <%= select_tag(:form_buscar_matriculaciones_inicial_jardin_operador, options_for_select(['>', '<', '='])) %>
+          <%= text_field_tag :form_buscar_matriculaciones_inicial_jardin, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_inicial_jardin'));" %>
+        </th>
+
+        <th style="width:7%;" class="text-min">
+          <%= label_tag nil, "Pre-Escolar".html_safe%><br />
+          <%= select_tag(:form_buscar_matriculaciones_inicial_preescolar_operador, options_for_select(['>', '<', '='])) %>
+          <%= text_field_tag :form_buscar_matriculaciones_inicial_preescolar, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_inicial_preescolar'));" %>
+        </th>
 
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag nil, "Total Matriculados".html_safe%><br />
-        <%= select_tag(:form_buscar_matriculaciones_inicial_total_matriculados_operador, options_for_select(['>', '<', '='])) %>
-        <%= text_field_tag :form_buscar_matriculaciones_inicial_total_matriculados, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "$('#form_buscar_matriculaciones_inicial_total_matriculados').val(''); filtrar_form(); return false;" %><br />
-      </th>
+        <th style="width:7%;" class="text-min">
+          <%= label_tag nil, "Total Matriculados".html_safe%><br />
+          <%= select_tag(:form_buscar_matriculaciones_inicial_total_matriculados_operador, options_for_select(['>', '<', '='])) %>
+          <%= text_field_tag :form_buscar_matriculaciones_inicial_total_matriculados, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_inicial_total_matriculados'));" %>
+        </th>
 
- <% end %>
+      <% end %>
 
-  </tr>
+    </tr>
 
-  <tbody id="lista"></tbody>
+    <tbody id="lista"></tbody>
 
-</table>
+  </table>
 
 </div>
 
-   <table class="table table-striped table-bordered table-hover">
-    <tbody id="matriculaciones-inicial-footer"></tbody>
-  </table>
+<table class="table table-striped table-bordered table-hover">
+  <tbody id="matriculaciones-inicial-footer"></tbody>
+</table>
 
 <script type="text/javascript">
 
-  $("#form-buscar-matriculaciones-inicial").bind("submit", function(){
+  $("#form-buscar-matriculaciones-inicial").bind("submit", function() {
 
-      $("#lista").html("<%= escape_javascript("<tr><td style='7'><p class='none-result'>#{image_tag('ajax-loader0.gif')}</p>").html_safe %></td></tr>")    
-  
+    $("#lista").html("<%= escape_javascript("<tr><td colspan='11' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")
+
   })
 
-  $("#form_buscar_matriculaciones_inicial_anio").bind('change',function(){
-      
+  $("#form_buscar_matriculaciones_inicial_anio").bind('change', function() {
+    $.ajaxQ.abortAll();
     $("#form-buscar-matriculaciones-inicial").submit();
-      
+
   })
 
- $(".table-bordered :input").bind('change',function(){
-      
+  $(".table-bordered :input").bind('change', function() {
+    $.ajaxQ.abortAll();
     $("#form-buscar-matriculaciones-inicial").submit();
-      
+
   })
 
   //LIMPIAR FORMULARIO DE BUSQUEDA
-  function limpiar_form_buscar_matriculaciones_inicial(){
-    
+  function limpiar_form_buscar_matriculaciones_inicial() {
+
     $("#form_buscar_matriculaciones_inicial_anio").val("2012");
     $("#form_buscar_matriculaciones_inicial_codigo_establecimiento").val("");
     $("#form_buscar_matriculaciones_inicial_nombre_departamento").val("");
@@ -171,17 +177,25 @@
     $("#form_buscar_matriculaciones_inicial_jardin").val("");
     $("#form_buscar_matriculaciones_inicial_preescolar").val("");
     $("#form_buscar_matriculaciones_inicial_total_matriculados").val("");
-    $("#form-buscar-matriculaciones-inicial").submit();
-
-  }  
-
-  function filtrar_form(){
-
+    $.ajaxQ.abortAll();
     $("#form-buscar-matriculaciones-inicial").submit();
 
   }
 
- limpiar_form_buscar_matriculaciones_inicial();
+  limpiar_form_buscar_matriculaciones_inicial();
+
+  //--------------- QUITAR FILTRO -------------------//
+  function quitar_filtro(id, ban) {
+    if (ban === 1) {
+      id.val("2012");
+    } else {
+      id.val('');
+    }
+    $.ajaxQ.abortAll();
+    $('#form-buscar-matriculaciones-inicial').submit();
+
+  }
+  //-------------------------------------------------//
 
 </script>
 
@@ -198,6 +212,6 @@
   }
   .text-min input[type="text"] { width: 80px;}
   #tablaContenedor{width:100%;}
- 
+
 </style>
 
