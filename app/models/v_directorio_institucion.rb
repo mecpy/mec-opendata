@@ -2,6 +2,8 @@ class VDirectorioInstitucion < ActiveRecord::Base
 
   self.table_name = "v_directorios_instituciones"
   
+  self.primary_key = :periodo, :codigo_establecimiento, :codigo_institucion
+  
   scope :orden_dep_dis, -> { order('nombre_departamento, nombre_distrito')}
 
   

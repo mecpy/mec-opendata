@@ -35,7 +35,7 @@ class Establecimientos822Controller < ApplicationController
     if params[:form_buscar_establecimientos_nombre_institucion].present?
 
       cond << "nombre_institucion ilike ?"
-      args << "%#{params[:form_buscar_establecimientos_nombre_institucion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_establecimientos_nombre_institucion])}%"
 
     end
 
@@ -49,35 +49,35 @@ class Establecimientos822Controller < ApplicationController
     if params[:form_buscar_establecimientos_nombre_departamento].present?
 
       cond << "nombre_departamento ilike ?"
-      args << "%#{params[:form_buscar_establecimientos_nombre_departamento]}%"
+      args << "%#{quita_acentos(params[:form_buscar_establecimientos_nombre_departamento])}%"
 
     end
 
     if params[:form_buscar_establecimientos_nombre_distrito].present?
 
       cond << "nombre_distrito ilike ?"
-      args << "%#{params[:form_buscar_establecimientos_nombre_distrito]}%"
+      args << "%#{quita_acentos(params[:form_buscar_establecimientos_nombre_distrito])}%"
 
     end
 
     if params[:form_buscar_establecimientos_nombre_zona].present?
 
       cond << "nombre_zona ilike ?"
-      args << "%#{params[:form_buscar_establecimientos_nombre_zona]}%"
+      args << "%#{quita_acentos(params[:form_buscar_establecimientos_nombre_zona])}%"
 
     end
 
     if params[:form_buscar_establecimientos_nombre_barrio_localidad].present?
 
       cond << "nombre_barrio_localidad ilike ?"
-      args << "%#{params[:form_buscar_establecimientos_nombre_barrio_localidad]}%"
+      args << "%#{quita_acentos(params[:form_buscar_establecimientos_nombre_barrio_localidad])}%"
 
     end
 
     if params[:form_buscar_establecimientos_direccion].present?
 
       cond << "direccion ilike ?"
-      args << "%#{params[:form_buscar_establecimientos_direccion]}%"
+      args << "%#{quita_acentos(params[:form_buscar_establecimientos_direccion])}%"
 
     end
 
@@ -277,22 +277,27 @@ class Establecimientos822Controller < ApplicationController
         type: 'application/pdf', 
         disposition: 'attachment'
 
-    else
-      @establecimientos_todos = Establecimiento822.orden_dep_dis.where(cond)
+    elsif params[:format] == 'json'
+      
+      establecimientos822_json = Establecimiento822.orden_dep_dis.where(cond)
       
       respond_to do |f|
 
         f.js
-        f.json {render :json => @establecimientos_todos, :methods => :uri }
+        f.json {render json: establecimientos822_json, methods: :uri }
 
       end 
+        
+    else
+      
+      @establecimientos_todos = Establecimiento822.orden_dep_dis.where(cond)
 
     end
 
   end
 
   def ubicacion_geografica
-    @establecimiento = Establecimiento822.find(params[:id])
+    @establecimiento = Establecimiento.find(params[:id])
 
     respond_to do |f|
 

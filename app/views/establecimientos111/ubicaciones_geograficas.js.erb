@@ -1,1 +1,1 @@
-$("#establecimientos-ubicaciones-geograficas").html("<%= escape_javascript(render :partial => "ubicaciones_geograficas", :locals => { :establecimientos => @establecimientos}) %>");
+$("#establecimientos-ubicaciones-geograficas").html("<%= escape_javascript(render partial: "ubicaciones_geograficas", :locals => { :establecimientos => @establecimientos}) %>");

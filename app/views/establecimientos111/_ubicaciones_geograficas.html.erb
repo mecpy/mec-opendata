@@ -1,73 +1,73 @@
-<td colspan='20'>
+<td colspan='21'>
 
-    <div style="width:100%;text-align:center;">
+  <div style="width:100%;text-align:center;">
 
-      <table class="table table-striped table-bordered table-hover" style="font-size: 10px; color: #000;">
+    <table class="table table-striped table-bordered table-hover" style="font-size: 10px; color: #000;">
 
-        <thead>
+      <thead>
 
-          <tr>
-            <th>Referencias de los colores de cada agrupaci&oacute;n</th>
-            <td><span style='background-color: #ff00f2;padding-right:15px;margin-left:10px;margin-right:10px;'></span> mayores a 999 establecimientos escolares</td>
-            <td><span style='background-color: #ff0000;padding-right:15px;margin-left:10px;margin-right:10px;'></span> mayores a 99 y hasta 999 establecimientos escolares</td>
-            <td><span style='background-color: #ffbf00;padding-right:15px;margin-left:10px;margin-right:10px;'></span> mayores a 9 y hasta 99 establecimientos escolares</td>
-            <td><span style='background-color: #008cff;padding-right:15px;margin-left:10px;margin-right:10px;'></span> hasta 9 establecimientos escolares</td>
-          </tr>
+        <tr>
+          <th>Referencias de los colores de cada agrupaci&oacute;n</th>
+          <td><span style='background-color: #ff00f2;padding-right:15px;margin-left:10px;margin-right:10px;'></span> mayores a 999 establecimientos escolares</td>
+          <td><span style='background-color: #ff0000;padding-right:15px;margin-left:10px;margin-right:10px;'></span> mayores a 99 y hasta 999 establecimientos escolares</td>
+          <td><span style='background-color: #ffbf00;padding-right:15px;margin-left:10px;margin-right:10px;'></span> mayores a 9 y hasta 99 establecimientos escolares</td>
+          <td><span style='background-color: #008cff;padding-right:15px;margin-left:10px;margin-right:10px;'></span> hasta 9 establecimientos escolares</td>
+        </tr>
 
-        </thead>
+      </thead>
 
-      </table>
+    </table>
 
-    </div>
+  </div>
 
 
   <% if establecimientos.present? %>
 
     <script type="text/javascript">
-  
-        <% codigo_local = ""; %>
-        <% establecimientos.each_with_index do |e, i| %>
 
-          <% if e.latitud.present? && e.longitud.present? %>
-            
-            <% codigo_local = e.codigo_establecimiento if codigo_local == '' %>
+  <% codigo_local = ""; %>
+  <% establecimientos.each_with_index do |e, i| %>
 
-            <% lat = "-#{(e.latitud.split(" ").first.to_i + (e.latitud.split(" ").second.to_f / 60.to_f) + (e.latitud.split(" ").third.to_f / 3600)).round(7)}" %>
-            <% lng = "-#{(e.longitud.split(" ").first.to_i + (e.longitud.split(" ").second.to_f / 60.to_f) + (e.longitud.split(" ").third.to_f / 3600)).round(7)}" %> 
+    <% if e.latitud.present? && e.longitud.present? %>
 
-            <% if codigo_local == e.codigo_establecimiento %>
-  
-              var map;
-      
-              map = new GMaps({
-                el: '#map',
-                lat: "<%= lat %>",
-                lng: "<%= lng %>",
-                zoom: 6,
-                markerClusterer: function(map) {
-                  return new MarkerClusterer(map);
-                }
-              });
+      <% codigo_local = e.codigo_establecimiento if codigo_local == '' %>
 
-            <% end %>
-          
-            map.addMarker({
+      <% lat = "-#{(e.latitud.split(" ").first.to_i + (e.latitud.split(" ").second.to_f / 60.to_f) + (e.latitud.split(" ").third.to_f / 3600)).round(7)}" %>
+      <% lng = "-#{(e.longitud.split(" ").first.to_i + (e.longitud.split(" ").second.to_f / 60.to_f) + (e.longitud.split(" ").third.to_f / 3600)).round(7)}" %>
+
+      <% if codigo_local == e.codigo_establecimiento %>
+
+            var map;
+
+            map = new GMaps({
+              el: '#map',
               lat: "<%= lat %>",
               lng: "<%= lng %>",
-              title: 'Datos del Establecimiento',
-              infoWindow: {
-                content: "<%= escape_javascript(render :partial => 'data/infowindow_establecimiento', :locals => {:establecimiento => e})  %>"
+              zoom: 6,
+              markerClusterer: function(map) {
+                return new MarkerClusterer(map);
               }
             });
-          
-          <% end %>
 
-        <% end %>
-    
+      <% end %>
+
+          map.addMarker({
+            lat: "<%= lat %>",
+            lng: "<%= lng %>",
+            title: 'Datos del Establecimiento',
+            infoWindow: {
+              content: "<%= escape_javascript(render :partial => 'establecimientos111/infowindow_establecimiento', :locals => {:establecimiento => e})  %>"
+            }
+          });
+
+    <% end %>
+
+  <% end %>
+
     </script>
 
     <div id="map" style="height:600px;"></div>
-  
+
     <br/>
 
   <% else %>

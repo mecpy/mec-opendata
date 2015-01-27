@@ -138,16 +138,20 @@ class DirectoriosInstitucionesController < ApplicationController
       
       send_data p.to_stream.read, filename: "directorios_instituciones_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
-    else
+    elsif params[:format] == 'json'
       
-      @directorios_instituciones_todos = VDirectorioInstitucion.orden_dep_dis.where(cond).all
+      directorios_instituciones_json = VDirectorioInstitucion.orden_dep_dis.where(cond).all
       
       respond_to do |f|
 
         f.js
-        f.json {render :json => @directorios_instituciones_todos, :methods => [:uri_establecimiento, :uri_institucion]}
+        f.json {render :json => directorios_instituciones_json, :methods => [:uri_establecimiento, :uri_institucion]}
 
-      end 
+      end
+    
+    else
+      
+      @directorios_instituciones_todos = VDirectorioInstitucion.orden_dep_dis.where(cond).all
 
     end
 

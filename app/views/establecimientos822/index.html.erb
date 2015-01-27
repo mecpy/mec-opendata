@@ -5,7 +5,7 @@
 <h2>
   <span itemprop="name">Proyecto 822</span>
   <meta itemprop="description"
-              content="Contiene la datos del proyecto de “Ampliación y reposición de espacios escolares en 822 Establecimientos Educativos del MEC, en Asunción y 10 departamentos geográficos del país”. Dicho proyecto tiene como propósito culminar las obras iniciadas en los años 2011 y 2012 –que cuentan con contratos vigentes– considerando los requerimientos pedagógicos y socioculturales. Las intervenciones consisten en ampliar la infraestructura edilicia escolar para aumentar la capacidad del servicio educacional, sin modificación de lo existente, así como la reposición que implica la renovación parcial o total de los espacios educativos existentes. El proyecto es financiado por el Fondo para la Excelencia de la Educación y la Investigación y totaliza una inversión de 6.663.596 dólares americanos (tipo de cambio: 4.500)."/>
+        content="Contiene la datos del proyecto de “Ampliación y reposición de espacios escolares en 822 Establecimientos Educativos del MEC, en Asunción y 10 departamentos geográficos del país”. Dicho proyecto tiene como propósito culminar las obras iniciadas en los años 2011 y 2012 –que cuentan con contratos vigentes– considerando los requerimientos pedagógicos y socioculturales. Las intervenciones consisten en ampliar la infraestructura edilicia escolar para aumentar la capacidad del servicio educacional, sin modificación de lo existente, así como la reposición que implica la renovación parcial o total de los espacios educativos existentes. El proyecto es financiado por el Fondo para la Excelencia de la Educación y la Investigación y totaliza una inversión de 6.663.596 dólares americanos (tipo de cambio: 4.500)."/>
   <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31">
   <meta itemprop="url" content="http://datos.mec.gov.py/data/establecimientos822">  
   <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
@@ -31,175 +31,175 @@
 
 <div class="table-outter">
 
-<table class="table table-striped table-bordered table-hover" style="margin-bottom: 0px; width: 3000px; max-width: none">
-  <%= form_tag mec_custom_url(data_establecimientos822_lista_url(nil)), :remote => true, :id => "form-buscar-establecimientos" do  %>
+  <table class="table table-striped table-bordered table-hover" style="margin-bottom: 0px; width: 3000px; max-width: none">
+    <%= form_tag mec_custom_url(data_establecimientos822_lista_url(nil)), :remote => true, :id => "form-buscar-establecimientos" do  %>
 
-	<tr>
-		<th rowspan="2" style="width:3%;" class="text-min celda-derecha">
-        <%= label_tag "Periodo" %><br/><br/><br/><br/><br/>
-        <%= select :form_buscar_establecimientos, :anio, [2014, 2012], {:class => 'text-min'} %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_anio'),1);" %>
-      </th>
+      <tr>
+        <th rowspan="2" style="width:3%;" class="text-min celda-derecha">
+          <%= label_tag "Periodo" %><br/><br/><br/><br/><br/>
+          <%= select :form_buscar_establecimientos, :anio, [2014, 2012], {:class => 'text-min'} %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_anio'),1);" %>
+        </th>
 
-      <th rowspan="2" style="width:4%;" class="text-min">
-        <%= label_tag nil, "Institución".html_safe%><br/><br/><br/><br/><br/>
-        <%= text_field_tag :form_buscar_establecimientos_nombre_institucion, nil, :class => 'text-min', :style => 'width:60px;'%>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_nombre_institucion'));"%>
-      </th>
+        <th rowspan="2" style="width:4%;" class="text-min">
+          <%= label_tag nil, "Institución".html_safe%><br/><br/><br/><br/><br/>
+          <%= text_field_tag :form_buscar_establecimientos_nombre_institucion, nil, :class => 'text-min', :style => 'width:60px;'%>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_nombre_institucion'));"%>
+        </th>
 
-      <th rowspan="2" style="width:4%;" class="text-min">
-        <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe%><br/><br/><br/><br/>
-        <%= text_field_tag :form_buscar_establecimientos_codigo_establecimiento, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_codigo_establecimiento'));"%>
-      </th>
+        <th rowspan="2" style="width:4%;" class="text-min">
+          <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe%><br/><br/><br/><br/>
+          <%= text_field_tag :form_buscar_establecimientos_codigo_establecimiento, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_codigo_establecimiento'));"%>
+        </th>
 
-      <th rowspan="2" style="width:4%;" class="text-min">
-        <%= label_tag "Departamento"%><br/><br/><br/><br/><br/>
-        <%= text_field_tag :form_buscar_establecimientos_nombre_departamento, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_nombre_departamento'));" %>
-      </th>
+        <th rowspan="2" style="width:4%;" class="text-min">
+          <%= label_tag "Departamento"%><br/><br/><br/><br/><br/>
+          <%= text_field_tag :form_buscar_establecimientos_nombre_departamento, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_nombre_departamento'));" %>
+        </th>
 
-      <th rowspan="2" style="width:4%;" class="text-min">
-        <%= label_tag "Distrito"%><br/><br/><br/><br/><br/>
-        <%= text_field_tag :form_buscar_establecimientos_nombre_distrito, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_nombre_distrito'));" %>
-      </th>
+        <th rowspan="2" style="width:4%;" class="text-min">
+          <%= label_tag "Distrito"%><br/><br/><br/><br/><br/>
+          <%= text_field_tag :form_buscar_establecimientos_nombre_distrito, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_nombre_distrito'));" %>
+        </th>
 
-      <th rowspan="2" style="width:4%;" class="text-min">
-        <%= label_tag "Zona"%><br/><br/><br/><br/><br/>
-        <%= text_field_tag :form_buscar_establecimientos_nombre_zona, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_nombre_zona'));" %>
-      </th>
+        <th rowspan="2" style="width:4%;" class="text-min">
+          <%= label_tag "Zona"%><br/><br/><br/><br/><br/>
+          <%= text_field_tag :form_buscar_establecimientos_nombre_zona, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_nombre_zona'));" %>
+        </th>
 
-      <th rowspan="2" style="width:4%;" class="text-min">
-        <%= label_tag "Barrio/Localidad"%><br/><br/><br/><br/><br/>
-        <%= text_field_tag :form_buscar_establecimientos_nombre_barrio_localidad, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_nombre_barrio_localidad'));" %>
-      </th>
+        <th rowspan="2" style="width:4%;" class="text-min">
+          <%= label_tag "Barrio/Localidad"%><br/><br/><br/><br/><br/>
+          <%= text_field_tag :form_buscar_establecimientos_nombre_barrio_localidad, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_nombre_barrio_localidad'));" %>
+        </th>
 
-      <th rowspan="2" style="width:4%;" class="text-min">
-        <%= label_tag nil, "Direcci&oacute;n".html_safe%><br/><br/><br/><br/><br/>
-        <%= text_field_tag :form_buscar_establecimientos_direccion, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_direccion'));" %>
-      </th>
+        <th rowspan="2" style="width:4%;" class="text-min">
+          <%= label_tag nil, "Direcci&oacute;n".html_safe%><br/><br/><br/><br/><br/>
+          <%= text_field_tag :form_buscar_establecimientos_direccion, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_direccion'));" %>
+        </th>
 
-      <th rowspan="2" style="width:4%;" class="text-min">
-        <%= label_tag nil, "Asentamientos Priorizados".html_safe%><br/><br/><br/><br/>
-        <%= select_tag(:form_buscar_establecimientos_asentamientos_priorizados_operador, options_for_select(['>', '<', '='])) %>
-        <%= number_field_tag :form_buscar_establecimientos_asentamientos_priorizados, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_asentamientos_priorizados'));" %>
-      </th>
-      <th colspan="7" class="text-min">
-      	<%= label_tag nil, "Ampliación".html_safe%>
-      </th>
-      <th colspan="3" class="text-min">
-      	<%= label_tag nil, "Reparación".html_safe%>
-      </th>
-      <th colspan="3" class="text-min">
-      	<%= label_tag nil, "Otras Obras".html_safe%>
-      </th>
-	</tr>	
-  <tr>
-      <th style="width:5%;" class="text-min">
-        <%= label_tag nil, "Comedor".html_safe%><br/><br/>
-        <%= select_tag(:form_buscar_establecimientos_ampliacion_comedor_operador, options_for_select(['>', '<', '='])) %>
-        <%= number_field_tag :form_buscar_establecimientos_ampliacion_comedor, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_ampliacion_comedor'));" %>
-      </th>
+        <th rowspan="2" style="width:4%;" class="text-min">
+          <%= label_tag nil, "Asentamientos Priorizados".html_safe%><br/><br/><br/><br/>
+          <%= select_tag(:form_buscar_establecimientos_asentamientos_priorizados_operador, options_for_select(['>', '<', '='])) %>
+          <%= number_field_tag :form_buscar_establecimientos_asentamientos_priorizados, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_asentamientos_priorizados'));" %>
+        </th>
+        <th colspan="7" class="text-min">
+          <%= label_tag nil, "Ampliación".html_safe%>
+        </th>
+        <th colspan="3" class="text-min">
+          <%= label_tag nil, "Reparación".html_safe%>
+        </th>
+        <th colspan="3" class="text-min">
+          <%= label_tag nil, "Otras Obras".html_safe%>
+        </th>
+      </tr>	
+      <tr>
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "Comedor".html_safe%><br/><br/>
+          <%= select_tag(:form_buscar_establecimientos_ampliacion_comedor_operador, options_for_select(['>', '<', '='])) %>
+          <%= number_field_tag :form_buscar_establecimientos_ampliacion_comedor, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_ampliacion_comedor'));" %>
+        </th>
 
-      <th style="width:5%;" class="text-min">
-        <%= label_tag nil, "Aulas".html_safe%><br/><br/>
-        <%= select_tag(:form_buscar_establecimientos_ampliacion_aulas_operador, options_for_select(['>', '<', '='])) %>
-        <%= number_field_tag :form_buscar_establecimientos_ampliacion_aulas, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_ampliacion_aulas'));" %>
-      </th>
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "Aulas".html_safe%><br/><br/>
+          <%= select_tag(:form_buscar_establecimientos_ampliacion_aulas_operador, options_for_select(['>', '<', '='])) %>
+          <%= number_field_tag :form_buscar_establecimientos_ampliacion_aulas, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_ampliacion_aulas'));" %>
+        </th>
 
-      <th style="width:5%;" class="text-min">
-        <%= label_tag nil, "Aulas de Preescolar".html_safe%><br/><br/>
-        <%= select_tag(:form_buscar_establecimientos_ampliacion_aula_preescolar_operador, options_for_select(['>', '<', '='])) %>
-        <%= number_field_tag :form_buscar_establecimientos_ampliacion_aula_preescolar, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_ampliacion_aula_preescolar'));" %>
-      </th>
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "Aulas de Preescolar".html_safe%><br/><br/>
+          <%= select_tag(:form_buscar_establecimientos_ampliacion_aula_preescolar_operador, options_for_select(['>', '<', '='])) %>
+          <%= number_field_tag :form_buscar_establecimientos_ampliacion_aula_preescolar, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_ampliacion_aula_preescolar'));" %>
+        </th>
 
-      <th style="width:5%;" class="text-min">
-        <%= label_tag nil, "Centro de Recursos de Aprendizaje".html_safe%><br/>
-        <%= select_tag(:form_buscar_establecimientos_ampliacion_centro_aprendizaje_operador, options_for_select(['>', '<', '='])) %>
-        <%= number_field_tag :form_buscar_establecimientos_ampliacion_centro_aprendizaje, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_ampliacion_centro_aprendizaje'));" %>
-      </th>
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "Centro de Recursos de Aprendizaje".html_safe%><br/>
+          <%= select_tag(:form_buscar_establecimientos_ampliacion_centro_aprendizaje_operador, options_for_select(['>', '<', '='])) %>
+          <%= number_field_tag :form_buscar_establecimientos_ampliacion_centro_aprendizaje, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_ampliacion_centro_aprendizaje'));" %>
+        </th>
 
-      <th style="width:5%;" class="text-min">
-        <%= label_tag nil, "Laboratorios".html_safe%><br/><br/>
-        <%= select_tag(:form_buscar_establecimientos_ampliacion_laboratorios_operador, options_for_select(['>', '<', '='])) %>
-        <%= number_field_tag :form_buscar_establecimientos_ampliacion_laboratorios, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_ampliacion_laboratorios'));" %>
-      </th>
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "Laboratorios".html_safe%><br/><br/>
+          <%= select_tag(:form_buscar_establecimientos_ampliacion_laboratorios_operador, options_for_select(['>', '<', '='])) %>
+          <%= number_field_tag :form_buscar_establecimientos_ampliacion_laboratorios, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_ampliacion_laboratorios'));" %>
+        </th>
 
-      <th style="width:5%;" class="text-min">
-        <%= label_tag nil, "Bloque Administrativo".html_safe%><br/><br/>
-        <%= select_tag(:form_buscar_establecimientos_ampliacion_bloque_administrativo_operador, options_for_select(['>', '<', '='])) %>
-        <%= number_field_tag :form_buscar_establecimientos_ampliacion_bloque_administrativo, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_ampliacion_bloque_administrativo'));" %>
-      </th>
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "Bloque Administrativo".html_safe%><br/><br/>
+          <%= select_tag(:form_buscar_establecimientos_ampliacion_bloque_administrativo_operador, options_for_select(['>', '<', '='])) %>
+          <%= number_field_tag :form_buscar_establecimientos_ampliacion_bloque_administrativo, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_ampliacion_bloque_administrativo'));" %>
+        </th>
 
-      <th style="width:5%;" class="text-min">
-        <%= label_tag nil, "Servicios Higiénicos".html_safe%><br/><br/>
-        <%= select_tag(:form_buscar_establecimientos_ampliacion_servicios_higienicos_operador, options_for_select(['>', '<', '='])) %>
-        <%= number_field_tag :form_buscar_establecimientos_ampliacion_servicios_higienicos, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_ampliacion_servicios_higienicos'));" %>
-      </th>
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "Servicios Higiénicos".html_safe%><br/><br/>
+          <%= select_tag(:form_buscar_establecimientos_ampliacion_servicios_higienicos_operador, options_for_select(['>', '<', '='])) %>
+          <%= number_field_tag :form_buscar_establecimientos_ampliacion_servicios_higienicos, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_ampliacion_servicios_higienicos'));" %>
+        </th>
 
-      <th style="width:5%;" class="text-min">
-        <%= label_tag nil, "Aulas".html_safe%><br/><br/>
-        <%= select_tag(:form_buscar_establecimientos_reparacion_aulas_operador, options_for_select(['>', '<', '='])) %>
-        <%= number_field_tag :form_buscar_establecimientos_reparacion_aulas, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_reparacion_aulas'));" %>
-      </th>
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "Aulas".html_safe%><br/><br/>
+          <%= select_tag(:form_buscar_establecimientos_reparacion_aulas_operador, options_for_select(['>', '<', '='])) %>
+          <%= number_field_tag :form_buscar_establecimientos_reparacion_aulas, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_reparacion_aulas'));" %>
+        </th>
 
-      <th style="width:5%;" class="text-min">
-        <%= label_tag nil, "Servicios Higiénicos".html_safe%><br/><br/>
-        <%= select_tag(:form_buscar_establecimientos_reparacion_servicios_higienicos_operador, options_for_select(['>', '<', '='])) %>
-        <%= number_field_tag :form_buscar_establecimientos_reparacion_servicios_higienicos, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_reparacion_servicios_higienicos'));" %>
-      </th>
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "Servicios Higiénicos".html_safe%><br/><br/>
+          <%= select_tag(:form_buscar_establecimientos_reparacion_servicios_higienicos_operador, options_for_select(['>', '<', '='])) %>
+          <%= number_field_tag :form_buscar_establecimientos_reparacion_servicios_higienicos, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_reparacion_servicios_higienicos'));" %>
+        </th>
 
-      <th style="width:5%;" class="text-min">
-        <%= label_tag nil, "Comedor".html_safe%><br/><br/>
-        <%= select_tag(:form_buscar_establecimientos_reparacion_comedor_operador, options_for_select(['>', '<', '='])) %>
-        <%= number_field_tag :form_buscar_establecimientos_reparacion_comedor, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_reparacion_comedor'));" %>
-      </th>
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "Comedor".html_safe%><br/><br/>
+          <%= select_tag(:form_buscar_establecimientos_reparacion_comedor_operador, options_for_select(['>', '<', '='])) %>
+          <%= number_field_tag :form_buscar_establecimientos_reparacion_comedor, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_reparacion_comedor'));" %>
+        </th>
 
-      <th style="width:5%;" class="text-min">
-        <%= label_tag nil, "Obras Exteriores de Pozo".html_safe%><br/><br/>
-        <%= select_tag(:form_buscar_establecimientos_obras_exteriores_pozo_operador, options_for_select(['>', '<', '='])) %>
-        <%= number_field_tag :form_buscar_establecimientos_obras_exteriores_pozo, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_obras_exteriores_pozo'));" %>
-      </th>
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "Obras Exteriores de Pozo".html_safe%><br/><br/>
+          <%= select_tag(:form_buscar_establecimientos_obras_exteriores_pozo_operador, options_for_select(['>', '<', '='])) %>
+          <%= number_field_tag :form_buscar_establecimientos_obras_exteriores_pozo, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_obras_exteriores_pozo'));" %>
+        </th>
 
-      <th style="width:5%;" class="text-min">
-        <%= label_tag nil, "Cercado".html_safe%><br/><br/>
-        <%= select_tag(:form_buscar_establecimientos_cercado_operador, options_for_select(['>', '<', '='])) %>
-        <%= number_field_tag :form_buscar_establecimientos_cercado, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_cercado'));" %>
-      </th>
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "Cercado".html_safe%><br/><br/>
+          <%= select_tag(:form_buscar_establecimientos_cercado_operador, options_for_select(['>', '<', '='])) %>
+          <%= number_field_tag :form_buscar_establecimientos_cercado, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_cercado'));" %>
+        </th>
 
-      <th style="width:5%;" class="text-min">
-        <%= label_tag nil, "Obras Exteriores en Escuelas Indígenas".html_safe%><br/>
-        <%= select_tag(:form_buscar_establecimientos_obras_exteriores_indigenas_operador, options_for_select(['>', '<', '='])) %>
-        <%= number_field_tag :form_buscar_establecimientos_obras_exteriores_indigenas, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_establecimientos_obras_exteriores_indigenas'));" %>
-      </th>
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "Obras Exteriores en Escuelas Indígenas".html_safe%><br/>
+          <%= select_tag(:form_buscar_establecimientos_obras_exteriores_indigenas_operador, options_for_select(['>', '<', '='])) %>
+          <%= number_field_tag :form_buscar_establecimientos_obras_exteriores_indigenas, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_obras_exteriores_indigenas'));" %>
+        </th>
 
-      
-      <th style="width:16px;" id="ubicaciones-geograficas"></th>
-      
-  </tr>
-  <% end %>
 
-  <tbody id="establecimientos-lista"></tbody>
+        <th style="width:16px;" id="ubicaciones-geograficas"></th>
 
-</table>
+      </tr>
+    <% end %>
+
+    <tbody id="establecimientos-lista"></tbody>
+
+  </table>
 </div>
 
 <table class="table table-striped table-bordered table-hover">
@@ -209,136 +209,136 @@
 
 <script type="text/javascript">
 
-  $("#form-buscar-establecimientos").bind("submit", function(){
+  $("#form-buscar-establecimientos").bind("submit", function() {
 
-      $('.establecimiento-ubicacion-geografica').html('');
-      $("#establecimientos-ubicaciones-geograficas").html('');
-      $("#establecimientos-lista").html("<%= escape_javascript("<tr><td colspan='11' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")    
-  
+    $('.establecimiento-ubicacion-geografica').html('');
+    $("#establecimientos-ubicaciones-geograficas").html('');
+    $("#establecimientos-lista").html("<%= escape_javascript("<tr><td colspan='11' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")
+
   })
 
-  $("#form_buscar_establecimientos_anio").bind('change',function(){
-      
+  $("#form_buscar_establecimientos_anio").bind('change', function() {
+
     $('.establecimiento-ubicacion-geografica').html('');
     $("#establecimientos-ubicaciones-geograficas").html('');
     $.ajaxQ.abortAll();
     $("#form-buscar-establecimientos").submit();
-      
+
   })
 
-  $("#form_buscar_establecimientos_programa").bind('change',function(){
-      
+  $("#form_buscar_establecimientos_programa").bind('change', function() {
+
     $('.establecimiento-ubicacion-geografica').html('');
     $("#establecimientos-ubicaciones-geograficas").html('');
     $.ajaxQ.abortAll();
     $("#form-buscar-establecimientos").submit();
-      
+
   })
 
-  $("#form_buscar_establecimientos_proyecto_822").bind('change',function(){
-      
+  $("#form_buscar_establecimientos_proyecto_822").bind('change', function() {
+
     $('.establecimiento-ubicacion-geografica').html('');
     $("#establecimientos-ubicaciones-geograficas").html('');
     $.ajaxQ.abortAll();
     $("#form-buscar-establecimientos").submit();
-      
+
   })
 
-  $("#form_buscar_establecimientos_proyecto_822").bind('change',function(){
-      
+  $("#form_buscar_establecimientos_proyecto_822").bind('change', function() {
+
     $('.establecimiento-ubicacion-geografica').html('');
     $("#establecimientos-ubicaciones-geograficas").html('');
     $.ajaxQ.abortAll();
     $("#form-buscar-establecimientos").submit();
-      
+
   })
 
-  $(".table-bordered input").bind('change',function(){
-      
+  $(".table-bordered input").bind('change', function() {
+
     $('.establecimiento-ubicacion-geografica').html('');
     $("#establecimientos-ubicaciones-geograficas").html('');
     $.ajaxQ.abortAll();
     $("#form-buscar-establecimientos").submit();
-      
+
   })
 
   //LIMPIAR FORMULARIO DE BUSQUEDA
-  function limpiar_form_buscar_establecimientos(){
-    
+  function limpiar_form_buscar_establecimientos() {
+
     $(".table-bordered input").val();
     $('.establecimiento-ubicacion-geografica').html('');
     $("#establecimientos-ubicaciones-geograficas").html('');
     $.ajaxQ.abortAll();
     $("#form-buscar-establecimientos").submit();
 
-  }  
+  }
 
-  function mostrar_mapa(parametros){
+  function mostrar_mapa(parametros) {
 
-    var tr_size = $.trim($("#establecimientos-ubicaciones-geograficas").html()).length 
+    var tr_size = $.trim($("#establecimientos-ubicaciones-geograficas").html()).length
 
     $('.establecimientos-ubicaciones-geograficas').remove();
 
-    if(tr_size == 0){
+    if (tr_size == 0) {
 
-      $("#link-to-ubicaciones-geograficas").parent().parent().after("<tr id=\"establecimientos-ubicaciones-geograficas\" class=\"establecimientos-ubicaciones-geograficas\"></tr>"); 
-        
-      $("#establecimientos-ubicaciones-geograficas").html("<%= escape_javascript("<tr><td colspan='11' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")  
-          
+      $("#link-to-ubicaciones-geograficas").parent().parent().after("<tr id=\"establecimientos-ubicaciones-geograficas\" class=\"establecimientos-ubicaciones-geograficas\"></tr>");
+
+      $("#establecimientos-ubicaciones-geograficas").html("<%= escape_javascript("<tr><td colspan='11' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")
+
       $.ajaxQ.abortAll();
-      
+
       $.ajax({
         type: 'POST',
-        url: "<%= url_for(mec_custom_url(data_establecimientos822_ubicaciones_geograficas_url)) %>"+parametros,
-        dataType: 'script'  
+        url: "<%= url_for(mec_custom_url(data_establecimientos822_ubicaciones_geograficas_url)) %>" + parametros,
+        dataType: 'script'
       });
 
-    }else{
+    } else {
       $("#establecimientos-ubicaciones-geograficas").remove();
-    } 
+    }
 
   }
 
-  function mostrar_establecimientos_instituciones(codigo_establecimiento,anio){
-      if($('#establecimientos_instituciones').children().length === 0){
-        $.ajax({
+  function mostrar_establecimientos_instituciones(codigo_establecimiento, anio) {
+    if ($('#establecimientos_instituciones').children().length === 0) {
+      $.ajax({
         type: 'GET',
         url: '<%= mec_custom_url(data_establecimientos822_instituciones_path) %>',
-        data: { codigo_establecimiento:codigo_establecimiento,
-              periodo:anio
+        data: {codigo_establecimiento: codigo_establecimiento,
+          periodo: anio
         },
-        dataType: 'script'  
-        }); 
-        $('#ver_instituciones').text('Ocultar Instituciones del Establecimiento');
-      }else{
-        $('#establecimientos_instituciones').html('');
-        $('#ver_instituciones').text('Ver Instituciones del Establecimiento');
-      }
-      //$('#ocultar_instituciones').toggle();
+        dataType: 'script'
+      });
+      $('#ver_instituciones').text('Ocultar Instituciones del Establecimiento');
+    } else {
+      $('#establecimientos_instituciones').html('');
+      $('#ver_instituciones').text('Ver Instituciones del Establecimiento');
+    }
+    //$('#ocultar_instituciones').toggle();
   }
 
-  <% if params[:ce].present? %>
+<% if params[:ce].present? %>
 
     $("#form_buscar_establecimientos_codigo_establecimiento").val("<%= params[:ce] %>");
     $.ajaxQ.abortAll();
     $("#form-buscar-establecimientos").submit();
 
-  <% else %>
+<% else %>
 
     limpiar_form_buscar_establecimientos();
 
-  <% end %>
+<% end %>
 
   //--------------- QUITAR FILTRO -------------------//
-  function quitar_filtro(id,ban) {
-    if (ban === 1){
+  function quitar_filtro(id, ban) {
+    if (ban === 1) {
       id.val("2014");
-    }else{
+    } else {
       id.val('');
     }
     $.ajaxQ.abortAll();
     $('#form-buscar-establecimientos').submit();
-  
+
   }
   //-------------------------------------------------//
 
@@ -358,6 +358,6 @@
   .text-min input[type="text"] { width: 60px;}
   .text-min input[type="number"] { width: 40px;}
   #tablaContenedor{width:100%;}
- 
+
 </style>
 

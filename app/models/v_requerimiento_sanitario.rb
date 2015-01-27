@@ -1,6 +1,8 @@
 class VRequerimientoSanitario < ActiveRecord::Base
   
   self.table_name = "v_requerimientos_sanitarios"
+  
+  self.primary_key = :periodo, :numero_prioridad, :codigo_distrtito
 
   scope :orden_dep_dis, -> { order('nombre_departamento, nombre_distrito, numero_prioridad')}
   

@@ -1,4 +1,4 @@
-<td colspan='20'>
+<td colspan='21'>
   <% if @establecimiento.latitud.present? && @establecimiento.longitud.present? %>
     
     <br/>
@@ -23,7 +23,7 @@
           lng: "<%= lng %>",
           title: 'Datos del Establecimiento',
           infoWindow: {
-            content: "<%= escape_javascript(render :partial => 'data/infowindow_establecimiento', :locals => {:establecimiento => @establecimiento})  %>"
+            content: "<%= escape_javascript(render :partial => 'establecimientos111/infowindow_establecimiento', :locals => {:establecimiento => @establecimiento})  %>"
           }
         });
       });

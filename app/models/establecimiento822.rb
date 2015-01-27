@@ -1,6 +1,8 @@
 class Establecimiento822 < ActiveRecord::Base
 	self.table_name = "v_proyecto_822"
-
+  
+  self.primary_key = :id
+  
   scope :orden_dep_dis, -> { order('nombre_departamento, nombre_distrito')}
 
   def uri
