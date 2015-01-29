@@ -13,6 +13,8 @@
  *= stub leaflet
  *= stub slider
  *= require introjs.min
+ *= require datos_abiertos
+ *= require datos_abiertos_plugins
  */
 
 /*

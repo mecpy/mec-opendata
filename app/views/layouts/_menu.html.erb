@@ -1,0 +1,44 @@
+<!-- Navigation -->
+<nav class="navbar-principal">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="fa fa-lg fa-bars"></span>
+      </button>
+      <%= link_to "Datos Abiertos", "http://datos.mec.gov.py/", :class => 'navbar-brand daxline' %>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Portal MEC", "http://mec.gov.py", :target => '_blank' %></li>
+        <li><%= link_to "Datos", "http://datos.mec.gov.py", :target => '_blank' %></li>
+        <li><%= link_to "Visualizaciones", "http://datos.mec.gov.py/data/visualizaciones", :target => '_blank' %></li>
+        <li><%= link_to "Acerca de", "http://datos.mec.gov.py/about", :target => '_blank' %></li>
+        <li><%= link_to "Aviso legal", "http://datos.mec.gov.py/legal", :target => '_blank' %></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-header">Nav header</li>
+            <li><a href="#">Separated link</a></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <div class="links-sociales">
+            <a href="https://www.facebook.com/MECDigital"><i class="icon-py-facebook"></i></a>
+            <a href="https://twitter.com/MECpy"><i class="icon-py-twitter"></i></a>
+            <a href="https://www.youtube.com/channel/UClEn0VcKdqxNohQMp6ku9vw"><i class="icon-py-youtube"></i></a>
+          </div>
+        </li>
+        <li id="compartir" class="hidden-xs">
+        </li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container-fluid -->
+</nav>

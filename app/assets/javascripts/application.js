@@ -23,23 +23,27 @@
 // require jquery.ui.all
 //= require firsttime
 //= require intro.min.js
+//= stub views/index_view.js
+//= stub views/datos_ver_view.js
+//= stub views/datos_view.js
+//= require datos_abiertos_plugins.js
 
-$.ajaxQ = (function () {
+$.ajaxQ = (function() {
 
     var id = 0, Q = {};
 
-    $(document).ajaxSend(function (e, jqx) {
+    $(document).ajaxSend(function(e, jqx) {
         jqx._id = ++id;
         Q[jqx._id] = jqx;
     });
-    $(document).ajaxComplete(function (e, jqx) {
+    $(document).ajaxComplete(function(e, jqx) {
         delete Q[jqx._id];
     });
 
     return {
-        abortAll: function () {
+        abortAll: function() {
             var r = [];
-            $.each(Q, function (i, jqx) {
+            $.each(Q, function(i, jqx) {
                 r.push(jqx._id);
                 jqx.abort();
             });
@@ -48,7 +52,12 @@ $.ajaxQ = (function () {
     };
 
 })();
-$(function () {
+$(function() {
+    tour();
+    listados();
+    basico();
+});
+function tour() {
     if ($('#start-tour').length) {
         if ($.cookie('firstVisit') === undefined) {
             $.cookie('firstVisit', 'true');
@@ -70,4 +79,56 @@ $(function () {
     } else {
         //nothing to do
     }
-});
+}
+;
+function listados() {
+    window.redimensionar = function() {
+
+        $('.descripcion-oculta').each(function(d, descripcion) {
+            $(descripcion).addClass('hidden-xs').show();
+        });
+
+        $('.listado li').each(function(f, fila) {
+            $(fila).css('height', 'auto');
+            $(fila).css('height', $(fila).height());
+        });
+
+    };
+    $('body').attr('onresize', 'redimensionar();');
+    window.redimensionar();
+}
+;
+function basico() {
+    $('select').combobox();
+    $('#compartir').sharrre({
+        share: {
+            twitter: true,
+            facebook: true,
+            googlePlus: true
+        },
+        urlCurl: 'assets/sharrre.php',
+        template: '<div class="box">' +
+                '<div class="left">Compartir</div>' +
+                '<div class="middle">' +
+                '<a href="#" class="facebook"><i class="fa fa-fw fa-facebook"></i></a>' +
+                '<a href="#" class="twitter"><i class="fa fa-fw fa-twitter"></i></a>' +
+                '<a href="#" class="googleplus"><i class="fa fa-fw fa-google-plus"></i></a>' +
+                '</div>' +
+                '<div class="right">{total}</div>' +
+                '</div>',
+        enableHover: false,
+        enableTracking: true,
+        render: function(api, options) {
+            $(api.element).on('click', '.twitter', function() {
+                api.openPopup('twitter');
+            });
+            $(api.element).on('click', '.facebook', function() {
+                api.openPopup('facebook');
+            });
+            $(api.element).on('click', '.googleplus', function() {
+                api.openPopup('googlePlus');
+            });
+        }
+    });
+}
+;

@@ -1,11 +1,28 @@
-<div style="padding-top:10px" id="tab-piedepagina">
-  <p align="center" style="font-size:11px;color:#999;border-top:1px">
-    <%= link_to image_tag("http://i.creativecommons.org/l/by/4.0/80x15.png"), "http://creativecommons.org/licenses/by/4.0/", :target => "_blank" %>
-    <%= link_to "Aviso Legal", mec_custom_url(legal_url), :target => '_blank', :style => "padding-left:5px;"%>
-    <%= link_to "Acerca de", mec_custom_url(about_url), :style => "padding-left:5px;"%>
-    <br />
-    <%= Time.now.year %> - Portal construido y mantenido por el <%= link_to "MEC", "http://www.mec.gov.py", :target => '_blank'%><br />
-    con el apoyo del <%= link_to "Programa de Democracia y Gobernabilidad (USAID-CEAMSO)", "http://ceamso.org.py/es/proyectos/20-programa-de-democracia-y-gobernabilidad ", :target => "_blank" %>
-    
-  </p>
-</div>
+<footer class="footer">
+  <div class="row">
+    <div class="col-sm-2 logo mec">
+    </div>
+    <div class="col-sm-7 col-sm-offset-1">
+      <p class="text-center">
+        <%= link_to "Aviso Legal", mec_custom_url(legal_url), :target => '_blank'%> | <%= link_to "Acerca de", mec_custom_url(about_url), :target => '_blank'%>
+        </br>
+
+        <% if controller_name == 'nominas' %>
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>
+        <% elsif "#{controller_name}#{action_name}" != 'dataindex' %>
+          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+        <% end %>
+
+        <%= Time.now.year %> - Portal construido y mantenido por el <%= link_to "MEC", "http://www.mec.gov.py", :target => '_blank'%>
+        <br>
+
+        con el apoyo del <%= link_to "Programa de Democracia y Gobernabilidad (USAID-CEAMSO)", "http://ceamso.org.py/es/proyectos/20-programa-de-democracia-y-gobernabilidad ", :target => "_blank" %>
+        <br/>
+
+      </p>
+    </div>
+    <div class="col-sm-2 logo gobierno">
+    </div>
+  </div>
+</footer>
+

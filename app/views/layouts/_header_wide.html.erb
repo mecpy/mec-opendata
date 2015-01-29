@@ -1,46 +1,19 @@
-<div id="enca_top1_wide">
+<header class="container-fluid">
 
-</div> 
+  <div class="cabecera row hidden-xs">
 
-<div id="top1_wide">
-  
-  <div style="margin-top:2px;float:left;width:282px;height:175px;box-shadow:0 0 15px #000000;background:#455f6e;
-margin:-17px 1px 8px;">
-    <div style="margin-top:2px;float:left;margin:40px 13px 0px;">
-          <%= link_to image_tag("logo_left.png", style: 'width:246px;'), root_path%>
+    <div class="col-sm-3 col-xs-8 principal" onclick="Javascript:window.open('http://mec.gov.py','_self');">
+      <div class="logo mec-letras-blancas"></div>
     </div>
-  
-  </div>
 
-  <div style="margin-top:-16px;float:right;width:302px;height:166px;">
-    <div style="margin-top:-14px;float:left;margin:40px 13px 0px;">
-      <%= link_to image_tag("logo_right.jpg", style: "width:280px;margin:-10px -32px 2px"), root_path %>
+    <div class="col-sm-offset-1 col-sm-4 logo datos-abiertos">
     </div>
+
+    <div class="col-sm-offset-1 col-sm-3 logo gobierno">
+    </div>
+
   </div>
-  <div class="clear"></div>
-</div>
 
+  <%= render :partial => "layouts/menu" %>
 
-
-<div id="top2_wide">
-
-  <div style="margin-top:8px;float:right;margin-right:15px;text-align:right;">
-    <%= link_to "Sigmec", "http://www.mec.gov.py/sigmec/faces/login.xhtml", :class => 'enlace-sistema-intramec', :target => '_blank' %>
-    <%= link_to "IntraMEC", "http://www.mec.gov.py/intramec", :class => 'enlace-sistema-intramec', :target => '_blank' %>
-    <%= link_to "MECDigital", "http://www.mec.gov.py", :class => 'enlace-sistema-intramec', :target => '_blank' %>
-    <%= link_to "WEBMAIL", "http://www.mec.gov.py/webmail/", :class => 'enlace-sistema-webmail', :target => '_blank' %>
-  </div>
-  
-  <div class="clear"></div>
-
-</div>
-
-<script type="text/javascript">
-  
-  $("#busqueda_normal").bind("click", function(){
-
-      $("#container").html("<%= (escape_javascript("<div class='loader'>#{image_tag('ajax-loader0.gif')}</div>")).html_safe %>")    
-  });
-
-</script>
-
+</header>
