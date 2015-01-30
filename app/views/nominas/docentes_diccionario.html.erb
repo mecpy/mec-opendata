@@ -1,395 +1,127 @@
-<div class="container">
+<%= javascript_include_tag "diccionario/nomina_docentes.js" %>
+<%= link_to ('<span class="pull-right btn-lg hidden-xs"><i class="icon-py-datos"></i> Ver Datos</span>').html_safe, mec_custom_url(data_nomina_docentes_url), :title => "Ir al Conjunto de Datos" %>
+<%= link_to ('<span class="pull-right btn-lg hidden-xs"><i class="icon-py-datos"></i> Ver Datos</span>').html_safe, mec_custom_url(data_nomina_docentes_url), :title => "Ir al Conjunto de Datos" %>
+<h1>N&oacute;mina de Funcionarios Docentes</h1>
+<br>
 
-    <div class="row">
+<ul class="listado">
 
-        <h2>
+  <li class="row hidden-xs titulos">
+    <div class="celda col-sm-3">Nombre</div>
+    <div class="celda col-sm-4">Descripción</div>
+    <div class="celda col-sm-1">Tipo</div>
+    <div class="celda col-sm-2">Restricciones</div>
+    <div class="celda col-sm-1">Referencia</div>
+    <div class="celda col-sm-1">Ejemplo</div>
+  </li>
 
-            N&oacute;mina de Funcionarios Docentes
+  <div id="diccionario"></div>
 
-            <span style="float:right;">
-                <%= link_to "Ver datos", mec_custom_url(data_nomina_docentes_url) , :title => "Ir al dataset", :style => "font-size:12px;" %>
-                <%= link_to image_tag("datos_ico.jpg",:style => "width:24px;"), mec_custom_url(data_nomina_docentes_url), :title => "Ir al dataset" %>
-                <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
-                <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
-            </span>
+</ul>
 
-        </h2>
+<script>
+  contenido = "";
+  diccionario=contenido_diccionario('<%= link_to "Ver ejemplo", mec_custom_url(def_ejemplo_anio_cod_geo_path).html_safe, target:"_blank" %>');
+  $.each(diccionario, function(idx, definicion) {
+    contenido += '<li class="row">' +
+            '<label class="col-xs-12 visible-xs"> Nombre </label>' +
+            '<div class="celda col-sm-3">' +
+            definicion.nombre +
+            '</div>' +
+            '<label class="col-xs-12 visible-xs"> Descripción </label>' +
+            '<div class="celda col-sm-4">' +
+            definicion.descripcion +
+            '</div>' +
+            '<label class="col-xs-12 visible-xs"> Tipo </label>' +
+            '<div class="celda col-sm-1">' +
+            definicion.tipo +
+            '</div>' +
+            '<label class="col-xs-12 visible-xs"> Restricciones </label>' +
+            '<div class="celda col-sm-2">' +
+            definicion.restricciones +
+            '</div>' +
+            '<label class="col-xs-12 visible-xs"> Referencia </label>' +
+            '<div class="celda col-sm-1 napa">';
+    if (definicion.referencia.enlace !== '') {
+      contenido += '<a href="' + definicion.referencia.enlace + '">' + definicion.referencia.texto + '</a>';
+    }
+    contenido += '</div>' +
+            '<label class="col-xs-12 visible-xs"> Ejemplo </label>' +
+            '<div class="celda col-sm-1">' +
+            definicion.ejemplo +
+            '</div>' +
+            '</li>';
+  });
+  $("#diccionario").html(contenido);
+</script>
 
-        <table class="table table-striped table-bordered table-hover">
-
-            <thead>
-
-                <tr>
-                    <th title="Field #1">Nombre del Atributo</th>
-                    <th title="Field #2">Descripción</th>
-                    <th title="Field #3">Tipo de datos</th>
-                    <th title="Field #4">Restricciones</th>
-                    <th title="Field #5">Referencia</th>
-                    <th title="Field #6">Ejemplo</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr>
-                    <td>
-                        Año
-                    </td>
-                    <td>
-                        Se refiere al año al cual corresponden los datos
-                    </td>
-                    <td>
-                        xsd:gYear
-                    </td>
-                    <td>
-                        Sólo permite la carga de datos del año de su captura.
-                    </td>
-                    <td></td>
-                    <td>
-                        2014
-                    </td>
-                </tr>
-
-
-                <tr>
-                    <td>
-                        Mes
-                    </td>
-                    <td>
-                        Se refiere al mes del año al cual corresponden los datos
-                    </td>
-                    <td>
-                        xsd:string
-                    </td>
-                    <td>
-                        Sólo permite la carga de datos del mes de su captura.
-                    </td>
-                    <td></td>
-                    <td>
-                        junio
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        N&uacute;mero de documento
-                    </td>
-                    <td>
-                        Se refiere al número de documento de identidad Paraguaya.
-                    </td>
-                    <td>
-                        xsd:string
-                    </td>
-                    <td>
-                        No más de 10 caracteres.
-                    </td>
-                    <td></td>
-                    <td>
-                        123456
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Nombre completo
-                    </td>
-                    <td>
-                        Se refiere al o los nombres y al o los apellidos de la persona
-                    </td>
-                    <td>
-                        xsd:string
-                    </td>
-                    <td>
-                        No más de 100 caracteres.
-                    </td>
-                    <td></td>
-                    <td>
-                        Juan Pérez
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Objeto de gasto
-                    </td>
-                    <td>
-                        Se refiere al código del objeto del gasto del clasificador presupuestario
-                    </td>
-                    <td>
-                        xsd:positiveInteger
-                    </td>
-                    <td>
-                        Mayor a cero
-                    </td>
-                    <td></td>
-                    <td>
-                        111
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Nombre del objeto de gasto
-                    </td>
-                    <td>
-                        Se refiere al nombre objeto del gasto del clasificador presupuestario
-                    </td>
-                    <td>
-                        xsd:string
-                    </td>
-                    <td>
-                        No más de 30 caracteres.
-                    </td>
-                    <td></td>
-                    <td>
-                        Sueldos; Bonificaciones y gratificaciones
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Estado
-                    </td>
-                    <td>
-                        Corresponde a la situación laboral del personal en relación al MEC
-                    </td>
-                    <td>
-                        xsd:string
-                    </td>
-                    <td>
-                        No más de 30 caracteres.
-                    </td>
-                    <td></td>
-                    <td>
-                        Permanente
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Antigüedad
-                    </td>
-                    <td>
-                        Se refiere al tiempo durante el cual la persona ha trabajado en forma ininterrumpida dentro del MEC. Esta antigüedad se puede dividir en antigüedad administrativa y docente.
-                    </td>
-                    <td>
-                        xsd:string
-                    </td>
-                    <td>
-                        No más de 30 caracteres.
-                    </td>
-                    <td></td>
-                    <td>
-                        2 años 4 meses
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Concepto
-                    </td>
-                    <td>
-                        Se refiere al concepto por el cual se está asignando el objeto del gasto
-                    </td>
-                    <td>
-                        xsd:string
-                    </td>
-                    <td>
-                        No más de 30 caracteres.
-                    </td>
-                    <td></td>
-                    <td>
-                        Sueldos; Bonificación por antigüedad
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Dependencia
-                    </td>
-                    <td>
-                        Se refiere a la dependencia del MEC donde cumple funciones el personal. Una dependencia puede corresponder a la Administración Central, o instituciones educativas.
-                    </td>
-                    <td>
-                        xsd:string
-                    </td>
-                    <td>
-                        No más de 30 caracteres.
-                    </td>
-                    <td></td>
-                    <td>
-                        Dirección General de Administración y Finanzas
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Cargo
-                    </td>
-                    <td>
-                        Se refiere a la función que desempeña el personal.
-                    </td>
-                    <td>
-                        xsd:string
-                    </td>
-                    <td>
-                        No más de 30 caracteres.
-                    </td>
-                    <td></td>
-                    <td>
-                        Auxiliar de Servicios
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Rubro
-                    </td>
-                    <td>
-                        Se refiere a la categoría del rubro correspondiente al anexo del personal, por el cual se le paga al personal
-                    </td>
-                    <td>
-                        xsd:string
-                    </td>
-                    <td>
-                        No más de 30 caracteres.
-                    </td>
-                    <td></td>
-                    <td>
-                        GE1
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Monto Rubro
-                    </td>
-                    <td>
-                        Se refiere a la asignación de la categoría del rubro, en forma unitaria
-                    </td>
-                    <td>
-                        xsd:positiveInteger
-                    </td>
-                    <td>
-                        Mayor a cero
-                    </td>
-                    <td></td>
-                    <td>
-                        1.658.232
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Cantidad
-                    </td>
-                    <td>
-                        Se refiere a la cantidad de rubros asignados
-                    </td>
-                    <td>
-                        xsd:positiveInteger
-                    </td>
-                    <td>
-                        Mayor a cero
-                    </td>
-                    <td></td>
-                    <td>
-                        1
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Asignación
-                    </td>
-                    <td>
-                        Se refiere a la asignación total por objeto de gasto que percibe el personal. En caso de que el concepto tenga categoría de rubro, se multiplica el monto de la categoría por la cantidad
-                    </td>
-                    <td>
-                        xsd:positiveInteger
-                    </td>
-                    <td>
-                        Mayor a cero
-                    </td>
-                    <td></td>
-                    <td>
-                        1.658.232
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-
-    <div class="row">
-        <h2>Referencia</h2>
-        La siguiente tabla presenta una breve descripción de los atributos incluídos en el diccionario de datos del dataset.<br>
-        Básicamente, un diccionario de datos describe los atributos que contiene un dataset, incluyendo el tipo de dato y las restricciones que se apliquen a cada uno.<br>
-        <br>
-        <br>
-        <table class="table table-striped table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th title="Field #1">
-                        Nombre de la columna
-                    </th>
-                    <th title="Field #2">
-                        Descripción
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        Nombre del Atributo
-                    </td>
-                    <td>
-                        Establece el nombre del atributo exactamente como se encuentra definido en el archivo de datos a ser publicado
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Descripción
-                    </td>
-                    <td>
-                        Describe con más detalles los datos que se encuentran en el atributo
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Tipo de datos
-                    </td>
-                    <td>
-                        El tipo de dato esperado de los valores del attributo. Por ejemplo: String, Integer, Float, …. Idealmente se deben utilizar los tipos de datos definidos en el Estándar XML Schema Datatypes de la W3C. <a href="http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes">http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes</a>, por ejemplo: xsd:string, xsd:boolean, xsd:dateTime
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Restricciones
-                    </td>
-                    <td>
-                        En caso que existan, se especifican las restricciones de los datos
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Referencia
-                    </td>
-                    <td>
-                        En caso que exista, se agrega un link a un documento de referencia para los datos. Por ejemplo, si los datos están definidos utilizando un estándar o formato diferente a XSD, referenciarlo, como ser la Latitud y Longitud en formato de Google maps
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Ejemplo
-                    </td>
-                    <td>
-                        Los valores de ejemplo
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<div class="row">
+  <h2>Referencia</h2>
+  La siguiente tabla presenta una breve descripción de los atributos incluídos en el diccionario de datos del dataset.<br>
+  Básicamente, un diccionario de datos describe los atributos que contiene un dataset, incluyendo el tipo de dato y las restricciones que se apliquen a cada uno.<br>
+  <br>
+  <br>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th title="Field #1">
+          Nombre de la columna
+        </th>
+        <th title="Field #2">
+          Descripción
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Nombre del Atributo
+        </td>
+        <td>
+          Establece el nombre del atributo exactamente como se encuentra definido en el archivo de datos a ser publicado
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Descripción
+        </td>
+        <td>
+          Describe con más detalles los datos que se encuentran en el atributo
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Tipo de datos
+        </td>
+        <td>
+          El tipo de dato esperado de los valores del attributo. Por ejemplo: String, Integer, Float, …. Idealmente se deben utilizar los tipos de datos definidos en el Estándar XML Schema Datatypes de la W3C. <a href="http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes">http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes</a>, por ejemplo: xsd:string, xsd:boolean, xsd:dateTime
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Restricciones
+        </td>
+        <td>
+          En caso que existan, se especifican las restricciones de los datos
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Referencia
+        </td>
+        <td>
+          En caso que exista, se agrega un link a un documento de referencia para los datos. Por ejemplo, si los datos están definidos utilizando un estándar o formato diferente a XSD, referenciarlo, como ser la Latitud y Longitud en formato de Google maps
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Ejemplo
+        </td>
+        <td>
+          Los valores de ejemplo
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 </div>

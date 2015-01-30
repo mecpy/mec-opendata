@@ -31,60 +31,60 @@
       <div 
         class="vista-previa col-sm-5 col-sm-offset-1 enlace" 
         style="background-image:url('/assets/thumbnails/ejemplo1.png')"
-        data-titulo='Ejemplo 1'
-        data-descripcion='Este es un ejemplo de la galería'
+        data-titulo='Datos'
+        data-descripcion='Listado de Conjuntos de Datos con que cuenta el Portal del MEC.'
         data-imagen='/assets/destacados/ejemplo1.png'
-        data-enlace="http://datos.mec.gov.py/"
+        data-enlace='<%= mec_custom_url(datos_url).html_safe %>'
         onclick="seleccionar(this);">
       </div>
       
       <div 
         class="vista-previa col-sm-5 col-sm-offset-1 enlace" 
-        style="background-image:url('/assets/thumbnails/ejemplo2.png')"
-        data-titulo='Ejemplo 2'
-        data-descripcion='Este es un ejemplo de la galería'
-        data-imagen='/assets/destacados/ejemplo2.png'
-        data-enlace="http://datos.mec.gov.py/"
+        style="background-image:url('/assets/thumbnails/mapa_establecimientos.png')"
+        data-titulo='Mapa de Establecimientos e Instituciones'
+        data-descripcion='En el Conjunto de Datos "Establecimientos Escolares" se encuentra el mapa con las ubicaciones geográficas de los Establecimientos y sus respectivas Instituciones.'
+        data-imagen='/assets/destacados/mapa_establecimientos.png'
+        data-enlace='<%= mec_custom_url(data_establecimientos_url).html_safe %>'
         onclick="seleccionar(this);">
       </div>
       
       <div 
         class="vista-previa col-sm-5 col-sm-offset-1 enlace" 
-        style="background-image:url('/assets/thumbnails/ejemplo3.png')"
-        data-titulo='Ejemplo 3'
-        data-descripcion='Este es un ejemplo de la galería'
-        data-imagen='/assets/destacados/ejemplo3.png'
-        data-enlace="http://datos.mec.gov.py/"
+        style="background-image:url('/assets/thumbnails/mapa_matriculaciones.png')"
+        data-titulo='Mapa de Matriculaciones'
+        data-descripcion='Mapa de Matriculaciones del Paraguay al año 2012.'
+        data-imagen='/assets/destacados/mapa_matriculaciones.png'
+        data-enlace='<%= mec_custom_url(app_mapa_matriculaciones2_url).html_safe %>'
         onclick="seleccionar(this);">
       </div>
       
       <div 
         class="vista-previa col-sm-5 col-sm-offset-1 enlace" 
-        style="background-image:url('/assets/thumbnails/ejemplo4.png')"
-        data-titulo='Ejemplo 4'
-        data-descripcion='Este es un ejemplo de la galería'
-        data-imagen='/assets/destacados/ejemplo4.png'
-        data-enlace="http://datos.mec.gov.py/"
+        style="background-image:url('/assets/thumbnails/funcionarios_docentes.png')"
+        data-titulo='Funcionarios Docentes'
+        data-descripcion='Total de asignación por objeto de gasto, de junio a agosto del 2014 (en Gs).'
+        data-imagen='/assets/destacados/funcionarios_docentes.png'
+        data-enlace='<%= mec_custom_url(app_academia_funcionarios_docentes_url).html_safe %>'
         onclick="seleccionar(this);">
       </div>
       
       <div 
         class="vista-previa col-sm-5 col-sm-offset-1 enlace" 
-        style="background-image:url('/assets/thumbnails/ejemplo5.png')"
-        data-titulo='Ejemplo 5'
-        data-descripcion='Este es un ejemplo de la galería'
-        data-imagen='/assets/destacados/ejemplo5.png'
-        data-enlace="http://datos.mec.gov.py/"
+        style="background-image:url('/assets/thumbnails/funcionarios_administrativos.png')"
+        data-titulo='Funcionarios Administrativos'
+        data-descripcion='Gastos por concepto: junio, julio y agosto del 2014.'
+        data-imagen='/assets/destacados/funcionarios_administrativos.png'
+        data-enlace='<%= mec_custom_url(app_academia_funcionarios_administrativos_url).html_safe %>'
         onclick="seleccionar(this);">
       </div>
       
       <div 
         class="vista-previa col-sm-5 col-sm-offset-1 enlace" 
-        style="background-image:url('/assets/thumbnails/ejemplo-falso.png')"
-        data-titulo='Ejemplo 6'
-        data-descripcion='Este es un ejemplo sin imagen'
-        data-imagen='/assets/destacados/ejemplo-falso.png'
-        data-enlace="http://datos.mec.gov.py/"
+        style="background-image:url('/assets/thumbnails/inmuebles.png')"
+        data-titulo='Inventario de Bienes - Inmuebles'
+        data-descripcion='Inventario de Bienes Inmuebles por superficie y por departamento'
+        data-imagen='/assets/destacados/inmuebles.png'
+        data-enlace='<%= mec_custom_url(app_academia_inventario_bienes_inmuebles_url).html_safe %>'
         onclick="seleccionar(this);">
       </div>
 

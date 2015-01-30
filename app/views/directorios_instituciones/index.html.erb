@@ -248,7 +248,7 @@
       element: "#tab-institucion",
       intro: "As&iacute; tambi&eacute;n, si te interesan los datos de una Instituci&oacute;n, haciendo click sobre este enlace podr&iacute;as obtener\
           informaci&oacute;n espec&iacute;fica de la misma.\
-          </br><img alt='Resumen_institucion' width=280 height=280 src='/assets/intro_images/resumen_institucion.png'> \
+          </br><%= image_tag('intro_images/resumen_institucion.png', style: 'width:280px;height:280px').to_s.gsub("\"", "'").html_safe %>\
           </br></br>Por ejemplo: Datos de la Instituci&oacute;n, Matriculaciones en la Instituci&oacute;n y la Ubicaci&oacute;n Geogr&aacute;fica.",
       position: "bottom-left-aligned"
     },

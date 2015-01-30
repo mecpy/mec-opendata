@@ -1,430 +1,128 @@
-<div class="container">
-	<div class="row">
-		<h2>
-			Matrícula Educación Media
-			<span style="float:right;">
-            <%= link_to "Ver datos", mec_custom_url(data_matriculaciones_educacion_media_url) , :title => "Ir al dataset", :style => "font-size:12px;" %>
-            <%= link_to image_tag("datos_ico.jpg",:style => "width:24px;"), mec_custom_url(data_matriculaciones_educacion_media_url), :title => "Ir al dataset" %>
-            <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
-            <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
-          </span>
-		</h2>
-		<table class="table table-striped table-bordered table-hover">
-			<thead>
-				<tr>
-					<th title="Field #1">
-						Nombre del Atributo
-					</th>
-					<th title="Field #2">
-						Descripción
-					</th>
-					<th title="Field #3">
-						Tipo de datos
-					</th>
-					<th title="Field #4">
-						Restricciones
-					</th>
-					<th title="Field #5">
-						Referencia
-					</th>
-					<th title="Field #6">
-						Ejemplo
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						AÑO
-					</td>
-					<td>
-						Se refiere al año de captura de los datos
-					</td>
-					<td>
-						xsd:gYear
-					</td>
-					<td>
-						Sólo permite la carga de datos del año de su captura.
-					</td>
-					<td></td>
-					<td>
-						2012
-					</td>
-				</tr>
-				<tr>
-					<td>
-						CODIGO_DEPARTAMENTO
-					</td>
-					<td>
-						Corresponde al código asignado según la cartografía nacional al departamento geográfico donde esta localizado el establecimiento escolar.
-					</td>
-					<td>
-						xsd:string
-					</td>
-					<td>
-						No más de 2 caracteres
-					</td>
-					<td></td>
-					<td>
-						00
-					</td>
-				</tr>
-				<tr>
-					<td>
-						NOMBRE_DEPARTAMENTO
-					</td>
-					<td>
-						Corresponde a la descripción del nombre del departamento geográfico correspondiente al código.
-					</td>
-					<td>
-						xsd:string
-					</td>
-					<td>
-						No más de 40 caracteres
-					</td>
-					<td></td>
-					<td>
-						ASUNCION
-					</td>
-				</tr>
-				<tr>
-					<td>
-						CODIGO_DISTRITO
-					</td>
-					<td>
-						Corresponde al código asignado al distrito del departamento geográfico donde esta localizado el establecimiento escolar..
-					</td>
-					<td>
-						xsd:string
-					</td>
-					<td>
-						No más de 2 caracteres
-					</td>
-					<td></td>
-					<td>
-						00
-					</td>
-				</tr>
-				<tr>
-					<td>
-						NOMBRE_DISTRITO
-					</td>
-					<td>
-						Corresponde a la descripción del nombre del distrito correspondiente al código.
-					</td>
-					<td>
-						xsd:string
-					</td>
-					<td>
-						No más de 40 caracteres
-					</td>
-					<td></td>
-					<td>
-						ASUNCION
-					</td>
-				</tr>
-				<tr>
-					<td>
-						CODIGO_BARRIO_LOCALIDAD
-					</td>
-					<td>
-						Corresponde al código asignado a la localidad o barrio del distrito donde esta localizado el establecimiento escolar..
-					</td>
-					<td>
-						xsd:positiveInteger
-					</td>
-					<td></td>
-					<td></td>
-					<td>
-						002
-					</td>
-				</tr>
-				<tr>
-					<td>
-						NOMBRE_BARRIO_LOCALIDAD
-					</td>
-					<td>
-						Corresponde a la descripción del nombre del barrio o localidad correspondiente al código.
-					</td>
-					<td>
-						xsd:string
-					</td>
-					<td>
-						No más de 40 caracteres
-					</td>
-					<td></td>
-					<td>
-						SAN ANTONIO
-					</td>
-				</tr>
-				<tr>
-					<td>
-						CODIGO_ZONA
-					</td>
-					<td>
-						Corresponde a la ubicación del establecimiento escolar, sea en la zona urbana o rural. Se considera: Código 1 .Zona Urbana: Área geográfica que abarca todas las cabeceras distritales de la República y sus viviendas generalmente estan organizadas en manzanas.<br>
-						Código 2. Zona Rural: Área geográfica que se encuentran fuera de las cabeceras distritales y las viviendas se localizan en forma dispersa pudiendo existir zonas amanzanadas pero que no tienen la categoría de Cabeceras Distritales por la cual se consideraran como rurales.<br>
-					</td>
-					<td>
-						xsd:positiveInteger
-					</td>
-					<td>
-						Valores que pueden ser: Código 1: cuando el código de localidad es menor 100 Código 6: cuando el código de localidade es mayor o igual a 100
-					</td>
-					<td></td>
-					<td>
-						1
-					</td>
-				</tr>
-				<tr>
-					<td>
-						NOMBRE_ZONA
-					</td>
-					<td>
-						Corresponde a la descripción del nombre de la zona correspondiente al código
-					</td>
-					<td>
-						xsd:string
-					</td>
-					<td></td>
-					<td></td>
-					<td>
-						URBANA
-					</td>
-				</tr>
-				<tr>
-					<td>
-						CODIGO_ESTABLECIMIENTO
-					</td>
-					<td>
-						Código de establecimiento permite identificar en forma única los diferentes establecimientos educativos que se encuentran en el país.<br>
-						El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación.<br>
-					</td>
-					<td>
-						xsd:string
-					</td>
-					<td>
-						No más de 7 caracteres
-					</td>
-					<td></td>
-					<td>
-						0010010
-					</td>
-				</tr>
-				<tr>
-					<td>
-						CODIGO_INSTITUCION
-					</td>
-					<td>
-						Identifica a la institución como una entidad y organización independiente que funciona dentro de un establecimiento escolar. Una institución educativa puede poseer diferentes locales escolares ubicados en un mismo o en diferentes departamentos geográficos. El código está compuesto por un número secuencial.<br>
-						El SIEC considera una misma institución cuando varios niveles o modalidades tienen una organización, gestión y administración única. Por ejemplo: Centro Regional de Educación Gral. Patricio Escobar de Encarnación, Colegio Santa Clara de Asunción.<br>
-					</td>
-					<td>
-						xsd:positiveInteger
-					</td>
-					<td>
-						No más de 5 caracteres
-					</td>
-					<td></td>
-					<td>
-						10
-					</td>
-				</tr>
-				<tr>
-					<td>
-						NOMBRE_INSTITUCION
-					</td>
-					<td>
-						Corresponde a la descripción del nombre de la institución correspondiente al código
-					</td>
-					<td>
-						xsd:string
-					</td>
-					<td>
-						No más de 40 caracteres
-					</td>
-					<td></td>
-					<td>
-						1183 ALBERTO SCHWEITZER
-					</td>
-				</tr>
-				<tr>
-					<td>
-						SECTOR O TIPO DE GESTION
-					</td>
-					<td>
-						Sector al que pertenece una institución educativa.<br>
-						Se considera :<br>
-						OFICIAL: Sector o tipo de gestión al que pertenece una institución educativa cuya organización y administración está a cargo del Estado paraguayo (Ministerio de Educación y Cultura, gobernaciones, municipios, binacionales). PRIVADA: Sector o tipo de gestión al que pertenece una institución educativa cuya organización y administración está a cargo de un organismo no estatal.<br>
-						PRIVADA SUBVENCIONADA: Sector o tipo de gestión al que pertenece una institución de gestión privada que recibe algún aporte del Estado, como ser rubros para docentes, monto en guaraníes, etc.<br>
-					</td>
-					<td>
-						xsd:string
-					</td>
-					<td>
-						Valores en el rango: OFICIAL, PRIVADA ,PRIVADA SUBVENCIONADA
-					</td>
-					<td></td>
-					<td>
-						PRIVADA
-					</td>
-				</tr>
-				<tr>
-					<td>
-						MATRICULA_CIENTIFICO
-					</td>
-					<td>
-						Representa la cantidad de estudiantes inscriptos del 1° al 3° curso de la Educación Media, con orientación hacia el Bachillerato Científico, comprende tres énfasis: Letras y Artes; Ciencias Sociales; y Ciencias Básicas y Tecnología.<br>
-					</td>
-					<td>
-						xsd:positiveInteger
-					</td>
-					<td></td>
-					<td></td>
-					<td>
-						571
-					</td>
-				</tr>
-				<tr>
-					<td>
-						MATRICULA_TECNICO
-					</td>
-					<td>
-						Representa la cantidad de estudiantes inscriptos del 1° al 3° curso de la Educación Media, en la modalidad de Bachillerato Técnico (Industrial, Servicios y Agropecuario).<br>
-					</td>
-					<td>
-						xsd:positiveInteger
-					</td>
-					<td></td>
-					<td></td>
-					<td>
-						528
-					</td>
-				</tr>
-				<tr>
-					<td>
-						MATRICULA_MEDIA_ABIERTA
-					</td>
-					<td>
-						Representa la cantidad de estudiantes inscriptos en la modalidad Media Abierta que está dirigida a jóvenes de 15 a 20 años que han terminado el noveno grado de la Educación Escolar Básica, pero que no han ingresado por alguna razón a la Educación Media convencional. Este modelo educativo permite un aprendizaje flexible, según el ritmo y las posibilidades de tiempo de cada estudiante. Pretende con una oferta diferente de formación, dar respuesta a diferentes necesidades de aprendizaje y albergar a jóvenes en situaciones de deserción escolar.<br>
-						<br>
-					</td>
-					<td>
-						xsd:positiveInteger
-					</td>
-					<td></td>
-					<td></td>
-					<td>
-						142
-					</td>
-				</tr>
-				<tr>
-					<td>
-						MATRICULA_FORMACION_PROFESIONAL_MEDIA
-					</td>
-					<td>
-						Representa la cantidad de estudiantes inscriptos en la modalidad de Formación Profesional de la Media, programas educativos orientados hacia la capacitación laboral, ofrece oportunidades de profesionalización de distinto grado de calificación y especialidad. La formación profesional está dirigida a la formación en áreas relacionadas con la producción de bienes y servicios.<br>
-						Para cursar la formación profesional se requiere haber concluido los 6 años de la Educación Escolar Básica.<br>
-						<br>
-					</td>
-					<td>
-						xsd:positiveInteger
-					</td>
-					<td></td>
-					<td></td>
-					<td>
-						180
-					</td>
-        </tr>
-						<tr>
-							<td>
-								ANHO_COD_GEO 
-							</td>
-							<td>
-								Se refiere al año de captura de los datos georreferenciados censales, teniendo en cuenta que por cada año censal pueden diferir los codigos de distritos o codigos de localidades, como a si también las descripciones. La cartografía nacional fue proveída por al Dirección General de Estadística, Encuestas y Censos (DGEEC - http://www.dgeec.gov.py/). 
-							</td>
-							<td>
-								xsd:gYear
-							</td>
-							<td>
-								Sólo permite datos del año de su captura censal.
-							</td>
-							<td></td>
-              <td>
-                <%= link_to "Ver ejemplo", mec_custom_url(def_ejemplo_anio_cod_geo_path), target: '_blank' %>
-              </td>
-						</tr>
-			</tbody>
-		</table>
-	</div>
-	<div class="row">
-		<h2>
-			Referencia
-		</h2>La siguiente tabla presenta una breve descripción de los atributos incluídos en el diccionario de datos del dataset.<br>
-		Básicamente, un diccionario de datos describe los atributos que contiene un dataset, incluyendo el tipo de dato y las restricciones se apliquen a cada uno.<br>
-		<br>
-		<br>
-		<table class="table table-striped table-bordered table-hover">
-			<thead>
-				<tr>
-					<th title="Field #1">
-						Nombre de la columna
-					</th>
-					<th title="Field #2">
-						Descripción
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						Nombre del Atributo
-					</td>
-					<td>
-						Esteblace el nombre del atributo exactamente como se encuentra definido en el archivo de datos a ser publicado
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Descripción
-					</td>
-					<td>
-						Describe con más detalles los datos que se encuentran en el atributo
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Tipo de datos
-					</td>
-					<td>
-						El tipo de dato esperado de los valores del attributo. Por ejemplo: String, Integer, Float, …. Idealmente se deben utilizar los tipos de datos definidos en el Estándar XML Schema Datatypes de la W3C. <a href="http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes">http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes</a>, por ejemplo: xsd:string, xsd:boolean, xsd:dateTime
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Restricciones
-					</td>
-					<td>
-						En caso que existan, se especifican las restricciones de los datos
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Referencia
-					</td>
-					<td>
-						En caso que exista, se agrega un link a un documento de referencia para los datos. Por ejemplo, si los datos están definidos utilizando un estándar o formato diferente a XSD, referenciarlo, como ser la Latitud y Longitud en formato de Google maps
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Ejemplo
-					</td>
-					<td>
-						Los valores de ejemplo
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+<%= javascript_include_tag "diccionario/matriculaciones_educacion_media.js" %>
+<%= link_to ('<span class="pull-right btn-lg hidden-xs"><i class="icon-py-datos"></i> Ver Datos</span>').html_safe, mec_custom_url(data_matriculaciones_educacion_media_url), :title => "Ir al Conjunto de Datos" %>
+<%= link_to ('<span class="pull-right btn-lg hidden-xs"><i class="icon-py-datos"></i> Ver Datos</span>').html_safe, mec_custom_url(data_matriculaciones_educacion_media_url), :title => "Ir al Conjunto de Datos" %>
+<h1>Matrícula Educación Media</h1>
+<br>
+
+<ul class="listado">
+
+  <li class="row hidden-xs titulos">
+    <div class="celda col-sm-3">Nombre</div>
+    <div class="celda col-sm-4">Descripción</div>
+    <div class="celda col-sm-1">Tipo</div>
+    <div class="celda col-sm-2">Restricciones</div>
+    <div class="celda col-sm-1">Referencia</div>
+    <div class="celda col-sm-1">Ejemplo</div>
+  </li>
+
+  <div id="diccionario"></div>
+
+</ul>
+
+<script>
+  contenido = "";
+  diccionario=contenido_diccionario('<%= link_to "Ver ejemplo", mec_custom_url(def_ejemplo_anio_cod_geo_path).html_safe, target:"_blank" %>');
+  $.each(diccionario, function(idx, definicion) {
+    contenido += '<li class="row">' +
+            '<label class="col-xs-12 visible-xs"> Nombre </label>' +
+            '<div class="celda col-sm-3">' +
+            definicion.nombre +
+            '</div>' +
+            '<label class="col-xs-12 visible-xs"> Descripción </label>' +
+            '<div class="celda col-sm-4">' +
+            definicion.descripcion +
+            '</div>' +
+            '<label class="col-xs-12 visible-xs"> Tipo </label>' +
+            '<div class="celda col-sm-1">' +
+            definicion.tipo +
+            '</div>' +
+            '<label class="col-xs-12 visible-xs"> Restricciones </label>' +
+            '<div class="celda col-sm-2">' +
+            definicion.restricciones +
+            '</div>' +
+            '<label class="col-xs-12 visible-xs"> Referencia </label>' +
+            '<div class="celda col-sm-1 napa">';
+    if (definicion.referencia.enlace !== '') {
+      contenido += '<a href="' + definicion.referencia.enlace + '">' + definicion.referencia.texto + '</a>';
+    }
+    contenido += '</div>' +
+            '<label class="col-xs-12 visible-xs"> Ejemplo </label>' +
+            '<div class="celda col-sm-1">' +
+            definicion.ejemplo +
+            '</div>' +
+            '</li>';
+  });
+  $("#diccionario").html(contenido);
+</script>
+
+<div class="row">
+  <h2>
+    Referencia
+  </h2>La siguiente tabla presenta una breve descripción de los atributos incluídos en el diccionario de datos del dataset.<br>
+  Básicamente, un diccionario de datos describe los atributos que contiene un dataset, incluyendo el tipo de dato y las restricciones se apliquen a cada uno.<br>
+  <br>
+  <br>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th title="Field #1">
+          Nombre de la columna
+        </th>
+        <th title="Field #2">
+          Descripción
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Nombre del Atributo
+        </td>
+        <td>
+          Esteblace el nombre del atributo exactamente como se encuentra definido en el archivo de datos a ser publicado
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Descripción
+        </td>
+        <td>
+          Describe con más detalles los datos que se encuentran en el atributo
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Tipo de datos
+        </td>
+        <td>
+          El tipo de dato esperado de los valores del attributo. Por ejemplo: String, Integer, Float, …. Idealmente se deben utilizar los tipos de datos definidos en el Estándar XML Schema Datatypes de la W3C. <a href="http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes">http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes</a>, por ejemplo: xsd:string, xsd:boolean, xsd:dateTime
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Restricciones
+        </td>
+        <td>
+          En caso que existan, se especifican las restricciones de los datos
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Referencia
+        </td>
+        <td>
+          En caso que exista, se agrega un link a un documento de referencia para los datos. Por ejemplo, si los datos están definidos utilizando un estándar o formato diferente a XSD, referenciarlo, como ser la Latitud y Longitud en formato de Google maps
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Ejemplo
+        </td>
+        <td>
+          Los valores de ejemplo
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 </div>

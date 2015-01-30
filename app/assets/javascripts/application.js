@@ -27,6 +27,10 @@
 //= stub views/datos_ver_view.js
 //= stub views/datos_view.js
 //= require datos_abiertos_plugins.js
+//= stub diccionario/requerimientos_aulas.js
+//= stub diccionario/requerimientos_mobiliarios.js
+//= stub diccionario/requerimientos_otros_espacios.js
+//= stub diccionario/requerimientos_sanitarios.js
 
 $.ajaxQ = (function() {
 
