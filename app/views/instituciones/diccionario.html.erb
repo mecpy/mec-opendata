@@ -4,7 +4,7 @@
             <span id="tab-titulo">Datos Espec&iacute;ficos de Instituciones Educativas</span>
 
             <span style="float:right;">
-                <div style="display: inline-block" id="start-tour"><a style="font-size:12px;" title="Ir a la ayuda">Ayuda</a> <a title="Ir a la ayuda"><img alt="Ayuda3" height="24px" width="24px" src="/assets/ayuda3.png"></a></div>
+                <div style="display: inline-block" id="start-tour"><a style="font-size:12px;" title="Ir a la ayuda">Ayuda</a> <a title="Ir a la ayuda"><%= image_tag("ayuda3.png", :style => "height:24px;width:24px;" ).to_s.gsub("\"", "'").html_safe %></a></div>
                 <div style="display: inline-block" id="tab-datos"><%= link_to "Ver datos", mec_custom_url(data_instituciones_url), :title => "Ir al dataset", :style => "font-size:12px;" %>
                     <%= link_to image_tag("datos_ico.jpg",:style => "width:24px;"), mec_custom_url(data_instituciones_url), :title => "Ir al dataset" %></div>
                 <div style="display: inline-block" id="tab-inicio"><%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
@@ -597,13 +597,13 @@
           </br></br>Podr&aacute;s navegar fácilmente a través de la guía por medio del mouse, o por medio del teclado haciendo simplemente uso de las teclas:\
           <p><u><i>Para Navegar:</i></u></p>\
           <ul>\
-            <li><img alt='Intro_right' height='22px' width='22px' src='/assets/intro_images/right.png'> IZQ</li>\
-            <li><img alt='Intro_left' height='22px' width='22px' src='/assets/intro_images/left.png'> DER</li>\
-            <li><img alt='Intro_enter' height='22px' width='22px' src='/assets/intro_images/enter.png'> ENTER</li>\
+            <li><%= image_tag('intro_images/right.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %>  IZQ</li>\
+            <li><%= image_tag('intro_images/left.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %> DER</li>\
+            <li><%= image_tag('intro_images/enter.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %> ENTER</li>\
           </ul>\
           <p><u><i>Para Salir:</i></u></p>\
           <ul>\
-            <li><img alt='Intro_esc' height='22px' width='22px' src='/assets/intro_images/esc.png'>ESC</li>\
+            <li><%= image_tag('intro_images/esc.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %>ESC</li>\
           </ul>\
           Pulsa en siguiente para comenzar.\
           </br>Y, ¡COMENCEMOS!"
