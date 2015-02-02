@@ -1,6 +1,10 @@
 <div style="padding-top:10px" id="tab-piedepagina">
   <p align="center" style="font-size:11px;color:#999;border-top:1px">
-    <%= link_to image_tag("http://i.creativecommons.org/l/by/4.0/80x15.png"), "http://creativecommons.org/licenses/by/4.0/", :target => "_blank" %>
+    <% if controller_name == 'nominas' %> 
+      <%= link_to image_tag("https://i.creativecommons.org/l/by-nc/4.0/80x15.png"), "http://creativecommons.org/licenses/by-nc/4.0/", :target => "_blank" %>
+    <% elsif "#{controller_name}#{action_name}" != 'dataindex' %>
+      <%= link_to image_tag("http://i.creativecommons.org/l/by/4.0/80x15.png"), "http://creativecommons.org/licenses/by/4.0/", :target => "_blank" %>
+    <% end %>
     <%= link_to "Aviso Legal", mec_custom_url(legal_url), :target => '_blank', :style => "padding-left:5px;"%>
     <%= link_to "Acerca de", mec_custom_url(about_url), :style => "padding-left:5px;"%>
     <br />
