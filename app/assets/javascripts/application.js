@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
-//= require_tree .
+// require_tree .
 //= stub matriculados
 //= stub mapa_matriculaciones
 //= stub leaflet
