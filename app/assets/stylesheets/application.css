@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ * require_tree .
  *= stub leaflet
  *= stub slider
  *= require introjs.min
@@ -18,7 +18,7 @@
  */
 
 /*
- *= require jquery.ui.all
+ * require jquery.ui.all
 */
 
 .table-outter {
