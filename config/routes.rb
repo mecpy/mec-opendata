@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get "datos" => "data#datos", :as => :datos
 
   root 'data#index'
+  
+  get "application/autocompletar" => 'application#autocompletar', :as => :autocompletar
 
   post 'app/mapa_matriculaciones' => 'mapa_matriculaciones#index', :as => :app_mapa_matriculaciones2
   get 'app/mapa_matriculaciones' => 'mapa_matriculaciones#index', :as => :app_mapa_matriculaciones

@@ -1,2 +1,2 @@
-$("#directorios-instituciones-lista").html("<%= escape_javascript(render :partial => "lista", :locals => { :directorios_instituciones => @directorios_instituciones}) %>");
+$("#directorios-instituciones-lista,#directorios-instituciones-lista-clone").html("<%= escape_javascript(render :partial => "lista", :locals => { :directorios_instituciones => @directorios_instituciones}) %>");
 $("#directorios-instituciones-footer").html("<%= escape_javascript(render :partial => "footer", :locals => { :directorios_instituciones => @directorios_instituciones}) %>");

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.autocomplete
 //= require underscore
 // require_tree .
 //= stub matriculados
@@ -27,10 +28,52 @@
 //= stub views/datos_ver_view.js
 //= stub views/datos_view.js
 //= require datos_abiertos_plugins.js
+//= stub diccionario/contrataciones.js
+//= stub diccionario/directorios_instituciones.js
+//= stub diccionario/establecimientos.js
+//= stub diccionario/establecimientos111.js
+//= stub diccionario/establecimientos822.js
+//= stub diccionario/instituciones.js
+//= stub diccionario/matriculaciones_departamentos_distritos.js
+//= stub diccionario/matriculaciones_educacion_escolar_basica.js
+//= stub diccionario/matriculaciones_educacion_inclusiva.js
+//= stub diccionario/matriculaciones_educacion_media.js
+//= stub diccionario/matriculaciones_educacion_permanente.js
+//= stub diccionario/matriculaciones_educacion_superior.js
+//= stub diccionario/matriculaciones_inicial.js
+//= stub diccionario/nomina_administrativos.js
+//= stub diccionario/nomina_docentes.js
+//= stub diccionario/registros_titulos.js
 //= stub diccionario/requerimientos_aulas.js
 //= stub diccionario/requerimientos_mobiliarios.js
 //= stub diccionario/requerimientos_otros_espacios.js
 //= stub diccionario/requerimientos_sanitarios.js
+//= stub diccionario/servicios_basicos.js
+
+/*Funcion que limpia el formulario del Dataset*/
+function resetForm(formId, valor_defecto) {
+    var form=$(formId);
+    form.find('input:text, input:password, input:file, select, textarea').val('');
+    form.find('input:radio, input:checkbox')
+            .removeAttr('checked').removeAttr('selected');
+
+    $.each(valor_defecto, function(idx, v) {
+        $(v.id).val(v.valor);
+    });
+    $.ajaxQ.abortAll();
+    form.submit();
+}
+/*Funcion que quita el filtro seleccionado*/
+function quitar_filtro(form, id, valor_defecto) {
+    var form=$(formId);
+    if (typeof (valor_defecto) !== "undefined") {
+        $(id).val(valor_defecto);
+    } else {
+        $(id).val('');
+    }
+    $.ajaxQ.abortAll();
+    form.submit();
+}
 
 $.ajaxQ = (function() {
 
@@ -65,6 +108,10 @@ function tour() {
     if ($('#start-tour').length) {
         if ($.cookie('firstVisit') === undefined) {
             $.cookie('firstVisit', 'true');
+            var date = new Date();
+            var m = 1;
+            date.setTime(date.getTime() + (m * 60 * 1000));
+            $.cookie("firstVisit", "value", {expires: date});
         } else {
             $.cookie('firstVisit', 'false');
         }

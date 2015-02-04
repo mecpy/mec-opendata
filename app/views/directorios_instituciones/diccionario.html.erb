@@ -1,7 +1,8 @@
 <%= javascript_include_tag "diccionario/directorios_instituciones.js" %>
-<%= link_to ('<span class="pull-right btn-lg hidden-xs"><i class="icon-py-datos"></i> Ver Datos</span>').html_safe, mec_custom_url(data_directorios_instituciones_url), :title => "Ir al Conjunto de Datos" %>
-<%= link_to ('<span class="pull-right btn-lg hidden-xs"><i class="icon-py-datos"></i> Ver Datos</span>').html_safe, mec_custom_url(data_directorios_instituciones_url), :title => "Ir al Conjunto de Datos" %>
-<h1>Directorio de Instituciones</h1>
+<div>
+  <%= link_to ('<i class="icon-py-datos"></i> Ver Datos').html_safe, mec_custom_url(data_directorios_instituciones_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al Conjunto de Datos" %>
+  <h1>Directorio de Instituciones</h1>
+</div>
 <br>
 
 <ul class="listado">
@@ -14,14 +15,14 @@
     <div class="celda col-sm-1">Referencia</div>
     <div class="celda col-sm-1">Ejemplo</div>
   </li>
-  
+
   <div id="diccionario"></div>
 
 </ul>
 
 <script>
   contenido = "";
-  diccionario=contenido_diccionario('<%= link_to "Ver ejemplo", mec_custom_url(def_ejemplo_anio_cod_geo_path).html_safe, target:"_blank" %>');
+  diccionario = contenido_diccionario('<%= link_to "Ver ejemplo", mec_custom_url(def_ejemplo_anio_cod_geo_path).html_safe, target:"_blank" %>');
   $.each(diccionario, function(idx, definicion) {
     contenido += '<li class="row">' +
             '<label class="col-xs-12 visible-xs"> Nombre </label>' +
