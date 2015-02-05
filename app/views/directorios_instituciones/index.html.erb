@@ -68,14 +68,14 @@
       </div>
 
       <%= hidden_field_tag :form_buscar_directorios_instituciones_codigo_establecimiento_id %>
-      <%= autocomplete_help( ruta: autocompletar_path(atributo_id: :id, 
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :id, 
           atributo_descripcion: :codigo_establecimiento, 
           model: :VDirectorioInstitucion, 
           limit: 10,
           cadena_consulta: "codigo_establecimiento",
           orden: "codigo_establecimiento", 
           descripcion_total: :codigo_establecimiento,
-          descripcion_elegida: :codigo_establecimiento), 
+          descripcion_elegida: :codigo_establecimiento)), 
         parametro_id: "form_buscar_directorios_instituciones_codigo_establecimiento", 
         resultado_id: "form_buscar_directorios_instituciones_codigo_establecimiento_id",
         min_length: 3
