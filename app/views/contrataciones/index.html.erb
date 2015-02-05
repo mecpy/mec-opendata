@@ -1,155 +1,153 @@
-<h2>
+<div>
+  <h1>
     <span itemprop="name">Contrataciones</span>
     <meta itemprop="description"
           content=""
           />
     <meta itemprop="temporal" style="display: none;" content="2014-01-01/2014-12-31"/>
     <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
-        <meta itemprop="name" content="Ministerio de Educación y Cultura">
-        <meta itemprop="url" content="http://www.mec.gov.py/">
-        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      <meta itemprop="name" content="Ministerio de Educación y Cultura">
+      <meta itemprop="url" content="http://www.mec.gov.py/">
+      <meta itemprop="email" content="datosabiertos@mec.gov.py">
     </span>
     <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
-        <meta itemprop="name" content="Juan Barrios">
-        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      <meta itemprop="name" content="Juan Barrios">
+      <meta itemprop="email" content="datosabiertos@mec.gov.py">
     </span>
     <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
-    <meta itemprop="keywords" style="display: none;" content="educación,instituciones"/>
+    <meta itemprop="keywords" style="display: none;" content="educación,instituciones,contrataciones"/>
     <meta itemprop="version" style="display: none;" content="1.0">
 
-    <span style="float:right;">
-        <%= link_to "Ver diccionario", mec_custom_url(def_contrataciones_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
-        <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), mec_custom_url(def_contrataciones_url), :title => "Ir al diccionario" %>
-        <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
-        <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
-    </span>
+    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_contrataciones_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
 
-</h2>
+  </h1>
+</div>
+<br>
 
 <div class="table-outter">
 
-    <table class="table table-striped table-bordered table-hover">
+  <table class="table table-striped table-bordered table-hover">
 
-        <tr>
+    <tr>
 
-            <%= form_tag mec_custom_url(data_contrataciones_lista_url), :remote => true, :id => "form-buscar-contrataciones" do  %>
+      <%= form_tag mec_custom_url(data_contrataciones_lista_url), :remote => true, :id => "form-buscar-contrataciones" do  %>
 
-              <th style="width:5%" class="text-min celda-derecha">
-                  <%= label_tag "Ejercicio Fiscal" %><br /><br />
-                  <%= select :form_buscar_contrataciones, :ejercicio_fiscal, [2015,2014], {:class => 'text-min'} %>
-                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_ejercicio_fiscal'),1);" %>
-              </th>
+        <th style="width:5%" class="text-min celda-derecha">
+          <%= label_tag "Ejercicio Fiscal" %><br /><br />
+          <%= select :form_buscar_contrataciones, :ejercicio_fiscal, [2015,2014], {:class => 'text-min'} %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_ejercicio_fiscal'),1);" %>
+        </th>
 
-              <th style="width:5%;" class="text-min">
-                  <%= label_tag nil, "Id DNCP".html_safe%><br /><br />
-                  <%= text_field_tag :form_buscar_contrataciones_llamado_publico, nil, :class => 'text-min' %>
-                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_llamado_publico'));" %>
-              </th>
+        <th style="width:5%;" class="text-min">
+          <%= label_tag nil, "Id DNCP".html_safe%><br /><br />
+          <%= text_field_tag :form_buscar_contrataciones_llamado_publico, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_llamado_publico'));" %>
+        </th>
 
-              <th style="width:7%;" class="text-min">
-                  <%= label_tag nil, "Modalidad".html_safe%><br /><br />
-                  <%= text_field_tag :form_buscar_contrataciones_modalidad, nil, :class => 'text-min' %>
-                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_modalidad'));" %>
-              </th>
+        <th style="width:7%;" class="text-min">
+          <%= label_tag nil, "Modalidad".html_safe%><br /><br />
+          <%= text_field_tag :form_buscar_contrataciones_modalidad, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_modalidad'));" %>
+        </th>
 
-              <th style="width:10%" class="text-min">
-                  <%= label_tag nil, "Descripci&oacute;n".html_safe%><br /><br />
-                  <%= text_field_tag :form_buscar_contrataciones_descripcion, nil, :class => 'text-min' %>
-                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_descripcion'));" %>
-              </th>
+        <th style="width:10%" class="text-min">
+          <%= label_tag nil, "Descripci&oacute;n".html_safe%><br /><br />
+          <%= text_field_tag :form_buscar_contrataciones_descripcion, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_descripcion'));" %>
+        </th>
 
-              <th style="width:7%" class="text-min">
-                  <%= label_tag nil, "Fecha de Apertura<br />de Ofertas".html_safe%><br />
-                  <%= text_field_tag :form_buscar_contrataciones_fecha_apertura_oferta, nil, :class => 'text-min' %>
-                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_fecha_apertura_oferta'));" %>
-              </th>
+        <th style="width:7%" class="text-min">
+          <%= label_tag nil, "Fecha de Apertura<br />de Ofertas".html_safe%><br />
+          <%= text_field_tag :form_buscar_contrataciones_fecha_apertura_oferta, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_fecha_apertura_oferta'));" %>
+        </th>
 
-              <th style="width:7%" class="text-min">
-                  <%= label_tag "Estado" %><br /><br />
-                  <%= text_field_tag :form_buscar_contrataciones_estado_llamado, nil, :class => 'text-min' %>
-                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_estado_llamado'));" %>
-              </th>
+        <th style="width:7%" class="text-min">
+          <%= label_tag "Estado" %><br /><br />
+          <%= text_field_tag :form_buscar_contrataciones_estado_llamado, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_estado_llamado'));" %>
+        </th>
 
-              <th style="width:7%" class="text-min">
-                  <%= label_tag nil, "Proveedor Adjudicado".html_safe %><br /><br />
-                  <%= text_field_tag :form_buscar_contrataciones_proveedor_adjudicado, nil, :class => 'text-min' %>
-                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_proveedor_adjudicado'));" %>
-              </th>
+        <th style="width:7%" class="text-min">
+          <%= label_tag nil, "Proveedor Adjudicado".html_safe %><br /><br />
+          <%= text_field_tag :form_buscar_contrataciones_proveedor_adjudicado, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_proveedor_adjudicado'));" %>
+        </th>
 
-              <th style="width:7%" class="text-min">
-                  <%= label_tag nil, "Fecha Contrato".html_safe%><br /><br />
-                  <%= text_field_tag :form_buscar_contrataciones_fecha_contrato, nil, :class => 'text-min' %>
-                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_fecha_contrato'));" %>
-              </th>
+        <th style="width:7%" class="text-min">
+          <%= label_tag nil, "Fecha Contrato".html_safe%><br /><br />
+          <%= text_field_tag :form_buscar_contrataciones_fecha_contrato, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_fecha_contrato'));" %>
+        </th>
 
-              <th style="width:7%" class="text-min">
-                  <%= label_tag nil,"Fecha Vigencia<br/> de Contrato".html_safe %><br />
-                  <%= text_field_tag :form_buscar_contrataciones_fecha_vigencia_contrato, nil, :class => 'text-min' %>
-                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_fecha_vigencia_contrato'));" %>
-              </th>
+        <th style="width:7%" class="text-min">
+          <%= label_tag nil,"Fecha Vigencia<br/> de Contrato".html_safe %><br />
+          <%= text_field_tag :form_buscar_contrataciones_fecha_vigencia_contrato, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_fecha_vigencia_contrato'));" %>
+        </th>
 
-              <th style="width:9%;" class="text-min">
-                  <%= label_tag nil, "Monto Adjudicado".html_safe%><br /><br />
-                  <%= select_tag(:form_buscar_contrataciones_monto_adjudicado_operador, options_for_select(['>', '<', '='])) %>
-                  <%= text_field_tag :form_buscar_contrataciones_monto_adjudicado, nil, :class => 'text-min' %>
-                  <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_monto_adjudicado'));" %>
-              </th>
-            <% end %>
+        <th style="width:9%;" class="text-min">
+          <%= label_tag nil, "Monto Adjudicado".html_safe%><br /><br />
+          <%= select_tag(:form_buscar_contrataciones_monto_adjudicado_operador, options_for_select(['>', '<', '='])) %>
+          <%= text_field_tag :form_buscar_contrataciones_monto_adjudicado, nil, :class => 'text-min' %>
+          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_monto_adjudicado'));" %>
+        </th>
+      <% end %>
 
-        </tr>
+    </tr>
 
-        <tbody id="contrataciones-lista"></tbody>
+    <tbody id="contrataciones-lista"></tbody>
 
-    </table>
+  </table>
 
 </div>
 
 <table class="table table-striped table-bordered table-hover">
-    <tbody id="contrataciones-footer"></tbody>
+  <tbody id="contrataciones-footer"></tbody>
 </table>
 
 <script type="text/javascript">
 
-  $("#form-buscar-contrataciones").bind("submit", function () {
+  $("#form-buscar-contrataciones").bind("submit", function() {
 
-      $("#contrataciones-lista").html("<%= escape_javascript("<tr><td colspan='10' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")
-
-  })
-
-  $("#form_buscar_contrataciones_ejercicio_fiscal").bind('change', function () {
-      $.ajaxQ.abortAll();
-      $("#form-buscar-contrataciones").submit();
+    $("#contrataciones-lista").html("<%= escape_javascript("<tr><td colspan='10' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")
 
   })
 
-  $("#form_buscar_contrataciones_monto_adjudicado_operador").bind('change', function () {
-      $.ajaxQ.abortAll();
-      $("#form-buscar-contrataciones").submit();
+  $("#form_buscar_contrataciones_ejercicio_fiscal").bind('change', function() {
+    $.ajaxQ.abortAll();
+    $("#form-buscar-contrataciones").submit();
 
   })
 
-  $(".table-bordered input").bind('change', function () {
-      $.ajaxQ.abortAll();
-      $("#form-buscar-contrataciones").submit();
+  $("#form_buscar_contrataciones_monto_adjudicado_operador").bind('change', function() {
+    $.ajaxQ.abortAll();
+    $("#form-buscar-contrataciones").submit();
+
+  })
+
+  $(".table-bordered input").bind('change', function() {
+    $.ajaxQ.abortAll();
+    $("#form-buscar-contrataciones").submit();
 
   })
 
   //LIMPIAR FORMULARIO DE BUSQUEDA
   function limpiar_form_buscar_contrataciones() {
 
-      $("#form_buscar_contrataciones_ejercicio_fiscal").val("2015");
-      $("#form_buscar_contrataciones_llamado_publico").val("");
-      $("#form_buscar_contrataciones_nombre").val("");
-      $("#form_buscar_contrataciones_descripcion").val("");
-      $("#form_buscar_contrataciones_fecha_apertura_oferta").val("");
-      $("#form_buscar_contrataciones_fecha_contrato").val("");
-      $("#form_buscar_contrataciones_fecha_vigencia_contrato").val("");
-      $("#form_buscar_contrataciones_estado_llamado").val("");
-      $("#form_buscar_contrataciones_modalidad").val("");
-      $("#form_buscar_contrataciones_categoria").val("");
-      $("#form_buscar_contrataciones_monto_adjudicado").val("");
-      $.ajaxQ.abortAll();
-      $("#form-buscar-contrataciones").submit();
+    $("#form_buscar_contrataciones_ejercicio_fiscal").val("2015");
+    $("#form_buscar_contrataciones_llamado_publico").val("");
+    $("#form_buscar_contrataciones_nombre").val("");
+    $("#form_buscar_contrataciones_descripcion").val("");
+    $("#form_buscar_contrataciones_fecha_apertura_oferta").val("");
+    $("#form_buscar_contrataciones_fecha_contrato").val("");
+    $("#form_buscar_contrataciones_fecha_vigencia_contrato").val("");
+    $("#form_buscar_contrataciones_estado_llamado").val("");
+    $("#form_buscar_contrataciones_modalidad").val("");
+    $("#form_buscar_contrataciones_categoria").val("");
+    $("#form_buscar_contrataciones_monto_adjudicado").val("");
+    $.ajaxQ.abortAll();
+    $("#form-buscar-contrataciones").submit();
 
   }
 
@@ -157,13 +155,13 @@
 
   //--------------- QUITAR FILTRO -------------------//
   function quitar_filtro(id, ban) {
-      if (ban === 1) {
-          id.val("2015");
-      } else {
-          id.val('');
-      }
-      $.ajaxQ.abortAll();
-      $('#form-buscar-contrataciones').submit();
+    if (ban === 1) {
+      id.val("2015");
+    } else {
+      id.val('');
+    }
+    $.ajaxQ.abortAll();
+    $('#form-buscar-contrataciones').submit();
 
   }
   //-------------------------------------------------//
@@ -172,16 +170,16 @@
 
 <style>
 
-    .text-min {font-size:9px !important; color: #000; text-align:center !important;}
-    #cbue-menu1 {background:#e9e9e9;}
-    .text-min input[type="text"], .text-min select {
-        border: 1px solid silver;
-        padding: 3px;
-        -webkit-border-radius: 5px 5px 5px 5px;
-        border-radius: 5px 5px 5px 5px;
-        color:#000;
-    }
-    .text-min input[type="text"] { width: 80px;}
+  .text-min {font-size:9px !important; color: #000; text-align:center !important;}
+  #cbue-menu1 {background:#e9e9e9;}
+  .text-min input[type="text"], .text-min select {
+    border: 1px solid silver;
+    padding: 3px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    color:#000;
+  }
+  .text-min input[type="text"] { width: 80px;}
 
-    #tablaContenedor{width:100%;}
+  #tablaContenedor{width:100%;}
 </style>

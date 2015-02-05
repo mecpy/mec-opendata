@@ -1,7 +1,8 @@
 <%= javascript_include_tag "diccionario/matriculaciones_educacion_escolar_basica.js" %>
-<%= link_to ('<span class="pull-right btn-lg hidden-xs"><i class="icon-py-datos"></i> Ver Datos</span>').html_safe, mec_custom_url(data_matriculaciones_educacion_escolar_basica_url), :title => "Ir al Conjunto de Datos" %>
-<%= link_to ('<span class="pull-right btn-lg hidden-xs"><i class="icon-py-datos"></i> Ver Datos</span>').html_safe, mec_custom_url(data_matriculaciones_educacion_escolar_basica_url), :title => "Ir al Conjunto de Datos" %>
-<h1>Matrícula Educación Escolar Básica</h1>
+<div>
+  <%= link_to ('<i class="icon-py-datos"></i> Ver Datos').html_safe, mec_custom_url(data_matriculaciones_educacion_escolar_basica_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al Conjunto de Datos" %>
+  <h1>Matr&iacute;cula Educaci&oacute;n Escolar B&aacute;sica</h1>
+</div>
 <br>
 
 <ul class="listado">

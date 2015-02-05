@@ -2,7 +2,7 @@
 <%= javascript_include_tag "/assets/gmaps/gmaps.js?body=1", "/assets/gmaps/markerclusterer.js?body=1" %>
 <%= render :partial => "layouts/gmaps", :locals => { :ancho_maps => "100%", :altura_maps => "350px"} %>
 
-<h2>
+<h1>
     <span itemprop="name">Establecimientos Escolares</span>
     <meta itemprop="description"
           content="Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación."/>
@@ -26,7 +26,7 @@
         <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
     </span>
 
-</h2>
+</h1>
 
 <div class="table-outter">
 

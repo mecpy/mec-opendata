@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class DataController < ApplicationController
   
-  def datos
+  def data
     
   end
   

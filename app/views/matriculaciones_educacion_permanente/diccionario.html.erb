@@ -1,7 +1,8 @@
 <%= javascript_include_tag "diccionario/matriculaciones_educacion_permanente.js" %>
-<%= link_to ('<span class="pull-right btn-lg hidden-xs"><i class="icon-py-datos"></i> Ver Datos</span>').html_safe, mec_custom_url(data_matriculaciones_educacion_permanente_url), :title => "Ir al Conjunto de Datos" %>
-<%= link_to ('<span class="pull-right btn-lg hidden-xs"><i class="icon-py-datos"></i> Ver Datos</span>').html_safe, mec_custom_url(data_matriculaciones_educacion_permanente_url), :title => "Ir al Conjunto de Datos" %>
-<h1>Matriculaciones Educación Permanente</h1>
+<div>
+  <%= link_to ('<i class="icon-py-datos"></i> Ver Datos').html_safe, mec_custom_url(data_matriculaciones_educacion_permanente_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al Conjunto de Datos" %>
+  <h1>Matriculaciones Educaci&oacute;n Permanente</h1>
+</div>
 <br>
 
 <ul class="listado">

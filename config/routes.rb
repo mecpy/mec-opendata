@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get "index" => "data#index", :as => :index
   get "about" => "data#about", :as => :about
   get "legal" => "data#legal", :as => :legal
-  get "datos" => "data#datos", :as => :datos
+  get "data" => "data#data", :as => :data
 
   root 'data#index'
   

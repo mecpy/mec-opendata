@@ -2,6 +2,12 @@
 <h1>Datos</h1>
 <ul class="listado">
 
+  <li class="row hidden-xs titulos">
+    <div class="celda col-sm-1 text-right">#</div>
+    <div class="celda col-sm-3">Nombre del dataset</div>
+    <div class="celda col-sm-8">Descripción del Conjunto de Datos, como será puesto en la página web</div>
+  </li>
+
   <!--NUEVO CONJUNTO DE DATOS-->
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">1</span>
@@ -90,7 +96,7 @@
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_matriculaciones_educacion_escolar_basica_url), :title => "Ir al diccionario", :itemprop => "url" %>
         <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_matriculaciones_educacion_escolar_basica_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
         <%= link_to ('<i class="icon-py-mapa"></i><span class="hidden-xs"> Ver Mapa</span>').html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_escolar_basica')), :title => "Ir al Map", :itemprop => "url" %>
-        
+
         <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
           <i class="icon-py-etiqueta"></i> 
           <span class="visible-xs-inline" data-ver="true">Ver</span>
@@ -117,7 +123,7 @@
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_matriculaciones_educacion_inclusiva_url), :title => "Ir al diccionario", :itemprop => "url" %>
         <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_matriculaciones_educacion_inclusiva_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
         <%= link_to ('<i class="icon-py-mapa"></i><span class="hidden-xs"> Ver Mapa</span>').html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_inclusiva')), :title => "Ir al Mapa", :itemprop => "url" %>
-        
+
         <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
           <i class="icon-py-etiqueta"></i> 
           <span class="visible-xs-inline" data-ver="true">Ver</span>
@@ -251,7 +257,7 @@
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_matriculaciones_departamentos_distritos_url), :title => "Ir al diccionario", :itemprop => "url" %>
         <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_matriculaciones_departamentos_distritos_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
-        
+
         <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
           <i class="icon-py-etiqueta"></i> 
           <span class="visible-xs-inline" data-ver="true">Ver</span>
@@ -379,7 +385,7 @@
       <div class="acciones">
         <%= link_to ('<i class="fa fa-file-zip-o"></i><span class="hidden-xs"> Rodados e Inmuebles (4,4MB)</span>').html_safe, "https://mega.co.nz/#!84IkjQTD!4FGj6gaMVE1tQL5h348uY1D3lRb_8xOnXB_KK9gNqWw", :title => "Descargar datos de rodados e inmuebles", :target => "_target", :itemprop => "url" %>
         <%= link_to ('<i class="fa fa-file-zip-o"></i><span class="hidden-xs"> Muebles (64,9MB)</span>').html_safe, "https://mega.co.nz/#!10Y3BDgC!3IQr8etnRNkG02ReZ-OFjV6vXcQu-65KKj5_Rl--d8k", :title => "Descargar datos de muebles", :target => "_target", :itemprop => "url" %>
-        
+
         <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
           <i class="icon-py-etiqueta"></i> 
           <span class="visible-xs-inline" data-ver="true">Ver</span>
@@ -457,7 +463,7 @@
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Cat&aacute;logo</span>').html_safe, mec_custom_url(data_requerimientos_infraestructuras_catalogo_url), :title => "Ir al Cat&aacute;logo".html_safe, :itemprop => "url" %>
-        
+
         <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
           <i class="icon-py-etiqueta"></i> 
           <span class="visible-xs-inline" data-ver="true">Ver</span>
@@ -509,7 +515,7 @@
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_requerimientos_sanitarios_url), :title => "Ir al diccionario", :itemprop => "url" %>
         <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_requerimientos_sanitarios_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
-        
+
         <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
           <i class="icon-py-etiqueta"></i> 
           <span class="visible-xs-inline" data-ver="true">Ver</span>
@@ -535,7 +541,7 @@
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_requerimientos_otros_espacios_url), :title => "Ir al diccionario", :itemprop => "url" %>
         <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_requerimientos_otros_espacios_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
-        
+
         <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
           <i class="icon-py-etiqueta"></i> 
           <span class="visible-xs-inline" data-ver="true">Ver</span>
@@ -637,7 +643,7 @@
       <span class="daxline" itemprop="name">Proyecto 822</span><br>
 
       <div class="acciones">
-        
+
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_establecimientos822_url), :title => "Ir al diccionario", :itemprop => "url" %>
         <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_establecimientos822_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
 

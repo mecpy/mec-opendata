@@ -61,20 +61,20 @@ class ApplicationController < ActionController::Base
       end
       
       hashes[:order] = params[:orden] if params[:orden].present?
-      hashes[:limit] = params[:limit] if params[:limit].present?
-
-      resultados = params[:model].constantize.where(hashes[:conditions]).uniq.order(hashes[:order]).take(hashes[:limit])
+      hashes[:limit] = params[:limit].to_i if params[:limit].present?
+      
+      resultados = params[:model].constantize.where(hashes[:conditions]).uniq.pluck(params[:cadena_consulta]).take(hashes[:limit])
 
       if resultados.present?
 
         resultados.each do |objeto|
 
-          html += "{\"id\":\"#{eval("objeto.#{params[:atributo_id]}")}\","
-          html += "\"label\":\"#{eval("objeto.#{ (params[:descripcion_total].present? ? params[:descripcion_total] : params[:atributo_descripcion] )}")}\","
-          html += "\"value\":\"#{eval("objeto.#{ (params[:descripcion_elegida].present? ? params[:descripcion_elegida] : params[:atributo_descripcion] )}") }\"},"
+          html += "{\"id\":\"#{eval("objeto")}\","
+          html += "\"label\":\"#{eval("objeto")}\","
+          html += "\"value\":\"#{eval("objeto")}\"},"
 
         end
-
+        
       end
 
     end

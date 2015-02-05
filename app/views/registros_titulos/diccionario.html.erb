@@ -1,7 +1,8 @@
 <%= javascript_include_tag "diccionario/registros_titulos.js" %>
-<%= link_to ('<span class="pull-right btn-lg hidden-xs"><i class="icon-py-datos"></i> Ver Datos</span>').html_safe, mec_custom_url(data_registros_titulos_url), :title => "Ir al Conjunto de Datos" %>
-<%= link_to ('<span class="pull-right btn-lg hidden-xs"><i class="icon-py-datos"></i> Ver Datos</span>').html_safe, mec_custom_url(data_registros_titulos_url), :title => "Ir al Conjunto de Datos" %>
-<h1>Registro de T&iacute;tulos</h1>
+<div>
+  <%= link_to ('<i class="icon-py-datos"></i> Ver Datos').html_safe, mec_custom_url(data_registros_titulos_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al Conjunto de Datos" %>
+  <h1>Registro de T&iacute;tulos</h1>
+</div>
 <br>
 
 <ul class="listado">

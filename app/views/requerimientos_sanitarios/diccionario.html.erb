@@ -1,7 +1,9 @@
 <%= javascript_include_tag "diccionario/requerimientos_sanitarios.js" %>
-<%= link_to ('<span class="pull-right btn-lg hidden-xs"><i class="icon-py-datos"></i> Ver Datos</span>').html_safe, mec_custom_url(data_requerimientos_sanitarios_url), :title => "Ir al Conjunto de Datos" %>
-<%= link_to ('<span class="pull-right btn-lg hidden-xs"><i class="icon-py-datos"></i> Ver Datos</span>').html_safe, mec_custom_url(data_requerimientos_sanitarios_url), :title => "Ir al Conjunto de Datos" %>
-<h1>Establecimientos Escolares Priorizados Elegibles - FONACIDE: SANITARIOS</h1>
+<div>
+  <%= link_to ('<i class="icon-py-datos"></i> Ver Datos').html_safe, mec_custom_url(data_requerimientos_sanitarios_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al Conjunto de Datos" %>
+  <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
+  <h1>Establecimientos Escolares Priorizados Elegibles - FONACIDE: SANITARIOS</h1>
+</div>
 <br>
 
 <ul class="listado">
@@ -21,7 +23,7 @@
 
 <script>
   contenido = "";
-  diccionario=contenido_diccionario('<%= link_to "Ver ejemplo", mec_custom_url(def_ejemplo_anio_cod_geo_path).html_safe, target:"_blank" %>');
+  diccionario = contenido_diccionario('<%= link_to "Ver ejemplo", mec_custom_url(def_ejemplo_anio_cod_geo_path).html_safe, target:"_blank" %>');
   $.each(diccionario, function(idx, definicion) {
     contenido += '<li class="row">' +
             '<label class="col-xs-12 visible-xs"> Nombre </label>' +
