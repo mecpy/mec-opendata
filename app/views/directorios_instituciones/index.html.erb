@@ -68,14 +68,14 @@
       </div>
 
       <%= hidden_field_tag :form_buscar_directorios_instituciones_codigo_establecimiento_id %>
-      <%= autocomplete_help( ruta: autocompletar_path(atributo_id: :codigo_establecimiento, 
-          atributo_descripcion: :codigo_establecimiento, 
-          model: :VDirectorioInstitucion, 
-          limit: 10,
-          cadena_consulta: "codigo_establecimiento",
-          orden: "codigo_establecimiento", 
-          descripcion_total: :codigo_establecimiento,
-          descripcion_elegida: :codigo_establecimiento), 
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_establecimiento, 
+            atributo_descripcion: :codigo_establecimiento, 
+            model: :VDirectorioInstitucion, 
+            limit: 10,
+            cadena_consulta: "codigo_establecimiento",
+            orden: "codigo_establecimiento", 
+            descripcion_total: :codigo_establecimiento,
+            descripcion_elegida: :codigo_establecimiento)), 
         parametro_id: "form_buscar_directorios_instituciones_codigo_establecimiento", 
         resultado_id: "form_buscar_directorios_instituciones_codigo_establecimiento_id",
         min_length: 3
@@ -98,14 +98,14 @@
       </div>
 
       <%= hidden_field_tag :form_buscar_directorios_instituciones_codigo_institucion_id %>
-      <%= autocomplete_help( ruta: autocompletar_path(atributo_id: :codigo_institucion, 
-          atributo_descripcion: :codigo_institucion, 
-          model: :VDirectorioInstitucion, 
-          limit: 10,
-          cadena_consulta: "codigo_institucion",
-          orden: "codigo_institucion", 
-          descripcion_total: :codigo_institucion,
-          descripcion_elegida: :codigo_institucion), 
+      <%= autocomplete_help( mec_custom_url( ruta: autocompletar_path(atributo_id: :codigo_institucion, 
+            atributo_descripcion: :codigo_institucion, 
+            model: :VDirectorioInstitucion, 
+            limit: 10,
+            cadena_consulta: "codigo_institucion",
+            orden: "codigo_institucion", 
+            descripcion_total: :codigo_institucion,
+            descripcion_elegida: :codigo_institucion)), 
         parametro_id: "form_buscar_directorios_instituciones_codigo_institucion", 
         resultado_id: "form_buscar_directorios_instituciones_codigo_institucion_id",
         min_length: 3
@@ -128,17 +128,17 @@
       </div>
 
       <%= hidden_field_tag :form_buscar_directorios_instituciones_nombre_institucion_id %>
-      <%= autocomplete_help( ruta: autocompletar_path(atributo_id: :nombre_institucion, 
-          atributo_descripcion: :nombre_institucion, 
-          model: :VDirectorioInstitucion, 
-          limit: 10,
-          cadena_consulta: "nombre_institucion",
-          orden: "nombre_institucion", 
-          descripcion_total: :nombre_institucion,
-          descripcion_elegida: :nombre_institucion), 
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_institucion, 
+            atributo_descripcion: :nombre_institucion, 
+            model: :VDirectorioInstitucion, 
+            limit: 10,
+            cadena_consulta: "nombre_institucion",
+            orden: "nombre_institucion", 
+            descripcion_total: :nombre_institucion,
+            descripcion_elegida: :nombre_institucion)), 
         parametro_id: "form_buscar_directorios_instituciones_nombre_institucion", 
         resultado_id: "form_buscar_directorios_instituciones_nombre_institucion_id",
-        min_length: 6
+        min_length: 4
         ) %>
 
       </th>
@@ -158,17 +158,17 @@
       </div>
 
       <%= hidden_field_tag :form_buscar_directorios_instituciones_nombre_departamento_id %>
-      <%= autocomplete_help( ruta: autocompletar_path(atributo_id: :nombre_departamento, 
-          atributo_descripcion: :nombre_departamento, 
-          model: :VDirectorioInstitucion, 
-          limit: 10,
-          cadena_consulta: "nombre_departamento",
-          orden: "nombre_departamento", 
-          descripcion_total: :nombre_departamento,
-          descripcion_elegida: :nombre_departamento), 
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_departamento, 
+            atributo_descripcion: :nombre_departamento, 
+            model: :VDirectorioInstitucion, 
+            limit: 10,
+            cadena_consulta: "nombre_departamento",
+            orden: "nombre_departamento", 
+            descripcion_total: :nombre_departamento,
+            descripcion_elegida: :nombre_departamento)), 
         parametro_id: "form_buscar_directorios_instituciones_nombre_departamento", 
         resultado_id: "form_buscar_directorios_instituciones_nombre_departamento_id",
-        min_length: 6
+        min_length: 4
         ) %>
 
       </th>
@@ -188,17 +188,17 @@
       </div>
 
       <%= hidden_field_tag :form_buscar_directorios_instituciones_nombre_distrito_id %>
-      <%= autocomplete_help( ruta: autocompletar_path(atributo_id: :nombre_distrito, 
-          atributo_descripcion: :nombre_distrito, 
-          model: :VDirectorioInstitucion, 
-          limit: 10,
-          cadena_consulta: "nombre_distrito",
-          orden: "nombre_distrito", 
-          descripcion_total: :nombre_distrito,
-          descripcion_elegida: :nombre_distrito), 
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_distrito, 
+            atributo_descripcion: :nombre_distrito, 
+            model: :VDirectorioInstitucion, 
+            limit: 10,
+            cadena_consulta: "nombre_distrito",
+            orden: "nombre_distrito", 
+            descripcion_total: :nombre_distrito,
+            descripcion_elegida: :nombre_distrito)), 
         parametro_id: "form_buscar_directorios_instituciones_nombre_distrito", 
         resultado_id: "form_buscar_directorios_instituciones_nombre_distrito_id",
-        min_length: 6
+        min_length: 4
         ) %>
 
       </th>
@@ -218,17 +218,17 @@
       </div>
 
       <%= hidden_field_tag :form_buscar_directorios_instituciones_nombre_barrio_localidad_id %>
-      <%= autocomplete_help( ruta: autocompletar_path(atributo_id: :nombre_barrio_localidad, 
-          atributo_descripcion: :nombre_barrio_localidad, 
-          model: :VDirectorioInstitucion, 
-          limit: 10,
-          cadena_consulta: "nombre_barrio_localidad",
-          orden: "nombre_barrio_localidad", 
-          descripcion_total: :nombre_barrio_localidad,
-          descripcion_elegida: :nombre_barrio_localidad), 
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_barrio_localidad, 
+            atributo_descripcion: :nombre_barrio_localidad, 
+            model: :VDirectorioInstitucion, 
+            limit: 10,
+            cadena_consulta: "nombre_barrio_localidad",
+            orden: "nombre_barrio_localidad", 
+            descripcion_total: :nombre_barrio_localidad,
+            descripcion_elegida: :nombre_barrio_localidad)), 
         parametro_id: "form_buscar_directorios_instituciones_nombre_barrio_localidad", 
         resultado_id: "form_buscar_directorios_instituciones_nombre_barrio_localidad_id",
-        min_length: 6
+        min_length: 4
         ) %>
 
       </th>
@@ -248,14 +248,14 @@
       </div>
 
       <%= hidden_field_tag :form_buscar_directorios_instituciones_nombre_zona_id %>
-      <%= autocomplete_help( ruta: autocompletar_path(atributo_id: :nombre_zona, 
-          atributo_descripcion: :nombre_zona, 
-          model: :VDirectorioInstitucion, 
-          limit: 1,
-          cadena_consulta: "nombre_zona",
-          orden: "nombre_zona", 
-          descripcion_total: :nombre_zona,
-          descripcion_elegida: :nombre_zona), 
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_zona, 
+            atributo_descripcion: :nombre_zona, 
+            model: :VDirectorioInstitucion, 
+            limit: 1,
+            cadena_consulta: "nombre_zona",
+            orden: "nombre_zona", 
+            descripcion_total: :nombre_zona,
+            descripcion_elegida: :nombre_zona)), 
         parametro_id: "form_buscar_directorios_instituciones_nombre_zona", 
         resultado_id: "form_buscar_directorios_instituciones_nombre_zona_id",
         min_length: 3

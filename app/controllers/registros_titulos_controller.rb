@@ -6,7 +6,7 @@ class RegistrosTitulosController < ApplicationController
     
     respond_to do |f|
 
-      f.html {render :layout => 'layouts/application_wide'}
+      f.html {render :layout => 'layouts/application'}
     
     end
 

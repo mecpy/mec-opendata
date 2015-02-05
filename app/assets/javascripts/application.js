@@ -27,6 +27,7 @@
 //= stub views/index_view.js
 //= stub views/datos_ver_view.js
 //= stub views/datos_view.js
+//= stub views/visualizaciones_view.js
 //= require datos_abiertos_plugins.js
 //= stub diccionario/contrataciones.js
 //= stub diccionario/directorios_instituciones.js

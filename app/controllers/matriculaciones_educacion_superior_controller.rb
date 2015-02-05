@@ -3,7 +3,7 @@ class MatriculacionesEducacionSuperiorController < ApplicationController
     @matriculaciones_educacion_superior = MatriculacionEducacionSuperior.orden_dep_dis.paginate :per_page => 15, :page => params[:page]
     respond_to do |f|
 
-      f.html {render :layout => 'application_wide'}
+      f.html {render :layout => 'application'}
 
     end
   end

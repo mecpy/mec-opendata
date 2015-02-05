@@ -6,7 +6,7 @@ class MatriculacionesInicialController < ApplicationController
 
     respond_to do |f|
 
-      f.html {render :layout => 'application_wide'}
+      f.html {render :layout => 'application'}
 
     end
   end
