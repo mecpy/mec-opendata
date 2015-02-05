@@ -35,12 +35,12 @@ class ApplicationController < ActionController::Base
   end
   
   def quita_acentos( cadena )
-    cadena = cadena.gsub(/[áàâãÁÀÂÃ]/, 'a').downcase
-    cadena = cadena.gsub(/[éèẽêÉÈÊẼ]/, 'e').downcase
-    cadena = cadena.gsub(/[íìĩîÍÌÎĨ]/, "i").downcase
-    cadena = cadena.gsub(/[óòõôÓÒÔÕ]/, "o").downcase
-    cadena = cadena.gsub(/[úùũûÚÙÛŨ]/, "u").downcase
-    cadena = cadena.gsub(/[ỹỸ]/, "y").downcase
+    cadena = cadena.gsub(/[áàâãäÁÀÂÃÄ]/, 'a').downcase
+    cadena = cadena.gsub(/[éèêẽëÉÈÊẼË]/, 'e').downcase
+    cadena = cadena.gsub(/[íìîĩïÍÌÎĨÏ]/, "i").downcase
+    cadena = cadena.gsub(/[óòôõöÓÒÔÕÖ]/, "o").downcase
+    cadena = cadena.gsub(/[úùûũüÚÙÛŨÜ]/, "u").downcase
+    cadena = cadena.gsub(/[ýỳŷỹÿÝỲŶỸŸ]/, "y").downcase
     return cadena
   end
   
@@ -48,7 +48,9 @@ class ApplicationController < ActionController::Base
     html = ""
 
     if params[:term].present?
-
+      
+      params[:term] = quita_acentos(params[:term])
+      
       hashes = {}
       if params[:model] == 'PersonaFull'
      
