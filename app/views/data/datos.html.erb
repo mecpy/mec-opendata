@@ -1,0 +1,658 @@
+<%= javascript_include_tag "/assets/views/datos_view.js?body=1" %>
+<h1>Datos</h1>
+<ul class="listado">
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">1</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">ESTABLECIMIENTOS ESCOLARES</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_establecimientos_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_establecimientos_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">2</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">DIRECTORIO DE INSTITUCIONES</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_directorios_instituciones_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_directorios_instituciones_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene datos básicos acerca de las instituciones educativas, como el departamento, distrito y zona a la que pertenecen las mismas.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">3</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">DATOS ESPEC&Iacute;FICOS DE INSTITUCIONES EDUCATIVAS</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_instituciones_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_instituciones_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene datos de los niveles/modalidades de educación ofertados por las instituciones educativas; región administrativa a la que pertenece la institución educativa; tipo de organización, participación comunitaria, dirección del establecimiento escolar, servicio disponible (internet, telefono, correo electronico, etc.). Una institución educativa puede poseer diferentes locales escolares ubicados en un mismo o en diferentes departamentos geográficos. El SIEC considera una misma institución cuando varios niveles o modalidades tienen una organización, gestión y administración única. Por ejemplo: Centro Regional de Educación Gral. Patricio Escobar de Encarnación, Colegio Santa Clara de Asunción.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">4</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">MATRICULA EDUCACION ESCOLAR BASICA - CICLOS</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_matriculaciones_educacion_escolar_basica_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_matriculaciones_educacion_escolar_basica_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-mapa"></i><span class="hidden-xs"> Ver Mapa</span>').html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_escolar_basica')), :title => "Ir al Map", :itemprop => "url" %>
+        
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Se refiere a la cantidad de alumnos matriculados del 1.º al 9.º grado con sus correspondientes códigos identificatorios.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">5</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">MATRICULA EDUCACION INCLUSIVA</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_matriculaciones_educacion_inclusiva_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_matriculaciones_educacion_inclusiva_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-mapa"></i><span class="hidden-xs"> Ver Mapa</span>').html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_inclusiva')), :title => "Ir al Mapa", :itemprop => "url" %>
+        
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Corresponde a la cantidad de matriculados por ciclo/niveles/programas especiales de educación inclusiva con sus correspondientes códigos identificatorios.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">6</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">MATRICULA EDUCACION PERMANENTE</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_matriculaciones_educacion_permanente_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_matriculaciones_educacion_permanente_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-mapa"></i><span class="hidden-xs"> Ver Mapa</span>').html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_permanente')), :title => "Ir al Mapa", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Se refiere a la cantidad de matriculados en las diferentes modalidades de educación permanente con sus correspondientes códigos identificatorios.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">7</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">MATRICULA EDUCACION SUPERIOR</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_matriculaciones_educacion_superior_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_matriculaciones_educacion_superior_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-mapa"></i><span class="hidden-xs"> Ver Mapa</span>').html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_educacion_superior')), :title => "Ir al Mapa", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Se refiere a la cantidad de matriculados en las diferentes modalidades de educación superior con sus correspondientes códigos identificatorios.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">8</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">MATRICULA EDUCACION INICIAL</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_matriculaciones_inicial_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_matriculaciones_inicial_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-mapa"></i><span class="hidden-xs"> Ver Mapa</span>').html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_inicial')), :title => "Ir al Mapa", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Se refiere a la cantidad de matriculados en las etapas maternal, prejardín, jardín y preescolar con sus correspondientes códigos identificatorios.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">9</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">MATRICULA EDUCACION MEDIA</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_matriculaciones_educacion_media_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_matriculaciones_educacion_media_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-mapa"></i><span class="hidden-xs"> Ver Mapa</span>').html_safe, mec_custom_url(app_mapa_matriculaciones_url(nivel: 'matriculaciones_media')), :title => "Ir al Mapa", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Se refiere a la cantidad de matriculados del 1.º al 3er. curso en las diferentes modalidades de educación media con sus correspondientes códigos identificatorios.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">10</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">MATRICULA POR DEPARTAMENTO Y DISTRITO</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_matriculaciones_departamentos_distritos_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_matriculaciones_departamentos_distritos_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+        
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Se refiere a la cantidad total de matriculados por departamento/distrito según sector y zona.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">11</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">NOMINA DE FUNCIONARIOS DOCENTES</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_nomina_docentes_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_nomina_docentes_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene todos los datos de la nómina de funcionarios docentes, conforme a lo establecido en la ley 5189/14. El formato de los datos sigue la <%= link_to "recomendaci&oacute;n propuesta por la Secretar&iacute;a de la Funci&oacute;n P&uacute;blica".html_safe, "http://www.sfp.gov.py/sfp/?node=page%2C4730%2Cu660&p_node=page%2C196", :target => "_blank" %></p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">12</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">NOMINA DE FUNCIONARIOS ADMINISTRATIVOS</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_nomina_administrativos_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_nomina_administrativos_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene todos los datos de la nómina de funcionarios administrativos, conforme a lo establecido en la ley 5189/14. El formato de los datos sigue la <%= link_to "recomendaci&oacute;n propuesta por la Secretar&iacute;a de la Funci&oacute;n P&uacute;blica".html_safe, "http://www.sfp.gov.py/sfp/?node=page%2C4730%2Cu660&p_node=page%2C196", :target => "_blank" %></p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">13</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">NOMINA DE FUNCIONARIOS COMISIONADOS DEL MEC A OTROS ORGANISMOS DEL ESTADO</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> N&oacute;mina (157KB)</span>').html_safe, "/data/comisionados_aa_oee_2014.xls", :title => "Descargar n&oacute;mina".html_safe, :target => "_target", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene todos los datos de la nómina de los funcionarios que fueron comisionados del MEC a otros organismos del Estado.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">14</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">NOMINA DE FUNCIONARIOS COMISIONADOS AL MEC DESDE OTROS ORGANISMOS DEL ESTADO</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> N&oacute;mina (137KB)</span>').html_safe, "/data/comisionados_de_oee_2014.xls", :title => "Descargar n&oacute;mina".html_safe, :target => "_target", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene todos los datos de la nómina de los funcionarios que fueron comisionados desde otros organismos del Estado al MEC.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">15</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">INVENTARIO DE BIENES</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="fa fa-file-zip-o"></i><span class="hidden-xs"> Rodados e Inmuebles (4,4MB)</span>').html_safe, "https://mega.co.nz/#!84IkjQTD!4FGj6gaMVE1tQL5h348uY1D3lRb_8xOnXB_KK9gNqWw", :title => "Descargar datos de rodados e inmuebles", :target => "_target", :itemprop => "url" %>
+        <%= link_to ('<i class="fa fa-file-zip-o"></i><span class="hidden-xs"> Muebles (64,9MB)</span>').html_safe, "https://mega.co.nz/#!10Y3BDgC!3IQr8etnRNkG02ReZ-OFjV6vXcQu-65KKj5_Rl--d8k", :title => "Descargar datos de muebles", :target => "_target", :itemprop => "url" %>
+        
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene todos los datos del inventario de bienes, muebles, inmuebles y vehículos con que cuenta el MEC.</p>
+    </div>
+  </li>
+
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">16</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">CONTRATACIONES</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_contrataciones_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_contrataciones_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Se refiere a los llamados para contrataciones de bienes y/o servicios del Ministerio de Educaci&oacute;n y Cultura.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">17</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">REGISTRO DE TITULOS</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_registros_titulos_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_registros_titulos_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene datos de la nómina de personas cuyos títulos de grado y postgrado fueron registrados en el Ministerio de Educación y Cultura.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">18</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">PLANILLAS DE ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Cat&aacute;logo</span>').html_safe, mec_custom_url(data_requerimientos_infraestructuras_catalogo_url), :title => "Ir al Cat&aacute;logo".html_safe, :itemprop => "url" %>
+        
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene información sobre establecimientos escolares priorizados y elegibles para la inversión de  proyectos de infraestructura en educación a ser financiados con recursos provenientes del Fondo Nacional de Inversión Pública y Desarrollo (FONACIDE) transferidos a las Gobernaciones y Municipalidades, que han reportado sus requerimientos a través de la metodología de Microplanificación de la oferta educativa.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">19</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: AULAS</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_requerimientos_aulas_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_requerimientos_aulas_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Corresponde a los requerimientos de contrucción, reparación o adecuación de aulas correspondientes a las instituciones educativas del país priorizadas por distrito y por período.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">20</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: SANITARIOS</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_requerimientos_sanitarios_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_requerimientos_sanitarios_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+        
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Corresponde a los requerimientos de construcción, reparación y/o adecuación de sanitarios correspondientes a las instituciones educativas del país priorizadas por distrito y por período.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">21</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: OTROS ESPACIOS</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_requerimientos_otros_espacios_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_requerimientos_otros_espacios_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+        
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Corresponde a los requerimientos de construcción, reparación y/o adecuación de otros espacios (distintos a aulas y sanitarios) correspondientes a las instituciones educativas del país priorizadas por distrito y por periodo.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">22</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: MOBILIARIOS</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_requerimientos_mobiliarios_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_requerimientos_mobiliarios_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Corresponde a los requerimientos de mobiliarios, muebles o equipamientos de aulas correspondientes a las instituciones educativas del país priorizadas por distrito y por período.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">23</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">Servicios B&aacute;sicos de los Establecimientos seg&uacute;n FONACIDE</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_servicios_basicos_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_servicios_basicos_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene datos generales de los establecimientos escolares, relacionados a la ubicación geográfica, servicios básicos e infraestructura.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">24</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">Proyecto 111</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_establecimientos111_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_establecimientos111_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene la datos del proyecto de "Ampliación y reposición de espacios escolares en 111 Establecimientos Educativos del MEC, en Asunción y 10 departamentos geográficos del país". Dicho proyecto tiene como propósito culminar las obras iniciadas en los años 2011 y 2012 –que cuentan con contratos vigentes– considerando los requerimientos pedagógicos y socioculturales. Las intervenciones consisten en ampliar la infraestructura edilicia escolar para aumentar la capacidad del servicio educacional, sin modificación de lo existente, así como la reposición que implica la renovación parcial o total de los espacios educativos existentes. El proyecto es financiado por el Fondo para la Excelencia de la Educación y la Investigación y totaliza una inversión de 6.663.596 dólares americanos (tipo de cambio: 4.500).</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">25</span>
+    <div class="celda col-sm-3">
+      <span class="daxline" itemprop="name">Proyecto 822</span><br>
+
+      <div class="acciones">
+        
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_establecimientos822_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_establecimientos822_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene datos del proyecto de “Ampliación y reposición de espacios escolares en 822 Establecimientos Educativos del MEC, en Asunción y los 17 departamentos geográficos del país”. Dicho proyecto busca mejorar la estructura edilicia de 822 establecimientos educativos según las normas estandarizadas de infraestructura escolar, acorde a los requerimientos pedagógicos actuales. Además de ampliar los espacios educativos, se proveerán de mobiliarios acorde con la demanda de la matrícula para asegurar las condiciones adecuadas para el desarrollo de las situaciones de enseñanza- aprendizaje en las instituciones educativas. El proyecto es financiado por el Fondo para la Excelencia de la Educación y la Investigación y totaliza una inversión de 42.791.803 dólares americanos (Tipo de cambio: 4.500).</p>
+    </div>
+  </li>
+
+</ul>

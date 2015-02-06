@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-OpenData::Application.load_tasks
+DatosAbiertos::Application.load_tasks
