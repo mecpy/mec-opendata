@@ -24,83 +24,312 @@
 </div>
 <br>
 
-<div class="table-outter">
+<%= form_tag mec_custom_url(data_contrataciones_lista_url), :remote => true, :id => "form-buscar-contrataciones" do  %>
+  <div class="table-responsive">
+    <table class="table table-small-font table-bordered table-striped">
+      <thead>
+        <tr>
 
-  <table class="table table-striped table-bordered table-hover">
+          <th data-priority="1">
+            <%= label_tag "Ejercicio Fiscal" %>
 
-    <tr>
+            <span class="orden">
+              <i class="filtro fa fa-sort"></i>
+              <i class="descendente fa fa-sort-desc"></i>
+              <i class="ascendente fa fa-sort-asc"></i>
+            </span>
 
-      <%= form_tag mec_custom_url(data_contrataciones_lista_url), :remote => true, :id => "form-buscar-contrataciones" do  %>
+      <div class="input-group input-group-sm">
+        <%= select :form_buscar_contrataciones, :ejercicio_fiscal, [2015,2014], {}, {:class => 'form-control input-sm'} %>
+      </div>
+      </th>
 
-        <th style="width:5%" class="text-min celda-derecha">
-          <%= label_tag "Ejercicio Fiscal" %><br /><br />
-          <%= select :form_buscar_contrataciones, :ejercicio_fiscal, [2015,2014], {:class => 'text-min'} %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_ejercicio_fiscal'),1);" %>
-        </th>
+      <th data-priority="1">
+        <%= label_tag nil, "Id DNCP".html_safe %>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Id DNCP".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_contrataciones_llamado_publico, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_llamado_publico'));" %>
-        </th>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
 
-        <th style="width:7%;" class="text-min">
-          <%= label_tag nil, "Modalidad".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_contrataciones_modalidad, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_modalidad'));" %>
-        </th>
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_contrataciones_llamado_publico, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-contrataciones', '#form_buscar_contrataciones_llamado_publico');"><i class="fa fa-times"></i></span>
+      </div>
 
-        <th style="width:10%" class="text-min">
-          <%= label_tag nil, "Descripci&oacute;n".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_contrataciones_descripcion, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_descripcion'));" %>
-        </th>
+      <%= hidden_field_tag :form_buscar_contrataciones_llamado_publico_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :llamado_publico, 
+            atributo_descripcion: :llamado_publico, 
+            model: :Contratacion, 
+            limit: 10,
+            cadena_consulta: "llamado_publico",
+            orden: "llamado_publico", 
+            descripcion_total: :llamado_publico,
+            descripcion_elegida: :llamado_publico)), 
+        parametro_id: "form_buscar_contrataciones_llamado_publico", 
+        resultado_id: "form_buscar_contrataciones_llamado_publico_id",
+        min_length: 3
+        ) %>
 
-        <th style="width:7%" class="text-min">
-          <%= label_tag nil, "Fecha de Apertura<br />de Ofertas".html_safe%><br />
-          <%= text_field_tag :form_buscar_contrataciones_fecha_apertura_oferta, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_fecha_apertura_oferta'));" %>
-        </th>
+      </th>
 
-        <th style="width:7%" class="text-min">
-          <%= label_tag "Estado" %><br /><br />
-          <%= text_field_tag :form_buscar_contrataciones_estado_llamado, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_estado_llamado'));" %>
-        </th>
+      <th data-priority="1">
+        <%= label_tag nil, "Modalidad".html_safe %>
 
-        <th style="width:7%" class="text-min">
-          <%= label_tag nil, "Proveedor Adjudicado".html_safe %><br /><br />
-          <%= text_field_tag :form_buscar_contrataciones_proveedor_adjudicado, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_proveedor_adjudicado'));" %>
-        </th>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
 
-        <th style="width:7%" class="text-min">
-          <%= label_tag nil, "Fecha Contrato".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_contrataciones_fecha_contrato, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_fecha_contrato'));" %>
-        </th>
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_contrataciones_modalidad, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-contrataciones', '#form_buscar_contrataciones_modalidad');"><i class="fa fa-times"></i></span>
+      </div>
 
-        <th style="width:7%" class="text-min">
-          <%= label_tag nil,"Fecha Vigencia<br/> de Contrato".html_safe %><br />
-          <%= text_field_tag :form_buscar_contrataciones_fecha_vigencia_contrato, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_fecha_vigencia_contrato'));" %>
-        </th>
+      <%= hidden_field_tag :form_buscar_contrataciones_modalidad_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :modalidad, 
+            atributo_descripcion: :modalidad, 
+            model: :Contratacion, 
+            limit: 10,
+            cadena_consulta: "modalidad",
+            orden: "modalidad", 
+            descripcion_total: :modalidad,
+            descripcion_elegida: :modalidad)), 
+        parametro_id: "form_buscar_contrataciones_modalidad", 
+        resultado_id: "form_buscar_contrataciones_modalidad_id",
+        min_length: 3
+        ) %>
 
-        <th style="width:9%;" class="text-min">
-          <%= label_tag nil, "Monto Adjudicado".html_safe%><br /><br />
-          <%= select_tag(:form_buscar_contrataciones_monto_adjudicado_operador, options_for_select(['>', '<', '='])) %>
-          <%= text_field_tag :form_buscar_contrataciones_monto_adjudicado, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_monto_adjudicado'));" %>
-        </th>
-      <% end %>
+      </th>
 
-    </tr>
+      <th data-priority="1">
+        <%= label_tag nil, "Descripci&oacute;n".html_safe %>
 
-    <tbody id="contrataciones-lista"></tbody>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
 
-  </table>
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_contrataciones_descripcion, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-contrataciones', '#form_buscar_contrataciones_descripcion');"><i class="fa fa-times"></i></span>
+      </div>
 
-</div>
+      <%= hidden_field_tag :form_buscar_contrataciones_descripcion_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :descripcion, 
+            atributo_descripcion: :descripcion, 
+            model: :Contratacion, 
+            limit: 10,
+            cadena_consulta: "descripcion",
+            orden: "descripcion", 
+            descripcion_total: :descripcion,
+            descripcion_elegida: :descripcion)), 
+        parametro_id: "form_buscar_contrataciones_descripcion", 
+        resultado_id: "form_buscar_contrataciones_descripcion_id",
+        min_length: 3
+        ) %>
+
+      </th>
+
+      <th data-priority="1">
+        <%= label_tag nil, "Fecha de Apertura de Ofertas".html_safe %>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_contrataciones_fecha_apertura_oferta, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-contrataciones', '#form_buscar_contrataciones_fecha_apertura_oferta');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_contrataciones_fecha_apertura_oferta_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :fecha_apertura_oferta, 
+            atributo_descripcion: :fecha_apertura_oferta, 
+            model: :Contratacion, 
+            limit: 10,
+            cadena_consulta: "fecha_apertura_oferta",
+            orden: "fecha_apertura_oferta", 
+            descripcion_total: :fecha_apertura_oferta,
+            descripcion_elegida: :fecha_apertura_oferta)), 
+        parametro_id: "form_buscar_contrataciones_fecha_apertura_oferta", 
+        resultado_id: "form_buscar_contrataciones_fecha_apertura_oferta_id",
+        min_length: 3
+        ) %>
+
+      </th>
+
+      <th data-priority="1">
+        <%= label_tag nil, "Estado".html_safe %>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_contrataciones_estado_llamado, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-contrataciones', '#form_buscar_contrataciones_estado_llamado');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_contrataciones_estado_llamado_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :estado_llamado, 
+            atributo_descripcion: :estado_llamado, 
+            model: :Contratacion, 
+            limit: 10,
+            cadena_consulta: "estado_llamado",
+            orden: "estado_llamado", 
+            descripcion_total: :estado_llamado,
+            descripcion_elegida: :estado_llamado)), 
+        parametro_id: "form_buscar_contrataciones_estado_llamado", 
+        resultado_id: "form_buscar_contrataciones_estado_llamado_id",
+        min_length: 3
+        ) %>
+
+      </th>
+
+      <th data-priority="1">
+        <%= label_tag nil, "Proveedor Adjudicado".html_safe %>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_contrataciones_proveedor_adjudicado, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-contrataciones', '#form_buscar_contrataciones_proveedor_adjudicado');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_contrataciones_proveedor_adjudicado_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :proveedor_adjudicado, 
+            atributo_descripcion: :proveedor_adjudicado, 
+            model: :Contratacion, 
+            limit: 10,
+            cadena_consulta: "proveedor_adjudicado",
+            orden: "proveedor_adjudicado", 
+            descripcion_total: :proveedor_adjudicado,
+            descripcion_elegida: :proveedor_adjudicado)), 
+        parametro_id: "form_buscar_contrataciones_proveedor_adjudicado", 
+        resultado_id: "form_buscar_contrataciones_proveedor_adjudicado_id",
+        min_length: 3
+        ) %>
+
+      </th>
+
+      <th data-priority="1">
+        <%= label_tag nil, "Fecha Contrato".html_safe %>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_contrataciones_fecha_contrato, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-contrataciones', '#form_buscar_contrataciones_fecha_contrato');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_contrataciones_fecha_contrato_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :fecha_contrato, 
+            atributo_descripcion: :fecha_contrato, 
+            model: :Contratacion, 
+            limit: 10,
+            cadena_consulta: "fecha_contrato",
+            orden: "fecha_contrato", 
+            descripcion_total: :fecha_contrato,
+            descripcion_elegida: :fecha_contrato)), 
+        parametro_id: "form_buscar_contrataciones_fecha_contrato", 
+        resultado_id: "form_buscar_contrataciones_fecha_contrato_id",
+        min_length: 3
+        ) %>
+
+      </th>
+      
+      <th data-priority="1">
+        <%= label_tag nil, "Fecha Vigencia de Contrato".html_safe %>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_contrataciones_fecha_vigencia_contrato, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-contrataciones', '#form_buscar_contrataciones_fecha_vigencia_contrato');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_contrataciones_fecha_vigencia_contrato_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :fecha_vigencia_contrato, 
+            atributo_descripcion: :fecha_vigencia_contrato, 
+            model: :Contratacion, 
+            limit: 10,
+            cadena_consulta: "fecha_vigencia_contrato",
+            orden: "fecha_vigencia_contrato", 
+            descripcion_total: :fecha_vigencia_contrato,
+            descripcion_elegida: :fecha_vigencia_contrato)), 
+        parametro_id: "form_buscar_contrataciones_fecha_vigencia_contrato", 
+        resultado_id: "form_buscar_contrataciones_fecha_vigencia_contrato_id",
+        min_length: 3
+        ) %>
+
+      </th>
+      
+      <th data-priority="1">
+        <%= label_tag nil, "Monto Adjudicado".html_safe %>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_contrataciones_fecha_vigencia_contrato, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-contrataciones', '#form_buscar_contrataciones_fecha_vigencia_contrato');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_contrataciones_fecha_vigencia_contrato_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :fecha_vigencia_contrato, 
+            atributo_descripcion: :fecha_vigencia_contrato, 
+            model: :Contratacion, 
+            limit: 10,
+            cadena_consulta: "fecha_vigencia_contrato",
+            orden: "fecha_vigencia_contrato", 
+            descripcion_total: :fecha_vigencia_contrato,
+            descripcion_elegida: :fecha_vigencia_contrato)), 
+        parametro_id: "form_buscar_contrataciones_fecha_vigencia_contrato", 
+        resultado_id: "form_buscar_contrataciones_fecha_vigencia_contrato_id",
+        min_length: 3
+        ) %>
+
+      </th>
+
+      <th style="width:9%;" class="text-min">
+        <%= label_tag nil, "Monto Adjudicado".html_safe%><br /><br />
+        <%= select_tag(:form_buscar_contrataciones_monto_adjudicado_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_contrataciones_monto_adjudicado, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_monto_adjudicado'));" %>
+      </th>
+
+
+      </tr>
+      </thead>
+
+      <tbody id="contrataciones-lista"></tbody>
+
+    </table>
+  </div>
+<% end %>
 
 <table class="table table-striped table-bordered table-hover">
   <tbody id="contrataciones-footer"></tbody>

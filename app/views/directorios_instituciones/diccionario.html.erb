@@ -5,7 +5,8 @@
   <h1>Directorio de Instituciones</h1>
 </div>
 <br>
-
+<div id="diccionario"></div>
+<!--
 <ul class="listado">
 
   <li class="row hidden-xs titulos">
@@ -20,41 +21,46 @@
   <div id="diccionario"></div>
 
 </ul>
-
+-->
 <script>
-  contenido = "";
   diccionario = contenido_diccionario('<%= link_to "Ver ejemplo", mec_custom_url(def_ejemplo_anio_cod_geo_path).html_safe, target:"_blank" %>');
-  $.each(diccionario, function(idx, definicion) {
-    contenido += '<li class="row">' +
-            '<label class="col-xs-12 visible-xs"> Nombre </label>' +
-            '<div class="celda col-sm-3">' +
-            definicion.nombre +
-            '</div>' +
-            '<label class="col-xs-12 visible-xs"> Descripción </label>' +
-            '<div class="celda col-sm-4">' +
-            definicion.descripcion +
-            '</div>' +
-            '<label class="col-xs-12 visible-xs"> Tipo </label>' +
-            '<div class="celda col-sm-1">' +
-            definicion.tipo +
-            '</div>' +
-            '<label class="col-xs-12 visible-xs"> Restricciones </label>' +
-            '<div class="celda col-sm-2">' +
-            definicion.restricciones +
-            '</div>' +
-            '<label class="col-xs-12 visible-xs"> Referencia </label>' +
-            '<div class="celda col-sm-1 napa">';
-    if (definicion.referencia.enlace !== '') {
-      contenido += '<a href="' + definicion.referencia.enlace + '">' + definicion.referencia.texto + '</a>';
-    }
-    contenido += '</div>' +
-            '<label class="col-xs-12 visible-xs"> Ejemplo </label>' +
-            '<div class="celda col-sm-1">' +
-            definicion.ejemplo +
-            '</div>' +
-            '</li>';
-  });
-  $("#diccionario").html(contenido);
+  <%=  render :partial => "helpers/diccionario", :locals => { :diccionario => diccionario } %>
+  //$("#diccionario").html(c);
+  /*  
+   contenido = "";
+   diccionario = contenido_diccionario('<%= link_to "Ver ejemplo", mec_custom_url(def_ejemplo_anio_cod_geo_path).html_safe, target:"_blank" %>');
+   $.each(diccionario, function(idx, definicion) {
+   contenido += '<li class="row">' +
+   '<label class="col-xs-12 visible-xs"> Nombre </label>' +
+   '<div class="celda col-sm-3">' +
+   definicion.nombre +
+   '</div>' +
+   '<label class="col-xs-12 visible-xs"> Descripción </label>' +
+   '<div class="celda col-sm-4">' +
+   definicion.descripcion +
+   '</div>' +
+   '<label class="col-xs-12 visible-xs"> Tipo </label>' +
+   '<div class="celda col-sm-1">' +
+   definicion.tipo +
+   '</div>' +
+   '<label class="col-xs-12 visible-xs"> Restricciones </label>' +
+   '<div class="celda col-sm-2">' +
+   definicion.restricciones +
+   '</div>' +
+   '<label class="col-xs-12 visible-xs"> Referencia </label>' +
+   '<div class="celda col-sm-1 napa">';
+   if (definicion.referencia.enlace !== '') {
+   contenido += '<a href="' + definicion.referencia.enlace + '">' + definicion.referencia.texto + '</a>';
+   }
+   contenido += '</div>' +
+   '<label class="col-xs-12 visible-xs"> Ejemplo </label>' +
+   '<div class="celda col-sm-1">' +
+   definicion.ejemplo +
+   '</div>' +
+   '</li>';
+   });
+   $("#diccionario").html(contenido);
+   */
 </script>
 
 <div class="row">
@@ -128,7 +134,6 @@
       </tr>
     </tbody>
   </table>
-</div>
 </div>
 <script>
   var stepsListado = [

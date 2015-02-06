@@ -1,0 +1,20 @@
+<% if diccionario.present? %>
+  <ul class="listado">
+
+    <li class="row hidden-xs titulos">
+      <div class="celda col-sm-3">Nombre</div>
+      <div class="celda col-sm-4">Descripción</div>
+      <div class="celda col-sm-1">Tipo</div>
+      <div class="celda col-sm-2">Restricciones</div>
+      <div class="celda col-sm-1">Referencia</div>
+      <div class="celda col-sm-1">Ejemplo</div>
+    </li>
+
+  </ul>
+  <% diccionario %>
+  <script>alert(<% diccionario %>);</script>
+
+
+<% else %>
+  NO FUNCIONA!!
+<% end %>
