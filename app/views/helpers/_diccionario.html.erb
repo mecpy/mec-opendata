@@ -2,19 +2,236 @@
   <ul class="listado">
 
     <li class="row hidden-xs titulos">
-      <div class="celda col-sm-3">Nombre</div>
-      <div class="celda col-sm-4">Descripción</div>
-      <div class="celda col-sm-1">Tipo</div>
-      <div class="celda col-sm-2">Restricciones</div>
-      <div class="celda col-sm-1">Referencia</div>
-      <div class="celda col-sm-1">Ejemplo</div>
+      <div class="celda col-sm-3" id="tab-nombre">Nombre</div>
+      <div class="celda col-sm-4" id="tab-descripcion">Descripción</div>
+      <div class="celda col-sm-1" id="tab-tipo">Tipo</div>
+      <div class="celda col-sm-2" id="tab-restricciones">Restricciones</div>
+      <div class="celda col-sm-1" id="tab-referencia">Referencia</div>
+      <div class="celda col-sm-1" id="tab-ejemplo">Ejemplo</div>
     </li>
 
-  </ul>
-  <% diccionario %>
-  <script>alert(<% diccionario %>);</script>
+    <% diccionario.each do |d| %>
 
+      <li class="row">
 
+        <label class="col-xs-12 visible-xs">Nombre</label>
+        <div class="celda col-sm-3">
+          <%= d['nombre'].html_safe %>
+        </div>
+
+        <label class="col-xs-12 visible-xs">Descripción</label>
+        <div class="celda col-sm-4">
+          <%= d['descripcion'].html_safe %>
+        </div>
+
+        <label class="col-xs-12 visible-xs">Tipo</label>
+        <div class="celda col-sm-1">
+          <%= d['tipo'].html_safe %>
+        </div>
+
+        <label class="col-xs-12 visible-xs">Restricciones</label>
+        <div class="celda col-sm-2">
+          <%= d['restricciones'].html_safe %>
+        </div>
+
+        <label class="col-xs-12 visible-xs">Referencia</label>
+        <div class="celda col-sm-1 napa">
+          <a href="<%= d['referencia']['enlace'] %>"><%= d['referencia']['texto'].html_safe %></a>
+        </div>
+
+        <label class="col-xs-12 visible-xs">Ejemplo</label>
+        <div class="celda col-sm-1">
+          <% if d['ejemplo'] == 'url_anho_cod_geo' %>
+            <%= link_to "Ver ejemplo", mec_custom_url(def_ejemplo_anio_cod_geo_path).html_safe, target:"_blank" %>
+          <% else %>
+            <%= d['ejemplo'].html_safe %>
+          <% end  %>
+        </div>
+
+      </li>
+
+    <% end %>
+  </ul>      
 <% else %>
-  NO FUNCIONA!!
+  No se encontraron registros.
 <% end %>
+
+<div class="row">
+  <div id="tab-referencias">
+    <h2>
+      Referencia
+    </h2>La siguiente tabla presenta una breve descripción de los atributos incluídos en el diccionario de datos del dataset.<br>
+    Básicamente, un diccionario de datos describe los atributos que contiene un dataset, incluyendo el tipo de dato y las restricciones que se apliquen a cada uno.<br>
+  </div>
+  <br>
+  <br>
+  <table class="table table-striped table-bordered table-hover" id="tab-referencias-tabla">
+    <thead>
+      <tr>
+        <th title="Field #1">
+          Nombre de la columna
+        </th>
+        <th title="Field #2">
+          Descripci&oacute;n
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Nombre del Atributo
+        </td>
+        <td>
+          Establece el nombre del atributo exactamente como se encuentra definido en el archivo de datos a ser publicado
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Descripci&oacute;n
+        </td>
+        <td>
+          Describe con más detalles los datos que se encuentran en el atributo
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Tipo de datos
+        </td>
+        <td>
+          El tipo de dato esperado de los valores del attributo. Por ejemplo: String, Integer, Float, …. Idealmente se deben utilizar los tipos de datos definidos en el Estándar XML Schema Datatypes de la W3C. <a href="http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes">http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes</a>, por ejemplo: xsd:string, xsd:boolean, xsd:dateTime
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Restricciones
+        </td>
+        <td>
+          En caso que existan, se especifican las restricciones de los datos
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Referencia
+        </td>
+        <td>
+          En caso que exista, se agrega un link a un documento de referencia para los datos. Por ejemplo, si los datos están definidos utilizando un estándar o formato diferente a XSD, referenciarlo, como ser la Latitud y Longitud en formato de Google maps
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Ejemplo
+        </td>
+        <td>
+          Los valores de ejemplo
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  var stepsListado = [
+    {
+      intro: "Esta ayuda te mostrar&aacute; los elementos del Diccionario del Conjunto de Datos:\
+        </br><b><%= nombre %></b>.\
+        </br></br>Este tutorial te guiará paso a paso a través de las diferentes funcionalidades disponibles. \
+        </br></br>Podr&aacute;s navegar fácilmente a través de la guía por medio del mouse, o por medio del teclado haciendo simplemente uso de las teclas:\
+        <p><u><i>Para Navegar:</i></u></p>\
+        <ul>\
+          <li><%= image_tag('intro_images/right.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %> IZQ</li>\
+          <li><%= image_tag('intro_images/left.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %> DER</li>\
+          <li><%= image_tag('intro_images/enter.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %> ENTER</li>\
+        </ul>\
+        <p><u><i>Para Salir:</i></u></p>\
+        <ul>\
+          <li><%= image_tag('intro_images/esc.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %> ESC</li>\
+        </ul>\
+        Pulsa en siguiente para comenzar.\
+        </br>Y, ¡COMENCEMOS!"
+    },
+    {
+      element: "#tab-titulo",
+      intro: "En esta sección, puedes ver el Nombre del Conjunto de Datos.",
+      position: "bottom"
+    },
+    {
+      element: '#tab-datos',
+      intro: "Mientras que en esta otra sección, puedes acceder al Conjunto de Datos.</br></br>En este apartado podr&aacute;s realizar filtros y descargas de la informaci&oacute;m de tu inter&eacute;s.",
+      position: "left"
+    },
+    {
+      element: '.titulos',
+      intro: "Aqu&iacute; puedes obervar todos los atributos que componen el Diccionario del Conjunto de Datos.",
+      position: "bottom"
+    },
+    {
+      element: '#tab-nombre',
+      intro: "El <b>Nombre del Atributo</b>, establece el identificador del atributo exactamente como \
+        se encuentra definido en el archivo de datos a ser publicado.",
+      position: "right"
+    },
+    {
+      element: '#tab-descripcion',
+      intro: "La <b>Descripci&oacute;n</b>, describe con más detalles los datos que se encuentran en el atributo.",
+      position: "right"
+    },
+    {
+      element: '#tab-tipo',
+      intro: "Los <b>Tipo de datos</b>, representan el tipo de dato esperado de los valores del atributo.\
+        Por ejemplo: String, Integer, Float, …. \n\
+        </br></br>Idealmente se deben utilizar los tipos de datos definidos en el Estándar XML Schema Datatypes de la W3C. \
+        <a>http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes</a>, por ejemplo: xsd:string, xsd:boolean, xsd:dateTime.",
+      position: "left"
+    },
+    {
+      element: '#tab-restricciones',
+      intro: "Las <b>Restricciones</b>, en caso que existan, especifican las limitaciones de los datos.",
+      position: "left"
+    },
+    {
+      element: '#tab-referencia',
+      intro: "La <b>Referencia</b>, en caso que exista, agrega un link a un documento de menci&oacute;n para los datos.\
+        </br></br>Por ejemplo, si los datos están definidos utilizando un estándar o formato diferente a XSD, referenciarlos, como pueden ser la Latitud y Longitud en formato de Google maps.",
+      position: "left"
+    },
+    {
+      element: '#tab-ejemplo',
+      intro: "El <b>Ejemplo</b>, representa	los valores de ejemplo.",
+      position: "left"
+    },
+    {
+      element: '#tab-referencias',
+      intro: "¿Ten&iacute;as idea de que es un Diccionario de Datos?\
+        </br>¡F&iacute;jate en esta secci&oacute;n!",
+      position: "top"
+    },
+    {
+      element: '#tab-referencias-tabla',
+      intro: "Por &uacute;ltimo, si tienes dudas acerca del significado de alg&uacute;n atributo que se encuentra en el Diccionario.\
+        </br>¡Te recomendamos que le eches un vistazo a esta tabla! \
+        </br></br>Aqu&iacute; encontrar&aacute;s una breve descripci&oacute;n\
+        de cada atributo inclu&iacute;do en el Diccionario del Conjunto de Datos.",
+      position: "top"
+    }
+  ];
+  $('#start-tour').click(function() {
+
+    introJs().setOptions({
+      doneLabel: 'Salir',
+      nextLabel: 'Siguiente &rarr;',
+      prevLabel: '&larr; Anterior',
+      skipLabel: 'Salir',
+      steps: stepsListado
+    }).start();
+  });
+</script>
+<style>
+  .introjs-helperNumberLayer{
+    width: 23px;
+    height: 23px;
+    padding: 0px;
+  }
+  #start-tour{
+    cursor: pointer;
+  }
+</style>

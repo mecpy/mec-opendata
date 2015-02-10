@@ -4,6 +4,10 @@ class Establecimientos111Controller < ApplicationController
   before_filter :redireccionar_uri
 
   def diccionario
+    
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/establecimientos111.json")
+    @diccionario_establecimientos111 = JSON.parse(file)
 
   end
 

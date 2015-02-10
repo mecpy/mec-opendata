@@ -57,18 +57,21 @@ class ApplicationController < ActionController::Base
         hashes[:conditions] = ["#{( params[:cadena_consulta].present? ? params[:cadena_consulta] : params[:atributo_descripcion] ) } = ?", "#{params[:term].upcase}"]
 
       else
-     
-        hashes[:conditions] = ["#{( params[:cadena_consulta].present? ? params[:cadena_consulta] : params[:atributo_descripcion] ) } like ?", "%#{params[:term].upcase}%"]
+        if params[:atributo_tipo] == 'int'
+          hashes[:conditions] = ["CAST(#{ params[:cadena_consulta] } AS TEXT) like ?", "%#{params[:term].upcase}%"]
+        else
+          hashes[:conditions] = ["#{( params[:cadena_consulta].present? ? params[:cadena_consulta] : params[:atributo_descripcion] ) } like ?", "%#{params[:term].upcase}%"]
+        end
      
       end
       
       hashes[:order] = params[:orden] if params[:orden].present?
       hashes[:limit] = params[:limit].to_i if params[:limit].present?
       
-      resultados = params[:model].constantize.where(hashes[:conditions]).uniq.pluck(params[:cadena_consulta]).take(hashes[:limit])
+      resultados = params[:model].constantize.where(hashes[:conditions]).order(hashes[:order]).uniq.pluck(params[:cadena_consulta]).take(hashes[:limit])
 
       if resultados.present?
-
+        
         resultados.each do |objeto|
 
           html += "{\"id\":\"#{eval("objeto")}\","

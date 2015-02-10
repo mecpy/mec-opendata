@@ -1,9 +1,6 @@
 class RequerimientosSanitariosController < ApplicationController
   before_filter :redireccionar_uri
-  def diccionario
-
-  end
-
+ 
   def index
 
     @requerimientos_sanitarios = VRequerimientoSanitario.orden_dep_dis.paginate :per_page => 15, :page => params[:page]
@@ -13,6 +10,14 @@ class RequerimientosSanitariosController < ApplicationController
       f.html {render :layout => 'application'}
 
     end
+
+  end
+  
+  def diccionario
+    
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/requerimientos_sanitarios.json")
+    @diccionario_requerimientos_sanitarios = JSON.parse(file)
 
   end
 

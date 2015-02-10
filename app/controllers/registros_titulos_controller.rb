@@ -11,6 +11,14 @@ class RegistrosTitulosController < ApplicationController
     end
 
   end
+  
+  def diccionario
+    
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/registros_titulos.json")
+    @diccionario_registros_titulos = JSON.parse(file)
+
+  end
 
   def lista
 
@@ -195,10 +203,6 @@ class RegistrosTitulosController < ApplicationController
       end 
 
     end
-
-  end
-
-  def diccionario
 
   end
 

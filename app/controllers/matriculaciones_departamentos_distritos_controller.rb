@@ -1,4 +1,12 @@
 class MatriculacionesDepartamentosDistritosController < ApplicationController
+  def diccionario
+    
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/matriculaciones_departamentos_distritos.json")
+    @diccionario_matriculaciones_departamentos_distritos = JSON.parse(file)
+    
+  end
+  
   def index
     @matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.orden_dep_dis.paginate :per_page => 15, :page => params[:page]
   end

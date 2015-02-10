@@ -29,27 +29,6 @@
 //= stub views/datos_view.js
 //= stub views/visualizaciones_view.js
 //= require datos_abiertos_plugins.js
-//= stub diccionario/contrataciones.js
-//= stub diccionario/directorios_instituciones.js
-//= stub diccionario/establecimientos.js
-//= stub diccionario/establecimientos111.js
-//= stub diccionario/establecimientos822.js
-//= stub diccionario/instituciones.js
-//= stub diccionario/matriculaciones_departamentos_distritos.js
-//= stub diccionario/matriculaciones_educacion_escolar_basica.js
-//= stub diccionario/matriculaciones_educacion_inclusiva.js
-//= stub diccionario/matriculaciones_educacion_media.js
-//= stub diccionario/matriculaciones_educacion_permanente.js
-//= stub diccionario/matriculaciones_educacion_superior.js
-//= stub diccionario/matriculaciones_inicial.js
-//= stub diccionario/nomina_administrativos.js
-//= stub diccionario/nomina_docentes.js
-//= stub diccionario/registros_titulos.js
-//= stub diccionario/requerimientos_aulas.js
-//= stub diccionario/requerimientos_mobiliarios.js
-//= stub diccionario/requerimientos_otros_espacios.js
-//= stub diccionario/requerimientos_sanitarios.js
-//= stub diccionario/servicios_basicos.js
 
 /*Funcion que limpia el formulario del Dataset*/
 function resetForm(formId, valor_defecto) {
@@ -65,7 +44,7 @@ function resetForm(formId, valor_defecto) {
     form.submit();
 }
 /*Funcion que quita el filtro seleccionado*/
-function quitar_filtro(form, id, valor_defecto) {
+function quitar_filtro(formId, id, valor_defecto) {
     var form=$(formId);
     if (typeof (valor_defecto) !== "undefined") {
         $(id).val(valor_defecto);

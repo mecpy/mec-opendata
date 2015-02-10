@@ -60,7 +60,7 @@
 
       <%= hidden_field_tag :form_buscar_contrataciones_llamado_publico_id %>
       <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :llamado_publico, 
-            atributo_descripcion: :llamado_publico, 
+            atributo_tipo: :int, 
             model: :Contratacion, 
             limit: 10,
             cadena_consulta: "llamado_publico",
@@ -90,7 +90,7 @@
 
       <%= hidden_field_tag :form_buscar_contrataciones_modalidad_id %>
       <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :modalidad, 
-            atributo_descripcion: :modalidad, 
+            atributo_tipo: :text, 
             model: :Contratacion, 
             limit: 10,
             cadena_consulta: "modalidad",
@@ -120,7 +120,7 @@
 
       <%= hidden_field_tag :form_buscar_contrataciones_descripcion_id %>
       <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :descripcion, 
-            atributo_descripcion: :descripcion, 
+            atributo_tipo: :text, 
             model: :Contratacion, 
             limit: 10,
             cadena_consulta: "descripcion",
@@ -150,7 +150,7 @@
 
       <%= hidden_field_tag :form_buscar_contrataciones_fecha_apertura_oferta_id %>
       <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :fecha_apertura_oferta, 
-            atributo_descripcion: :fecha_apertura_oferta, 
+            atributo_tipo: :text, 
             model: :Contratacion, 
             limit: 10,
             cadena_consulta: "fecha_apertura_oferta",
@@ -180,7 +180,7 @@
 
       <%= hidden_field_tag :form_buscar_contrataciones_estado_llamado_id %>
       <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :estado_llamado, 
-            atributo_descripcion: :estado_llamado, 
+            atributo_tipo: :text, 
             model: :Contratacion, 
             limit: 10,
             cadena_consulta: "estado_llamado",
@@ -210,7 +210,7 @@
 
       <%= hidden_field_tag :form_buscar_contrataciones_proveedor_adjudicado_id %>
       <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :proveedor_adjudicado, 
-            atributo_descripcion: :proveedor_adjudicado, 
+            atributo_tipo: :text, 
             model: :Contratacion, 
             limit: 10,
             cadena_consulta: "proveedor_adjudicado",
@@ -240,7 +240,7 @@
 
       <%= hidden_field_tag :form_buscar_contrataciones_fecha_contrato_id %>
       <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :fecha_contrato, 
-            atributo_descripcion: :fecha_contrato, 
+            atributo_tipo: :text, 
             model: :Contratacion, 
             limit: 10,
             cadena_consulta: "fecha_contrato",
@@ -253,7 +253,7 @@
         ) %>
 
       </th>
-      
+
       <th data-priority="1">
         <%= label_tag nil, "Fecha Vigencia de Contrato".html_safe %>
 
@@ -270,37 +270,7 @@
 
       <%= hidden_field_tag :form_buscar_contrataciones_fecha_vigencia_contrato_id %>
       <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :fecha_vigencia_contrato, 
-            atributo_descripcion: :fecha_vigencia_contrato, 
-            model: :Contratacion, 
-            limit: 10,
-            cadena_consulta: "fecha_vigencia_contrato",
-            orden: "fecha_vigencia_contrato", 
-            descripcion_total: :fecha_vigencia_contrato,
-            descripcion_elegida: :fecha_vigencia_contrato)), 
-        parametro_id: "form_buscar_contrataciones_fecha_vigencia_contrato", 
-        resultado_id: "form_buscar_contrataciones_fecha_vigencia_contrato_id",
-        min_length: 3
-        ) %>
-
-      </th>
-      
-      <th data-priority="1">
-        <%= label_tag nil, "Monto Adjudicado".html_safe %>
-
-        <span class="orden">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_contrataciones_fecha_vigencia_contrato, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-contrataciones', '#form_buscar_contrataciones_fecha_vigencia_contrato');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_contrataciones_fecha_vigencia_contrato_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :fecha_vigencia_contrato, 
-            atributo_descripcion: :fecha_vigencia_contrato, 
+            atributo_tipo: :text, 
             model: :Contratacion, 
             limit: 10,
             cadena_consulta: "fecha_vigencia_contrato",
@@ -318,7 +288,7 @@
         <%= label_tag nil, "Monto Adjudicado".html_safe%><br /><br />
         <%= select_tag(:form_buscar_contrataciones_monto_adjudicado_operador, options_for_select(['>', '<', '='])) %>
         <%= text_field_tag :form_buscar_contrataciones_monto_adjudicado, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_contrataciones_monto_adjudicado'));" %>
+        <%= link_to icon_delete, "#", onclick: "quitar_filtro('#form-buscar-contrataciones', '#form_buscar_contrataciones_monto_adjudicado');" %>
       </th>
 
 
@@ -362,53 +332,10 @@
   })
 
   //LIMPIAR FORMULARIO DE BUSQUEDA
-  function limpiar_form_buscar_contrataciones() {
-
-    $("#form_buscar_contrataciones_ejercicio_fiscal").val("2015");
-    $("#form_buscar_contrataciones_llamado_publico").val("");
-    $("#form_buscar_contrataciones_nombre").val("");
-    $("#form_buscar_contrataciones_descripcion").val("");
-    $("#form_buscar_contrataciones_fecha_apertura_oferta").val("");
-    $("#form_buscar_contrataciones_fecha_contrato").val("");
-    $("#form_buscar_contrataciones_fecha_vigencia_contrato").val("");
-    $("#form_buscar_contrataciones_estado_llamado").val("");
-    $("#form_buscar_contrataciones_modalidad").val("");
-    $("#form_buscar_contrataciones_categoria").val("");
-    $("#form_buscar_contrataciones_monto_adjudicado").val("");
-    $.ajaxQ.abortAll();
-    $("#form-buscar-contrataciones").submit();
-
-  }
-
-  limpiar_form_buscar_contrataciones();
-
-  //--------------- QUITAR FILTRO -------------------//
-  function quitar_filtro(id, ban) {
-    if (ban === 1) {
-      id.val("2015");
-    } else {
-      id.val('');
-    }
-    $.ajaxQ.abortAll();
-    $('#form-buscar-contrataciones').submit();
-
-  }
-  //-------------------------------------------------//
+  valor_defecto = [{
+      id: '#form_buscar_contrataciones_ejercicio_fiscal',
+      valor: 2015
+    }];
+  resetForm("#form-buscar-contrataciones", valor_defecto);
 
 </script>
-
-<style>
-
-  .text-min {font-size:9px !important; color: #000; text-align:center !important;}
-  #cbue-menu1 {background:#e9e9e9;}
-  .text-min input[type="text"], .text-min select {
-    border: 1px solid silver;
-    padding: 3px;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
-    color:#000;
-  }
-  .text-min input[type="text"] { width: 80px;}
-
-  #tablaContenedor{width:100%;}
-</style>

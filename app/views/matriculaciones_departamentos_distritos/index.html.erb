@@ -1,70 +1,173 @@
-<h2>
-  <span itemprop="name">Matriculaciones por Departamento y Distrito</span>
-  <meta itemprop="description" content="Se refiere a la cantidad total de matriculados por departamento/distrito según sector y zona."
-        />
-  <meta itemprop="url" content="http://datos.mec.gov.py/data/matriculaciones_departamentos_distritos">  
-  <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
-  <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
-    <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
-    <meta itemprop="url" content="http://datos.mec.gov.py/">
-    <meta itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura">
-  </span>
-  <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
-    <meta itemprop="name" content="Ministerio de Educación y Cultura">
-    <meta itemprop="url" content="http://www.mec.gov.py/">
-    <meta itemprop="email" content="datosabiertos@mec.gov.py">
-  </span>
-  <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
-    <meta itemprop="name" content="Juan Barrios">
-    <meta itemprop="email" content="datosabiertos@mec.gov.py">
-  </span>
-  <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
-  <meta itemprop="keywords" style="display: none;" content="educación,matriculaciones,departamentos, distritos"/>
-  <meta itemprop="version" style="display: none;" content="1.0"/>
+<%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
+<div>
+  <h1>
+    <span itemprop="name">Matriculaciones por Departamento y Distrito</span>
+    <meta itemprop="description" content="Se refiere a la cantidad total de matriculados por departamento/distrito según sector y zona."
+          />
+    <meta itemprop="url" content="http://datos.mec.gov.py/data/matriculaciones_departamentos_distritos">  
+    <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+    <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
+      <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
+      <meta itemprop="url" content="http://datos.mec.gov.py/">
+      <meta itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura">
+    </span>
+    <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+      <meta itemprop="name" content="Ministerio de Educación y Cultura">
+      <meta itemprop="url" content="http://www.mec.gov.py/">
+      <meta itemprop="email" content="datosabiertos@mec.gov.py">
+    </span>
+    <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+      <meta itemprop="name" content="Juan Barrios">
+      <meta itemprop="email" content="datosabiertos@mec.gov.py">
+    </span>
+    <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+    <meta itemprop="keywords" style="display: none;" content="educación,matriculaciones,departamentos, distritos"/>
+    <meta itemprop="version" style="display: none;" content="1.0"/>
 
-  <span style="float:right;">
-    <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_departamentos_distritos_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
-    <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), mec_custom_url(def_matriculaciones_departamentos_distritos_url), :title => "Ir al diccionario" %>
-    <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
-    <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
-  </span>
+    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_directorios_instituciones_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
 
-</h2>
+  </h1>
+</div>
+<br>
 
-<table class="table table-striped table-bordered table-hover">
+<%= form_tag mec_custom_url(data_matriculaciones_departamentos_distritos_lista_url(nil,nil)), :remote => true, :id => "form-buscar-matriculaciones-departamentos-distritos" do  %>
+  <div class="table-responsive">
+    <table class="table table-small-font table-bordered table-striped">
+      <thead>
+        <tr>
 
-  <tr>
+          <th data-priority="1">
+            <%= label_tag "Periodo" %>
 
-    <%= form_tag mec_custom_url(data_matriculaciones_departamentos_distritos_lista_url(nil,nil)), :remote => true, :id => "form-buscar-matriculaciones-departamentos-distritos" do  %>
+            <span class="orden">
+              <i class="filtro fa fa-sort"></i>
+              <i class="descendente fa fa-sort-desc"></i>
+              <i class="ascendente fa fa-sort-asc"></i>
+            </span>
 
-      <th style="width:100px;" class="text-min celda-derecha">
-        <%= label_tag "Periodo" %><br />
-        <%= select :form_buscar_matriculaciones_departamentos_distritos, :anio, [2012], {:class => 'text-min'} %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_departamentos_distritos_anio'),1);" %>
+      <div class="input-group input-group-sm">
+        <%= select :form_buscar_matriculaciones_departamentos_distritos, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
+      </div>
       </th>
 
-      <th style="width:20%;" class="text-min">
-        <%= label_tag "Departamento"%><br />
-        <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_departamento, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_departamentos_distritos_nombre_departamento'));" %>
+      <th data-priority="2">
+        <%= label_tag nil, "Departamento".html_safe%>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-directorios-instituciones', '#form_buscar_matriculaciones_departamentos_distritos_nombre_departamento');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_departamento_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_departamento, 
+            atributo_tipo: :text, 
+            model: :MatriculacionDepartamentoDistrito, 
+            limit: 10,
+            cadena_consulta: "nombre_departamento",
+            orden: "nombre_departamento", 
+            descripcion_total: :nombre_departamento,
+            descripcion_elegida: :nombre_departamento)), 
+        parametro_id: "form_buscar_matriculaciones_departamentos_distritos_nombre_departamento", 
+        resultado_id: "form_buscar_matriculaciones_departamentos_distritos_nombre_departamento_id",
+        min_length: 4
+        ) %>
+
       </th>
 
-      <th style="width:20%;" class="text-min">
-        <%= label_tag "Distrito"%><br />
-        <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_distrito, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_departamentos_distritos_nombre_distrito'));" %>
+      <th data-priority="2">
+        <%= label_tag nil, "Distrito".html_safe%>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-directorios-instituciones', '#form_buscar_matriculaciones_departamentos_distritos_nombre_distrito');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_distrito_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_distrito, 
+            atributo_tipo: :text, 
+            model: :MatriculacionDepartamentoDistrito, 
+            limit: 10,
+            cadena_consulta: "nombre_distrito",
+            orden: "nombre_distrito", 
+            descripcion_total: :nombre_distrito,
+            descripcion_elegida: :nombre_distrito)), 
+        parametro_id: "form_buscar_matriculaciones_departamentos_distritos_nombre_distrito", 
+        resultado_id: "form_buscar_matriculaciones_departamentos_distritos_nombre_distrito_id",
+        min_length: 4
+        ) %>
+
       </th>
 
-      <th style="width:15%;" class="text-min">
-        <%= label_tag "Zona"%><br />
-        <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_zona, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_departamentos_distritos_nombre_zona'));" %>
+      <th data-priority="2">
+        <%= label_tag nil, "Zona".html_safe%>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_zona, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-directorios-instituciones', '#form_buscar_matriculaciones_departamentos_distritos_nombre_zona');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_zona_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_zona, 
+            atributo_tipo: :text, 
+            model: :MatriculacionDepartamentoDistrito, 
+            limit: 10,
+            cadena_consulta: "nombre_zona",
+            orden: "nombre_zona", 
+            descripcion_total: :nombre_zona,
+            descripcion_elegida: :nombre_zona)), 
+        parametro_id: "form_buscar_matriculaciones_departamentos_distritos_nombre_zona", 
+        resultado_id: "form_buscar_matriculaciones_departamentos_distritos_nombre_zona_id",
+        min_length: 4
+        ) %>
+
       </th>
 
-      <th style="width:15%;" class="text-min">
-        <%= label_tag "Sector o Tipo de Gestión"%><br />
-        <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion'));" %>
+      <th data-priority="2">
+        <%= label_tag nil, "Sector o Tipo de Gesti&oacute;n".html_safe%>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-directorios-instituciones', '#form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :sector_o_tipo_gestion, 
+            atributo_tipo: :text, 
+            model: :MatriculacionDepartamentoDistrito, 
+            limit: 10,
+            cadena_consulta: "sector_o_tipo_gestion",
+            orden: "sector_o_tipo_gestion", 
+            descripcion_total: :sector_o_tipo_gestion,
+            descripcion_elegida: :sector_o_tipo_gestion)), 
+        parametro_id: "form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion", 
+        resultado_id: "form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion_id",
+        min_length: 4
+        ) %>
+
       </th>
 
       <th style="width:20%;" class="text-min">
@@ -74,19 +177,20 @@
         <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados'));" %>
       </th>
 
-    <% end %>
+      </tr>
+      </thead>
 
-  </tr>
+      <tbody id="matriculaciones-departamentos-distritos-lista"></tbody>
 
-  <tbody id="matriculaciones-departamentos-distritos-lista"></tbody>
-
-</table>
+    </table>
+  </div>
+<% end %>
 
 <script type="text/javascript">
 
   $("#form-buscar-matriculaciones-departamentos-distritos").bind("submit", function() {
 
-    $("#matriculaciones-departamentos-distritos-lista").html("<%= escape_javascript("<tr><td style='7'><p class='none-result'>#{image_tag('ajax-loader0.gif')}</p>").html_safe %></td></tr>")
+    $("#matriculaciones-departamentos-distritos-lista").html("<%= escape_javascript("<tr><td colspan='7' style='text-align:center;'><p class='none-result'>#{image_tag('ajax-loader0.gif')}</p>").html_safe %></td></tr>")
 
   })
 
@@ -97,49 +201,10 @@
   })
 
   //LIMPIAR FORMULARIO DE BUSQUEDA
-  function limpiar_form_buscar_matriculaciones_departamentos_distritos() {
-
-    $("#form_buscar_matriculaciones_departamentos_distritos_anio").val("2012");
-    $("#form_buscar_matriculaciones_departamentos_distritos_nombre_departamento").val("");
-    $("#form_buscar_matriculaciones_departamentos_distritos_nombre_distrito").val("");
-    $("#form_buscar_matriculaciones_departamentos_distritos_nombre_zona").val("");
-    $("#form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion").val("");
-    $("#form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados").val("");
-    $.ajaxQ.abortAll();
-    $("#form-buscar-matriculaciones-departamentos-distritos").submit();
-
-  }
-
-  limpiar_form_buscar_matriculaciones_departamentos_distritos();
-
-  //--------------- QUITAR FILTRO -------------------//
-  function quitar_filtro(id, ban) {
-    if (ban === 1) {
-      id.val("2012");
-    } else {
-      id.val('');
-    }
-    $.ajaxQ.abortAll();
-    $('#form-buscar-matriculaciones-departamentos-distritos').submit();
-
-  }
-  //-------------------------------------------------//
+  valor_defecto = [{
+      id: '#form_buscar_matriculaciones_departamentos_distritos_anio',
+      valor: 2012
+    }];
+  resetForm("#form-buscar-matriculaciones-departamentos-distritos", valor_defecto);
 
 </script>
-
-<style>
-
-  .text-min {font-size:9px !important; color: #000; text-align:center !important;}
-  #cbue-menu1 {background:#e9e9e9;}
-  .text-min input[type="text"], .text-min select {
-    border: 1px solid silver;
-    padding: 3px;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
-    color:#000;
-  }
-  .text-min input[type="text"] { width: 80px;}
-  #tablaContenedor{width:1000px;}
-
-</style>
-

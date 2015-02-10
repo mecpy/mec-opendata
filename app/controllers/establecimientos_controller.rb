@@ -2,6 +2,14 @@ class EstablecimientosController < ApplicationController
   
   before_filter :redireccionar_uri
   
+  def diccionario
+
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/establecimientos.json")
+    @diccionario_establecimientos = JSON.parse(file)
+    
+  end
+  
   def index
 
     @establecimientos = Establecimiento.orden_dep_dis.paginate :per_page => 15, :page => params[:page]
@@ -266,10 +274,6 @@ class EstablecimientosController < ApplicationController
       f.js
 
     end 
-
-  end
-
-  def diccionario
 
   end
 

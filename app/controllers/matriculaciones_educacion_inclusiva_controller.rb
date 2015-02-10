@@ -8,6 +8,14 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
     end
   end
   
+  def diccionario
+    
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/matriculaciones_educacion_inclusiva.json")
+    @diccionario_matriculaciones_educacion_inclusiva = JSON.parse(file)
+
+  end
+  
   def lista
 
     cond = []
@@ -214,10 +222,6 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
       end 
 
     end
-
-  end
-  
-  def diccionario
 
   end
 

@@ -12,6 +12,10 @@ class MatriculacionesInicialController < ApplicationController
   end
 
   def diccionario
+    
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/matriculaciones_inicial.json")
+    @diccionario_matriculaciones_inicial = JSON.parse(file)
 
   end
 

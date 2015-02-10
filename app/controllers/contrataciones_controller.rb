@@ -1,8 +1,4 @@
 class ContratacionesController < ApplicationController
-  
-  def diccionario
-
-  end
 
   def index
 
@@ -12,6 +8,14 @@ class ContratacionesController < ApplicationController
 
     end
 
+  end
+  
+  def diccionario
+
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/contrataciones.json")
+    @diccionario_contrataciones = JSON.parse(file)
+    
   end
 
   def lista

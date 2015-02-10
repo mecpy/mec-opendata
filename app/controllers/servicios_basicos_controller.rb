@@ -1,8 +1,5 @@
 class ServiciosBasicosController < ApplicationController
   before_filter :redireccionar_uri
-  def diccionario
-
-  end
 
   def index
 
@@ -14,6 +11,14 @@ class ServiciosBasicosController < ApplicationController
 
     end
 
+  end
+  
+  def diccionario
+
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/servicios_basicos.json")
+    @diccionario_servicios_basicos = JSON.parse(file)
+    
   end
 
   def lista

@@ -1,4 +1,5 @@
 class MatriculacionesEducacionMediaController < ApplicationController
+  
   def index
     @matriculaciones_educacion_media = MatriculacionEducacionMedia.orden_dep_dis.paginate :per_page => 15, :page => params[:page]
     respond_to do |f|
@@ -6,6 +7,14 @@ class MatriculacionesEducacionMediaController < ApplicationController
       f.html {render :layout => 'application'}
 
     end
+  end
+  
+  def diccionario
+    
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/matriculaciones_educacion_media.json")
+    @diccionario_matriculaciones_educacion_media = JSON.parse(file)
+    
   end
 
   def lista

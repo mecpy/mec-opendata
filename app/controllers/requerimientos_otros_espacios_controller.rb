@@ -1,8 +1,5 @@
 class RequerimientosOtrosEspaciosController < ApplicationController
   before_filter :redireccionar_uri
-  def diccionario
-
-  end
 
   def index
 
@@ -13,6 +10,14 @@ class RequerimientosOtrosEspaciosController < ApplicationController
       f.html {render :layout => 'application'}
 
     end
+
+  end
+  
+  def diccionario
+    
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/requerimientos_otros_espacios.json")
+    @diccionario_requerimientos_otros_espacios = JSON.parse(file)
 
   end
 
