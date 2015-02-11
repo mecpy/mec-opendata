@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   post "contactos_guardar" => "data#contactos_guardar", :as => :contactos_guardar
   post "contactos_lista" => "data#contactos_lista", :as => :contactos_lista
+  get "contactos_lista" => "data#contactos_lista", :as => :report_contactos_lista
   get "contactos" => "data#contactos", :as => :contactos
   get "index" => "data#index", :as => :index
   get "about" => "data#about", :as => :about

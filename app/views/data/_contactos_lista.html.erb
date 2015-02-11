@@ -1,42 +1,36 @@
 <% if contactos.present? %>
-  
+
   <% contactos.each do |c| %>
 
-    <tr>
- 
-      <td>
-        
-        <div style="font-size:15px;border-bottom:2px solid navy;margin-top:10px;"><%= link_to c.asunto, "#", id: "link-to-contacto-#{c.id}", style: "color:navy;text-decoration:none;" %></div>
-        <div style="font-size:10px;">
-          <span style="color:silver;font-style:italic;">Ciudadano: </span><%= "#{c.nombre} #{c.apellido}"%>
-          <span style="color:silver;font-style:italic;margin-left:20px;">Fecha: </span><%= c.fecha.strftime("%d/%m/%Y") %>
-        </div>
-        <div style="margin-top:5px;font-size:11px;margin-bottom:10px;"><%= c.mensaje %></div>
-      
-      </td>       
-    
-    </tr>
-  
-  <% end %>
-  
-  <tr>
+    <div class="consulta col-sm-6">
 
-    <td style="text-align:center;">
-      <div class="flickr_pagination">
-        <%= ajax_will_paginate contactos, :params => params %>
+      <div class="well">
+        <h3><%= link_to c.asunto, "#", id: "link-to-contacto-#{c.id}", style: "color:navy;text-decoration:none;" %> <small>por <%= "#{c.nombre} #{c.apellido}"%> - <%= c.fecha.strftime("%d/%m/%Y") %></small></h3>
+        <p><%= c.mensaje %></p>
       </div>
-    </td>
-    
-  </tr>
 
-  <tr><td>Cantidad de participantes: <%= @total_registros %></td></tr>
+    </div>
+
+  <% end %>
+
+  <div class="text-center">
+    <nav>
+      <ul class="pagination">
+        <div class="flickr_pagination">
+          <%= ajax_will_paginate contactos, :params => params %>
+        </div>
+      </ul>
+    </nav>
+  </div>
+
+  <p>Cantidad de participantes: <%= @total_registros %></p>
 
 <% else %>
 
-  <tr>
-    
-    <td>No hay participantes... Se el primer ciudadano !!</p></td>
-  
-  </tr>
+  <div class="consulta col-sm-6">
+    <div class="well">
+      <p>No hay participantes... Se el primer ciudadano !!</p>
+    </div>
+  </div>
 
 <% end %>

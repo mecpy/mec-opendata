@@ -32,20 +32,26 @@
 
 /*Funcion que limpia el formulario del Dataset*/
 function resetForm(formId, valor_defecto) {
-    var form=$(formId);
+    
+    var form = $(formId);
     form.find('input:text, input:password, input:file, select, textarea').val('');
     form.find('input:radio, input:checkbox')
             .removeAttr('checked').removeAttr('selected');
+    
+    if (valor_defecto !== "CONTACTOS") {
+        $.each(valor_defecto, function(idx, v) {
+            $(v.id).val(v.valor);
+        });
+        $.ajaxQ.abortAll();
+        form.submit();
+    } else {
 
-    $.each(valor_defecto, function(idx, v) {
-        $(v.id).val(v.valor);
-    });
-    $.ajaxQ.abortAll();
-    form.submit();
+    }
+
 }
 /*Funcion que quita el filtro seleccionado*/
 function quitar_filtro(formId, id, valor_defecto) {
-    var form=$(formId);
+    var form = $(formId);
     if (typeof (valor_defecto) !== "undefined") {
         $(id).val(valor_defecto);
     } else {

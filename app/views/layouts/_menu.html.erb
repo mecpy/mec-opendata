@@ -13,6 +13,7 @@
         <li><%= link_to "Portal MEC", "http://mec.gov.py", :target => '_blank', :title => "Ir al Portal del MEC" %></li>
         <li class="<%= 'active current' if current_page?(data_path) %>"><%= link_to "Datos", mec_custom_url(data_url), :title => "Ir a Datos" %></li>
         <li class="<%= 'active current' if current_page?(data_visualizaciones_path) %>"><%= link_to "Visualizaciones", mec_custom_url(data_visualizaciones_url), :title => "Ir a Visualizaciones" %></li>
+        <li class="<%= 'active current' if current_page?(contactos_path) %>"><%= link_to "Participa", mec_custom_url(contactos_url), :title => "Ir al Formulario de Contactos" %></li>
         <li class="<%= 'active current' if current_page?(about_path) %>"><%= link_to "Acerca de", mec_custom_url(about_url), :title => "Ir al Acerca de" %></li>
         <li class="<%= 'active current' if current_page?(legal_path) %>"><%= link_to "Aviso legal", mec_custom_url(legal_url), :title => "Ir al Aviso Legal" %></li>
         <!--<li class="dropdown">

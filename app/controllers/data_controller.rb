@@ -68,7 +68,7 @@ class DataController < ApplicationController
       @contacto.apellido = params[:contacto][:apellido]
     else
       @valido = false
-      @msg += "El campo nombre no puede quedar vacio."
+      @msg += "El campo apellido no puede quedar vacio."
     end
 
     if params[:contacto] && params[:contacto][:email].present?

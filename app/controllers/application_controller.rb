@@ -45,8 +45,9 @@ class ApplicationController < ActionController::Base
   end
   
   def autocompletar
+      
     html = ""
-
+    
     if params[:term].present?
       
       params[:term] = quita_acentos(params[:term])
@@ -68,7 +69,7 @@ class ApplicationController < ActionController::Base
       hashes[:order] = params[:orden] if params[:orden].present?
       hashes[:limit] = params[:limit].to_i if params[:limit].present?
       
-      resultados = params[:model].constantize.where(hashes[:conditions]).order(hashes[:order]).uniq.pluck(params[:cadena_consulta]).take(hashes[:limit])
+      resultados = params[:model].constantize.where(hashes[:conditions]).order(hashes[:order]).uniq.pluck(params[:atributo_id]).take(hashes[:limit])
 
       if resultados.present?
         

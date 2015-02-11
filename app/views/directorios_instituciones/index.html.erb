@@ -274,7 +274,7 @@
 <table class="table table-striped table-bordered table-hover">
   <tbody id="directorios-instituciones-footer"></tbody>
 </table>
-<!--<input type="button" id="target" value="BOTON">-->
+
 <script type="text/javascript">
 
   $("#form-buscar-directorios-instituciones").bind("submit", function() {
@@ -437,15 +437,3 @@
     cursor: pointer;
   }
 </style>
-<script>
-  $(document).ready(function() {
-    $("#target").click(function() {
-      $("#form-buscar-directorios-instituciones").find(':input').each(function() {
-        var element = $(this);
-        if (element.is(":text")) {
-          alert(element.name());
-        }
-      });
-    });
-  });
-</script>
