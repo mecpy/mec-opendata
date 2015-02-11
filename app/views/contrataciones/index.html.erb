@@ -1,3 +1,4 @@
+<%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
 <div>
   <h1>
     <span itemprop="name">Contrataciones</span>
@@ -64,9 +65,7 @@
             model: :Contratacion, 
             limit: 10,
             cadena_consulta: "llamado_publico",
-            orden: "llamado_publico", 
-            descripcion_total: :llamado_publico,
-            descripcion_elegida: :llamado_publico)), 
+            orden: "llamado_publico")), 
         parametro_id: "form_buscar_contrataciones_llamado_publico", 
         resultado_id: "form_buscar_contrataciones_llamado_publico_id",
         min_length: 3
@@ -94,9 +93,7 @@
             model: :Contratacion, 
             limit: 10,
             cadena_consulta: "modalidad",
-            orden: "modalidad", 
-            descripcion_total: :modalidad,
-            descripcion_elegida: :modalidad)), 
+            orden: "modalidad")), 
         parametro_id: "form_buscar_contrataciones_modalidad", 
         resultado_id: "form_buscar_contrataciones_modalidad_id",
         min_length: 3
@@ -124,12 +121,10 @@
             model: :Contratacion, 
             limit: 10,
             cadena_consulta: "descripcion",
-            orden: "descripcion", 
-            descripcion_total: :descripcion,
-            descripcion_elegida: :descripcion)), 
+            orden: "descripcion")), 
         parametro_id: "form_buscar_contrataciones_descripcion", 
         resultado_id: "form_buscar_contrataciones_descripcion_id",
-        min_length: 3
+        min_length: 4
         ) %>
 
       </th>
@@ -154,9 +149,7 @@
             model: :Contratacion, 
             limit: 10,
             cadena_consulta: "fecha_apertura_oferta",
-            orden: "fecha_apertura_oferta", 
-            descripcion_total: :fecha_apertura_oferta,
-            descripcion_elegida: :fecha_apertura_oferta)), 
+            orden: "fecha_apertura_oferta")), 
         parametro_id: "form_buscar_contrataciones_fecha_apertura_oferta", 
         resultado_id: "form_buscar_contrataciones_fecha_apertura_oferta_id",
         min_length: 3
@@ -184,9 +177,7 @@
             model: :Contratacion, 
             limit: 10,
             cadena_consulta: "estado_llamado",
-            orden: "estado_llamado", 
-            descripcion_total: :estado_llamado,
-            descripcion_elegida: :estado_llamado)), 
+            orden: "estado_llamado")), 
         parametro_id: "form_buscar_contrataciones_estado_llamado", 
         resultado_id: "form_buscar_contrataciones_estado_llamado_id",
         min_length: 3
@@ -214,9 +205,7 @@
             model: :Contratacion, 
             limit: 10,
             cadena_consulta: "proveedor_adjudicado",
-            orden: "proveedor_adjudicado", 
-            descripcion_total: :proveedor_adjudicado,
-            descripcion_elegida: :proveedor_adjudicado)), 
+            orden: "proveedor_adjudicado")), 
         parametro_id: "form_buscar_contrataciones_proveedor_adjudicado", 
         resultado_id: "form_buscar_contrataciones_proveedor_adjudicado_id",
         min_length: 3
@@ -244,9 +233,7 @@
             model: :Contratacion, 
             limit: 10,
             cadena_consulta: "fecha_contrato",
-            orden: "fecha_contrato", 
-            descripcion_total: :fecha_contrato,
-            descripcion_elegida: :fecha_contrato)), 
+            orden: "fecha_contrato")), 
         parametro_id: "form_buscar_contrataciones_fecha_contrato", 
         resultado_id: "form_buscar_contrataciones_fecha_contrato_id",
         min_length: 3
@@ -274,9 +261,7 @@
             model: :Contratacion, 
             limit: 10,
             cadena_consulta: "fecha_vigencia_contrato",
-            orden: "fecha_vigencia_contrato", 
-            descripcion_total: :fecha_vigencia_contrato,
-            descripcion_elegida: :fecha_vigencia_contrato)), 
+            orden: "fecha_vigencia_contrato")), 
         parametro_id: "form_buscar_contrataciones_fecha_vigencia_contrato", 
         resultado_id: "form_buscar_contrataciones_fecha_vigencia_contrato_id",
         min_length: 3

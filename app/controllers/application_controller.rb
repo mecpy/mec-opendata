@@ -55,13 +55,13 @@ class ApplicationController < ActionController::Base
       hashes = {}
       if params[:model] == 'PersonaFull'
      
-        hashes[:conditions] = ["#{( params[:cadena_consulta].present? ? params[:cadena_consulta] : params[:atributo_descripcion] ) } = ?", "#{params[:term].upcase}"]
+        hashes[:conditions] = ["#{( params[:cadena_consulta].present? ? params[:cadena_consulta] : params[:atributo_id] ) } = ?", "#{params[:term].upcase}"]
 
       else
         if params[:atributo_tipo] == 'int'
           hashes[:conditions] = ["CAST(#{ params[:cadena_consulta] } AS TEXT) like ?", "%#{params[:term].upcase}%"]
         else
-          hashes[:conditions] = ["#{( params[:cadena_consulta].present? ? params[:cadena_consulta] : params[:atributo_descripcion] ) } like ?", "%#{params[:term].upcase}%"]
+          hashes[:conditions] = ["#{( params[:cadena_consulta].present? ? params[:cadena_consulta] : params[:atributo_id] ) } like ?", "%#{params[:term].upcase}%"]
         end
      
       end

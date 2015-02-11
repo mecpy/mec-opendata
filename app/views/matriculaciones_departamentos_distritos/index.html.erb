@@ -24,7 +24,7 @@
     <meta itemprop="keywords" style="display: none;" content="educación,matriculaciones,departamentos, distritos"/>
     <meta itemprop="version" style="display: none;" content="1.0"/>
 
-    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_directorios_instituciones_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
+    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_matriculaciones_departamentos_distritos_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
 
   </h1>
 </div>
@@ -61,7 +61,7 @@
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-directorios-instituciones', '#form_buscar_matriculaciones_departamentos_distritos_nombre_departamento');"><i class="fa fa-times"></i></span>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-departamentos-distritos', '#form_buscar_matriculaciones_departamentos_distritos_nombre_departamento');"><i class="fa fa-times"></i></span>
       </div>
 
       <%= hidden_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_departamento_id %>
@@ -70,9 +70,7 @@
             model: :MatriculacionDepartamentoDistrito, 
             limit: 10,
             cadena_consulta: "nombre_departamento",
-            orden: "nombre_departamento", 
-            descripcion_total: :nombre_departamento,
-            descripcion_elegida: :nombre_departamento)), 
+            orden: "nombre_departamento")), 
         parametro_id: "form_buscar_matriculaciones_departamentos_distritos_nombre_departamento", 
         resultado_id: "form_buscar_matriculaciones_departamentos_distritos_nombre_departamento_id",
         min_length: 4
@@ -91,7 +89,7 @@
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-directorios-instituciones', '#form_buscar_matriculaciones_departamentos_distritos_nombre_distrito');"><i class="fa fa-times"></i></span>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-departamentos-distritos', '#form_buscar_matriculaciones_departamentos_distritos_nombre_distrito');"><i class="fa fa-times"></i></span>
       </div>
 
       <%= hidden_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_distrito_id %>
@@ -100,9 +98,7 @@
             model: :MatriculacionDepartamentoDistrito, 
             limit: 10,
             cadena_consulta: "nombre_distrito",
-            orden: "nombre_distrito", 
-            descripcion_total: :nombre_distrito,
-            descripcion_elegida: :nombre_distrito)), 
+            orden: "nombre_distrito")), 
         parametro_id: "form_buscar_matriculaciones_departamentos_distritos_nombre_distrito", 
         resultado_id: "form_buscar_matriculaciones_departamentos_distritos_nombre_distrito_id",
         min_length: 4
@@ -121,7 +117,7 @@
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_zona, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-directorios-instituciones', '#form_buscar_matriculaciones_departamentos_distritos_nombre_zona');"><i class="fa fa-times"></i></span>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-departamentos-distritos', '#form_buscar_matriculaciones_departamentos_distritos_nombre_zona');"><i class="fa fa-times"></i></span>
       </div>
 
       <%= hidden_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_zona_id %>
@@ -130,12 +126,10 @@
             model: :MatriculacionDepartamentoDistrito, 
             limit: 10,
             cadena_consulta: "nombre_zona",
-            orden: "nombre_zona", 
-            descripcion_total: :nombre_zona,
-            descripcion_elegida: :nombre_zona)), 
+            orden: "nombre_zona")), 
         parametro_id: "form_buscar_matriculaciones_departamentos_distritos_nombre_zona", 
         resultado_id: "form_buscar_matriculaciones_departamentos_distritos_nombre_zona_id",
-        min_length: 4
+        min_length: 3
         ) %>
 
       </th>
@@ -151,7 +145,7 @@
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-directorios-instituciones', '#form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion');"><i class="fa fa-times"></i></span>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-departamentos-distritos', '#form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion');"><i class="fa fa-times"></i></span>
       </div>
 
       <%= hidden_field_tag :form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion_id %>
@@ -160,9 +154,7 @@
             model: :MatriculacionDepartamentoDistrito, 
             limit: 10,
             cadena_consulta: "sector_o_tipo_gestion",
-            orden: "sector_o_tipo_gestion", 
-            descripcion_total: :sector_o_tipo_gestion,
-            descripcion_elegida: :sector_o_tipo_gestion)), 
+            orden: "sector_o_tipo_gestion")), 
         parametro_id: "form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion", 
         resultado_id: "form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion_id",
         min_length: 4

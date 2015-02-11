@@ -1,4 +1,5 @@
-$("#requerimientos-sanitarios-lista").html("<%= escape_javascript(render :partial => "lista", :locals => { :requerimientos_sanitarios => @requerimientos_sanitarios}) %>");
+$("#requerimientos-sanitarios-lista, #requerimientos-sanitarios-lista-clone").html("<%= escape_javascript(render :partial => "lista", :locals => { :requerimientos_sanitarios => @requerimientos_sanitarios}) %>");
 $("#requerimientos-sanitarios-footer").html("<%= escape_javascript(render :partial => "footer", :locals => { :requerimientos_sanitarios => @requerimientos_sanitarios}) %>");
 
 MDTable.create('#requerimientos-sanitarios-lista', [0,1,2,3,4,5,6,7,8,9,10,11]);
+MDTable.create('#requerimientos-sanitarios-lista-clone', [0,1,2,3,4,5,6,7,8,9,10,11]);
