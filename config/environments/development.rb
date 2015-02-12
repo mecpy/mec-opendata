@@ -26,7 +26,7 @@ Rails.application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
-  config.assets.precompile += %w( mapa_matriculaciones.css leaflet.css slider.css bootstrap-slider.js ie10-viewport-bug-workaround.js leaflet.js mapa_matriculaciones.js matriculados.js views/datos_ver_view.js views/datos_view.js views/index_view.js views/visualizaciones_view.js )
+  config.assets.precompile += %w( mapa_matriculaciones.css leaflet.css slider.css bootstrap-slider.js ie10-viewport-bug-workaround.js leaflet.js mapa_matriculaciones.js matriculados.js views/datos_ver_view.js views/datos_view.js views/index_view.js views/visualizaciones_view.js views/uri_establecimiento_view.js views/uri_institucion_view.js)
 
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.

@@ -60,16 +60,6 @@
       
       <div 
         class="vista-previa col-sm-5 col-sm-offset-1 enlace" 
-        style="background-image:url('<%= image_url("thumbnails/docentes.png") %>')"
-        data-titulo='Funcionarios Docentes'
-        data-descripcion='Total de asignación por objeto de gasto, de junio a agosto del 2014 (en Gs).'
-        data-imagen='<%= image_url('destacados/docentes.png') %>'
-        data-enlace='<%= mec_custom_url(app_academia_funcionarios_docentes_url).html_safe %>'
-        onclick="seleccionar(this);">
-      </div>
-      
-      <div 
-        class="vista-previa col-sm-5 col-sm-offset-1 enlace" 
         style="background-image:url('<%= image_url("thumbnails/administrativos.png") %>')"
         data-titulo='Funcionarios Administrativos'
         data-descripcion='Gastos por concepto: junio, julio y agosto del 2014.'
@@ -80,10 +70,20 @@
       
       <div 
         class="vista-previa col-sm-5 col-sm-offset-1 enlace" 
-        style="background-image:url('<%= image_url("thumbnails/inmuebles.png") %>')"
+        style="background-image:url('<%= image_url("thumbnails/titulos_universitarios.png") %>')"
+        data-titulo='Funcionarios Administrativos'
+        data-descripcion='Gastos por concepto: junio, julio y agosto del 2014.'
+        data-imagen='<%= image_url('destacados/titulos_universitarios.png') %>'
+        data-enlace='<%= mec_custom_url(app_academia_funcionarios_administrativos_url).html_safe %>'
+        onclick="seleccionar(this);">
+      </div>
+      
+      <div 
+        class="vista-previa col-sm-5 col-sm-offset-1 enlace" 
+        style="background-image:url('<%= image_url("thumbnails/educacion.png") %>')"
         data-titulo='Inventario de Bienes - Inmuebles'
         data-descripcion='Inventario de Bienes Inmuebles por superficie y por departamento'
-        data-imagen='<%= image_url('destacados/inmuebles.png') %>'
+        data-imagen='<%= image_url('destacados/educacion.png') %>'
         data-enlace='<%= mec_custom_url(app_academia_inventario_bienes_inmuebles_url).html_safe %>'
         onclick="seleccionar(this);">
       </div>

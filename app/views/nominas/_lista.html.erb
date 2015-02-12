@@ -4,15 +4,15 @@
 
     <tr>
 
-        <td class="text-min" style="text-align:center;"><%= n.ano_periodo_pago %></td>
-        <td class="text-min" style="text-align:left;"><%= obtener_mes(n.mes_periodo_pago) %></td>
-        <!--<td class="text-min" style="text-align:right;"><%#= n.codigo_trabajador %></td>-->
-        <td class="text-min" style="text-align:center;"><%= link_to n.codigo_trabajador,mec_custom_url(id_nomimas_administrativo_path(n.codigo_trabajador)),target:'_blank',style: 'font-weight:bold;', title: 'Visualizar URI' %></td>
-        <td class="text-min" style="text-align:left;"><%= n.nombre_trabajador %></td>
-        <td class="text-min" style="text-align:left;"><%= "#{n.nombre_objeto_gasto} (#{n.codigo_objeto_gasto})" %></td>
-        <td class="text-min" style="text-align:left;"><%= n.estado %></td>
-        <td class="text-min" style="text-align:left;"><%= n.antiguedad_administrativo %></td>
-        <td class="text-min" style="text-align:right;"><%= number_to_currency(n.asignacion, :unit => '', :precision => 0) %></td>
+        <td style="text-align:center;"><%= n.ano_periodo_pago %></td>
+        <td style="text-align:left;"><%= obtener_mes(n.mes_periodo_pago) %></td>
+        <!--<td style="text-align:right;"><%#= n.codigo_trabajador %></td>-->
+        <td style="text-align:center;"><%= link_to n.codigo_trabajador,mec_custom_url(id_nomimas_administrativo_path(n.codigo_trabajador)),target:'_blank',style: 'font-weight:bold;', title: 'Visualizar URI' %></td>
+        <td style="text-align:left;"><%= n.nombre_trabajador %></td>
+        <td style="text-align:left;"><%= "#{n.nombre_objeto_gasto} (#{n.codigo_objeto_gasto})" %></td>
+        <td style="text-align:left;"><%= n.estado %></td>
+        <td style="text-align:left;"><%= n.antiguedad_administrativo %></td>
+        <td style="text-align:right;"><%= number_to_currency(n.asignacion, :unit => '', :precision => 0) %></td>
         <td style="width:20px;"><%= link_to_nominas_detalles(n) %></td>
 
     </tr>

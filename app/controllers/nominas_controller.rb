@@ -1,7 +1,12 @@
 # -*- encoding : utf-8 -*-
 class NominasController< ApplicationController
   before_filter :redireccionar_uri
+  
   def diccionario
+    
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/nomina_administrativos.json")
+    @diccionario_nomina_administrativos = JSON.parse(file)
 
   end
 
@@ -215,6 +220,10 @@ class NominasController< ApplicationController
   end
 
   def docentes_diccionario
+    
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/nomina_docentes.json")
+    @diccionario_nomina_docentes = JSON.parse(file)
 
   end
   

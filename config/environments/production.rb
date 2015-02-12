@@ -60,7 +60,7 @@ Rails.application.configure do
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
   # config.assets.precompile += %w( search.js )
-  config.assets.precompile += %w( mapa_matriculaciones.css leaflet.css slider.css bootstrap-slider.js ie10-viewport-bug-workaround.js leaflet.js mapa_matriculaciones.js matriculados.js views/datos_ver_view.js views/datos_view.js views/index_view.js views/visualizaciones_view.js )
+  config.assets.precompile += %w( mapa_matriculaciones.css leaflet.css slider.css bootstrap-slider.js ie10-viewport-bug-workaround.js leaflet.js mapa_matriculaciones.js matriculados.js views/datos_ver_view.js views/datos_view.js views/index_view.js views/visualizaciones_view.js views/uri_establecimiento_view.js views/uri_institucion_view.js)
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

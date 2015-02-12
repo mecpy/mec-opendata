@@ -5,27 +5,27 @@
 
     <tr>
 
-      <td class="text-min"><%= i.anio %></td>
-      <td class="text-min" style="font-weight:bold;">
+      <td><%= i.anio %></td>
+      <td style="font-weight:bold;">
         <%= link_to i.codigo_establecimiento, mec_custom_url(id_establecimientos_path(i.codigo_establecimiento)), id:'tab-establecimiento', target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %>
       </td>  
-      <td class="text-min"><%= link_to i.codigo_institucion.gsub(".","").to_i, mec_custom_url(id_instituciones_path(i.codigo_institucion.gsub(".","").to_i)), id:'tab-institucion', target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %></td>
-      <td class="text-min"><%= i.nombre_institucion %></td>
-      <td class="text-min"><%= i.nombre_departamento %></td>
-      <td class="text-min"><%= i.nombre_distrito %></td>
-      <td class="text-min"><%= i.nombre_barrio_localidad %></td>
-      <td class="text-min"><%= i.nombre_zona %></td>
-      <td class="text-min"><%= i.sector_o_tipo_gestion %></td>       
-      <td class="text-min"><%= i.nombre_region_administrativa %></td>       
-      <td class="text-min"><%= i.nombre_supervisor %></td>       
-      <td class="text-min"><%= i.niveles_modalidades %></td>       
-      <td class="text-min"><%= i.nombre_tipo_organizacion %></td>       
-      <td class="text-min"><%= i.participacion_comunitaria %></td>       
-      <td class="text-min"><%= i.direccion %></td>       
-      <td class="text-min"><%= i.nro_telefono %></td>       
-      <td class="text-min"><%= i.tiene_internet %></td>       
-      <td class="text-min"><%= i.paginaweb %></td>       
-      <td class="text-min"><%= i.correo_electronico %></td>       
+      <td><%= link_to i.codigo_institucion.gsub(".","").to_i, mec_custom_url(id_instituciones_path(i.codigo_institucion.gsub(".","").to_i)), id:'tab-institucion', target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %></td>
+      <td><%= i.nombre_institucion %></td>
+      <td><%= i.nombre_departamento %></td>
+      <td><%= i.nombre_distrito %></td>
+      <td><%= i.nombre_barrio_localidad %></td>
+      <td><%= i.nombre_zona %></td>
+      <td><%= i.sector_o_tipo_gestion %></td>       
+      <td><%= i.nombre_region_administrativa %></td>       
+      <td><%= i.nombre_supervisor %></td>       
+      <td><%= i.niveles_modalidades %></td>       
+      <td><%= i.nombre_tipo_organizacion %></td>       
+      <td><%= i.participacion_comunitaria %></td>       
+      <td><%= i.direccion %></td>       
+      <td><%= i.nro_telefono %></td>       
+      <td><%= i.tiene_internet %></td>       
+      <td><%= i.paginaweb %></td>       
+      <td><%= i.correo_electronico %></td>       
     </tr>
   
   <% end %>

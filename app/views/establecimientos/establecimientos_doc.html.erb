@@ -1,131 +1,172 @@
 <%= javascript_include_tag "http://maps.google.com/maps/api/js?sensor=true" %>
 <%= javascript_include_tag "/assets/gmaps/gmaps.js?body=1", "/assets/gmaps/markerclusterer.js?body=1" %>
-<h2>
-  <span itemprop="name">Establecimiento Escolar</span>
-  <meta itemprop="description"
-        content="Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación."/>
-  <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31">
-  <meta itemprop="url" content="http://datos.mec.gov.py/data/establecimientos">  
-  <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
-    <meta itemprop="name" content="Ministerio de Educación y Cultura">
-    <meta itemprop="url" content="http://www.mec.gov.py/">
-    <meta itemprop="email" content="datosabiertos@mec.gov.py">
-  </span>
-  <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
-    <meta itemprop="name" content="Juan Barrios">
-    <meta itemprop="email" content="datosabiertos@mec.gov.py">
-  </span>
-  <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
-  <meta itemprop="keywords" style="display: none;" content="educación,establecimientos,escolar,geografico"/>
-  <meta itemprop="version" style="display: none;" content="1.0"/>
-  <span style="float:right;">
-    <%= link_to "Ver dataset", mec_custom_url(data_establecimientos_url), :title => "Ir al Dataset", :style => "font-size:12px;" %>
-    <%= link_to image_tag("datos_ico.jpg", :style => "width:24px;" ), mec_custom_url(data_establecimientos_url), :title => "Ir al Dataset" %> 
-    <%= link_to "Ver diccionario", mec_custom_url(def_establecimientos_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
-    <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), mec_custom_url(def_establecimientos_url), :title => "Ir al diccionario" %>
-    <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
-    <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
-  </span>
-
-</h2>
-
-<div class="uri-data-filter">
-  <%= label_tag "Periodo" %>
-  <%= select :establecimiento, :anio, periodos_establecimientos %>
+<%= javascript_include_tag "/assets/views/uri_establecimiento_view.js?body=1" %>
+<div>
+  <div class="submenu pull-right hidden-xs">
+    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_establecimientos_url), :class => "btn-lg hidden-xs", :title => "Ir al diccionario" %>
+    <%= link_to ('<i class="icon-py-datos"></i> Ver Datos').html_safe, mec_custom_url(data_establecimientos_url), :id => "tab-datos", :class => "btn-lg hidden-xs", :title => "Ir al Conjunto de Datos" %>
+  </div>
+  <h1>
+    <span itemprop="name">Establecimiento Escolar</span>
+    <meta itemprop="description"
+          content="Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación."/>
+    <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31">
+    <meta itemprop="url" content="http://datos.mec.gov.py/data/establecimientos">  
+    <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+      <meta itemprop="name" content="Ministerio de Educación y Cultura">
+      <meta itemprop="url" content="http://www.mec.gov.py/">
+      <meta itemprop="email" content="datosabiertos@mec.gov.py">
+    </span>
+    <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+      <meta itemprop="name" content="Juan Barrios">
+      <meta itemprop="email" content="datosabiertos@mec.gov.py">
+    </span>
+    <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+    <meta itemprop="keywords" style="display: none;" content="educación,establecimientos,escolar,geografico"/>
+    <meta itemprop="version" style="display: none;" content="1.0"/>
+  </h1>
 </div>
-<br />
+<br>
+
+<form class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <%= label_tag "Periodo", nil, :class => 'col-sm-4 label-combo' %>
+    <div class="col-sm-8">
+      <%= select :establecimiento, :anio, periodos_establecimientos, {}, { :class => 'form-control' } %>
+    </div>
+  </div>
+</form>
+
+<div class="clearfix"></div>
+<hr>
 
 <% if @establecimiento.present? %>
+  <div class="row" id="bloques">
 
-  <div class='uri-data-left'>
+    <div class="col-sm-6 bloque">
+      <h2>Datos del Establecimiento</h2>
+      <ul class="listado">
 
-    <h4>Datos del Establecimiento</h4>
+        <li class="row">
+          <div class="celda col-sm-4"><strong>Periodo</strong></div>
+          <div class="celda col-sm-8"><%= @establecimiento.anio %></div>
+        </li>
 
-    <div class='uri-titulo' style='border-top:1px solid silver;'>Periodo</div><div class='uri-valor first'><%= @establecimiento.anio %></div><br />
-    <div class='uri-titulo'>C&oacute;digo de Establecimiento</div><div class='uri-valor'><%= @establecimiento.codigo_establecimiento %></div><br />
-    <div class='uri-titulo'>Departamento</div><div class='uri-valor'><%= @establecimiento.nombre_departamento %></div><br />
-    <div class='uri-titulo'>Distrito</div><div class='uri-valor'><%= @establecimiento.nombre_distrito %></div><br />
-    <div class='uri-titulo'>Zona</div><div class='uri-valor'><%= @establecimiento.nombre_zona %></div><br />
-    <div class='uri-titulo'>Barrio/Localidad</div><div class='uri-valor'><%= @establecimiento.nombre_barrio_localidad %></div><br />
-    <div class='uri-titulo'>Direcci&oacute;n</div><div class='uri-valor'><%= @establecimiento.direccion %></div><br />
-    <div class='uri-titulo'>Programa</div><div class='uri-valor'><%= @establecimiento.programa == 1 ? "Jornada Extendida" : '' %></div><br />
-    <div class='uri-titulo'>Proyecto 111</div><div class='uri-valor'><%= @establecimiento.proyecto_111 %></div><br />
-    <div class='uri-titulo'>Proyecto 822</div><div class='uri-valor last'><%= @establecimiento.proyecto_822 %></div><br />
+        <li class="row">
+          <div class="celda col-sm-4"><strong>C&oacute;digo de Establecimiento</strong></div>
+          <div class="celda col-sm-8"><%= @establecimiento.codigo_establecimiento %></div>
+        </li>
 
-  </div>
+        <li class="row">
+          <div class="celda col-sm-4"><strong>Departamento</strong></div>
+          <div class="celda col-sm-8"><%= @establecimiento.nombre_departamento %></div>
+        </li>
 
-  <div class="uri-data-right">
+        <li class="row">
+          <div class="celda col-sm-4"><strong>Distrito</strong></div>
+          <div class="celda col-sm-8"><%= @establecimiento.nombre_distrito %></div>
+        </li>
 
-    <h4>Instituciones del Establecimiento</h4>
+        <li class="row">
+          <div class="celda col-sm-4"><strong>Zona</strong></div>
+          <div class="celda col-sm-8"><%= @establecimiento.nombre_zona %></div>
+        </li>
 
-    <table class="table table-striped table-bordered table-hover">
+        <li class="row">
+          <div class="celda col-sm-4"><strong>Barrio/Localidad</strong></div>
+          <div class="celda col-sm-8"><%= @establecimiento.nombre_barrio_localidad %></div>
+        </li>
 
-      <tr>
+        <li class="row">
+          <div class="celda col-sm-4"><strong>Direcci&oacute;n</strong></div>
+          <div class="celda col-sm-8"><%= @establecimiento.direccion %></div>
+        </li>
 
-        <th>C&oacute;digo de Institucion</th>
-        <th>Nombre de la Instituci&oacute;n</th>
-        <th style="text-align:right;">Cantidad de Matriculados</th>
+        <li class="row">
+          <div class="celda col-sm-4"><strong>Programa</strong></div>
+          <div class="celda col-sm-8"><%= @establecimiento.programa == 1 ? "Jornada Extendida" : '' %></div>
+        </li>
 
-      </tr>
+        <li class="row">
+          <div class="celda col-sm-4"><strong>Proyecto 111</strong></div>
+          <div class="celda col-sm-8"><%= @establecimiento.proyecto_111 %></div>
+        </li>
 
-      <% @instituciones.each do |i| %>
+        <li class="row">
+          <div class="celda col-sm-4"><strong>Proyecto 822</strong></div>
+          <div class="celda col-sm-8"><%= @establecimiento.proyecto_822 %></div>
+        </li>
 
-        <tr>
+      </ul>
 
-          <td><%= link_to i.codigo_institucion.gsub(".","").to_i, mec_custom_url(id_instituciones_path(i.codigo_institucion.gsub(".","").to_i)), target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %></td>
-          <td><%= link_to i.nombre_institucion, mec_custom_url(id_instituciones_path(i.codigo_institucion.gsub(".","").to_i)), target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %></td>
-          <!--<td><%= link_to i.nombre_institucion, mec_custom_url(data_instituciones_path(:ci => i.codigo_institucion)), :target => "_blank", :title => 'ir al dataset de instituciones.' %></td>-->
-          <td style="text-align:right;"><%= cantidad_total_matriculados_por_anio(i.codigo_institucion.to_s.gsub('.','').to_i, i.codigo_establecimiento, i.periodo) %></td>
+      <hr>
+      <br>
 
-        </tr>
+      <h2>Instituciones del Establecimiento</h2>
+      <ul class="listado">
+        <li class="row hidden-xs titulos">
+          <div class="celda col-sm-4">Código</div>
+          <div class="celda col-sm-4">Nombre</div>
+          <div class="celda col-sm-4">Matriculados</div>
+        </li>
+
+        <% @instituciones.each do |i| %>
+          <li class="row">
+            <label class="col-xs-12 visible-xs">Código</label>
+            <div class="celda col-sm-4"><%= link_to "#{i.codigo_institucion.gsub('.','').to_i}<i class='fa fa-external-link text-muted'></i>".html_safe, mec_custom_url(id_instituciones_path(i.codigo_institucion.gsub(".","").to_i)), target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %></div>
+
+            <label class="col-xs-12 visible-xs">Nombre</label>
+            <div class="celda col-sm-4"><%= link_to "#{i.nombre_institucion}<i class='fa fa-external-link text-muted'></i>".html_safe, mec_custom_url(id_instituciones_path(i.codigo_institucion.gsub(".","").to_i)), target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %></div>
+
+            <label class="col-xs-12 visible-xs">Matriculados</label>
+            <div class="celda col-sm-4 text-right"><td style="text-align:right;"><%= cantidad_total_matriculados_por_anio(i.codigo_institucion.to_s.gsub('.','').to_i, i.codigo_establecimiento, i.periodo) %></td></div>
+          </li>
+        <% end  %>
+      </ul>
+
+    </div>
+
+    <div class="col-sm-6 bloque">
+      <h2>Instituciones del Establecimiento</h2>
+
+      <% if @establecimiento.latitud.present? && @establecimiento.longitud.present? %>
+
+        <% lat = "-#{(@establecimiento.latitud.split(" ").first.to_i + (@establecimiento.latitud.split(" ").second.to_f / 60.to_f) + (@establecimiento.latitud.split(" ").third.to_f / 3600))}" %>
+        <% lng = "-#{(@establecimiento.longitud.split(" ").first.to_i + (@establecimiento.longitud.split(" ").second.to_f / 60.to_f) + (@establecimiento.longitud.split(" ").third.to_f / 3600))}" %>
+
+        <script type="text/javascript">
+
+          $(document).ready(function() {
+
+            var map;
+            map = new GMaps({
+              el: '#map',
+              lat: "<%= lat %>",
+              lng: "<%= lng %>"
+            });
+            map.addMarker({
+              lat: "<%= lat %>",
+              lng: "<%= lng %>",
+              title: 'Datos del Establecimiento',
+              infoWindow: {
+                content: "<%= escape_javascript(render :partial => 'establecimientos/infowindow_establecimiento_doc', :locals => {:establecimiento => @establecimiento})  %>"
+              }
+            });
+          });</script>
+
+        <div id="map" style="height:400px;"></div>
+
+        <br />
+
+      <% else %>
+
+        <div style="font-size: 11px; color: #000; margin-left:15px; "><br />No se encontrar&oacute;n las coordenadas geogr&aacute;ficas.<br /><br /></div>
 
       <% end %>
 
-    </table>
-
-    <h4>Ubicaci&oacute;n Geografica</h4>
-
-    <% if @establecimiento.latitud.present? && @establecimiento.longitud.present? %>
-
-      <% lat = "-#{(@establecimiento.latitud.split(" ").first.to_i + (@establecimiento.latitud.split(" ").second.to_f / 60.to_f) + (@establecimiento.latitud.split(" ").third.to_f / 3600))}" %>
-      <% lng = "-#{(@establecimiento.longitud.split(" ").first.to_i + (@establecimiento.longitud.split(" ").second.to_f / 60.to_f) + (@establecimiento.longitud.split(" ").third.to_f / 3600))}" %>
-
-      <script type="text/javascript">
-
-        $(document).ready(function() {
-
-          var map;
-
-          map = new GMaps({
-            el: '#map',
-            lat: "<%= lat %>",
-            lng: "<%= lng %>"
-          });
-
-          map.addMarker({
-            lat: "<%= lat %>",
-            lng: "<%= lng %>",
-            title: 'Datos del Establecimiento',
-            infoWindow: {
-              content: "<%= escape_javascript(render :partial => 'establecimientos/infowindow_establecimiento_doc', :locals => {:establecimiento => @establecimiento})  %>"
-            }
-          });
-        });
-
-      </script>
-
-      <div id="map" style="height:400px;"></div>
-
-      <br />
-
-    <% else %>
-
-      <div style="font-size: 11px; color: #000; margin-left:15px; "><br />No se encontrar&oacute;n las coordenadas geogr&aacute;ficas.<br /><br /></div>
-
-    <% end %>
+    </div>
 
   </div>
-
   <div style="clear:both;"></div>
   <div class="uri-data-fin">
 
@@ -151,19 +192,8 @@
 
 <% end %>
 
+
 <style>
-
-  h2 {border-bottom: 3px solid gray;}
-  h4 {border-bottom: 1px dashed silver;}
-  div.uri-data-filter { width:100%; border-bottom: 4px solid silver;margin-top:30px;padding-bottom:10px;}
-  div.uri-data-left { width:45%; float:left;}
-  div.uri-data-right { width:52%; float:right; border-left: 4px solid silver; padding-left:20px;}
-  div.uri-data-fin { width:100%; border-top: 4px solid silver;margin-bottom:30px;clear:both;margin-top:20px;}
-  div.uri-data-left br {clear:both;}
-  div.uri-titulo, div.uri-valor { font-size: 12px; float:left; padding:5px; height:40px;}
-  div.uri-titulo { border-bottom: 1px solid silver;width:30%; border-left:6px solid silver; background-color: #efefef; color: #5a86a5;}
-  div.uri-valor { border-bottom: 1px solid silver;border-right: 1px solid silver; width:70%; -moz-box-shadow: 9px -4px 11px #878787;}
-
   div.first{
     border-top:solid 1px silver;
     -moz-border-radius-topleft: 0px;
@@ -201,9 +231,9 @@
 <script type="text/javascript">
 
   $("#establecimiento_anio").bind('change', function() {
-
-    location.href = "<%= url_for(mec_custom_url(id_establecimientos_path(@codigo_establecimiento_doc))) %>?establecimiento[anio]=" + $(this).val();
-
+    if ($(this).val() !== null) {
+      location.href = "<%= url_for(mec_custom_url(id_establecimientos_path(@codigo_establecimiento_doc))) %>?establecimiento[anio]=" + $(this).val();
+    }
   });
 
 </script>

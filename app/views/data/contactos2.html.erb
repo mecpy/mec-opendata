@@ -1,0 +1,41 @@
+<h1>Participa</h1>
+
+<%= render partial: 'formulario_contacto' %>
+
+<div class="col-md-6">
+
+
+  <%= form_tag mec_custom_url(contactos_lista_url), :remote => true, :id => "form-ordenar-contactos", :class => 'form-inline pull-right' do  %>
+    <div class="form-group">
+      <%= label_tag "ordenarpor", "Ordenar por", :class => "label-combo" %>
+      <%= select :form_ordenar_contactos, :orden, [["Fecha", 1],["Título",2]], {}, {:class => 'form-control text-left'} %>
+    </div>
+
+  <% end %>
+
+
+  <div class="clearfix"></div>
+  <hr>
+
+  <div id="contactos-lista"></div>
+
+</div>
+
+<script type="text/javascript">
+
+  $("#form-ordenar-contactos").bind("submit", function() {
+    
+    $("#contactos-lista").html("<%= escape_javascript("<tr><td></td><td colspan='2' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>");
+
+  });
+
+  $("#form_ordenar_contactos_orden").bind('change', function() {
+
+    $("#form-ordenar-contactos").submit();
+
+  });
+
+  $("#form_ordenar_contactos_orden").val(1);
+  $("#form-ordenar-contactos").submit();
+
+</script>

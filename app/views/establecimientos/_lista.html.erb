@@ -1,30 +1,30 @@
 
 <% if establecimientos.present? %>
-  
+
   <% establecimientos.each do |e| %>
 
     <tr>
 
-      <td class="text-min"><%= e.anio %></td>
-      <td class="text-min"><%= link_to e.codigo_establecimiento, mec_custom_url(id_establecimientos_path(e.codigo_establecimiento)), target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %></td>
-      <td class="text-min"><%= e.nombre_departamento %></td>
-      <td class="text-min"><%= e.nombre_distrito %></td>
-      <td class="text-min"><%= e.nombre_zona %></td>
-      <td class="text-min"><%= e.nombre_barrio_localidad %></td>
-      <td class="text-min"><%= e.direccion %></td>
-      <td class="text-min"><%= e.programa == 1 ? "Jornada Extendida" : "" %></td>
-      <td style="width:20px;"><%= link_to_ubicacion_geografica(e) %></td>
-       
-    </tr>
- 
-      <% end %>
+      <td class="acciones"><%= link_to_ubicacion_geografica(e) %></td>
+      <td><%= e.anio %></td>
+      <td><%= link_to e.codigo_establecimiento, mec_custom_url(id_establecimientos_path(e.codigo_establecimiento)), target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %></td>
+      <td><%= e.nombre_departamento %></td>
+      <td><%= e.nombre_distrito %></td>
+      <td><%= e.nombre_zona %></td>
+      <td><%= e.nombre_barrio_localidad %></td>
+      <td><%= e.direccion %></td>
+      <td><%= e.programa == 1 ? "Jornada Extendida" : "" %></td>
 
-  <% else %>
+    </tr>
+
+  <% end %>
+
+<% else %>
 
   <tr>
-    
+
     <td colspan="11"><p class='none-result'>No se han encontrado resultados.</p></td>
-  
+
   </tr>
 
 <% end %>

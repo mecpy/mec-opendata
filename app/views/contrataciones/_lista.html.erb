@@ -4,18 +4,18 @@
 
     <tr>
 
-      <td class="text-min"><%= c.ejercicio_fiscal %></td>
-      <td class="text-min"><%= c.llamado_publico %></td>
-      <td class="text-min"><%= c.modalidad %></td>  
-      <!--      <td class="text-min"><%#= c.nombre %></td> -->
-      <td class="text-min"><%= c.descripcion %></td>
-      <td class="text-min"><%= c.fecha_apertura_oferta %></td>
-      <td class="text-min"><%= c.estado_llamado %></td>
-      <td class="text-min"><%= "#{c.proveedor_ruc} - #{c.proveedor}" %></td>    
-      <td class="text-min"><%= c.fecha_contrato %></td>
-      <td class="text-min"><%= c.fecha_vigencia_contrato %></td> 
-      <!--      <td class="text-min"><%#= c.categoria %></td>        -->
-      <td class="text-min" style="text-align:right !important;"><%= c.monto_adjudicado.present? ? number_to_currency(c.monto_adjudicado, :unit => '', :precision => 0) : 0 %></td>
+      <td><%= c.ejercicio_fiscal %></td>
+      <td><%= c.llamado_publico %></td>
+      <td><%= c.modalidad %></td>  
+      <!--      <td><%#= c.nombre %></td> -->
+      <td><%= c.descripcion %></td>
+      <td><%= c.fecha_apertura_oferta %></td>
+      <td><%= c.estado_llamado %></td>
+      <td><%= "#{c.proveedor_ruc} - #{c.proveedor}" %></td>    
+      <td><%= c.fecha_contrato %></td>
+      <td><%= c.fecha_vigencia_contrato %></td> 
+      <!--      <td><%#= c.categoria %></td>        -->
+      <td style="text-align:right !important;"><%= c.monto_adjudicado.present? ? number_to_currency(c.monto_adjudicado, :unit => '', :precision => 0) : 0 %></td>
  
     </tr>
   

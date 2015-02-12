@@ -1,41 +1,16 @@
 <h1>Participa</h1>
 
-<%= render partial: 'formulario_contacto' %>
-
-<div class="col-md-6">
-
-
-  <%= form_tag mec_custom_url(contactos_lista_url), :remote => true, :id => "form-ordenar-contactos", :class => 'form-inline pull-right' do  %>
-    <div class="form-group">
-      <%= label_tag "ordenarpor", "Ordenar por", :style => 'margin-top:7px;' %>
-      <%= select :form_ordenar_contactos, :orden, [["Fecha", 1],["Título",2]], {}, {:class => 'form-control text-left'} %>
-    </div>
-
-  <% end %>
-
-
-  <div class="clearfix"></div>
-  <hr>
-
-  <div id="contactos-lista"></div>
-
-</div>
-
+<div id="disqus_thread"></div>
 <script type="text/javascript">
+  var disqus_shortname = 'rockntown'; /* CAMBIAR POR EL DEL MEC */
 
-  $("#form-ordenar-contactos").bind("submit", function() {
-    
-    $("#contactos-lista").html("<%= escape_javascript("<tr><td></td><td colspan='2' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>");
-
-  });
-
-  $("#form_ordenar_contactos_orden").bind('change', function() {
-
-    $("#form-ordenar-contactos").submit();
-
-  });
-
-  $("#form_ordenar_contactos_orden").val(1);
-  $("#form-ordenar-contactos").submit();
-
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
+<noscript>Por favor activa Javascript para ver los comentarios.</noscript>

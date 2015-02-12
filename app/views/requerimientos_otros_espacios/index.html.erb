@@ -1,5 +1,7 @@
 <%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
 <div>
+  <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_requerimientos_otros_espacios_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
+  <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
   <h2>
     <span itemprop="name" id="tab-titulo">Establecimientos Escolares Priorizados Elegibles - FONACIDE: OTROS ESPACIOS</span><br/>
     <span style="font-size: 12px;color:silver;" id="tab-leyenda"><i>
@@ -28,10 +30,6 @@
     <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
     <meta itemprop="keywords" style="display: none;" content="educación,instituciones,requerimientos,otros espacios,laboratorio,taller,direcci&oacute;n,uso m&uacute;ltiple"/>
     <meta itemprop="version" style="display: none;" content="1.0">
-
-    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_requerimientos_otros_espacios_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
-    <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
-
   </h2>
 </div>
 <br>

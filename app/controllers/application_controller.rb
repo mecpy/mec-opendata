@@ -57,6 +57,12 @@ class ApplicationController < ActionController::Base
      
         hashes[:conditions] = ["#{( params[:cadena_consulta].present? ? params[:cadena_consulta] : params[:atributo_id] ) } = ?", "#{params[:term].upcase}"]
 
+      elsif params[:model] == 'VNomina'
+        if params[:atributo_tipo] == 'int'
+          hashes[:conditions] = ["#{( params[:cadena_consulta_adicional] ) } and CAST(#{ params[:cadena_consulta] } AS TEXT) like ?", "%#{params[:term].upcase}%"]
+        else
+          hashes[:conditions] = ["#{( params[:cadena_consulta_adicional] ) } and #{( params[:cadena_consulta].present? ? params[:cadena_consulta] : params[:atributo_id] ) } like ?", "%#{params[:term].upcase}%"]
+        end
       else
         if params[:atributo_tipo] == 'int'
           hashes[:conditions] = ["CAST(#{ params[:cadena_consulta] } AS TEXT) like ?", "%#{params[:term].upcase}%"]

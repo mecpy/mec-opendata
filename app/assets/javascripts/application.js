@@ -28,26 +28,29 @@
 //= stub views/datos_ver_view.js
 //= stub views/datos_view.js
 //= stub views/visualizaciones_view.js
+//= stub views/uri_establecimiento_view.js
+//= stub views/uri_institucion_view.js
 //= require datos_abiertos_plugins.js
 
 /*Funcion que limpia el formulario del Dataset*/
 function resetForm(formId, valor_defecto) {
-    
+
     var form = $(formId);
     form.find('input:text, input:password, input:file, select, textarea').val('');
     form.find('input:radio, input:checkbox')
             .removeAttr('checked').removeAttr('selected');
-    
+
     if (valor_defecto !== "CONTACTOS") {
-        $.each(valor_defecto, function(idx, v) {
-            $(v.id).val(v.valor);
-        });
+        if (valor_defecto !== null) {
+            $.each(valor_defecto, function(idx, v) {
+                $(v.id).val(v.valor);
+            });
+        }
         $.ajaxQ.abortAll();
         form.submit();
     } else {
-
+        //nothing to do
     }
-
 }
 /*Funcion que quita el filtro seleccionado*/
 function quitar_filtro(formId, id, valor_defecto) {

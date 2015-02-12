@@ -1,5 +1,7 @@
 <%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
 <div>
+  <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_directorios_instituciones_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
+  <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
   <h1>
     <span itemprop="name" id="tab-titulo">Directorio de Instituciones</span>
     <meta itemprop="url" content="http://datos.mec.gov.py/data/directorios_instituciones">  
@@ -23,11 +25,7 @@
     </span>
     <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
     <meta itemprop="keywords" style="display: none;" content="educación,instituciones,directorios"/>
-    <meta itemprop="version" style="display: none;" content="1.0">
-
-    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_directorios_instituciones_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
-    <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
-
+    <meta itemprop="version" style="display: none;" content="1.0"> 
   </h1>
 </div>
 <br>
@@ -39,7 +37,7 @@
         <tr>
 
           <th data-priority="1">
-            <%= label_tag "Periodo" %>
+            <span data-titulo="true">Período</span>
 
             <span class="orden">
               <i class="filtro fa fa-sort"></i>
@@ -53,7 +51,7 @@
       </th>
 
       <th data-priority="1">
-        <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe %>
+        <span data-titulo="true">Código Establecimiento</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -81,7 +79,7 @@
       </th>
 
       <th data-priority="1">
-        <%= label_tag nil, "C&oacute;digo Instituci&oacute;n".html_safe%>
+        <span data-titulo="true">Código Institución</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -109,7 +107,7 @@
       </th>
 
       <th data-priority="2">
-        <%= label_tag nil, "Instituci&oacute;n".html_safe%>
+        <span data-titulo="true">Institución</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -137,7 +135,7 @@
       </th>
 
       <th data-priority="2">
-        <%= label_tag nil, "Departamento".html_safe%>
+        <span data-titulo="true">Departamento</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -165,7 +163,7 @@
       </th>
 
       <th data-priority="2">
-        <%= label_tag nil, "Distrito".html_safe%>
+        <span data-titulo="true">Distrito</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -193,7 +191,7 @@
       </th>
 
       <th data-priority="3">
-        <%= label_tag nil, "Localidad/Barrio".html_safe%>
+        <span data-titulo="true">Localidad/Barrio</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -221,7 +219,7 @@
       </th>
 
       <th data-priority="3">
-        <%= label_tag nil, "Zona".html_safe%>
+        <span data-titulo="true">Zona</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>

@@ -1,6 +1,8 @@
 <%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
 <div>
-  <h3>
+  <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_requerimientos_mobiliarios_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
+  <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
+  <h2>
     <span itemprop="name" id="tab-titulo">Establecimientos Escolares Priorizados Elegibles - FONACIDE: MOBILIARIOS</span><br/>
     <span style="font-size: 12px;color:silver;" id="tab-leyenda"><i>
         La informaci&oacute;n presentada en la p&aacute;gina puede presentar diferencias con las planillas remitidas, esto es debido a que los datos de las planillas se encuentran en proceso de validaci&oacute;n de c&oacute;digos.
@@ -28,11 +30,7 @@
     <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
     <meta itemprop="keywords" style="display: none;" content="educación,instituciones,requerimientos,mobiliarios"/>
     <meta itemprop="version" style="display: none;" content="1.0">
-
-    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_requerimientos_mobiliarios_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
-    <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
-
-    </h2>
+  </h2>
 </div>
 <br>
 

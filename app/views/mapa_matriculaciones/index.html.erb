@@ -3,12 +3,6 @@
     <div class="col-md-12">
       <h2>
         Mapa de Matriculaciones del Paraguay al Año 2012
-        <span style="float:right;">
-          <%= link_to "Visualizaciones", mec_custom_url(data_visualizaciones_url), :title => "Ir a Visualizaciones", :style => "font-size:12px;" unless params[:embedded]%>
-          <%= link_to image_tag("noticias.png", :style => "width:24px;"), mec_custom_url(data_visualizaciones_url), :title => "Ir a Visualizaciones" unless params[:embedded]%>
-          <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" unless params[:embedded]%>
-          <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" unless params[:embedded]%>
-        </span>
       </h2> 
       <div style="clear:both;"></div> 
       <div class="map-container">

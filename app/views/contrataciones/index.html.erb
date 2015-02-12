@@ -1,5 +1,6 @@
 <%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
 <div>
+  <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_contrataciones_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
   <h1>
     <span itemprop="name">Contrataciones</span>
     <meta itemprop="description"
@@ -18,9 +19,6 @@
     <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
     <meta itemprop="keywords" style="display: none;" content="educación,instituciones,contrataciones"/>
     <meta itemprop="version" style="display: none;" content="1.0">
-
-    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_contrataciones_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
-
   </h1>
 </div>
 <br>

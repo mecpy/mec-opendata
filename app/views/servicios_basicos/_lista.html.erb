@@ -4,21 +4,21 @@
   <% servicios_basicos.each do |i| %>
 
     <tr>
-      <td class="text-min"><%= i.periodo %></td>
-      <td class="text-min"><%= i.nombre_departamento %></td>
-      <td class="text-min"><%= i.nombre_distrito %></td>
-      <td class="text-min" style="font-weight:bold;">
+      <td><%= i.periodo %></td>
+      <td><%= i.nombre_departamento %></td>
+      <td><%= i.nombre_distrito %></td>
+      <td style="font-weight:bold;">
         <%= link_to i.codigo_establecimiento, mec_custom_url(id_establecimientos_path(i.codigo_establecimiento)), id:'tab-establecimiento', target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %>
       </td>
-      <td class="text-min"><%= i.nombre_barrio_localidad %></td>
-      <td class="text-min"><%= i.nombre_zona %></td>
-      <td class="text-min"><%= i.nombre_asentamiento_colonia %></td>       
-      <td class="text-min"><%= i.suministro_energia_electrica %></td>       
-      <td class="text-min"><%= i.abastecimiento_agua %></td>       
-      <td class="text-min"><%= i.servicio_sanitario_actual %></td>       
-      <td class="text-min"><%= i.titulo_de_propiedad %></td>       
-      <td class="text-min"><%= i.cuenta_plano %></td>
-      <td class="text-min"><%= i.prevencion_incendio %></td>
+      <td><%= i.nombre_barrio_localidad %></td>
+      <td><%= i.nombre_zona %></td>
+      <td><%= i.nombre_asentamiento_colonia %></td>       
+      <td><%= i.suministro_energia_electrica %></td>       
+      <td><%= i.abastecimiento_agua %></td>       
+      <td><%= i.servicio_sanitario_actual %></td>       
+      <td><%= i.titulo_de_propiedad %></td>       
+      <td><%= i.cuenta_plano %></td>
+      <td><%= i.prevencion_incendio %></td>
     </tr>
   
   <% end %>

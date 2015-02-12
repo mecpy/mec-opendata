@@ -5,14 +5,14 @@
   <li class="row hidden-xs titulos">
     <div class="celda col-sm-1 text-right">#</div>
     <div class="celda col-sm-3">Nombre del dataset</div>
-    <div class="celda col-sm-8">Descripción del Conjunto de Datos, como será puesto en la página web</div>
+    <div class="celda col-sm-8">Descripción</div>
   </li>
 
   <!--NUEVO CONJUNTO DE DATOS-->
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">1</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">ESTABLECIMIENTOS ESCOLARES</span><br>
+      <span itemprop="name">ESTABLECIMIENTOS ESCOLARES</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_establecimientos_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -38,7 +38,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">2</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">DIRECTORIO DE INSTITUCIONES</span><br>
+      <span itemprop="name">DIRECTORIO DE INSTITUCIONES</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_directorios_instituciones_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -64,7 +64,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">3</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">DATOS ESPEC&Iacute;FICOS DE INSTITUCIONES EDUCATIVAS</span><br>
+      <span itemprop="name">DATOS ESPEC&Iacute;FICOS DE INSTITUCIONES EDUCATIVAS</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_instituciones_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -90,7 +90,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">4</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">MATRICULA EDUCACION ESCOLAR BASICA - CICLOS</span><br>
+      <span itemprop="name">MATRICULA EDUCACION ESCOLAR BASICA - CICLOS</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_matriculaciones_educacion_escolar_basica_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -117,7 +117,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">5</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">MATRICULA EDUCACION INCLUSIVA</span><br>
+      <span itemprop="name">MATRICULA EDUCACION INCLUSIVA</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_matriculaciones_educacion_inclusiva_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -144,7 +144,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">6</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">MATRICULA EDUCACION PERMANENTE</span><br>
+      <span itemprop="name">MATRICULA EDUCACION PERMANENTE</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_matriculaciones_educacion_permanente_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -171,7 +171,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">7</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">MATRICULA EDUCACION SUPERIOR</span><br>
+      <span itemprop="name">MATRICULA EDUCACION SUPERIOR</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_matriculaciones_educacion_superior_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -198,7 +198,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">8</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">MATRICULA EDUCACION INICIAL</span><br>
+      <span itemprop="name">MATRICULA EDUCACION INICIAL</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_matriculaciones_inicial_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -225,7 +225,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">9</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">MATRICULA EDUCACION MEDIA</span><br>
+      <span itemprop="name">MATRICULA EDUCACION MEDIA</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_matriculaciones_educacion_media_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -252,7 +252,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">10</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">MATRICULA POR DEPARTAMENTO Y DISTRITO</span><br>
+      <span itemprop="name">MATRICULA POR DEPARTAMENTO Y DISTRITO</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_matriculaciones_departamentos_distritos_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -278,7 +278,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">11</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">NOMINA DE FUNCIONARIOS DOCENTES</span><br>
+      <span itemprop="name">NOMINA DE FUNCIONARIOS DOCENTES</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_nomina_docentes_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -304,7 +304,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">12</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">NOMINA DE FUNCIONARIOS ADMINISTRATIVOS</span><br>
+      <span itemprop="name">NOMINA DE FUNCIONARIOS ADMINISTRATIVOS</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_nomina_administrativos_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -330,7 +330,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">13</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">NOMINA DE FUNCIONARIOS COMISIONADOS DEL MEC A OTROS ORGANISMOS DEL ESTADO</span><br>
+      <span itemprop="name">NOMINA DE FUNCIONARIOS COMISIONADOS DEL MEC A OTROS ORGANISMOS DEL ESTADO</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> N&oacute;mina (157KB)</span>').html_safe, "/data/comisionados_aa_oee_2014.xls", :title => "Descargar n&oacute;mina".html_safe, :target => "_target", :itemprop => "url" %>
@@ -355,7 +355,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">14</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">NOMINA DE FUNCIONARIOS COMISIONADOS AL MEC DESDE OTROS ORGANISMOS DEL ESTADO</span><br>
+      <span itemprop="name">NOMINA DE FUNCIONARIOS COMISIONADOS AL MEC DESDE OTROS ORGANISMOS DEL ESTADO</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> N&oacute;mina (137KB)</span>').html_safe, "/data/comisionados_de_oee_2014.xls", :title => "Descargar n&oacute;mina".html_safe, :target => "_target", :itemprop => "url" %>
@@ -380,7 +380,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">15</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">INVENTARIO DE BIENES</span><br>
+      <span itemprop="name">INVENTARIO DE BIENES</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="fa fa-file-zip-o"></i><span class="hidden-xs"> Rodados e Inmuebles (4,4MB)</span>').html_safe, "https://mega.co.nz/#!84IkjQTD!4FGj6gaMVE1tQL5h348uY1D3lRb_8xOnXB_KK9gNqWw", :title => "Descargar datos de rodados e inmuebles", :target => "_target", :itemprop => "url" %>
@@ -407,7 +407,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">16</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">CONTRATACIONES</span><br>
+      <span itemprop="name">CONTRATACIONES</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_contrataciones_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -433,7 +433,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">17</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">REGISTRO DE TITULOS</span><br>
+      <span itemprop="name">REGISTRO DE TITULOS</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_registros_titulos_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -459,7 +459,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">18</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">PLANILLAS DE ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE</span><br>
+      <span itemprop="name">PLANILLAS DE ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Cat&aacute;logo</span>').html_safe, mec_custom_url(data_requerimientos_infraestructuras_catalogo_url), :title => "Ir al Cat&aacute;logo".html_safe, :itemprop => "url" %>
@@ -484,7 +484,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">19</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: AULAS</span><br>
+      <span itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: AULAS</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_requerimientos_aulas_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -510,7 +510,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">20</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: SANITARIOS</span><br>
+      <span itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: SANITARIOS</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_requerimientos_sanitarios_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -536,7 +536,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">21</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: OTROS ESPACIOS</span><br>
+      <span itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: OTROS ESPACIOS</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_requerimientos_otros_espacios_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -562,7 +562,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">22</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: MOBILIARIOS</span><br>
+      <span itemprop="name">ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: MOBILIARIOS</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_requerimientos_mobiliarios_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -588,7 +588,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">23</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">Servicios B&aacute;sicos de los Establecimientos seg&uacute;n FONACIDE</span><br>
+      <span itemprop="name">Servicios B&aacute;sicos de los Establecimientos seg&uacute;n FONACIDE</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_servicios_basicos_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -614,7 +614,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">24</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">Proyecto 111</span><br>
+      <span itemprop="name">Proyecto 111</span><br>
 
       <div class="acciones">
         <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_establecimientos111_url), :title => "Ir al diccionario", :itemprop => "url" %>
@@ -640,7 +640,7 @@
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">25</span>
     <div class="celda col-sm-3">
-      <span class="daxline" itemprop="name">Proyecto 822</span><br>
+      <span itemprop="name">Proyecto 822</span><br>
 
       <div class="acciones">
 
