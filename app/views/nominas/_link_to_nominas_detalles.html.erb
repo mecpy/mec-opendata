@@ -2,14 +2,13 @@
 
 <script type="text/javascript">
 
-  $("#link-to-nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>").bind("click", function () {
+  $("#nominas-lista #link-to-nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>").bind("click", function () {
 
       var tr_size = $.trim($("#nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>").html()).length
 
       $('.nominas-detalles').remove();
 
       if (tr_size == 0) {
-
           $(this).parent().parent().after("<tr id=\"nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>\" class=\"nominas-detalles\"></tr>");
 
           $("#nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>").html("<%= escape_javascript("<tr><td colspan='9' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")

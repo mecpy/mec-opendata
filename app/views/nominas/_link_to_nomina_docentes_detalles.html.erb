@@ -1,8 +1,7 @@
 <%= link_to image_tag("folder_table.png"), "#", :id => "link-to-nominas-detalles-#{nomina.id_trabajador}-#{nomina.id_objeto_gasto}", :title => "Haga click para ver el detalle." %>
 
 <script type="text/javascript">
-
-  $("#link-to-nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>").bind("click", function () {
+  $("#nominas-lista #link-to-nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>").bind("click", function () {
 
       var tr_size = $.trim($("#nominas-detalles-<%= nomina.id_trabajador %>-<%= nomina.id_objeto_gasto%>").html()).length
 

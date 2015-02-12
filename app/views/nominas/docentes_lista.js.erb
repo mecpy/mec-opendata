@@ -1,1 +1,1 @@
-$("#nominas-lista").html("<%= escape_javascript(render :partial => "docentes_lista", :locals => { :nomina => @nomina }) %>");
+$("#nominas-lista, #nominas-lista-clone").html("<%= escape_javascript(render :partial => "docentes_lista", :locals => { :nomina => @nomina }) %>");
