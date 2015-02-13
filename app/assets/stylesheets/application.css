@@ -17,6 +17,7 @@
  *= require datos_abiertos
  *= require datos_abiertos_plugins
  *= require jquery.ui.autocomplete
+ *= require style
  */
 
 /*

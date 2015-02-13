@@ -1,0 +1,14 @@
+.icon {
+    background-position: 0% 40%;
+    background-repeat: no-repeat;
+    padding-left: 20px;
+    padding-top: 2px;
+    padding-bottom: 3px;
+}
+
+.icon-page { background-image: url(page.png); }
+.icon-page_excel { background-image: url(page_excel.png); }
+.icon-page_white_text_width { background-image: url(page_white_text_width.png); }
+.icon-page_white_acrobat { background-image: url(page_white_acrobat.png); }
+.icon-folder_table { background-image: url(folder_table.png); }
+.icon-compress { background-image: url(compress.png); }
