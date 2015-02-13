@@ -12,7 +12,7 @@ $("#establecimientos-footer").html("<%= escape_javascript(render partial: "foote
      parametros += "&form_buscar_establecimientos[programa]=#{params[:form_buscar_establecimientos][:programa]}" 
      parametros += "&page=#{(params[:page].present? ? params[:page] : 1)}" %>
 
-  $("#ubicaciones-geograficas").html("<%= escape_javascript(render :partial => "link_to_ubicaciones_geograficas", :locals => {:parametros => parametros } )%>")
+  $("#ubicaciones-geograficas").append("<%= escape_javascript(render :partial => "link_to_ubicaciones_geograficas", :locals => {:parametros => parametros } )%>")
 
 <% else %>
   

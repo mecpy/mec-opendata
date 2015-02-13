@@ -34,6 +34,7 @@
 
           <th data-priority="4" id="ubicaciones-geograficas"> 
             <span data-titulo="true" class="hidden">Mapa</span>
+            <%= link_to image_tag("marker.png", :style => "width:24px;"), "#", :id => "link-to-ubicaciones-geograficas", :title => "Haga click para ver el mapa con las instituciones de esta página.", :onclick => ";" %>
           </th>
 
           <th data-priority="1">
@@ -251,7 +252,7 @@
 
     $('.establecimiento-ubicacion-geografica').html('');
     $("#establecimientos-ubicaciones-geograficas").html('');
-    $("#establecimientos-lista").html("<%= escape_javascript("<tr><td colspan='10' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")
+    $("#establecimientos-lista").html("<%= escape_javascript("<tr><td colspan='10' style='position:relative; text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")
 
   })
 
