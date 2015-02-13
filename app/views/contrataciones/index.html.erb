@@ -21,7 +21,6 @@
     <meta itemprop="version" style="display: none;" content="1.0">
   </h1>
 </div>
-<br>
 
 <%= form_tag mec_custom_url(data_contrataciones_lista_url), :remote => true, :id => "form-buscar-contrataciones" do  %>
   <div class="table-responsive">
@@ -30,7 +29,7 @@
         <tr>
 
           <th data-priority="1">
-            <%= label_tag "Ejercicio Fiscal" %>
+            <span data-titulo="true">Ejercicio Fiscal</span>
 
             <span class="orden">
               <i class="filtro fa fa-sort"></i>
@@ -44,7 +43,7 @@
       </th>
 
       <th data-priority="1">
-        <%= label_tag nil, "Id DNCP".html_safe %>
+        <span data-titulo="true">Id DNCP</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -72,7 +71,7 @@
       </th>
 
       <th data-priority="1">
-        <%= label_tag nil, "Modalidad".html_safe %>
+        <span data-titulo="true">Modalidad</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -99,8 +98,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "Descripci&oacute;n".html_safe %>
+      <th data-priority="2">
+        <span data-titulo="true">Descripci&oacute;n</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -127,8 +126,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "Fecha de Apertura de Ofertas".html_safe %>
+      <th data-priority="2">
+        <span data-titulo="true">Fecha de Apertura de Ofertas</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -155,8 +154,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "Estado".html_safe %>
+      <th data-priority="2">
+        <span data-titulo="true">Estado</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -183,8 +182,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "Proveedor Adjudicado".html_safe %>
+      <th data-priority="3">
+        <span data-titulo="true">Proveedor Adjudicado</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -211,8 +210,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "Fecha Contrato".html_safe %>
+      <th data-priority="3">
+        <span data-titulo="true">Fecha Contrato</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -239,8 +238,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "Fecha Vigencia de Contrato".html_safe %>
+      <th data-priority="3">
+        <span data-titulo="true">Fecha Vigencia de Contrato</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -273,7 +272,6 @@
         <%= text_field_tag :form_buscar_contrataciones_monto_adjudicado, nil, :class => 'text-min' %>
         <%= link_to icon_delete, "#", onclick: "quitar_filtro('#form-buscar-contrataciones', '#form_buscar_contrataciones_monto_adjudicado');" %>
       </th>
-
 
       </tr>
       </thead>

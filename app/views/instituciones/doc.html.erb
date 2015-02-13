@@ -1,249 +1,269 @@
 <%= javascript_include_tag "http://maps.google.com/maps/api/js?sensor=true" %>
 <%= javascript_include_tag "/assets/gmaps/gmaps.js?body=1", "/assets/gmaps/markerclusterer.js?body=1" %>
-<h2>
-    <span itemprop="name" id="tab-titulo">Datos Espec&iacute;ficos de</br> Instituciones Educativas</span>
+<%= javascript_include_tag "/assets/views/uri_establecimiento_view.js?body=1" %>
+<div>
+  <div class="submenu pull-right hidden-xs">
+    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_instituciones_url), :class => "btn-lg hidden-xs", :title => "Ir al diccionario" %>
+    <%= link_to ('<i class="icon-py-datos"></i> Ver Datos').html_safe, mec_custom_url(data_instituciones_url), :id => "tab-datos", :class => "btn-lg hidden-xs", :title => "Ir al Conjunto de Datos" %>
+  </div>
+  <h1>
+    <span itemprop="name" id="tab-titulo">Datos Espec&iacute;ficos de Instituciones Educativas</span>
     <meta itemprop="description"
           content="Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación."/>
     <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31">
     <meta itemprop="url" content="http://datos.mec.gov.py/data/establecimientos">  
     <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
-        <meta itemprop="name" content="Ministerio de Educación y Cultura">
-        <meta itemprop="url" content="http://www.mec.gov.py/">
-        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      <meta itemprop="name" content="Ministerio de Educación y Cultura">
+      <meta itemprop="url" content="http://www.mec.gov.py/">
+      <meta itemprop="email" content="datosabiertos@mec.gov.py">
     </span>
     <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
-        <meta itemprop="name" content="Juan Barrios">
-        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      <meta itemprop="name" content="Juan Barrios">
+      <meta itemprop="email" content="datosabiertos@mec.gov.py">
     </span>
     <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
     <meta itemprop="keywords" style="display: none;" content="educación,establecimientos,escolar,geografico"/>
     <meta itemprop="version" style="display: none;" content="1.0"/>
-    <span style="float:right;">
-        <div style="display: inline-block" id="start-tour"><a style="font-size:12px;" title="Ir a la ayuda">Ayuda</a> <a title="Ir a la ayuda"><img alt="Ayuda3" height="24px" width="24px" src="/assets/ayuda3.png"></a></div>
-        <div style="display: inline-block" id="tab-datos"><%= link_to "Ver dataset", mec_custom_url(data_instituciones_url), :title => "Ir al Dataset", :style => "font-size:12px;" %>
-            <%= link_to image_tag("datos_ico.jpg", :style => "width:24px;" ), mec_custom_url(data_instituciones_url), :title => "Ir al Dataset" %> </div>
-        <div style="display: inline-block" id="tab-diccionario"><%= link_to "Ver diccionario", mec_custom_url(def_instituciones_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
-            <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), mec_custom_url(def_instituciones_url), :title => "Ir al diccionario" %></div>
-        <div style="display: inline-block" id="tab-inicio"><%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
-            <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %></div>
-    </span>
+  </h1>
+</div>
+<br>
 
-</h2>
+<form class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <%= label_tag "Periodo", nil, :class => 'col-sm-4 label-combo' %>
+    <div class="col-sm-8">
+      <%= select :institucion, :anio, periodos_instituciones, {}, { :class => 'form-control' } %>
+    </div>
+  </div>
+</form>
+
+<div class="clearfix"></div>
+<hr>
 
 <% if @institucion.present? %>
+  <div class="row" id="bloques">
 
-  <div class="uri-data-filter" id="tab-periodo">
-      <%= label_tag "Periodo" %>
-      <%= select :institucion, :anio, periodos_instituciones %>
-  </div>
+    <div class="col-sm-6 bloque">
+      <h2>Datos de la Instituci&oacute;n</h2>
+      <ul class="listado">
 
-  <br />
+        <li class="row">
+          <div class="celda col-sm-4"><strong>Periodo</strong></div>
+          <div class="celda col-sm-8"><%= @institucion.anio %></div>
+        </li>
 
-  <div class='uri-data-left' id="tab-resumen-institucion">
+        <li class="row">
+          <div class="celda col-sm-4"><strong>C&oacute;digo de Establecimiento</strong></div>
+          <div class="celda col-sm-8"><%= link_to @institucion.codigo_establecimiento, mec_custom_url(id_establecimientos_path(@institucion.codigo_establecimiento)), target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %></div>
+        </li>
 
-      <h4>Datos de la Instituci&oacute;n</h4>
+        <li class="row">
+          <div class="celda col-sm-4"><strong>C&oacute;digo de Institución</strong></div>
+          <div class="celda col-sm-8"><%= @institucion.codigo_institucion %></div>
+        </li>
 
-      <div class='uri-titulo' style='border-top:1px solid silver;'>Periodo</div><div class='uri-valor first'><%= @institucion.anio %></div><br />
-      <div class='uri-titulo'>C&oacute;digo de Establecimiento</div><div class='uri-valor' id="tab-establecimiento">
-          <%= link_to @institucion.codigo_establecimiento, mec_custom_url(id_establecimientos_path(@institucion.codigo_establecimiento)), target: '_blank', style: 'font-weight:bold;', title: 'Visualizar URI' %>
-      </div><br />
-      <div class='uri-titulo'>C&oacute;digo de Institucion</div><div class='uri-valor'><%= @institucion.codigo_institucion %></div><br />
-      <div class='uri-titulo'>Institución</div><div class='uri-valor'><%= @institucion.nombre_institucion %></div><br />
-      <div class='uri-titulo'>Departamento</div><div class='uri-valor'><%= @institucion.nombre_departamento %></div><br />
-      <div class='uri-titulo'>Distrito</div><div class='uri-valor'><%= @institucion.nombre_distrito %></div><br />
-      <div class='uri-titulo'>Localidad/Barrio</div><div class='uri-valor'><%= @institucion.nombre_barrio_localidad %></div><br />
-      <div class='uri-titulo'>Zona</div><div class='uri-valor'><%= @institucion.nombre_zona %></div><br />
-      <div class='uri-titulo'>Sector</div><div class='uri-valor'><%= @institucion.sector_o_tipo_gestion %></div><br />
-      <div class='uri-titulo'>Regi&oacute;n administrativa</div><div class='uri-valor'><%= @institucion.nombre_region_administrativa %></div><br />
+        <li class="row">
+          <div class="celda col-sm-4"><strong>Institución</strong></div>
+          <div class="celda col-sm-8"><%= @institucion.nombre_institucion %></div>
+        </li>
 
-  </div>
+        <li class="row">
+          <div class="celda col-sm-4"><strong>Departamento</strong></div>
+          <div class="celda col-sm-8"><%= @institucion.nombre_departamento %></div>
+        </li>
 
-  <div class="uri-data-right"> 
-      <div id="tab-resumen-matriculaciones">
-          <h4>Matriculaciones de la Instituci&oacute;n</h4>
+        <li class="row">
+          <div class="celda col-sm-4"><strong>Distrito</strong></div>
+          <div class="celda col-sm-8"><%= @institucion.nombre_distrito %></div>
+        </li>
 
-          <table class="table table-striped table-bordered table-hover">
+        <li class="row">
+          <div class="celda col-sm-4"><strong>Localidad/Barrio</strong></div>
+          <div class="celda col-sm-8"><%= @institucion.nombre_barrio_localidad %></div>
+        </li>
 
-              <tr>
+        <li class="row">
+          <div class="celda col-sm-4"><strong>Zona</strong></div>
+          <div class="celda col-sm-8"><%= @institucion.nombre_zona %></div>
+        </li>
 
-                  <th>Nivel</th>
-                  <th style="text-align:right;">Cantidad de Matriculados</th>
+        <li class="row">
+          <div class="celda col-sm-4"><strong>Sector</strong></div>
+          <div class="celda col-sm-8"><%= @institucion.sector_o_tipo_gestion %></div>
+        </li>
 
-              </tr>
+        <li class="row">
+          <div class="celda col-sm-4"><strong>Regi&oacute;n administrativa</strong></div>
+          <div class="celda col-sm-8"><%= @institucion.nombre_region_administrativa %></div>
+        </li>
 
-              <tr>
+      </ul>
 
+      <hr>
+      <br>
 
-                  <td><%= link_to "MATRICULA EDUCACION ESCOLAR BASICA - CICLOS", mec_custom_url(data_matriculaciones_educacion_escolar_basica_url), :target => "_blank",:title => "Ir al dataset" %></td>
+      <h2>Matriculaciones de la Institución</h2>
+      <ul class="listado">
+        <li class="row hidden-xs titulos">
+          <div class="celda col-sm-8">Nivel</div>
+          <div class="celda col-sm-4">Matriculados</div>
+        </li>
 
-                  <td style="text-align:right;"><%=@total_eeb%></td>
+        <li class="row">
+          <label class="col-xs-12 visible-xs">Nivel</label>
+          <div class="celda col-sm-8"><%= link_to "MATRICULA EDUCACION ESCOLAR BASICA - CICLOS", mec_custom_url(data_matriculaciones_educacion_escolar_basica_url), :target => "_blank",:title => "Ir al dataset" %></div>
+          <label class="col-xs-12 visible-xs">Matriculados</label>
+          <div class="celda col-sm-4 text-right"><%=@total_eeb%></div>
+        </li>
 
-              </tr>
+        <li class="row">
+          <label class="col-xs-12 visible-xs">Nivel</label>
+          <div class="celda col-sm-8"><%= link_to "MATRICULA EDUCACION INCLUSIVA", mec_custom_url(data_matriculaciones_educacion_inclusiva_url),:target => "_blank", :title => "Ir al dataset" %></div>
+          <label class="col-xs-12 visible-xs">Matriculados</label>
+          <div class="celda col-sm-4 text-right"><%=@total_ei%></div>
+        </li>
 
-              <tr>
+        <li class="row">
+          <label class="col-xs-12 visible-xs">Nivel</label>
+          <div class="celda col-sm-8"><%= link_to "MATRICULA EDUCACION PERMANENTE", mec_custom_url(data_matriculaciones_educacion_permanente_url),:target => "_blank", :title => "Ir al dataset" %></div>
+          <label class="col-xs-12 visible-xs">Matriculados</label>
+          <div class="celda col-sm-4 text-right"><%=@total_ep%></div>
+        </li>
 
+        <li class="row">
+          <label class="col-xs-12 visible-xs">Nivel</label>
+          <div class="celda col-sm-8"><%= link_to "MATRICULA EDUCACION SUPERIOR", mec_custom_url(data_matriculaciones_educacion_superior_url), :target => "_blank", :title => "Ir al dataset" %></div>
+          <label class="col-xs-12 visible-xs">Matriculados</label>
+          <div class="celda col-sm-4 text-right"><%=@total_es%></div>
+        </li>
 
-                  <td><%= link_to "MATRICULA EDUCACION INCLUSIVA", mec_custom_url(data_matriculaciones_educacion_inclusiva_url),:target => "_blank", :title => "Ir al dataset" %>    </td>
+        <li class="row">
+          <label class="col-xs-12 visible-xs">Nivel</label>
+          <div class="celda col-sm-8"><%= link_to "MATRICULA EDUCACION INICIAL", mec_custom_url(data_matriculaciones_inicial_url),:target => "_blank", :title => "Ir al dataset" %></div>
+          <label class="col-xs-12 visible-xs">Matriculados</label>
+          <div class="celda col-sm-4 text-right"><%=@total_i%></div>
+        </li>
 
-                  <td style="text-align:right;"><%=@total_ei%></td>
+        <li class="row">
+          <label class="col-xs-12 visible-xs">Nivel</label>
+          <div class="celda col-sm-8"><%= link_to "MATRICULA EDUCACION MEDIA", mec_custom_url(data_matriculaciones_educacion_media_url),:target => "_blank", :title => "Ir al dataset" %></div>
+          <label class="col-xs-12 visible-xs">Matriculados</label>
+          <div class="celda col-sm-4 text-right"><%=@total_em%></div>
+        </li>
 
-              </tr>
+        <li class="row">
+          <div class="celda col-sm-8"><strong>TOTAL</strong></div>
+          <div class="celda col-sm-4 text-right"><%= @resultado %></div>
+        </li>
+      </ul>
 
-              <tr>
-                  <td><%= link_to "MATRICULA EDUCACION PERMANENTE", mec_custom_url(data_matriculaciones_educacion_permanente_url),:target => "_blank", :title => "Ir al dataset" %></td>
+    </div>
 
-                  <td style="text-align:right;"><%=@total_ep%></td>
-
-              </tr>
-
-              <tr>
-                  <td><%= link_to "MATRICULA EDUCACION SUPERIOR", mec_custom_url(data_matriculaciones_educacion_superior_url), :target => "_blank", :title => "Ir al dataset" %></td>
-
-                  <td style="text-align:right;"><%=@total_es%></td>
-
-              </tr>
-              <tr>
-                  <td><%= link_to "MATRICULA EDUCACION INICIAL", mec_custom_url(data_matriculaciones_inicial_url),:target => "_blank", :title => "Ir al dataset" %></td>
-
-                  <td style="text-align:right;"><%=@total_i%></td>
-
-              </tr>
-
-              <tr>
-                  <td><%= link_to "MATRICULA EDUCACION MEDIA", mec_custom_url(data_matriculaciones_educacion_media_url),:target => "_blank", :title => "Ir al dataset" %></td>
-
-                  <td style="text-align:right;"><%=@total_em%></td>
-
-              </tr>
-              <tr>
-                  <th>TOTAL</th>
-
-                  <td style="text-align:right;"><%= @resultado %></td>
-
-              </tr>
-
-          </table>
-      </div>
+    <div class="col-sm-6 bloque">
       <div id="tab-mapa">
-          <h4>Ubicaci&oacute;n Geografica</h4>
+        <h2>Ubicaci&oacute;n Geografica</h2>
 
-          <% if @establecimiento.latitud.present? && @establecimiento.longitud.present? %>
+        <% if @establecimiento.latitud.present? && @establecimiento.longitud.present? %>
 
-            <% lat = "-#{(@establecimiento.latitud.split(" ").first.to_i + (@establecimiento.latitud.split(" ").second.to_f / 60.to_f) + (@establecimiento.latitud.split(" ").third.to_f / 3600))}" %>
-            <% lng = "-#{(@establecimiento.longitud.split(" ").first.to_i + (@establecimiento.longitud.split(" ").second.to_f / 60.to_f) + (@establecimiento.longitud.split(" ").third.to_f / 3600))}" %>
+          <% lat = "-#{(@establecimiento.latitud.split(" ").first.to_i + (@establecimiento.latitud.split(" ").second.to_f / 60.to_f) + (@establecimiento.latitud.split(" ").third.to_f / 3600))}" %>
+          <% lng = "-#{(@establecimiento.longitud.split(" ").first.to_i + (@establecimiento.longitud.split(" ").second.to_f / 60.to_f) + (@establecimiento.longitud.split(" ").third.to_f / 3600))}" %>
 
-            <script type="text/javascript">
+          <script type="text/javascript">
 
-              $(document).ready(function () {
+            $(document).ready(function() {
 
-                  var map;
-
-                  map = new GMaps({
-                      el: '#map',
-                      lat: "<%= lat %>",
-                      lng: "<%= lng %>"
-                  });
-
-                  map.addMarker({
-                      lat: "<%= lat %>",
-                      lng: "<%= lng %>",
-                      title: 'Datos de la Institución',
-                      infoWindow: {
-                          content: "<%= escape_javascript(render :partial => 'instituciones/infowindow_institucion_doc', :locals => {:institucion => @institucion})  %>"
-                      }
-                  });
+              var map;
+              map = new GMaps({
+                el: '#map',
+                lat: "<%= lat %>",
+                lng: "<%= lng %>"
               });
+              map.addMarker({
+                lat: "<%= lat %>",
+                lng: "<%= lng %>",
+                title: 'Datos de la Institución',
+                infoWindow: {
+                  content: "<%= escape_javascript(render :partial => 'instituciones/infowindow_institucion_doc', :locals => {:institucion => @institucion})  %>"
+                }
+              });
+            });</script>
 
-            </script>
+          <div id="map" style="height:400px;"></div>
 
-            <div id="map" style="height:400px;"></div>
+          <br />
 
-            <br />
+        <% else %>
+          <div style="font-size: 11px; color: #000; margin-left:15px; "><br />No se encontrar&oacute;n las coordenadas geogr&aacute;ficas.<br /><br /></div>
+        <% end %>
 
-          <% else %>
-
-            <div style="font-size: 11px; color: #000; margin-left:15px; "><br />No se encontrar&oacute;n las coordenadas geogr&aacute;ficas.<br /><br /></div>
-          <% end %>
       </div>
-  </div>
 
+    </div>
 
-  <div style="clear:both;"></div>
-  <div class="uri-data-fin">
+    <div style="clear:both;"></div>
+    <div class="uri-data-fin">
 
       <br />
       <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
       <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", id:'tab-microdata', :style => "width:32px; margin-bottom:10px;" %></a>
       </br>
       <div id="tab-descargas-filtradas">
-          <span>Descargar Instituci&oacute;n:</span>
+        <span>Descargar Instituci&oacute;n:</span>
 
-          <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
-          <% if params[:institucion] && params[:institucion][:anio].present? %>
-            <% ruta = mec_custom_url(id_instituciones_url(params[:codigo_institucion], periodo: { anio: params[:institucion][:anio]}, format: 'json'))%>
-          <% else %>
-            <% ruta = mec_custom_url(id_instituciones_url(params[:codigo_institucion], format: 'json'))%>
-          <% end %>
-          <%= link_to "JSON#{image_star * 3}".html_safe, ruta, :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+        <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
+        <% if params[:institucion] && params[:institucion][:anio].present? %>
+          <% ruta = mec_custom_url(id_instituciones_url(params[:codigo_institucion], periodo: { anio: params[:institucion][:anio]}, format: 'json'))%>
+        <% else %>
+          <% ruta = mec_custom_url(id_instituciones_url(params[:codigo_institucion], format: 'json'))%>
+        <% end %>
+        <%= link_to "JSON#{image_star * 3}".html_safe, ruta, :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
       </div>
+    </div>
+
   </div>
 
 <% else %>
-
   <div>No se ha encontrado la instituci&oacute;n educativo</div>
-
 <% end %>
 
 <style>
+  div.first{
+    border-top:solid 1px silver;
+    -moz-border-radius-topleft: 0px;
+    -moz-border-radius-topright:21px;
+    -moz-border-radius-bottomleft:0px;
+    -moz-border-radius-bottomright:0px;
+    -webkit-border-top-left-radius:0px;
+    -webkit-border-top-right-radius:21px;
+    -webkit-border-bottom-left-radius:0px;
+    -webkit-border-bottom-right-radius:0px;
+    border-top-left-radius:0px;
+    border-top-right-radius:21px;
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius:0px;
+  }
 
-    h2 {border-bottom: 3px solid gray;}
-    h4 {border-bottom: 1px dashed silver;}
-    div.uri-data-filter { width:100%; border-bottom: 4px solid silver;margin-top:30px;padding-bottom:10px;}
-    div.uri-data-left { width:45%; float:left;}
-    div.uri-data-right { width:52%; float:right; border-left: 4px solid silver; padding-left:20px;}
-    div.uri-data-fin { width:100%; border-top: 4px solid silver;margin-bottom:30px;clear:both;margin-top:20px;}
-    div.uri-data-left br {clear:both;}
-    div.uri-titulo, div.uri-valor { font-size: 12px; float:left; padding:5px; height:40px;}
-    div.uri-titulo { border-bottom: 1px solid silver;width:30%; border-left:6px solid silver; background-color: #efefef; color: #5a86a5;}
-    div.uri-valor { border-bottom: 1px solid silver;border-right: 1px solid silver; width:70%; -moz-box-shadow: 9px -4px 11px #878787;}
-
-    div.first{
-        border-top:solid 1px silver;
-        -moz-border-radius-topleft: 0px;
-        -moz-border-radius-topright:21px;
-        -moz-border-radius-bottomleft:0px;
-        -moz-border-radius-bottomright:0px;
-        -webkit-border-top-left-radius:0px;
-        -webkit-border-top-right-radius:21px;
-        -webkit-border-bottom-left-radius:0px;
-        -webkit-border-bottom-right-radius:0px;
-        border-top-left-radius:0px;
-        border-top-right-radius:21px;
-        border-bottom-left-radius:0px;
-        border-bottom-right-radius:0px;
-    }
-
-    div.last{
-        border-bottom:solid 1px silver;
-        -moz-border-radius-topleft: 0px;
-        -moz-border-radius-topright:0px;
-        -moz-border-radius-bottomleft:0px;
-        -moz-border-radius-bottomright:21px;
-        -webkit-border-top-left-radius:0px;
-        -webkit-border-top-right-radius:0px;
-        -webkit-border-bottom-left-radius:0px;
-        -webkit-border-bottom-right-radius:21px;
-        border-top-left-radius:0px;
-        border-top-right-radius:0px;
-        border-bottom-left-radius:0px;
-        border-bottom-right-radius:21px;
-    } 
+  div.last{
+    border-bottom:solid 1px silver;
+    -moz-border-radius-topleft: 0px;
+    -moz-border-radius-topright:0px;
+    -moz-border-radius-bottomleft:0px;
+    -moz-border-radius-bottomright:21px;
+    -webkit-border-top-left-radius:0px;
+    -webkit-border-top-right-radius:0px;
+    -webkit-border-bottom-left-radius:0px;
+    -webkit-border-bottom-right-radius:21px;
+    border-top-left-radius:0px;
+    border-top-right-radius:0px;
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius:21px;
+  } 
 
 </style>
 <script>
   var stepsListado = [
-      {
-          intro: "Esta ayuda te mostrar&aacute; los elementos del detalle del Conjunto de Datos:\
+    {
+      intro: "Esta ayuda te mostrar&aacute; los elementos del detalle del Conjunto de Datos:\
           </br><b>Datos Espec&iacute;ficos de Instituciones Educativas</b>.\
           </br></br>Este tutorial te guiará paso a paso a través de las diferentes funcionalidades disponibles. \
           </br></br>Podr&aacute;s navegar fácilmente a través de la guía por medio del mouse, o por medio del teclado haciendo simplemente uso de las teclas:\
@@ -259,99 +279,97 @@
           </ul>\
           Pulsa en siguiente para comenzar.\
           </br>Y, ¡COMENCEMOS!"
-      },
-      {
-          element: "#tab-titulo",
-          intro: "En esta sección, puedes ver el Nombre del Conjunto de Datos.",
-          position: "right"
-      },
-      {
-          element: '#tab-datos',
-          intro: "Mientras que en esta otra sección, puedes acceder al Conjunto de Datos.</br></br>En este apartado podr&aacute;s realizar filtros y descargas de la informaci&oacute;m de tu inter&eacute;s.",
-          position: "left"
-      },
-      {
-          element: "#tab-diccionario",
-          intro: "Si tienes dudas acerca del significado de alg&uacute;n atributo del Conjunto de Datos, puedes ir al Diccionario siguiendo este enlace.\
+    },
+    {
+      element: "#tab-titulo",
+      intro: "En esta sección, puedes ver el Nombre del Conjunto de Datos.",
+      position: "right"
+    },
+    {
+      element: '#tab-datos',
+      intro: "Mientras que en esta otra sección, puedes acceder al Conjunto de Datos.</br></br>En este apartado podr&aacute;s realizar filtros y descargas de la informaci&oacute;m de tu inter&eacute;s.",
+      position: "left"
+    },
+    {
+      element: "#tab-diccionario",
+      intro: "Si tienes dudas acerca del significado de alg&uacute;n atributo del Conjunto de Datos, puedes ir al Diccionario siguiendo este enlace.\
           </br></br>El Diccionario de Datos describe los atributos que contiene un Conjunto de Datos, incluyendo el tipo de dato y las restricciones que se apliquen a cada uno.",
-          position: "left"
-      },
-      {
-          element: '#tab-inicio',
-          intro: "En este apartado, puedes volver al listado de todos los Conjuntos de Datos con que cuenta el Portal del MEC.",
-          position: "left"
-      },
-      {
-          element: '#tab-periodo',
-          intro: "¡Presta mucha atenci&oacuten aqu&iacute;!\
+      position: "left"
+    },
+    {
+      element: '#tab-inicio',
+      intro: "En este apartado, puedes volver al listado de todos los Conjuntos de Datos con que cuenta el Portal del MEC.",
+      position: "left"
+    },
+    {
+      element: '#tab-periodo',
+      intro: "¡Presta mucha atenci&oacuten aqu&iacute;!\
           </br>Esta lista deplegable te permite obtener resumenes de la instituci&oacute;n\
           acordes al año que hayas seleccionado en la misma.",
-          position: "bottom"
-      },
-      {
-          element: "#tab-resumen-institucion",
-          intro: "En esta secci&oacute;n, puedes obervar informaci&oacute;n \
+      position: "bottom"
+    },
+    {
+      element: "#tab-resumen-institucion",
+      intro: "En esta secci&oacute;n, puedes obervar informaci&oacute;n \
           resumida acerca de la instituci&oacute;n que seleccionaste.",
-          position: "right"
-      },
-      {
-          element: "#tab-establecimiento",
-          intro: "Siguiendo este enlace, podr&iacute;as obtener \
+      position: "right"
+    },
+    {
+      element: "#tab-establecimiento",
+      intro: "Siguiendo este enlace, podr&iacute;as obtener \
           informaci&oacute;n espec&iacute;fica referente al establecimiento.",
-          position: "right"
-      },
-      {
-          element: "#tab-resumen-matriculaciones",
-          intro: "En este apartado, puedes observar informaci&oacute;n \
+      position: "right"
+    },
+    {
+      element: "#tab-resumen-matriculaciones",
+      intro: "En este apartado, puedes observar informaci&oacute;n \
           resumida acerca de las matriculaciones realizadas en la instituci&oacute;n.\
           </br></br>Adem&aacute;s, tienes la posibilidad de obtener informaci&oacute;n espec&iacute;fica \
           de la matriculaci&oacute;n que te resulte de inter&eacute;s haciendo click sobre su enlace.",
-          position: "left"
-      },
-      {
-          element: '#tab-mapa',
-          intro: "En esta secci&oacute;n, puedes observar la ubicaci&oacute;n geogr&aacute;fica de la insituci&oacute;n. \
+      position: "left"
+    },
+    {
+      element: '#tab-mapa',
+      intro: "En esta secci&oacute;n, puedes observar la ubicaci&oacute;n geogr&aacute;fica de la insituci&oacute;n. \
           Esto lo hacemos por medio de la API de Google Maps. \
           </br>¡Te recomendamos que le eches un vistazo!\
           </br></br>Para ver más informaci&oacute;n sobre la instituci&oacute;n, haz click en el ícono que marca su ubicaci&oacute;n \
           geogr&aacute;fica.",
-          position: "left"
-      },
-      {
-          element: '#tab-descargas-filtradas',
-          intro: "Aqu&iacute; puedes descargar los datos asociados a la instituci&oacute;n en formato JSON.\
+      position: "left"
+    },
+    {
+      element: '#tab-descargas-filtradas',
+      intro: "Aqu&iacute; puedes descargar los datos asociados a la instituci&oacute;n en formato JSON.\
           </br></br>El formato <b>JSON</b>, es un formato de archivo muy fácil de leer por cualquier lenguaje de programación.\
           Esta simplicidad facilita su procesamiento para las computadoras en comparación a otros formatos.",
-          position: "top"
-      },
-      {
-          element: '#tab-microdata',
-          intro: "Por &uacute;ltimo, ¿Has escuchado sobre los Microdatos en HTML? \
+      position: "top"
+    },
+    {
+      element: '#tab-microdata',
+      intro: "Por &uacute;ltimo, ¿Has escuchado sobre los Microdatos en HTML? \
           </br></br>Para obtener m&aacute;s informaci&oacuten sobre ellos, puedes hacer click sobre este icono. \
           </br></br>Esta especificaci&oacute;n define el mecanismo de Microdatos HTML, el cual facilita el procesamiento autom&aacute;tico de los Documentos HTML.",
-          position: "top"
-      }
+      position: "top"
+    }
   ];
+  $('#start-tour').click(function() {
 
-  $('#start-tour').click(function () {
-
-      introJs().setOptions({
-          doneLabel: 'Salir',
-          nextLabel: 'Siguiente &rarr;',
-          prevLabel: '&larr; Anterior',
-          skipLabel: 'Salir',
-          steps: stepsListado
-      }).start();
-
+    introJs().setOptions({
+      doneLabel: 'Salir',
+      nextLabel: 'Siguiente &rarr;',
+      prevLabel: '&larr; Anterior',
+      skipLabel: 'Salir',
+      steps: stepsListado
+    }).start();
   });
 </script>
 <style>
-    .introjs-helperNumberLayer{
-        width: 23px;
-        height: 23px;
-        padding: 0px;
-    }
-    #start-tour{
-        cursor: pointer;
-    }
+  .introjs-helperNumberLayer{
+    width: 23px;
+    height: 23px;
+    padding: 0px;
+  }
+  #start-tour{
+    cursor: pointer;
+  }
 </style>

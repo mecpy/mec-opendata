@@ -1,3 +1,3 @@
-$("#matriculaciones-educacion-media-lista").html("<%= escape_javascript(render :partial => "lista", :locals => { :matriculaciones_educacion_media => @matriculaciones_educacion_media}) %>");
+$("#matriculaciones-educacion-media-lista, #matriculaciones-educacion-media-lista-clone").html("<%= escape_javascript(render :partial => "lista", :locals => { :matriculaciones_educacion_media => @matriculaciones_educacion_media}) %>");
 
 $("#matriculaciones-educacion-media-footer").html("<%= escape_javascript(render :partial => "footer", :locals => { :matriculaciones_educacion_media => @matriculaciones_educacion_media}) %>");

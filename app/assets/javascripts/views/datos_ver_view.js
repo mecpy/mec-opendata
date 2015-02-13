@@ -4,11 +4,11 @@ $(document).ready(function() {
     $(botones_derecha[0]).html('Ver todos');
     $(botones_derecha[1]).html('Ver columnas');
     //$('.btn-toolbar .focus-btn-group button').html('<span class="glyphicon glyphicon-screenshot"></span> Resaltar');
-    $('.btn-toolbar .focus-btn-group button').unbind()
-            .html('<span class="fa-lg icon-py-mapa"></span> <span class="hidden-xs">Todas las localizaciones</span>')
-            .attr('onclick', 'abrirMapa();');
-    
-    //$('.btn-toolbar .focus-btn-group button').unbind().remove();
+    //$('.btn-toolbar .focus-btn-group button').unbind()
+    //        .html('<span class="fa-lg icon-py-mapa"></span> <span class="hidden-xs">Todas las localizaciones</span>')
+    //        .attr('onclick', 'abrirMapa();');
+
+    $('.btn-toolbar .focus-btn-group button').unbind().remove();
 
     var tabla_original = tabla.find('div').next('table');
     var filtros_clonados = tabla.find('table').first().find('thead tr th');

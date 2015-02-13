@@ -1,6 +1,6 @@
 
 <% if directorios_instituciones.present? %>
-  
+
   <% directorios_instituciones.each do |i| %>
 
     <tr>
@@ -16,15 +16,15 @@
       <td><%= i.nombre_barrio_localidad %></td>
       <td><%= i.nombre_zona %></td>
     </tr>
-  
+
   <% end %>
-  
-  <% else %>
+
+<% else %>
 
   <tr>
-    
+
     <td colspan="19"><p class='none-result'>No se han encontrado resultados.</p></td>
-  
+
   </tr>
 
 <% end %>

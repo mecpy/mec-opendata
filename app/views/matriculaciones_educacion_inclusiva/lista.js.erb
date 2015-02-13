@@ -1,4 +1,4 @@
-$("#matriculaciones-educacion-inclusiva-lista").html("<%= escape_javascript(render :partial => "lista", :locals => { :matriculaciones_educacion_inclusiva => @matriculaciones_educacion_inclusiva}) %>");
+$("#matriculaciones-educacion-inclusiva-lista, #matriculaciones-educacion-inclusiva-lista-clone").html("<%= escape_javascript(render :partial => "lista", :locals => { :matriculaciones_educacion_inclusiva => @matriculaciones_educacion_inclusiva}) %>");
 
 <% if @matriculaciones_educacion_inclusiva.present? %>
 

@@ -1,35 +1,35 @@
 
 <% if matriculaciones_educacion_permanente.present? %>
-  
+
   <% matriculaciones_educacion_permanente.each do |p| %>
 
     <tr>
 
-      <td class="text-min"><%= p.anio %></td>
-      <td class="text-min"><b><%= link_to p.codigo_establecimiento, mec_custom_url(data_establecimientos_path(:ce => p.codigo_establecimiento)), :target => "_blank", :title => "Ir al dataset de establecimientos" %></b></td>      
-      <td class="text-min"><b><%= link_to p.codigo_institucion, mec_custom_url(data_instituciones_path(:ci => p.codigo_institucion)), :target => "_target", :title => "Ir al dataset de instituciones" %></b></td>
-      <td class="text-min"><%= p.nombre_institucion %></td>
-      <td class="text-min"><%= p.nombre_departamento %></td>
-      <td class="text-min"><%= p.nombre_distrito %></td>
-      <td class="text-min"><%= p.nombre_zona %></td>
-      <td class="text-min"><%= p.nombre_barrio_localidad %></td>
-      <td class="text-min"><%= p.sector_o_tipo_gestion %></td>
-      <td class="text-min"><%= p.matricula_ebbja %></td>
-      <td class="text-min"><%= p.matricula_fpi %></td>
-      <td class="text-min"><%= p.matricula_emapja %></td>
-      <td class="text-min"><%= p.matricula_emdja %></td>  
-      <td class="text-min"><%= p.matricula_fp %></td>
+      <td><%= p.anio %></td>
+      <td><b><%= link_to p.codigo_establecimiento, mec_custom_url(id_establecimientos_path(p.codigo_establecimiento)), target: '_blank',style: 'font-weight:bold;', title: 'Visualizar URI' %></b></td>
+      <td><b><%= link_to p.codigo_institucion, mec_custom_url(id_instituciones_path(p.codigo_institucion)), target: '_blank',style: 'font-weight:bold;', title: 'Visualizar URI' %></b></td>
+      <td><%= p.nombre_institucion %></td>
+      <td><%= p.nombre_departamento %></td>
+      <td><%= p.nombre_distrito %></td>
+      <td><%= p.nombre_barrio_localidad %></td>
+      <td><%= p.nombre_zona %></td>
+      <td><%= p.sector_o_tipo_gestion %></td>
+      <td><%= p.matricula_ebbja %></td>
+      <td><%= p.matricula_fpi %></td>
+      <td><%= p.matricula_emapja %></td>
+      <td><%= p.matricula_emdja %></td>  
+      <td><%= p.matricula_fp %></td>
 
     </tr>
-  
+
   <% end %>
 
-  <% else %>
+<% else %>
 
   <tr>
-    
+
     <td colspan="14"><p class='none-result'>No se han encontrado resultados.</p></td>
-  
+
   </tr>
 
 <% end %>

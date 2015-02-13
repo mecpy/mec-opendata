@@ -1,102 +1,267 @@
 <%= javascript_include_tag "http://maps.google.com/maps/api/js?sensor=true" %>
 <%= javascript_include_tag "/assets/gmaps/gmaps.js?body=1", "/assets/gmaps/markerclusterer.js?body=1" %>
+<%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
 <%= render :partial => "layouts/gmaps", :locals => { :ancho_maps => "100%", :altura_maps => "350px"} %>
 
-<h2>
-  <span itemprop="name">Proyecto 111</span>
-  <meta itemprop="description"
-        content="Contiene la datos del proyecto de “Ampliación y reposición de espacios escolares en 111 Establecimientos Educativos del MEC, en Asunción y 10 departamentos geográficos del país”. Dicho proyecto tiene como propósito culminar las obras iniciadas en los años 2011 y 2012 –que cuentan con contratos vigentes– considerando los requerimientos pedagógicos y socioculturales. Las intervenciones consisten en ampliar la infraestructura edilicia escolar para aumentar la capacidad del servicio educacional, sin modificación de lo existente, así como la reposición que implica la renovación parcial o total de los espacios educativos existentes. El proyecto es financiado por el Fondo para la Excelencia de la Educación y la Investigación y totaliza una inversión de 6.663.596 dólares americanos (tipo de cambio: 4.500)."/>
-  <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31">
-  <meta itemprop="url" content="http://datos.mec.gov.py/data/establecimientos111">  
-  <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
-    <meta itemprop="name" content="Ministerio de Educación y Cultura">
-    <meta itemprop="url" content="http://www.mec.gov.py/">
-    <meta itemprop="email" content="datosabiertos@mec.gov.py">
-  </span>
-  <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
-    <meta itemprop="name" content="Juan Barrios">
-    <meta itemprop="email" content="datosabiertos@mec.gov.py">
-  </span>
-  <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
-  <meta itemprop="keywords" style="display: none;" content="educación,establecimientos,escolar,geografico"/>
-  <meta itemprop="version" style="display: none;" content="1.0"/>
-  <span style="float:right;">
-    <%= link_to "Ver diccionario", mec_custom_url(def_establecimientos111_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
-    <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), mec_custom_url(def_establecimientos111_url), :title => "Ir al diccionario" %>
-    <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
-    <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
-  </span>
+<div>
+  <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_establecimientos111_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
+  <!--<div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>-->
+  <h1>
+    <span itemprop="name">Proyecto 111</span>
+    <meta itemprop="description"
+          content="Contiene la datos del proyecto de “Ampliación y reposición de espacios escolares en 111 Establecimientos Educativos del MEC, en Asunción y 10 departamentos geográficos del país”. Dicho proyecto tiene como propósito culminar las obras iniciadas en los años 2011 y 2012 –que cuentan con contratos vigentes– considerando los requerimientos pedagógicos y socioculturales. Las intervenciones consisten en ampliar la infraestructura edilicia escolar para aumentar la capacidad del servicio educacional, sin modificación de lo existente, así como la reposición que implica la renovación parcial o total de los espacios educativos existentes. El proyecto es financiado por el Fondo para la Excelencia de la Educación y la Investigación y totaliza una inversión de 6.663.596 dólares americanos (tipo de cambio: 4.500)."/>
+    <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31">
+    <meta itemprop="url" content="http://datos.mec.gov.py/data/establecimientos111">  
+    <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+      <meta itemprop="name" content="Ministerio de Educación y Cultura">
+      <meta itemprop="url" content="http://www.mec.gov.py/">
+      <meta itemprop="email" content="datosabiertos@mec.gov.py">
+    </span>
+    <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+      <meta itemprop="name" content="Juan Barrios">
+      <meta itemprop="email" content="datosabiertos@mec.gov.py">
+    </span>
+    <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+    <meta itemprop="keywords" style="display: none;" content="educación,establecimientos,escolar,geografico"/>
+    <meta itemprop="version" style="display: none;" content="1.0"/>
+  </h1>
+</div>
 
-</h2>
+<%= form_tag mec_custom_url(data_establecimientos111_lista_url(nil)), :remote => true, :id => "form-buscar-establecimientos" do  %>
+  <div class="table-responsive">
+    <table class="table table-small-font table-bordered table-striped">
+      <thead>
+        <tr>
 
-<div class="table-outter">
+          <th rowspan="2" data-priority="4" id="ubicaciones-geograficas"> 
+            <span data-titulo="true" class="hidden">Mapa</span>
+          </th>
 
-  <table class="table table-striped table-bordered table-hover" style="margin-bottom: 0px; width: 2400px; max-width: none">
-    <%= form_tag mec_custom_url(data_establecimientos111_lista_url(nil)), :remote => true, :id => "form-buscar-establecimientos" do  %>
-      <tr>
-        <th rowspan="2" style="width:5%;" class="text-min celda-derecha">
-          <%= label_tag "Periodo" %><br/><br/><br/><br/><br/>
-          <%= select :form_buscar_establecimientos, :anio, [2014, 2012], {:class => 'text-min'} %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_anio'),1);" %>
-        </th>
+          <th rowspan="2" data-priority="1">
+            <span data-titulo="true">Período</span>
 
-        <th rowspan="2" style="width:5%;" class="text-min">
-          <%= label_tag nil, "Institución".html_safe%><br/><br/><br/><br/><br/>
-          <%= text_field_tag :form_buscar_establecimientos_nombre_institucion, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_nombre_institucion'));"%>
-        </th>
+            <span class="orden">
+              <i class="filtro fa fa-sort"></i>
+              <i class="descendente fa fa-sort-desc"></i>
+              <i class="ascendente fa fa-sort-asc"></i>
+            </span>
 
-        <th rowspan="2" style="width:5%;" class="text-min">
-          <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe%><br/><br/><br/><br/>
-          <%= text_field_tag :form_buscar_establecimientos_codigo_establecimiento, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_codigo_establecimiento'));"%>
-        </th>
+      <div class="input-group input-group-sm">
+        <%= select :form_buscar_establecimientos, :anio, [2014], {}, :class => 'form-control input-sm' %>
+      </div>
+      </th>
 
-        <th rowspan="2" style="width:5%;" class="text-min">
-          <%= label_tag "Departamento"%><br/><br/><br/><br/><br/>
-          <%= text_field_tag :form_buscar_establecimientos_nombre_departamento, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_nombre_departamento'));" %>
-        </th>
+      <th rowspan="2" data-priority="1">
+        <span data-titulo="true">Institución</span>
 
-        <th rowspan="2" style="width:5%;" class="text-min">
-          <%= label_tag "Distrito"%><br/><br/><br/><br/><br/>
-          <%= text_field_tag :form_buscar_establecimientos_nombre_distrito, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_nombre_distrito'));" %>
-        </th>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
 
-        <th rowspan="2" style="width:5%;" class="text-min">
-          <%= label_tag "Zona"%><br/><br/><br/><br/><br/>
-          <%= text_field_tag :form_buscar_establecimientos_nombre_zona, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_nombre_zona'));" %>
-        </th>
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_establecimientos_nombre_institucion, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_nombre_institucion');"><i class="fa fa-times"></i></span>
+      </div>
 
-        <th rowspan="2" style="width:5%;" class="text-min">
-          <%= label_tag "Barrio/Localidad"%><br/><br/><br/><br/><br/>
-          <%= text_field_tag :form_buscar_establecimientos_nombre_barrio_localidad, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_nombre_barrio_localidad'));" %>
-        </th>
+      <%= hidden_field_tag :form_buscar_establecimientos_nombre_institucion_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_institucion, 
+            atributo_tipo: :text, 
+            model: :Establecimiento111, 
+            limit: 10,
+            cadena_consulta: "nombre_institucion",
+            orden: "nombre_institucion")), 
+        parametro_id: "form_buscar_establecimientos_nombre_institucion", 
+        resultado_id: "form_buscar_establecimientos_nombre_institucion_id",
+        min_length: 3
+        ) %>
 
-        <th rowspan="2" style="width:5%;" class="text-min">
-          <%= label_tag nil, "Direcci&oacute;n".html_safe%><br/><br/><br/><br/><br/>
-          <%= text_field_tag :form_buscar_establecimientos_direccion, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_direccion'));" %>
-        </th>
+      </th>
 
-        <th rowspan="2" style="width:5%;" class="text-min">
-          <%= label_tag nil, "Asentamientos Priorizados".html_safe%><br/><br/><br/><br/>
-          <%= select_tag(:form_buscar_establecimientos_asentamientos_priorizados_operador, options_for_select(['>', '<', '='])) %>
-          <%= number_field_tag :form_buscar_establecimientos_asentamientos_priorizados, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_asentamientos_priorizados'));" %>
-        </th>
-        <th colspan="7" class="text-min">
-          <%= label_tag nil, "Ampliación".html_safe%>
-        </th>
-        <th colspan="2" class="text-min">
-          <%= label_tag nil, "Reparación".html_safe%>
-        </th>
-        <th colspan="2" class="text-min">
-          <%= label_tag nil, "Otras Obras".html_safe%>
-        </th>
+      <th rowspan="2" data-priority="1">
+        <span data-titulo="true">Código Establecimiento</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_establecimientos_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_codigo_establecimiento');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_establecimientos_codigo_establecimiento_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_establecimiento, 
+            atributo_tipo: :text, 
+            model: :Establecimiento111, 
+            limit: 10,
+            cadena_consulta: "codigo_establecimiento",
+            orden: "codigo_establecimiento")), 
+        parametro_id: "form_buscar_establecimientos_codigo_establecimiento", 
+        resultado_id: "form_buscar_establecimientos_codigo_establecimiento_id",
+        min_length: 3
+        ) %>
+
+      </th>
+
+      <th rowspan="2" data-priority="1">
+        <span data-titulo="true">Departamento</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_establecimientos_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_nombre_departamento');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_establecimientos_nombre_departamento_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_departamento, 
+            atributo_tipo: :text, 
+            model: :Establecimiento111, 
+            limit: 10,
+            cadena_consulta: "nombre_departamento",
+            orden: "nombre_departamento")), 
+        parametro_id: "form_buscar_establecimientos_nombre_departamento", 
+        resultado_id: "form_buscar_establecimientos_nombre_departamento_id",
+        min_length: 4
+        ) %>
+
+      </th>
+
+      <th rowspan="2" data-priority="1">
+        <span data-titulo="true">Distrito</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_establecimientos_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_nombre_distrito');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_establecimientos_nombre_distrito_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_distrito, 
+            atributo_tipo: :text, 
+            model: :Establecimiento111, 
+            limit: 10,
+            cadena_consulta: "nombre_distrito",
+            orden: "nombre_distrito")), 
+        parametro_id: "form_buscar_establecimientos_nombre_distrito", 
+        resultado_id: "form_buscar_establecimientos_nombre_distrito_id",
+        min_length: 4
+        ) %>
+
+      </th>
+
+      <th rowspan="2" data-priority="2">
+        <span data-titulo="true">Zona</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_establecimientos_nombre_zona, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_nombre_zona');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_establecimientos_nombre_zona_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_zona, 
+            atributo_tipo: :text, 
+            model: :Establecimiento111, 
+            limit: 10,
+            cadena_consulta: "nombre_zona",
+            orden: "nombre_zona")), 
+        parametro_id: "form_buscar_establecimientos_nombre_zona", 
+        resultado_id: "form_buscar_establecimientos_nombre_zona_id",
+        min_length: 3
+        ) %>
+
+      </th>
+
+      <th rowspan="2" data-priority="2">
+        <span data-titulo="true">Localidad/Barrio</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_establecimientos_nombre_barrio_localidad, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_nombre_barrio_localidad');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_establecimientos_nombre_barrio_localidad_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_barrio_localidad, 
+            atributo_tipo: :text, 
+            model: :Establecimiento111, 
+            limit: 10,
+            cadena_consulta: "nombre_barrio_localidad",
+            orden: "nombre_barrio_localidad")), 
+        parametro_id: "form_buscar_establecimientos_nombre_barrio_localidad", 
+        resultado_id: "form_buscar_establecimientos_nombre_barrio_localidad_id",
+        min_length: 4
+        ) %>
+
+      </th>
+
+      <th rowspan="2" data-priority="2">
+        <span data-titulo="true">Direcci&oacute;n</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_establecimientos_direccion, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_direccion');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_establecimientos_direccion_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :direccion, 
+            atributo_tipo: :text, 
+            model: :Establecimiento111, 
+            limit: 10,
+            cadena_consulta: "direccion",
+            orden: "direccion")), 
+        parametro_id: "form_buscar_establecimientos_direccion", 
+        resultado_id: "form_buscar_establecimientos_direccion_id",
+        min_length: 4
+        ) %>
+
+      </th>
+
+      <th rowspan="2" style="width:5%;" class="text-min">
+        <%= label_tag nil, "Asentamientos Priorizados".html_safe%><br/><br/><br/><br/>
+        <%= select_tag(:form_buscar_establecimientos_asentamientos_priorizados_operador, options_for_select(['>', '<', '='])) %>
+        <%= number_field_tag :form_buscar_establecimientos_asentamientos_priorizados, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_asentamientos_priorizados'));" %>
+      </th>
+      <th colspan="7" class="text-min">
+        <%= label_tag nil, "Ampliación".html_safe%>
+      </th>
+      <th colspan="2" class="text-min">
+        <%= label_tag nil, "Reparación".html_safe%>
+      </th>
+      <th colspan="2" class="text-min">
+        <%= label_tag nil, "Otras Obras".html_safe%>
+      </th>
       </tr>
       <tr>
         <th style="width:5%;" class="text-min">
@@ -176,16 +341,14 @@
           <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_cercado'));" %>
         </th>
 
-
-        <th style="width:16px;" id="ubicaciones-geograficas"></th>
       </tr>
-    <% end %>
+      </thead>
 
+      <tbody id="establecimientos-lista"></tbody>
 
-    <tbody id="establecimientos-lista"></tbody>
-
-  </table>
-</div>
+    </table>
+  </div>
+<% end %>
 
 <table class="table table-striped table-bordered table-hover">
   <tbody id="establecimientos-111-footer"></tbody>
@@ -247,17 +410,6 @@
 
   })
 
-  //LIMPIAR FORMULARIO DE BUSQUEDA
-  function limpiar_form_buscar_establecimientos() {
-
-    $(".table-bordered input").val();
-    $('.establecimiento-ubicacion-geografica').html('');
-    $("#establecimientos-ubicaciones-geograficas").html('');
-    $.ajaxQ.abortAll();
-    $("#form-buscar-establecimientos").submit();
-
-  }
-
   function mostrar_mapa(parametros) {
 
     var tr_size = $.trim($("#establecimientos-ubicaciones-geograficas").html()).length
@@ -310,40 +462,13 @@
 
 <% else %>
 
-    limpiar_form_buscar_establecimientos();
+    //LIMPIAR FORMULARIO DE BUSQUEDA
+    valor_defecto = [{
+        id: '#form_buscar_establecimientos_anio',
+        valor: 2014
+      }];
+    resetForm("#form-buscar-establecimientos", valor_defecto);
 
 <% end %>
 
-  //--------------- QUITAR FILTRO -------------------//
-  function quitar_filtro(id, ban) {
-    if (ban === 1) {
-      id.val("2014");
-    } else {
-      id.val('');
-    }
-    $.ajaxQ.abortAll();
-    $('#form-buscar-establecimientos').submit();
-
-  }
-  //-------------------------------------------------//
-
 </script>
-
-<style>
-
-  .text-min {font-size:9px !important; color: #000; text-align:center !important;}
-
-  #cbue-menu1 {background:#e9e9e9;}
-  .text-min input[type="text"], .text-min select {
-    border: 1px solid silver;
-    padding: 3px;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
-    color:#000;
-  }
-  .text-min input[type="text"] { width: 60px;}
-  .text-min input[type="number"] { width: 40px;}
-  #tablaContenedor{width:100%;}
-
-</style>
-

@@ -1,39 +1,39 @@
 
 <% if matriculaciones_educacion_escolar_basica.present? %>
-  
+
   <% matriculaciones_educacion_escolar_basica.each do |meeb| %>
 
     <tr>
 
-      <td class="text-min"><%= meeb.anio %></td>
-      <td class="text-min"><b><%= link_to meeb.codigo_establecimiento, mec_custom_url(data_establecimientos_path(:ce => meeb.codigo_establecimiento)), :target => "_blank", :title => "Ir al dataset de establecimientos" %></b></td>      
-      <td class="text-min"><b><%= link_to meeb.codigo_institucion, mec_custom_url(data_instituciones_path(:ci => meeb.codigo_institucion)), :target => "_target", :title => "Ir al dataset de instituciones" %></b></td>
-      <td class="text-min"><%= meeb.nombre_institucion %></td>
-      <td class="text-min"><%= meeb.nombre_departamento %></td>
-      <td class="text-min"><%= meeb.nombre_distrito %></td>
-      <td class="text-min"><%= meeb.nombre_barrio_localidad %></td>
-      <td class="text-min"><%= meeb.nombre_zona %></td>
-      <td class="text-min"><%= meeb.sector_o_tipo_gestion %></td>
-      <td class="text-min"><%= meeb.primer_grado %></td>
-      <td class="text-min"><%= meeb.segundo_grado %></td>
-      <td class="text-min"><%= meeb.tercer_grado %></td>
-      <td class="text-min"><%= meeb.cuarto_grado %></td>
-      <td class="text-min"><%= meeb.quinto_grado %></td>  
-      <td class="text-min"><%= meeb.sexto_grado %></td>
-      <td class="text-min"><%= meeb.septimo_grado %></td>
-      <td class="text-min"><%= meeb.octavo_grado %></td>
-      <td class="text-min"><%= meeb.noveno_grado %></td>
-      <td class="text-min"><%= meeb.total_matriculados %></td>
+      <td><%= meeb.anio %></td>
+      <td><b><%= link_to meeb.codigo_establecimiento, mec_custom_url(id_establecimientos_path(meeb.codigo_establecimiento)), target: '_blank',style: 'font-weight:bold;', title: 'Visualizar URI' %></b></td>
+      <td><b><%= link_to meeb.codigo_institucion, mec_custom_url(id_instituciones_path(meeb.codigo_institucion)), target: '_blank',style: 'font-weight:bold;', title: 'Visualizar URI' %></b></td>
+      <td><%= meeb.nombre_institucion %></td>
+      <td><%= meeb.nombre_departamento %></td>
+      <td><%= meeb.nombre_distrito %></td>
+      <td><%= meeb.nombre_barrio_localidad %></td>
+      <td><%= meeb.nombre_zona %></td>
+      <td><%= meeb.sector_o_tipo_gestion %></td>
+      <td><%= meeb.primer_grado %></td>
+      <td><%= meeb.segundo_grado %></td>
+      <td><%= meeb.tercer_grado %></td>
+      <td><%= meeb.cuarto_grado %></td>
+      <td><%= meeb.quinto_grado %></td>  
+      <td><%= meeb.sexto_grado %></td>
+      <td><%= meeb.septimo_grado %></td>
+      <td><%= meeb.octavo_grado %></td>
+      <td><%= meeb.noveno_grado %></td>
+      <td><%= meeb.total_matriculados %></td>
     </tr>
-  
+
   <% end %>
 
-  <% else %>
+<% else %>
 
   <tr>
-    
+
     <td colspan="11"><p class='none-result'>No se han encontrado resultados.</p></td>
-  
+
   </tr>
 
 <% end %>

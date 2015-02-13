@@ -1,34 +1,34 @@
 
 <% if matriculaciones_inicial.present? %>
-  
+
   <% matriculaciones_inicial.each do |mi| %>
 
     <tr>
 
-      <td class="text-min"><%= mi.anio %></td>
-      <td class="text-min"><b><%= link_to mi.codigo_establecimiento, mec_custom_url(data_establecimientos_path(:ce => mi.codigo_establecimiento)), :target => "_blank", :title => "Ir al dataset de establecimientos" %></b></td>      
-      <td class="text-min"><b><%= link_to mi.codigo_institucion, mec_custom_url(data_instituciones_path(:ci => mi.codigo_institucion)), :target => "_target", :title => "Ir al dataset de instituciones" %></b></td>
-      <td class="text-min"><%= mi.nombre_institucion %></td>
-      <td class="text-min"><%= mi.nombre_departamento %></td>
-      <td class="text-min"><%= mi.nombre_distrito %></td>
-      <td class="text-min"><%= mi.nombre_barrio_localidad %></td>
-      <td class="text-min"><%= mi.nombre_zona %></td>
-      <td class="text-min"><%= mi.sector_o_tipo_gestion %></td>
-      <td class="text-min"><%= mi.maternal %></td>
-      <td class="text-min"><%= mi.prejardin %></td>
-      <td class="text-min"><%= mi.jardin %></td>
-      <td class="text-min"><%= mi.preescolar %></td>
-      <td class="text-min"><%= mi.total_matriculados %></td>
+      <td><%= mi.anio %></td>
+      <td><b><%= link_to mi.codigo_establecimiento, mec_custom_url(id_establecimientos_path(mi.codigo_establecimiento)), target: '_blank',style: 'font-weight:bold;', title: 'Visualizar URI' %></b></td>
+      <td><b><%= link_to mi.codigo_institucion, mec_custom_url(id_instituciones_path(mi.codigo_institucion)), target: '_blank',style: 'font-weight:bold;', title: 'Visualizar URI' %></b></td>
+      <td><%= mi.nombre_institucion %></td>
+      <td><%= mi.nombre_departamento %></td>
+      <td><%= mi.nombre_distrito %></td>
+      <td><%= mi.nombre_barrio_localidad %></td>
+      <td><%= mi.nombre_zona %></td>
+      <td><%= mi.sector_o_tipo_gestion %></td>
+      <td><%= mi.maternal %></td>
+      <td><%= mi.prejardin %></td>
+      <td><%= mi.jardin %></td>
+      <td><%= mi.preescolar %></td>
+      <td><%= mi.total_matriculados %></td>
     </tr>
-  
+
   <% end %>
-  
-  <% else %>
+
+<% else %>
 
   <tr>
-    
+
     <td colspan="11"><p class='none-result'>No se han encontrado resultados.</p></td>
-  
+
   </tr>
 
 <% end %>

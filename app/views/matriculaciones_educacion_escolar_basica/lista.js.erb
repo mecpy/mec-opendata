@@ -1,4 +1,4 @@
-$("#lista").html("<%= escape_javascript(render :partial => "lista", :locals => { :matriculaciones_educacion_escolar_basica => @matriculaciones_educacion_escolar_basica}) %>");
+$("#lista, #lista-clone").html("<%= escape_javascript(render :partial => "lista", :locals => { :matriculaciones_educacion_escolar_basica => @matriculaciones_educacion_escolar_basica}) %>");
 
 <% if @matriculaciones_educacion_escolar_basica.present? %>
 

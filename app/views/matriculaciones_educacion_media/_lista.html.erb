@@ -1,33 +1,33 @@
 
 <% if matriculaciones_educacion_media.present? %>
-  
+
   <% matriculaciones_educacion_media.each do |e| %>
 
     <tr>
 
-      <td class="text-min"><%= e.anio %></td>
-      <td class="text-min"><b><%= link_to e.codigo_establecimiento, mec_custom_url(data_establecimientos_path(:ce => e.codigo_establecimiento)), :target => "_blank", :title => "Ir al dataset de establecimientos" %></b></td>      
-      <td class="text-min"><b><%= link_to e.codigo_institucion, mec_custom_url(data_instituciones_path(:ci => e.codigo_institucion)), :target => "_target", :title => "Ir al dataset de instituciones" %></b></td>
-      <td class="text-min"><%= e.nombre_institucion %></td> 
-      <td class="text-min"><%= e.nombre_departamento %></td>
-      <td class="text-min"><%= e.nombre_distrito %></td>
-      <td class="text-min"><%= e.nombre_barrio_localidad %></td>
-      <td class="text-min"><%= e.nombre_zona %></td>
-      <td class="text-min"><%= e.sector_o_tipo_gestion %></td>     
-      <td class="text-min"><%= e.matricula_cientifico %></td>       
-      <td class="text-min"><%= e.matricula_tecnico %></td>       
-      <td class="text-min"><%= e.matricula_media_abierta %></td>       
-      <td class="text-min"><%= e.matricula_formacion_profesional_media %></td>       
+      <td><%= e.anio %></td>
+      <td><b><%= link_to e.codigo_establecimiento, mec_custom_url(id_establecimientos_path(e.codigo_establecimiento)), target: '_blank',style: 'font-weight:bold;', title: 'Visualizar URI' %></b></td>
+      <td><b><%= link_to e.codigo_institucion, mec_custom_url(id_instituciones_path(e.codigo_institucion)), target: '_blank',style: 'font-weight:bold;', title: 'Visualizar URI' %></b></td>
+      <td><%= e.nombre_institucion %></td> 
+      <td><%= e.nombre_departamento %></td>
+      <td><%= e.nombre_distrito %></td>
+      <td><%= e.nombre_barrio_localidad %></td>
+      <td><%= e.nombre_zona %></td>
+      <td><%= e.sector_o_tipo_gestion %></td>     
+      <td><%= e.matricula_cientifico %></td>       
+      <td><%= e.matricula_tecnico %></td>       
+      <td><%= e.matricula_media_abierta %></td>       
+      <td><%= e.matricula_formacion_profesional_media %></td>       
     </tr>
-  
+
   <% end %>
-  
-  <% else %>
+
+<% else %>
 
   <tr>
-    
+
     <td colspan="13"><p class='none-result'>No se han encontrado resultados.</p></td>
-  
+
   </tr>
 
 <% end %>

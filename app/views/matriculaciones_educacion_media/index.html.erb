@@ -1,141 +1,317 @@
-<h2>
-  <span itemprop="name">Matriculaciones Educación Media</span>
-  <meta itemprop="description" content="
-        Se refiere a la cantidad de matriculados del 1.º al 3er. curso en las diferentes modalidades de educación media con sus correspondientes códigos identificatorios."/>
-  <meta itemprop="url" content="http://datos.mec.gov.py/data/matriculaciones_educacion_media">
-  <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
-  <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
-    <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
-    <meta itemprop="url" content="http://datos.mec.gov.py/">
-    <meta itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura">
-  </span>
-  <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
-    <meta itemprop="name" content="Ministerio de Educación y Cultura">
-    <meta itemprop="url" content="http://www.mec.gov.py/">
-    <meta itemprop="email" content="datosabiertos@mec.gov.py">
-  </span>
-  <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
-    <meta itemprop="name" content="Juan Barrios">
-    <meta itemprop="email" content="datosabiertos@mec.gov.py">
-  </span>
-  <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
-  <meta itemprop="keywords" style="display: none;" content="educación,matriculaciones,educación media"/>
-  <meta itemprop="version" style="display: none;" content="1.0"/>
-
-  <span style="float:right;">
-    <%= link_to "Ver diccionario", mec_custom_url(def_matriculaciones_educacion_media_url), :title => "Ir al diccionario", :style => "font-size:12px;" %>
-    <%= link_to image_tag("def_icon.png", :style => "width:24px;" ), mec_custom_url(def_matriculaciones_educacion_media_url), :title => "Ir al diccionario" %>
-    <%= link_to "Inicio", mec_custom_url(index_url), :title => "Ir al inicio", :style => "font-size:12px;" %>
-    <%= link_to image_tag("home.png", :style => "width:24px;"), mec_custom_url(index_url), :title => "Ir al inicio" %>
-  </span>
-
-</h2>
-
-<div class="table-outter">
-  <table id="matriculaciones-educacion-media-table" class="table table-striped table-bordered table-hover" style="margin-bottom: 0px; width: 2200px; max-width: none">
-
-    <tr>
-
-      <%= form_tag mec_custom_url(data_matriculaciones_educacion_media_lista_url(nil,nil)), :remote => true, :id => "form-buscar-matriculaciones-educacion-media" do  %>
-
-        <th style="width:6%" class="text-min celda-derecha">
-          <%= label_tag "Periodo" %><br /><br />
-          <%= select :form_buscar_matriculaciones_educacion_media, :anio, [2012], {:class => 'text-min'} %>
-          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_media_anio'),1);" %>
-        </th>
-
-        <th style="width:7%" class="text-min">
-          <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe%><br /><br />
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_media_codigo_establecimiento, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_media_codigo_establecimiento'));" %>
-        </th>
-
-        <th style="width:7%" class="text-min">
-          <%= label_tag nil, "C&oacute;digo de Instituci&oacute;n".html_safe %><br /><br />
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_media_codigo_institucion, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_media_codigo_institucion'));" %>
-        </th>
-
-        <th style="width:7%" class="text-min">
-          <%= label_tag "Institución"%><br /><br />
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_media_nombre_institucion, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_media_nombre_institucion'));" %>
-        </th>
-
-
-        <th style="width:7%" class="text-min">
-          <%= label_tag "Departamento"%><br /><br />
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_media_nombre_departamento, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_media_nombre_departamento'));" %>
-        </th>
-
-        <th style="width:7%" class="text-min">
-          <%= label_tag "Distrito"%><br /><br />
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_media_nombre_distrito, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_media_nombre_distrito'));" %>
-        </th>
-
-        <th style="width:7%" class="text-min">
-          <%= label_tag "Barrio/Localidad"%><br /><br />
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_media_nombre_barrio_localidad, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_media_nombre_barrio_localidad'));" %>
-        </th>
-
-        <th style="width:7%" class="text-min">
-          <%= label_tag "Zona"%><br /><br />
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_media_nombre_zona, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_media_nombre_zona'));" %>
-        </th>
-
-
-        <th style="width:7%" class="text-min">
-          <%= label_tag "Sector o Tipo de Gestión"%><br /><br />
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_media_sector_o_tipo_gestion, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_media_sector_o_tipo_gestion'));" %>
-        </th>
-
-        <th style="width:7%;" class="text-min">
-          <%= label_tag nil, "Cantidad de Matriculados<br /> Científico".html_safe%><br />
-          <%= select_tag(:form_buscar_matriculaciones_educacion_media_matricula_cientifico_operador, options_for_select(['>', '<', '='])) %>
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_media_matricula_cientifico, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_media_matricula_cientifico'));" %>
-        </th>
-
-        <th style="width:7%;" class="text-min">
-          <%= label_tag nil, "Cantidad de Matriculados<br /> Técnico".html_safe%><br />
-          <%= select_tag(:form_buscar_matriculaciones_educacion_media_matricula_tecnico_operador, options_for_select(['>', '<', '='])) %>
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_media_matricula_tecnico, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_media_matricula_tecnico'));" %>
-        </th>
-
-        <th style="width:7%;" class="text-min">
-          <%= label_tag nil, "Cantidad de Matriculados<br /> Media Abierta".html_safe%><br />
-          <%= select_tag(:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_operador, options_for_select(['>', '<', '='])) %>
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_media_matricula_media_abierta, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_media_matricula_media_abierta'));" %>
-        </th>
-
-
-        <th style="width:10%;" class="text-min">
-          <%= label_tag nil, "Cantidad de Matriculados<br /> Formación Profesional Media".html_safe%><br />
-          <%= select_tag(:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_operador, options_for_select(['>', '<', '='])) %>
-          <%= text_field_tag :form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media'));" %>
-        </th>
-
-      <% end %>
-
-    </tr>
-
-    <tbody id="matriculaciones-educacion-media-lista"></tbody>
-
-  </table>
+<%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
+<div>
+  <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_matriculaciones_educacion_media_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
+  <h1>
+    <span itemprop="name">Matriculaciones Educación Media</span>
+    <meta itemprop="description" content="
+          Se refiere a la cantidad de matriculados del 1.º al 3er. curso en las diferentes modalidades de educación media con sus correspondientes códigos identificatorios."/>
+    <meta itemprop="url" content="http://datos.mec.gov.py/data/matriculaciones_educacion_media">
+    <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+    <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
+      <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
+      <meta itemprop="url" content="http://datos.mec.gov.py/">
+      <meta itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura">
+    </span>
+    <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+      <meta itemprop="name" content="Ministerio de Educación y Cultura">
+      <meta itemprop="url" content="http://www.mec.gov.py/">
+      <meta itemprop="email" content="datosabiertos@mec.gov.py">
+    </span>
+    <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+      <meta itemprop="name" content="Juan Barrios">
+      <meta itemprop="email" content="datosabiertos@mec.gov.py">
+    </span>
+    <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+    <meta itemprop="keywords" style="display: none;" content="educación,matriculaciones,educación media"/>
+    <meta itemprop="version" style="display: none;" content="1.0"/>
+  </h1>
 </div>
+
+<%= form_tag mec_custom_url(data_matriculaciones_educacion_media_lista_url(nil,nil)), :remote => true, :id => "form-buscar-matriculaciones-educacion-media" do  %>
+  <div class="table-responsive">
+    <table class="table table-small-font table-bordered table-striped">
+      <thead>
+        <tr>
+
+          <th data-priority="1">
+            <span data-titulo="true">Periodo</span>
+
+            <span class="orden">
+              <i class="filtro fa fa-sort"></i>
+              <i class="descendente fa fa-sort-desc"></i>
+              <i class="ascendente fa fa-sort-asc"></i>
+            </span>
+
+      <div class="input-group input-group-sm">
+        <%= select :form_buscar_matriculaciones_educacion_media, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
+      </div>
+      </th>
+
+      <th data-priority="1">
+        <span data-titulo="true">C&oacute;digo Establecimiento</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_media_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-media', '#form_buscar_matriculaciones_educacion_media_codigo_establecimiento');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_media_codigo_establecimiento_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_establecimiento, 
+            atributo_tipo: :text, 
+            model: :MatriculacionEducacionMedia, 
+            limit: 10,
+            cadena_consulta: "codigo_establecimiento",
+            orden: "codigo_establecimiento")), 
+        parametro_id: "form_buscar_matriculaciones_educacion_media_codigo_establecimiento", 
+        resultado_id: "form_buscar_matriculaciones_educacion_media_codigo_establecimiento_id",
+        min_length: 3
+        ) %>
+
+      </th>
+
+      <th data-priority="1">
+        <span data-titulo="true">Código Institución</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_media_codigo_institucion, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-media', '#form_buscar_matriculaciones_educacion_media_codigo_institucion');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_media_codigo_institucion_id %>
+      <%= autocomplete_help(  ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_institucion, 
+            atributo_tipo: :int, 
+            model: :MatriculacionEducacionMedia, 
+            limit: 10,
+            cadena_consulta: "codigo_institucion",
+            orden: "codigo_institucion")), 
+        parametro_id: "form_buscar_matriculaciones_educacion_media_codigo_institucion", 
+        resultado_id: "form_buscar_matriculaciones_educacion_media_codigo_institucion_id",
+        min_length: 3
+        ) %>
+
+      </th>
+
+      <th data-priority="1">
+        <span data-titulo="true">Instituci&oacute;n</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_media_nombre_institucion, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-media', '#form_buscar_matriculaciones_educacion_media_nombre_institucion');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_media_nombre_institucion_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_institucion, 
+            atributo_tipo: :text, 
+            model: :MatriculacionEducacionMedia, 
+            limit: 10,
+            cadena_consulta: "nombre_institucion",
+            orden: "nombre_institucion")), 
+        parametro_id: "form_buscar_matriculaciones_educacion_media_nombre_institucion", 
+        resultado_id: "form_buscar_matriculaciones_educacion_media_nombre_institucion_id",
+        min_length: 4
+        ) %>
+
+      </th>
+
+      <th data-priority="2">
+        <span data-titulo="true">Departamento</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_media_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-media', '#form_buscar_matriculaciones_educacion_media_nombre_departamento');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_media_nombre_departamento_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_departamento, 
+            atributo_tipo: :text, 
+            model: :MatriculacionEducacionMedia, 
+            limit: 10,
+            cadena_consulta: "nombre_departamento",
+            orden: "nombre_departamento")), 
+        parametro_id: "form_buscar_matriculaciones_educacion_media_nombre_departamento", 
+        resultado_id: "form_buscar_matriculaciones_educacion_media_nombre_departamento_id",
+        min_length: 3
+        ) %>
+
+      </th>
+
+      <th data-priority="2">
+        <span data-titulo="true">Distrito</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_media_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-media', '#form_buscar_matriculaciones_educacion_media_nombre_distrito');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_media_nombre_distrito_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_distrito, 
+            atributo_tipo: :text, 
+            model: :MatriculacionEducacionMedia, 
+            limit: 10,
+            cadena_consulta: "nombre_distrito",
+            orden: "nombre_distrito")), 
+        parametro_id: "form_buscar_matriculaciones_educacion_media_nombre_distrito", 
+        resultado_id: "form_buscar_matriculaciones_educacion_media_nombre_distrito_id",
+        min_length: 3
+        ) %>
+
+      </th>
+
+      <th data-priority="2">
+        <span data-titulo="true">Barrio/Localidad</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_media_nombre_barrio_localidad, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-media', '#form_buscar_matriculaciones_educacion_media_nombre_barrio_localidad');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_media_nombre_barrio_localidad_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_barrio_localidad, 
+            atributo_tipo: :text, 
+            model: :MatriculacionEducacionMedia, 
+            limit: 10,
+            cadena_consulta: "nombre_barrio_localidad",
+            orden: "nombre_barrio_localidad")), 
+        parametro_id: "form_buscar_matriculaciones_educacion_media_nombre_barrio_localidad", 
+        resultado_id: "form_buscar_matriculaciones_educacion_media_nombre_barrio_localidad_id",
+        min_length: 3
+        ) %>
+
+      </th>
+
+      <th data-priority="3">
+        <span data-titulo="true">Zona</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_media_nombre_zona, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-media', '#form_buscar_matriculaciones_educacion_media_nombre_zona');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_media_nombre_zona_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_zona, 
+            atributo_tipo: :text, 
+            model: :MatriculacionEducacionMedia, 
+            limit: 10,
+            cadena_consulta: "nombre_zona",
+            orden: "nombre_zona")), 
+        parametro_id: "form_buscar_matriculaciones_educacion_media_nombre_zona", 
+        resultado_id: "form_buscar_matriculaciones_educacion_media_nombre_zona_id",
+        min_length: 3
+        ) %>
+
+      </th>
+
+      <th data-priority="3">
+        <span data-titulo="true">Sector o Tipo Gestión</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_media_sector_o_tipo_gestion, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-media', '#form_buscar_matriculaciones_educacion_media_sector_o_tipo_gestion');"><i class="fa fa-times"></i></span>
+      </div>
+
+      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_media_sector_o_tipo_gestion_id %>
+      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :sector_o_tipo_gestion, 
+            atributo_tipo: :text, 
+            model: :MatriculacionEducacionMedia, 
+            limit: 10,
+            cadena_consulta: "sector_o_tipo_gestion",
+            orden: "sector_o_tipo_gestion")), 
+        parametro_id: "form_buscar_matriculaciones_educacion_media_sector_o_tipo_gestion", 
+        resultado_id: "form_buscar_matriculaciones_educacion_media_sector_o_tipo_gestion_id",
+        min_length: 3
+        ) %>
+
+      </th>
+
+      <th style="width:7%;" class="text-min">
+        <%= label_tag nil, "Cantidad de Matriculados<br /> Científico".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_media_matricula_cientifico_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_media_matricula_cientifico, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_media_matricula_cientifico'));" %>
+      </th>
+
+      <th style="width:7%;" class="text-min">
+        <%= label_tag nil, "Cantidad de Matriculados<br /> Técnico".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_media_matricula_tecnico_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_media_matricula_tecnico, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_media_matricula_tecnico'));" %>
+      </th>
+
+      <th style="width:7%;" class="text-min">
+        <%= label_tag nil, "Cantidad de Matriculados<br /> Media Abierta".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_media_matricula_media_abierta, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_media_matricula_media_abierta'));" %>
+      </th>
+
+
+      <th style="width:10%;" class="text-min">
+        <%= label_tag nil, "Cantidad de Matriculados<br /> Formación Profesional Media".html_safe%><br />
+        <%= select_tag(:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_operador, options_for_select(['>', '<', '='])) %>
+        <%= text_field_tag :form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media, nil, :class => 'text-min' %>
+        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media'));" %>
+      </th>
+
+      </tr>
+      </thead>
+
+      <tbody id="matriculaciones-educacion-media-lista"></tbody>
+
+    </table>
+  </div>
+<% end %>
 
 <table class="table table-striped table-bordered table-hover">
   <tbody id="matriculaciones-educacion-media-footer"></tbody>
 </table>
-
 
 <script type="text/javascript">
 
@@ -156,61 +332,12 @@
     $("#form-buscar-matriculaciones-educacion-media").submit();
 
   })
-
+  
   //LIMPIAR FORMULARIO DE BUSQUEDA
-  function limpiar_form_buscar_matriculaciones_educacion_media() {
-
-    $("#form_buscar_matriculaciones_educacion_media_anio").val("2012");
-    $("#form_buscar_matriculaciones_educacion_media_nombre_departamento").val("");
-    $("#form_buscar_matriculaciones_educacion_media_nombre_distrito").val("");
-    $("#form_buscar_matriculaciones_educacion_media_nombre_barrio_localidad").val("");
-    $("#form_buscar_matriculaciones_educacion_media_nombre_zona").val("");
-    $("#form_buscar_matriculaciones_educacion_media_codigo_establecimiento").val("");
-    $("#form_buscar_matriculaciones_educacion_media_nombre_institucion").val("");
-    $("#form_buscar_matriculaciones_educacion_media_sector_o_tipo_gestion").val("");
-    $("#form_buscar_matriculaciones_educacion_media_matriculados_cientifico_mayor").val("");
-    $("#form_buscar_matriculaciones_educacion_media_matriculados_cientifico_menor").val("");
-    $("#form_buscar_matriculaciones_educacion_media_matriculados_tecnico_mayor").val("");
-    $("#form_buscar_matriculaciones_educacion_media_matriculados_tecnico_menor").val("");
-    $("#form_buscar_matriculaciones_educacion_media_matriculados_media_abierta_mayor").val("");
-    $("#form_buscar_matriculaciones_educacion_media_matriculados_media_abierta_menor").val("");
-    $("#form_buscar_matriculaciones_educacion_media_matriculados_formacion_profesional_media_mayor").val("");
-    $("#form_buscar_matriculaciones_educacion_media_matriculados_formacion_profesional_media_menor").val("");
-    $.ajaxQ.abortAll();
-    $("#form-buscar-matriculaciones-educacion-media").submit();
-
-  }
-
-  limpiar_form_buscar_matriculaciones_educacion_media();
-
-  //--------------- QUITAR FILTRO -------------------//
-  function quitar_filtro(id, ban) {
-    if (ban === 1) {
-      id.val("2012");
-    } else {
-      id.val('');
-    }
-    $.ajaxQ.abortAll();
-    $('#form-buscar-matriculaciones-educacion-media').submit();
-
-  }
-  //-------------------------------------------------//
+  valor_defecto = [{
+      id: '#form_buscar_matriculaciones_educacion_media_anio',
+      valor: 2012
+    }];
+  resetForm("#form-buscar-matriculaciones-educacion-media", valor_defecto);
 
 </script>
-
-<style>
-
-  .text-min {font-size:9px !important; color: #000; text-align:center !important;}
-  #cbue-menu1 {background:#e9e9e9;}
-  .text-min input[type="text"], .text-min select {
-    border: 1px solid silver;
-    padding: 3px;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
-    color:#000;
-  }
-  .text-min input[type="text"] { width: 80px;}
-  #tablaContenedor{width:100%;}
-
-</style>
-

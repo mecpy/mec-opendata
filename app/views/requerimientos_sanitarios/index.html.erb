@@ -1,13 +1,9 @@
 <%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
 <div>
-  <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_requerimientos_sanitarios_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
+  <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_requerimientos_sanitarios_url), :id => "tab-diccionario", :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
   <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
   <h2>
     <span itemprop="name" id="tab-titulo">Establecimientos Escolares Priorizados Elegibles - FONACIDE: SANITARIOS</span><br/>
-    <span style="font-size: 12px;color:silver;" id="tab-leyenda"><i>
-        La informaci&oacute;n presentada en la p&aacute;gina puede presentar diferencias con las planillas remitidas, esto es debido a que los datos de las planillas se encuentran en proceso de validaci&oacute;n de c&oacute;digos.
-        Si desea acceder a las planillas remitidas, las mismas est&aacute;n <a href="http://datos.mec.gov.py/data/establecimientos_escolares_priorizados_elegibles_fonacide" target="_blank">disponibles en formato EXCEL en el Catalogo de datos.</a>
-      </i></span>
     <meta itemprop="url" content="http://datos.mec.gov.py/data/requerimientos_sanitarios">  
     <meta itemprop="description"
           content="Contiene datos de los requerimientos de sanitarios con que se cuentan en las distintas Intstituciones Educativas. Los requerimientos son priorizados por distrito, de modo a saber el grado de necesidad con que se los solicita."
@@ -31,8 +27,13 @@
     <meta itemprop="keywords" style="display: none;" content="educación,instituciones,requerimientos,sanitarios"/>
     <meta itemprop="version" style="display: none;" content="1.0">
   </h2>
+  <span style="font-size: 12px;font-weight: bold;color:silver;" id="tab-leyenda">
+    <i>
+      La informaci&oacute;n presentada en la p&aacute;gina puede presentar diferencias con las planillas remitidas, esto es debido a que los datos de las planillas se encuentran en proceso de validaci&oacute;n de c&oacute;digos.
+      Si desea acceder a las planillas remitidas, las mismas est&aacute;n <a href="http://datos.mec.gov.py/data/establecimientos_escolares_priorizados_elegibles_fonacide" target="_blank">disponibles en formato EXCEL en el Catalogo de datos.</a>
+    </i>
+  </span>
 </div>
-<br>
 
 <%= form_tag mec_custom_url(data_requerimientos_sanitarios_lista_url(nil)), :remote => true, :id => "form-buscar-requerimientos-sanitarios" do  %>
   <div class="table-responsive">
@@ -40,8 +41,8 @@
       <thead>
         <tr>
 
-          <th data-priority="1">
-            <%= label_tag "Periodo" %>
+          <th data-priority="1" id="tab-filtros-lista">
+            <span data-titulo="true">Periodo</span>
 
             <span class="orden">
               <i class="filtro fa fa-sort"></i>
@@ -54,8 +55,8 @@
       </div>
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "Departamento".html_safe %>
+      <th data-priority="1" id="tab-filtros-texto">
+        <span data-titulo="true">Departamento</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -81,8 +82,8 @@
         ) %>
 
 
-      <th data-priority="2">
-        <%= label_tag nil, "Distrito".html_safe%>
+      <th data-priority="1">
+        <span data-titulo="true">Distrito</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -109,8 +110,8 @@
 
       </th>
 
-      <th data-priority="2">
-        <%= label_tag nil, "N&uacute;mero Prioridad".html_safe%>
+      <th data-priority="1">
+        <span data-titulo="true">N&uacute;mero Prioridad</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -137,8 +138,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "C&oacute;digo Establecimiento".html_safe %>
+      <th data-priority="2">
+        <span data-titulo="true">C&oacute;digo Establecimiento</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -165,8 +166,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "C&oacute;digo Instituci&oacute;n".html_safe%>
+      <th data-priority="2">
+        <span data-titulo="true">C&oacute;digo Instituci&oacute;n</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -194,7 +195,7 @@
       </th>
 
       <th data-priority="2">
-        <%= label_tag nil, "Instituci&oacute;n".html_safe%>
+        <span data-titulo="true">Instituci&oacute;n</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -222,7 +223,7 @@
       </th>
 
       <th data-priority="3">
-        <%= label_tag nil, "Zona".html_safe%>
+        <span data-titulo="true">Zona</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -250,7 +251,7 @@
       </th>
 
       <th data-priority="3">
-        <%= label_tag nil, "Nivel Educativo Beneficiado".html_safe%>
+        <span data-titulo="true">Nivel Educativo Beneficiado</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -277,8 +278,8 @@
 
       </th>
 
-      <th data-priority="3">
-        <%= label_tag nil, "Abastecimiento de Agua".html_safe%>
+      <th data-priority="4">
+        <span data-titulo="true">Abastecimiento de Agua</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -305,8 +306,8 @@
 
       </th>
 
-      <th data-priority="3">
-        <%= label_tag nil, "Servicio Sanitario Actual".html_safe%>
+      <th data-priority="4">
+        <span data-titulo="true">Servicio Sanitario Actual</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -333,8 +334,8 @@
 
       </th>
 
-      <th data-priority="3">
-        <%= label_tag nil, "Cuenta con Espacio de Construcci&oacute;n".html_safe%>
+      <th data-priority="4">
+        <span data-titulo="true">Cuenta con Espacio de Construcci&oacute;n</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -361,10 +362,18 @@
 
       </th>
 
-      <th style="width:6%;" class="text-min celda-derecha">
-        <%= label_tag nil,"Tipo de Requerimiento de Insfraestrutura".html_safe %><br />
-        <%= select :form_buscar_requerimientos_sanitarios, :tipo_requerimiento_infraestructura, ['','NUEVO','REPARACION','ADECUACION'], {:class => 'text-min'} %>
-        <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_requerimientos_sanitarios_tipo_requerimiento_infraestructura'));" %>
+      <th data-priority="4">
+        <span data-titulo="true">Tipo de Requerimiento de Insfraestrutura</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= select :form_buscar_requerimientos_sanitarios, :tipo_requerimiento_infraestructura, ['','NUEVO','REPARACION','ADECUACION'], {}, {:class => 'form-control input-sm'} %>
+      </div>
       </th>
 
       <th style="width:7%;" class="text-min">
@@ -381,8 +390,8 @@
         <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_requerimientos_sanitarios_numero_beneficiados'));" %>
       </th>
 
-      <th data-priority="3">
-        <%= label_tag nil, "Justificaci&oacute;n".html_safe%>
+      <th data-priority="4">
+        <span data-titulo="true">Justificaci&oacute;n</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -508,12 +517,7 @@
       position: "left"
     },
     {
-      element: '#tab-inicio',
-      intro: "En este apartado, puedes volver al listado de todos los Conjuntos de Datos con que cuenta el Portal del MEC.",
-      position: "left"
-    },
-    {
-      element: '.tab-filtros-lista',
+      element: '#tab-filtros-lista',
       intro: "Echemos un vistazo a los filtros. ¿Alguna vez los has utilizado?</br> ¡Son muy &uacute;tiles \
           cuando buscas informaci&oacute;n espec&iacute;fica! \
           </br></br>Este filtro utiliza una lista desplegable. Permite realizar las b&uacute;squedas de acuerdo al item que selecciones.\
@@ -521,7 +525,7 @@
       position: "right"
     },
     {
-      element: '.tab-filtros-texto',
+      element: '#tab-filtros-texto',
       intro: "Este filtro permite realizar las b&uacute;squedas de acuerdo al texto que escribas en su secci&oacute;n.\
           </br>¡Tienes que Probarlo!",
       position: "right"
@@ -530,7 +534,7 @@
       element: "#tab-establecimiento",
       intro: "Si te interesan los datos de un Establecimiento, haciendo click sobre este enlace podr&iacute;as obtener\
           informaci&oacute;n espec&iacute;fica del mismo.\
-          </br><%= image_tag('intro_images/resumen_establecimiento.png', style: 'width:280px;height:280px').to_s.gsub("\"", "'").html_safe %>\
+          </br><%= image_tag('intro_images/resumen_establecimiento.png', style: 'width:220px;height:220px').to_s.gsub("\"", "'").html_safe %>\
           </br></br>Por ejemplo: Datos del Establecimiento, Instituciones del Establecimiento y la Ubicaci&oacute;n Geogr&aacute;fica.",
       position: "bottom-left-aligned"
     },
@@ -538,7 +542,7 @@
       element: "#tab-institucion",
       intro: "As&iacute; tambi&eacute;n, si te interesan los datos de una Instituci&oacute;n, haciendo click sobre este enlace podr&iacute;as obtener\
           informaci&oacute;n espec&iacute;fica de la misma.\
-          </br><%= image_tag('intro_images/resumen_institucion.png', style: 'width:280px;height:280px').to_s.gsub("\"", "'").html_safe %> \
+          </br><%= image_tag('intro_images/resumen_institucion.png', style: 'width:220px;height:220px').to_s.gsub("\"", "'").html_safe %> \
           </br></br>Por ejemplo: Datos de la Instituci&oacute;n, Matriculaciones en la Instituci&oacute;n y la Ubicaci&oacute;n Geogr&aacute;fica.",
       position: "bottom-left-aligned"
     },

@@ -27,7 +27,6 @@
     <meta itemprop="version" style="display: none;" content="1.0"/>
   </h1>
 </div>
-<br>
 
 <%= form_tag mec_custom_url(data_registros_titulos_lista_url(nil,nil)), :remote => true, :id => "form-buscar-registros-titulos" do  %>
   <div class="table-responsive">
@@ -36,7 +35,7 @@
         <tr>
 
           <th data-priority="1">
-            <%= label_tag "Año" %>
+            <span data-titulo="true">Año</span>
 
             <span class="orden">
               <i class="filtro fa fa-sort"></i>
@@ -50,7 +49,7 @@
       </th>
 
       <th data-priority="1">
-        <%= label_tag "Mes" %>
+        <span data-titulo="true">Mes</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -64,7 +63,7 @@
       </th>
 
       <th data-priority="1">
-        <%= label_tag nil, "Documento".html_safe %>
+        <span data-titulo="true">Documento</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -91,8 +90,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "Nombre completo".html_safe %>
+      <th data-priority="2">
+        <span data-titulo="true">Nombre Completo</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -119,8 +118,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "Carrera".html_safe %>
+      <th data-priority="2">
+        <span data-titulo="true">Carrera</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -147,8 +146,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "T&iacute;tulo".html_safe %>
+      <th data-priority="2">
+        <span data-titulo="true">T&iacute;tulo</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -175,8 +174,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "N&uacute;mero de Resoluci&oacute;n".html_safe %>
+      <th data-priority="3">
+        <span data-titulo="true">N&uacute;mero de Resoluci&oacute;n</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -203,8 +202,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "Fecha de Resoluci&oacute;n".html_safe %>
+      <th data-priority="3">
+        <span data-titulo="true">Fecha de Resoluci&oacute;n</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -231,8 +230,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "Tipo de Instituci&oacute;n".html_safe %>
+      <th data-priority="3">
+        <span data-titulo="true">Tipo de Instituci&oacute;n</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -259,8 +258,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "Instituci&oacute;n".html_safe %>
+      <th data-priority="4">
+        <span data-titulo="true">Instituci&oacute;n</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -287,10 +286,18 @@
 
       </th>
 
-      <th style="width:6%;" class="text-min celda-derecha">
-        <%= label_tag "Gobierno actual" %><br />
-        <%= select :form_buscar_registros_titulos, :gobierno_actual, [["Todos", 1], ["Si", 2], ["No", 3]], {:class => 'text-min'}, onchange: "filtrar_gobierno_actual();" %>
-        <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_registros_titulos_gobierno_actual'));" %>
+      <th data-priority="4">
+        <span data-titulo="true">Gobierno actual</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= select :form_buscar_registros_titulos, :gobierno_actual, [["Todos", 1], ["Si", 2], ["No", 3]], {}, {:class => 'form-control input-sm'} %>
+      </div>
       </th>
 
       </tr>

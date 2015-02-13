@@ -1,6 +1,6 @@
 <%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
 <div>
-  <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_instituciones_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
+  <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_instituciones_url), :id => "tab-diccionario", :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
   <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
   <h1>
     <span itemprop="name" id="tab-titulo">Datos Espec&iacute;ficos de Instituciones Educativas</span>
@@ -22,7 +22,6 @@
     <meta itemprop="version" style="display: none;" content="1.0">
   </h1>
 </div>
-<br>
 
 <%= form_tag mec_custom_url(data_instituciones_lista_url(nil)), :remote => true, :id => "form-buscar-instituciones" do  %>
   <div class="table-responsive">
@@ -30,7 +29,7 @@
       <thead>
         <tr>
 
-          <th data-priority="1">
+          <th data-priority="1" id="tab-filtros-lista">
             <span data-titulo="true">Período</span>
 
             <span class="orden">
@@ -44,7 +43,7 @@
       </div>
       </th>
 
-      <th data-priority="1">
+      <th data-priority="1" id="tab-filtros-texto">
         <span data-titulo="true">Código Establecimiento</span>
 
         <span class="orden">
@@ -100,7 +99,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">Institución</span>
 
         <span class="orden">
@@ -184,7 +183,7 @@
 
       </th>
 
-      <th data-priority="3">
+      <th data-priority="2">
         <span data-titulo="true">Localidad/Barrio</span>
 
         <span class="orden">
@@ -324,7 +323,7 @@
 
       </th>
 
-      <th data-priority="3">
+      <th data-priority="4">
         <span data-titulo="true">Nivel/Modalidad</span>
 
         <span class="orden">
@@ -352,7 +351,7 @@
 
       </th>
 
-      <th data-priority="3">
+      <th data-priority="4">
         <span data-titulo="true">Tipo Organizaci&oacute;n</span>
 
         <span class="orden">
@@ -380,10 +379,18 @@
 
       </th>
 
-      <th style="width:5%;" class="text-min celda-derecha">
-        <%= label_tag nil, "Participación<br />Comunitaria".html_safe %><br />
-        <%= select :form_buscar_instituciones, :participacion_comunitaria, ['','SI','NO'], {:class => 'text-min'} %>
-        <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_participacion_comunitaria'));" %>
+      <th data-priority="4">
+        <span data-titulo="true">Participación Comunitaria</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= select :form_buscar_instituciones, :participacion_comunitaria, ['','SI','NO'], {}, {:class => 'form-control input-sm'} %>
+      </div>
       </th>
 
       <th data-priority="3">
@@ -442,13 +449,21 @@
 
       </th>
 
-      <th style="width:5%;" class="text-min celda-derecha">
-        <%= label_tag nil,"¿Tiene Internet?".html_safe %><br /><br />
-        <%= select :form_buscar_instituciones, :tiene_internet, ['', 'SI', 'NO'], {:class => 'text-min'} %>
-        <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_instituciones_tiene_internet'));" %>
+      <th data-priority="4">
+        <span data-titulo="true">¿Tiene Internet?</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= select :form_buscar_instituciones, :tiene_internet, ['','SI','NO'], {}, {:class => 'form-control input-sm'} %>
+      </div>
       </th>
 
-      <th data-priority="3">
+      <th data-priority="4">
         <span data-titulo="true">P&aacute;gina Web</span>
 
         <span class="orden">
@@ -476,7 +491,7 @@
 
       </th>
 
-      <th data-priority="3">
+      <th data-priority="4">
         <span data-titulo="true">Correo Electr&oacute;nico</span>
 
         <span class="orden">
@@ -600,12 +615,7 @@
       position: "left"
     },
     {
-      element: '#tab-inicio',
-      intro: "En este apartado, puedes volver al listado de todos los Conjuntos de Datos con que cuenta el Portal del MEC.",
-      position: "left"
-    },
-    {
-      element: '.tab-filtros-lista',
+      element: '#tab-filtros-lista',
       intro: "Echemos un vistazo a los filtros. ¿Alguna vez los has utilizado?</br> ¡Son muy &uacute;tiles \
           cuando buscas informaci&oacute;n espec&iacute;fica! \
           </br></br>Este filtro utiliza una lista desplegable. Permite realizar las b&uacute;squedas de acuerdo al item que selecciones.\
@@ -613,7 +623,7 @@
       position: "right"
     },
     {
-      element: '.tab-filtros-texto',
+      element: '#tab-filtros-texto',
       intro: "Este filtro permite realizar las b&uacute;squedas de acuerdo al texto que escribas en su secci&oacute;n.\
           </br>¡Tienes que Probarlo!",
       position: "right"
@@ -622,7 +632,7 @@
       element: "#tab-establecimiento",
       intro: "Si te interesan los datos de un Establecimiento, haciendo click sobre este enlace podr&iacute;as obtener\
           informaci&oacute;n espec&iacute;fica del mismo.\
-          </br><%= image_tag('intro_images/resumen_establecimiento.png', style: 'width:280px;height:280px').to_s.gsub("\"", "'").html_safe %>\
+          </br><%= image_tag('intro_images/resumen_establecimiento.png', style: 'width:220px;height:220px').to_s.gsub("\"", "'").html_safe %>\
           </br></br>Por ejemplo: Datos del Establecimiento, Instituciones del Establecimiento y la Ubicaci&oacute;n Geogr&aacute;fica.",
       position: "bottom-left-aligned"
     },
@@ -630,7 +640,7 @@
       element: "#tab-institucion",
       intro: "As&iacute; tambi&eacute;n, si te interesan los datos de una Instituci&oacute;n, haciendo click sobre este enlace podr&iacute;as obtener\
           informaci&oacute;n espec&iacute;fica de la misma.\
-          </br><%= image_tag('intro_images/resumen_institucion.png', style: 'width:280px;height:280px').to_s.gsub("\"", "'").html_safe %> \
+          </br><%= image_tag('intro_images/resumen_institucion.png', style: 'width:220px;height:220px').to_s.gsub("\"", "'").html_safe %> \
           </br></br>Por ejemplo: Datos de la Instituci&oacute;n, Matriculaciones en la Instituci&oacute;n y la Ubicaci&oacute;n Geogr&aacute;fica.",
       position: "bottom-left-aligned"
     },

@@ -25,7 +25,6 @@
     <meta itemprop="version" style="display: none;" content="1.0"/>
   </h1>
 </div>
-<br>
 
 <%= form_tag mec_custom_url(data_establecimientos_lista_url(nil)), :remote => true, :id => "form-buscar-establecimientos" do  %>
   <div class="table-responsive">
@@ -33,7 +32,7 @@
       <thead>
         <tr>
 
-          <th data-priority="1" id="ubicaciones-geograficas"> 
+          <th data-priority="4" id="ubicaciones-geograficas"> 
             <span data-titulo="true" class="hidden">Mapa</span>
           </th>
 
@@ -79,7 +78,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">Departamento</span>
 
         <span class="orden">
@@ -107,7 +106,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">Distrito</span>
 
         <span class="orden">
@@ -135,7 +134,7 @@
 
       </th>
 
-      <th data-priority="3">
+      <th data-priority="2">
         <span data-titulo="true">Zona</span>
 
         <span class="orden">
@@ -163,7 +162,7 @@
 
       </th>
 
-      <th data-priority="3">
+      <th data-priority="2">
         <span data-titulo="true">Localidad/Barrio</span>
 
         <span class="orden">
@@ -219,10 +218,18 @@
 
       </th>
 
-      <th style="width:15%;" class="text-min">
-        <%= label_tag nil, "Programa".html_safe%><br /><br />
-        <%= select :form_buscar_establecimientos, :programa, [["",""],["Jornada Extendida", 1]] %>
-        <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_programa'));" %>
+      <th data-priority="3">
+        <span data-titulo="true">Programa</span>
+
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+      <div class="input-group input-group-sm">
+        <%= select :form_buscar_establecimientos, :programa, [["",""],["Jornada Extendida", 1]], {}, :class => 'form-control input-sm' %>
+      </div>
       </th>
 
       </tr>

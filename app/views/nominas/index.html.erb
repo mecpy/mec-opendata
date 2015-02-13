@@ -4,7 +4,6 @@
   <!--<div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>-->
   <h1>
     <span itemprop="name">Nómina de Funcionarios Administrativos</span><br/>
-    <span style="font-size: 12px;color:silver;"><i>La información presentada para el último periodo está sujeta a ajustes por parte de MEC debido a la dinámica de movimientos mensual de funcionarios.<br />Ley 5189/2014 Art. 5: "Queda expresamente prohibida la utilización de los datos contenidos en estos documentos para fines comerciales.</i></span>
     <meta itemprop="url" content="http://datos.mec.gov.py/data/nomina_administrativos">  	
     <meta itemprop="description"
           content="Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación."/>
@@ -27,8 +26,12 @@
     <meta itemprop="keywords" style="display: none;" content="educación,establecimientos,escolar,geografico"/>
     <meta itemprop="version" style="display: none;" content="1.0"/>    
   </h1>
+  <span style="font-size: 12px;font-weight: bold;color:silver;">
+    <i>
+      La información presentada para el último periodo está sujeta a ajustes por parte de MEC debido a la dinámica de movimientos mensual de funcionarios.<br />Ley 5189/2014 Art. 5: "Queda expresamente prohibida la utilización de los datos contenidos en estos documentos para fines comerciales.
+    </i>
+  </span>
 </div>
-<br>
 
 <%= form_tag mec_custom_url(data_nomina_administrativos_lista_url(nil)), :remote => true, :id => "form-buscar-nominas" do  %>
   <div class="table-responsive">
@@ -37,7 +40,7 @@
         <tr>
 
           <th data-priority="1">
-            <%= label_tag "Año" %>
+            <span data-titulo="true">Año</span>
 
             <span class="orden">
               <i class="filtro fa fa-sort"></i>
@@ -51,7 +54,7 @@
       </th>
 
       <th data-priority="1">
-        <%= label_tag "Mes" %>
+        <span data-titulo="true">Mes</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -65,7 +68,7 @@
       </th>
 
       <th data-priority="1">
-        <%= label_tag nil, "N° Documento".html_safe %>
+        <span data-titulo="true">N° Documento</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -93,8 +96,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "Nombre completo".html_safe %>
+      <th data-priority="2">
+        <span data-titulo="true">Nombre Completo</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -122,8 +125,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "Objeto de Gasto".html_safe %>
+      <th data-priority="2">
+        <span data-titulo="true">Objeto de Gasto</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -151,8 +154,8 @@
 
       </th>
 
-      <th data-priority="1">
-        <%= label_tag nil, "Estado".html_safe %>
+      <th data-priority="2">
+        <span data-titulo="true">Estado</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -180,7 +183,7 @@
 
       </th>
 
-      <th data-priority="1">
+      <th data-priority="3">
         <%= label_tag nil, "Antigüedad".html_safe %>
 
         <span class="orden">
@@ -226,6 +229,10 @@
     </table>
   </div>
 <% end %>
+
+<table class="table table-striped table-bordered table-hover">
+  <tbody id="nominas-footer"></tbody>
+</table>
 
 <script type="text/javascript">
 

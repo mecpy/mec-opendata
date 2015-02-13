@@ -1,4 +1,4 @@
-$("#matriculaciones-educacion-superior-lista").html("<%= escape_javascript(render :partial => "lista", :locals => { :matriculaciones_educacion_superior => @matriculaciones_educacion_superior}) %>");
+$("#matriculaciones-educacion-superior-lista, #matriculaciones-educacion-superior-lista-clone").html("<%= escape_javascript(render :partial => "lista", :locals => { :matriculaciones_educacion_superior => @matriculaciones_educacion_superior}) %>");
 
 
 <% if @matriculaciones_educacion_superior.present? %>

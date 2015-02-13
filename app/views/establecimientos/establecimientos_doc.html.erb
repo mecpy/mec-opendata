@@ -127,7 +127,7 @@
     </div>
 
     <div class="col-sm-6 bloque">
-      <h2>Instituciones del Establecimiento</h2>
+      <h2>Ubicaci&oacute;n Geogr&aacute;fica</h2>
 
       <% if @establecimiento.latitud.present? && @establecimiento.longitud.present? %>
 
@@ -159,14 +159,13 @@
         <br />
 
       <% else %>
-
         <div style="font-size: 11px; color: #000; margin-left:15px; "><br />No se encontrar&oacute;n las coordenadas geogr&aacute;ficas.<br /><br /></div>
-
       <% end %>
 
     </div>
 
   </div>
+
   <div style="clear:both;"></div>
   <div class="uri-data-fin">
 
@@ -187,9 +186,7 @@
   </div>
 
 <% else %>
-
   <div>No se ha encontrado el establecimiento educativo con c&oacute;digo <b><%=@codigo_establecimiento_doc%></b> para el periodo seleccionado.</div>
-
 <% end %>
 
 
