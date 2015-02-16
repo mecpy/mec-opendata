@@ -35,6 +35,8 @@
 
           <th rowspan="2" data-priority="4" id="ubicaciones-geograficas"> 
             <span data-titulo="true" class="hidden">Mapa</span>
+            <%= link_to image_tag("marker.png", :style => "width:24px;"), "#", :id => "link-to-ubicaciones-geograficas", :class => "link-to-ubicaciones-geograficas", :title => "Haga click para ver el mapa con las instituciones de esta página." %>
+
           </th>
 
           <th rowspan="2" data-priority="1">
@@ -47,7 +49,7 @@
             </span>
 
       <div class="input-group input-group-sm">
-        <%= select :form_buscar_establecimientos, :anio, [2014], {}, :class => 'form-control input-sm' %>
+        <%= select :form_buscar_establecimientos, :anio, [2014], {}, :class => 'form-control'%>
       </div>
       </th>
 
@@ -247,11 +249,19 @@
 
       </th>
 
-      <th rowspan="2" style="width:4%;" class="text-min">
-        <%= label_tag nil, "Asentamientos Priorizados".html_safe%><br/><br/><br/><br/>
-        <%= select_tag(:form_buscar_establecimientos_asentamientos_priorizados_operador, options_for_select(['>', '<', '='])) %>
-        <%= number_field_tag :form_buscar_establecimientos_asentamientos_priorizados, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_asentamientos_priorizados'));" %>
+      <th rowspan="2" style="width:5%;" class="text-min number-header">
+        <span data-titulo="true">Asentamientos Priorizados</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+        <%= select_tag(:form_buscar_establecimientos_asentamientos_priorizados_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_establecimientos_asentamientos_priorizados, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_asentamientos_priorizados');"><i class="fa fa-times"></i></span>
+      </div>
       </th>
       <th colspan="7" class="text-min">
         <%= label_tag nil, "Ampliación".html_safe%>
@@ -264,96 +274,200 @@
       </th>
       </tr>	
       <tr>
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Comedor".html_safe%><br/><br/>
-          <%= select_tag(:form_buscar_establecimientos_ampliacion_comedor_operador, options_for_select(['>', '<', '='])) %>
-          <%= number_field_tag :form_buscar_establecimientos_ampliacion_comedor, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_ampliacion_comedor'));" %>
-        </th>
+        <th style="width:5%;" class="text-min number-header">
+          <span data-titulo="true">Comedor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <span class="orden">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Aulas".html_safe%><br/><br/>
-          <%= select_tag(:form_buscar_establecimientos_ampliacion_aulas_operador, options_for_select(['>', '<', '='])) %>
-          <%= number_field_tag :form_buscar_establecimientos_ampliacion_aulas, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_ampliacion_aulas'));" %>
-        </th>
+          <%= select_tag(:form_buscar_establecimientos_ampliacion_comedor_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_establecimientos_ampliacion_comedor, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_ampliacion_comedor');"><i class="fa fa-times"></i></span>
+      </div>
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Aulas de Preescolar".html_safe%><br/><br/>
-          <%= select_tag(:form_buscar_establecimientos_ampliacion_aula_preescolar_operador, options_for_select(['>', '<', '='])) %>
-          <%= number_field_tag :form_buscar_establecimientos_ampliacion_aula_preescolar, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_ampliacion_aula_preescolar'));" %>
-        </th>
+      <th style="width:5%;" class="text-min number-header">
+        <span data-titulo="true">Aulas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Centro de Recursos de Aprendizaje".html_safe%><br/>
-          <%= select_tag(:form_buscar_establecimientos_ampliacion_centro_aprendizaje_operador, options_for_select(['>', '<', '='])) %>
-          <%= number_field_tag :form_buscar_establecimientos_ampliacion_centro_aprendizaje, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_ampliacion_centro_aprendizaje'));" %>
-        </th>
+        <%= select_tag(:form_buscar_establecimientos_ampliacion_aulas_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_establecimientos_ampliacion_aulas, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_ampliacion_aulas');"><i class="fa fa-times"></i></span>
+      </div>
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Laboratorios".html_safe%><br/><br/>
-          <%= select_tag(:form_buscar_establecimientos_ampliacion_laboratorios_operador, options_for_select(['>', '<', '='])) %>
-          <%= number_field_tag :form_buscar_establecimientos_ampliacion_laboratorios, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_ampliacion_laboratorios'));" %>
-        </th>
+      <th style="width:5%;" class="text-min number-header">
+        <span data-titulo="true">Aulas de Preescolar</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Bloque Administrativo".html_safe%><br/><br/>
-          <%= select_tag(:form_buscar_establecimientos_ampliacion_bloque_administrativo_operador, options_for_select(['>', '<', '='])) %>
-          <%= number_field_tag :form_buscar_establecimientos_ampliacion_bloque_administrativo, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_ampliacion_bloque_administrativo'));" %>
-        </th>
+        <%= select_tag(:form_buscar_establecimientos_ampliacion_aula_preescolar_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_establecimientos_ampliacion_aula_preescolar, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_ampliacion_aula_preescolar');"><i class="fa fa-times"></i></span>
+      </div>
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Servicios Higiénicos".html_safe%><br/><br/>
-          <%= select_tag(:form_buscar_establecimientos_ampliacion_servicios_higienicos_operador, options_for_select(['>', '<', '='])) %>
-          <%= number_field_tag :form_buscar_establecimientos_ampliacion_servicios_higienicos, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_ampliacion_servicios_higienicos'));" %>
-        </th>
+      <th style="width:5%;" class="text-min number-header">
+        <span data-titulo="true">Centro de Recursos de Aprendizaje</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Aulas".html_safe%><br/><br/>
-          <%= select_tag(:form_buscar_establecimientos_reparacion_aulas_operador, options_for_select(['>', '<', '='])) %>
-          <%= number_field_tag :form_buscar_establecimientos_reparacion_aulas, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_reparacion_aulas'));" %>
-        </th>
+        <%= select_tag(:form_buscar_establecimientos_ampliacion_centro_aprendizaje_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_establecimientos_ampliacion_centro_aprendizaje, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_ampliacion_centro_aprendizaje');"><i class="fa fa-times"></i></span>
+      </div>
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Servicios Higiénicos".html_safe%><br/><br/>
-          <%= select_tag(:form_buscar_establecimientos_reparacion_servicios_higienicos_operador, options_for_select(['>', '<', '='])) %>
-          <%= number_field_tag :form_buscar_establecimientos_reparacion_servicios_higienicos, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_reparacion_servicios_higienicos'));" %>
-        </th>
+      <th style="width:5%;" class="text-min number-header">
+        <span data-titulo="true">Laboratorios&nbsp;&nbsp;</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Comedor".html_safe%><br/><br/>
-          <%= select_tag(:form_buscar_establecimientos_reparacion_comedor_operador, options_for_select(['>', '<', '='])) %>
-          <%= number_field_tag :form_buscar_establecimientos_reparacion_comedor, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_reparacion_comedor'));" %>
-        </th>
+        <%= select_tag(:form_buscar_establecimientos_ampliacion_laboratorios_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_establecimientos_ampliacion_laboratorios, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_ampliacion_laboratorios');"><i class="fa fa-times"></i></span>
+      </div>
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Obras Exteriores de Pozo".html_safe%><br/><br/>
-          <%= select_tag(:form_buscar_establecimientos_obras_exteriores_pozo_operador, options_for_select(['>', '<', '='])) %>
-          <%= number_field_tag :form_buscar_establecimientos_obras_exteriores_pozo, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_obras_exteriores_pozo'));" %>
-        </th>
+      <th style="width:5%;" class="text-min number-header">
+        <span data-titulo="true">Bloque Administrativo</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Cercado".html_safe%><br/><br/>
-          <%= select_tag(:form_buscar_establecimientos_cercado_operador, options_for_select(['>', '<', '='])) %>
-          <%= number_field_tag :form_buscar_establecimientos_cercado, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_cercado'));" %>
-        </th>
+        <%= select_tag(:form_buscar_establecimientos_ampliacion_bloque_administrativo_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_establecimientos_ampliacion_bloque_administrativo, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_ampliacion_bloque_administrativo');"><i class="fa fa-times"></i></span>
+      </div>
+      </th>
 
-        <th style="width:5%;" class="text-min">
-          <%= label_tag nil, "Obras Exteriores en Escuelas Indígenas".html_safe%><br/>
-          <%= select_tag(:form_buscar_establecimientos_obras_exteriores_indigenas_operador, options_for_select(['>', '<', '='])) %>
-          <%= number_field_tag :form_buscar_establecimientos_obras_exteriores_indigenas, nil, :class => 'text-min' %>
-          <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_establecimientos_obras_exteriores_indigenas'));" %>
-        </th>
+      <th style="width:5%;" class="text-min number-header">
+        <span data-titulo="true">Servicios Higiénicos</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+        <%= select_tag(:form_buscar_establecimientos_ampliacion_servicios_higienicos_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_establecimientos_ampliacion_servicios_higienicos, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_ampliacion_servicios_higienicos');"><i class="fa fa-times"></i></span>
+      </div>
+      </th>
+
+      <th style="width:5%;" class="text-min number-header">
+        <span data-titulo="true">Aulas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+        <%= select_tag(:form_buscar_establecimientos_reparacion_aulas_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_establecimientos_reparacion_aulas, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_reparacion_aulas');"><i class="fa fa-times"></i></span>
+      </div>
+      </th>
+
+      <th style="width:5%;" class="text-min number-header">
+        <span data-titulo="true">Servicios Higiénicos</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+        <%= select_tag(:form_buscar_establecimientos_reparacion_servicios_higienicos_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_establecimientos_reparacion_servicios_higienicos, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_reparacion_servicios_higienicos');"><i class="fa fa-times"></i></span>
+      </div>
+      </th>
+
+      <th style="width:5%;" class="text-min number-header">
+        <span data-titulo="true">Comedor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+        <%= select_tag(:form_buscar_establecimientos_reparacion_comedor_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_establecimientos_reparacion_comedor, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_reparacion_comedor');"><i class="fa fa-times"></i></span>
+      </div>
+      </th>
+
+      <th style="width:5%;" class="text-min number-header">
+        <span data-titulo="true">Obras Exteriores de Pozo</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+        <%= select_tag(:form_buscar_establecimientos_obras_exteriores_pozo_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_establecimientos_obras_exteriores_pozo, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_obras_exteriores_pozo');"><i class="fa fa-times"></i></span>
+      </div>
+      </th>
+
+      <th style="width:5%;" class="text-min number-header">
+        <span data-titulo="true">Cercado&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+        <%= select_tag(:form_buscar_establecimientos_cercado_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_establecimientos_cercado, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_cercado');"><i class="fa fa-times"></i></span>
+      </div>
+      </th>
+
+      <th style="width:5%;" class="text-min number-header">
+        <span data-titulo="true">Obras Exteriores en Escuelas Indígenas</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+        <%= select_tag(:form_buscar_establecimientos_obras_exteriores_indigenas_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_establecimientos_obras_exteriores_indigenas, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_obras_exteriores_indigenas');"><i class="fa fa-times"></i></span>
+      </div>
+      </th>
 
       </tr>
       </thead>
@@ -432,7 +546,7 @@
 
     if (tr_size == 0) {
 
-      $("#link-to-ubicaciones-geograficas").parent().parent().after("<tr id=\"establecimientos-ubicaciones-geograficas\" class=\"establecimientos-ubicaciones-geograficas\"></tr>");
+      $("#link-to-ubicaciones-geograficas").parent().parent().next().after("<tr id=\"establecimientos-ubicaciones-geograficas\" class=\"establecimientos-ubicaciones-geograficas\"></tr>");
 
       $("#establecimientos-ubicaciones-geograficas").html("<%= escape_javascript("<tr><td colspan='11' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")
 
