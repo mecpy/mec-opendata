@@ -28,13 +28,13 @@
 
 <%= form_tag mec_custom_url(data_establecimientos_lista_url(nil)), :remote => true, :id => "form-buscar-establecimientos" do  %>
   <div class="table-responsive">
-    <table class="table table-small-font table-bordered table-striped">
+    <table id="establecimientos-tabla" class="table table-small-font table-bordered table-striped">
       <thead>
         <tr>
 
           <th data-priority="4" id="ubicaciones-geograficas"> 
             <span data-titulo="true" class="hidden">Mapa</span>
-            <%= link_to image_tag("marker.png", :style => "width:24px;"), "#", :id => "link-to-ubicaciones-geograficas", :title => "Haga click para ver el mapa con las instituciones de esta página.", :onclick => ";" %>
+            <%= link_to image_tag("marker.png", :style => "width:24px;"), "#", :id => "link-to-ubicaciones-geograficas", :class => "link-to-ubicaciones-geograficas", :title => "Haga click para ver el mapa con las instituciones de esta página."%>
           </th>
 
           <th data-priority="1">
@@ -46,9 +46,7 @@
               <i class="ascendente fa fa-sort-asc"></i>
             </span>
 
-      <div class="input-group input-group-sm">
         <%= select :form_buscar_establecimientos, :anio, [2014,2012], {}, :class => 'form-control input-sm' %>
-      </div>
       </th>
 
       <th data-priority="1">

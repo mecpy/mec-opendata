@@ -24,7 +24,10 @@ $("#establecimientos-111-footer").html("<%= escape_javascript(render :partial =>
      parametros += "&form_buscar_establecimientos_obras_exteriores=#{params[:form_buscar_establecimientos_obras_exteriores]}" 
      parametros += "&page=#{(params[:page].present? ? params[:page] : 1)}" %>
 
-  $("#ubicaciones-geograficas").html("<%= escape_javascript(render :partial => "link_to_ubicaciones_geograficas", :locals => {:parametros => parametros } )%>")
+  $(".link-to-ubicaciones-geograficas").off();
+  $(".link-to-ubicaciones-geograficas").click(function(){ mostrar_mapa('<%= parametros %>'); });
+  //$("#ubicaciones-geograficas").html("<%= escape_javascript(render :partial => "link_to_ubicaciones_geograficas", :locals => {:parametros => parametros } )%>")
+
 
 <% else %>
   

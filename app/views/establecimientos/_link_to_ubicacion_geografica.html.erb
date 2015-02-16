@@ -1,7 +1,6 @@
 <%= link_to image_tag("marker.png", :style => "width:16px;"), "#", :id => "link-to-ubicacion-geografica-#{establecimiento.id}", :title => "Haga click para ver el mapa." %>
 <!--Aqui se dibujan los markers de la ultima columna del conjunto de Datos-->
 <script type="text/javascript">
-
   $("#establecimientos-lista #link-to-ubicacion-geografica-<%= establecimiento.id %>").bind("click", function () {
       var tr_size = $.trim($("#establecimiento-ubicacion-geografica-<%= establecimiento.id %>").html()).length
 
