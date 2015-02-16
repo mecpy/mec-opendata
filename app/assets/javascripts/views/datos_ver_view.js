@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var tabla = $('.table-responsive').responsiveTable({});
+    var tabla = $('.table-responsive').responsiveTable({stickyTableHeader:false});
     var botones_derecha = $('.btn-toolbar').find('.dropdown-btn-group button');
     $(botones_derecha[0]).html('Ver todos');
     $(botones_derecha[1]).html('Ver columnas');
@@ -7,10 +7,11 @@ $(document).ready(function() {
     //$('.btn-toolbar .focus-btn-group button').unbind()
     //        .html('<span class="fa-lg icon-py-mapa"></span> <span class="hidden-xs">Todas las localizaciones</span>')
     //        .attr('onclick', 'abrirMapa();');
-
+    
+    $('.btn-toolbar .dropdown-btn-group button').unbind().remove();
     $('.btn-toolbar .focus-btn-group button').unbind().remove();
 
-    var tabla_original = tabla.find('div').next('table');
+    /*var tabla_original = tabla.find('div').next('table');
     var filtros_clonados = tabla.find('table').first().find('thead tr th');
     var titulos = [];
 
@@ -31,7 +32,7 @@ $(document).ready(function() {
 
     $(botones_derecha[1]).next().find('li').each(function(l, li) {
         $(li).find('label').html(titulos[l]);
-    });
+    });*/
 
     $('.orden').click(function() {
 
