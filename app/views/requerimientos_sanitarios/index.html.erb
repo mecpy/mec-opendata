@@ -138,7 +138,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">C&oacute;digo Establecimiento</span>
 
         <span class="orden">
@@ -166,7 +166,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">C&oacute;digo Instituci&oacute;n</span>
 
         <span class="orden">
@@ -194,7 +194,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">Instituci&oacute;n</span>
 
         <span class="orden">
@@ -222,7 +222,7 @@
 
       </th>
 
-      <th data-priority="3">
+      <th data-priority="1">
         <span data-titulo="true">Zona</span>
 
         <span class="orden">
@@ -250,8 +250,8 @@
 
       </th>
 
-      <th data-priority="3">
-        <span data-titulo="true">Nivel Educativo Beneficiado</span>
+      <th data-priority="1">
+        <span data-titulo="true">Nivel</br>Educativo Beneficiado</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -278,8 +278,8 @@
 
       </th>
 
-      <th data-priority="4">
-        <span data-titulo="true">Abastecimiento de Agua</span>
+      <th data-priority="1">
+        <span data-titulo="true">Abastecimiento</br>de Agua</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -306,8 +306,8 @@
 
       </th>
 
-      <th data-priority="4">
-        <span data-titulo="true">Servicio Sanitario Actual</span>
+      <th data-priority="1">
+        <span data-titulo="true">Servicio</br>Sanitario Actual</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -334,8 +334,8 @@
 
       </th>
 
-      <th data-priority="4">
-        <span data-titulo="true">Cuenta con Espacio de Construcci&oacute;n</span>
+      <th data-priority="1">
+        <span data-titulo="true">Cuenta con</br>Espacio de Construcci&oacute;n</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -362,8 +362,8 @@
 
       </th>
 
-      <th data-priority="4">
-        <span data-titulo="true">Tipo de Requerimiento de Insfraestrutura</span>
+      <th data-priority="1">
+        <span data-titulo="true">Tipo de</br>Requerimiento de Insfraestrutura</span>
 
         <span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -376,21 +376,37 @@
       </div>
       </th>
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag nil, "Cantidad Requerida".html_safe%><br /><br />
-        <%= select_tag(:form_buscar_requerimientos_sanitarios_cantidad_requerida_operador, options_for_select(['>', '<', '='])) %>
-        <%= text_field_tag :form_buscar_requerimientos_sanitarios_cantidad_requerida, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_requerimientos_sanitarios_cantidad_requerida'));" %>
+      <th style="width:5%;" class="number-header">
+        <span data-titulo="true">Cantidad Requerida</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+        <%= select_tag(:form_buscar_requerimientos_sanitarios_cantidad_requerida_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_requerimientos_sanitarios_cantidad_requerida, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-sanitarios', '#form_buscar_requerimientos_sanitarios_cantidad_requerida');"><i class="fa fa-times"></i></span>
+      </div>
       </th>
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag nil, "N&uacute;mero de Beneficiados".html_safe%><br /><br />
-        <%= select_tag(:form_buscar_requerimientos_sanitarios_numero_beneficiados_operador, options_for_select(['>', '<', '='])) %>
-        <%= text_field_tag :form_buscar_requerimientos_sanitarios_numero_beneficiados, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_requerimientos_sanitarios_numero_beneficiados'));" %>
+      <th style="width:5%;" class="number-header">
+        <span data-titulo="true">N&uacute;mero de Beneficiados</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+        <%= select_tag(:form_buscar_requerimientos_sanitarios_numero_beneficiados_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_requerimientos_sanitarios_numero_beneficiados, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-sanitarios', '#form_buscar_requerimientos_sanitarios_numero_beneficiados');"><i class="fa fa-times"></i></span>
+      </div>
       </th>
 
-      <th data-priority="4">
+      <th data-priority="1">
         <span data-titulo="true">Justificaci&oacute;n</span>
 
         <span class="orden">

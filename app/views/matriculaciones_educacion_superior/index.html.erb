@@ -130,7 +130,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">Departamento</span>
 
         <span class="orden">
@@ -158,7 +158,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">Distrito</span>
 
         <span class="orden">
@@ -186,7 +186,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">Barrio/Localidad</span>
 
         <span class="orden">
@@ -214,7 +214,7 @@
 
       </th>
 
-      <th data-priority="3">
+      <th data-priority="1">
         <span data-titulo="true">Zona</span>
 
         <span class="orden">
@@ -242,7 +242,7 @@
 
       </th>
 
-      <th data-priority="3">
+      <th data-priority="1">
         <span data-titulo="true">Sector o Tipo Gestión</span>
 
         <span class="orden">
@@ -269,33 +269,65 @@
         ) %>
 
       </th>
+      
+      <th style="width:5%;" class="number-header">
+        <span data-titulo="true">Cantidad de</br>Matriculados Nivel Terciario</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag nil, "Cantidad de Matriculados\n Nivel Terciario".html_safe%><br />
-        <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_ets_operador, options_for_select(['>', '<', '='])) %>
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_ets, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_superior_matricula_ets'));" %>
+        <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_ets_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_ets, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-superior', '#form_buscar_matriculaciones_educacion_superior_matricula_ets');"><i class="fa fa-times"></i></span>
+      </div>
       </th>
+      
+      <th style="width:5%;" class="number-header">
+        <span data-titulo="true">Cantidad de Matriculados</br>Cursos de Profesorado</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag nil, "Cantidad de Matriculados\n Cursos de Profesorado".html_safe%><br />
-        <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_fed_operador, options_for_select(['>', '<', '='])) %>
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_fed, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_superior_matricula_fed'));" %>
+        <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_fed_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_fed, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-superior', '#form_buscar_matriculaciones_educacion_superior_matricula_fed');"><i class="fa fa-times"></i></span>
+      </div>
       </th>
+      
+      <th style="width:5%;" class="number-header">
+        <span data-titulo="true">Cantidad de Matriculados</br>Formación Docente</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag nil, "Cantidad de Matriculados\n Formación Docente".html_safe%><br />
-        <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_fdes_operador, options_for_select(['>', '<', '='])) %>
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_fdes, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_superior_matricula_fdes'));" %>
+        <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_fdes_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_fdes, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-superior', '#form_buscar_matriculaciones_educacion_superior_matricula_fdes');"><i class="fa fa-times"></i></span>
+      </div>
       </th>
+      
+      <th style="width:5%;" class="number-header">
+        <span data-titulo="true">Cantidad de Matriculados</br>Profesionalización Docente</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
 
-      <th style="width:7%;" class="text-min">
-        <%= label_tag nil, "Cantidad de Matriculados\n Profesionalización Docente".html_safe%><br />
-        <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_pd_operador, options_for_select(['>', '<', '='])) %>
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_pd, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_educacion_superior_matricula_pd'));" %>
+        <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_pd_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_pd, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-superior', '#form_buscar_matriculaciones_educacion_superior_matricula_pd');"><i class="fa fa-times"></i></span>
+      </div>
       </th>
 
       </tr>

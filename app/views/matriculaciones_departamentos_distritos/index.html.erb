@@ -103,7 +103,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">Zona</span>
 
         <span class="orden">
@@ -131,7 +131,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">Sector o Tipo de Gesti&oacute;n</span>
 
         <span class="orden">
@@ -158,12 +158,20 @@
         ) %>
 
       </th>
+      
+      <th style="width:5%;" class="number-header">
+        <span data-titulo="true">Cantidad de Matriculados</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
 
-      <th style="width:20%;" class="text-min">
-        <%= label_tag nil, "Cantidad de Matriculados".html_safe%><br />
-        <%= select_tag(:form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados_operador, options_for_select(['>', '<', '='])) %>
-        <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "quitar_filtro($('#form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados'));" %>
+        <%= select_tag(:form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-departamentos-distritos', '#form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados');"><i class="fa fa-times"></i></span>
+      </div>
       </th>
 
       </tr>

@@ -140,7 +140,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">C&oacute;digo Establecimiento</span>
 
         <span class="orden">
@@ -168,7 +168,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">C&oacute;digo Instituci&oacute;n</span>
 
         <span class="orden">
@@ -196,7 +196,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">Instituci&oacute;n</span>
 
         <span class="orden">
@@ -224,7 +224,7 @@
 
       </th>
 
-      <th data-priority="3">
+      <th data-priority="1">
         <span data-titulo="true">Zona</span>
 
         <span class="orden">
@@ -252,7 +252,7 @@
 
       </th>
 
-      <th data-priority="3">
+      <th data-priority="1">
         <span data-titulo="true">Nivel Educativo Beneficiado</span>
 
         <span class="orden">
@@ -280,7 +280,7 @@
 
       </th>
 
-      <th data-priority="3">
+      <th data-priority="1">
         <span data-titulo="true">Cuenta con Espacio de Construcci&oacute;n</span>
 
         <span class="orden">
@@ -308,7 +308,7 @@
 
       </th>
 
-      <th data-priority="4">
+      <th data-priority="1">
         <span data-titulo="true">Tipo de Requerimiento de Insfraestrutura</span>
 
         <span class="orden">
@@ -321,22 +321,38 @@
         <%= select :form_buscar_requerimientos_aulas, :tipo_requerimiento_infraestructura, ['','NUEVO','REPARACION','ADECUACION'], {}, {:class => 'form-control input-sm'} %>
       </div>
       </th>
+      
+      <th style="width:5%;" class="number-header">
+        <span data-titulo="true">Cantidad Requerida</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
 
-      <th style="width:6%;" class="text-min">
-        <%= label_tag nil, "Cantidad Requerida".html_safe%><br /><br />
-        <%= select_tag(:form_buscar_requerimientos_aulas_cantidad_requerida_operador, options_for_select(['>', '<', '='])) %>
-        <%= text_field_tag :form_buscar_requerimientos_aulas_cantidad_requerida, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_requerimientos_aulas_cantidad_requerida'));" %>
+        <%= select_tag(:form_buscar_requerimientos_aulas_cantidad_requerida_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_requerimientos_aulas_cantidad_requerida, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-aulas', '#form_buscar_requerimientos_aulas_cantidad_requerida');"><i class="fa fa-times"></i></span>
+      </div>
+      </th>
+      
+      <th style="width:5%;" class="number-header">
+        <span data-titulo="true">N&uacute;mero de Beneficiados</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
+
+        <%= select_tag(:form_buscar_requerimientos_aulas_numero_beneficiados_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_requerimientos_aulas_numero_beneficiados, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-aulas', '#form_buscar_requerimientos_aulas_numero_beneficiados');"><i class="fa fa-times"></i></span>
+      </div>
       </th>
 
-      <th style="width:6%;" class="text-min">
-        <%= label_tag nil, "N&uacute;mero de Beneficiados".html_safe%><br /><br />
-        <%= select_tag(:form_buscar_requerimientos_aulas_numero_beneficiados_operador, options_for_select(['>', '<', '='])) %>
-        <%= text_field_tag :form_buscar_requerimientos_aulas_numero_beneficiados, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_requerimientos_aulas_numero_beneficiados'));" %>
-      </th>
-
-      <th data-priority="4">
+      <th data-priority="1">
         <span data-titulo="true">Justificaci&oacute;n</span>
 
         <span class="orden">

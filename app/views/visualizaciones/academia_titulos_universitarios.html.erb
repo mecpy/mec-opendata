@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row ">
+    <div class="col-md-12">
+      <h2 style="border-bottom: 2px solid gray;">
+        <!--Títulos Universitarios-->
+      </h2> 
+      <div style="clear:both;"></div> 
+      <div class="map-container">
+        <!--<p>Esta visualización fue desarrollada por <a href="http://opendata.pol.una.py/?p=88" target="_blank">alumnos de Ingeniería Informática de la Facultad Politécnica de la Universidad Nacional de Asunción</a>.</p>-->
+
+        <script>
+          if (window.innerHeight) {
+            //navegadores basados en mozilla 
+            espacio_iframe = window.innerHeight - 110
+          } else {
+            if (document.body.clientHeight) {
+              //Navegadores basados en IExplorer, es que no tengo innerheight 
+              espacio_iframe = document.body.clientHeight - 110
+            } else {
+              //otros navegadores 
+              espacio_iframe = 478
+            }
+          }
+          document.write('<iframe frameborder="0" src="http://visualizaciones.datos.org.py/titulos-universitarios/" width="100%" height="' + espacio_iframe + '">')
+          document.write('</iframe>')
+        </script> 
+        <noscript> 
+        <iframe frameborder="0" src="http://visualizaciones.datos.org.py/titulos-universitarios/" width="770" height=478> 
+        </iframe> 
+        </noscript>
+
+
+        <!--<iframe width="640" height="360" src="http://visualizaciones.datos.org.py/titulos-universitarios/" name="iframe_a" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;"></iframe>-->
+
+        <!--<p style="text-align: left;"><strong>Autores: </strong></p>
+        <ul>
+          <li style="text-align: left;">Camilo Báez</li>
+          <li style="text-align: left;">Verena Ojeda</li>
+          <li style="text-align: left;">Joan Ruax</li>
+          <li style="text-align: left;">Natalia Valdez</li>
+        </ul>-->
+
+      </div><!--/span-->
+
+    </div>
+
+  </div><!--/row-->
+
+</div><!--/.container-->

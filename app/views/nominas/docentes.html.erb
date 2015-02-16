@@ -96,7 +96,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">Nombre Completo</span>
 
         <span class="orden">
@@ -125,7 +125,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">Objeto de Gasto</span>
 
         <span class="orden">
@@ -154,7 +154,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">Estado</span>
 
         <span class="orden">
@@ -183,7 +183,7 @@
 
       </th>
 
-      <th data-priority="3">
+      <th data-priority="1">
         <span data-titulo="true">Antigüedad</span>
 
         <span class="orden">
@@ -212,7 +212,7 @@
 
       </th>
 
-      <th data-priority="3">
+      <th data-priority="1">
         <span data-titulo="true">Numero Matriculación</span>
 
         <span class="orden">
@@ -240,12 +240,20 @@
         ) %>
 
       </th>
+      
+      <th style="width:5%;" class="number-header">
+        <span data-titulo="true">Asignaci&oacute;n</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
 
-      <th style="width:13%;text-align:center;" class="text-min">
-        <%= label_tag nil, "Asignaci&oacute;n".html_safe %><br />
-        <%= select_tag(:form_buscar_nominas_asignacion_operador, options_for_select(['>', '<', '='])) %>
-        <%= text_field_tag :form_buscar_nominas_asignacion, nil, :class => 'text-min', :style => "width: 100px;" %>
-        <%= link_to icon_delete, "#", onclick: "quitar_filtro($('#form_buscar_nominas_asignacion'));" %>
+        <%= select_tag(:form_buscar_nominas_asignacion_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_nominas_asignacion, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-nominas', '#form_buscar_nominas_asignacion');"><i class="fa fa-times"></i></span>
+      </div>
       </th>
 
       <th style="width:16px;"></th>

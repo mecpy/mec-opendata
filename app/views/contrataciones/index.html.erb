@@ -98,7 +98,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">Descripci&oacute;n</span>
 
         <span class="orden">
@@ -126,7 +126,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">Fecha de Apertura de Ofertas</span>
 
         <span class="orden">
@@ -154,7 +154,7 @@
 
       </th>
 
-      <th data-priority="2">
+      <th data-priority="1">
         <span data-titulo="true">Estado</span>
 
         <span class="orden">
@@ -182,7 +182,7 @@
 
       </th>
 
-      <th data-priority="3">
+      <th data-priority="1">
         <span data-titulo="true">Proveedor Adjudicado</span>
 
         <span class="orden">
@@ -210,7 +210,7 @@
 
       </th>
 
-      <th data-priority="3">
+      <th data-priority="1">
         <span data-titulo="true">Fecha Contrato</span>
 
         <span class="orden">
@@ -238,7 +238,7 @@
 
       </th>
 
-      <th data-priority="3">
+      <th data-priority="1">
         <span data-titulo="true">Fecha Vigencia de Contrato</span>
 
         <span class="orden">
@@ -265,12 +265,20 @@
         ) %>
 
       </th>
+      
+      <th style="width:5%;" class="number-header">
+        <span data-titulo="true">Monto Adjudicado</span>
+        <span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>
 
-      <th style="width:9%;" class="text-min">
-        <%= label_tag nil, "Monto Adjudicado".html_safe%><br /><br />
-        <%= select_tag(:form_buscar_contrataciones_monto_adjudicado_operador, options_for_select(['>', '<', '='])) %>
-        <%= text_field_tag :form_buscar_contrataciones_monto_adjudicado, nil, :class => 'text-min' %>
-        <%= link_to icon_delete, "#", onclick: "quitar_filtro('#form-buscar-contrataciones', '#form_buscar_contrataciones_monto_adjudicado');" %>
+        <%= select_tag(:form_buscar_contrataciones_monto_adjudicado_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
+      <div class="input-group input-group-sm number-input-group">
+        <%= number_field_tag :form_buscar_contrataciones_monto_adjudicado, nil, :class => 'form-control' %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-contrataciones', '#form_buscar_contrataciones_monto_adjudicado');"><i class="fa fa-times"></i></span>
+      </div>
       </th>
 
       </tr>
@@ -315,7 +323,7 @@
   //LIMPIAR FORMULARIO DE BUSQUEDA
   valor_defecto = [{
       id: '#form_buscar_contrataciones_ejercicio_fiscal',
-      valor: 2015
+      valor: 2014
     }];
   resetForm("#form-buscar-contrataciones", valor_defecto);
 
