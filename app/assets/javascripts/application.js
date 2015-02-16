@@ -31,6 +31,7 @@
 //= stub views/uri_establecimiento_view.js
 //= stub views/uri_institucion_view.js
 //= require datos_abiertos_plugins.js
+//= require master_detail.js
 
 /*Funcion que limpia el formulario del Dataset*/
 function resetForm(formId, valor_defecto) {
