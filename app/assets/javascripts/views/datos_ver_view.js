@@ -26,7 +26,7 @@ $(document).ready(function() {
     $('.btn-toolbar .dropdown-btn-group button').unbind().remove();
     $('.btn-toolbar .focus-btn-group button').unbind().remove();
 
-    /*var tabla_original = tabla.find('div').next('table');
+    var tabla_original = tabla.find('div').next('table');
      var filtros_clonados = tabla.find('table').first().find('thead tr th');
      var titulos = [];
      
@@ -43,7 +43,7 @@ $(document).ready(function() {
      $(th).find('input,select').val($(this).val());
      });
      
-     });*/
+     });
 
     /*$(botones_derecha[1]).next().find('li').each(function(l, li) {
      $(li).find('label').html(titulos[l]);
