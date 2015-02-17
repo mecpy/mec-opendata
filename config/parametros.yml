@@ -42,6 +42,12 @@ development:
   matriculaciones_departamentos_distritos_csv: /data/matriculaciones_departamentos_distritos_2012.csv
   matriculaciones_departamentos_distritos_json: /data/matriculaciones_departamentos_distritos_2012.json
 
+  ejecucion_fiscal_xlsx: /data/ejecucion_al_31122014.xlsx
+  
+  viaticos_xls: /data/viaticos_diciembre_2014_.xls
+  
+  resumen_anual_remuneraciones_personal_xlsx: /data/resumen_anual_remuneraciones_personal_2014.xlsx
+
   subdominio: "http://datos.mec.gov.py/"
 
 production:
@@ -89,6 +95,10 @@ production:
   matriculaciones_departamentos_distritos_json: /data/matriculaciones_departamentos_distritos_2012.json
 
 
-
+  ejecucion_fiscal_xlsx: http://datos.mec.gov.py/data/ejecucion_al_31122014.xlsx
+  
+  viaticos_xls: http://datos.mec.gov.py/data/viaticos_diciembre_2014_.xls
+  
+  resumen_anual_remuneraciones_personal_xlsx: http://datos.mec.gov.py/data/resumen_anual_remuneraciones_personal_2014.xlsx
 
   subdominio: "http://datos.mec.gov.py/"

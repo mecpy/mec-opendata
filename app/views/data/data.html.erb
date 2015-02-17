@@ -661,4 +661,89 @@
     </div>
   </li>
 
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">26</span>
+    <div class="celda col-sm-3">
+      <span itemprop="name">PRESUPUESTO DE INGRESOS Y EGRESOS DEL EJERCICIO FISCAL</span><br>
+
+      <div class="acciones">
+
+        <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar (41,8KB)</span>').html_safe, PARAMETRO[:ejecucion_fiscal_xlsx], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>
+      Contiene información de ejecución del presupuesto neto del MEC, con los ingresos y egresos del ejercicio fiscal. La información referente a los Ingresos y Gastos de la Institución se realiza en función al Presupuesto Neto administrado por el MEC, es decir, no incluye las Transferencias a las Entidades Descentralizadas  (Universidades Nacionales, CONES, ANEAES, INDI, y FONDEC), por ser éstas Entidades de condición Autónomas y Autárquicas.
+      </p>
+    </div>
+  </li>
+
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">27</span>
+    <div class="celda col-sm-3">
+      <span itemprop="name">VI&Aacute;TICOS</span><br>
+
+      <div class="acciones">
+
+        <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar (232,5KB)</span>').html_safe, PARAMETRO[:viaticos_xls], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>
+        Contiene todos los datos referente al viático, el destino, los objetivos del viaje, la fecha de realización, acto administrativo por la cual se autoriza el viaje y el monto asignado.
+      </p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">28</span>
+    <div class="celda col-sm-3">
+      <span itemprop="name">RESUMEN ANUAL DE REMUNERACIONES DEL PERSONAL</span><br>
+
+      <div class="acciones">
+
+        <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar (2,8MB)</span>').html_safe, PARAMETRO[:resumen_anual_remuneraciones_personal_xlsx], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>
+        Contiene el total de las remuneraciones anuales de cada trabajador del MEC, tanto docente como administrativo.
+      </p>
+    </div>
+  </li>
+
 </ul>
