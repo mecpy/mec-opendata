@@ -12,8 +12,8 @@ module WillPaginateHelper
         attributes[:rel] = rel_value(target)
         target = url(target)
       end
-      ajax_call = "$.ajax({url: '#{target}', dataType: 'script'});"
-      #@template.link_to_function(text.to_s.html_safe, ajax_call, attributes)
+      target = target.sub('/data', "") if Rails.env == "production" 
+      ajax_call = "$.ajax({url: '#{target}', dataType: 'script'});return false;"
       @template.link_to(text.to_s.html_safe,"#", onclick: ajax_call)
     end
   end
