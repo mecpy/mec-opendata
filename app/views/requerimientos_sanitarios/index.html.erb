@@ -50,7 +50,7 @@
               <i class="ascendente fa fa-sort-asc"></i>
             </span>-->
 
-      <div class="input-group input-group-sm">
+      <div class="input-group-sm">
         <%= select :form_buscar_requerimientos_sanitarios, :periodo, [2015], {}, {:class => 'form-control input-sm'} %>
       </div>
       </th>
@@ -111,7 +111,7 @@
       </th>
 
       <th data-priority="1">
-        <span data-titulo="true">N&uacute;mero Prioridad</span>
+        <span data-titulo="true">N&uacute;mero</br>Prioridad</span>
 
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -231,7 +231,7 @@
             <i class="ascendente fa fa-sort-asc"></i>
           </span>-->
   
-        <div class="input-group input-group-sm">
+        <div class="input-group-sm">
           <%= select :form_buscar_requerimientos_sanitarios, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
         </div>
       </th>
@@ -357,7 +357,7 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-      <div class="input-group input-group-sm">
+      <div class="input-group-sm">
         <%= select :form_buscar_requerimientos_sanitarios, :tipo_requerimiento_infraestructura, ['','NUEVO','REPARACION','ADECUACION'], {}, {:class => 'form-control input-sm'} %>
       </div>
       </th>

@@ -45,8 +45,9 @@
               <i class="descendente fa fa-sort-desc"></i>
               <i class="ascendente fa fa-sort-asc"></i>
             </span>-->
-
+      <div class="input-group-sm">
         <%= select :form_buscar_establecimientos, :anio, [2014,2012], {}, :class => 'form-control input-sm' %>
+      </div>
       </th>
 
       <th data-priority="1">
@@ -134,15 +135,15 @@
       </th>
 
       <th data-priority="1">
-            <span data-titulo="true">Zona</span>
+        <span data-titulo="true">Zona</span>
 
-            <!--<span class="orden">
-              <i class="filtro fa fa-sort"></i>
-              <i class="descendente fa fa-sort-desc"></i>
-              <i class="ascendente fa fa-sort-asc"></i>
-            </span>-->
+        <!--<span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>-->
 
-      <div class="input-group input-group-sm">
+      <div class="input-group-sm">
         <%= select :form_buscar_establecimientos, :nombre_zona, ['','RURAL','URBANA'], {}, {:class => 'form-control input-sm'} %>
       </div>
       </th>
@@ -214,7 +215,7 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-      <div class="input-group input-group-sm">
+      <div class="input-group-sm">
         <%= select :form_buscar_establecimientos, :programa, [["",""],["Jornada Extendida", 1]], {}, :class => 'form-control input-sm' %>
       </div>
       </th>
@@ -250,7 +251,7 @@
     $("#form-buscar-establecimientos").submit();
 
   })
-  
+
   $("#form_buscar_establecimientos_nombre_zona").bind('change', function() {
 
     $('.establecimiento-ubicacion-geografica').html('');
