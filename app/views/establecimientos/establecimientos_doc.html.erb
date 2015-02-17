@@ -30,8 +30,8 @@
 
 <form class="navbar-form navbar-left" role="search">
   <div class="form-group">
-    <%= label_tag "Periodo", nil, :class => 'col-sm-4 label-combo' %>
-    <div class="col-sm-8">
+    <%= label_tag "Periodo", nil, :class => 'col-sm-4 label-combo', :style => 'text-align:right' %>
+    <div class="col-sm-4">
       <%= select :establecimiento, :anio, periodos_establecimientos, {}, { :class => 'form-control' } %>
     </div>
   </div>

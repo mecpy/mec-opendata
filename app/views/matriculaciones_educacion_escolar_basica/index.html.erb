@@ -214,33 +214,19 @@
         ) %>
 
       </th>
-
+      
       <th data-priority="1">
-        <span data-titulo="true">Zona</span>
+            <span data-titulo="true">Zona</span>
 
-        <!--<span class="orden">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+            <!--<span class="orden">
+              <i class="filtro fa fa-sort"></i>
+              <i class="descendente fa fa-sort-desc"></i>
+              <i class="ascendente fa fa-sort-asc"></i>
+            </span>-->
 
       <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_nombre_zona, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-escolar-basica', '#form_buscar_matriculaciones_educacion_escolar_basica_nombre_zona');"><i class="fa fa-times"></i></span>
+        <%= select :form_buscar_matriculaciones_educacion_escolar_basica, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
       </div>
-
-      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_nombre_zona_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_zona, 
-            atributo_tipo: :text, 
-            model: :MatriculacionEducacionEscolarBasica, 
-            limit: 10,
-            cadena_consulta: "nombre_zona",
-            orden: "nombre_zona")), 
-        parametro_id: "form_buscar_matriculaciones_educacion_escolar_basica_nombre_zona", 
-        resultado_id: "form_buscar_matriculaciones_educacion_escolar_basica_nombre_zona_id",
-        min_length: 2
-        ) %>
-
       </th>
 
       <th data-priority="1">
@@ -443,6 +429,12 @@
   })
 
   $("#form_buscar_matriculaciones_educacion_escolar_basica_anio").bind('change', function() {
+    $.ajaxQ.abortAll();
+    $("#form-buscar-matriculaciones-educacion-escolar-basica").submit();
+
+  })
+  
+  $("#form_buscar_matriculaciones_educacion_escolar_basica_nombre_zona").bind('change', function() {
     $.ajaxQ.abortAll();
     $("#form-buscar-matriculaciones-educacion-escolar-basica").submit();
 
