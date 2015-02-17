@@ -221,22 +221,8 @@
         </span>-->
 
       <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_instituciones_nombre_zona, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_nombre_zona');"><i class="fa fa-times"></i></span>
+        <%= select :form_buscar_instituciones, :nombre_zona, ['','RURAL','URBANA'], {}, {:class => 'form-control input-sm'} %>
       </div>
-
-      <%= hidden_field_tag :form_buscar_instituciones_nombre_zona_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_zona, 
-            atributo_tipo: :text, 
-            model: :Institucion, 
-            limit: 10,
-            cadena_consulta: "nombre_zona",
-            orden: "nombre_zona")), 
-        parametro_id: "form_buscar_instituciones_nombre_zona", 
-        resultado_id: "form_buscar_instituciones_nombre_zona_id",
-        min_length: 2
-        ) %>
-
       </th>
 
       <th data-priority="1">
@@ -249,22 +235,8 @@
         </span>-->
 
       <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_instituciones_sector_o_tipo_gestion, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_sector_o_tipo_gestion');"><i class="fa fa-times"></i></span>
+        <%= select :form_buscar_instituciones, :sector_o_tipo_gestion, ['','OFICIAL', 'PRIV.SUBVENCIONADA','PRIVADA'], {}, {:class => 'form-control input-sm'} %>
       </div>
-
-      <%= hidden_field_tag :form_buscar_instituciones_sector_o_tipo_gestion_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :sector_o_tipo_gestion, 
-            atributo_tipo: :text, 
-            model: :Institucion, 
-            limit: 10,
-            cadena_consulta: "sector_o_tipo_gestion",
-            orden: "sector_o_tipo_gestion")), 
-        parametro_id: "form_buscar_instituciones_sector_o_tipo_gestion", 
-        resultado_id: "form_buscar_instituciones_sector_o_tipo_gestion_id",
-        min_length: 2
-        ) %>
-
       </th>
 
       <th data-priority="1">
@@ -541,6 +513,18 @@
   })
 
   $("#form_buscar_instituciones_anio").bind('change', function() {
+    $.ajaxQ.abortAll();
+    $("#form-buscar-instituciones").submit();
+
+  })
+  
+  $("#form_buscar_instituciones_nombre_zona").bind('change', function() {
+    $.ajaxQ.abortAll();
+    $("#form-buscar-instituciones").submit();
+
+  })
+  
+  $("#form_buscar_instituciones_sector_o_tipo_gestion").bind('change', function() {
     $.ajaxQ.abortAll();
     $("#form-buscar-instituciones").submit();
 

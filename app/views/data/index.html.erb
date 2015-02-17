@@ -71,11 +71,11 @@
 
       <div 
         class="vista-previa col-sm-5 col-sm-offset-1 enlace" 
-        style="background-image:url('<%= image_url("thumbnails/titulos_universitarios.png") %>')"
-        data-titulo='Títulos Universitarios'
-        data-descripcion='Datos sobre la oferta de universidades, carreras y títulos universitarios desde el año 2012.'
-        data-imagen='<%= image_url('destacados/titulos_universitarios.png') %>'
-        data-enlace='<%= mec_custom_url(app_comunidad_titulos_universitarios_url).html_safe %>'
+        style="background-image:url('<%= image_url("thumbnails/fonacide.png") %>')"
+        data-titulo='FONACIDE'
+        data-descripcion='Lista priorizada por los municipios de establecimientos educativos elegibles para la inversión de proyectos de infraestructura en educación a ser financiados con recursos provenientes del Fondo Nacional de Inversión Pública y Desarrollo (FONACIDE).'
+        data-imagen='<%= image_url('destacados/fonacide.png') %>'
+        data-enlace='<%= mec_custom_url(data_requerimientos_infraestructuras_catalogo_url).html_safe %>'
         onclick="seleccionar(this);">
       </div>
 
@@ -127,8 +127,8 @@
       position: "right"
     },
     {
-      element: "#tab-datos",
-      intro: "Haciendo click sobre la secci&oacute;n <b>Datos</b>, podr&aacute;s ver el listado de los Conjuntos de Datos que forman \
+      element: "#tab-listadatos",
+      intro: "Haciendo click sobre la secci&oacute;n <b>Lista de Datos</b>, podr&aacute;s ver el listado de los Conjuntos de Datos que forman \
           parte del portal del MEC con sus respectivos Diccionarios.\
           </br></br>En un Conjunto de Datos, podr&aacute;s realizar filtros y descargas de la informaci&oacute;m de tu inter&eacute;s.\
           </br></br>En el Diccionario de Datos, se describen los atributos que contiene un Conjunto de Datos, incluyendo los tipos de datos y las restricciones que se apliquen a cada uno.",

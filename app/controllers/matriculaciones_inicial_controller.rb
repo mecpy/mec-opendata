@@ -52,11 +52,11 @@ class MatriculacionesInicialController < ApplicationController
       args << "%#{quita_acentos(params[:form_buscar_matriculaciones_inicial_nombre_distrito])}%"
 
     end
+    
+    if params[:form_buscar_matriculaciones_inicial][:nombre_zona].present?
 
-    if params[:form_buscar_matriculaciones_inicial_nombre_zona].present?
-
-      cond << "nombre_zona ilike ?"
-      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_inicial_nombre_zona])}%"
+      cond << "nombre_zona = ?"
+      args << "#{params[:form_buscar_matriculaciones_inicial][:nombre_zona]}"
 
     end
 

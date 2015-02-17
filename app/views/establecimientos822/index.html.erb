@@ -164,33 +164,19 @@
         ) %>
 
       </th>
-
+      
       <th rowspan="2" data-priority="1">
-        <span data-titulo="true">Zona</span>
+            <span data-titulo="true">Zona</span>
 
-        <!--<span class="orden">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+            <!--<span class="orden">
+              <i class="filtro fa fa-sort"></i>
+              <i class="descendente fa fa-sort-desc"></i>
+              <i class="ascendente fa fa-sort-asc"></i>
+            </span>-->
 
       <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_establecimientos_nombre_zona, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_nombre_zona');"><i class="fa fa-times"></i></span>
+        <%= select :form_buscar_establecimientos, :nombre_zona, ['','RURAL','URBANA'], {}, {:class => 'form-control input-sm'} %>
       </div>
-
-      <%= hidden_field_tag :form_buscar_establecimientos_nombre_zona_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_zona, 
-            atributo_tipo: :text, 
-            model: :Establecimiento822, 
-            limit: 10,
-            cadena_consulta: "nombre_zona",
-            orden: "nombre_zona")), 
-        parametro_id: "form_buscar_establecimientos_nombre_zona", 
-        resultado_id: "form_buscar_establecimientos_nombre_zona_id",
-        min_length: 2
-        ) %>
-
       </th>
 
       <th rowspan="2" data-priority="1">
@@ -494,6 +480,15 @@
   })
 
   $("#form_buscar_establecimientos_anio").bind('change', function() {
+
+    $('.establecimiento-ubicacion-geografica').html('');
+    $("#establecimientos-ubicaciones-geograficas").html('');
+    $.ajaxQ.abortAll();
+    $("#form-buscar-establecimientos").submit();
+
+  })
+  
+  $("#form_buscar_establecimientos_nombre_zona").bind('change', function() {
 
     $('.establecimiento-ubicacion-geografica').html('');
     $("#establecimientos-ubicaciones-geograficas").html('');

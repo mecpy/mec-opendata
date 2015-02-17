@@ -56,10 +56,10 @@ class InstitucionesController < ApplicationController
 
     end
 
-    if params[:form_buscar_instituciones_nombre_zona].present?
+    if params[:form_buscar_instituciones][:nombre_zona].present?
 
-      cond << "nombre_zona ilike ?"
-      args << "%#{quita_acentos(params[:form_buscar_instituciones_nombre_zona])}%"
+      cond << "nombre_zona = ?"
+      args << "#{params[:form_buscar_instituciones][:nombre_zona]}"
 
     end
 
@@ -83,11 +83,11 @@ class InstitucionesController < ApplicationController
       args << "%#{quita_acentos(params[:form_buscar_instituciones_nombre_institucion])}%"
 
     end
+    
+    if params[:form_buscar_instituciones][:sector_o_tipo_gestion].present?
 
-    if params[:form_buscar_instituciones_sector_o_tipo_gestion].present?
-
-      cond << "sector_o_tipo_gestion ilike ?"
-      args << "%#{quita_acentos(params[:form_buscar_instituciones_sector_o_tipo_gestion])}%"
+      cond << "sector_o_tipo_gestion = ?"
+      args << "#{params[:form_buscar_instituciones][:sector_o_tipo_gestion]}"
 
     end
 

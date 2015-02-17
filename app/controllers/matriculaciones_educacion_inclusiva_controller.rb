@@ -42,11 +42,11 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
       args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento])}%"
 
     end
+    
+    if params[:form_buscar_matriculaciones_educacion_inclusiva][:nombre_zona].present?
 
-    if params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito].present?
-
-      cond << "nombre_distrito ilike ?"
-      args << "%#{quita_acentos(params[:form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito])}%"
+      cond << "nombre_zona = ?"
+      args << "#{params[:form_buscar_matriculaciones_educacion_inclusiva][:nombre_zona]}"
 
     end
 

@@ -75,11 +75,11 @@ class RequerimientosSanitariosController < ApplicationController
       args << "%#{quita_acentos(params[:form_buscar_requerimientos_sanitarios_nombre_distrito])}%"
 
     end
+    
+    if params[:form_buscar_requerimientos_sanitarios][:nombre_zona].present?
 
-    if params[:form_buscar_requerimientos_sanitarios_nombre_zona].present? #OK
-
-      cond << "nombre_zona ilike ?"
-      args << "%#{quita_acentos(params[:form_buscar_requerimientos_sanitarios_nombre_zona])}%"
+      cond << "nombre_zona = ?"
+      args << "#{params[:form_buscar_requerimientos_sanitarios][:nombre_zona]}"
 
     end
 
