@@ -120,8 +120,8 @@ Rails.application.routes.draw do
   
   get "data/establecimientos_escolares_priorizados_elegibles_fonacide" => 'requerimientos_infraestructuras#catalogo', :as => :data_requerimientos_infraestructuras_catalogo
 
-  get 'app/academia/titulos_universitarios' => 'visualizaciones#academia_titulos_universitarios', :as => :app_academia_titulos_universitarios
-  get 'app/academia/nuestra_educacion_numeros' => 'visualizaciones#academia_nuestra_educacion_numeros', :as => :app_academia_nuestra_educacion_numeros
+  get 'app/comunidad/titulos_universitarios' => 'visualizaciones#comunidad_titulos_universitarios', :as => :app_comunidad_titulos_universitarios
+  get 'app/comunidad/nuestra_educacion_numeros' => 'visualizaciones#comunidad_nuestra_educacion_numeros', :as => :app_comunidad_nuestra_educacion_numeros
   get 'app/academia/inventario_bienes_muebles' => 'visualizaciones#academia_inventario_bienes_muebles', :as => :app_academia_inventario_bienes_muebles
   get 'app/academia/inventario_bienes_inmuebles' => 'visualizaciones#academia_inventario_bienes_inmuebles', :as => :app_academia_inventario_bienes_inmuebles
   get 'app/academia/inventario_bienes_rodados' => 'visualizaciones#academia_inventario_bienes_rodados', :as => :app_academia_inventario_bienes_rodados

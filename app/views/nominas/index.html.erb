@@ -42,11 +42,11 @@
           <th data-priority="1">
             <span data-titulo="true">Año</span>
 
-            <span class="orden">
+            <!--<span class="orden">
               <i class="filtro fa fa-sort"></i>
               <i class="descendente fa fa-sort-desc"></i>
               <i class="ascendente fa fa-sort-asc"></i>
-            </span>
+            </span>-->
 
       <div class="input-group input-group-sm">
         <%= select :form_buscar_nominas, :ano_periodo_pago, [2014], {}, {:class => 'form-control input-sm'} %>
@@ -56,11 +56,11 @@
       <th data-priority="1">
         <span data-titulo="true">Mes</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= select :form_buscar_nominas, :mes_periodo_pago, [["noviembre", 11],["octubre", 10],["setiembre", 9], ["agosto", 8], ["julio", 7], ["junio", 6]], {}, {:class => 'form-control input-sm'} %>
@@ -70,11 +70,11 @@
       <th data-priority="1">
         <span data-titulo="true">N° Documento</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_nominas_codigo_trabajador, nil, :class => 'form-control', :placeholder => "" %>
@@ -91,7 +91,7 @@
             orden: "codigo_trabajador")), 
         parametro_id: "form_buscar_nominas_codigo_trabajador", 
         resultado_id: "form_buscar_nominas_codigo_trabajador_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -99,11 +99,11 @@
       <th data-priority="1">
         <span data-titulo="true">Nombre Completo</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_nominas_nombre_trabajador, nil, :class => 'form-control', :placeholder => "" %>
@@ -120,7 +120,7 @@
             orden: "nombre_trabajador")), 
         parametro_id: "form_buscar_nominas_nombre_trabajador", 
         resultado_id: "form_buscar_nominas_nombre_trabajador_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -128,11 +128,11 @@
       <th data-priority="1">
         <span data-titulo="true">Objeto de Gasto</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_nominas_nombre_objeto_gasto, nil, :class => 'form-control', :placeholder => "" %>
@@ -149,7 +149,7 @@
             orden: "nombre_objeto_gasto")), 
         parametro_id: "form_buscar_nominas_nombre_objeto_gasto", 
         resultado_id: "form_buscar_nominas_nombre_objeto_gasto_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -157,11 +157,11 @@
       <th data-priority="1">
         <span data-titulo="true">Estado</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_nominas_estado, nil, :class => 'form-control', :placeholder => "" %>
@@ -178,7 +178,7 @@
             orden: "estado")), 
         parametro_id: "form_buscar_nominas_estado", 
         resultado_id: "form_buscar_nominas_estado_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -186,11 +186,11 @@
       <th data-priority="1">
         <%= label_tag nil, "Antigüedad".html_safe %>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_nominas_antiguedad_administrativo, nil, :class => 'form-control', :placeholder => "" %>
@@ -207,18 +207,18 @@
             orden: "antiguedad_administrativo")), 
         parametro_id: "form_buscar_nominas_antiguedad_administrativo", 
         resultado_id: "form_buscar_nominas_antiguedad_administrativo_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
       
       <th style="width:5%;" class="number-header">
         <span data-titulo="true">Asignaci&oacute;n</span>
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
         <%= select_tag(:form_buscar_nominas_asignacion_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">

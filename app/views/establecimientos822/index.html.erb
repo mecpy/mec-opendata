@@ -42,11 +42,11 @@
           <th rowspan="2" data-priority="1">
             <span data-titulo="true">Período</span>
 
-            <span class="orden">
+            <!--<span class="orden">
               <i class="filtro fa fa-sort"></i>
               <i class="descendente fa fa-sort-desc"></i>
               <i class="ascendente fa fa-sort-asc"></i>
-            </span>
+            </span>-->
 
       <div class="input-group input-group-sm">
         <%= select :form_buscar_establecimientos, :anio, [2014], {}, :class => 'form-control'%>
@@ -56,11 +56,11 @@
       <th rowspan="2" data-priority="1">
         <span data-titulo="true">Institución</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_establecimientos_nombre_institucion, nil, :class => 'form-control', :placeholder => "" %>
@@ -76,7 +76,7 @@
             orden: "nombre_institucion")), 
         parametro_id: "form_buscar_establecimientos_nombre_institucion", 
         resultado_id: "form_buscar_establecimientos_nombre_institucion_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -84,11 +84,11 @@
       <th rowspan="2" data-priority="1">
         <span data-titulo="true">Código Establecimiento</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_establecimientos_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
@@ -104,7 +104,7 @@
             orden: "codigo_establecimiento")), 
         parametro_id: "form_buscar_establecimientos_codigo_establecimiento", 
         resultado_id: "form_buscar_establecimientos_codigo_establecimiento_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -112,11 +112,11 @@
       <th rowspan="2" data-priority="1">
         <span data-titulo="true">Departamento</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_establecimientos_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
@@ -132,7 +132,7 @@
             orden: "nombre_departamento")), 
         parametro_id: "form_buscar_establecimientos_nombre_departamento", 
         resultado_id: "form_buscar_establecimientos_nombre_departamento_id",
-        min_length: 4
+        min_length: 2
         ) %>
 
       </th>
@@ -140,11 +140,11 @@
       <th rowspan="2" data-priority="1">
         <span data-titulo="true">Distrito</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_establecimientos_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
@@ -160,7 +160,7 @@
             orden: "nombre_distrito")), 
         parametro_id: "form_buscar_establecimientos_nombre_distrito", 
         resultado_id: "form_buscar_establecimientos_nombre_distrito_id",
-        min_length: 4
+        min_length: 2
         ) %>
 
       </th>
@@ -168,11 +168,11 @@
       <th rowspan="2" data-priority="1">
         <span data-titulo="true">Zona</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_establecimientos_nombre_zona, nil, :class => 'form-control', :placeholder => "" %>
@@ -188,7 +188,7 @@
             orden: "nombre_zona")), 
         parametro_id: "form_buscar_establecimientos_nombre_zona", 
         resultado_id: "form_buscar_establecimientos_nombre_zona_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -196,11 +196,11 @@
       <th rowspan="2" data-priority="1">
         <span data-titulo="true">Localidad/Barrio</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_establecimientos_nombre_barrio_localidad, nil, :class => 'form-control', :placeholder => "" %>
@@ -216,7 +216,7 @@
             orden: "nombre_barrio_localidad")), 
         parametro_id: "form_buscar_establecimientos_nombre_barrio_localidad", 
         resultado_id: "form_buscar_establecimientos_nombre_barrio_localidad_id",
-        min_length: 4
+        min_length: 2
         ) %>
 
       </th>
@@ -224,11 +224,11 @@
       <th rowspan="2" data-priority="1">
         <span data-titulo="true">Direcci&oacute;n</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_establecimientos_direccion, nil, :class => 'form-control', :placeholder => "" %>
@@ -244,18 +244,18 @@
             orden: "direccion")), 
         parametro_id: "form_buscar_establecimientos_direccion", 
         resultado_id: "form_buscar_establecimientos_direccion_id",
-        min_length: 4
+        min_length: 2
         ) %>
 
       </th>
 
       <th rowspan="2" style="width:5%;" class="text-min number-header">
         <span data-titulo="true">Asentamientos Priorizados</span>
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
         <%= select_tag(:form_buscar_establecimientos_asentamientos_priorizados_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">
@@ -276,11 +276,11 @@
       <tr>
         <th style="width:5%;" class="text-min number-header">
           <span data-titulo="true">Comedor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          <span class="orden">
+          <!--<span class="orden">
             <i class="filtro fa fa-sort"></i>
             <i class="descendente fa fa-sort-desc"></i>
             <i class="ascendente fa fa-sort-asc"></i>
-          </span>
+          </span>-->
 
           <%= select_tag(:form_buscar_establecimientos_ampliacion_comedor_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">
@@ -291,11 +291,11 @@
 
       <th style="width:5%;" class="text-min number-header">
         <span data-titulo="true">Aulas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
         <%= select_tag(:form_buscar_establecimientos_ampliacion_aulas_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">
@@ -306,11 +306,11 @@
 
       <th style="width:5%;" class="text-min number-header">
         <span data-titulo="true">Aulas de Preescolar</span>
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
         <%= select_tag(:form_buscar_establecimientos_ampliacion_aula_preescolar_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">
@@ -321,11 +321,11 @@
 
       <th style="width:5%;" class="text-min number-header">
         <span data-titulo="true">Centro de Recursos de Aprendizaje</span>
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
         <%= select_tag(:form_buscar_establecimientos_ampliacion_centro_aprendizaje_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">
@@ -336,11 +336,11 @@
 
       <th style="width:5%;" class="text-min number-header">
         <span data-titulo="true">Laboratorios&nbsp;&nbsp;</span>
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
         <%= select_tag(:form_buscar_establecimientos_ampliacion_laboratorios_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">
@@ -351,11 +351,11 @@
 
       <th style="width:5%;" class="text-min number-header">
         <span data-titulo="true">Bloque Administrativo</span>
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
         <%= select_tag(:form_buscar_establecimientos_ampliacion_bloque_administrativo_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">
@@ -366,11 +366,11 @@
 
       <th style="width:5%;" class="text-min number-header">
         <span data-titulo="true">Servicios Higiénicos</span>
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
         <%= select_tag(:form_buscar_establecimientos_ampliacion_servicios_higienicos_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">
@@ -381,11 +381,11 @@
 
       <th style="width:5%;" class="text-min number-header">
         <span data-titulo="true">Aulas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
         <%= select_tag(:form_buscar_establecimientos_reparacion_aulas_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">
@@ -396,11 +396,11 @@
 
       <th style="width:5%;" class="text-min number-header">
         <span data-titulo="true">Servicios Higiénicos</span>
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
         <%= select_tag(:form_buscar_establecimientos_reparacion_servicios_higienicos_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">
@@ -411,11 +411,11 @@
 
       <th style="width:5%;" class="text-min number-header">
         <span data-titulo="true">Comedor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
         <%= select_tag(:form_buscar_establecimientos_reparacion_comedor_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">
@@ -426,11 +426,11 @@
 
       <th style="width:5%;" class="text-min number-header">
         <span data-titulo="true">Obras Exteriores de Pozo</span>
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
         <%= select_tag(:form_buscar_establecimientos_obras_exteriores_pozo_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">
@@ -441,11 +441,11 @@
 
       <th style="width:5%;" class="text-min number-header">
         <span data-titulo="true">Cercado&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
         <%= select_tag(:form_buscar_establecimientos_cercado_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">
@@ -456,11 +456,11 @@
 
       <th style="width:5%;" class="text-min number-header">
         <span data-titulo="true">Obras Exteriores en Escuelas Indígenas</span>
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
         <%= select_tag(:form_buscar_establecimientos_obras_exteriores_indigenas_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">

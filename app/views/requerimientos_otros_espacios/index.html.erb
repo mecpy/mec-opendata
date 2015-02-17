@@ -44,11 +44,11 @@
           <th data-priority="1" id="tab-filtros-lista">
             <span data-titulo="true">Periodo</span>
 
-            <span class="orden">
+            <!--<span class="orden">
               <i class="filtro fa fa-sort"></i>
               <i class="descendente fa fa-sort-desc"></i>
               <i class="ascendente fa fa-sort-asc"></i>
-            </span>
+            </span>-->
 
       <div class="input-group input-group-sm">
         <%= select :form_buscar_requerimientos_otros_espacios, :periodo, [2015], {}, {:class => 'form-control input-sm'} %>
@@ -58,11 +58,11 @@
       <th data-priority="1" id="tab-filtros-texto">
         <span data-titulo="true">Departamento</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_requerimientos_otros_espacios_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
@@ -78,7 +78,7 @@
             orden: "nombre_departamento")), 
         parametro_id: "form_buscar_requerimientos_otros_espacios_nombre_departamento", 
         resultado_id: "form_buscar_requerimientos_otros_espacios_nombre_departamento_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -86,11 +86,11 @@
       <th data-priority="1">
         <span data-titulo="true">Distrito</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_requerimientos_otros_espacios_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
@@ -106,7 +106,7 @@
             orden: "nombre_distrito")), 
         parametro_id: "form_buscar_requerimientos_otros_espacios_nombre_distrito", 
         resultado_id: "form_buscar_requerimientos_otros_espacios_nombre_distrito_id",
-        min_length: 4
+        min_length: 2
         ) %>
 
       </th>
@@ -114,11 +114,11 @@
       <th data-priority="1">
         <span data-titulo="true">N&uacute;mero Prioridad</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_requerimientos_otros_espacios_numero_prioridad, nil, :class => 'form-control', :placeholder => "" %>
@@ -134,7 +134,7 @@
             orden: "numero_prioridad")), 
         parametro_id: "form_buscar_requerimientos_otros_espacios_numero_prioridad", 
         resultado_id: "form_buscar_requerimientos_otros_espacios_numero_prioridad_id",
-        min_length: 1
+        min_length: 2
         ) %>
 
       </th>
@@ -142,11 +142,11 @@
       <th data-priority="1">
         <span data-titulo="true">C&oacute;digo Establecimiento</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_requerimientos_otros_espacios_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
@@ -162,7 +162,7 @@
             orden: "codigo_establecimiento")), 
         parametro_id: "form_buscar_requerimientos_otros_espacios_codigo_establecimiento", 
         resultado_id: "form_buscar_requerimientos_otros_espacios_codigo_establecimiento_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -171,11 +171,11 @@
         <span data-titulo="true">C&oacute;digo Instituci&oacute;n</span>
 
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_requerimientos_otros_espacios_codigo_institucion, nil, :class => 'form-control', :placeholder => "" %>
@@ -191,7 +191,7 @@
             orden: "codigo_institucion")), 
         parametro_id: "form_buscar_requerimientos_otros_espacios_codigo_institucion", 
         resultado_id: "form_buscar_requerimientos_otros_espacios_codigo_institucion_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -199,11 +199,11 @@
       <th data-priority="1">
         <span data-titulo="true">Instituci&oacute;n</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_requerimientos_otros_espacios_nombre_institucion, nil, :class => 'form-control', :placeholder => "" %>
@@ -219,7 +219,7 @@
             orden: "nombre_institucion")), 
         parametro_id: "form_buscar_requerimientos_otros_espacios_nombre_institucion", 
         resultado_id: "form_buscar_requerimientos_otros_espacios_nombre_institucion_id",
-        min_length: 4
+        min_length: 2
         ) %>
 
       </th>
@@ -227,11 +227,11 @@
       <th data-priority="1">
         <span data-titulo="true">Zona</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_requerimientos_otros_espacios_nombre_zona, nil, :class => 'form-control', :placeholder => "" %>
@@ -247,7 +247,7 @@
             orden: "nombre_zona")), 
         parametro_id: "form_buscar_requerimientos_otros_espacios_nombre_zona", 
         resultado_id: "form_buscar_requerimientos_otros_espacios_nombre_zona_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -255,11 +255,11 @@
       <th data-priority="1">
         <span data-titulo="true">Nivel</br>Educativo Beneficiado</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_requerimientos_otros_espacios_nivel_educativo_beneficiado, nil, :class => 'form-control', :placeholder => "" %>
@@ -283,11 +283,11 @@
       <th data-priority="1">
         <span data-titulo="true">Cuenta con</br>Espacio de Construcci&oacute;n</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_requerimientos_otros_espacios_cuenta_espacio_para_construccion, nil, :class => 'form-control', :placeholder => "" %>
@@ -311,11 +311,11 @@
       <th data-priority="1">
         <span data-titulo="true">Nombre del Espacio</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_requerimientos_otros_espacios_nombre_espacio, nil, :class => 'form-control', :placeholder => "" %>
@@ -339,11 +339,11 @@
       <th data-priority="1">
         <span data-titulo="true">Tipo de Requerimiento</br>de Insfraestrutura</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= select :form_buscar_requerimientos_otros_espacios, :tipo_requerimiento_infraestructura, ['','NUEVO','REPARACION','ADECUACION'], {}, {:class => 'form-control input-sm'} %>
@@ -352,11 +352,11 @@
       
       <th style="width:5%;" class="number-header">
         <span data-titulo="true">Cantidad Requerida</span>
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
         <%= select_tag(:form_buscar_requerimientos_otros_espacios_cantidad_requerida_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">
@@ -367,11 +367,11 @@
       
       <th style="width:5%;" class="number-header">
         <span data-titulo="true">N&uacute;mero de Beneficiados</span>
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
         <%= select_tag(:form_buscar_requerimientos_otros_espacios_numero_beneficiados_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">
@@ -383,11 +383,11 @@
       <th data-priority="1">
         <span data-titulo="true">Justificaci&oacute;n</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_requerimientos_otros_espacios_justificacion, nil, :class => 'form-control', :placeholder => "" %>
@@ -403,7 +403,7 @@
             orden: "justificacion")), 
         parametro_id: "form_buscar_requerimientos_otros_espacios_justificacion", 
         resultado_id: "form_buscar_requerimientos_otros_espacios_justificacion_id",
-        min_length: 5
+        min_length: 2
         ) %>
 
       </th>

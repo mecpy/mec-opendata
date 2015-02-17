@@ -37,11 +37,11 @@
           <th data-priority="1">
             <span data-titulo="true">Año</span>
 
-            <span class="orden">
+            <!--<span class="orden">
               <i class="filtro fa fa-sort"></i>
               <i class="descendente fa fa-sort-desc"></i>
               <i class="ascendente fa fa-sort-asc"></i>
-            </span>
+            </span>-->
 
       <div class="input-group input-group-sm">
         <%= select :form_buscar_registros_titulos, :anio, [nil, 2012, 2013, 2014], {}, {:class => 'form-control input-sm'} %>
@@ -51,11 +51,11 @@
       <th data-priority="1">
         <span data-titulo="true">Mes</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= select :form_buscar_registros_titulos, :mes, options_meses, {}, {:class => 'form-control input-sm'} %>
@@ -65,11 +65,11 @@
       <th data-priority="1">
         <span data-titulo="true">Documento</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_registros_titulos_documento, nil, :class => 'form-control', :placeholder => "" %>
@@ -85,7 +85,7 @@
             orden: "documento")), 
         parametro_id: "form_buscar_registros_titulos_documento", 
         resultado_id: "form_buscar_registros_titulos_documento_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -93,11 +93,11 @@
       <th data-priority="1">
         <span data-titulo="true">Nombre Completo</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_registros_titulos_nombre_completo, nil, :class => 'form-control', :placeholder => "" %>
@@ -113,7 +113,7 @@
             orden: "nombre_completo")), 
         parametro_id: "form_buscar_registros_titulos_nombre_completo", 
         resultado_id: "form_buscar_registros_titulos_nombre_completo_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -121,11 +121,11 @@
       <th data-priority="1">
         <span data-titulo="true">Carrera</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_registros_titulos_carrera, nil, :class => 'form-control', :placeholder => "" %>
@@ -141,7 +141,7 @@
             orden: "carrera")), 
         parametro_id: "form_buscar_registros_titulos_carrera", 
         resultado_id: "form_buscar_registros_titulos_carrera_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -149,11 +149,11 @@
       <th data-priority="1">
         <span data-titulo="true">T&iacute;tulo</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_registros_titulos_titulo, nil, :class => 'form-control', :placeholder => "" %>
@@ -169,7 +169,7 @@
             orden: "titulo")), 
         parametro_id: "form_buscar_registros_titulos_titulo", 
         resultado_id: "form_buscar_registros_titulos_titulo_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -177,11 +177,11 @@
       <th data-priority="1">
         <span data-titulo="true">N&uacute;mero de Resoluci&oacute;n</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_registros_titulos_numero_resolucion, nil, :class => 'form-control', :placeholder => "" %>
@@ -197,7 +197,7 @@
             orden: "numero_resolucion")), 
         parametro_id: "form_buscar_registros_titulos_numero_resolucion", 
         resultado_id: "form_buscar_registros_titulos_numero_resolucion_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -205,11 +205,11 @@
       <th data-priority="1">
         <span data-titulo="true">Fecha de Resoluci&oacute;n</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_registros_titulos_fecha_resolucion, nil, :class => 'form-control', :placeholder => "" %>
@@ -225,7 +225,7 @@
             orden: "fecha_resolucion")), 
         parametro_id: "form_buscar_registros_titulos_fecha_resolucion", 
         resultado_id: "form_buscar_registros_titulos_fecha_resolucion_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -233,11 +233,11 @@
       <th data-priority="1">
         <span data-titulo="true">Tipo de Instituci&oacute;n</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_registros_titulos_tipo_institucion, nil, :class => 'form-control', :placeholder => "" %>
@@ -253,7 +253,7 @@
             orden: "tipo_institucion")), 
         parametro_id: "form_buscar_registros_titulos_tipo_institucion", 
         resultado_id: "form_buscar_registros_titulos_tipo_institucion_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -261,11 +261,11 @@
       <th data-priority="1">
         <span data-titulo="true">Instituci&oacute;n</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_registros_titulos_institucion, nil, :class => 'form-control', :placeholder => "" %>
@@ -281,7 +281,7 @@
             orden: "institucion")), 
         parametro_id: "form_buscar_registros_titulos_institucion", 
         resultado_id: "form_buscar_registros_titulos_institucion_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -289,11 +289,11 @@
       <th data-priority="1">
         <span data-titulo="true">Gobierno actual</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= select :form_buscar_registros_titulos, :gobierno_actual, [["Todos", 1], ["Si", 2], ["No", 3]], {}, {:class => 'form-control input-sm'} %>

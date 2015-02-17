@@ -31,11 +31,11 @@
           <th data-priority="1">
             <span data-titulo="true">Ejercicio Fiscal</span>
 
-            <span class="orden">
+            <!--<span class="orden">
               <i class="filtro fa fa-sort"></i>
               <i class="descendente fa fa-sort-desc"></i>
               <i class="ascendente fa fa-sort-asc"></i>
-            </span>
+            </span>-->
 
       <div class="input-group input-group-sm">
         <%= select :form_buscar_contrataciones, :ejercicio_fiscal, [2015,2014], {}, {:class => 'form-control input-sm'} %>
@@ -45,11 +45,11 @@
       <th data-priority="1">
         <span data-titulo="true">Id DNCP</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_contrataciones_llamado_publico, nil, :class => 'form-control', :placeholder => "" %>
@@ -65,7 +65,7 @@
             orden: "llamado_publico")), 
         parametro_id: "form_buscar_contrataciones_llamado_publico", 
         resultado_id: "form_buscar_contrataciones_llamado_publico_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -73,11 +73,11 @@
       <th data-priority="1">
         <span data-titulo="true">Modalidad</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_contrataciones_modalidad, nil, :class => 'form-control', :placeholder => "" %>
@@ -93,7 +93,7 @@
             orden: "modalidad")), 
         parametro_id: "form_buscar_contrataciones_modalidad", 
         resultado_id: "form_buscar_contrataciones_modalidad_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -101,11 +101,11 @@
       <th data-priority="1">
         <span data-titulo="true">Descripci&oacute;n</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_contrataciones_descripcion, nil, :class => 'form-control', :placeholder => "" %>
@@ -121,7 +121,7 @@
             orden: "descripcion")), 
         parametro_id: "form_buscar_contrataciones_descripcion", 
         resultado_id: "form_buscar_contrataciones_descripcion_id",
-        min_length: 4
+        min_length: 2
         ) %>
 
       </th>
@@ -129,11 +129,11 @@
       <th data-priority="1">
         <span data-titulo="true">Fecha de Apertura de Ofertas</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_contrataciones_fecha_apertura_oferta, nil, :class => 'form-control', :placeholder => "" %>
@@ -149,7 +149,7 @@
             orden: "fecha_apertura_oferta")), 
         parametro_id: "form_buscar_contrataciones_fecha_apertura_oferta", 
         resultado_id: "form_buscar_contrataciones_fecha_apertura_oferta_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -157,11 +157,11 @@
       <th data-priority="1">
         <span data-titulo="true">Estado</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_contrataciones_estado_llamado, nil, :class => 'form-control', :placeholder => "" %>
@@ -177,7 +177,7 @@
             orden: "estado_llamado")), 
         parametro_id: "form_buscar_contrataciones_estado_llamado", 
         resultado_id: "form_buscar_contrataciones_estado_llamado_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -185,11 +185,11 @@
       <th data-priority="1">
         <span data-titulo="true">Proveedor Adjudicado</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_contrataciones_proveedor_adjudicado, nil, :class => 'form-control', :placeholder => "" %>
@@ -205,7 +205,7 @@
             orden: "proveedor_adjudicado")), 
         parametro_id: "form_buscar_contrataciones_proveedor_adjudicado", 
         resultado_id: "form_buscar_contrataciones_proveedor_adjudicado_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -213,11 +213,11 @@
       <th data-priority="1">
         <span data-titulo="true">Fecha Contrato</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_contrataciones_fecha_contrato, nil, :class => 'form-control', :placeholder => "" %>
@@ -233,7 +233,7 @@
             orden: "fecha_contrato")), 
         parametro_id: "form_buscar_contrataciones_fecha_contrato", 
         resultado_id: "form_buscar_contrataciones_fecha_contrato_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -241,11 +241,11 @@
       <th data-priority="1">
         <span data-titulo="true">Fecha Vigencia de Contrato</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_contrataciones_fecha_vigencia_contrato, nil, :class => 'form-control', :placeholder => "" %>
@@ -261,18 +261,18 @@
             orden: "fecha_vigencia_contrato")), 
         parametro_id: "form_buscar_contrataciones_fecha_vigencia_contrato", 
         resultado_id: "form_buscar_contrataciones_fecha_vigencia_contrato_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
-      
+
       <th style="width:5%;" class="number-header">
         <span data-titulo="true">Monto Adjudicado</span>
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
         <%= select_tag(:form_buscar_contrataciones_monto_adjudicado_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
       <div class="input-group input-group-sm number-input-group">

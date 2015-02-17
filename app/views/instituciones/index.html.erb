@@ -32,11 +32,11 @@
           <th data-priority="1" id="tab-filtros-lista">
             <span data-titulo="true">Período</span>
 
-            <span class="orden">
+            <!--<span class="orden">
               <i class="filtro fa fa-sort"></i>
               <i class="descendente fa fa-sort-desc"></i>
               <i class="ascendente fa fa-sort-asc"></i>
-            </span>
+            </span>-->
 
       <div class="input-group input-group-sm">
         <%= select :form_buscar_instituciones, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
@@ -46,11 +46,11 @@
       <th data-priority="1" id="tab-filtros-texto">
         <span data-titulo="true">Código Establecimiento</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_instituciones_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
@@ -66,7 +66,7 @@
             orden: "codigo_establecimiento")), 
         parametro_id: "form_buscar_instituciones_codigo_establecimiento", 
         resultado_id: "form_buscar_instituciones_codigo_establecimiento_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -74,11 +74,11 @@
       <th data-priority="1">
         <span data-titulo="true">Código Institución</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_instituciones_codigo_institucion, nil, :class => 'form-control', :placeholder => "" %>
@@ -94,7 +94,7 @@
             orden: "codigo_institucion")), 
         parametro_id: "form_buscar_instituciones_codigo_institucion", 
         resultado_id: "form_buscar_instituciones_codigo_institucion_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -102,11 +102,11 @@
       <th data-priority="1">
         <span data-titulo="true">Institución</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_instituciones_nombre_institucion, nil, :class => 'form-control', :placeholder => "" %>
@@ -122,7 +122,7 @@
             orden: "nombre_institucion")), 
         parametro_id: "form_buscar_instituciones_nombre_institucion", 
         resultado_id: "form_buscar_instituciones_nombre_institucion_id",
-        min_length: 4
+        min_length: 2
         ) %>
 
       </th>
@@ -130,11 +130,11 @@
       <th data-priority="1">
         <span data-titulo="true">Departamento</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_instituciones_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
@@ -150,7 +150,7 @@
             orden: "nombre_departamento")), 
         parametro_id: "form_buscar_instituciones_nombre_departamento", 
         resultado_id: "form_buscar_instituciones_nombre_departamento_id",
-        min_length: 4
+        min_length: 2
         ) %>
 
       </th>
@@ -158,11 +158,11 @@
       <th data-priority="1">
         <span data-titulo="true">Distrito</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_instituciones_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
@@ -178,7 +178,7 @@
             orden: "nombre_distrito")), 
         parametro_id: "form_buscar_instituciones_nombre_distrito", 
         resultado_id: "form_buscar_instituciones_nombre_distrito_id",
-        min_length: 4
+        min_length: 2
         ) %>
 
       </th>
@@ -186,11 +186,11 @@
       <th data-priority="1">
         <span data-titulo="true">Localidad/Barrio</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_instituciones_nombre_barrio_localidad, nil, :class => 'form-control', :placeholder => "" %>
@@ -206,7 +206,7 @@
             orden: "nombre_barrio_localidad")), 
         parametro_id: "form_buscar_instituciones_nombre_barrio_localidad", 
         resultado_id: "form_buscar_instituciones_nombre_barrio_localidad_id",
-        min_length: 4
+        min_length: 2
         ) %>
 
       </th>
@@ -214,11 +214,11 @@
       <th data-priority="1">
         <span data-titulo="true">Zona</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_instituciones_nombre_zona, nil, :class => 'form-control', :placeholder => "" %>
@@ -234,7 +234,7 @@
             orden: "nombre_zona")), 
         parametro_id: "form_buscar_instituciones_nombre_zona", 
         resultado_id: "form_buscar_instituciones_nombre_zona_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -242,11 +242,11 @@
       <th data-priority="1">
         <span data-titulo="true">Sector</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_instituciones_sector_o_tipo_gestion, nil, :class => 'form-control', :placeholder => "" %>
@@ -262,7 +262,7 @@
             orden: "sector_o_tipo_gestion")), 
         parametro_id: "form_buscar_instituciones_sector_o_tipo_gestion", 
         resultado_id: "form_buscar_instituciones_sector_o_tipo_gestion_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -270,11 +270,11 @@
       <th data-priority="1">
         <span data-titulo="true">Regi&oacute;n Administrativa</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_instituciones_nombre_region_administrativa, nil, :class => 'form-control', :placeholder => "" %>
@@ -290,7 +290,7 @@
             orden: "nombre_region_administrativa")), 
         parametro_id: "form_buscar_instituciones_nombre_region_administrativa", 
         resultado_id: "form_buscar_instituciones_nombre_region_administrativa_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -298,11 +298,11 @@
       <th data-priority="1">
         <span data-titulo="true">Supervisor/a</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_instituciones_nombre_supervisor, nil, :class => 'form-control', :placeholder => "" %>
@@ -318,7 +318,7 @@
             orden: "nombre_supervisor")), 
         parametro_id: "form_buscar_instituciones_nombre_supervisor", 
         resultado_id: "form_buscar_instituciones_nombre_supervisor_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -326,11 +326,11 @@
       <th data-priority="1">
         <span data-titulo="true">Nivel/Modalidad</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_instituciones_niveles_modalidades, nil, :class => 'form-control', :placeholder => "" %>
@@ -346,7 +346,7 @@
             orden: "niveles_modalidades")), 
         parametro_id: "form_buscar_instituciones_niveles_modalidades", 
         resultado_id: "form_buscar_instituciones_niveles_modalidades_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -354,11 +354,11 @@
       <th data-priority="1">
         <span data-titulo="true">Tipo Organizaci&oacute;n</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_instituciones_nombre_tipo_organizacion, nil, :class => 'form-control', :placeholder => "" %>
@@ -374,7 +374,7 @@
             orden: "nombre_tipo_organizacion")), 
         parametro_id: "form_buscar_instituciones_nombre_tipo_organizacion", 
         resultado_id: "form_buscar_instituciones_nombre_tipo_organizacion_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -382,11 +382,11 @@
       <th data-priority="1">
         <span data-titulo="true">Participación Comunitaria</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= select :form_buscar_instituciones, :participacion_comunitaria, ['','SI','NO'], {}, {:class => 'form-control input-sm'} %>
@@ -396,11 +396,11 @@
       <th data-priority="1">
         <span data-titulo="true">Direcci&oacute;n</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_instituciones_direccion, nil, :class => 'form-control', :placeholder => "" %>
@@ -416,7 +416,7 @@
             orden: "direccion")), 
         parametro_id: "form_buscar_instituciones_direccion", 
         resultado_id: "form_buscar_instituciones_direccion_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -424,11 +424,11 @@
       <th data-priority="1">
         <span data-titulo="true">Tel&eacute;fono</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_instituciones_nro_telefono, nil, :class => 'form-control', :placeholder => "" %>
@@ -444,7 +444,7 @@
             orden: "nro_telefono")), 
         parametro_id: "form_buscar_instituciones_nro_telefono", 
         resultado_id: "form_buscar_instituciones_nro_telefono_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
@@ -452,11 +452,11 @@
       <th data-priority="1">
         <span data-titulo="true">¿Tiene Internet?</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= select :form_buscar_instituciones, :tiene_internet, ['','SI','NO'], {}, {:class => 'form-control input-sm'} %>
@@ -466,11 +466,11 @@
       <th data-priority="1">
         <span data-titulo="true">P&aacute;gina Web</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_instituciones_paginaweb, nil, :class => 'form-control', :placeholder => "" %>
@@ -494,11 +494,11 @@
       <th data-priority="1">
         <span data-titulo="true">Correo Electr&oacute;nico</span>
 
-        <span class="orden">
+        <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>
+        </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_instituciones_correo_electronico, nil, :class => 'form-control', :placeholder => "" %>
@@ -514,7 +514,7 @@
             orden: "correo_electronico")), 
         parametro_id: "form_buscar_instituciones_correo_electronico", 
         resultado_id: "form_buscar_instituciones_correo_electronico_id",
-        min_length: 3
+        min_length: 2
         ) %>
 
       </th>
