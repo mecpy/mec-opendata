@@ -179,6 +179,20 @@
       </th>
 
       <th data-priority="1">
+        <span data-titulo="true">Programa</span>
+
+        <!--<span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>-->
+
+      <div class="input-group-sm">
+        <%= select :form_buscar_establecimientos, :programa, [["",""],["Jornada Extendida", 1]], {}, :class => 'form-control input-sm' %>
+      </div>
+      </th>
+
+      <th data-priority="1">
         <span data-titulo="true">Direcci&oacute;n</span>
 
         <!--<span class="orden">
@@ -204,20 +218,6 @@
         min_length: 2
         ) %>
 
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Programa</span>
-
-        <!--<span class="orden">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
-
-      <div class="input-group-sm">
-        <%= select :form_buscar_establecimientos, :programa, [["",""],["Jornada Extendida", 1]], {}, :class => 'form-control input-sm' %>
-      </div>
       </th>
 
       </tr>
