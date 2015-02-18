@@ -43,33 +43,29 @@
               <i class="ascendente fa fa-sort-asc"></i>
             </span>-->
 
-      <div class="input-group-sm">
-        <%= select :form_buscar_registros_titulos, :anio, [nil, 2012, 2013, 2014], {}, {:class => 'form-control input-sm'} %>
-      </div>
-      </th>
+            <%= select :form_buscar_registros_titulos, :anio, [nil, 2012, 2013, 2014], {}, {:class => 'form-control input-sm'} %>
+          </th>
 
-      <th data-priority="1">
-        <span data-titulo="true">Mes</span>
+          <th data-priority="1">
+            <span data-titulo="true">Mes</span>
 
-        <!--<span class="orden">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+            <!--<span class="orden">
+              <i class="filtro fa fa-sort"></i>
+              <i class="descendente fa fa-sort-desc"></i>
+              <i class="ascendente fa fa-sort-asc"></i>
+            </span>-->
 
-      <div class="input-group-sm">
-        <%= select :form_buscar_registros_titulos, :mes, options_meses, {}, {:class => 'form-control input-sm'} %>
-      </div>
-      </th>
+            <%= select :form_buscar_registros_titulos, :mes, options_meses, {}, {:class => 'form-control input-sm'} %>
+          </th>
 
-      <th data-priority="1">
-        <span data-titulo="true">Documento</span>
+          <th data-priority="1">
+            <span data-titulo="true">Documento</span>
 
-        <!--<span class="orden">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+            <!--<span class="orden">
+              <i class="filtro fa fa-sort"></i>
+              <i class="descendente fa fa-sort-desc"></i>
+              <i class="ascendente fa fa-sort-asc"></i>
+            </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_registros_titulos_documento, nil, :class => 'form-control', :placeholder => "" %>
@@ -295,9 +291,7 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-      <div class="input-group-sm">
         <%= select :form_buscar_registros_titulos, :gobierno_actual, [["Todos", 1], ["Si", 2], ["No", 3]], {}, {:class => 'form-control input-sm'} %>
-      </div>
       </th>
 
       </tr>

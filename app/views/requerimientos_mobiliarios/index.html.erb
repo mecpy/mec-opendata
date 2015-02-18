@@ -51,9 +51,7 @@
               <i class="ascendente fa fa-sort-asc"></i>
             </span>-->
 
-      <div class="input-group-sm">
         <%= select :form_buscar_requerimientos_mobiliarios, :periodo, [2015], {}, {:class => 'form-control input-sm'} %>
-      </div>
       </th>
 
       <th data-priority="1" id="tab-filtros-texto">
@@ -233,9 +231,7 @@
             <i class="ascendente fa fa-sort-asc"></i>
           </span>-->
   
-        <div class="input-group-sm">
           <%= select :form_buscar_requerimientos_mobiliarios, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
-        </div>
       </th>
 
       <th data-priority="1">
@@ -294,7 +290,7 @@
 
       </th>
       
-      <th style="width:5%;" class="number-header">
+      <th data-priority="1">
         <span data-titulo="true">Cantidad Requerida</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -302,14 +298,16 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_requerimientos_mobiliarios_cantidad_requerida_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_requerimientos_mobiliarios_cantidad_requerida, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_requerimientos_mobiliarios_cantidad_requerida_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_requerimientos_mobiliarios_cantidad_requerida, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_cantidad_requerida');"><i class="fa fa-times"></i></span>
       </div>
       </th>
       
-      <th style="width:5%;" class="number-header">
+      <th data-priority="1">
         <span data-titulo="true">N&uacute;mero de Beneficiados</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -317,9 +315,11 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_requerimientos_mobiliarios_numero_beneficiados_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_requerimientos_mobiliarios_numero_beneficiados, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_requerimientos_mobiliarios_numero_beneficiados_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_requerimientos_mobiliarios_numero_beneficiados, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_numero_beneficiados');"><i class="fa fa-times"></i></span>
       </div>
       </th>

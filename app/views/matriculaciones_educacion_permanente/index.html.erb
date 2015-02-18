@@ -41,19 +41,17 @@
               <i class="ascendente fa fa-sort-asc"></i>
             </span>-->
 
-      <div class="input-group-sm">
-        <%= select :form_buscar_matriculaciones_educacion_permanente, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
-      </div>
-      </th>
+            <%= select :form_buscar_matriculaciones_educacion_permanente, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
+          </th>
 
-      <th data-priority="1">
-        <span data-titulo="true">C&oacute;digo Establecimiento</span>
+          <th data-priority="1">
+            <span data-titulo="true">C&oacute;digo Establecimiento</span>
 
-        <!--<span class="orden">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+            <!--<span class="orden">
+              <i class="filtro fa fa-sort"></i>
+              <i class="descendente fa fa-sort-desc"></i>
+              <i class="ascendente fa fa-sort-asc"></i>
+            </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
@@ -223,9 +221,7 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-      <div class="input-group-sm">
         <%= select :form_buscar_matriculaciones_educacion_permanente, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
-      </div>
       </th>
 
       <th data-priority="1">
@@ -256,7 +252,7 @@
 
       </th>
 
-      <th style="width:5%;" class="number-header">
+      <th>
         <span data-titulo="true">Matricula EBBJA</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -264,14 +260,16 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_ebbja, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_ebbja, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_ebbja');"><i class="fa fa-times"></i></span>
       </div>
       </th>
 
-      <th style="width:5%;" class="number-header">
+      <th>
         <span data-titulo="true">Matricula FPI</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -279,14 +277,16 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_fpi, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_fpi, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_fpi');"><i class="fa fa-times"></i></span>
       </div>
       </th>
 
-      <th style="width:5%;" class="number-header">
+      <th>
         <span data-titulo="true">Matricula EMAPJA</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -294,14 +294,16 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_emapja, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_emapja, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_emapja');"><i class="fa fa-times"></i></span>
       </div>
       </th>
 
-      <th style="width:5%;" class="number-header">
+      <th>
         <span data-titulo="true">Matricula EMDJA</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -309,14 +311,16 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_emdja, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_emdja, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_emdja');"><i class="fa fa-times"></i></span>
       </div>
       </th>
 
-      <th style="width:5%;" class="number-header">
+      <th>
         <span data-titulo="true">Matricula FP</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -324,9 +328,11 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_fp_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_fp, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_fp_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_fp, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_fp');"><i class="fa fa-times"></i></span>
       </div>
       </th>
@@ -357,7 +363,7 @@
     $("#form-buscar-matriculaciones-educacion-permanente").submit();
 
   })
-  
+
   $("#form_buscar_matriculaciones_educacion_permanente_nombre_zona").bind('change', function() {
     $.ajaxQ.abortAll();
     $("#form-buscar-matriculaciones-educacion-permanente").submit();

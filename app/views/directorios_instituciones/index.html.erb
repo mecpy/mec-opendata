@@ -44,19 +44,17 @@
               <i class="ascendente fa fa-sort-asc"></i>
             </span>-->
 
-      <div class="input-group-sm">
-        <%= select :form_buscar_directorios_instituciones, :periodo, [2014,2012], {}, {:class => 'form-control input-sm'} %>
-      </div>
-      </th>
+            <%= select :form_buscar_directorios_instituciones, :periodo, [2014,2012], {}, {:class => 'form-control input-sm'} %>
+          </th>
 
-      <th data-priority="1" id="tab-filtros-texto">
-        <span data-titulo="true">Código Establecimiento</span>
+          <th data-priority="1" id="tab-filtros-texto">
+            <span data-titulo="true">Código Establecimiento</span>
 
-        <!--<span class="orden">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+            <!--<span class="orden">
+              <i class="filtro fa fa-sort"></i>
+              <i class="descendente fa fa-sort-desc"></i>
+              <i class="ascendente fa fa-sort-asc"></i>
+            </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_directorios_instituciones_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
@@ -218,17 +216,15 @@
       </th>
 
       <th data-priority="1">
-            <span data-titulo="true">Zona</span>
+        <span data-titulo="true">Zona</span>
 
-            <!--<span class="orden">
-              <i class="filtro fa fa-sort"></i>
-              <i class="descendente fa fa-sort-desc"></i>
-              <i class="ascendente fa fa-sort-asc"></i>
-            </span>-->
+        <!--<span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>-->
 
-      <div class="input-group-sm">
         <%= select :form_buscar_directorios_instituciones, :nombre_zona, ['','RURAL','URBANA'], {}, {:class => 'form-control input-sm'} %>
-      </div>
       </th>
 
       </tr>

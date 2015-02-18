@@ -48,33 +48,29 @@
               <i class="ascendente fa fa-sort-asc"></i>
             </span>-->
 
-      <div class="input-group-sm">
-        <%= select :form_buscar_nominas, :ano_periodo_pago, [2014], {}, {:class => 'form-control input-sm'} %>
-      </div>
-      </th>
+            <%= select :form_buscar_nominas, :ano_periodo_pago, [2014], {}, {:class => 'form-control input-sm'} %>
+          </th>
 
-      <th data-priority="1">
-        <%= label_tag "Mes" %>
+          <th data-priority="1">
+            <%= label_tag "Mes" %>
 
-        <!--<span class="orden">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+            <!--<span class="orden">
+              <i class="filtro fa fa-sort"></i>
+              <i class="descendente fa fa-sort-desc"></i>
+              <i class="ascendente fa fa-sort-asc"></i>
+            </span>-->
 
-      <div class="input-group-sm">
-        <%= select :form_buscar_nominas, :mes_periodo_pago, [["noviembre", 11],["octubre", 10],["setiembre", 9], ["agosto", 8], ["julio", 7], ["junio", 6]], {}, {:class => 'form-control input-sm'} %>
-      </div>
-      </th>
+            <%= select :form_buscar_nominas, :mes_periodo_pago, [["noviembre", 11],["octubre", 10],["setiembre", 9], ["agosto", 8], ["julio", 7], ["junio", 6]], {}, {:class => 'form-control input-sm'} %>
+          </th>
 
-      <th data-priority="1">
-        <span data-titulo="true">N° Documento</span>
+          <th data-priority="1">
+            <span data-titulo="true">N° Documento</span>
 
-        <!--<span class="orden">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+            <!--<span class="orden">
+              <i class="filtro fa fa-sort"></i>
+              <i class="descendente fa fa-sort-desc"></i>
+              <i class="ascendente fa fa-sort-asc"></i>
+            </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_nominas_codigo_trabajador, nil, :class => 'form-control', :placeholder => "" %>
@@ -240,8 +236,8 @@
         ) %>
 
       </th>
-      
-      <th style="width:5%;" class="number-header">
+
+      <th>
         <span data-titulo="true">Asignaci&oacute;n</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -249,9 +245,11 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_nominas_asignacion_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_nominas_asignacion, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_nominas_asignacion_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_nominas_asignacion, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-nominas', '#form_buscar_nominas_asignacion');"><i class="fa fa-times"></i></span>
       </div>
       </th>

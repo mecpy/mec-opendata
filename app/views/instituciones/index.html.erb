@@ -38,9 +38,7 @@
               <i class="ascendente fa fa-sort-asc"></i>
             </span>-->
 
-      <div class="input-group-sm">
         <%= select :form_buscar_instituciones, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
-      </div>
       </th>
 
       <th data-priority="1" id="tab-filtros-texto">
@@ -220,9 +218,7 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-      <div class="input-group-sm">
         <%= select :form_buscar_instituciones, :nombre_zona, ['','RURAL','URBANA'], {}, {:class => 'form-control input-sm'} %>
-      </div>
       </th>
 
       <th data-priority="1">
@@ -233,10 +229,8 @@
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
-
-      <div class="input-group-sm">
+        
         <%= select :form_buscar_instituciones, :sector_o_tipo_gestion, ['','OFICIAL', 'PRIV.SUBVENCIONADA','PRIVADA'], {}, {:class => 'form-control input-sm'} %>
-      </div>
       </th>
 
       <th data-priority="1">

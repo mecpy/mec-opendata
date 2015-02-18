@@ -41,19 +41,17 @@
               <i class="ascendente fa fa-sort-asc"></i>
             </span>-->
 
-      <div class="input-group-sm">
-        <%= select :form_buscar_matriculaciones_inicial, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
-      </div>
-      </th>
+            <%= select :form_buscar_matriculaciones_inicial, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
+          </th>
 
-      <th data-priority="1">
-        <span data-titulo="true">C&oacute;digo Establecimiento</span>
+          <th data-priority="1">
+            <span data-titulo="true">C&oacute;digo Establecimiento</span>
 
-        <!--<span class="orden">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+            <!--<span class="orden">
+              <i class="filtro fa fa-sort"></i>
+              <i class="descendente fa fa-sort-desc"></i>
+              <i class="ascendente fa fa-sort-asc"></i>
+            </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_inicial_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
@@ -223,9 +221,7 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-      <div class="input-group-sm">
         <%= select :form_buscar_matriculaciones_inicial, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
-      </div>
       </th>
 
       <th data-priority="1">
@@ -257,7 +253,7 @@
       </th>
 
 
-      <th style="width:5%;" class="number-header">
+      <th>
         <span data-titulo="true">Maternal</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -265,14 +261,16 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_matriculaciones_inicial_maternal_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_inicial_maternal, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_matriculaciones_inicial_maternal_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_matriculaciones_inicial_maternal, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_maternal');"><i class="fa fa-times"></i></span>
       </div>
       </th>
 
-      <th style="width:5%;" class="number-header">
+      <th>
         <span data-titulo="true">Pre-Jardin</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -280,14 +278,16 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_matriculaciones_inicial_prejardin_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_inicial_prejardin, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_matriculaciones_inicial_prejardin_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_matriculaciones_inicial_prejardin, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_prejardin');"><i class="fa fa-times"></i></span>
       </div>
       </th>
 
-      <th style="width:5%;" class="number-header">
+      <th>
         <span data-titulo="true">Jardin</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -295,14 +295,16 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_matriculaciones_inicial_jardin_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_inicial_jardin, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_matriculaciones_inicial_jardin_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_matriculaciones_inicial_jardin, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_jardin');"><i class="fa fa-times"></i></span>
       </div>
       </th>
 
-      <th style="width:5%;" class="number-header">
+      <th>
         <span data-titulo="true">Pre-Escolar</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -310,14 +312,16 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_matriculaciones_inicial_preescolar_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_inicial_preescolar, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_matriculaciones_inicial_preescolar_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_matriculaciones_inicial_preescolar, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_preescolar');"><i class="fa fa-times"></i></span>
       </div>
       </th>
 
-      <th style="width:5%;" class="number-header">
+      <th>
         <span data-titulo="true">Total Matriculados</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -325,9 +329,11 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_matriculaciones_inicial_total_matriculados_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_inicial_total_matriculados, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_matriculaciones_inicial_total_matriculados_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_matriculaciones_inicial_total_matriculados, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_total_matriculados');"><i class="fa fa-times"></i></span>
       </div>
       </th>

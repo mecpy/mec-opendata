@@ -87,7 +87,7 @@ class Establecimientos111Controller < ApplicationController
 
     if params[:form_buscar_establecimientos_asentamientos_priorizados].present?
 
-      cond << "preescolar #{params[:form_buscar_establecimientos_asentamientos_priorizados_operador]} ?"
+      cond << "asentamientos_priorizados #{params[:form_buscar_establecimientos_asentamientos_priorizados_operador]} ?"
       args << params[:form_buscar_establecimientos_asentamientos_priorizados]
 
     end

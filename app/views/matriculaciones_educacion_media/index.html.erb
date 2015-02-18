@@ -41,20 +41,17 @@
               <i class="descendente fa fa-sort-desc"></i>
               <i class="ascendente fa fa-sort-asc"></i>
             </span>-->
+            <%= select :form_buscar_matriculaciones_educacion_media, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
+          </th>
 
-      <div class="input-group-sm">
-        <%= select :form_buscar_matriculaciones_educacion_media, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
-      </div>
-      </th>
+          <th data-priority="1">
+            <span data-titulo="true">C&oacute;digo Establecimiento</span>
 
-      <th data-priority="1">
-        <span data-titulo="true">C&oacute;digo Establecimiento</span>
-
-        <!--<span class="orden">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+            <!--<span class="orden">
+              <i class="filtro fa fa-sort"></i>
+              <i class="descendente fa fa-sort-desc"></i>
+              <i class="ascendente fa fa-sort-asc"></i>
+            </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_educacion_media_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
@@ -214,19 +211,17 @@
         ) %>
 
       </th>
-      
+
       <th data-priority="1">
-            <span data-titulo="true">Zona</span>
+        <span data-titulo="true">Zona</span>
 
-            <!--<span class="orden">
-              <i class="filtro fa fa-sort"></i>
-              <i class="descendente fa fa-sort-desc"></i>
-              <i class="ascendente fa fa-sort-asc"></i>
-            </span>-->
+        <!--<span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>-->
 
-      <div class="input-group-sm">
         <%= select :form_buscar_matriculaciones_educacion_media, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
-      </div>
       </th>
 
       <th data-priority="1">
@@ -256,8 +251,8 @@
         ) %>
 
       </th>
-      
-      <th style="width:5%;" class="number-header">
+
+      <th>
         <span data-titulo="true">Cantidad de</br>Matriculados Científico</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -265,14 +260,16 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_matriculaciones_educacion_media_matricula_cientifico_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_media_matricula_cientifico, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_matriculaciones_educacion_media_matricula_cientifico_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_matriculaciones_educacion_media_matricula_cientifico, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-media', '#form_buscar_matriculaciones_educacion_media_matricula_cientifico');"><i class="fa fa-times"></i></span>
       </div>
       </th>
-      
-      <th style="width:5%;" class="number-header">
+
+      <th>
         <span data-titulo="true">Cantidad de</br>Matriculados Técnico</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -280,41 +277,47 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_matriculaciones_educacion_media_matricula_tecnico_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_media_matricula_tecnico, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_matriculaciones_educacion_media_matricula_tecnico_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_matriculaciones_educacion_media_matricula_tecnico, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-media', '#form_buscar_matriculaciones_educacion_media_matricula_tecnico');"><i class="fa fa-times"></i></span>
       </div>
       </th>
-      
-      <th style="width:5%;" class="number-header">
+
+      <th>
         <span data-titulo="true">Cantidad de</br>Matriculados Media Abierta</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
-
-        <%= select_tag(:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_media_matricula_media_abierta, nil, :class => 'form-control' %>
+        
+        <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_matriculaciones_educacion_media_matricula_media_abierta, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-media', '#form_buscar_matriculaciones_educacion_media_matricula_media_abierta');"><i class="fa fa-times"></i></span>
       </div>
       </th>
-      
-      <th style="width:5%;" class="number-header">
+
+      <th>
         <span data-titulo="true">Cantidad de Matriculados</br>Formación Profesional Media</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
-
-        <%= select_tag(:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media, nil, :class => 'form-control' %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-media', '#form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media');"><i class="fa fa-times"></i></span>
-      </div>
+        
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-media', '#form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media');"><i class="fa fa-times"></i></span>
+        </div>
       </th>
 
       </tr>
@@ -343,7 +346,7 @@
     $("#form-buscar-matriculaciones-educacion-media").submit();
 
   })
-  
+
   $("#form_buscar_matriculaciones_educacion_media_nombre_zona").bind('change', function() {
     $.ajaxQ.abortAll();
     $("#form-buscar-matriculaciones-educacion-media").submit();
@@ -355,7 +358,7 @@
     $("#form-buscar-matriculaciones-educacion-media").submit();
 
   })
-  
+
   //LIMPIAR FORMULARIO DE BUSQUEDA
   valor_defecto = [{
       id: '#form_buscar_matriculaciones_educacion_media_anio',

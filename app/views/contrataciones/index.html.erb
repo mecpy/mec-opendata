@@ -37,19 +37,17 @@
               <i class="ascendente fa fa-sort-asc"></i>
             </span>-->
 
-      <div class="input-group-sm">
-        <%= select :form_buscar_contrataciones, :ejercicio_fiscal, [2015,2014], {}, {:class => 'form-control input-sm'} %>
-      </div>
-      </th>
+            <%= select :form_buscar_contrataciones, :ejercicio_fiscal, [2015,2014], {}, {:class => 'form-control input-sm'} %>
+          </th>
 
-      <th data-priority="1">
-        <span data-titulo="true">Id DNCP</span>
+          <th data-priority="1">
+            <span data-titulo="true">Id DNCP</span>
 
-        <!--<span class="orden">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+            <!--<span class="orden">
+              <i class="filtro fa fa-sort"></i>
+              <i class="descendente fa fa-sort-desc"></i>
+              <i class="ascendente fa fa-sort-asc"></i>
+            </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_contrataciones_llamado_publico, nil, :class => 'form-control', :placeholder => "" %>
@@ -266,7 +264,7 @@
 
       </th>
 
-      <th style="width:5%;" class="number-header">
+      <th data-priority="1">
         <span data-titulo="true">Monto Adjudicado</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -274,9 +272,11 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_contrataciones_monto_adjudicado_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_contrataciones_monto_adjudicado, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_contrataciones_monto_adjudicado_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_contrataciones_monto_adjudicado, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-contrataciones', '#form_buscar_contrataciones_monto_adjudicado');"><i class="fa fa-times"></i></span>
       </div>
       </th>

@@ -1,19 +1,35 @@
 $(document).ready(function() {
-    $('.table-responsive thead .combobox-container input').change(function() {
+    // Correcciones del ancho de los select en el filtro de la tabla
+    $('.table-responsive thead .combobox-container input.form-control').change(function() {
         var texto = $(this).val();
         var celda = $(this).parent().parent().parent();
-        console.log(texto, texto.length);
-        if (texto.length) {
-            var ancho = parseInt(texto.length) * 6;
-            ancho = (ancho > 24 ? ancho : 30) + 60;
-            celda.css('min-width', ancho);
-        } else {
-            celda.css('min-width', 60);
+        var ancho = (celda.is('th')) ?
+                (parseInt(texto.length) * 8 + 60) : 30;
+
+        celda.css('min-width', ancho);
+        if (!celda.is('th')) {
+            celda.css('max-width', ancho);
         }
     });
-    
+
     $('.table-responsive thead .combobox-container input').trigger('change');
 
+    // Los comparadores del filtro son readonly
+    var ver_opciones_comparador = function() {
+        var dropdown = $(this).parent().find('.dropdown-toggle');
+
+        if (dropdown.parent().parent().hasClass('combobox-selected')) {
+            dropdown.find('.glyphicon-remove').click();
+        }
+        dropdown.find('.caret').click();
+    };
+
+    $('.table-responsive thead .comparador').attr('readonly', true)
+            .click(ver_opciones_comparador)
+            .keydown(ver_opciones_comparador);
+
+
+    // Creación de la tabla con RWD Table
     var tabla = $('.table-responsive').responsiveTable({stickyTableHeader: false});
     var botones_derecha = $('.btn-toolbar').find('.dropdown-btn-group button');
     $(botones_derecha[0]).html('Ver todos');
@@ -27,23 +43,23 @@ $(document).ready(function() {
     $('.btn-toolbar .focus-btn-group button').unbind().remove();
 
     var tabla_original = tabla.find('div').next('table');
-     var filtros_clonados = tabla.find('table').first().find('thead tr th');
-     var titulos = [];
-     
-     tabla_original.find('thead tr th').each(function(t, th) {
-     titulos.push($(th).find('span[data-titulo=true]').html());
-     
-     // De original a clonado
-     $(th).find('input,select').keyup(function() {
-     $(filtros_clonados[t]).find('input,select').val($(this).val());
-     });
-     
-     // De clonado a original
-     $(filtros_clonados[t]).find('input,select').keyup(function() {
-     $(th).find('input,select').val($(this).val());
-     });
-     
-     });
+    var filtros_clonados = tabla.find('table').first().find('thead tr th');
+    var titulos = [];
+
+    tabla_original.find('thead tr th').each(function(t, th) {
+        titulos.push($(th).find('span[data-titulo=true]').html());
+
+        // De original a clonado
+        $(th).find('input,select').keyup(function() {
+            $(filtros_clonados[t]).find('input,select').val($(this).val());
+        });
+
+        // De clonado a original
+        $(filtros_clonados[t]).find('input,select').keyup(function() {
+            $(th).find('input,select').val($(this).val());
+        });
+
+    });
 
     /*$(botones_derecha[1]).next().find('li').each(function(l, li) {
      $(li).find('label').html(titulos[l]);

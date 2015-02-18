@@ -42,19 +42,17 @@
               <i class="ascendente fa fa-sort-asc"></i>
             </span>-->
 
-      <div class="input-group-sm">
-        <%= select :form_buscar_matriculaciones_educacion_inclusiva, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
-      </div>
-      </th>
+            <%= select :form_buscar_matriculaciones_educacion_inclusiva, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
+          </th>
 
-      <th data-priority="1">
-        <span data-titulo="true">C&oacute;digo Establecimiento</span>
+          <th data-priority="1">
+            <span data-titulo="true">C&oacute;digo Establecimiento</span>
 
-        <!--<span class="orden">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+            <!--<span class="orden">
+              <i class="filtro fa fa-sort"></i>
+              <i class="descendente fa fa-sort-desc"></i>
+              <i class="ascendente fa fa-sort-asc"></i>
+            </span>-->
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
@@ -214,19 +212,17 @@
         ) %>
 
       </th>
-      
+
       <th data-priority="1">
-            <span data-titulo="true">Zona</span>
+        <span data-titulo="true">Zona</span>
 
-            <!--<span class="orden">
-              <i class="filtro fa fa-sort"></i>
-              <i class="descendente fa fa-sort-desc"></i>
-              <i class="ascendente fa fa-sort-asc"></i>
-            </span>-->
+        <!--<span class="orden">
+          <i class="filtro fa fa-sort"></i>
+          <i class="descendente fa fa-sort-desc"></i>
+          <i class="ascendente fa fa-sort-asc"></i>
+        </span>-->
 
-      <div class="input-group-sm">
         <%= select :form_buscar_matriculaciones_educacion_inclusiva, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
-      </div>
       </th>
 
       <th data-priority="1">
@@ -257,7 +253,7 @@
 
       </th>
 
-      <th style="width:5%;" class="number-header">
+      <th>
         <span data-titulo="true">Matricula Inicial Especial</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -265,14 +261,16 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial');"><i class="fa fa-times"></i></span>
       </div>
       </th>
 
-      <th style="width:5%;" class="number-header">
+      <th>
         <span data-titulo="true">Matricula 1er y 2do Ciclo Especial</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -280,14 +278,16 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial');"><i class="fa fa-times"></i></span>
       </div>
       </th>
 
-      <th style="width:5%;" class="number-header">
+      <th>
         <span data-titulo="true">Matricula 3er Ciclo Especial</span>
         <!--<span class="orden">
           <i class="filtro fa fa-sort"></i>
@@ -295,9 +295,11 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial');"><i class="fa fa-times"></i></span>
       </div>
       </th>
@@ -310,9 +312,11 @@
           <i class="ascendente fa fa-sort-asc"></i>
         </span>-->
 
-        <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_operador, options_for_select(['>', '<', '=']), :class => 'form-control')%>
-      <div class="input-group input-group-sm number-input-group">
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales, nil, :class => 'form-control' %>
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+          <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+        </span>
+        <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales, nil, :class => 'form-control', :placeholder => '' %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales');"><i class="fa fa-times"></i></span>
       </div>
       </th>
@@ -343,7 +347,7 @@
     $("#form-buscar-matriculaciones-educacion-inclusiva").submit();
 
   })
-  
+
   $("#form_buscar_matriculaciones_educacion_inclusiva_nombre_zona").bind('change', function() {
     $.ajaxQ.abortAll();
     $("#form-buscar-matriculaciones-educacion-inclusiva").submit();
