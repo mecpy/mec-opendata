@@ -1,0 +1,105 @@
+<div id="slide-panel">
+    <div id="menu-content" class="tab-content">
+        <div id="menuA" class="tab-pane fade in active">
+            <div id="tab-1" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+                <h4>Departamento</h4>
+                <select multiple id="departamento" style="width:250px;">                
+                    <option value="Capital">Asunción</option>
+
+                    <option value="Concepcion">Concepción</option>
+
+                    <option value="San Pedro">San Pedro</option>
+
+                    <option value="Cordillera">Cordillera</option>
+
+                    <option value="Guaira">Guairá</option>
+
+                    <option value="Caaguazu">Caaguazú</option>
+
+                    <option value="Caazapa">Caazapá</option>
+
+                    <option value="Itapua">Itapúa</option>
+
+                    <option value="Misiones">Misiones</option>
+
+                    <option value="Alto Parana">Alto Paraná</option>
+
+                    <option value="Central">Central</option>
+
+                    <option value="Neembucu">Ñeembucú</option>
+
+                    <option value="Amambay">Amambay</option>
+
+                    <option value="Canindeyu">Canindeyú</option>
+
+                    <option value="Presidente Hayes">Presidente Hayes</option>
+
+                    <option value="Boqueron">Boquerón</option>
+
+                    <option value="Alto Paraguay">Alto Paraguay</option>
+                </select>
+
+                <h4>Distrito</h4>
+                <select multiple id="distrito" style="width:250px;">
+                </select>
+
+                <h4>Programa</h4>
+                <div id="programa" class="btn-group-vertical" data-toggle="buttons">
+                </div>
+
+                <h4>Estado de Obra</h4>
+                <div id="estado" class="btn-group-vertical" data-toggle="buttons">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="slide-tag">
+    <a href="#" id="opener" class="btn btn-default"></span> Filtrar los Datos <span id="opener-icon" class="glyphicon glyphicon-chevron-down arrow-right"></a>
+</div>
+<div class="main-container">
+    <div id='loader'></div>
+    <div id="main-content" class="tab-content">
+        <div id="mapa" class="tab-pane fade in active">
+            <div id="map"></div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="photo-modal" tabindex="-1" role="dialog" aria-labelledby="photo-modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>        
+            <div class="modal-body">                
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script>
+  function draw_sidetag(map) {
+      $('#opener').on('click', function () {
+          var panel = $('#slide-panel');
+          if (panel.hasClass("visible")) {
+              panel.removeClass('visible').css({'margin-left': '-300px'});
+              $('.main-container').css({'padding-left': '0px'});
+          } else {
+        panel.addClass('visible').css({'margin-left': '0px'});
+              $('.main-container').css({'padding-left': '300px'});
+          }
+          $('#opener-icon').toggleClass("glyphicon glyphicon-chevron-down");
+          $('#opener-icon').toggleClass("glyphicon glyphicon-chevron-up");
+          map.invalidateSize();
+          return false;
+      });
+  }
+</script>
+
+<!--<style>
+    #map {height:500px; width:100%;}
+</style>
+<script>
+  L.mapbox.accessToken = 'pk.eyJ1Ijoic2ViYXN0aWFub3J0aXpzYW50YWNydXoiLCJhIjoiMEhXbGVpVSJ9.sYb1WHM-9_bdXsA5JCGmGQ';
+  var map = L.mapbox.map('map', 'examples.map-i86nkdio')
+          .setView([40, -74.50], 9);
+</script>-->
