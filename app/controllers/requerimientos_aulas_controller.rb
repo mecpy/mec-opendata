@@ -126,16 +126,24 @@ class RequerimientosAulasController < ApplicationController
     end
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-
-    @requerimientos_aulas = VRequerimientoAula.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    
+    if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      @requerimientos_aulas = VRequerimientoAula.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+    else
+      @requerimientos_aulas = VRequerimientoAula.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    end
     
     @total_registros = VRequerimientoAula.count 
 
     if params[:format] == 'csv'
 
       require 'csv'
-
-      requerimientos_aulas_csv = VRequerimientoAula.orden_dep_dis.where(cond).all
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        requerimientos_aulas_csv = VRequerimientoAula.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).all
+      else
+        requerimientos_aulas_csv = VRequerimientoAula.orden_dep_dis.where(cond).all
+      end
 
       csv = CSV.generate do |csv|
         # header row
@@ -162,7 +170,11 @@ class RequerimientosAulasController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      requerimientos_aulas_xlsx = VRequerimientoAula.orden_dep_dis.where(cond).all
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        requerimientos_aulas_xlsx = VRequerimientoAula.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).all
+      else
+        requerimientos_aulas_xlsx = VRequerimientoAula.orden_dep_dis.where(cond).all
+      end
        
       p = Axlsx::Package.new
         
@@ -193,7 +205,11 @@ class RequerimientosAulasController < ApplicationController
 
     else
       
-      @requerimientos_aulas_todos = VRequerimientoAula.orden_dep_dis.where(cond).all
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @requerimientos_aulas_todos = VRequerimientoAula.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).all
+      else
+        @requerimientos_aulas_todos = VRequerimientoAula.orden_dep_dis.where(cond).all
+      end
       
       respond_to do |f|
 

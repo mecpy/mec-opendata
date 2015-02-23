@@ -120,7 +120,11 @@ class ServiciosBasicosController < ApplicationController
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
     
-    @servicios_basicos = VServicioBasico.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      @servicios_basicos = VServicioBasico.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+    else
+      @servicios_basicos = VServicioBasico.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    end
                                                
     @total_registros = VServicioBasico.count 
 
@@ -128,7 +132,11 @@ class ServiciosBasicosController < ApplicationController
 
       require 'csv'
       
-      servicios_basicos_csv = VServicioBasico.orden_dep_dis.where(cond).all
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        servicios_basicos_csv = VServicioBasico.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).all
+      else
+        servicios_basicos_csv = VServicioBasico.orden_dep_dis.where(cond).all
+      end
 
       csv = CSV.generate do |csv|
         # header row
@@ -155,7 +163,11 @@ class ServiciosBasicosController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      servicios_basicos_xlsx = VServicioBasico.orden_dep_dis.where(cond).all
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        servicios_basicos_xlsx = VServicioBasico.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).all
+      else
+        servicios_basicos_xlsx = VServicioBasico.orden_dep_dis.where(cond).all
+      end
        
       p = Axlsx::Package.new
         
@@ -185,8 +197,12 @@ class ServiciosBasicosController < ApplicationController
       send_data p.to_stream.read, filename: "servicios_basicos_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     else
-
-      @servicios_basicos_todos = VServicioBasico.orden_dep_dis.where(cond).all
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @servicios_basicos_todos = VServicioBasico.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).all
+      else
+        @servicios_basicos_todos = VServicioBasico.orden_dep_dis.where(cond).all
+      end
       
       respond_to do |f|
 
