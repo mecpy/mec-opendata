@@ -111,8 +111,12 @@ class RegistrosTitulosController < ApplicationController
     end
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-
-    @registros_titulos = RegistroTitulo.orden_anio_mes.where(cond).paginate(page: params[:page], per_page: 15)
+    
+    if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      @registros_titulos = RegistroTitulo.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+    else
+      @registros_titulos = RegistroTitulo.orden_anio_mes.where(cond).paginate(page: params[:page], per_page: 15)
+    end
 
     @registros_titulos_todos = RegistroTitulo.orden_anio_mes.where(cond)
     @total_registros = RegistroTitulo.count 
@@ -120,8 +124,12 @@ class RegistrosTitulosController < ApplicationController
     if params[:format] == 'csv'
 
       require 'csv'
-
-      registros_titulos_csv = RegistroTitulo.orden_anio_mes.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        registros_titulos_csv = RegistroTitulo.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        registros_titulos_csv = RegistroTitulo.orden_anio_mes.where(cond)
+      end
 
       csv = CSV.generate do |csv|
         # header row
@@ -138,7 +146,11 @@ class RegistrosTitulosController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      registros_titulos_xls = RegistroTitulo.orden_anio_mes.where(cond)
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        registros_titulos_xls = RegistroTitulo.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        registros_titulos_xls = RegistroTitulo.orden_anio_mes.where(cond)
+      end
        
       p = Axlsx::Package.new
         
@@ -161,8 +173,12 @@ class RegistrosTitulosController < ApplicationController
     elsif params[:format] == 'pdf'
 
       report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'registros_titulos.tlf')
-
-      registros_titulos_pdf = RegistroTitulo.orden_anio_mes.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        registros_titulos_pdf = RegistroTitulo.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        registros_titulos_pdf = RegistroTitulo.orden_anio_mes.where(cond)
+      end
      
       report.start_new_page do |page|
       
@@ -192,8 +208,12 @@ class RegistrosTitulosController < ApplicationController
         disposition: 'attachment'
 
     else
-
-      @registros_titulos_json = RegistroTitulo.orden_anio_mes.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @registros_titulos_json = RegistroTitulo.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        @registros_titulos_json = RegistroTitulo.orden_anio_mes.where(cond)
+      end
 
       respond_to do |f|
 
