@@ -85,8 +85,12 @@ class EstablecimientosController < ApplicationController
     end
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-
-    @establecimientos = Establecimiento.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    
+    if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      @establecimientos = Establecimiento.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+    else
+      @establecimientos = Establecimiento.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    end
 
     @total_registros = Establecimiento.count 
 
@@ -99,12 +103,12 @@ class EstablecimientosController < ApplicationController
       csv = CSV.generate do |csv|
         # header row
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad",
-                "nombre_barrio_localidad", "direccion", "coordenadas_y", "coordenadas_x", "latitud", "longitud", "anho_cod_geo", "uri"]
+          "nombre_barrio_localidad", "direccion", "coordenadas_y", "coordenadas_x", "latitud", "longitud", "anho_cod_geo", "uri"]
  
         # data rows
         establecimientos_csv.each do |e|
           csv << [e.anio, e.codigo_establecimiento, e.codigo_departamento, e.nombre_departamento, e.codigo_distrito, e.nombre_distrito, e.codigo_zona, e.nombre_zona, e.codigo_barrio_localidad,
-                  e.nombre_barrio_localidad, e.direccion, e.coordenadas_y, e.coordenadas_x, e.latitud, e.longitud, e.anho_cod_geo, e.uri ]
+            e.nombre_barrio_localidad, e.direccion, e.coordenadas_y, e.coordenadas_x, e.latitud, e.longitud, e.anho_cod_geo, e.uri ]
         end
 
       end
@@ -113,7 +117,11 @@ class EstablecimientosController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      @establecimientos = Establecimiento.orden_dep_dis.where(cond)
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @establecimientos = Establecimiento.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        @establecimientos = Establecimiento.orden_dep_dis.where(cond)
+      end
 
       p = Axlsx::Package.new
       
@@ -138,8 +146,12 @@ class EstablecimientosController < ApplicationController
     elsif params[:format] == 'pdf'
 
       report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'establecimientos.tlf')
-
-      establecimientos = Establecimiento.orden_dep_dis.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        establecimientos = Establecimiento.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        establecimientos = Establecimiento.orden_dep_dis.where(cond)
+      end
     
       report.start_new_page do |page|
       
@@ -152,33 +164,38 @@ class EstablecimientosController < ApplicationController
         report.list(:establecimientos).add_row do |row|
 
           row.values  anio: e.anio,
-                      codigo_establecimiento: e.codigo_establecimiento,
-                      codigo_departamento: e.codigo_departamento.to_s,        
-                      nombre_departamento: e.nombre_departamento.to_s,       
-                      codigo_distrito: e.codigo_distrito.to_s,       
-                      nombre_distrito: e.nombre_distrito.to_s,       
-                      codigo_zona: e.codigo_zona.to_s,       
-                      nombre_zona: e.nombre_zona.to_s,       
-                      codigo_barrio_localidad: e.codigo_barrio_localidad.to_s,       
-                      nombre_barrio_localidad: e.nombre_barrio_localidad.to_s,       
-                      direccion: e.direccion.to_s,       
-                      coordenadas_y: e.coordenadas_y.to_s,       
-                      coordenadas_x: e.coordenadas_x.to_s,       
-                      latitud: e.latitud.to_s,       
-                      longitud: e.longitud.to_s,
-                      #anho_cod_geo: e.anho_cod_geo.to_s,
-                      uri: e.uri.to_s
+            codigo_establecimiento: e.codigo_establecimiento,
+            codigo_departamento: e.codigo_departamento.to_s,        
+            nombre_departamento: e.nombre_departamento.to_s,       
+            codigo_distrito: e.codigo_distrito.to_s,       
+            nombre_distrito: e.nombre_distrito.to_s,       
+            codigo_zona: e.codigo_zona.to_s,       
+            nombre_zona: e.nombre_zona.to_s,       
+            codigo_barrio_localidad: e.codigo_barrio_localidad.to_s,       
+            nombre_barrio_localidad: e.nombre_barrio_localidad.to_s,       
+            direccion: e.direccion.to_s,       
+            coordenadas_y: e.coordenadas_y.to_s,       
+            coordenadas_x: e.coordenadas_x.to_s,       
+            latitud: e.latitud.to_s,       
+            longitud: e.longitud.to_s,
+            #anho_cod_geo: e.anho_cod_geo.to_s,
+          uri: e.uri.to_s
         end
 
       end
 
 
       send_data report.generate, filename: "establecimientos_#{Time.now.strftime('%d%m%Y__%H%M')}.pdf", 
-                                 type: 'application/pdf', 
-                                 disposition: 'attachment'
+        type: 'application/pdf', 
+        disposition: 'attachment'
 
     else
-      @establecimientos_todos = Establecimiento.orden_dep_dis.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @establecimientos_todos = Establecimiento.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        @establecimientos_todos = Establecimiento.orden_dep_dis.where(cond)
+      end
       
       respond_to do |f|
 
