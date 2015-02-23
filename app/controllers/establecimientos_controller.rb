@@ -118,30 +118,28 @@ class EstablecimientosController < ApplicationController
     elsif params[:format] == 'xlsx'
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        @establecimientos = Establecimiento.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+        establecimientos_xlsx = Establecimiento.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
       else
-        @establecimientos = Establecimiento.orden_dep_dis.where(cond)
+        establecimientos_xlsx = Establecimiento.orden_dep_dis.where(cond)
       end
-
-      p = Axlsx::Package.new
       
+      p = Axlsx::Package.new
+        
       p.workbook.add_worksheet(:name => "Establecimientos") do |sheet|
           
         sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad, :direccion, :coordenadas_y, :coordenadas_x, :latitud, :longitud, :anho_cod_geo, :uri] 
-          
-        @establecimientos.each do |e|
-            
+
+        establecimientos_xlsx.each do |e|
+              
           sheet.add_row [e.anio, e.codigo_establecimiento, e.codigo_departamento, e.nombre_departamento, e.codigo_distrito, e.nombre_distrito, e.codigo_zona, e.nombre_zona, e.codigo_barrio_localidad, e.nombre_barrio_localidad, e.direccion, e.coordenadas_y, e.coordenadas_x, e.latitud, e.longitud, e.anho_cod_geo, e.uri] 
-          
+                
         end
 
       end
-      
+            
       p.use_shared_strings = true
       
-      p.serialize('public/data/establecimientos_2012.xlsx')
-        
-      send_file "public/data/establecimientos_2012.xlsx", :filename => "establecimientos_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
+      send_data p.to_stream.read, filename: "establecimientos_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     elsif params[:format] == 'pdf'
 
