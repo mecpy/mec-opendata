@@ -85,16 +85,24 @@ class DirectoriosInstitucionesController < ApplicationController
     end
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-
-    @directorios_instituciones = VDirectorioInstitucion.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    
+    if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      @directorios_instituciones = VDirectorioInstitucion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+    else
+      @directorios_instituciones = VDirectorioInstitucion.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    end
 
     @total_registros = VDirectorioInstitucion.count 
 
     if params[:format] == 'csv'
 
       require 'csv'
-
-      directorios_instituciones_csv = VDirectorioInstitucion.orden_dep_dis.where(cond).all
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        directorios_instituciones_csv = VDirectorioInstitucion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).all
+      else
+        directorios_instituciones_csv = VDirectorioInstitucion.orden_dep_dis.where(cond).all
+      end
 
       csv = CSV.generate do |csv|
         # header row
@@ -117,16 +125,20 @@ class DirectoriosInstitucionesController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      directorios_instituciones_xlsx = VDirectorioInstitucion.orden_dep_dis.where(cond).all
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        directorios_instituciones_xlsx = VDirectorioInstitucion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).all
+      else
+        directorios_instituciones_xlsx = VDirectorioInstitucion.orden_dep_dis.where(cond).all
+      end
        
       p = Axlsx::Package.new
         
       p.workbook.add_worksheet(:name => "DirectorioInstituciones") do |sheet|
           
         sheet.add_row [:periodo, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito,
-            :codigo_barrio_localidad, :nombre_barrio_localidad, :codigo_zona, :nombre_zona,
-            :codigo_establecimiento, :codigo_institucion, :nombre_institucion, :anho_cod_geo,
-            :uri_establecimiento,:uri_institucion]
+          :codigo_barrio_localidad, :nombre_barrio_localidad, :codigo_zona, :nombre_zona,
+          :codigo_establecimiento, :codigo_institucion, :nombre_institucion, :anho_cod_geo,
+          :uri_establecimiento,:uri_institucion]
 
         directorios_instituciones_xlsx.each do |i|
               
@@ -145,7 +157,11 @@ class DirectoriosInstitucionesController < ApplicationController
 
     elsif params[:format] == 'json'
       
-      directorios_instituciones_json = VDirectorioInstitucion.orden_dep_dis.where(cond).all
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        directorios_instituciones_json = VDirectorioInstitucion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).all
+      else
+        directorios_instituciones_json = VDirectorioInstitucion.orden_dep_dis.where(cond).all
+      end
       
       respond_to do |f|
 
@@ -161,5 +177,5 @@ class DirectoriosInstitucionesController < ApplicationController
     end
 
   end
-
+ 
 end
