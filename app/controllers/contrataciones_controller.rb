@@ -110,16 +110,24 @@ class ContratacionesController < ApplicationController
     end
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-
-    @contrataciones = Contratacion.where(cond).paginate(page: params[:page], per_page: 15)
+    
+    if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      @contrataciones = Contratacion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+    else
+      @contrataciones = Contratacion.where(cond).paginate(page: params[:page], per_page: 15)
+    end
 
     @total_registros = Contratacion.count 
 
     if params[:format] == 'csv'
 
       require 'csv'
-
-      contrataciones_csv = Contratacion.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        contrataciones_csv = Contratacion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        contrataciones_csv = Contratacion.where(cond)
+      end
 
       csv = CSV.generate do |csv|
         # header row
@@ -136,7 +144,11 @@ class ContratacionesController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      contrataciones_xlsx = Contratacion.where(cond)
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        contrataciones_xlsx = Contratacion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        contrataciones_xlsx = Contratacion.where(cond)
+      end
        
       p = Axlsx::Package.new
         
@@ -157,8 +169,12 @@ class ContratacionesController < ApplicationController
       send_data p.to_stream.read, filename: "contrataciones_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     else
-
-      @contrataciones_todos = Contratacion.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @contrataciones_todos = Contratacion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        @contrataciones_todos = Contratacion.where(cond)
+      end
       
       respond_to do |f|
 
