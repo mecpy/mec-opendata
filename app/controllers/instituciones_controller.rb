@@ -162,16 +162,24 @@ class InstitucionesController < ApplicationController
     end
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-
-    @instituciones = Institucion.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    
+    if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      @instituciones = Institucion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+    else
+      @instituciones = Institucion.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    end
 
     @total_registros = Institucion.count 
 
     if params[:format] == 'csv'
 
       require 'csv'
-
-      instituciones_csv = Institucion.orden_dep_dis.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        instituciones_csv = Institucion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        instituciones_csv = Institucion.orden_dep_dis.where(cond)
+      end
 
       csv = CSV.generate do |csv|
         # header row
@@ -221,8 +229,12 @@ class InstitucionesController < ApplicationController
       send_file "public/data/instituciones_2012.xlsx", :filename => "instituciones_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     else
-
-      @instituciones_todos = Institucion.orden_dep_dis.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @instituciones_todos = Institucion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        @instituciones_todos = Institucion.orden_dep_dis.where(cond)
+      end
       
       respond_to do |f|
 
