@@ -184,16 +184,24 @@ class Establecimientos822Controller < ApplicationController
     end
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-
-    @establecimientos = Establecimiento822.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    
+    if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      @establecimientos = Establecimiento822.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+    else
+      @establecimientos = Establecimiento822.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    end
 
     @total_registros = Establecimiento822.count 
 
     if params[:format] == 'csv'
 
       require 'csv'
-
-      establecimientos_csv = Establecimiento822.orden_dep_dis.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        establecimientos_csv = Establecimiento822.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        establecimientos_csv = Establecimiento822.orden_dep_dis.where(cond)
+      end
 
       csv = CSV.generate do |csv|
         # header row
@@ -214,7 +222,11 @@ class Establecimientos822Controller < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      establecimientos111_xlsx = Establecimiento822.orden_dep_dis.where(cond)
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        establecimientos_xlsx = Establecimiento822.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        establecimientos_xlsx = Establecimiento822.orden_dep_dis.where(cond)
+      end
        
       p = Axlsx::Package.new
         
@@ -224,7 +236,7 @@ class Establecimientos822Controller < ApplicationController
           :nombre_barrio_localidad, :direccion, :latitud, :longitud, :uri, :asentamientos_priorizados, :a_comedor, :a_aulas, :a_aula_de_pe, :a_cra, :a_lab, :a_bloq_adm,
           :r_aulas, :r_sshh, :oe_pozo, :cercado, :oe_escindi ]
 
-        establecimientos111_xlsx.each do |e|
+        establecimientos_xlsx.each do |e|
               
           sheet.add_row [e.anio, e.codigo_establecimiento, "#{e.codigo_departamento}", e.nombre_departamento, e.codigo_distrito, e.nombre_distrito, e.codigo_zona, e.nombre_zona, e.codigo_barrio_localidad,
             e.nombre_barrio_localidad, e.direccion, e.latitud, e.longitud, e.uri, e.asentamientos_priorizados, e.a_comedor, e.a_aulas, e.a_aula_de_pe, e.a_cra, e.a_lab, e.a_bloq_adm,
@@ -241,8 +253,12 @@ class Establecimientos822Controller < ApplicationController
     elsif params[:format] == 'pdf'
 
       report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'establecimientos.tlf')
-
-      establecimientos = Establecimiento822.orden_dep_dis.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        establecimientos = Establecimiento822.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        establecimientos = Establecimiento822.orden_dep_dis.where(cond)
+      end
     
       report.start_new_page do |page|
       
@@ -283,7 +299,11 @@ class Establecimientos822Controller < ApplicationController
 
     elsif params[:format] == 'json'
       
-      establecimientos822_json = Establecimiento822.orden_dep_dis.where(cond)
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        establecimientos822_json = Establecimiento822.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        establecimientos822_json = Establecimiento822.orden_dep_dis.where(cond)
+      end
       
       respond_to do |f|
 
