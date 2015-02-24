@@ -6,30 +6,50 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
         <%= favicon_link_tag 'favicon.ico' %>
-        <%= stylesheet_link_tag "application", :media => "all" %>
-        <%= stylesheet_link_tag 'slider'  %>
-        <%= stylesheet_link_tag 'https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' %>
-        <%= javascript_include_tag 'bootstrap-slider.js' %>
-        <%= javascript_include_tag 'https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js' %>
         <%= javascript_include_tag "application" %>
+        <%= javascript_include_tag 'https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js' %>
+        <%= javascript_include_tag 'http://maps.google.com/maps/api/js?sensor=true' %>
+        <%= javascript_include_tag 'mapa/leaflet.markercluster.js' %>
+        <%= javascript_include_tag 'mapa/Google.js' %>
+        <%= javascript_include_tag 'mapa/jquery.flexslider-min.js' %>
+        <%= javascript_include_tag 'mapa/select2.min.js' %> <!-- Permite darle formato a los 'select' -->
+        <%= javascript_include_tag 'mapa/sprintf.min.js' %> <!-- sprintf.js is a complete open source JavaScript sprintf implementation for the browser and node.js. -->
+        <%= javascript_include_tag 'mapa/spin.js' %> <!-- Genera el loading mientras se cargan los mapas -->
         <%= javascript_include_tag "ie10-viewport-bug-workaround" %>
+        <%= javascript_include_tag 'mapa/config.js' %> 
+        <%= javascript_include_tag 'mapa/imgs.js' %>
+        <%= javascript_include_tag 'mapa/viviendas.js' %>
+        <%= stylesheet_link_tag "application", :media => "all" %>
+        <%= stylesheet_link_tag 'mapa/select2.min.css' %>
+        <%= stylesheet_link_tag 'mapa/MarkerCluster.css' %>
+        <%= stylesheet_link_tag 'mapa/MarkerCluster.Default.css' %>
+        <%= stylesheet_link_tag 'https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' %>
+        <%= stylesheet_link_tag 'mapa/flexslider.css' %>
         <%= csrf_meta_tags %>
+
+        <!-- http://papaparse.com/ es un potente parseador-->
+        <!-- toastr.js is a Javascript library for non-blocking notifications.-->
     </head>
     <body>
+
         <div id="main_container">
+
             <div id="header">
                 <%= render :partial => "layouts/header" %>
             </div>
 
-            <div id="main_content">
+            <div class="caja container-fluid" id="main_content">
+
                 <%= yield %>
+
             </div>
 
             <div id="footer">
                 <%= render :partial => "layouts/footer" %>
             </div>
+
         </div>
+
     </body>
 </html>
