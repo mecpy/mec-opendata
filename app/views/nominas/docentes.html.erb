@@ -48,7 +48,7 @@
               <i class="ascendente fa fa-sort-asc"></i>
             </span>-->
 
-            <%= select :form_buscar_nominas, :ano_periodo_pago, [2014], {}, {:class => 'form-control input-sm'} %>
+            <%= select :form_buscar_nominas, :ano_periodo_pago, options_periodos_nominas, {}, {:class => 'form-control input-sm'} %>
           </th>
 
           <th data-priority="1">
@@ -60,7 +60,7 @@
               <i class="ascendente fa fa-sort-asc"></i>
             </span>-->
 
-            <%= select :form_buscar_nominas, :mes_periodo_pago, [["noviembre", 11],["octubre", 10],["setiembre", 9], ["agosto", 8], ["julio", 7], ["junio", 6]], {}, {:class => 'form-control input-sm'} %>
+            <%= select :form_buscar_nominas, :mes_periodo_pago, options_meses_nominas, {}, {:class => 'form-control input-sm'} %>
           </th>
 
           <th data-priority="1">
@@ -313,11 +313,11 @@
   //LIMPIAR FORMULARIO DE BUSQUEDA
   valor_defecto = [{
       id: '#form_buscar_nominas_ano_periodo_pago',
-      valor: 2014
+      valor: 2015
     },
     {
       id: '#form_buscar_nominas_mes_periodo_pago',
-      valor: "11"
+      valor: "1"
     }];
   resetForm("#form-buscar-nominas", valor_defecto);
 
