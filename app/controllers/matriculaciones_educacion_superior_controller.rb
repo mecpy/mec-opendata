@@ -120,16 +120,24 @@ class MatriculacionesEducacionSuperiorController < ApplicationController
     end
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-
-    @matriculaciones_educacion_superior = MatriculacionEducacionSuperior.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    
+    if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      @matriculaciones_educacion_superior = MatriculacionEducacionSuperior.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+    else
+      @matriculaciones_educacion_superior = MatriculacionEducacionSuperior.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    end
 
     @total_registros = MatriculacionEducacionSuperior.count 
 
     if params[:format] == 'csv'
 
       require 'csv'
-
-      matriculaciones_educacion_superior_csv = MatriculacionEducacionSuperior.orden_dep_dis.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        matriculaciones_educacion_superior_csv = MatriculacionEducacionSuperior.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        matriculaciones_educacion_superior_csv = MatriculacionEducacionSuperior.orden_dep_dis.where(cond)
+      end
 
       csv = CSV.generate do |csv|
         # header row
@@ -156,7 +164,11 @@ class MatriculacionesEducacionSuperiorController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      @matriculaciones_educacion_superior = MatriculacionEducacionSuperior.orden_dep_dis.where(cond)
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @matriculaciones_educacion_superior = MatriculacionEducacionSuperior.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        @matriculaciones_educacion_superior = MatriculacionEducacionSuperior.orden_dep_dis.where(cond)
+      end
 
       p = Axlsx::Package.new
       
@@ -190,8 +202,12 @@ class MatriculacionesEducacionSuperiorController < ApplicationController
 
       report = ThinReports::Report.new layout: File.join(Rails.root, 'app',
         'reports', 'matriculaciones_educacion_superior.tlf')
-
-      matriculaciones_educacion_superior = MatriculacionEducacionSuperior.orden_dep_dis.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        matriculaciones_educacion_superior = MatriculacionEducacionSuperior.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        matriculaciones_educacion_superior = MatriculacionEducacionSuperior.orden_dep_dis.where(cond)
+      end
     
       report.start_new_page do |page|
       
@@ -231,8 +247,12 @@ class MatriculacionesEducacionSuperiorController < ApplicationController
         disposition: 'attachment'
 
     else
-
-      @matriculaciones_educacion_superior_todos = MatriculacionEducacionSuperior.orden_dep_dis.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @matriculaciones_educacion_superior_todos = MatriculacionEducacionSuperior.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        @matriculaciones_educacion_superior_todos = MatriculacionEducacionSuperior.orden_dep_dis.where(cond)
+      end
       
       respond_to do |f|
 

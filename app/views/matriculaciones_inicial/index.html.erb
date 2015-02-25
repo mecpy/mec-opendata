@@ -35,11 +35,11 @@
           <th data-priority="1">
             <span data-titulo="true">Periodo</span>
 
-            <!--<span class="orden">
+            <span class="orden anio">
               <i class="filtro fa fa-sort"></i>
               <i class="descendente fa fa-sort-desc"></i>
               <i class="ascendente fa fa-sort-asc"></i>
-            </span>-->
+            </span>
 
             <%= select :form_buscar_matriculaciones_inicial, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
           </th>
@@ -47,11 +47,11 @@
           <th data-priority="1">
             <span data-titulo="true">C&oacute;digo Establecimiento</span>
 
-            <!--<span class="orden">
+            <span class="orden codigo_establecimiento">
               <i class="filtro fa fa-sort"></i>
               <i class="descendente fa fa-sort-desc"></i>
               <i class="ascendente fa fa-sort-asc"></i>
-            </span>-->
+            </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_inicial_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
@@ -75,11 +75,11 @@
       <th data-priority="1">
         <span data-titulo="true">Código Institución</span>
 
-        <!--<span class="orden">
+        <span class="orden codigo_institucion">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_inicial_codigo_institucion, nil, :class => 'form-control', :placeholder => "" %>
@@ -103,11 +103,11 @@
       <th data-priority="1">
         <span data-titulo="true">Instituci&oacute;n</span>
 
-        <!--<span class="orden">
+        <span class="orden nombre_institucion">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_inicial_nombre_institucion, nil, :class => 'form-control', :placeholder => "" %>
@@ -131,11 +131,11 @@
       <th data-priority="1">
         <span data-titulo="true">Departamento</span>
 
-        <!--<span class="orden">
+        <span class="orden nombre_departamento">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_inicial_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
@@ -159,11 +159,11 @@
       <th data-priority="1">
         <span data-titulo="true">Distrito</span>
 
-        <!--<span class="orden">
+        <span class="orden nombre_distrito">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_inicial_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
@@ -187,11 +187,11 @@
       <th data-priority="1">
         <span data-titulo="true">Barrio/Localidad</span>
 
-        <!--<span class="orden">
+        <span class="orden nombre_barrio_localidad">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_inicial_nombre_barrio_localidad, nil, :class => 'form-control', :placeholder => "" %>
@@ -215,11 +215,11 @@
       <th data-priority="1">
         <span data-titulo="true">Zona</span>
 
-        <!--<span class="orden">
+        <span class="orden nombre_zona">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
         <%= select :form_buscar_matriculaciones_inicial, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
       </th>
@@ -227,11 +227,11 @@
       <th data-priority="1">
         <span data-titulo="true">Sector o Tipo Gestión</span>
 
-        <!--<span class="orden">
+        <span class="orden sector_o_tipo_gestion">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_inicial_sector_o_tipo_gestion, nil, :class => 'form-control', :placeholder => "" %>
@@ -255,11 +255,11 @@
 
       <th>
         <span data-titulo="true">Maternal</span>
-        <!--<span class="orden">
+        <span class="orden maternal">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <span class="input-group-addon">
@@ -272,11 +272,11 @@
 
       <th>
         <span data-titulo="true">Pre-Jardin</span>
-        <!--<span class="orden">
+        <span class="orden prejardin">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <span class="input-group-addon">
@@ -289,11 +289,11 @@
 
       <th>
         <span data-titulo="true">Jardin</span>
-        <!--<span class="orden">
+        <span class="orden jardin">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <span class="input-group-addon">
@@ -306,11 +306,11 @@
 
       <th>
         <span data-titulo="true">Pre-Escolar</span>
-        <!--<span class="orden">
+        <span class="orden preescolar">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <span class="input-group-addon">
@@ -323,11 +323,11 @@
 
       <th>
         <span data-titulo="true">Total Matriculados</span>
-        <!--<span class="orden">
+        <span class="orden total_matriculados">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <span class="input-group-addon">

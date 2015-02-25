@@ -162,30 +162,40 @@ class InstitucionesController < ApplicationController
     end
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-
-    @instituciones = Institucion.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    
+    if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      @instituciones = Institucion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+    else
+      @instituciones = Institucion.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    end
 
     @total_registros = Institucion.count 
 
     if params[:format] == 'csv'
 
       require 'csv'
-
-      instituciones_csv = Institucion.orden_dep_dis.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        instituciones_csv = Institucion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        instituciones_csv = Institucion.orden_dep_dis.where(cond)
+      end
 
       csv = CSV.generate do |csv|
         # header row
         csv << ["anio", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", "codigo_barrio_localidad", "nombre_barrio_localidad", "codigo_zona", "nombre_zona",
           "codigo_establecimiento", "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "codigo_region_administrativa", "nombre_region_administrativa", 
           "nombre_supervisor", "niveles_modalidades", "codigo_tipo_organizacion", "nombre_tipo_organizacion", "participacion_comunitaria", "direccion", "nro_telefono", "tiene_internet",
-          "paginaweb", "correo_electronico"]
+          "paginaweb", "correo_electronico",
+          "anho_cod_geo", "uri_establecimiento", "uri_institucion"]
  
         # data rows
         instituciones_csv.each do |i|
           csv << [i.anio, i.codigo_departamento, i.nombre_departamento, i.codigo_distrito, i.nombre_distrito, i.codigo_barrio_localidad, i.nombre_barrio_localidad, i.codigo_zona, i.nombre_zona,
             i.codigo_establecimiento, i.codigo_institucion, i.nombre_institucion, i.sector_o_tipo_gestion, i.codigo_region_administrativa, i.nombre_region_administrativa, 
             i.nombre_supervisor, i.niveles_modalidades, i.codigo_tipo_organizacion, i.nombre_tipo_organizacion, i.participacion_comunitaria, i.direccion, i.nro_telefono, i.tiene_internet,
-            i.paginaweb, i.correo_electronico]
+            i.paginaweb, i.correo_electronico,
+            i.anho_cod_geo, i.uri_establecimiento,i.uri_institucion]
         end
 
       end
@@ -193,41 +203,51 @@ class InstitucionesController < ApplicationController
       send_data(csv, :type => 'text/csv', :filename => "instituciones_#{Time.now.strftime('%Y%m%d')}.csv")
 
     elsif params[:format] == 'xlsx'
-     
-      p = Axlsx::Package.new
       
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        instituciones_xlsx = Institucion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        instituciones_xlsx = Institucion.orden_dep_dis.where(cond)
+      end
+      
+      p = Axlsx::Package.new
+        
       p.workbook.add_worksheet(:name => "Instituciones") do |sheet|
           
         sheet.add_row [:anio, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_barrio_localidad, :nombre_barrio_localidad, :codigo_zona, :nombre_zona,
           :codigo_establecimiento, :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :codigo_region_administrativa, :nombre_region_administrativa, 
           :nombre_supervisor, :niveles_modalidades, :codigo_tipo_organizacion, :nombre_tipo_organizacion, :participacion_comunitaria, :direccion, :nro_telefono, :tiene_internet,
-          :paginaweb, :correo_electronico]
+          :paginaweb, :correo_electronico,
+          :anho_cod_geo, :uri_establecimiento,:uri_institucion]
 
-        @instituciones.each do |i|
-            
+        instituciones_xlsx.each do |i|
+              
           sheet.add_row [i.anio, i.codigo_departamento, i.nombre_departamento, i.codigo_distrito, i.nombre_distrito, i.codigo_barrio_localidad, i.nombre_barrio_localidad, i.codigo_zona, i.nombre_zona,
             i.codigo_establecimiento, i.codigo_institucion, i.nombre_institucion, i.sector_o_tipo_gestion, i.codigo_region_administrativa, i.nombre_region_administrativa, 
             i.nombre_supervisor, i.niveles_modalidades, i.codigo_tipo_organizacion, i.nombre_tipo_organizacion, i.participacion_comunitaria, i.direccion, i.nro_telefono, i.tiene_internet,
-            i.paginaweb, i.correo_electronico]
-          
+            i.paginaweb, i.correo_electronico,
+            i.anho_cod_geo, i.uri_establecimiento,i.uri_institucion]
+                
         end
 
       end
-      
+            
       p.use_shared_strings = true
-
-      p.serialize('public/data/instituciones_2012.xlsx')
-        
-      send_file "public/data/instituciones_2012.xlsx", :filename => "instituciones_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
+      
+      send_data p.to_stream.read, filename: "instituciones_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     else
-
-      @instituciones_todos = Institucion.orden_dep_dis.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @instituciones_todos = Institucion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        @instituciones_todos = Institucion.orden_dep_dis.where(cond)
+      end
       
       respond_to do |f|
 
         f.js
-        f.json {render :json => @instituciones_todos }
+        f.json {render :json => @instituciones_todos, :methods => [:uri_establecimiento, :uri_institucion]}
 
       end 
 

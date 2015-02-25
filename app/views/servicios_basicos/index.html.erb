@@ -38,11 +38,11 @@
           <th data-priority="1" id="tab-filtros-lista">
             <span data-titulo="true">Periodo</span>
 
-            <!--<span class="orden">
+            <span class="orden periodo">
               <i class="filtro fa fa-sort"></i>
               <i class="descendente fa fa-sort-desc"></i>
               <i class="ascendente fa fa-sort-asc"></i>
-            </span>-->
+            </span>
 
         <%= select :form_buscar_servicios_basicos, :periodo, [2014], {}, {:class => 'form-control input-sm'} %>
       </th>
@@ -50,11 +50,11 @@
       <th data-priority="1" id="tab-filtros-texto">
         <span data-titulo="true">Departamento</span>
 
-        <!--<span class="orden">
+        <span class="orden nombre_departamento">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_servicios_basicos_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
@@ -80,11 +80,11 @@
       <th data-priority="1">
         <span data-titulo="true">Distrito</span>
 
-        <!--<span class="orden">
+        <span class="orden nombre_distrito">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_servicios_basicos_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
@@ -110,11 +110,11 @@
       <th data-priority="1">
         <span data-titulo="true">C&oacute;digo Establecimiento</span>
 
-        <!--<span class="orden">
+        <span class="orden codigo_establecimiento">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_servicios_basicos_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
@@ -140,11 +140,11 @@
       <th data-priority="1">
         <span data-titulo="true">Barrio/Localidad</span>
 
-        <!--<span class="orden">
+        <span class="orden nombre_barrio_localidad">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_servicios_basicos_nombre_barrio_localidad, nil, :class => 'form-control', :placeholder => "" %>
@@ -170,11 +170,11 @@
       <th data-priority="1">
         <span data-titulo="true">Zona</span>
 
-        <!--<span class="orden">
+        <span class="orden nombre_zona">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
         <%= select :form_buscar_servicios_basicos, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
       </th>
@@ -182,11 +182,11 @@
       <th data-priority="1">
         <span data-titulo="true">Nombre de Asentamiento o Colonia</span>
 
-        <!--<span class="orden">
+        <span class="orden nombre_asentamiento_colonia">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_servicios_basicos_nombre_asentamiento_colonia, nil, :class => 'form-control', :placeholder => "" %>
@@ -212,11 +212,11 @@
       <th data-priority="1">
         <span data-titulo="true">Suministro</br>Energ&iacute;a El&eacute;ctrica</span>
 
-        <!--<span class="orden">
+        <span class="orden suministro_energia_electrica">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_servicios_basicos_suministro_energia_electrica, nil, :class => 'form-control', :placeholder => "" %>
@@ -242,11 +242,11 @@
       <th data-priority="1">
         <span data-titulo="true">Abastecimiento de Agua</span>
 
-        <!--<span class="orden">
+        <span class="orden abastecimiento_agua">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_servicios_basicos_abastecimiento_agua, nil, :class => 'form-control', :placeholder => "" %>
@@ -272,11 +272,11 @@
       <th data-priority="1">
         <span data-titulo="true">Servicio Sanitario Actual</span>
 
-        <!--<span class="orden">
+        <span class="orden servicio_sanitario_actual">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_servicios_basicos_servicio_sanitario_actual, nil, :class => 'form-control', :placeholder => "" %>
@@ -302,11 +302,11 @@
       <th data-priority="1">
         <span data-titulo="true">T&iacute;tulo de Propiedad</span>
 
-        <!--<span class="orden">
+        <span class="orden titulo_de_propiedad">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_servicios_basicos_titulo_de_propiedad, nil, :class => 'form-control', :placeholder => "" %>
@@ -332,11 +332,11 @@
       <th data-priority="1">
         <span data-titulo="true">Cuenta con Plano</span>
 
-        <!--<span class="orden">
+        <span class="orden cuenta_plano">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_servicios_basicos_cuenta_plano, nil, :class => 'form-control', :placeholder => "" %>
@@ -362,11 +362,11 @@
       <th data-priority="1">
         <span data-titulo="true">Cuenta con</br>Prevenci&oacute;n de Incendio</span>
 
-        <!--<span class="orden">
+        <span class="orden prevencion_incendio">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_servicios_basicos_prevencion_incendio, nil, :class => 'form-control', :placeholder => "" %>

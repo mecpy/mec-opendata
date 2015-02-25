@@ -123,16 +123,24 @@ class MatriculacionesInicialController < ApplicationController
     end
   
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-
-    @matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond).paginate(page: params[:page], per_page: 15)
+    
+    if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      @matriculaciones_inicial = MatriculacionInicial.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+    else
+      @matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond).paginate(page: params[:page], per_page: 15)
+    end
 
     @total_registros = MatriculacionInicial.count 
 
     if params[:format] == 'csv'
 
       require 'csv'
-
-      matriculaciones_inicial_csv = MatriculacionInicial.ordenado_institucion.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        matriculaciones_inicial_csv = MatriculacionInicial.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+      else
+        matriculaciones_inicial_csv = MatriculacionInicial.ordenado_institucion.where(cond)
+      end
 
       csv = CSV.generate do |csv|
         # header row
@@ -155,7 +163,11 @@ class MatriculacionesInicialController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      @matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond)
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @matriculaciones_inicial = MatriculacionInicial.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+      else
+        @matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond)
+      end
 
       p = Axlsx::Package.new
       
@@ -184,8 +196,12 @@ class MatriculacionesInicialController < ApplicationController
     elsif params[:format] == 'pdf'
 
       report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'matriculaciones_inicial.tlf')
-
-      matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        matriculaciones_inicial = MatriculacionInicial.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+      else
+        matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond)
+      end
     
       report.start_new_page do |page|
       
@@ -223,8 +239,12 @@ class MatriculacionesInicialController < ApplicationController
         disposition: 'attachment'
 
     else
-
-      @matriculaciones_inicial_todos = MatriculacionInicial.ordenado_institucion.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @matriculaciones_inicial_todos = MatriculacionInicial.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+      else
+        @matriculaciones_inicial_todos = MatriculacionInicial.ordenado_institucion.where(cond)
+      end
       
       respond_to do |f|
 

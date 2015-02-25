@@ -140,8 +140,12 @@ class RequerimientosSanitariosController < ApplicationController
     end
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-
-    @requerimientos_sanitarios = VRequerimientoSanitario.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    
+    if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      @requerimientos_sanitarios = VRequerimientoSanitario.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+    else
+      @requerimientos_sanitarios = VRequerimientoSanitario.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    end
                                                                              
     @total_registros = VRequerimientoSanitario.count 
 
@@ -149,7 +153,11 @@ class RequerimientosSanitariosController < ApplicationController
 
       require 'csv'
       
-      requerimientos_sanitarios_csv = VRequerimientoSanitario.orden_dep_dis.where(cond).all
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        requerimientos_sanitarios_csv = VRequerimientoSanitario.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).all
+      else
+        requerimientos_sanitarios_csv = VRequerimientoSanitario.orden_dep_dis.where(cond).all
+      end
 
       csv = CSV.generate do |csv|
         # header row
@@ -176,8 +184,12 @@ class RequerimientosSanitariosController < ApplicationController
       send_data(csv, :type => 'text/csv', :filename => "requerimientos_sanitarios_#{Time.now.strftime('%Y%m%d')}.csv")
 
     elsif params[:format] == 'xlsx'
-        
-      requerimientos_sanitarios_xlsx = VRequerimientoSanitario.orden_dep_dis.where(cond).all
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        requerimientos_sanitarios_xlsx = VRequerimientoSanitario.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).all
+      else
+        requerimientos_sanitarios_xlsx = VRequerimientoSanitario.orden_dep_dis.where(cond).all
+      end
        
       p = Axlsx::Package.new
         
@@ -210,7 +222,11 @@ class RequerimientosSanitariosController < ApplicationController
 
     else
       
-      @requerimientos_sanitarios_todos = VRequerimientoSanitario.orden_dep_dis.where(cond).all
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @requerimientos_sanitarios_todos = VRequerimientoSanitario.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).all
+      else
+        @requerimientos_sanitarios_todos = VRequerimientoSanitario.orden_dep_dis.where(cond).all
+      end
       
       respond_to do |f|
 

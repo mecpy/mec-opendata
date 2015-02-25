@@ -82,7 +82,12 @@ class NominasController< ApplicationController
     end
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-    @nomina = VNomina.es_administrativo.ordenado_anio_mes_nombre.where(cond).paginate(page: params[:page], per_page: 15)
+    
+    if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      @nomina = VNomina.es_administrativo.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+    else
+      @nomina = VNomina.es_administrativo.ordenado_anio_mes_nombre.where(cond).paginate(page: params[:page], per_page: 15)
+    end
 
     #@total_registros_encontrados = VNomina.count :conditions => cond
     #@total_registros = VNomina.count 
@@ -90,8 +95,12 @@ class NominasController< ApplicationController
     if params[:format] == 'csv'
 
       require 'csv'
-
-      nominas_csv = Nomina.ordenado_anio_mes_nombre.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        nominas_csv = Nomina.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        nominas_csv = Nomina.ordenado_anio_mes_nombre.where(cond)
+      end
 
       csv = CSV.generate do |csv|
         # header row
@@ -114,10 +123,17 @@ class NominasController< ApplicationController
           
           columnas = [:mes_periodo_pago, :ano_periodo_pago, :codigo_concepto_nomina, :nombre_concepto_nomina, :codigo_trabajador, :nombre_trabajador, :anhos_antiguedad_administrativo, :meses_antiguedad_administrativo, :anhos_antiguedad_docente, :meses_antiguedad_docente, :codigo_puesto, :numero_tipo_presupuesto_puesto, :codigo_dependencia, :nombre_dependencia, :codigo_cargo, :nombre_cargo, :codigo_categoria_rubro, :monto_categoria_rubro, :cantidad, :asignacion]
           
-          send_data Nomina.ordenado_anio_mes_nombre.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
-          :filename => "nomina_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
-          :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
-          disposition: 'attachment'
+          if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+            send_data Nomina.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).to_xlsx(:columns => columnas).to_stream.read, 
+            :filename => "nomina_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
+            :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
+            disposition: 'attachment'
+          else
+            send_data Nomina.ordenado_anio_mes_nombre.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
+            :filename => "nomina_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
+            :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
+            disposition: 'attachment'
+          end
         }
       
       end
@@ -125,8 +141,12 @@ class NominasController< ApplicationController
     elsif params[:format] == 'pdf'
 
       report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'funcionario_administrativo.tlf')
-
-      nomina = Nomina.es_administrativo.ordenado_anio_mes_nombre.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        nomina = Nomina.es_administrativo.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        nomina = Nomina.es_administrativo.ordenado_anio_mes_nombre.where(cond)
+      end
    
       report.layout.config.list(:nomina) do
         
@@ -308,7 +328,11 @@ class NominasController< ApplicationController
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
     
-    @nomina = VNomina.es_docente.ordenado_anio_mes_nombre.where(cond).paginate(page: params[:page], per_page: 15)
+    if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      @nomina = VNomina.es_docente.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+    else
+      @nomina = VNomina.es_docente.ordenado_anio_mes_nombre.where(cond).paginate(page: params[:page], per_page: 15)
+    end
 
     #@total_registros_encontrados = VNomina.count :conditions => cond
     #@total_registros = VNomina.count 
@@ -316,8 +340,12 @@ class NominasController< ApplicationController
     if params[:format] == 'csv'
 
       require 'csv'
-
-      nominas_csv = Nomina.ordenado_anio_mes_nombre.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        nominas_csv = Nomina.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        nominas_csv = Nomina.ordenado_anio_mes_nombre.where(cond)
+      end
 
       csv = CSV.generate do |csv|
         # header row
@@ -340,10 +368,17 @@ class NominasController< ApplicationController
           
           columnas = [:mes_periodo_pago, :ano_periodo_pago, :codigo_concepto_nomina, :nombre_concepto_nomina, :codigo_trabajador, :nombre_trabajador, :anhos_antiguedad_administrativo, :meses_antiguedad_administrativo, :anhos_antiguedad_docente, :meses_antiguedad_docente, :codigo_puesto, :numero_tipo_presupuesto_puesto, :codigo_dependencia, :nombre_dependencia, :codigo_cargo, :nombre_cargo, :codigo_categoria_rubro, :monto_categoria_rubro, :cantidad, :asignacion]
           
-          send_data Nomina.ordenado_anio_mes_nombre.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
-          :filename => "nomina_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
-          :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
-          disposition: 'attachment'
+          if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+            send_data Nomina.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).to_xlsx(:columns => columnas).to_stream.read, 
+            :filename => "nomina_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
+            :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
+            disposition: 'attachment'
+          else
+            send_data Nomina.ordenado_anio_mes_nombre.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
+            :filename => "nomina_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
+            :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
+            disposition: 'attachment'
+          end
         }
       
       end
@@ -351,8 +386,12 @@ class NominasController< ApplicationController
     elsif params[:format] == 'pdf'
 
       report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'funcionario_docente.tlf')
-
-      nomina = Nomina.es_docente.ordenado_anio_mes_nombre.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        nomina = Nomina.es_docente.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        nomina = Nomina.es_docente.ordenado_anio_mes_nombre.where(cond)
+      end
    
       report.layout.config.list(:nomina) do
         

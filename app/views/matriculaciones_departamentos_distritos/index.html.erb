@@ -36,11 +36,11 @@
           <th data-priority="1">
             <span data-titulo="true">Período</span>
 
-            <!--<span class="orden">
+            <span class="orden anio">
               <i class="filtro fa fa-sort"></i>
               <i class="descendente fa fa-sort-desc"></i>
               <i class="ascendente fa fa-sort-asc"></i>
-            </span>-->
+            </span>
 
             <%= select :form_buscar_matriculaciones_departamentos_distritos, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
           </th>
@@ -48,11 +48,11 @@
           <th data-priority="1">
             <span data-titulo="true">Departamento</span>
 
-            <!--<span class="orden">
+            <span class="orden nombre_departamento">
               <i class="filtro fa fa-sort"></i>
               <i class="descendente fa fa-sort-desc"></i>
               <i class="ascendente fa fa-sort-asc"></i>
-            </span>-->
+            </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
@@ -76,11 +76,11 @@
       <th data-priority="1">
         <span data-titulo="true">Distrito</span>
 
-        <!--<span class="orden">
+        <span class="orden nombre_distrito">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
@@ -104,11 +104,11 @@
       <th data-priority="1">
         <span data-titulo="true">Zona</span>
 
-        <!--<span class="orden">
+        <span class="orden nombre_zona">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
         <%= select :form_buscar_matriculaciones_departamentos_distritos, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
       </th>
@@ -116,11 +116,11 @@
       <th data-priority="1">
         <span data-titulo="true">Sector o Tipo de Gesti&oacute;n</span>
 
-        <!--<span class="orden">
+        <span class="orden sector_o_tipo_gestion">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_matriculaciones_departamentos_distritos_sector_o_tipo_gestion, nil, :class => 'form-control', :placeholder => "" %>
@@ -143,11 +143,11 @@
 
       <th>
         <span data-titulo="true">Cantidad de Matriculados</span>
-        <!--<span class="orden">
+        <span class="orden cantidad_matriculados">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <span class="input-group-addon">

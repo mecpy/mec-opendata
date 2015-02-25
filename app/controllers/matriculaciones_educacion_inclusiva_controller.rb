@@ -111,16 +111,25 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
     end
     
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-
-    @matriculaciones_educacion_inclusiva = MatriculacionEducacionInclusiva.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    
+    if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      @matriculaciones_educacion_inclusiva = MatriculacionEducacionInclusiva.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+    else
+      @matriculaciones_educacion_inclusiva = MatriculacionEducacionInclusiva.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    end
 
     @total_registros = MatriculacionEducacionInclusiva.count 
 
     if params[:format] == 'csv'
 
       require 'csv'
-
-      matriculaciones_educacion_inclusiva_csv = MatriculacionEducacionInclusiva.orden_dep_dis.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        matriculaciones_educacion_inclusiva_csv = MatriculacionEducacionInclusiva.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        matriculaciones_educacion_inclusiva_csv = MatriculacionEducacionInclusiva.orden_dep_dis.where(cond)
+      end
+    
       csv = CSV.generate do |csv|
         # header row
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", "codigo_zona", 
@@ -131,9 +140,9 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
         # data rows
         matriculaciones_educacion_inclusiva_csv.each do |e|
           csv << [e.anio, e.codigo_establecimiento, e.codigo_departamento, e.nombre_departamento, e.codigo_distrito, e.nombre_distrito, e.codigo_zona, 
-          e.nombre_zona, e.codigo_barrio_localidad,e.nombre_barrio_localidad, e.codigo_institucion, e.nombre_institucion, e.sector_o_tipo_gestion, 
-          e.matricula_inicial_especial, e.matricula_primer_y_segundo_ciclo_especial, e.matricula_tercer_ciclo_especial, 
-          e.matricula_programas_especiales, e.anho_cod_geo ]
+            e.nombre_zona, e.codigo_barrio_localidad,e.nombre_barrio_localidad, e.codigo_institucion, e.nombre_institucion, e.sector_o_tipo_gestion, 
+            e.matricula_inicial_especial, e.matricula_primer_y_segundo_ciclo_especial, e.matricula_tercer_ciclo_especial, 
+            e.matricula_programas_especiales, e.anho_cod_geo ]
        
         end
 
@@ -143,7 +152,11 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      @matriculaciones_educacion_inclusiva = MatriculacionEducacionInclusiva.orden_dep_dis.where(cond)
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @matriculaciones_educacion_inclusiva = MatriculacionEducacionInclusiva.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        @matriculaciones_educacion_inclusiva = MatriculacionEducacionInclusiva.orden_dep_dis.where(cond)
+      end
 
       p = Axlsx::Package.new
       
@@ -157,9 +170,9 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
         @matriculaciones_educacion_inclusiva.each do |m|
             
           sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento, m.codigo_distrito, m.nombre_distrito, m.codigo_zona, 
-          m.nombre_zona, m.codigo_barrio_localidad,m.nombre_barrio_localidad, m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, 
-          m.matricula_inicial_especial, m.matricula_primer_y_segundo_ciclo_especial, m.matricula_tercer_ciclo_especial, 
-          m.matricula_programas_especiales, m.anho_cod_geo]
+            m.nombre_zona, m.codigo_barrio_localidad,m.nombre_barrio_localidad, m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, 
+            m.matricula_inicial_especial, m.matricula_primer_y_segundo_ciclo_especial, m.matricula_tercer_ciclo_especial, 
+            m.matricula_programas_especiales, m.anho_cod_geo]
 
         end
 
@@ -172,8 +185,12 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
     elsif params[:format] == 'pdf'
 
       report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'matriculaciones_educacion_inclusiva.tlf')
-
-      matriculaciones_educacion_inclusiva = MatriculacionEducacionInclusiva.orden_dep_dis.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        matriculaciones_educacion_inclusiva = MatriculacionEducacionInclusiva.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        matriculaciones_educacion_inclusiva = MatriculacionEducacionInclusiva.orden_dep_dis.where(cond)
+      end
       
       report.start_new_page do |page|
       
@@ -186,22 +203,22 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
         report.list(:matriculaciones_educacion_inclusiva).add_row do |row|
 
           row.values  anio: e.anio, 
-                      codigo_establecimiento: e.codigo_establecimiento.to_s, 
-                      codigo_departamento: e.codigo_departamento.to_s, 
-                      nombre_departamento: e.nombre_departamento.to_s, 
-                      codigo_distrito: e.codigo_distrito.to_s, 
-                      nombre_distrito: e.nombre_distrito, 
-                      codigo_zona: e.codigo_zona.to_s, 
-                      nombre_zona: e.nombre_zona.to_s, 
-                      codigo_barrio_localidad: e.codigo_barrio_localidad.to_s,
-                      nombre_barrio_localidad: e.nombre_barrio_localidad.to_s, 
-                      codigo_institucion: e.codigo_institucion.to_s, 
-                      nombre_institucion: e.nombre_institucion.to_s, 
-                      sector_o_tipo_gestion: e.sector_o_tipo_gestion.to_s, 
-                      matricula_inicial_especial: e.matricula_inicial_especial.to_s, 
-                      matricula_primer_y_segundo_ciclo_especial: e.matricula_primer_y_segundo_ciclo_especial.to_s, 
-                      matricula_tercer_ciclo_especial: e.matricula_tercer_ciclo_especial.to_s, 
-                      matricula_programas_especiales: e.matricula_programas_especiales.to_s
+            codigo_establecimiento: e.codigo_establecimiento.to_s, 
+            codigo_departamento: e.codigo_departamento.to_s, 
+            nombre_departamento: e.nombre_departamento.to_s, 
+            codigo_distrito: e.codigo_distrito.to_s, 
+            nombre_distrito: e.nombre_distrito, 
+            codigo_zona: e.codigo_zona.to_s, 
+            nombre_zona: e.nombre_zona.to_s, 
+            codigo_barrio_localidad: e.codigo_barrio_localidad.to_s,
+            nombre_barrio_localidad: e.nombre_barrio_localidad.to_s, 
+            codigo_institucion: e.codigo_institucion.to_s, 
+            nombre_institucion: e.nombre_institucion.to_s, 
+            sector_o_tipo_gestion: e.sector_o_tipo_gestion.to_s, 
+            matricula_inicial_especial: e.matricula_inicial_especial.to_s, 
+            matricula_primer_y_segundo_ciclo_especial: e.matricula_primer_y_segundo_ciclo_especial.to_s, 
+            matricula_tercer_ciclo_especial: e.matricula_tercer_ciclo_especial.to_s, 
+            matricula_programas_especiales: e.matricula_programas_especiales.to_s
                         
         end
 
@@ -209,12 +226,17 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
 
 
       send_data report.generate, filename: "matriculaciones_educacion_inclusiva_#{Time.now.strftime('%d%m%Y__%H%M')}.pdf", 
-                                 type: 'application/pdf', 
-                                 disposition: 'attachment'
+        type: 'application/pdf', 
+        disposition: 'attachment'
 
     else
       
-      @matriculaciones_educacion_inclusiva_todos = MatriculacionEducacionInclusiva.orden_dep_dis.where(cond)
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @matriculaciones_educacion_inclusiva_todos = MatriculacionEducacionInclusiva.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        @matriculaciones_educacion_inclusiva_todos = MatriculacionEducacionInclusiva.orden_dep_dis.where(cond)
+      end
+      
       respond_to do |f|
         f.js
         f.json {render :json => @matriculaciones_educacion_inclusiva_todos }

@@ -62,17 +62,24 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
 
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-    puts cond
-
-    @matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    
+    if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      @matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+    else
+      @matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+    end
 
     @total_registros = MatriculacionDepartamentoDistrito.count 
 
     if params[:format] == 'csv'
 
       require 'csv'
-
-      matriculaciones_departamentos_distritos_csv = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        matriculaciones_departamentos_distritos_csv = MatriculacionDepartamentoDistrito.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        matriculaciones_departamentos_distritos_csv = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
+      end
 
       csv = CSV.generate do |csv|
         # header row
@@ -93,7 +100,11 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
 
     elsif params[:format] == 'xlsx'
       
-      @matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        @matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
+      end
 
       p = Axlsx::Package.new
       
@@ -121,8 +132,12 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
 
       report = ThinReports::Report.new layout: File.join(Rails.root, 'app',
         'reports', 'matriculaciones_departamentos_distritos.tlf')
-
-      matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
+      end
     
       report.start_new_page do |page|
       
@@ -154,8 +169,12 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
         disposition: 'attachment'
 
     else
-
-      @matriculaciones_departamentos_distritos_todos = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
+      
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @matriculaciones_departamentos_distritos_todos = MatriculacionDepartamentoDistrito.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        @matriculaciones_departamentos_distritos_todos = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
+      end
       
       respond_to do |f|
 

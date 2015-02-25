@@ -42,11 +42,11 @@
           <th data-priority="1">
             <span data-titulo="true">Año</span>
 
-            <!--<span class="orden">
+            <span class="orden ano_periodo_pago">
               <i class="filtro fa fa-sort"></i>
               <i class="descendente fa fa-sort-desc"></i>
               <i class="ascendente fa fa-sort-asc"></i>
-            </span>-->
+            </span>
 
             <%= select :form_buscar_nominas, :ano_periodo_pago, options_periodos_nominas, {}, {:class => 'form-control input-sm'} %>
           </th>
@@ -54,11 +54,11 @@
           <th data-priority="1">
             <%= label_tag "Mes" %>
 
-            <!--<span class="orden">
+            <span class="orden mes_periodo_pago">
               <i class="filtro fa fa-sort"></i>
               <i class="descendente fa fa-sort-desc"></i>
               <i class="ascendente fa fa-sort-asc"></i>
-            </span>-->
+            </span>
 
             <%= select :form_buscar_nominas, :mes_periodo_pago, options_meses_nominas, {}, {:class => 'form-control input-sm'} %>
           </th>
@@ -66,11 +66,11 @@
           <th data-priority="1">
             <span data-titulo="true">N° Documento</span>
 
-            <!--<span class="orden">
+            <span class="orden codigo_trabajador">
               <i class="filtro fa fa-sort"></i>
               <i class="descendente fa fa-sort-desc"></i>
               <i class="ascendente fa fa-sort-asc"></i>
-            </span>-->
+            </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_nominas_codigo_trabajador, nil, :class => 'form-control', :placeholder => "" %>
@@ -95,11 +95,11 @@
       <th data-priority="1">
         <span data-titulo="true">Nombre Completo</span>
 
-        <!--<span class="orden">
+        <span class="orden nombre_trabajador">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_nominas_nombre_trabajador, nil, :class => 'form-control', :placeholder => "" %>
@@ -124,11 +124,11 @@
       <th data-priority="1">
         <span data-titulo="true">Objeto de Gasto</span>
 
-        <!--<span class="orden">
+        <span class="orden nombre_objeto_gasto">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_nominas_nombre_objeto_gasto, nil, :class => 'form-control', :placeholder => "" %>
@@ -153,11 +153,11 @@
       <th data-priority="1">
         <span data-titulo="true">Estado</span>
 
-        <!--<span class="orden">
+        <span class="orden estado">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_nominas_estado, nil, :class => 'form-control', :placeholder => "" %>
@@ -182,11 +182,11 @@
       <th data-priority="1">
         <span data-titulo="true">Antigüedad</span>
 
-        <!--<span class="orden">
+        <span class="orden antiguedad_docente">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_nominas_antiguedad_docente, nil, :class => 'form-control', :placeholder => "" %>
@@ -211,11 +211,11 @@
       <th data-priority="1">
         <span data-titulo="true">Numero Matriculación</span>
 
-        <!--<span class="orden">
+        <span class="orden numero_matriculacion">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <%= text_field_tag :form_buscar_nominas_numero_matriculacion, nil, :class => 'form-control', :placeholder => "" %>
@@ -239,11 +239,11 @@
 
       <th>
         <span data-titulo="true">Asignaci&oacute;n</span>
-        <!--<span class="orden">
+        <span class="orden asignacion">
           <i class="filtro fa fa-sort"></i>
           <i class="descendente fa fa-sort-desc"></i>
           <i class="ascendente fa fa-sort-asc"></i>
-        </span>-->
+        </span>
 
       <div class="input-group input-group-sm">
         <span class="input-group-addon">
