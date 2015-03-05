@@ -60,7 +60,7 @@ Rails.application.configure do
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
   # config.assets.precompile += %w( search.js )
-  config.assets.precompile += %w( mapa_matriculaciones.css leaflet.css slider.css bootstrap-slider.js ie10-viewport-bug-workaround.js leaflet.js mapa_matriculaciones.js matriculados.js views/datos_ver_view.js views/datos_view.js views/index_view.js views/visualizaciones_view.js views/uri_establecimiento_view.js views/uri_institucion_view.js views/uri_nomina_view.js mapa/spin.js mapa/select2.min.js mapa/config.js mapa/viviendas.js mapa/Google.js mapa/leaflet.markercluster.js mapa/sprintf.min.js mapa/imgs.js mapa/jquery.flexslider-min.js mapa/select2.min.css mapa/MarkerCluster.css mapa/MarkerCluster.Default.css mapa/flexslider.css)
+  config.assets.precompile += %w( mapa_matriculaciones.css leaflet.css slider.css bootstrap-slider.js ie10-viewport-bug-workaround.js leaflet.js mapa_matriculaciones.js matriculados.js views/datos_ver_view.js views/datos_view.js views/index_view.js views/visualizaciones_view.js views/uri_establecimiento_view.js views/uri_institucion_view.js views/uri_nomina_view.js mapa/spin.js mapa/select2.min.js mapa/config.js mapa/viviendas.js mapa/Google.js mapa/leaflet.markercluster.js mapa/sprintf.min.js mapa/imgs.js mapa/jquery.flexslider-min.js mapa/geojson.min.js mapa/select2.min.css mapa/MarkerCluster.css mapa/MarkerCluster.Default.css mapa/flexslider.css)
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
