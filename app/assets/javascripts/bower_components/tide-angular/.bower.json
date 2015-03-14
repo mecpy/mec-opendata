@@ -1,0 +1,41 @@
+{
+  "name": "tide-angular",
+  "version": "0.0.14",
+  "homepage": "https://github.com/elaval/tide-angular",
+  "authors": [
+    "Ernesto Laval <ernesto.laval@gmail.com>"
+  ],
+  "description": "Module with utilities for data visualization by TIDE SA ",
+  "main": "tide-angular.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "data",
+    "visualization",
+    "tide",
+    "angular"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.16",
+    "d3": "~3.4.6",
+    "underscore": "~1.6.0"
+  },
+  "_release": "0.0.14",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.14",
+    "commit": "71644a0a8530607f2beb5e23af2aa81e099f8299"
+  },
+  "_source": "git://github.com/elaval/tide-angular.git",
+  "_target": "*",
+  "_originalSource": "tide-angular"
+}

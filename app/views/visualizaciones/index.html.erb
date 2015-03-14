@@ -132,10 +132,28 @@
       </div>
     </div>
   </div>
-  
+
   <div class="vista no-cargada col-sm-6 col-md-4">
     <div class="thumbnail well">
-      <%= link_to image_tag('destacados/educacion.png', :class => 'img-responsive enlace'), mec_custom_url(app_comunidad_nuestra_educacion_numeros_url) %>
+      <%= link_to image_tag('destacados/v1niveles.png', :class => 'img-responsive enlace'), mec_custom_url(app_niveles_formaciones_docentes_url) %>
+      <div class="caption">
+        <h3>
+          Niveles de Formaciones de Docentes
+          <small>
+            <span class="text-info">por el MEC</span>
+          </small>
+        </h3>
+        <p>     
+          <%= link_to "Ir a la visualizaci&oacute;n".html_safe, mec_custom_url(app_niveles_formaciones_docentes_url), :class => "btn btn-primary", :role => "button" %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+<!--  
+  <div class="vista no-cargada col-sm-6 col-md-4">
+    <div class="thumbnail well">
+      <%#= link_to image_tag('destacados/educacion.png', :class => 'img-responsive enlace'), mec_custom_url(app_comunidad_nuestra_educacion_numeros_url) %>
       <div class="caption">
         <h3>
           Nuestra Educación en Números
@@ -145,11 +163,12 @@
         </h3>
         <p><a href="http://www.datos.org.py/">www.Datos.org.py</a></p>
         <p>     
-          <%= link_to "Ir a la visualizaci&oacute;n".html_safe, mec_custom_url(app_comunidad_nuestra_educacion_numeros_url), :class => "btn btn-primary", :role => "button" %>
+          <%#= link_to "Ir a la visualizaci&oacute;n".html_safe, mec_custom_url(app_comunidad_nuestra_educacion_numeros_url), :class => "btn btn-primary", :role => "button" %>
           <a href="http://www.datos.org.py/content/app/educacion-en-n%C3%BAmeros" target="_blank" class="btn btn-default" role="button">Ver en el blog</a>
         </p>
       </div>
     </div>
   </div>
+-->
 
 </div>

@@ -32,6 +32,18 @@
 //= stub views/uri_institucion_view.js
 //= require datos_abiertos_plugins.js
 //= require master_detail.js
+//= stub bower_components/jquery/dist/jquery.js
+//= stub bower_components/angular/angular.js
+//= stub bower_components/bootstrap/dist/js/bootstrap.js
+//= stub bower_components/angular-route/angular-route.js
+//= stub bower_components/angular-bootstrap/ui-bootstrap-tpls.js
+//= stub bower_components/d3/d3.js
+//= stub bower_components/underscore/underscore.js
+//= stub bower_components/tide-angular/tide-angular.js
+//= stub scripts/app.js
+//= stub scripts/controllers/nivelFormacion.js
+//= stub scripts/services/nivelFormacionDataService.js
+//= stub scripts/controllers/tide-angular-levelPiramid/tide-angular-levelPiramid.js
 
 /*Funcion que limpia el formulario del Dataset*/
 function resetForm(formId, valor_defecto) {

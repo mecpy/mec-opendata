@@ -1,0 +1,31 @@
+[
+    {
+        "id":"doctorado",
+        "blocks":["doctorado"]
+    },  
+    {
+        "id":"magister",
+        "blocks":["magister"]
+    },          
+    {
+        "id":"especializacionOPostgrado",
+        "blocks":["especializacionOPostgrado"]
+    },
+    {
+        "id":"superior",
+        "blocks": [
+            "docenteNoUniversitario",
+            "docenteYUniversitario",
+            "universitarioNoDocente",
+            "tecnicaNoUniversitariaNoDocente",
+            "militarNoTecnicaNoUniversitariaNoDocente"]
+    },
+    {
+        "id":"media",
+        "blocks":["media"]
+    },
+    {
+        "id":"basica",
+        "blocks":["basica"]
+    }
+]

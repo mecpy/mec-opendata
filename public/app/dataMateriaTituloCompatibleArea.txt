@@ -1,0 +1,815 @@
+AreaCodigo	MateriaCodigo	MateriaDescripcion	totalProfesores	conTituloCompatible	conTituloYFormacionCompatible
+-1	1	ARTE ELEMENTAL                                    	1	0	0
+-1	3	MADERA (TALLER)                                   	1	0	0
+-1	4	COMUNICACION SOCIAL/MEDIOS DE COMUN. SOCIAL       	3	0	0
+-1	5	HISTORIA Y GEOGRAFIA                              	3511	2483	2225
+-1	6	PROYECTO EDUCATIVO/INSTITUCIONAL/ELABORACION      	3	1	1
+-1	7	PROYECTO EDUCATIVO COMUNITARIO/PARTIC. COMUNITARIA	53	12	10
+-1	8	ORTOGRAFIA                                        	2	0	0
+-1	10	INVESTIGACION CIENTIF/SOCIAL/INICIACION/DIDACT/ACC	36	16	13
+-1	12	RELIGION / CATEQUESIS/ ESTUDIO BIBLICO            	34	10	5
+-1	13	CIENCIAS DE LA NATURALEZA Y SALUD                 	3121	1544	1443
+-1	15	ACTIVIDAD DE REFUERZO                             	3	0	0
+-1	16	ACONDICIONADOR DE AIRE                            	1	0	0
+-1	19	EXPRESION MUSICAL O LENGUAJE MUSICAL              	1	0	0
+-1	23	ADMINISTRACION FINANCIERA                         	257	16	8
+-1	25	ADMINISTRACION RURAL                              	13	2	1
+-1	27	EXPRESION PLASTICA (GRAFICA-VISUAL)               	1	0	0
+-1	28	ADMINISTRACION DE EMPRESAS                        	634	546	326
+-1	29	DANZA PARAGUAYA/DANZA Y SU DIDACTICA              	13	9	7
+-1	30	ADMINISTRACION Y LEGISLACION                      	1	0	0
+-1	31	ADMINISTRACION Y LEGISLACION LABORAL              	1	0	0
+-1	34	PUERICULTURA                                      	1	0	0
+-1	35	LEGISLACION Y ORGANIZ.DE LA EDUC.INICIAL          	2	1	1
+-1	37	TRABAJO Y TECNOLOGIA                              	5	1	1
+-1	38	EDUCACION/FORMACION ETICA Y CIUDADANA             	3452	2247	2027
+-1	39	SOCIOLOGIA Y ANTROPOLOGIA CULTURAL                	879	151	116
+-1	40	ADMINISTRACION Y VENTA                            	1	0	0
+-1	41	ADMINISTRACION Y MANTENIMIENTO INDUSTRIAL         	1	0	0
+-1	42	ADMINISTRACION Y LEGISLACION SANITARIA            	1	0	0
+-1	44	AGRICULTURA                                       	6	4	2
+-1	47	ALEMAN                                            	25	14	6
+-1	48	TEATRO                                            	19	11	10
+-1	49	ALGORITMIA/ALGORITMICA                            	339	231	84
+-1	51	DISEÑO TECNICO                                    	1	0	0
+-1	52	CALCULO MECANICO                                  	1	0	0
+-1	56	ANATOMIA Y FISIOLOGIA                             	102	29	9
+-1	57	ANTROPOLOGIA/ANTROPOLOGIA CULTURAL                	1	0	0
+-1	58	APLICACION DE LA LOGICA DIGITAL                   	2	0	0
+-1	60	ANALISIS DE ALIMENTOS                             	1	0	0
+-1	66	ANALISIS INSTRUMENTAL                             	17	0	0
+-1	67	ANALISIS INDUSTRIAL                               	12	0	0
+-1	75	ARTES PLASTICAS/ARTES PLASTICAS Y SUS DIDACTICAS  	11	9	8
+-1	83	AVICULTURA                                        	1	0	0
+-1	84	CARTONERIA                                        	1	0	0
+-1	92	FORMACION HUMANA                                  	1	1	1
+-1	96	CONFITERIA                                        	1	0	0
+-1	98	COSMOGRAFIA                                       	1	1	1
+-1	102	SALUD (EDUC SANITARIA/EDUC P SALUD)               	178	41	32
+-1	110	BIOLOGIA                                          	552	309	280
+-1	111	BOTANICA                                          	1	0	0
+-1	115	BROMATOLOGIA                                      	2	1	0
+-1	119	PROYECTO PEDAGOGICO (PASANTIA)                    	7	4	4
+-1	124	MODELAJE                                          	1	0	0
+-1	126	ANALISIS DE PRODUCTO                              	1	0	0
+-1	139	CALCULO MERCANTILES Y FINANCIEROS                 	485	351	250
+-1	140	CASTELLANO - EDUC.IDIOMATICA (BASICO)             	1	1	1
+-1	142	COMPUTACION                                       	5	5	1
+-1	152	REDACCION COMERCIAL                               	30	24	21
+-1	154	INSTALACIONES NEUMATICA-HIDRAULICAS               	8	3	0
+-1	155	CIENCIAS NATURALES                                	29	19	17
+-1	157	METODOLOGIA DE ESTUDIO                            	1	0	0
+-1	161	COMUNICACION ESCRITA                              	4	1	1
+-1	167	CENTRALES Y REDES                                 	3	0	0
+-1	174	ECONOMIA/AGROPECUARIA Y ADMINISTRACION RURAL      	192	3	1
+-1	175	MAQUINARIAS Y APEROS AGRICOLAS                    	171	4	1
+-1	183	CONTABILIDAD Y SEMINARIO CONTABLE                 	1	1	0
+-1	185	CONTABILIDAD/CONTABILIDAD GENERAL                 	68	59	36
+-1	190	COMUNICACION/PRINCIPIOS                           	101	66	66
+-1	192	CONTABILIDAD Y GABINETE DE GESTION                	305	287	185
+-1	198	CULTURA RELIGIOSA                                 	47	18	12
+-1	223	DACTILOGRAFIA COMPUTARIZADA                       	2	0	0
+-1	230	DIBUJO TECNICO                                    	258	47	22
+-1	233	EDUCACION AMBIENTAL Y SALUD                       	66	32	22
+-1	260	DISEÑO                                            	4	0	0
+-1	261	DISEÑO Y PROYECTO                                 	26	0	0
+-1	263	DISEÑO                                            	1	0	0
+-1	269	AGROECOLOGIA                                      	3	0	0
+-1	270	ECONOMIA/NOCIONES                                 	276	221	145
+-1	280	MAQUINARIAS                                       	1	0	0
+-1	283	EDUCACION ARTISTICA/ARTES/EDUC. PARA EL ARTE      	3156	1408	1337
+-1	284	PSICOLOGIA SOCIAL                                 	1	0	0
+-1	286	PERIODISMO                                        	18	6	3
+-1	288	EDUCACION CRISTIANA                               	21	7	4
+-1	293	EDUCACION FISICA/Y SUS TECNOLOGIAS/TEORÍA Y PRÁCT.	2752	1891	1758
+-1	298	ARITMETICA (ARITM. Y TEORIA DE CONJUNTOS)         	1	1	1
+-1	300	LENGUA ESPAÑOLA (CASTELLANA)/MATERNA              	1	1	0
+-1	302	DESARROLLO COMUNITARIO                            	1	0	0
+-1	310	ECONOMIA Y GESTION                                	3213	1805	1470
+-1	313	GESTION EMPRESARIAL                               	2	2	1
+-1	314	DISEÑO Y PROYECTO MECANICO                        	10	0	0
+-1	318	CIENCIAS POLITICAS                                	1	0	0
+-1	319	RESISTENCIA                                       	1	0	0
+-1	320	ELECTRONICA                                       	47	10	1
+-1	321	ELECTRONICA DIGITAL                               	23	15	1
+-1	322	ELECTRONICA INDUSTRIAL                            	26	12	0
+-1	323	ELECTROTECNIA                                     	45	15	1
+-1	324	PRACTICA                                          	5	0	0
+-1	327	FOTOGRAMETRIA(CLAS. DE CAMPO                      	1	1	0
+-1	332	ELEMENTOS DE TECNOLOGIA                           	12	0	0
+-1	343	METEOROLOGIA                                      	1	0	0
+-1	347	EDUCACION RITMICA                                 	1	0	0
+-1	352	ORIENT. EDUCACIONAL Y SOCIOLABORAL (EDUC. EN VALOR	1309	139	81
+-1	353	FARMACOLOGIA                                      	99	17	10
+-1	360	ESTADISTICA/APLICADA/PROBABILIDAD                 	54	34	28
+-1	361	ESTABILIDAD Y RESISTENCIA DE MATERIALES           	30	12	3
+-1	362	ELECTRONICA ANALOGICA                             	23	17	2
+-1	365	FILOSOFIA (E.M)                                   	43	5	4
+-1	367	FRANCES                                           	10	9	5
+-1	368	TECNOLOGIA AUTOMOTRIZ                             	11	10	4
+-1	370	FISICA                                            	3124	830	802
+-1	374	FRUTICULTURA                                      	1	1	0
+-1	377	FOTOGRAFIA                                        	18	2	0
+-1	378	FISIOLOGIA/DEL EJERCICIO                          	1	0	0
+-1	379	LABORATORIO DIESEL                                	6	0	0
+-1	380	GENETICA                                          	2	1	1
+-1	382	GABINETE DE GESTION                               	4	3	2
+-1	383	GABINETE DE INFORMATICA - LABORATORIO             	325	276	108
+-1	384	GANADO MAYOR                                      	126	85	16
+-1	387	GRAFICA COMPUTARIZADA                             	25	9	1
+-1	388	GANADO MENOR                                      	146	93	14
+-1	391	GEOLOGIA                                          	20	0	0
+-1	392	ANALISIS INDUSTRIAL ORGANICO                      	4	0	0
+-1	393	PEDAGOGIA Y METODOLOGIA ESPEC. AL SORDO           	1	0	0
+-1	397	POLITICA/FILOSOFIA POLITICA                       	1820	1092	958
+-1	403	PORTUGUES                                         	23	5	4
+-1	406	ANALISIS DEL DISCURSO                             	188	119	108
+-1	407	COMUNICACION ORAL                                 	5	3	3
+-1	408	LOGICA MATEMATICA (Y TEORIA DE CONJUNTOS) (ED. SUP	46	37	32
+-1	409	LABORATORIO DE ELECTROTECNIA(ELECTROT.-LABORAT)   	69	35	12
+-1	411	TALLER MECANICO                                   	26	9	2
+-1	412	ELECTRICIDAD Y ELECTRONICA DEL AUTOMOVIL          	10	1	0
+-1	413	CALCULO DIFERENCIAL E INTEGRAL                    	10	0	0
+-1	414	QUIMICA ANALITICA                                 	15	14	11
+-1	415	FISICO-QUIMICA                                    	16	12	9
+-1	416	MICROBIOLOGIA INDUSTRIAL                          	13	3	1
+-1	417	TALLER DE SERVICIOS INDUSTRIALES                  	13	2	1
+-1	418	MERCADOTECNIA Y GABINETE (INFORMATICA)            	29	14	8
+-1	419	SEMINARIO CONTABLE/GABINETE CONTABLE              	522	481	329
+-1	420	GUARANI (GUARA ÑEE                                	4340	3961	3831
+-1	421	HIGIENE HOSPITALARIA                              	1	0	0
+-1	422	HIDRAULICA Y MAQUINAS HIDRAULICAS                 	1	0	0
+-1	424	HORTICULTURA                                      	12	2	0
+-1	426	HISTORIA DEL DISEÑO                               	15	0	0
+-1	429	PATOLOGIA/PATOLOGIA GENERAL                       	87	28	6
+-1	434	EQUIPOS E IMPLEMENTOS (AGRICOLA)                  	3	0	0
+-1	435	INGLES                                            	2012	844	753
+-1	436	INFORMATICA / APLICACIONES INFORMATICAS           	551	317	127
+-1	437	INSTALACIONES/ELECT.(DIB.TEC.TALLER-DIS-PROY-PRES)	59	21	8
+-1	439	INSTALACION INDUSTRIAL                            	2	0	0
+-1	443	ITALIANO                                          	3	1	1
+-1	452	INTRODUCCION A LA ECONOMIA                        	256	204	140
+-1	454	ILUSTRACION                                       	28	9	9
+-1	455	INDUSTRIA GRAFICA                                 	13	0	0
+-1	459	ORIENTACION EDUCACIONAL Y RELACIONES HUMANAS      	2	0	0
+-1	478	PROYECTO SUPERVISADO EN PRODUCCION VEGETAL        	1	0	0
+-1	480	LABORATORIO                                       	14	4	3
+-1	482	LABORATORIO DE MECANICA                           	27	1	0
+-1	483	LABORATORIO DE MATERIALES Y ENSAYOS               	2	0	0
+-1	486	LABORATORIO DE ELECTRONICA                        	18	13	1
+-1	489	LABORATORIO DE QUIMICA/QUIMICA PRACTICA           	11	9	8
+-1	492	PROYECTO EDUCATIVO DE APOYO A PRACTICA (FISICA    	1	0	0
+-1	505	SANEAMIENTO / SANEAMIENTO AMBIENTAL               	1	0	0
+-1	506	ALIMENTACION BASICA                               	1	0	0
+-1	510	LEGISLACION                                       	3	3	3
+-1	511	LEGISLACION TRIBUTARIA                            	4	0	0
+-1	512	CIENCIAS SOCIALES/CIENCIAS SOCIALES Y SUS TECNOLOG	102	69	65
+-1	514	LEGISLACION APLICADA                              	11	11	9
+-1	519	LITERATURA EXTRANJERA (INGLESA                    	1	1	1
+-1	543	GRAMATICA DESCRIPTIVA DEL CASTELLANO (ED.SUP)     	1	0	0
+-1	550	LEGISLACION COMERCIO EXTERIOR                     	1	0	0
+-1	551	CASTELLANO/LENG. Y LIT. CASTELL/LENG. Y LITERATURA	3975	2691	2476
+-1	554	LENGUAJE DE COMPUTACION                           	2	0	0
+-1	555	LITERATURA - EDUC.IDIOMATICA (BACHILLERATO)       	5	4	4
+-1	562	MAQUINAS AGRICOLAS                                	3	0	0
+-1	564	GEOMETRIA Y TRIGONOMETRIA (EDUC. SUPERIOR)        	1	1	1
+-1	565	MANEJO Y CONSERV.DE RECURSOS NATURALES            	4	0	0
+-1	570	MARKETING/INTRODUCCION/GASTRONOMICO               	8	0	0
+-1	573	MATERIALES                                        	1	0	0
+-1	580	MATEMATICA / MATEMATICA Y SU DIDACTICA            	3565	3120	2735
+-1	582	MOTORES CI                                        	5	0	0
+-1	583	MATEMATICA FINANCIERA                             	1	0	0
+-1	584	MATEMATICA APLICADA (INFORM. /A LA VIDA COTIDIANA)	340	296	218
+-1	585	MECANICA APLICADA                                 	33	0	0
+-1	587	MECANICA/GENERAL/CUANTICA                         	2	0	0
+-1	590	ORIENTACION                                       	3	2	2
+-1	592	MECANICA AUTOMOTRIZ                               	1	0	0
+-1	597	OPERACIONES UNITARIAS                             	14	1	0
+-1	605	MAQUINAS Y EQUIPOS                                	1	0	0
+-1	609	MAQUINAS Y EQUIPAMIENTOS                          	1	1	1
+-1	610	MANDOS ELECTRICOS                                 	2	0	0
+-1	611	MERCADOTECNIA                                     	285	251	148
+-1	612	METODOLOGIA DE LA INVESTIGACION (TRAB. CIENTIFICO)	24	12	12
+-1	615	MICROBIOLOGIA/MICROBIOLOGIA GENERAL               	2	0	0
+-1	620	MUSICA (EDUCACION MUSICAL)                        	12	9	9
+-1	621	NUTRICION/DIETETICA                               	104	43	6
+-1	624	ORIENTACION EDUCACIONAL Y OCUPACIONAL             	1	0	0
+-1	631	ADMINISTRACION DE LOS RECURSOS NATURALES          	2	2	1
+-1	632	LEGISLACION AMBIENTAL                             	3	0	0
+-1	635	ECOTURISMO                                        	16	7	2
+-1	637	RECURSOS GEOLOGICOS Y EDAFOLOGICOS                	2	0	0
+-1	641	TECNOLOGIA ALTERNATIVA                            	2	0	0
+-1	642	SOCIOLOGIA RURAL Y URBANA                         	5	0	0
+-1	649	GEODESIA/GEODESIA ASTRONOMICA                     	2	2	0
+-1	650	PASTURA Y FORRAJE                                 	1	0	0
+-1	652	PASANTIA                                          	82	0	0
+-1	660	PRACTICA DE CAMPO                                 	1	0	0
+-1	665	PRACTICA COMERCIAL                                	1	0	0
+-1	675	PRODUCCION VEGETAL                                	2	0	0
+-1	676	PRODUCCION ANIMAL                                 	2	1	0
+-1	683	PLANIFICACION Y ELABORACION DE PROYECTO           	85	0	0
+-1	687	ENFERMERIA(FUNDAMENTOS)/INTROD.A LA ENFER./BASICA 	5	3	1
+-1	690	PUBLICIDAD                                        	33	3	1
+-1	691	PROYECTO / SOCIAL                                 	1	0	0
+-1	693	PSICOLOGIA (DEPORTIVA)                            	3024	319	157
+-1	697	QUIMICA                                           	2763	1184	1045
+-1	699	TEJIDO ARTESANAL                                  	2	0	0
+-1	700	SILVICULTURA                                      	1	0	0
+-1	713	SALUD COMUNITARIA                                 	4	0	0
+-1	715	SALUD PUBLICA/ENFERMERIA SALUD PUBLICA            	6	2	1
+-1	716	SOLDADURA/TRABAJO DE SOLDADURAS                   	1	0	0
+-1	720	SOCIOLOGIA                                        	1899	1575	1334
+-1	730	SEGURIDAD E HIGIENE/ALIMENTARIA                   	11	1	0
+-1	731	SEGURIDAD E HIGIENE INDUSTRIAL                    	17	3	1
+-1	742	SISTEMA OPERATIVO                                 	1	1	0
+-1	744	SEMINARIO/DE LA FILOSOFIA/INTERDISCIPL/DE HISTORIA	4	2	1
+-1	756	TECNICAS INSTRUMENTALES                           	39	0	0
+-1	759	BASES TEORICAS DE LA EVALUACION (EDUC. SUPERIOR)  	1	0	0
+-1	761	DIAGNOSTICO DE LA EDUCAC. PARAGUAYA/HISTORIA      	4	0	0
+-1	770	TALLER                                            	9	0	0
+-1	772	TECNOLOGIA DE ALIMENTOS/ALIMENTARIA               	17	0	0
+-1	773	TECNOLOGIA DE LA ENERGIA                          	15	0	0
+-1	778	TALLER DE INFORMATICA                             	1	0	0
+-1	780	JAPONES                                           	1	0	0
+-1	781	TALLER DE DISEÑO                                  	23	8	6
+-1	784	TECNOLOGIA TEXTIL                                 	3	0	0
+-1	786	GABINETE DE INFORMATICA - HARDWARE                	196	173	61
+-1	787	GABINETE DE INFORMATICA - SOFTWARE                	273	231	88
+-1	796	ORGANIZACION DEL LENGUAJE (EJA)                   	1	0	0
+-1	816	RECURSOS NATURALES (DEL PARAGUAY)                 	16	9	9
+-1	831	REFRIGERACION Y CALEFAC.DE INSTALACIONES          	10	3	1
+-1	841	TOPOGRAFIA (TEORIA)                               	6	3	0
+-1	862	LENGUA Y LITERATURA GUARANI                       	21	14	12
+-1	865	CONTABILIDAD FINANCIERA                           	1	0	0
+-1	875	TECNOLOGIA MECANICA                               	25	8	3
+-1	889	DERECHO POLITICO                                  	1	0	0
+-1	892	ANTROPOLOGIA SOCIAL Y CULTURAL                    	2330	1250	990
+-1	895	PRODUCCION AGRICOLA DE RENTA                      	1	0	0
+-1	903	HOTELERIA                                         	19	9	0
+-1	904	GASTRONOMIA                                       	21	5	0
+-1	926	ENTRENAMIENTO OPERACIONAL                         	2	0	0
+-1	927	METODOS Y TIEMPOS                                 	1	0	0
+-1	933	ANATOMIA                                          	21	6	5
+-1	934	ECONOMIA                                          	6	0	0
+-1	935	NUTRICION DEL DEPORTISTA                          	21	9	1
+-1	936	CATASTRO                                          	1	0	0
+-1	937	CARTOGRAFIA                                       	1	1	0
+-1	939	CHASSIS                                           	1	0	0
+-1	942	TOPOGRAFIA (PRACTICA)                             	16	1	1
+-1	955	ENFERMEDADES DE ADULTOS                           	2	0	0
+-1	956	CALIDAD / GESTION DE CALIDAD                      	1	1	1
+-1	992	AGUA                                              	1	0	0
+-1	995	PLAN OPTATIVO/PLAN DIFERENCIADO                   	3299	0	0
+-1	999	NO CORRESPONDE                                    	13	0	0
+-1	1003	PROYECTO INDUSTRIAL                               	10	0	0
+-1	1004	ECONOMIA AGROPECUARIA                             	5	0	0
+-1	1006	COOPERATIVISMO / INTRODUCCION                     	1	0	0
+-1	1013	CLASIFICACION DE CAMPO                            	1	0	0
+-1	1014	FOTO E INTERPRETACION                             	1	0	0
+-1	1043	PROFETAS                                          	1	0	0
+-1	1058	PROYECTO DE PRODUCCION ARTESANAL                  	1	0	0
+-1	1073	QUIMICA INORGANICA                                	2	1	1
+-1	1187	MOLDES ARTESANALES                                	2	0	0
+-1	1189	LEGISLACION PROFESIONAL                           	1	1	0
+-1	1190	RESTITUCION FOTOGRAMETRICA                        	1	1	0
+-1	1192	ADMINISTRACION TURISTICA                          	22	6	0
+-1	1193	TURISMO                                           	1	0	0
+-1	1215	CIENCIAS BASICAS APLICADAS                        	104	40	38
+-1	1245	COMUNICACION ORAL Y ESCRITA                       	257	23	15
+-1	1264	NUTRICION HUMANA 2                                	1	1	0
+-1	1317	TORNO                                             	1	0	0
+-1	1360	ARTES Y SUS TECNOLOGIAS                           	1	0	0
+-1	1380	LABORATORIO DE CIENC. BASIC. Y FUND. DE BIOSEGURID	5	3	3
+-1	1397	FRUTICULTURA-SILVICULTURA                         	5	2	0
+-1	1398	FRUTICULTURA-SILVICULTURA-HORTICULTURA            	202	105	23
+-1	1399	AGRICULTURA Y PASTURA                             	198	98	19
+-1	1400	SISTEMA DE TRANSMISIÓN                            	2	0	0
+-1	1401	PLANIFICACION Y GESTION DE UN TALLER A            	2	0	0
+-1	1402	ELECTROHIDRAÚLICA                                 	1	0	0
+-1	1403	FILOSOFIA Y ANTROPOLOGÍA SOCIAL                   	3262	259	220
+-1	1404	ORIENT.EDUC.Y SOCIOLABORAL SERV.SOCIAL Y PROD.COMU	5285	712	485
+-1	1405	INVESTIGACIÓN SOCIAL Y ESTADÍSTICA                	3035	1908	1633
+-1	1406	AGROECOLOGIA-METEROLOGÍA-BIOLOGIA GRAL.           	74	18	5
+-1	1407	ADMIN.RECURSOS NATUR.GEOLOGICOS Y EDAFOLOGICOS    	63	0	0
+-1	1408	LEGISLACIÓN AMBIENTAL-EVAL. IMPACTO AMBIENTAL     	64	21	10
+-1	1409	METOD.DE LA INVEST. SOCIOLOGIA.RURAL Y URBANA     	63	27	22
+-1	1410	DISEÑO Y ELAB. DE PROY.ECONOMÍA AMBIENTAL         	52	0	0
+-1	1411	INSTRUMENTAL Y GEODESIA                           	2	2	0
+-1	1414	DERECHO DE FAMILIA                                	1	0	0
+-1	1416	CONTABILIDAD Y LEGISLACIÓN APLICADA               	644	510	343
+-1	1417	TURISMO Y ECOTURISMO                              	19	11	2
+-1	1418	ENFERMERÍA Y PRÁCTICA                             	156	112	21
+-1	1419	SALUD PÚBLICA Y COMUNITARIA                       	182	98	23
+-1	1420	DISEÑO.PROYECT.YPRESUP.Y ANALISIS DE PRODUCTOS    	5	0	0
+-1	1421	PLANEAM.                                          	5	1	0
+-1	1422	ENTRENAMIENTO OPERACIONAL                         	7	0	0
+-1	1423	TALLER MECANICO.-SEG.e HIG.-ELECTROTECNIA         	4	1	0
+-1	1424	TALLER AUTOMOTRIZ-SEGURIDAD e HIGIENE             	14	10	4
+-1	1425	INSTALACIÓN INDUSTRIAL -CÁLCULOS MECÁNICOS        	22	3	0
+-1	1426	TALLER MECÁNICO -MANTEN. MECAN.Y TECN. MATERIALES 	16	7	1
+-1	1427	DIBUJO                                            	7	0	0
+-1	1428	LABORAT. Y TECNOL.(MATE.YTECN.DE CONST Y LABORAT.)	48	12	3
+-1	1429	TALLER DE MECÁNICA-SEGURIDAD e HIGIENE            	32	9	5
+-1	1435	GEOLOGIA Y EDUCACION AMBIENTAL Y SALUD            	742	50	39
+-1	1436	TRABAJO ARTESANALES                               	4	0	0
+-1	1437	EQUIPOS ARTESANALES                               	2	0	0
+-1	1438	MODELAJE E INFORMATICA                            	3	0	0
+-1	1439	PROYECTO Y DIBUJO TECNICO                         	42	28	10
+-1	1440	TALLER E INSTALACIONES                            	38	0	0
+-1	1442	TECNOLOG. ALTERNATIVA-INDUST. ALIMENT. Y ORGANICAS	24	0	0
+-1	1480	HIDROLOGIA                                        	2	0	0
+-1	1485	METACOGNICION COMO ESTRAT. PARA EL MEJORAMIENTO   	1	0	0
+-1	1486	LOGICA MATEMATICA Y ESTADISTICA                   	673	536	452
+-1	1489	QUIMICA INORGANICA Y ORGANICA                     	4	3	3
+-1	1590	DISEÑO MECANICO                                   	1	0	0
+1	4	COMUNICACION SOCIAL/MEDIOS DE COMUN. SOCIAL       	2	0	0
+1	5	HISTORIA Y GEOGRAFIA                              	2169	1589	1435
+1	6	PROYECTO EDUCATIVO/INSTITUCIONAL/ELABORACION      	2	0	0
+1	7	PROYECTO EDUCATIVO COMUNITARIO/PARTIC. COMUNITARIA	27	7	5
+1	8	ORTOGRAFIA                                        	2	0	0
+1	10	INVESTIGACION CIENTIF/SOCIAL/INICIACION/DIDACT/ACC	29	11	9
+1	12	RELIGION / CATEQUESIS/ ESTUDIO BIBLICO            	33	10	5
+1	13	CIENCIAS DE LA NATURALEZA Y SALUD                 	1979	1052	995
+1	15	ACTIVIDAD DE REFUERZO                             	3	0	0
+1	19	EXPRESION MUSICAL O LENGUAJE MUSICAL              	1	0	0
+1	23	ADMINISTRACION FINANCIERA                         	236	14	6
+1	25	ADMINISTRACION RURAL                              	5	0	0
+1	27	EXPRESION PLASTICA (GRAFICA-VISUAL)               	1	0	0
+1	28	ADMINISTRACION DE EMPRESAS                        	587	514	309
+1	29	DANZA PARAGUAYA/DANZA Y SU DIDACTICA              	9	7	5
+1	30	ADMINISTRACION Y LEGISLACION                      	1	0	0
+1	34	PUERICULTURA                                      	1	0	0
+1	35	LEGISLACION Y ORGANIZ.DE LA EDUC.INICIAL          	1	0	0
+1	37	TRABAJO Y TECNOLOGIA                              	3	1	1
+1	38	EDUCACION/FORMACION ETICA Y CIUDADANA             	2194	1424	1300
+1	39	SOCIOLOGIA Y ANTROPOLOGIA CULTURAL                	715	122	92
+1	41	ADMINISTRACION Y MANTENIMIENTO INDUSTRIAL         	1	0	0
+1	42	ADMINISTRACION Y LEGISLACION SANITARIA            	1	0	0
+1	44	AGRICULTURA                                       	2	1	1
+1	47	ALEMAN                                            	15	10	5
+1	48	TEATRO                                            	15	9	8
+1	49	ALGORITMIA/ALGORITMICA                            	304	211	75
+1	51	DISEÑO TECNICO                                    	1	0	0
+1	52	CALCULO MECANICO                                  	1	0	0
+1	56	ANATOMIA Y FISIOLOGIA                             	93	27	8
+1	57	ANTROPOLOGIA/ANTROPOLOGIA CULTURAL                	1	0	0
+1	58	APLICACION DE LA LOGICA DIGITAL                   	2	0	0
+1	60	ANALISIS DE ALIMENTOS                             	1	0	0
+1	66	ANALISIS INSTRUMENTAL                             	16	0	0
+1	67	ANALISIS INDUSTRIAL                               	12	0	0
+1	75	ARTES PLASTICAS/ARTES PLASTICAS Y SUS DIDACTICAS  	8	8	7
+1	83	AVICULTURA                                        	1	0	0
+1	84	CARTONERIA                                        	1	0	0
+1	96	CONFITERIA                                        	1	0	0
+1	102	SALUD (EDUC SANITARIA/EDUC P SALUD)               	158	39	30
+1	110	BIOLOGIA                                          	431	244	220
+1	111	BOTANICA                                          	1	0	0
+1	115	BROMATOLOGIA                                      	2	1	0
+1	119	PROYECTO PEDAGOGICO (PASANTIA)                    	3	2	2
+1	124	MODELAJE                                          	1	0	0
+1	126	ANALISIS DE PRODUCTO                              	1	0	0
+1	139	CALCULO MERCANTILES Y FINANCIEROS                 	450	333	240
+1	140	CASTELLANO - EDUC.IDIOMATICA (BASICO)             	1	1	1
+1	142	COMPUTACION                                       	5	5	1
+1	152	REDACCION COMERCIAL                               	28	24	21
+1	154	INSTALACIONES NEUMATICA-HIDRAULICAS               	8	3	0
+1	155	CIENCIAS NATURALES                                	13	9	7
+1	157	METODOLOGIA DE ESTUDIO                            	1	0	0
+1	161	COMUNICACION ESCRITA                              	4	1	1
+1	167	CENTRALES Y REDES                                 	2	0	0
+1	174	ECONOMIA/AGROPECUARIA Y ADMINISTRACION RURAL      	48	2	1
+1	175	MAQUINARIAS Y APEROS AGRICOLAS                    	45	1	0
+1	183	CONTABILIDAD Y SEMINARIO CONTABLE                 	1	1	0
+1	185	CONTABILIDAD/CONTABILIDAD GENERAL                 	63	55	32
+1	190	COMUNICACION/PRINCIPIOS                           	24	15	15
+1	192	CONTABILIDAD Y GABINETE DE GESTION                	289	276	180
+1	198	CULTURA RELIGIOSA                                 	47	18	12
+1	223	DACTILOGRAFIA COMPUTARIZADA                       	1	0	0
+1	230	DIBUJO TECNICO                                    	233	44	20
+1	233	EDUCACION AMBIENTAL Y SALUD                       	37	15	12
+1	260	DISEÑO                                            	4	0	0
+1	261	DISEÑO Y PROYECTO                                 	24	0	0
+1	263	DISEÑO                                            	1	0	0
+1	269	AGROECOLOGIA                                      	3	0	0
+1	270	ECONOMIA/NOCIONES                                 	259	209	136
+1	280	MAQUINARIAS                                       	1	0	0
+1	283	EDUCACION ARTISTICA/ARTES/EDUC. PARA EL ARTE      	1778	984	936
+1	284	PSICOLOGIA SOCIAL                                 	1	0	0
+1	286	PERIODISMO                                        	16	5	3
+1	288	EDUCACION CRISTIANA                               	14	4	1
+1	293	EDUCACION FISICA/Y SUS TECNOLOGIAS/TEORÍA Y PRÁCT.	1756	1534	1427
+1	300	LENGUA ESPAÑOLA (CASTELLANA)/MATERNA              	1	1	0
+1	302	DESARROLLO COMUNITARIO                            	1	0	0
+1	310	ECONOMIA Y GESTION                                	1820	1082	861
+1	313	GESTION EMPRESARIAL                               	2	2	1
+1	314	DISEÑO Y PROYECTO MECANICO                        	10	0	0
+1	318	CIENCIAS POLITICAS                                	1	0	0
+1	319	RESISTENCIA                                       	1	0	0
+1	320	ELECTRONICA                                       	42	9	1
+1	321	ELECTRONICA DIGITAL                               	23	15	1
+1	322	ELECTRONICA INDUSTRIAL                            	26	12	0
+1	323	ELECTROTECNIA                                     	43	15	1
+1	324	PRACTICA                                          	5	0	0
+1	327	FOTOGRAMETRIA(CLAS. DE CAMPO                      	1	1	0
+1	332	ELEMENTOS DE TECNOLOGIA                           	12	0	0
+1	343	METEOROLOGIA                                      	1	0	0
+1	352	ORIENT. EDUCACIONAL Y SOCIOLABORAL (EDUC. EN VALOR	1064	133	75
+1	353	FARMACOLOGIA                                      	90	17	10
+1	360	ESTADISTICA/APLICADA/PROBABILIDAD                 	45	30	24
+1	361	ESTABILIDAD Y RESISTENCIA DE MATERIALES           	25	10	2
+1	362	ELECTRONICA ANALOGICA                             	22	17	2
+1	365	FILOSOFIA (E.M)                                   	32	4	3
+1	367	FRANCES                                           	10	9	5
+1	368	TECNOLOGIA AUTOMOTRIZ                             	10	9	4
+1	370	FISICA                                            	1943	691	669
+1	377	FOTOGRAFIA                                        	17	2	0
+1	378	FISIOLOGIA/DEL EJERCICIO                          	1	0	0
+1	379	LABORATORIO DIESEL                                	6	0	0
+1	380	GENETICA                                          	2	1	1
+1	382	GABINETE DE GESTION                               	4	3	2
+1	383	GABINETE DE INFORMATICA - LABORATORIO             	298	258	100
+1	384	GANADO MAYOR                                      	33	26	6
+1	387	GRAFICA COMPUTARIZADA                             	24	9	1
+1	388	GANADO MENOR                                      	36	24	3
+1	391	GEOLOGIA                                          	15	0	0
+1	392	ANALISIS INDUSTRIAL ORGANICO                      	4	0	0
+1	397	POLITICA/FILOSOFIA POLITICA                       	994	596	524
+1	403	PORTUGUES                                         	15	5	4
+1	406	ANALISIS DEL DISCURSO                             	132	87	77
+1	407	COMUNICACION ORAL                                 	5	3	3
+1	408	LOGICA MATEMATICA (Y TEORIA DE CONJUNTOS) (ED. SUP	36	29	26
+1	409	LABORATORIO DE ELECTROTECNIA(ELECTROT.-LABORAT)   	60	32	11
+1	411	TALLER MECANICO                                   	23	8	2
+1	412	ELECTRICIDAD Y ELECTRONICA DEL AUTOMOVIL          	9	1	0
+1	413	CALCULO DIFERENCIAL E INTEGRAL                    	9	0	0
+1	414	QUIMICA ANALITICA                                 	14	13	10
+1	415	FISICO-QUIMICA                                    	15	11	8
+1	416	MICROBIOLOGIA INDUSTRIAL                          	12	2	0
+1	417	TALLER DE SERVICIOS INDUSTRIALES                  	12	2	1
+1	418	MERCADOTECNIA Y GABINETE (INFORMATICA)            	25	13	7
+1	419	SEMINARIO CONTABLE/GABINETE CONTABLE              	493	457	315
+1	420	GUARANI (GUARA ÑEE                                	2571	2392	2325
+1	421	HIGIENE HOSPITALARIA                              	1	0	0
+1	422	HIDRAULICA Y MAQUINAS HIDRAULICAS                 	1	0	0
+1	424	HORTICULTURA                                      	2	0	0
+1	426	HISTORIA DEL DISEÑO                               	13	0	0
+1	429	PATOLOGIA/PATOLOGIA GENERAL                       	77	26	4
+1	434	EQUIPOS E IMPLEMENTOS (AGRICOLA)                  	1	0	0
+1	435	INGLES                                            	1203	748	666
+1	436	INFORMATICA / APLICACIONES INFORMATICAS           	503	307	122
+1	437	INSTALACIONES/ELECT.(DIB.TEC.TALLER-DIS-PROY-PRES)	52	18	7
+1	439	INSTALACION INDUSTRIAL                            	2	0	0
+1	443	ITALIANO                                          	3	1	1
+1	452	INTRODUCCION A LA ECONOMIA                        	241	196	136
+1	454	ILUSTRACION                                       	27	8	8
+1	455	INDUSTRIA GRAFICA                                 	12	0	0
+1	459	ORIENTACION EDUCACIONAL Y RELACIONES HUMANAS      	2	0	0
+1	478	PROYECTO SUPERVISADO EN PRODUCCION VEGETAL        	1	0	0
+1	480	LABORATORIO                                       	12	4	3
+1	482	LABORATORIO DE MECANICA                           	25	1	0
+1	483	LABORATORIO DE MATERIALES Y ENSAYOS               	1	0	0
+1	486	LABORATORIO DE ELECTRONICA                        	18	13	1
+1	489	LABORATORIO DE QUIMICA/QUIMICA PRACTICA           	11	9	8
+1	510	LEGISLACION                                       	3	3	3
+1	511	LEGISLACION TRIBUTARIA                            	2	0	0
+1	512	CIENCIAS SOCIALES/CIENCIAS SOCIALES Y SUS TECNOLOG	25	19	18
+1	514	LEGISLACION APLICADA                              	11	11	9
+1	519	LITERATURA EXTRANJERA (INGLESA                    	1	1	1
+1	543	GRAMATICA DESCRIPTIVA DEL CASTELLANO (ED.SUP)     	1	0	0
+1	551	CASTELLANO/LENG. Y LIT. CASTELL/LENG. Y LITERATURA	2383	1792	1634
+1	554	LENGUAJE DE COMPUTACION                           	2	0	0
+1	555	LITERATURA - EDUC.IDIOMATICA (BACHILLERATO)       	2	2	2
+1	562	MAQUINAS AGRICOLAS                                	1	0	0
+1	564	GEOMETRIA Y TRIGONOMETRIA (EDUC. SUPERIOR)        	1	1	1
+1	565	MANEJO Y CONSERV.DE RECURSOS NATURALES            	2	0	0
+1	570	MARKETING/INTRODUCCION/GASTRONOMICO               	7	0	0
+1	580	MATEMATICA / MATEMATICA Y SU DIDACTICA            	2337	2133	1836
+1	582	MOTORES CI                                        	4	0	0
+1	583	MATEMATICA FINANCIERA                             	1	0	0
+1	584	MATEMATICA APLICADA (INFORM. /A LA VIDA COTIDIANA)	310	278	205
+1	585	MECANICA APLICADA                                 	31	0	0
+1	587	MECANICA/GENERAL/CUANTICA                         	1	0	0
+1	590	ORIENTACION                                       	3	2	2
+1	597	OPERACIONES UNITARIAS                             	13	1	0
+1	605	MAQUINAS Y EQUIPOS                                	1	0	0
+1	609	MAQUINAS Y EQUIPAMIENTOS                          	1	1	1
+1	610	MANDOS ELECTRICOS                                 	2	0	0
+1	611	MERCADOTECNIA                                     	269	241	141
+1	612	METODOLOGIA DE LA INVESTIGACION (TRAB. CIENTIFICO)	22	11	11
+1	620	MUSICA (EDUCACION MUSICAL)                        	9	7	7
+1	621	NUTRICION/DIETETICA                               	92	41	5
+1	624	ORIENTACION EDUCACIONAL Y OCUPACIONAL             	1	0	0
+1	631	ADMINISTRACION DE LOS RECURSOS NATURALES          	2	2	1
+1	632	LEGISLACION AMBIENTAL                             	3	0	0
+1	635	ECOTURISMO                                        	5	3	2
+1	637	RECURSOS GEOLOGICOS Y EDAFOLOGICOS                	2	0	0
+1	641	TECNOLOGIA ALTERNATIVA                            	2	0	0
+1	642	SOCIOLOGIA RURAL Y URBANA                         	5	0	0
+1	649	GEODESIA/GEODESIA ASTRONOMICA                     	2	2	0
+1	652	PASANTIA                                          	27	0	0
+1	665	PRACTICA COMERCIAL                                	1	0	0
+1	675	PRODUCCION VEGETAL                                	1	0	0
+1	676	PRODUCCION ANIMAL                                 	1	0	0
+1	683	PLANIFICACION Y ELABORACION DE PROYECTO           	58	0	0
+1	687	ENFERMERIA(FUNDAMENTOS)/INTROD.A LA ENFER./BASICA 	5	3	1
+1	690	PUBLICIDAD                                        	28	3	1
+1	691	PROYECTO / SOCIAL                                 	1	0	0
+1	693	PSICOLOGIA (DEPORTIVA)                            	1789	293	142
+1	697	QUIMICA                                           	1745	1004	872
+1	699	TEJIDO ARTESANAL                                  	1	0	0
+1	700	SILVICULTURA                                      	1	0	0
+1	713	SALUD COMUNITARIA                                 	4	0	0
+1	715	SALUD PUBLICA/ENFERMERIA SALUD PUBLICA            	6	2	1
+1	716	SOLDADURA/TRABAJO DE SOLDADURAS                   	1	0	0
+1	720	SOCIOLOGIA                                        	1047	865	750
+1	730	SEGURIDAD E HIGIENE/ALIMENTARIA                   	10	1	0
+1	731	SEGURIDAD E HIGIENE INDUSTRIAL                    	16	3	1
+1	742	SISTEMA OPERATIVO                                 	1	1	0
+1	756	TECNICAS INSTRUMENTALES                           	32	0	0
+1	759	BASES TEORICAS DE LA EVALUACION (EDUC. SUPERIOR)  	1	0	0
+1	761	DIAGNOSTICO DE LA EDUCAC. PARAGUAYA/HISTORIA      	4	0	0
+1	770	TALLER                                            	8	0	0
+1	772	TECNOLOGIA DE ALIMENTOS/ALIMENTARIA               	16	0	0
+1	773	TECNOLOGIA DE LA ENERGIA                          	15	0	0
+1	778	TALLER DE INFORMATICA                             	1	0	0
+1	780	JAPONES                                           	1	0	0
+1	781	TALLER DE DISEÑO                                  	21	8	6
+1	784	TECNOLOGIA TEXTIL                                 	3	0	0
+1	786	GABINETE DE INFORMATICA - HARDWARE                	177	158	54
+1	787	GABINETE DE INFORMATICA - SOFTWARE                	250	218	81
+1	796	ORGANIZACION DEL LENGUAJE (EJA)                   	1	0	0
+1	816	RECURSOS NATURALES (DEL PARAGUAY)                 	15	9	9
+1	831	REFRIGERACION Y CALEFAC.DE INSTALACIONES          	10	3	1
+1	841	TOPOGRAFIA (TEORIA)                               	6	3	0
+1	862	LENGUA Y LITERATURA GUARANI                       	13	9	8
+1	865	CONTABILIDAD FINANCIERA                           	1	0	0
+1	875	TECNOLOGIA MECANICA                               	23	6	2
+1	889	DERECHO POLITICO                                  	1	0	0
+1	892	ANTROPOLOGIA SOCIAL Y CULTURAL                    	1219	675	566
+1	903	HOTELERIA                                         	18	9	0
+1	904	GASTRONOMIA                                       	20	5	0
+1	926	ENTRENAMIENTO OPERACIONAL                         	2	0	0
+1	927	METODOS Y TIEMPOS                                 	1	0	0
+1	933	ANATOMIA                                          	19	5	5
+1	934	ECONOMIA                                          	5	0	0
+1	935	NUTRICION DEL DEPORTISTA                          	20	8	1
+1	936	CATASTRO                                          	1	0	0
+1	937	CARTOGRAFIA                                       	1	1	0
+1	939	CHASSIS                                           	1	0	0
+1	942	TOPOGRAFIA (PRACTICA)                             	14	1	1
+1	955	ENFERMEDADES DE ADULTOS                           	2	0	0
+1	956	CALIDAD / GESTION DE CALIDAD                      	1	1	1
+1	992	AGUA                                              	1	0	0
+1	995	PLAN OPTATIVO/PLAN DIFERENCIADO                   	2176	0	0
+1	999	NO CORRESPONDE                                    	9	0	0
+1	1003	PROYECTO INDUSTRIAL                               	10	0	0
+1	1004	ECONOMIA AGROPECUARIA                             	3	0	0
+1	1006	COOPERATIVISMO / INTRODUCCION                     	1	0	0
+1	1013	CLASIFICACION DE CAMPO                            	1	0	0
+1	1014	FOTO E INTERPRETACION                             	1	0	0
+1	1043	PROFETAS                                          	1	0	0
+1	1058	PROYECTO DE PRODUCCION ARTESANAL                  	1	0	0
+1	1073	QUIMICA INORGANICA                                	2	1	1
+1	1187	MOLDES ARTESANALES                                	2	0	0
+1	1189	LEGISLACION PROFESIONAL                           	1	1	0
+1	1190	RESTITUCION FOTOGRAMETRICA                        	1	1	0
+1	1192	ADMINISTRACION TURISTICA                          	21	6	0
+1	1193	TURISMO                                           	1	0	0
+1	1215	CIENCIAS BASICAS APLICADAS                        	28	14	14
+1	1245	COMUNICACION ORAL Y ESCRITA                       	177	21	13
+1	1264	NUTRICION HUMANA 2                                	1	1	0
+1	1317	TORNO                                             	1	0	0
+1	1360	ARTES Y SUS TECNOLOGIAS                           	1	0	0
+1	1380	LABORATORIO DE CIENC. BASIC. Y FUND. DE BIOSEGURID	5	3	3
+1	1397	FRUTICULTURA-SILVICULTURA                         	1	0	0
+1	1398	FRUTICULTURA-SILVICULTURA-HORTICULTURA            	58	28	9
+1	1399	AGRICULTURA Y PASTURA                             	53	27	5
+1	1400	SISTEMA DE TRANSMISIÓN                            	2	0	0
+1	1401	PLANIFICACION Y GESTION DE UN TALLER A            	1	0	0
+1	1402	ELECTROHIDRAÚLICA                                 	1	0	0
+1	1403	FILOSOFIA Y ANTROPOLOGÍA SOCIAL                   	1846	209	174
+1	1404	ORIENT.EDUC.Y SOCIOLABORAL SERV.SOCIAL Y PROD.COMU	3055	461	316
+1	1405	INVESTIGACIÓN SOCIAL Y ESTADÍSTICA                	1592	1019	886
+1	1406	AGROECOLOGIA-METEROLOGÍA-BIOLOGIA GRAL.           	24	2	1
+1	1407	ADMIN.RECURSOS NATUR.GEOLOGICOS Y EDAFOLOGICOS    	22	0	0
+1	1408	LEGISLACIÓN AMBIENTAL-EVAL. IMPACTO AMBIENTAL     	27	10	6
+1	1409	METOD.DE LA INVEST. SOCIOLOGIA.RURAL Y URBANA     	28	10	9
+1	1410	DISEÑO Y ELAB. DE PROY.ECONOMÍA AMBIENTAL         	16	0	0
+1	1411	INSTRUMENTAL Y GEODESIA                           	2	2	0
+1	1416	CONTABILIDAD Y LEGISLACIÓN APLICADA               	599	478	322
+1	1417	TURISMO Y ECOTURISMO                              	18	11	2
+1	1418	ENFERMERÍA Y PRÁCTICA                             	140	102	19
+1	1419	SALUD PÚBLICA Y COMUNITARIA                       	165	87	21
+1	1420	DISEÑO.PROYECT.YPRESUP.Y ANALISIS DE PRODUCTOS    	4	0	0
+1	1421	PLANEAM.                                          	5	1	0
+1	1422	ENTRENAMIENTO OPERACIONAL                         	7	0	0
+1	1423	TALLER MECANICO.-SEG.e HIG.-ELECTROTECNIA         	4	1	0
+1	1424	TALLER AUTOMOTRIZ-SEGURIDAD e HIGIENE             	14	10	4
+1	1425	INSTALACIÓN INDUSTRIAL -CÁLCULOS MECÁNICOS        	22	3	0
+1	1426	TALLER MECÁNICO -MANTEN. MECAN.Y TECN. MATERIALES 	16	7	1
+1	1427	DIBUJO                                            	6	0	0
+1	1428	LABORAT. Y TECNOL.(MATE.YTECN.DE CONST Y LABORAT.)	40	10	2
+1	1429	TALLER DE MECÁNICA-SEGURIDAD e HIGIENE            	28	8	4
+1	1435	GEOLOGIA Y EDUCACION AMBIENTAL Y SALUD            	583	41	32
+1	1436	TRABAJO ARTESANALES                               	4	0	0
+1	1437	EQUIPOS ARTESANALES                               	2	0	0
+1	1438	MODELAJE E INFORMATICA                            	3	0	0
+1	1439	PROYECTO Y DIBUJO TECNICO                         	35	25	8
+1	1440	TALLER E INSTALACIONES                            	30	0	0
+1	1442	TECNOLOG. ALTERNATIVA-INDUST. ALIMENT. Y ORGANICAS	6	0	0
+1	1480	HIDROLOGIA                                        	2	0	0
+1	1485	METACOGNICION COMO ESTRAT. PARA EL MEJORAMIENTO   	1	0	0
+1	1486	LOGICA MATEMATICA Y ESTADISTICA                   	521	428	351
+1	1489	QUIMICA INORGANICA Y ORGANICA                     	3	2	2
+1	1590	DISEÑO MECANICO                                   	1	0	0
+6	1	ARTE ELEMENTAL                                    	1	0	0
+6	3	MADERA (TALLER)                                   	1	0	0
+6	4	COMUNICACION SOCIAL/MEDIOS DE COMUN. SOCIAL       	1	0	0
+6	5	HISTORIA Y GEOGRAFIA                              	1581	1111	988
+6	6	PROYECTO EDUCATIVO/INSTITUCIONAL/ELABORACION      	1	1	1
+6	7	PROYECTO EDUCATIVO COMUNITARIO/PARTIC. COMUNITARIA	26	5	5
+6	10	INVESTIGACION CIENTIF/SOCIAL/INICIACION/DIDACT/ACC	7	5	4
+6	12	RELIGION / CATEQUESIS/ ESTUDIO BIBLICO            	1	0	0
+6	13	CIENCIAS DE LA NATURALEZA Y SALUD                 	1408	673	617
+6	16	ACONDICIONADOR DE AIRE                            	1	0	0
+6	23	ADMINISTRACION FINANCIERA                         	23	2	2
+6	25	ADMINISTRACION RURAL                              	8	2	1
+6	28	ADMINISTRACION DE EMPRESAS                        	53	37	21
+6	29	DANZA PARAGUAYA/DANZA Y SU DIDACTICA              	5	3	3
+6	31	ADMINISTRACION Y LEGISLACION LABORAL              	1	0	0
+6	35	LEGISLACION Y ORGANIZ.DE LA EDUC.INICIAL          	1	1	1
+6	37	TRABAJO Y TECNOLOGIA                              	2	0	0
+6	38	EDUCACION/FORMACION ETICA Y CIUDADANA             	1418	959	855
+6	39	SOCIOLOGIA Y ANTROPOLOGIA CULTURAL                	177	33	27
+6	40	ADMINISTRACION Y VENTA                            	1	0	0
+6	44	AGRICULTURA                                       	4	3	1
+6	47	ALEMAN                                            	10	4	1
+6	48	TEATRO                                            	4	2	2
+6	49	ALGORITMIA/ALGORITMICA                            	40	24	10
+6	56	ANATOMIA Y FISIOLOGIA                             	9	2	1
+6	66	ANALISIS INSTRUMENTAL                             	1	0	0
+6	67	ANALISIS INDUSTRIAL                               	1	0	0
+6	75	ARTES PLASTICAS/ARTES PLASTICAS Y SUS DIDACTICAS  	3	1	1
+6	92	FORMACION HUMANA                                  	1	1	1
+6	98	COSMOGRAFIA                                       	1	1	1
+6	102	SALUD (EDUC SANITARIA/EDUC P SALUD)               	22	2	2
+6	110	BIOLOGIA                                          	131	74	69
+6	119	PROYECTO PEDAGOGICO (PASANTIA)                    	5	3	3
+6	139	CALCULO MERCANTILES Y FINANCIEROS                 	39	22	14
+6	152	REDACCION COMERCIAL                               	2	0	0
+6	155	CIENCIAS NATURALES                                	16	10	10
+6	167	CENTRALES Y REDES                                 	1	0	0
+6	174	ECONOMIA/AGROPECUARIA Y ADMINISTRACION RURAL      	149	1	0
+6	175	MAQUINARIAS Y APEROS AGRICOLAS                    	135	3	1
+6	185	CONTABILIDAD/CONTABILIDAD GENERAL                 	6	5	5
+6	190	COMUNICACION/PRINCIPIOS                           	78	51	51
+6	192	CONTABILIDAD Y GABINETE DE GESTION                	20	14	8
+6	223	DACTILOGRAFIA COMPUTARIZADA                       	1	0	0
+6	230	DIBUJO TECNICO                                    	27	3	2
+6	233	EDUCACION AMBIENTAL Y SALUD                       	29	17	10
+6	261	DISEÑO Y PROYECTO                                 	2	0	0
+6	270	ECONOMIA/NOCIONES                                 	17	12	9
+6	283	EDUCACION ARTISTICA/ARTES/EDUC. PARA EL ARTE      	1604	590	560
+6	286	PERIODISMO                                        	2	1	0
+6	288	EDUCACION CRISTIANA                               	8	3	3
+6	293	EDUCACION FISICA/Y SUS TECNOLOGIAS/TEORÍA Y PRÁCT.	1394	738	675
+6	298	ARITMETICA (ARITM. Y TEORIA DE CONJUNTOS)         	1	1	1
+6	310	ECONOMIA Y GESTION                                	1531	823	695
+6	320	ELECTRONICA                                       	5	1	0
+6	323	ELECTROTECNIA                                     	3	0	0
+6	347	EDUCACION RITMICA                                 	1	0	0
+6	352	ORIENT. EDUCACIONAL Y SOCIOLABORAL (EDUC. EN VALOR	265	8	8
+6	353	FARMACOLOGIA                                      	9	0	0
+6	360	ESTADISTICA/APLICADA/PROBABILIDAD                 	10	4	4
+6	361	ESTABILIDAD Y RESISTENCIA DE MATERIALES           	5	2	1
+6	362	ELECTRONICA ANALOGICA                             	1	0	0
+6	365	FILOSOFIA (E.M)                                   	11	1	1
+6	368	TECNOLOGIA AUTOMOTRIZ                             	1	1	0
+6	370	FISICA                                            	1545	310	303
+6	374	FRUTICULTURA                                      	1	1	0
+6	377	FOTOGRAFIA                                        	2	0	0
+6	383	GABINETE DE INFORMATICA - LABORATORIO             	32	23	11
+6	384	GANADO MAYOR                                      	99	63	11
+6	387	GRAFICA COMPUTARIZADA                             	1	0	0
+6	388	GANADO MENOR                                      	117	74	12
+6	391	GEOLOGIA                                          	5	0	0
+6	393	PEDAGOGIA Y METODOLOGIA ESPEC. AL SORDO           	1	0	0
+6	397	POLITICA/FILOSOFIA POLITICA                       	885	537	472
+6	403	PORTUGUES                                         	8	0	0
+6	406	ANALISIS DEL DISCURSO                             	57	33	32
+6	408	LOGICA MATEMATICA (Y TEORIA DE CONJUNTOS) (ED. SUP	10	8	6
+6	409	LABORATORIO DE ELECTROTECNIA(ELECTROT.-LABORAT)   	9	3	1
+6	411	TALLER MECANICO                                   	3	1	0
+6	412	ELECTRICIDAD Y ELECTRONICA DEL AUTOMOVIL          	1	0	0
+6	413	CALCULO DIFERENCIAL E INTEGRAL                    	1	0	0
+6	414	QUIMICA ANALITICA                                 	1	1	1
+6	415	FISICO-QUIMICA                                    	1	1	1
+6	416	MICROBIOLOGIA INDUSTRIAL                          	1	1	1
+6	417	TALLER DE SERVICIOS INDUSTRIALES                  	1	0	0
+6	418	MERCADOTECNIA Y GABINETE (INFORMATICA)            	4	1	1
+6	419	SEMINARIO CONTABLE/GABINETE CONTABLE              	37	32	21
+6	420	GUARANI (GUARA ÑEE                                	1999	1793	1725
+6	424	HORTICULTURA                                      	10	2	0
+6	426	HISTORIA DEL DISEÑO                               	2	0	0
+6	429	PATOLOGIA/PATOLOGIA GENERAL                       	10	2	2
+6	434	EQUIPOS E IMPLEMENTOS (AGRICOLA)                  	2	0	0
+6	435	INGLES                                            	1081	269	253
+6	436	INFORMATICA / APLICACIONES INFORMATICAS           	56	16	9
+6	437	INSTALACIONES/ELECT.(DIB.TEC.TALLER-DIS-PROY-PRES)	8	4	1
+6	452	INTRODUCCION A LA ECONOMIA                        	18	11	7
+6	454	ILUSTRACION                                       	2	1	1
+6	455	INDUSTRIA GRAFICA                                 	1	0	0
+6	480	LABORATORIO                                       	2	0	0
+6	482	LABORATORIO DE MECANICA                           	2	0	0
+6	483	LABORATORIO DE MATERIALES Y ENSAYOS               	1	0	0
+6	492	PROYECTO EDUCATIVO DE APOYO A PRACTICA (FISICA    	1	0	0
+6	505	SANEAMIENTO / SANEAMIENTO AMBIENTAL               	1	0	0
+6	506	ALIMENTACION BASICA                               	1	0	0
+6	511	LEGISLACION TRIBUTARIA                            	2	0	0
+6	512	CIENCIAS SOCIALES/CIENCIAS SOCIALES Y SUS TECNOLOG	78	50	47
+6	550	LEGISLACION COMERCIO EXTERIOR                     	1	0	0
+6	551	CASTELLANO/LENG. Y LIT. CASTELL/LENG. Y LITERATURA	1927	1195	1122
+6	555	LITERATURA - EDUC.IDIOMATICA (BACHILLERATO)       	3	2	2
+6	562	MAQUINAS AGRICOLAS                                	2	0	0
+6	565	MANEJO Y CONSERV.DE RECURSOS NATURALES            	2	0	0
+6	570	MARKETING/INTRODUCCION/GASTRONOMICO               	1	0	0
+6	573	MATERIALES                                        	1	0	0
+6	580	MATEMATICA / MATEMATICA Y SU DIDACTICA            	1668	1411	1283
+6	582	MOTORES CI                                        	1	0	0
+6	584	MATEMATICA APLICADA (INFORM. /A LA VIDA COTIDIANA)	33	21	15
+6	585	MECANICA APLICADA                                 	2	0	0
+6	587	MECANICA/GENERAL/CUANTICA                         	1	0	0
+6	592	MECANICA AUTOMOTRIZ                               	1	0	0
+6	597	OPERACIONES UNITARIAS                             	1	0	0
+6	611	MERCADOTECNIA                                     	17	11	7
+6	612	METODOLOGIA DE LA INVESTIGACION (TRAB. CIENTIFICO)	2	1	1
+6	615	MICROBIOLOGIA/MICROBIOLOGIA GENERAL               	2	0	0
+6	620	MUSICA (EDUCACION MUSICAL)                        	3	2	2
+6	621	NUTRICION/DIETETICA                               	13	3	1
+6	635	ECOTURISMO                                        	12	5	1
+6	650	PASTURA Y FORRAJE                                 	1	0	0
+6	652	PASANTIA                                          	55	0	0
+6	660	PRACTICA DE CAMPO                                 	1	0	0
+6	675	PRODUCCION VEGETAL                                	1	0	0
+6	676	PRODUCCION ANIMAL                                 	1	1	0
+6	683	PLANIFICACION Y ELABORACION DE PROYECTO           	28	0	0
+6	690	PUBLICIDAD                                        	5	0	0
+6	693	PSICOLOGIA (DEPORTIVA)                            	1367	41	28
+6	697	QUIMICA                                           	1389	420	400
+6	699	TEJIDO ARTESANAL                                  	1	0	0
+6	720	SOCIOLOGIA                                        	900	752	620
+6	730	SEGURIDAD E HIGIENE/ALIMENTARIA                   	1	0	0
+6	731	SEGURIDAD E HIGIENE INDUSTRIAL                    	1	0	0
+6	744	SEMINARIO/DE LA FILOSOFIA/INTERDISCIPL/DE HISTORIA	4	2	1
+6	756	TECNICAS INSTRUMENTALES                           	7	0	0
+6	770	TALLER                                            	1	0	0
+6	772	TECNOLOGIA DE ALIMENTOS/ALIMENTARIA               	1	0	0
+6	773	TECNOLOGIA DE LA ENERGIA                          	1	0	0
+6	781	TALLER DE DISEÑO                                  	3	1	0
+6	786	GABINETE DE INFORMATICA - HARDWARE                	20	16	7
+6	787	GABINETE DE INFORMATICA - SOFTWARE                	27	17	9
+6	816	RECURSOS NATURALES (DEL PARAGUAY)                 	1	0	0
+6	862	LENGUA Y LITERATURA GUARANI                       	8	5	4
+6	875	TECNOLOGIA MECANICA                               	2	2	1
+6	892	ANTROPOLOGIA SOCIAL Y CULTURAL                    	1160	595	444
+6	895	PRODUCCION AGRICOLA DE RENTA                      	1	0	0
+6	903	HOTELERIA                                         	2	1	0
+6	904	GASTRONOMIA                                       	2	0	0
+6	933	ANATOMIA                                          	2	1	0
+6	934	ECONOMIA                                          	1	0	0
+6	935	NUTRICION DEL DEPORTISTA                          	1	1	0
+6	942	TOPOGRAFIA (PRACTICA)                             	2	0	0
+6	995	PLAN OPTATIVO/PLAN DIFERENCIADO                   	1177	0	0
+6	999	NO CORRESPONDE                                    	4	0	0
+6	1003	PROYECTO INDUSTRIAL                               	1	0	0
+6	1004	ECONOMIA AGROPECUARIA                             	2	0	0
+6	1192	ADMINISTRACION TURISTICA                          	2	1	0
+6	1215	CIENCIAS BASICAS APLICADAS                        	76	26	24
+6	1245	COMUNICACION ORAL Y ESCRITA                       	83	2	2
+6	1397	FRUTICULTURA-SILVICULTURA                         	4	2	0
+6	1398	FRUTICULTURA-SILVICULTURA-HORTICULTURA            	153	83	17
+6	1399	AGRICULTURA Y PASTURA                             	153	75	15
+6	1401	PLANIFICACION Y GESTION DE UN TALLER A            	1	0	0
+6	1403	FILOSOFIA Y ANTROPOLOGÍA SOCIAL                   	1577	76	70
+6	1404	ORIENT.EDUC.Y SOCIOLABORAL SERV.SOCIAL Y PROD.COMU	2366	274	190
+6	1405	INVESTIGACIÓN SOCIAL Y ESTADÍSTICA                	1543	957	807
+6	1406	AGROECOLOGIA-METEROLOGÍA-BIOLOGIA GRAL.           	52	17	4
+6	1407	ADMIN.RECURSOS NATUR.GEOLOGICOS Y EDAFOLOGICOS    	41	0	0
+6	1408	LEGISLACIÓN AMBIENTAL-EVAL. IMPACTO AMBIENTAL     	37	11	4
+6	1409	METOD.DE LA INVEST. SOCIOLOGIA.RURAL Y URBANA     	35	17	13
+6	1410	DISEÑO Y ELAB. DE PROY.ECONOMÍA AMBIENTAL         	36	0	0
+6	1414	DERECHO DE FAMILIA                                	1	0	0
+6	1416	CONTABILIDAD Y LEGISLACIÓN APLICADA               	53	39	26
+6	1417	TURISMO Y ECOTURISMO                              	2	1	0
+6	1418	ENFERMERÍA Y PRÁCTICA                             	16	10	2
+6	1419	SALUD PÚBLICA Y COMUNITARIA                       	18	11	2
+6	1420	DISEÑO.PROYECT.YPRESUP.Y ANALISIS DE PRODUCTOS    	1	0	0
+6	1427	DIBUJO                                            	1	0	0
+6	1428	LABORAT. Y TECNOL.(MATE.YTECN.DE CONST Y LABORAT.)	8	2	1
+6	1429	TALLER DE MECÁNICA-SEGURIDAD e HIGIENE            	4	1	1
+6	1435	GEOLOGIA Y EDUCACION AMBIENTAL Y SALUD            	172	10	8
+6	1439	PROYECTO Y DIBUJO TECNICO                         	7	3	2
+6	1440	TALLER E INSTALACIONES                            	8	0	0
+6	1442	TECNOLOG. ALTERNATIVA-INDUST. ALIMENT. Y ORGANICAS	18	0	0
+6	1486	LOGICA MATEMATICA Y ESTADISTICA                   	157	113	106
+6	1489	QUIMICA INORGANICA Y ORGANICA                     	1	1	1

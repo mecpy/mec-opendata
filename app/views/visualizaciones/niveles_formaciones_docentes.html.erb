@@ -1,0 +1,121 @@
+<div class="container" ng-controller="nivelFormacionController as controller">
+  <div class="row ">
+    <div class="col-md-12">
+      <h2>
+        Nivel de formación de docentes en Educación Media
+      </h2> 
+      Nivel de formación que alcanzan los profesores que enseñan materias en Educación Media en Paraguay (datos del año 2013).
+      <div style="clear:both;"></div> 
+      <div class="map-container">
+        <div id="map" class="map"></div>
+      </div><!--/span-->
+    </div>
+  </div><!--/row-->
+
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+        <!-- Selectores - Columna 1 -->
+          <form class="form col-xs-12 col-sm-12 col-md-12 col-lg-12 form-inline" role="form">
+            <!-- Selector de Departamento -->
+            <div class="form-group">
+              <label for="selectRegion" class="control-label">Departamento</label>
+              <select class="form-control" ng-model="controller.selectedDepartamento" ng-options="value as value.DepartamentoNombre for value in controller.departamentos" ng-change="controller.selectDepartamento()"></select>
+            </div> <!-- Selector de Departamento -->
+
+            <!-- Selector de Disrito -->
+            <div class="form-group" ng-show="controller.selectedDepartamento.DepartamentoCodigo !== -1">
+              <label for="selectRegion" class="control-label">Distrito</label>
+              <select class="form-control" ng-model="controller.selectedDistrito" ng-options="value as value.DistritoNombre for value in controller.distritos" ng-change="controller.selectDistrito()"></select>
+            </div> <!-- Selector de Distrito -->
+          </form>
+
+      </div>
+    </div>  
+  </div>  
+
+  <div class="row">    
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <h4 class="text-center">Representación visual</h4>
+      <p>En ancho de cada barra representa la cantidad relativa de profesores que cuentan con el respectivo nivel de formación.
+        <span class="text-muted">Al pasar el mouse sobre el respectivo bloque se puede acceder a una ficha descriptiva.</span>
+      </p>
+      <div td-level-piramid-chart td-data="controller.levelData" td-tooltip-message="controller.tooltipMessage"></div> 
+    </div>
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <h4 class="text-center">Tabla de datos</h4>  
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Formación</th>
+              <th></th>
+              <th>Cantidad</th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="level in controller.levelData">
+            <tr>
+              <td colspan="2">{{level.name}}</td>
+              <td align="right">{{level.size | number}}</td>
+            </tr>
+            <tr ng-repeat="block in level.blocks" ng-show="level.blocks.length > 1" class="text-muted">
+              <td width="10"></td>
+              <td>{{block.name}}</td>
+              <td align="right">{{block.size | number}}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+  </div>
+     
+  <div>
+    <p>Este desarrollo es parte de una Asistencia Técnica provista por el Banco Mundial al MEC</p>
+  </div>
+
+</div><!-- container -->
+
+
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.min.js"></script>
+<![endif]-->
+
+<!-- build:js scripts/vendor.js -->
+<!-- bower:js -->
+
+<!--<script src="bower_components/jquery/dist/jquery.js"></script>-->
+<%= javascript_include_tag "bower_components/jquery/dist/jquery.js"%>
+<%= javascript_include_tag "bower_components/angular/angular.js"%>
+<%= javascript_include_tag "bower_components/bootstrap/dist/js/bootstrap.js" %>
+<%= javascript_include_tag "bower_components/angular-route/angular-route.js" %>
+<%= javascript_include_tag "bower_components/angular-bootstrap/ui-bootstrap-tpls.js" %>
+<%= javascript_include_tag "bower_components/d3/d3.js" %>
+<%= javascript_include_tag "bower_components/underscore/underscore.js" %>
+<%= javascript_include_tag "bower_components/tide-angular/tide-angular.js" %>
+<!--
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/d3/d3.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/tide-angular/tide-angular.js"></script>
+-->
+
+<!-- endbower -->
+<!-- endbuild -->
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<%= javascript_include_tag "scripts/app.js" %>
+<%= javascript_include_tag "scripts/controllers/nivelFormacion.js" %>
+<%= javascript_include_tag "scripts/services/nivelFormacionDataService.js" %>
+<%= javascript_include_tag "scripts/controllers/tide-angular-levelPiramid/tide-angular-levelPiramid.js" %>
+<!--
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/nivelFormacion.js"></script>
+<script src="scripts/services/nivelFormacionDataService.js"></script>
+<script src="scripts/controllers/tide-angular-levelPiramid/tide-angular-levelPiramid.js"></script>
+-->
+<!-- endbuild -->
+</body>
+</html>

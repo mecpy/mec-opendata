@@ -33,4 +33,13 @@ class VisualizacionesController < ApplicationController
 
   end
 
+  def niveles_formaciones_docentes
+
+    respond_to do |f|
+
+      f.html {render :layout => 'angular'}
+
+    end
+  end
+
 end

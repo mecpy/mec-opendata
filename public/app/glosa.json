@@ -1,0 +1,51 @@
+{
+    "media": {
+        "name": "Educación Media",
+        "desc": "Incluye a todos los profesores que tienen Educacion Media completa"
+    },
+    "basica": {
+        "name": "Educación Basica",
+        "desc": "Incluye a todos los profesores que tienen Educacion Básica Completa"
+    },
+    "docenteNoUniversitario": {
+        "name": "Formación Docente",
+        "desc": "Incluye a todos los profesores que tienen formación docente pero no tienen formación universitaria"
+    },
+    "docenteYUniversitario": {
+        "name": "Formación Docente y Universitaria",
+        "desc": "Incluye a todos los profesores que tienen formación docente y también tienen formación universitaria"
+    },
+
+   "universitarioNoDocente": {
+        "name": "Formación Universitaria",
+        "desc": "Incluye a todos los profesores que tienen formación universidtaria pero no tienen formación docente"
+    },
+
+    "tecnicaNoUniversitariaNoDocente": {
+        "name": "Formación Tecnica",
+        "desc": "Incluye a todos los profesores que tienen formación tecnica (no incluye aquellos que además tengan formación docente o universitaria)"
+    },
+
+    "militarNotecnicaNoUniversitariaNoDocente": {
+        "name": "Formación Militar/Policial",
+        "desc": "Incluye a todos los profesores que tienen formación militar/policial (no incluye aquellos que además tengan formación técnica, docente o universitaria)"
+    },
+
+    "especializacionOPostgrado": {
+        "name": "Especialización o Postgrado",
+        "desc": "Incluye a todos los profesores con formación docente y especialización docente, univeristarios con especialización univeristaria o que cuentan con un postgrado (Magister o Doctorado)."
+    },
+    "magister": {
+        "name": "Magister",
+        "desc": "Incluye a todos los profesores con formación de Magister"
+    },
+    "doctorado": {
+        "name": "Doctorado",
+        "desc": "Incluye a todos los profesores con formación de Doctorado"
+    },
+    "superior": {
+        "name": "Educación superior (Docente, Universitaria, Técnica, Militar/Policial)",
+        "desc": "Inlcuye a todos los profesores que tienen formación Docente, Universitaria, Técnica o Militar/Policial"
+    }
+
+}

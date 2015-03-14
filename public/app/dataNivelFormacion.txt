@@ -1,0 +1,267 @@
+DepartamentoCodigo	DepartamentoNombre	DistritoCodigo	DistritoNombre	basicaIncompleta	basica	media	docente	docenteNoUniversitario	docenteYUniversitario	universitario	universitarioNoDocente	tecnico	tecnicaNoUniversitariaNoDocente	militarPolicial	militarNoTecnicaNoUniversitariaNoDocente	especializacionDocente	especializacionUniversitaria	especializacionTecnica	especializacionMilitarPolicial	especializacionOPostgrado	magister	doctorado	noEspecificado	compatibleEdMedia	noCompatibleEdMedia	habilitacionPedagogica
+-1		-1		3	27426	27416	19391	12136	7255	14551	7296	1287	312	66	11	1485	1723	15	1	3326	311	78	46	21646	5826	14925
+0	CAPITAL                                 	-1		1	3808	3808	2438	1207	1231	2496	1265	331	71	2	0	140	587	0	0	774	95	29	2	2773	1037	2036
+0	CAPITAL                                 	0	CAPITAL             	1	3808	3808	2438	1207	1231	2496	1265	331	71	2	0	140	587	0	0	774	95	29	2	2773	1037	2036
+1	CONCEPCION                              	-1		0	1105	1104	909	652	257	427	170	36	5	1	0	85	92	0	0	173	5	1	1	955	151	567
+1	CONCEPCION                              	1	CONCEPCION          	0	544	543	420	266	154	264	110	20	2	1	0	39	67	0	0	105	5	1	1	457	88	281
+1	CONCEPCION                              	2	BELEN               	0	124	124	105	85	20	37	17	3	0	0	0	3	7	0	0	10	0	0	0	111	13	62
+1	CONCEPCION                              	3	HORQUETA            	0	298	298	269	200	69	93	24	6	2	0	0	30	19	0	0	47	0	0	0	269	29	146
+1	CONCEPCION                              	4	LORETO              	0	128	128	113	90	23	37	14	1	0	0	0	2	3	0	0	5	0	0	0	120	8	60
+1	CONCEPCION                              	5	SAN CARLOS          	0	4	4	4	4	0	0	0	0	0	0	0	1	0	0	0	1	0	0	0	3	1	2
+1	CONCEPCION                              	6	SAN LAZARO          	0	41	41	32	25	7	12	5	4	1	0	0	1	3	0	0	4	0	0	0	32	9	19
+1	CONCEPCION                              	7	YVY YA?U            	0	97	97	87	73	14	23	9	6	1	0	0	13	3	0	0	15	0	0	0	89	8	60
+1	CONCEPCION                              	8	AZOTEY              	0	24	24	18	14	4	9	5	1	0	0	0	1	0	0	0	1	0	0	0	18	6	9
+1	CONCEPCION                              	9	SGTO. JOSE FELIX LOP	0	10	10	8	5	3	5	2	0	0	0	0	0	0	0	0	0	0	0	0	9	1	4
+2	SAN PEDRO                               	-1		0	2254	2254	1613	1078	535	1098	563	74	25	2	0	86	83	1	0	169	5	6	0	1728	526	1057
+2	SAN PEDRO                               	1	SAN PEDRO DEL YKUAMA	0	168	168	126	75	51	93	42	1	0	0	0	14	8	0	0	23	1	1	0	139	29	103
+2	SAN PEDRO                               	2	ANTEQUERA           	0	18	18	13	5	8	13	5	0	0	0	0	2	5	0	0	7	0	0	0	16	2	15
+2	SAN PEDRO                               	3	CHORE               	0	252	252	189	153	36	83	47	13	2	0	0	8	4	0	0	11	0	0	0	202	50	126
+2	SAN PEDRO                               	4	GENERAL ELIZARDO AQU	0	233	233	191	136	55	93	38	1	0	0	0	15	7	0	0	22	0	0	0	197	36	119
+2	SAN PEDRO                               	5	ITACURUBI DEL ROSARI	0	125	125	82	46	36	65	29	6	5	0	0	6	1	0	0	7	0	0	0	93	32	75
+2	SAN PEDRO                               	6	LIMA                	0	83	83	58	34	24	47	23	5	1	0	0	6	5	0	0	11	0	1	0	65	18	45
+2	SAN PEDRO                               	7	NUEVA GERMANIA      	0	25	25	20	14	6	11	5	4	0	0	0	1	0	0	0	1	0	0	0	21	4	13
+2	SAN PEDRO                               	8	SAN ESTANISLAO      	0	357	357	243	143	100	206	106	16	5	1	0	13	39	0	0	48	2	0	0	257	100	142
+2	SAN PEDRO                               	9	SAN PABLO           	0	17	17	14	12	2	5	3	0	0	0	0	1	1	0	0	2	0	0	0	14	3	11
+2	SAN PEDRO                               	10	TACUATI             	0	61	61	44	36	8	24	16	1	0	0	0	2	0	0	0	2	0	0	0	50	11	27
+2	SAN PEDRO                               	11	UNION               	0	54	54	35	18	17	35	18	0	0	0	0	1	0	0	0	2	1	1	0	33	21	22
+2	SAN PEDRO                               	12	25 DE DICIEMBRE     	0	91	91	69	43	26	47	21	1	0	0	0	2	3	0	0	5	0	0	0	80	11	58
+2	SAN PEDRO                               	13	VILLA DEL ROSARIO   	0	100	100	67	43	24	55	31	1	0	0	0	0	3	0	0	3	0	0	0	74	26	49
+2	SAN PEDRO                               	14	GENERAL RESQUIN     	0	102	102	67	54	13	44	31	6	3	0	0	6	0	0	0	8	1	1	0	70	32	39
+2	SAN PEDRO                               	15	YATAITY DEL NORTE   	0	142	142	104	52	52	89	37	2	1	0	0	1	2	0	0	6	0	3	0	108	34	66
+2	SAN PEDRO                               	16	GUAJAYVI            	0	219	219	149	104	45	109	64	4	2	0	0	2	5	1	0	8	0	0	0	162	57	88
+2	SAN PEDRO                               	17	CAPIIBARY           	0	187	187	129	97	32	84	52	4	1	0	0	3	2	0	0	5	0	0	0	139	48	55
+2	SAN PEDRO                               	18	SANTA ROSA DEL AGUAR	0	100	100	63	42	21	52	31	6	2	0	0	2	4	0	0	5	0	0	0	71	29	36
+2	SAN PEDRO                               	19	YRYVU CUA           	0	63	63	52	30	22	32	10	2	0	0	0	2	1	0	0	2	0	0	0	50	13	24
+2	SAN PEDRO                               	20	LIBERACION          	0	138	138	106	81	25	49	24	12	3	1	0	10	3	0	0	12	0	0	0	105	33	61
+3	CORDILLERA                              	-1		0	1507	1507	1205	747	458	727	269	42	11	6	1	172	71	0	0	241	9	0	1	1267	241	793
+3	CORDILLERA                              	1	CAACUPE             	0	327	327	224	105	119	215	96	23	3	1	0	21	21	0	0	42	3	0	0	249	78	166
+3	CORDILLERA                              	2	ALTOS               	0	99	99	86	59	27	40	13	1	0	0	0	9	2	0	0	12	1	0	0	90	9	54
+3	CORDILLERA                              	3	ARROYOS Y ESTEROS   	0	112	112	84	50	34	55	21	3	1	0	0	3	8	0	0	10	0	0	0	88	24	44
+3	CORDILLERA                              	4	ATYRA               	0	123	123	98	63	35	57	22	1	1	0	0	15	8	0	0	23	0	0	0	109	14	85
+3	CORDILLERA                              	5	CARAGUATAY          	0	114	114	102	66	36	47	11	1	0	3	1	24	2	0	0	24	0	0	0	103	11	68
+3	CORDILLERA                              	6	EMBOSCADA           	0	77	77	60	36	24	36	12	3	2	1	0	4	7	0	0	11	1	0	0	62	15	38
+3	CORDILLERA                              	7	EUSEBIO AYALA       	0	118	118	100	60	40	57	17	5	1	0	0	24	7	0	0	30	1	0	0	103	15	69
+3	CORDILLERA                              	8	ISLA PUCU           	0	57	57	52	34	18	23	5	1	0	0	0	9	2	0	0	11	0	0	0	52	5	33
+3	CORDILLERA                              	9	ITACURUBI DE LA CORD	0	62	62	55	34	21	27	6	1	1	0	0	15	1	0	0	18	2	0	0	55	7	37
+3	CORDILLERA                              	10	JUAN DE MENA        	0	45	45	35	29	6	13	7	0	0	1	0	3	0	0	0	3	0	0	0	35	10	17
+3	CORDILLERA                              	11	LOMA GRANDE         	0	27	27	25	17	8	8	0	2	1	0	0	1	0	0	0	2	1	0	0	25	2	16
+3	CORDILLERA                              	12	MBOCAYATY DEL YHAGUY	0	33	33	28	20	8	12	4	1	0	0	0	3	0	0	0	3	0	0	1	28	6	18
+3	CORDILLERA                              	13	NUEVA COLOMBIA      	0	47	47	39	27	12	16	4	3	2	0	0	2	3	0	0	4	0	0	0	39	8	20
+3	CORDILLERA                              	14	PIRIBEBUY           	0	186	186	158	94	64	89	25	4	1	1	0	40	6	0	0	45	0	0	0	161	25	87
+3	CORDILLERA                              	15	PRIMERO DE MARZO    	0	49	49	45	35	10	14	4	0	0	1	0	4	0	0	0	4	0	0	0	47	2	28
+3	CORDILLERA                              	16	SAN BERNARDINO      	0	104	104	90	57	33	47	14	1	0	0	0	7	5	0	0	12	0	0	0	94	10	57
+3	CORDILLERA                              	17	SANTA ELENA         	0	32	32	30	19	11	13	2	0	0	0	0	9	2	0	0	10	0	0	0	31	1	18
+3	CORDILLERA                              	18	TOBATI              	0	162	162	125	81	44	80	36	1	0	0	0	7	5	0	0	12	0	0	0	138	24	99
+3	CORDILLERA                              	19	VALENZUELA          	0	60	60	57	42	15	18	3	1	0	0	0	11	2	0	0	12	0	0	0	57	3	30
+3	CORDILLERA                              	20	SAN JOSE OBRERO     	0	30	30	26	21	5	9	4	0	0	0	0	1	0	0	0	1	0	0	0	28	2	22
+4	GUAIRA                                  	-1		0	1156	1156	992	586	406	539	133	48	7	4	0	71	45	1	0	103	4	0	0	1020	136	625
+4	GUAIRA                                  	1	VILLARRICA          	0	418	418	326	164	162	235	73	23	4	3	0	17	22	0	0	34	3	0	0	343	75	243
+4	GUAIRA                                  	2	BORJA               	0	78	78	71	56	15	22	7	0	0	0	0	7	1	0	0	8	0	0	0	74	4	43
+4	GUAIRA                                  	3	MAURICIO JOSE TROCHE	0	79	79	72	48	24	31	7	2	0	1	0	5	0	0	0	5	0	0	0	74	5	37
+4	GUAIRA                                  	4	CORONEL MARTINEZ    	0	37	37	34	17	17	20	3	2	0	0	0	9	1	0	0	9	0	0	0	34	3	20
+4	GUAIRA                                  	5	FELIX PEREZ CARDOZO 	0	20	20	20	10	10	10	0	0	0	0	0	1	1	0	0	2	0	0	0	20	0	15
+4	GUAIRA                                  	6	GENERAL EUGENIO A. G	0	77	77	76	52	24	25	1	3	0	0	0	6	1	0	0	7	0	0	0	76	1	43
+4	GUAIRA                                  	7	COLONIA INDEPENDENCI	0	144	144	138	85	53	57	4	10	2	0	0	6	4	1	0	8	0	0	0	137	7	82
+4	GUAIRA                                  	8	ITAPE               	0	63	63	58	29	29	33	4	1	0	0	0	3	2	0	0	5	0	0	0	58	5	38
+4	GUAIRA                                  	9	ITURBE              	0	71	71	63	33	30	36	6	2	1	0	0	9	7	0	0	12	1	0	0	63	8	43
+4	GUAIRA                                  	10	JOSE FASSARDI       	0	66	66	60	33	27	33	6	3	0	2	0	3	3	0	0	6	0	0	0	61	5	33
+4	GUAIRA                                  	11	MBOCAYATY           	0	98	98	85	39	46	54	8	5	1	1	0	4	2	0	0	6	0	0	0	84	14	60
+4	GUAIRA                                  	12	NATALICIO TALAVERA  	0	40	40	38	20	18	20	2	5	0	0	0	2	2	0	0	2	0	0	0	39	1	24
+4	GUAIRA                                  	13	ÐUMI                	0	31	31	28	17	11	14	3	1	0	0	0	0	0	0	0	0	0	0	0	30	1	22
+4	GUAIRA                                  	14	SAN SALVADOR        	0	27	27	25	10	15	17	2	0	0	0	0	3	2	0	0	5	0	0	0	24	3	12
+4	GUAIRA                                  	15	YATAITY             	0	47	47	44	19	25	28	3	0	0	0	0	4	5	0	0	6	1	0	0	45	2	33
+4	GUAIRA                                  	16	DR. BOTTRELL        	0	15	15	13	8	5	7	2	1	0	0	0	1	0	0	0	1	0	0	0	15	0	7
+4	GUAIRA                                  	17	PASO YOBAI          	0	123	123	116	91	25	32	7	4	0	0	0	3	1	1	0	5	0	0	0	118	5	49
+4	GUAIRA                                  	18	TEBICUARY           	0	24	24	18	8	10	13	3	1	0	0	0	2	0	0	0	2	0	0	0	19	5	12
+5	CAAGUAZU                                	-1		0	2411	2409	1618	850	768	1507	739	49	7	19	4	87	239	0	0	324	14	2	0	1851	560	1190
+5	CAAGUAZU                                	1	CORONEL OVIEDO      	0	564	564	342	131	211	421	210	17	3	4	1	18	100	0	0	117	6	1	0	415	149	236
+5	CAAGUAZU                                	2	CAAGUAZU            	0	502	501	332	130	202	364	162	6	0	4	0	5	70	0	0	77	3	0	0	414	88	318
+5	CAAGUAZU                                	3	CARAYAO             	0	101	101	62	32	30	67	37	2	0	0	0	5	8	0	0	12	0	0	0	82	19	60
+5	CAAGUAZU                                	4	CECILIO BAEZ        	0	47	47	29	19	10	22	12	1	1	0	0	0	1	0	0	2	2	0	0	35	12	30
+5	CAAGUAZU                                	5	SANTA ROSA DEL MBUTU	0	85	85	51	30	21	52	31	1	1	0	0	3	9	0	0	11	0	0	0	63	22	48
+5	CAAGUAZU                                	6	DR. JUAN MANUEL FRUT	0	128	128	81	47	34	80	46	1	0	2	0	2	10	0	0	12	0	0	0	87	41	55
+5	CAAGUAZU                                	7	REPATRIACION        	0	248	248	171	98	73	145	72	3	0	2	1	5	13	0	0	19	2	0	0	196	52	133
+5	CAAGUAZU                                	8	NUEVA LONDRES       	0	39	39	28	8	20	30	10	0	0	0	0	3	2	0	0	5	0	0	0	32	7	10
+5	CAAGUAZU                                	9	SAN JOAQUIN         	0	67	67	42	24	18	41	23	1	1	0	0	2	1	0	0	4	0	1	0	52	15	35
+5	CAAGUAZU                                	10	SAN JOSE DE LOS ARRO	0	150	150	133	88	45	61	16	8	0	1	0	30	8	0	0	36	0	0	0	132	18	70
+5	CAAGUAZU                                	11	YHU                 	0	140	140	99	71	28	65	37	5	1	4	2	7	8	0	0	14	0	0	0	108	32	54
+5	CAAGUAZU                                	12	J EULOGIO ESTIGARRIB	0	146	145	101	50	51	92	41	2	0	2	0	3	16	0	0	20	2	0	0	108	38	76
+5	CAAGUAZU                                	13	R.I. 3 CORRALES     	0	68	68	33	15	18	53	35	1	0	0	0	1	6	0	0	7	0	0	0	45	23	25
+5	CAAGUAZU                                	14	RAUL ARSENIO OVIEDO 	0	94	94	77	60	17	30	13	1	0	3	1	0	1	0	0	1	0	0	0	76	18	33
+5	CAAGUAZU                                	15	JOSE DOMINGO OCAMPOS	0	64	64	46	28	18	35	17	3	1	0	0	0	1	0	0	3	2	0	0	53	11	36
+5	CAAGUAZU                                	16	MARISCAL FRANCISCO S	0	16	16	10	7	3	7	4	0	0	0	0	1	0	0	0	1	0	0	0	11	5	5
+5	CAAGUAZU                                	17	LA PASTORA          	0	31	31	22	16	6	15	9	0	0	0	0	0	0	0	0	0	0	0	0	21	10	11
+5	CAAGUAZU                                	18	3 DE FEBRERO        	0	39	39	27	16	11	22	11	0	0	0	0	1	3	0	0	4	0	0	0	28	11	15
+5	CAAGUAZU                                	19	SIMON BOLIVAR       	0	43	43	21	15	6	27	21	0	0	0	0	0	3	0	0	3	0	0	0	32	11	24
+5	CAAGUAZU                                	20	VAQUERIA            	0	75	75	55	31	24	41	17	3	0	3	2	2	2	0	0	3	0	0	0	57	18	31
+5	CAAGUAZU                                	21	TEMBIAPORA          	0	33	33	27	24	3	9	6	0	0	0	0	0	0	0	0	0	0	0	0	22	11	13
+5	CAAGUAZU                                	22	NUEVA TOLEDO        	0	22	22	18	12	6	9	3	0	0	0	0	1	2	0	0	2	0	0	0	15	7	7
+6	CAAZAPA                                 	-1		0	987	987	883	656	227	307	80	41	3	0	0	65	33	5	0	99	3	0	1	832	156	422
+6	CAAZAPA                                 	1	CAAZAPA             	0	230	230	192	134	58	87	29	11	2	0	0	20	24	0	0	41	2	0	0	183	47	107
+6	CAAZAPA                                 	2	ABAI                	0	161	161	136	112	24	41	17	4	1	0	0	6	0	2	0	8	0	0	0	124	37	70
+6	CAAZAPA                                 	3	BUENA VISTA         	0	38	38	37	30	7	8	1	2	0	0	0	6	1	2	0	9	0	0	0	34	4	20
+6	CAAZAPA                                 	4	DR. MOISES BERTONI  	0	23	23	21	16	5	6	1	1	0	0	0	2	0	0	0	2	0	0	0	16	7	5
+6	CAAZAPA                                 	5	GENERAL HIGINIO MORI	0	64	64	63	43	20	21	1	3	0	0	0	4	0	0	0	4	0	0	0	58	6	39
+6	CAAZAPA                                 	6	MACIEL              	0	29	29	25	20	5	9	4	1	0	0	0	2	2	0	0	4	0	0	0	22	7	15
+6	CAAZAPA                                 	7	SAN JUAN NEPOMUCENO 	0	178	178	169	122	47	51	4	10	1	0	0	13	2	1	0	15	0	0	0	162	16	91
+6	CAAZAPA                                 	8	TAVAI               	0	66	66	60	45	15	20	5	9	0	0	0	7	2	0	0	9	0	0	1	59	8	29
+6	CAAZAPA                                 	9	FULGENCIO YEGROS    	0	36	36	31	29	2	7	5	1	0	0	0	0	0	0	0	0	0	0	0	29	7	18
+6	CAAZAPA                                 	10	YUTY                	0	140	140	127	86	41	53	12	3	0	0	0	7	5	1	0	13	1	0	0	129	11	33
+6	CAAZAPA                                 	11	3 DE MAYO           	0	111	111	108	87	21	24	3	0	0	0	0	3	0	0	0	3	0	0	0	102	9	35
+7	ITAPUA                                  	-1		0	1744	1744	1101	580	521	1112	591	133	26	12	1	44	219	3	0	276	55	7	16	1322	438	902
+7	ITAPUA                                  	1	ENCARNACION         	0	507	507	365	144	221	346	125	67	15	6	0	24	121	0	0	148	42	4	1	414	94	265
+7	ITAPUA                                  	2	BELLA VISTA         	0	44	44	23	14	9	25	16	4	1	0	0	2	5	0	0	7	0	0	3	31	16	29
+7	ITAPUA                                  	3	CAMBYRETA           	0	103	103	92	36	56	66	10	13	1	1	0	5	9	0	0	15	1	0	0	96	7	74
+7	ITAPUA                                  	4	CAPITAN MEZA        	0	51	51	26	16	10	35	25	1	0	0	0	0	2	0	0	2	0	0	0	38	13	29
+7	ITAPUA                                  	5	CAPITAN MIRANDA     	0	43	43	29	10	19	31	12	9	2	0	0	3	3	0	0	7	1	0	0	36	7	30
+7	ITAPUA                                  	6	NUEVA ALBORADA      	0	16	16	14	6	8	10	2	1	0	0	0	1	0	0	0	1	0	0	0	14	2	7
+7	ITAPUA                                  	7	CARMEN DEL PARANA   	0	47	47	23	4	19	41	22	1	1	1	0	0	18	0	0	18	0	0	0	36	11	29
+7	ITAPUA                                  	8	CORONEL BOGADO      	0	122	122	68	18	50	102	52	13	1	2	1	1	34	2	0	36	2	1	0	101	21	82
+7	ITAPUA                                  	9	CARLOS ANTONIO LOPEZ	0	57	57	31	26	5	27	22	0	0	0	0	2	3	0	0	4	0	0	0	29	28	15
+7	ITAPUA                                  	10	NATALIO             	0	90	90	55	41	14	49	35	2	0	0	0	0	4	0	0	4	0	0	0	62	28	37
+7	ITAPUA                                  	11	FRAM                	0	36	36	13	7	6	28	22	4	1	0	0	1	2	0	0	6	3	1	0	18	18	13
+7	ITAPUA                                  	12	GENERAL ARTIGAS     	0	47	47	37	19	18	28	10	0	0	0	0	2	2	0	0	6	2	0	0	40	7	21
+7	ITAPUA                                  	13	GENERAL DELGADO     	0	56	56	32	8	24	46	22	3	1	1	1	0	4	0	0	4	0	0	0	43	13	22
+7	ITAPUA                                  	14	HOHENAU             	0	68	68	36	21	15	43	28	5	1	0	0	1	11	0	0	11	2	0	2	48	22	37
+7	ITAPUA                                  	15	JESUS               	0	19	19	13	10	3	9	6	2	0	0	0	0	0	0	0	0	0	0	0	17	2	13
+7	ITAPUA                                  	16	LEANDRO OVIEDO      	0	29	29	22	12	10	16	6	1	0	0	0	0	1	1	0	2	0	0	0	23	6	9
+7	ITAPUA                                  	17	OBLIGADO            	0	63	63	38	23	15	38	23	7	1	0	0	0	10	0	0	11	2	0	0	47	16	35
+7	ITAPUA                                  	18	MAYOR OTAÐO         	0	29	29	26	14	12	15	3	0	0	1	0	0	2	0	0	2	0	0	0	26	3	11
+7	ITAPUA                                  	19	SAN COSME Y DAMIAN  	0	45	45	27	8	19	35	16	3	1	1	0	0	6	0	0	6	1	0	0	35	10	25
+7	ITAPUA                                  	20	SAN PEDRO DEL PARANA	0	87	87	64	44	20	42	22	2	0	0	0	2	3	0	0	5	1	0	0	66	21	25
+7	ITAPUA                                  	21	SAN RAFAEL DEL PARAN	0	56	56	42	37	5	18	13	0	0	1	0	1	1	0	0	2	0	0	0	41	15	24
+7	ITAPUA                                  	22	TRINIDAD            	0	33	33	22	13	9	20	11	4	0	0	0	0	5	0	0	5	0	0	1	30	4	25
+7	ITAPUA                                  	23	EDELIRA             	0	136	136	61	50	11	84	73	0	0	1	0	1	1	0	0	2	0	0	6	104	38	92
+7	ITAPUA                                  	24	TOMAS ROMERO PEREIRA	0	119	119	47	30	17	83	66	5	1	1	0	1	5	0	0	6	0	0	5	78	46	62
+7	ITAPUA                                  	25	ALTO VERA           	0	27	27	12	11	1	16	15	0	0	0	0	0	0	0	0	1	1	0	0	14	13	8
+7	ITAPUA                                  	26	LA PAZ              	0	21	21	15	7	8	14	6	5	0	0	0	2	4	0	0	6	0	0	0	18	3	12
+7	ITAPUA                                  	27	YATYTAY             	0	62	62	49	32	17	29	12	0	0	1	0	0	1	0	0	1	0	0	0	52	10	30
+7	ITAPUA                                  	28	SAN JUAN DEL PARANA 	0	40	40	36	11	25	29	4	6	0	0	0	3	8	0	0	10	1	0	0	37	3	22
+7	ITAPUA                                  	29	PIRAPO              	0	13	13	8	8	0	4	4	2	1	0	0	0	0	0	0	0	0	0	0	10	3	7
+7	ITAPUA                                  	30	ITAPUA POTY         	0	78	78	48	44	4	34	30	0	0	0	0	0	0	0	0	1	0	1	1	65	14	50
+8	MISIONES                                	-1		0	793	792	452	217	235	543	308	37	14	2	0	53	50	0	0	101	8	0	4	527	270	372
+8	MISIONES                                	1	SAN JUAN BAUTISTA   	0	226	226	151	54	97	158	61	14	7	2	0	21	6	0	0	28	2	0	0	154	72	85
+8	MISIONES                                	2	AYOLAS              	0	99	98	56	28	28	63	35	11	2	0	0	3	4	0	0	7	2	0	0	60	39	41
+8	MISIONES                                	3	SAN IGNACIO         	0	201	201	58	28	30	168	138	6	2	0	0	7	18	0	0	26	4	0	4	106	99	84
+8	MISIONES                                	4	SAN MIGUEL          	0	70	70	61	25	36	44	8	4	1	0	0	8	2	0	0	10	0	0	0	60	10	35
+8	MISIONES                                	5	SAN PATRICIO        	0	40	40	25	15	10	25	15	3	0	0	0	2	1	0	0	3	0	0	0	32	8	29
+8	MISIONES                                	6	SANTA MARIA         	0	62	62	32	21	11	39	28	3	2	0	0	4	2	0	0	6	0	0	0	44	18	33
+8	MISIONES                                	7	SANTA ROSA          	0	138	138	87	42	45	93	48	3	1	0	0	13	21	0	0	29	0	0	0	108	30	92
+8	MISIONES                                	8	SANTIAGO            	0	58	58	36	19	17	39	22	5	0	0	0	3	3	0	0	5	0	0	0	48	10	36
+8	MISIONES                                	9	VILLA FLORIDA       	0	32	32	24	14	10	18	8	0	0	0	0	4	1	0	0	5	0	0	0	24	8	11
+8	MISIONES                                	10	YABEBYRY            	0	17	17	12	9	3	7	4	1	0	0	0	3	0	0	0	3	0	0	0	9	8	8
+9	PARAGUARI                               	-1		0	1732	1732	1566	1010	556	707	151	32	5	5	0	242	73	1	0	312	11	3	1	1577	156	879
+9	PARAGUARI                               	1	PARAGUARI           	0	221	221	195	94	101	126	25	5	0	1	0	47	18	0	0	62	3	0	0	202	19	139
+9	PARAGUARI                               	2	ACAHAY              	0	170	170	151	91	60	77	17	2	0	1	0	14	10	0	0	24	0	0	0	151	19	74
+9	PARAGUARI                               	3	CAAPUCU             	0	84	84	74	55	19	29	10	2	0	0	0	8	2	0	0	11	1	1	0	75	9	44
+9	PARAGUARI                               	4	GENERAL BERNARDINO C	0	70	70	66	49	17	21	4	1	0	0	0	5	1	0	0	7	1	1	0	65	5	35
+9	PARAGUARI                               	5	CARAPEGUA           	0	298	298	267	140	127	157	30	9	0	0	0	34	38	0	0	69	1	0	0	269	29	130
+9	PARAGUARI                               	6	ESCOBAR             	0	75	75	71	48	23	27	4	1	0	1	0	9	2	0	0	12	1	0	0	70	5	42
+9	PARAGUARI                               	7	LA COLMENA          	0	81	81	73	46	27	33	6	2	1	0	0	8	2	0	0	10	0	0	0	74	7	39
+9	PARAGUARI                               	8	MBUYAPEY            	0	90	90	86	75	11	13	2	1	0	0	0	10	0	0	0	10	0	0	0	85	5	34
+9	PARAGUARI                               	9	PIRAYU              	0	117	117	112	71	41	46	5	2	0	0	0	21	0	1	0	23	1	0	0	112	5	66
+9	PARAGUARI                               	10	QUIINDY             	0	150	150	132	91	41	57	16	5	1	1	0	26	9	0	0	34	2	1	0	133	17	88
+9	PARAGUARI                               	11	QUYQUYHO            	0	58	58	53	44	9	14	5	0	0	0	0	8	0	0	0	8	0	0	0	53	5	21
+9	PARAGUARI                               	12	SAN ROQUE GONZALEZ  	0	118	118	110	63	47	55	8	5	0	0	0	16	2	0	0	18	0	0	0	111	7	48
+9	PARAGUARI                               	13	SAPUCAI             	0	56	56	49	26	23	30	7	1	0	0	0	6	2	0	0	8	0	0	0	49	7	21
+9	PARAGUARI                               	14	TEBICUARY-MI        	0	48	48	46	37	9	11	2	2	0	0	0	4	0	0	0	4	0	0	0	46	2	23
+9	PARAGUARI                               	15	YAGUARON            	0	199	199	183	98	85	101	16	1	0	0	0	27	7	0	0	34	2	0	0	187	12	138
+9	PARAGUARI                               	16	YVYCUI              	0	194	194	178	137	41	52	11	6	3	1	0	30	0	0	0	30	0	0	1	180	15	93
+9	PARAGUARI                               	17	YVYTIMI             	0	76	76	70	55	15	21	6	0	0	0	0	5	0	0	0	5	0	0	0	67	9	34
+10	ALTO PARANA                             	-1		2	2328	2326	1360	859	501	1400	899	76	30	10	3	72	51	1	0	129	11	3	2	1845	485	1713
+10	ALTO PARANA                             	1	CIUDAD DEL ESTE     	1	983	983	467	273	194	684	490	40	14	4	2	18	21	1	0	44	7	0	2	720	265	657
+10	ALTO PARANA                             	2	PRESIDENTE FRANCO   	0	290	290	175	85	90	202	112	3	1	1	0	8	6	0	0	13	3	0	0	248	42	229
+10	ALTO PARANA                             	3	DOMINGO MARTINEZ DE 	0	29	29	26	23	3	6	3	1	0	0	0	2	0	0	0	2	0	0	0	20	9	15
+10	ALTO PARANA                             	4	DR. JUAN LEON MALLOR	0	96	96	69	42	27	54	27	1	0	3	0	1	5	0	0	6	0	0	0	85	11	79
+10	ALTO PARANA                             	5	HERNANDARIAS        	0	291	289	149	86	63	195	132	17	6	2	1	11	16	0	0	26	1	1	0	235	56	232
+10	ALTO PARANA                             	6	ITAKYRY             	0	73	73	53	42	11	29	18	0	0	0	0	6	1	0	0	8	0	1	0	67	6	66
+10	ALTO PARANA                             	7	JUAN E. O?LEARY     	0	112	112	83	60	23	51	28	1	0	1	0	4	1	0	0	5	0	0	0	92	20	88
+10	ALTO PARANA                             	8	ÐACUNDAY            	0	41	41	34	26	8	15	7	0	0	0	0	4	0	0	0	4	0	0	0	36	5	34
+10	ALTO PARANA                             	9	YGUAZU              	0	48	48	33	23	10	21	11	2	1	1	0	1	0	0	0	1	0	0	0	36	12	32
+10	ALTO PARANA                             	10	LOS CEDRALES        	0	40	40	34	30	4	10	6	0	0	0	0	0	0	0	0	0	0	0	0	31	9	28
+10	ALTO PARANA                             	11	MINGA GUAZU         	1	258	258	164	83	81	162	81	6	4	0	0	6	9	0	0	16	0	1	0	221	37	205
+10	ALTO PARANA                             	12	SAN CRISTOBAL       	0	47	47	31	21	10	26	16	1	0	0	0	3	1	0	0	4	0	0	0	40	7	38
+10	ALTO PARANA                             	13	SANTA RITA          	0	97	97	62	52	10	40	30	7	4	1	0	2	0	0	0	2	0	0	0	80	17	63
+10	ALTO PARANA                             	14	NARANJAL            	0	31	31	24	20	4	11	7	0	0	0	0	1	0	0	0	1	0	0	0	29	2	26
+10	ALTO PARANA                             	15	SANTA ROSA DEL MONDA	0	27	27	21	14	7	13	6	0	0	0	0	1	0	0	0	1	0	0	0	26	1	23
+10	ALTO PARANA                             	16	MINGA PORA          	0	53	53	45	36	9	16	7	0	0	0	0	1	0	0	0	1	0	0	0	49	4	46
+10	ALTO PARANA                             	17	MBARACAYU           	0	18	18	16	13	3	5	2	0	0	0	0	1	0	0	0	1	0	0	0	18	0	17
+10	ALTO PARANA                             	18	SAN ALBERTO         	0	40	40	31	17	14	20	6	0	0	0	0	5	0	0	0	5	1	0	0	34	6	32
+10	ALTO PARANA                             	19	IRUÐA               	0	8	8	5	4	1	3	2	0	0	0	0	1	0	0	0	1	0	0	0	7	1	7
+10	ALTO PARANA                             	20	SANTA FE DEL PARANA 	0	14	14	6	6	0	7	7	1	1	0	0	0	0	0	0	0	0	0	0	13	1	13
+10	ALTO PARANA                             	21	TAVAPY              	0	46	46	37	29	8	17	9	1	0	1	0	2	0	0	0	2	0	0	0	34	12	31
+10	ALTO PARANA                             	22	DR. RAUL PEÐA       	0	25	25	20	17	3	8	5	0	0	0	0	2	0	0	0	2	0	0	0	24	1	21
+11	CENTRAL                                 	-1		0	6493	6489	4404	2891	1513	3449	1936	345	88	0	0	182	225	0	0	479	76	25	17	5225	1285	3981
+11	CENTRAL                                 	1	AREGUA              	0	279	279	232	168	64	108	44	9	2	0	0	10	4	0	0	20	6	0	0	249	30	174
+11	CENTRAL                                 	2	CAPIATA             	0	856	856	541	377	164	475	311	28	3	0	0	19	16	0	0	38	4	0	1	741	116	646
+11	CENTRAL                                 	3	FERNANDO DE LA MORA 	0	886	885	560	357	203	496	293	75	24	0	0	26	64	0	0	111	18	10	1	719	168	621
+11	CENTRAL                                 	4	GUARAMBARE          	0	108	108	97	65	32	43	11	4	0	0	0	2	3	0	0	4	0	0	0	101	7	58
+11	CENTRAL                                 	5	ITA                 	0	293	293	223	163	60	126	66	15	4	0	0	13	6	0	0	19	3	0	0	253	40	210
+11	CENTRAL                                 	6	ITAUGUA             	0	326	326	220	193	27	129	102	6	2	0	0	8	8	0	0	18	1	1	2	277	51	267
+11	CENTRAL                                 	7	LAMBARE             	0	486	485	309	185	124	273	149	44	16	0	0	18	37	0	0	54	3	1	5	387	104	331
+11	CENTRAL                                 	8	LIMPIO              	0	405	405	323	207	116	192	76	9	3	0	0	6	4	0	0	13	3	0	0	350	55	207
+11	CENTRAL                                 	9	LUQUE               	0	954	954	624	394	230	531	301	42	9	0	0	12	33	0	0	55	10	3	1	667	288	393
+11	CENTRAL                                 	10	MARIANO ROQUE ALONSO	0	241	241	197	109	88	130	42	10	1	0	0	7	15	0	0	23	2	0	0	206	35	146
+11	CENTRAL                                 	11	NUEVA ITALIA        	0	69	69	63	46	17	23	6	3	0	0	0	1	0	0	0	1	0	0	0	64	5	36
+11	CENTRAL                                 	12	ÐEMBY               	0	559	559	429	250	179	304	125	25	3	0	0	19	14	0	0	38	3	5	0	447	112	257
+11	CENTRAL                                 	13	SAN ANTONIO         	0	233	233	175	104	71	126	55	7	2	0	0	15	2	0	0	17	1	0	0	187	46	111
+11	CENTRAL                                 	14	SAN LORENZO         	0	1051	1050	651	415	236	614	378	68	14	0	0	37	33	0	0	92	21	5	5	828	228	725
+11	CENTRAL                                 	15	VILLA ELISA         	0	309	309	223	136	87	166	79	33	6	0	0	6	16	0	0	22	2	0	1	276	34	239
+11	CENTRAL                                 	16	VILLETA             	0	173	172	139	92	47	79	32	5	1	0	0	3	2	0	0	6	0	1	0	146	27	91
+11	CENTRAL                                 	17	YPACARAI            	0	172	172	121	81	40	87	47	9	2	0	0	7	1	0	0	9	1	0	3	147	28	140
+11	CENTRAL                                 	18	YPANE               	0	236	236	197	123	74	111	37	4	1	0	0	9	5	0	0	14	1	0	0	209	27	110
+11	CENTRAL                                 	19	J AUGUSTO SALDIVAR  	0	220	220	188	126	62	94	32	10	0	0	0	15	2	0	0	19	4	0	0	211	9	187
+12	ÑEEMBUCU                                	-1		0	487	487	428	266	162	206	44	66	12	2	0	120	41	3	0	156	13	1	0	420	67	301
+12	ÑEEMBUCU                                	1	PILAR               	0	233	233	193	96	97	129	32	54	8	1	0	77	36	3	0	107	10	0	0	196	37	139
+12	ÑEEMBUCU                                	2	ALBERDI             	0	26	26	22	14	8	11	3	1	1	0	0	4	0	0	0	4	0	0	0	18	8	16
+12	ÑEEMBUCU                                	3	CERRITO             	0	13	13	13	9	4	4	0	0	0	0	0	0	0	0	0	0	0	0	0	13	0	10
+12	ÑEEMBUCU                                	4	DESMOCHADOS         	0	9	9	9	8	1	1	0	0	0	0	0	2	0	0	0	2	0	0	0	9	0	7
+12	ÑEEMBUCU                                	5	GENERAL DIAZ        	0	22	22	21	16	5	6	1	1	0	0	0	5	1	0	0	5	0	0	0	21	1	10
+12	ÑEEMBUCU                                	6	GUAZU CUA           	0	9	9	9	4	5	5	0	1	0	0	0	3	1	0	0	3	0	0	0	9	0	5
+12	ÑEEMBUCU                                	7	HUMAITA             	0	20	20	18	9	9	11	2	0	0	0	0	6	1	0	0	6	0	0	0	18	2	15
+12	ÑEEMBUCU                                	8	ISLA UMBU           	0	26	26	26	14	12	12	0	4	0	0	0	9	2	0	0	10	1	0	0	26	0	17
+12	ÑEEMBUCU                                	9	LOS LAURELES        	0	18	18	17	8	9	10	1	1	0	1	0	2	0	0	0	2	0	0	0	17	1	14
+12	ÑEEMBUCU                                	10	MAYOR MARTINEZ      	0	30	30	27	18	9	11	2	0	0	0	0	11	1	0	0	13	1	1	0	27	3	22
+12	ÑEEMBUCU                                	11	PASO DE PATRIA      	0	9	9	8	8	0	1	1	0	0	0	0	1	0	0	0	1	0	0	0	8	1	7
+12	ÑEEMBUCU                                	12	SAN JUAN BAUTISTA DE	0	40	40	38	30	8	9	1	2	1	0	0	7	1	0	0	8	0	0	0	38	2	26
+12	ÑEEMBUCU                                	13	TACUARAS            	0	26	26	26	14	12	12	0	2	0	0	0	12	0	0	0	13	1	0	0	26	0	18
+12	ÑEEMBUCU                                	14	VILLA FRANCA        	0	9	9	6	6	0	1	1	1	1	0	0	0	0	0	0	0	0	0	0	3	6	1
+12	ÑEEMBUCU                                	15	VILLA OLIVA         	0	23	23	22	17	5	5	0	1	0	0	0	0	0	0	0	0	0	0	0	19	4	13
+12	ÑEEMBUCU                                	16	VILLALBIN           	0	25	25	22	18	4	6	2	2	1	0	0	3	1	0	0	4	0	0	0	22	3	14
+13	AMAMBAY                                 	-1		0	411	411	351	217	134	187	53	22	3	2	1	116	29	0	0	138	3	0	1	367	45	283
+13	AMAMBAY                                 	1	PEDRO JUAN CABALLERO	0	344	344	299	179	120	160	40	16	1	2	1	104	23	0	0	122	1	0	1	313	32	245
+13	AMAMBAY                                 	2	BELLA VISTA         	0	20	20	13	10	3	9	6	1	1	0	0	1	3	0	0	4	0	0	0	16	4	10
+13	AMAMBAY                                 	3	CAPITAN BADO        	0	38	38	32	22	10	16	6	3	0	0	0	9	2	0	0	10	1	0	0	32	6	22
+13	AMAMBAY                                 	4	ZANJA PYTA          	0	26	26	23	19	4	6	2	2	1	0	0	8	3	0	0	9	1	0	1	22	5	22
+14	CANINDEYU                               	-1		0	707	707	524	409	115	274	159	14	3	0	0	21	15	0	0	44	5	6	0	533	174	276
+14	CANINDEYU                               	1	SALTOS DEL GUAIRA   	0	64	64	47	37	10	26	16	2	0	0	0	0	0	0	0	1	1	0	0	51	13	39
+14	CANINDEYU                               	2	CORPUS CHRISTI      	0	31	31	28	22	6	9	3	1	0	0	0	0	1	0	0	1	0	0	0	30	1	14
+14	CANINDEYU                               	3	CURUGUATY           	0	223	223	174	143	31	73	42	1	0	0	0	14	8	0	0	25	1	4	0	170	53	85
+14	CANINDEYU                               	4	VILLA YGATIM?       	0	91	91	58	42	16	48	32	2	1	0	0	3	0	0	0	5	2	0	0	65	26	29
+14	CANINDEYU                               	5	ITANARA             	0	8	8	7	7	0	1	1	0	0	0	0	1	1	0	0	2	0	0	0	6	2	5
+14	CANINDEYU                               	6	YPE JHU             	0	15	15	10	10	0	5	5	0	0	0	0	0	1	0	0	2	0	1	0	10	5	2
+14	CANINDEYU                               	7	FRANCISCO CABALLERO 	0	30	30	27	19	8	10	2	0	0	0	0	0	0	0	0	0	0	0	0	26	4	14
+14	CANINDEYU                               	8	KATUETE             	0	39	39	32	26	6	12	6	0	0	0	0	0	0	0	0	0	0	0	0	32	7	13
+14	CANINDEYU                               	9	LA PALOMA           	0	27	27	16	11	5	15	10	1	0	0	0	0	3	0	0	3	0	0	0	16	11	9
+14	CANINDEYU                               	10	NUEVA ESPERANZA     	0	32	32	24	18	6	13	7	1	1	0	0	0	0	0	0	0	0	0	0	25	7	8
+14	CANINDEYU                               	11	YASY KAÐY           	0	132	132	95	72	23	54	31	1	1	0	0	3	1	0	0	5	0	1	0	98	34	47
+14	CANINDEYU                               	12	YVYRAROBANA         	0	72	72	57	45	12	22	10	6	0	0	0	1	1	0	0	2	1	0	0	58	14	27
+15	PRESIDENTE HAYES                        	-1		0	473	473	374	284	90	172	82	13	5	1	1	12	2	0	1	16	1	0	0	375	98	269
+15	PRESIDENTE HAYES                        	1	POZO COLORADO       	0	4	4	4	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	4	0	0
+15	PRESIDENTE HAYES                        	2	BENJAMIN ACEVAL     	0	160	160	131	104	27	51	24	4	2	0	0	5	0	0	0	5	0	0	0	131	29	93
+15	PRESIDENTE HAYES                        	3	PUERTO PINASCO      	0	11	11	11	9	2	2	0	0	0	0	0	0	0	0	0	0	0	0	0	10	1	6
+15	PRESIDENTE HAYES                        	4	VILLA HAYES         	0	215	215	172	128	44	80	36	9	2	0	0	7	2	0	0	10	1	0	0	171	44	124
+15	PRESIDENTE HAYES                        	5	NANAWA              	0	27	27	22	11	11	16	5	1	0	0	0	1	0	0	0	1	0	0	0	26	1	24
+15	PRESIDENTE HAYES                        	6	JOSE FALCON         	0	20	20	17	15	2	5	3	0	0	0	0	0	0	0	0	0	0	0	0	15	5	13
+15	PRESIDENTE HAYES                        	7	TTE 1RO MANUEL IRALA	0	48	48	26	20	6	25	19	1	1	1	1	0	0	0	1	1	0	0	0	31	17	21
+15	PRESIDENTE HAYES                        	8	TTE. ESTEBAN MARTINE	0	12	12	9	7	2	4	2	0	0	0	0	0	0	0	0	0	0	0	0	10	2	6
+15	PRESIDENTE HAYES                        	9	GENERAL JOSE MARIA B	0	18	18	17	13	4	4	0	0	0	0	0	0	0	0	0	0	0	0	0	14	4	11
+16	BOQUERÓN                                	-1		0	224	224	148	108	40	108	68	9	4	1	0	1	4	1	0	16	9	2	0	124	100	77
+16	BOQUERÓN                                	2	MARISCAL ESTIGARRIBI	0	89	89	63	43	20	44	24	2	0	1	0	0	0	0	0	2	0	2	0	46	43	25
+16	BOQUERÓN                                	4	FILADELFIA          	0	17	17	12	10	2	7	5	0	0	0	0	0	1	0	0	1	0	0	0	6	11	3
+16	BOQUERÓN                                	5	LOMA PLATA          	0	120	120	75	56	19	58	39	7	4	0	0	1	3	1	0	13	9	0	0	74	46	50
+17	ALTO PARAGUAY                           	-1		0	67	67	47	40	7	23	16	0	0	0	0	0	1	0	0	1	0	0	0	40	27	30
+17	ALTO PARAGUAY                           	1	FUERTE OLIMPO       	0	22	22	11	10	1	10	9	0	0	0	0	0	1	0	0	1	0	0	0	11	11	9
+17	ALTO PARAGUAY                           	2	PUERTO CASADO       	0	18	18	14	12	2	6	4	0	0	0	0	0	0	0	0	0	0	0	0	15	3	8
+17	ALTO PARAGUAY                           	4	BAHIA NEGRA         	0	7	7	7	7	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	4	3	4
+17	ALTO PARAGUAY                           	5	CARMELO PERALTA     	0	20	20	15	11	4	7	3	0	0	0	0	0	0	0	0	0	0	0	0	10	10	9

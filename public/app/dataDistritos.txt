@@ -1,0 +1,248 @@
+DepartamentoCodigo	DepartamentoNombre	DistritoCodigo	DistritoNombre
+0	CAPITAL                                 	0	CAPITAL             
+1	CONCEPCION                              	1	CONCEPCION          
+1	CONCEPCION                              	2	BELEN               
+1	CONCEPCION                              	3	HORQUETA            
+1	CONCEPCION                              	4	LORETO              
+1	CONCEPCION                              	5	SAN CARLOS          
+1	CONCEPCION                              	6	SAN LAZARO          
+1	CONCEPCION                              	7	YVY YA?U            
+1	CONCEPCION                              	8	AZOTEY              
+1	CONCEPCION                              	9	SGTO. JOSE FELIX LOP
+2	SAN PEDRO                               	1	SAN PEDRO DEL YKUAMA
+2	SAN PEDRO                               	2	ANTEQUERA           
+2	SAN PEDRO                               	3	CHORE               
+2	SAN PEDRO                               	4	GENERAL ELIZARDO AQU
+2	SAN PEDRO                               	5	ITACURUBI DEL ROSARI
+2	SAN PEDRO                               	6	LIMA                
+2	SAN PEDRO                               	7	NUEVA GERMANIA      
+2	SAN PEDRO                               	8	SAN ESTANISLAO      
+2	SAN PEDRO                               	9	SAN PABLO           
+2	SAN PEDRO                               	10	TACUATI             
+2	SAN PEDRO                               	11	UNION               
+2	SAN PEDRO                               	12	25 DE DICIEMBRE     
+2	SAN PEDRO                               	13	VILLA DEL ROSARIO   
+2	SAN PEDRO                               	14	GENERAL RESQUIN     
+2	SAN PEDRO                               	15	YATAITY DEL NORTE   
+2	SAN PEDRO                               	16	GUAJAYVI            
+2	SAN PEDRO                               	17	CAPIIBARY           
+2	SAN PEDRO                               	18	SANTA ROSA DEL AGUAR
+2	SAN PEDRO                               	19	YRYVU CUA           
+2	SAN PEDRO                               	20	LIBERACION          
+3	CORDILLERA                              	1	CAACUPE             
+3	CORDILLERA                              	2	ALTOS               
+3	CORDILLERA                              	3	ARROYOS Y ESTEROS   
+3	CORDILLERA                              	4	ATYRA               
+3	CORDILLERA                              	5	CARAGUATAY          
+3	CORDILLERA                              	6	EMBOSCADA           
+3	CORDILLERA                              	7	EUSEBIO AYALA       
+3	CORDILLERA                              	8	ISLA PUCU           
+3	CORDILLERA                              	9	ITACURUBI DE LA CORD
+3	CORDILLERA                              	10	JUAN DE MENA        
+3	CORDILLERA                              	11	LOMA GRANDE         
+3	CORDILLERA                              	12	MBOCAYATY DEL YHAGUY
+3	CORDILLERA                              	13	NUEVA COLOMBIA      
+3	CORDILLERA                              	14	PIRIBEBUY           
+3	CORDILLERA                              	15	PRIMERO DE MARZO    
+3	CORDILLERA                              	16	SAN BERNARDINO      
+3	CORDILLERA                              	17	SANTA ELENA         
+3	CORDILLERA                              	18	TOBATI              
+3	CORDILLERA                              	19	VALENZUELA          
+3	CORDILLERA                              	20	SAN JOSE OBRERO     
+4	GUAIRA                                  	1	VILLARRICA          
+4	GUAIRA                                  	2	BORJA               
+4	GUAIRA                                  	3	MAURICIO JOSE TROCHE
+4	GUAIRA                                  	4	CORONEL MARTINEZ    
+4	GUAIRA                                  	5	FELIX PEREZ CARDOZO 
+4	GUAIRA                                  	6	GENERAL EUGENIO A. G
+4	GUAIRA                                  	7	COLONIA INDEPENDENCI
+4	GUAIRA                                  	8	ITAPE               
+4	GUAIRA                                  	9	ITURBE              
+4	GUAIRA                                  	10	JOSE FASSARDI       
+4	GUAIRA                                  	11	MBOCAYATY           
+4	GUAIRA                                  	12	NATALICIO TALAVERA  
+4	GUAIRA                                  	13	ÐUMI                
+4	GUAIRA                                  	14	SAN SALVADOR        
+4	GUAIRA                                  	15	YATAITY             
+4	GUAIRA                                  	16	DR. BOTTRELL        
+4	GUAIRA                                  	17	PASO YOBAI          
+4	GUAIRA                                  	18	TEBICUARY           
+5	CAAGUAZU                                	1	CORONEL OVIEDO      
+5	CAAGUAZU                                	2	CAAGUAZU            
+5	CAAGUAZU                                	3	CARAYAO             
+5	CAAGUAZU                                	4	CECILIO BAEZ        
+5	CAAGUAZU                                	5	SANTA ROSA DEL MBUTU
+5	CAAGUAZU                                	6	DR. JUAN MANUEL FRUT
+5	CAAGUAZU                                	7	REPATRIACION        
+5	CAAGUAZU                                	8	NUEVA LONDRES       
+5	CAAGUAZU                                	9	SAN JOAQUIN         
+5	CAAGUAZU                                	10	SAN JOSE DE LOS ARRO
+5	CAAGUAZU                                	11	YHU                 
+5	CAAGUAZU                                	12	J EULOGIO ESTIGARRIB
+5	CAAGUAZU                                	13	R.I. 3 CORRALES     
+5	CAAGUAZU                                	14	RAUL ARSENIO OVIEDO 
+5	CAAGUAZU                                	15	JOSE DOMINGO OCAMPOS
+5	CAAGUAZU                                	16	MARISCAL FRANCISCO S
+5	CAAGUAZU                                	17	LA PASTORA          
+5	CAAGUAZU                                	18	3 DE FEBRERO        
+5	CAAGUAZU                                	19	SIMON BOLIVAR       
+5	CAAGUAZU                                	20	VAQUERIA            
+5	CAAGUAZU                                	21	TEMBIAPORA          
+5	CAAGUAZU                                	22	NUEVA TOLEDO        
+6	CAAZAPA                                 	1	CAAZAPA             
+6	CAAZAPA                                 	2	ABAI                
+6	CAAZAPA                                 	3	BUENA VISTA         
+6	CAAZAPA                                 	4	DR. MOISES BERTONI  
+6	CAAZAPA                                 	5	GENERAL HIGINIO MORI
+6	CAAZAPA                                 	6	MACIEL              
+6	CAAZAPA                                 	7	SAN JUAN NEPOMUCENO 
+6	CAAZAPA                                 	8	TAVAI               
+6	CAAZAPA                                 	9	FULGENCIO YEGROS    
+6	CAAZAPA                                 	10	YUTY                
+6	CAAZAPA                                 	11	3 DE MAYO           
+7	ITAPUA                                  	1	ENCARNACION         
+7	ITAPUA                                  	2	BELLA VISTA         
+7	ITAPUA                                  	3	CAMBYRETA           
+7	ITAPUA                                  	4	CAPITAN MEZA        
+7	ITAPUA                                  	5	CAPITAN MIRANDA     
+7	ITAPUA                                  	6	NUEVA ALBORADA      
+7	ITAPUA                                  	7	CARMEN DEL PARANA   
+7	ITAPUA                                  	8	CORONEL BOGADO      
+7	ITAPUA                                  	9	CARLOS ANTONIO LOPEZ
+7	ITAPUA                                  	10	NATALIO             
+7	ITAPUA                                  	11	FRAM                
+7	ITAPUA                                  	12	GENERAL ARTIGAS     
+7	ITAPUA                                  	13	GENERAL DELGADO     
+7	ITAPUA                                  	14	HOHENAU             
+7	ITAPUA                                  	15	JESUS               
+7	ITAPUA                                  	16	LEANDRO OVIEDO      
+7	ITAPUA                                  	17	OBLIGADO            
+7	ITAPUA                                  	18	MAYOR OTAÐO         
+7	ITAPUA                                  	19	SAN COSME Y DAMIAN  
+7	ITAPUA                                  	20	SAN PEDRO DEL PARANA
+7	ITAPUA                                  	21	SAN RAFAEL DEL PARAN
+7	ITAPUA                                  	22	TRINIDAD            
+7	ITAPUA                                  	23	EDELIRA             
+7	ITAPUA                                  	24	TOMAS ROMERO PEREIRA
+7	ITAPUA                                  	25	ALTO VERA           
+7	ITAPUA                                  	26	LA PAZ              
+7	ITAPUA                                  	27	YATYTAY             
+7	ITAPUA                                  	28	SAN JUAN DEL PARANA 
+7	ITAPUA                                  	29	PIRAPO              
+7	ITAPUA                                  	30	ITAPUA POTY         
+8	MISIONES                                	1	SAN JUAN BAUTISTA   
+8	MISIONES                                	2	AYOLAS              
+8	MISIONES                                	3	SAN IGNACIO         
+8	MISIONES                                	4	SAN MIGUEL          
+8	MISIONES                                	5	SAN PATRICIO        
+8	MISIONES                                	6	SANTA MARIA         
+8	MISIONES                                	7	SANTA ROSA          
+8	MISIONES                                	8	SANTIAGO            
+8	MISIONES                                	9	VILLA FLORIDA       
+8	MISIONES                                	10	YABEBYRY            
+9	PARAGUARI                               	1	PARAGUARI           
+9	PARAGUARI                               	2	ACAHAY              
+9	PARAGUARI                               	3	CAAPUCU             
+9	PARAGUARI                               	4	GENERAL BERNARDINO C
+9	PARAGUARI                               	5	CARAPEGUA           
+9	PARAGUARI                               	6	ESCOBAR             
+9	PARAGUARI                               	7	LA COLMENA          
+9	PARAGUARI                               	8	MBUYAPEY            
+9	PARAGUARI                               	9	PIRAYU              
+9	PARAGUARI                               	10	QUIINDY             
+9	PARAGUARI                               	11	QUYQUYHO            
+9	PARAGUARI                               	12	SAN ROQUE GONZALEZ  
+9	PARAGUARI                               	13	SAPUCAI             
+9	PARAGUARI                               	14	TEBICUARY-MI        
+9	PARAGUARI                               	15	YAGUARON            
+9	PARAGUARI                               	16	YVYCUI              
+9	PARAGUARI                               	17	YVYTIMI             
+10	ALTO PARANA                             	1	CIUDAD DEL ESTE     
+10	ALTO PARANA                             	2	PRESIDENTE FRANCO   
+10	ALTO PARANA                             	3	DOMINGO MARTINEZ DE 
+10	ALTO PARANA                             	4	DR. JUAN LEON MALLOR
+10	ALTO PARANA                             	5	HERNANDARIAS        
+10	ALTO PARANA                             	6	ITAKYRY             
+10	ALTO PARANA                             	7	JUAN E. O?LEARY     
+10	ALTO PARANA                             	8	ÐACUNDAY            
+10	ALTO PARANA                             	9	YGUAZU              
+10	ALTO PARANA                             	10	LOS CEDRALES        
+10	ALTO PARANA                             	11	MINGA GUAZU         
+10	ALTO PARANA                             	12	SAN CRISTOBAL       
+10	ALTO PARANA                             	13	SANTA RITA          
+10	ALTO PARANA                             	14	NARANJAL            
+10	ALTO PARANA                             	15	SANTA ROSA DEL MONDA
+10	ALTO PARANA                             	16	MINGA PORA          
+10	ALTO PARANA                             	17	MBARACAYU           
+10	ALTO PARANA                             	18	SAN ALBERTO         
+10	ALTO PARANA                             	19	IRUÐA               
+10	ALTO PARANA                             	20	SANTA FE DEL PARANA 
+10	ALTO PARANA                             	21	TAVAPY              
+10	ALTO PARANA                             	22	DR. RAUL PEÐA       
+11	CENTRAL                                 	1	AREGUA              
+11	CENTRAL                                 	2	CAPIATA             
+11	CENTRAL                                 	3	FERNANDO DE LA MORA 
+11	CENTRAL                                 	4	GUARAMBARE          
+11	CENTRAL                                 	5	ITA                 
+11	CENTRAL                                 	6	ITAUGUA             
+11	CENTRAL                                 	7	LAMBARE             
+11	CENTRAL                                 	8	LIMPIO              
+11	CENTRAL                                 	9	LUQUE               
+11	CENTRAL                                 	10	MARIANO ROQUE ALONSO
+11	CENTRAL                                 	11	NUEVA ITALIA        
+11	CENTRAL                                 	12	ÐEMBY               
+11	CENTRAL                                 	13	SAN ANTONIO         
+11	CENTRAL                                 	14	SAN LORENZO         
+11	CENTRAL                                 	15	VILLA ELISA         
+11	CENTRAL                                 	16	VILLETA             
+11	CENTRAL                                 	17	YPACARAI            
+11	CENTRAL                                 	18	YPANE               
+11	CENTRAL                                 	19	J AUGUSTO SALDIVAR  
+12	ÑEEMBUCU                                	1	PILAR               
+12	ÑEEMBUCU                                	2	ALBERDI             
+12	ÑEEMBUCU                                	3	CERRITO             
+12	ÑEEMBUCU                                	4	DESMOCHADOS         
+12	ÑEEMBUCU                                	5	GENERAL DIAZ        
+12	ÑEEMBUCU                                	6	GUAZU CUA           
+12	ÑEEMBUCU                                	7	HUMAITA             
+12	ÑEEMBUCU                                	8	ISLA UMBU           
+12	ÑEEMBUCU                                	9	LOS LAURELES        
+12	ÑEEMBUCU                                	10	MAYOR MARTINEZ      
+12	ÑEEMBUCU                                	11	PASO DE PATRIA      
+12	ÑEEMBUCU                                	12	SAN JUAN BAUTISTA DE
+12	ÑEEMBUCU                                	13	TACUARAS            
+12	ÑEEMBUCU                                	14	VILLA FRANCA        
+12	ÑEEMBUCU                                	15	VILLA OLIVA         
+12	ÑEEMBUCU                                	16	VILLALBIN           
+13	AMAMBAY                                 	1	PEDRO JUAN CABALLERO
+13	AMAMBAY                                 	2	BELLA VISTA         
+13	AMAMBAY                                 	3	CAPITAN BADO        
+13	AMAMBAY                                 	4	ZANJA PYTA          
+14	CANINDEYU                               	1	SALTOS DEL GUAIRA   
+14	CANINDEYU                               	2	CORPUS CHRISTI      
+14	CANINDEYU                               	3	CURUGUATY           
+14	CANINDEYU                               	4	VILLA YGATIM?       
+14	CANINDEYU                               	5	ITANARA             
+14	CANINDEYU                               	6	YPE JHU             
+14	CANINDEYU                               	7	FRANCISCO CABALLERO 
+14	CANINDEYU                               	8	KATUETE             
+14	CANINDEYU                               	9	LA PALOMA           
+14	CANINDEYU                               	10	NUEVA ESPERANZA     
+14	CANINDEYU                               	11	YASY KAÐY           
+14	CANINDEYU                               	12	YVYRAROBANA         
+15	PRESIDENTE HAYES                        	1	POZO COLORADO       
+15	PRESIDENTE HAYES                        	2	BENJAMIN ACEVAL     
+15	PRESIDENTE HAYES                        	3	PUERTO PINASCO      
+15	PRESIDENTE HAYES                        	4	VILLA HAYES         
+15	PRESIDENTE HAYES                        	5	NANAWA              
+15	PRESIDENTE HAYES                        	6	JOSE FALCON         
+15	PRESIDENTE HAYES                        	7	TTE 1RO MANUEL IRALA
+15	PRESIDENTE HAYES                        	8	TTE. ESTEBAN MARTINE
+15	PRESIDENTE HAYES                        	9	GENERAL JOSE MARIA B
+16	BOQUERÓN                                	2	MARISCAL ESTIGARRIBI
+16	BOQUERÓN                                	4	FILADELFIA          
+16	BOQUERÓN                                	5	LOMA PLATA          
+17	ALTO PARAGUAY                           	1	FUERTE OLIMPO       
+17	ALTO PARAGUAY                           	2	PUERTO CASADO       
+17	ALTO PARAGUAY                           	4	BAHIA NEGRA         
+17	ALTO PARAGUAY                           	5	CARMELO PERALTA     
