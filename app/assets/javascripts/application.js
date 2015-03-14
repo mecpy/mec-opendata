@@ -44,6 +44,10 @@
 //= stub scripts/controllers/nivelFormacion.js
 //= stub scripts/services/nivelFormacionDataService.js
 //= stub scripts/controllers/tide-angular-levelPiramid/tide-angular-levelPiramid.js
+//= stub scripts/controllers/formacionCompatibleController.js
+//= stub scripts/controllers/tide-angular-percentile-bar/tide-angular-percentile-bar.js
+//= stub scripts/controllers/tituloCompatibleController.js
+//= stub scripts/directives/tide-angular-bubbles/tide-angular-bubbles.js
 
 /*Funcion que limpia el formulario del Dataset*/
 function resetForm(formId, valor_defecto) {

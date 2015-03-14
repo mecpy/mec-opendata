@@ -42,4 +42,22 @@ class VisualizacionesController < ApplicationController
     end
   end
 
+  def compatibilidad_formacion_educacion_media
+
+    respond_to do |f|
+
+      f.html {render :layout => 'angular'}
+
+    end
+  end
+
+  def materias_educacion_media
+
+    respond_to do |f|
+
+      f.html {render :layout => 'angular'}
+
+    end
+  end
+
 end

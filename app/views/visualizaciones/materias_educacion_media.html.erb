@@ -1,0 +1,88 @@
+<div class="container" ng-controller="tituloCompatibleController as controller">
+
+  <div class="header">
+    <h2>MEC - Materias que se enseñan en Educación Media</h2>
+  </div>
+
+  <div class="row">    
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <h4 class="text-center">Compatibilidad de títulos para enseñar materias en Educación Media</h4>
+      <p>Cada burbuja representa una materia que se enseña en Educación Media en Paraguay y su tamaño representa la cantidad de profesores que la enseña.</p><p> Mientrás más "llena" esté la burbuja, significa que más profesores cuentan con un título compatible con la enseñanza de dicha materia.</p>
+      <span class="text-muted">Al pasar el mouse sobre la respectiva burbuja se puede acceder a información adicional.</span></p>
+    </div>
+  </div>
+
+  <div class="row"> <!-- selectores-->
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+      <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" style="border: 1px solid #e5e5e5;border-radius:10px;width:100%;text-align:right;padding:10px;">
+				<form class="form col-xs-12 col-sm-12 col-md-12 col-lg-12 form-inline" role="form">
+				  <!-- Selector de Opciones -->
+				  <div class="form-group col-sm-6">
+				    <label>Seleccionar</label>
+				    <select class="form-control" id="selector" ng-model="controller.opcionSeleccionada" ng-options="value as value.nombre for value in controller.opciones" ng-change="controller.selectOpcion(controller.opcionSeleccionada)"></select>
+				  </div> <!-- Selector de Opciones -->
+
+				  <!-- Filtro -->
+				  <div class="form-group col-sm-6">
+            <label>Destacar materia</label>
+				    <input type="search" name="" id="input" class="form-control" ng-model="controller.highlightText" value="CAS" required="required" title="" placeholder="nombre de materia a destacar ...">
+				  </div> <!-- Selector de Opciones -->
+				</form>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="row"> <!-- opcion & visualizador-->
+      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="border: 1px solid #e5e5e5;border-radius:10px;text-align:right;padding:10px;margin-right:10px;">
+				<div class="">
+				  <tabset vertical="true" type="pills">
+				    <tab heading="Por departamento" select="controller.SelectClasificador('departamento')"></tab>
+				    <tab heading="Por sector" select="controller.SelectClasificador('sector')"></tab>
+				    <tab heading="Por nivel" select="controller.SelectClasificador('nivel')"></tab>
+				    <tab heading="Por área"  select="controller.SelectClasificador('área')"></tab>
+				  </tabset>
+				</div>
+      </div>
+      <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" style="background: #e5e5e5;border-radius:10px;width:70%;">
+        <p class="text-muted text-center" style="color:#000;">{{controller.data.length}} materias se enseñan en <span ng-hide="controller.opcionSeleccionada.nombre.indexOf('Tod') == 0">{{controller.selectedTab}} {{controller.opcionSeleccionada.nombre}} </span><span ng-show="controller.opcionSeleccionada.nombre.indexOf('Tod') == 0">todo el país</span> </p>
+	      <div td-bubbles td-data="controller.data" td-tooltip-message="controller.tooltipMessage" td-max-size="controller.maxSize" td-min-size="controller.minSize" td-highlight-text="controller.highlightText" td-alpha="controller.alpha" td-color="'#0000CD'"></div>
+
+      </div>
+    </div>
+
+    <div class="row"> <!-- row principal-->
+      <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+      </div>
+    </div><!-- row principal-->
+
+  <div style="color:#000;width:100%;background:#e5e5e5;margin-top:20px;font-size:12px;border-radius:5px;text-align:center;">
+    <p>Este desarrollo es parte de una Asistencia Técnica provista por el Banco Mundial al MEC</p>
+  </div>
+
+</div><!-- container -->
+
+   <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+<%= javascript_include_tag "bower_components/jquery/dist/jquery.js"%>
+<%= javascript_include_tag "bower_components/angular/angular.js"%>
+<%= javascript_include_tag "bower_components/bootstrap/dist/js/bootstrap.js" %>
+<%= javascript_include_tag "bower_components/angular-route/angular-route.js" %>
+<%= javascript_include_tag "bower_components/angular-bootstrap/ui-bootstrap-tpls.js" %>
+<%= javascript_include_tag "bower_components/d3/d3.js" %>
+<%= javascript_include_tag "bower_components/underscore/underscore.js" %>
+<%= javascript_include_tag "bower_components/tide-angular/tide-angular.js" %>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+<%= javascript_include_tag "scripts/app.js" %>
+<%= javascript_include_tag "scripts/controllers/tituloCompatibleController.js" %>
+<%= javascript_include_tag "scripts/services/nivelFormacionDataService.js" %>
+<%= javascript_include_tag "scripts/directives/tide-angular-bubbles/tide-angular-bubbles.js" %>
+ 
+       <!-- endbuild -->

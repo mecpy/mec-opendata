@@ -1,0 +1,53 @@
+<div class="container" ng-controller="formacionCompatibleController as controller">
+
+  <div>
+    <h2>Compatibilidad de  formación para Educación Media</h2>
+  </div>
+
+  <div class="row">    
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <h4 class="text-center">Distribución de profesores por Departamento</h4>
+      <p>En ancho de cada barra representa la cantidad relativa de profesores que tienen una formación compatible o no compatible con la enseñanza en Educación Media (datos del año 2013).
+        <span class="text-muted">Al pasar el mouse sobre el respectivo bloque se puede acceder a la cantidad de profesores.</span>
+      </p>
+      <!--
+      <div td-level-piramid-chart td-data="controller.levelData" td-tooltip-message="controller.tooltipMessage"></div> 
+      -->
+
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background: #e5e5e5;border-radius:10px;width:100%;">
+        <div td-percentile-bar3 td-data="controller.levelData" td-tooltip-message="controller.tooltipMessage" td-id-attribute="'id'" td-indicator-left-message="'Formación no compatible'" td-indicator-rigth-message="'Formación compatible'" td-highlighted-item="'-1'"></div>
+      </div>
+
+    </div>
+
+  </div>
+     
+  <div style="color:#000;width:100%;background:#e5e5e5;margin-top:20px;font-size:12px;border-radius:5px;text-align:center;">
+    <p>Este desarrollo es parte de una Asistencia Técnica provista por el Banco Mundial al MEC</p>
+  </div>
+
+</div><!-- container -->
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+<%= javascript_include_tag "bower_components/jquery/dist/jquery.js"%>
+<%= javascript_include_tag "bower_components/angular/angular.js"%>
+<%= javascript_include_tag "bower_components/bootstrap/dist/js/bootstrap.js" %>
+<%= javascript_include_tag "bower_components/angular-route/angular-route.js" %>
+<%= javascript_include_tag "bower_components/angular-bootstrap/ui-bootstrap-tpls.js" %>
+<%= javascript_include_tag "bower_components/d3/d3.js" %>
+<%= javascript_include_tag "bower_components/underscore/underscore.js" %>
+<%= javascript_include_tag "bower_components/tide-angular/tide-angular.js" %>
+   <!-- endbower -->
+    <!-- endbuild -->
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+<%= javascript_include_tag "scripts/app.js" %>
+<%= javascript_include_tag "scripts/controllers/formacionCompatibleController.js" %>
+<%= javascript_include_tag "scripts/services/nivelFormacionDataService.js" %>
+<%= javascript_include_tag "scripts/controllers/tide-angular-percentile-bar/tide-angular-percentile-bar.js" %>
+        <!-- endbuild -->

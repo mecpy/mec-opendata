@@ -272,7 +272,7 @@ angular.module('tideApp')
         return d.DepartamentoCodigo == DepartamentoCodigo;
       }) );
     } else {
-      d3.tsv("./data/dataMateriaTituloCompatibleDepartamento.txt", function(data) {
+      d3.tsv("dataMateriaTituloCompatibleDepartamento.txt", function(data) {
         if (data) {
           myself.materiasDepartamento = data;
           defer.resolve(_.filter(myself.materiasDepartamento, function(d) {

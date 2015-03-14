@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 
   get 'app/niveles_formaciones_docentes' => 'visualizaciones#niveles_formaciones_docentes', :as => :app_niveles_formaciones_docentes
+  get 'app/compatibilidad_formacion_educacion_media' => 'visualizaciones#compatibilidad_formacion_educacion_media', :as => :app_compatibilidad_formacion_educacion_media
+  get 'app/materias_educacion_media' => 'visualizaciones#materias_educacion_media', :as => :app_materias_educacion_media
 
   post "contactos_guardar" => "data#contactos_guardar", :as => :contactos_guardar
   post "contactos_lista" => "data#contactos_lista", :as => :contactos_lista
