@@ -297,7 +297,7 @@ angular.module('tideApp')
         return d.SectorCodigo == SectorCodigo;
       }) );
     } else {
-      d3.tsv("./data/dataMateriaTituloCompatibleSector.txt", function(data) {
+      d3.tsv("dataMateriaTituloCompatibleSector.txt", function(data) {
         if (data) {
           myself.materiasSector = data;
           defer.resolve(_.filter(myself.materiasSector, function(d) {
@@ -363,11 +363,3 @@ angular.module('tideApp')
   }
 
 }]);
-
-
-
-
-
-
-
-

@@ -1,0 +1,94 @@
+<% if establecimientos.present? %>
+
+  <tr>
+
+    <td colspan="13" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate establecimientos, :params => params %></div></td>
+
+  </tr>
+
+  <tr><td colspan="13">Cantidad de registros encontrados: <%= @establecimientos_todos.size %> de <%= @total_registros %></td></tr>
+
+  <tr>
+
+    <%  
+    parametros_csv = { :format => 'csv' }
+    parametros_csv = parametros_csv.merge(params) 
+    parametros_csv_todos = { :format => 'csv', "form_buscar_establecimientos[anio]" => params[:form_buscar_establecimientos][:anio]}
+  %>
+
+    <% 
+    parametros_xls = { :format => 'xlsx'}
+    parametros_xls = parametros_xls.merge(params) 
+    parametros_xls_todos = { :format => 'xlsx', "form_buscar_establecimientos[anio]" => params[:form_buscar_establecimientos][:anio] }
+  %>
+
+    <%  %>
+
+    <% 
+    parametros_json = { :format => 'json' }
+    parametros_json = parametros_json.merge(params) 
+    parametros_json_todos = { :format => 'json', "form_buscar_establecimientos[anio]" => params[:form_buscar_establecimientos][:anio] }
+  %>
+
+    <% 
+    parametros_pdf = { :format => 'pdf' }
+    parametros_pdf = parametros_pdf.merge(params) 
+    parametros_pdf_todos = { :format => 'pdf', "form_buscar_establecimientos[anio]" => params[:form_buscar_establecimientos][:anio] }
+  %>
+
+    <%= parametros_pdf %>
+
+    <td colspan="13" class="row-descargar">
+
+      <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
+      <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a></br>
+      <span>Descargar Establecimientos Filtrados:</span>
+
+      <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
+
+
+        <%= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_primera_infancia_lista_url(parametros_pdf)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat' %>
+      <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_primera_infancia_lista_url(parametros_xls)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
+      <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_primera_infancia_lista_url(parametros_csv)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
+      <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_primera_infancia_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+      <br /><br />
+<!--
+      <div style="float:left;">Descargar todos los Establecimientos:</div>
+      <div itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload" style="float:left;text-align:center;">
+        <%#= link_to "PDF#{image_star}".html_safe, "https://mega.co.nz/#!84gjFSjT!Tx_gIHhtqFC5lworhkqIxI8nDsrNbfJGS16f27NlQjM", :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
+        <br />
+        <span style="color:silver;">(28,5MB)</span>
+        <meta itemprop="name" content="Establecimientos Escolares 2012">
+        <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año 2012">
+        <meta itemprop="encodingFormat" content="pdf">
+      </div>
+      <div itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload" style="float:left;text-align:center;">
+        <%#= link_to "XLS#{image_star * 2}".html_safe, PARAMETRO[:establecimientos_xlsx] , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url"%>
+        <br />
+        <span style="color:silver;">(1MB)</span>
+        <meta itemprop="name" content="Establecimientos Escolares 2012">
+        <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año 2012">
+        <meta itemprop="encodingFormat" content="xls">
+      </div>
+      <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%#= link_to "CSV#{image_star * 3}".html_safe, PARAMETRO[:establecimientos_csv], :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url"%>
+        <br />
+        <span style="color:silver;">(2MB)</span>
+        <meta itemprop="name" content="Establecimientos Escolares 2012">
+        <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año 2012">
+        <meta itemprop="encodingFormat" content="csv">
+      </div>
+      <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%#= link_to "JSON#{image_star * 3}".html_safe, PARAMETRO[:establecimientos_json] , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url"%>
+        <br />
+        <span style="color:silver;">(5MB)</span>
+        <meta itemprop="name" content="Establecimientos Escolares 2012">
+        <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año 2012">
+        <meta itemprop="encodingFormat" content="json">
+      </div>
+-->
+      <div style="clear:both;"></div>
+    </td>
+
+  </tr>
+<% end %>

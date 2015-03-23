@@ -1,7 +1,7 @@
 <div class="container" ng-controller="tituloCompatibleController as controller">
 
   <div class="header">
-    <h2>MEC - Materias que se enseñan en Educación Media</h2>
+    <h2>Materias que se enseñan en Educación Media</h2>
   </div>
 
   <div class="row">    
@@ -34,6 +34,7 @@
     <br />
 
     <div class="row"> <!-- opcion & visualizador-->
+      
       <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="border: 1px solid #e5e5e5;border-radius:10px;text-align:right;padding:10px;margin-right:10px;">
 				<div class="">
 				  <tabset vertical="true" type="pills">
@@ -44,6 +45,7 @@
 				  </tabset>
 				</div>
       </div>
+
       <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" style="background: #e5e5e5;border-radius:10px;width:70%;">
         <p class="text-muted text-center" style="color:#000;">{{controller.data.length}} materias se enseñan en <span ng-hide="controller.opcionSeleccionada.nombre.indexOf('Tod') == 0">{{controller.selectedTab}} {{controller.opcionSeleccionada.nombre}} </span><span ng-show="controller.opcionSeleccionada.nombre.indexOf('Tod') == 0">todo el país</span> </p>
 	      <div td-bubbles td-data="controller.data" td-tooltip-message="controller.tooltipMessage" td-max-size="controller.maxSize" td-min-size="controller.minSize" td-highlight-text="controller.highlightText" td-alpha="controller.alpha" td-color="'#0000CD'"></div>
@@ -58,6 +60,24 @@
 
   <div style="color:#000;width:100%;background:#e5e5e5;margin-top:20px;font-size:12px;border-radius:5px;text-align:center;">
     <p>Este desarrollo es parte de una Asistencia Técnica provista por el Banco Mundial al MEC</p>
+  </div>
+
+  <div style="color:#000;width:50%;background:#e5e5e5;margin-top:20px;font-size:12px;border-radius:5px;text-align:left;padding:20px;border-color:gray;">
+
+    <h5>Descargar datos utilizados en la visualizaci&oacute;n</h5>
+
+    <p>
+      <%= link_to "dataMateriaTituloCompatibleDepartamento.txt".html_safe, PARAMETRO[:materia_titulo_compatible_departamento] , :target => "_target", :class => 'icon icon-page_white_text_width'%>
+    </p>
+    <p>  
+      <%= link_to "dataMateriaTituloCompatibleSector.txt".html_safe, PARAMETRO[:materia_titulo_compatible_sector] , :target => "_target", :class => 'icon icon-page_white_text_width'%>
+    </p>
+    <p>
+      <%= link_to "dataMateriaTituloCompatibleNivel.txt".html_safe, PARAMETRO[:materia_titulo_compatible_nivel] , :target => "_target", :class => 'icon icon-page_white_text_width'%>
+    </p>
+    <p>
+      <%= link_to "dataMateriaTituloCompatibleArea.txt".html_safe, PARAMETRO[:materia_titulo_compatible_area] , :target => "_target", :class => 'icon icon-page_white_text_width'%>
+    </p>
   </div>
 
 </div><!-- container -->

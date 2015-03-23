@@ -1,0 +1,5 @@
+$("#requerimientos-sinejecucion-lista, #requerimientos-sinejecucion-lista-clone").html("<%= escape_javascript(render :partial => "lista", :locals => { :requerimientos_sinejecucion => @requerimientos_sinejecucion}) %>");
+$("#requerimientos-sinejecucion-footer").html("<%= escape_javascript(render :partial => "footer", :locals => { :requerimientos_sinejecucion => @requerimientos_sinejecucion}) %>");
+
+MDTable.create('#requerimientos-sinejecucion-lista', [0,1,2,3,4,5,6,7,8,9]);
+MDTable.create('#requerimientos-sinejecucion-lista-clone', [0,1,2,3,4,5,6,7,8,9]);

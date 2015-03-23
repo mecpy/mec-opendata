@@ -42,13 +42,24 @@ development:
   matriculaciones_departamentos_distritos_csv: /data/matriculaciones_departamentos_distritos_2012.csv
   matriculaciones_departamentos_distritos_json: /data/matriculaciones_departamentos_distritos_2012.json
 
-  ejecucion_fiscal_xlsx: /data/ejecucion_al_31122014.xlsx
+  ejecucion_fiscal_xlsx: /data/ejecucion_al_28022015.xlsx
   
-  viaticos_xls: /data/viaticos_diciembre_2014_.xls
+  viaticos_diciembre_2014: /data/viaticos_diciembre_2014_.xls
+  viaticos_febrero_2015: /data/viaticos_febrero_2015.xls
   
   resumen_anual_remuneraciones_personal_xlsx: /data/resumen_anual_remuneraciones_personal_2014.xlsx
+  directorio_coordinadores_supervisores: /data/coordinadores_y_supervisores_032015.xlsx
 
   subdominio: "http://datos.mec.gov.py/"
+
+  nivel_formacion: /app/dataNivelFormacion.txt
+  materia_titulo_compatible_departamento: /app/dataMateriaTituloCompatibleDepartamento.txt
+  materia_titulo_compatible_sector: /app/dataMateriaTituloCompatibleSector.txt
+  materia_titulo_compatible_nivel: /app/dataMateriaTituloCompatibleNivel.txt
+  materia_titulo_compatible_area: /app/dataMateriaTituloCompatibleArea.txt
+
+  establecimientos_primera_infancia: ["0015134","0010078","0015014","0015029","0014115","0014053","0010001","0014049","0014121","0013016","1501069","1502008","1101002","1101029","1102003","1102028","1102047","1103059","1103063","1104004","1105029","1105028","1106015","1106032","1119010","1107006","1107037","1108007","1108030","1108048","1109031","1109087","1109128","1109026","1109077","1110066","1110013","1110001","1112011","1112023","1113013","1113001","1114031","1114063","1114053","1115010","1115016","1116006","1117013","1118005","1118007","0516007","0509021","0502109","0503001","0510002","0501021","0501073","0602108","0607118","0609013","0601006","0407108","0401033","0401029","0404001","1009006","1006036","1006020","1001011","1007002","1004003","1011044","1010003","1015002","1013004","1301129","1301001","0103093","0101218","0101010","0104029","0104001","0214063","0214015","0213030","0208028","0218021","0201009","0211001","0206002","0730046","0718003","0701033","0701013","0720008","0705003","0703001","0712001","0708007"]
+
 
 production:
 
@@ -95,10 +106,21 @@ production:
   matriculaciones_departamentos_distritos_json: /data/matriculaciones_departamentos_distritos_2012.json
 
 
-  ejecucion_fiscal_xlsx: http://datos.mec.gov.py/data/ejecucion_al_31122014.xlsx
+  ejecucion_fiscal_xlsx: http://datos.mec.gov.py/data/ejecucion_al_28022015.xlsx
   
-  viaticos_xls: http://datos.mec.gov.py/data/viaticos_diciembre_2014_.xls
+  viaticos_diciembre_2014: http://datos.mec.gov.py/data/viaticos_diciembre_2014_.xls
+  viaticos_febrero_2015: http://datos.mec.gov.py/data/viaticos_febrero_2015.xls
   
   resumen_anual_remuneraciones_personal_xlsx: http://datos.mec.gov.py/data/resumen_anual_remuneraciones_personal_2014.xlsx
 
+  directorio_coordinadores_supervisores: http://datos.mec.gov.py/data/coordinadores_y_supervisores_032015.xlsx
+
   subdominio: "http://datos.mec.gov.py/"
+
+  nivel_formacion: http://datos.mec.gov.py/app/dataNivelFormacion.txt
+  materia_titulo_compatible_departamento: http://datos.mec.gov.py/app/dataMateriaTituloCompatibleDepartamento.txt
+  materia_titulo_compatible_sector: http://datos.mec.gov.py/app/dataMateriaTituloCompatibleSector.txt
+  materia_titulo_compatible_nivel: http://datos.mec.gov.py/app/dataMateriaTituloCompatibleNivel.txt
+  materia_titulo_compatible_area: http://datos.mec.gov.py/app/dataMateriaTituloCompatibleArea.txt
+
+  establecimientos_primera_infancia: ["0015134","0010078","0015014","0015029","0014115","0014053","0010001","0014049","0014121","0013016","1501069","1502008","1101002","1101029","1102003","1102028","1102047","1103059","1103063","1104004","1105029","1105028","1106015","1106032","1119010","1107006","1107037","1108007","1108030","1108048","1109031","1109087","1109128","1109026","1109077","1110066","1110013","1110001","1112011","1112023","1113013","1113001","1114031","1114063","1114053","1115010","1115016","1116006","1117013","1118005","1118007","0516007","0509021","0502109","0503001","0510002","0501021","0501073","0602108","0607118","0609013","0601006","0407108","0401033","0401029","0404001","1009006","1006036","1006020","1001011","1007002","1004003","1011044","1010003","1015002","1013004","1301129","1301001","0103093","0101218","0101010","0104029","0104001","0214063","0214015","0213030","0208028","0218021","0201009","0211001","0206002","0730046","0718003","0701033","0701013","0720008","0705003","0703001","0712001","0708007"]

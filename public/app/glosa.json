@@ -26,7 +26,7 @@
         "desc": "Incluye a todos los profesores que tienen formación tecnica (no incluye aquellos que además tengan formación docente o universitaria)"
     },
 
-    "militarNotecnicaNoUniversitariaNoDocente": {
+    "militarNoTecnicaNoUniversitariaNoDocente": {
         "name": "Formación Militar/Policial",
         "desc": "Incluye a todos los profesores que tienen formación militar/policial (no incluye aquellos que además tengan formación técnica, docente o universitaria)"
     },

@@ -1,0 +1,7 @@
+<div>
+  <%= link_to ('<i class="icon-py-datos"></i> Ver Datos').html_safe, mec_custom_url(data_requerimientos_sinejecucion_url), :id => "tab-datos", :class => "pull-right btn-lg hidden-xs", :title => "Ir al Conjunto de Datos" %>
+  <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
+  <h1 id="tab-titulo">FONACIDE - ESTABLECIMIENTOS SIN DATOS EN EL MEC DE LA EJECUCI&Oacute;N DE OBRAS</h1>
+</div>
+<br>
+<%=  render :partial => "helpers/diccionario", :locals => { :diccionario => @diccionario_requerimientos_sinejecucion, :nombre => "FONACIDE - ESTABLECIMIENTOS SIN DATOS EN EL MEC DE LA EJECUCI&Oacute;N DE OBRAS".html_safe } %>

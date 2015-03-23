@@ -635,8 +635,6 @@
   </li>
 
   <!--NUEVO CONJUNTO DE DATOS-->
-
-
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">25</span>
     <div class="celda col-sm-3">
@@ -671,7 +669,7 @@
 
       <div class="acciones">
 
-        <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar (41,8KB)</span>').html_safe, PARAMETRO[:ejecucion_fiscal_xlsx], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url" %>
+        <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar (40,8KB)</span>').html_safe, PARAMETRO[:ejecucion_fiscal_xlsx], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url" %>
 
         <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
           <i class="icon-py-etiqueta"></i> 
@@ -691,8 +689,6 @@
 
 
   <!--NUEVO CONJUNTO DE DATOS-->
-
-
   <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
     <span class="celda col-sm-1 text-right text-muted contador">27</span>
     <div class="celda col-sm-3">
@@ -700,7 +696,8 @@
 
       <div class="acciones">
 
-        <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar (232,5KB)</span>').html_safe, PARAMETRO[:viaticos_xls], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url" %>
+        <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar diciembre 2014 (232,5KB)</span>').html_safe, PARAMETRO[:viaticos_diciembre_2014], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url" %>
+        <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar febrero 2015 (189KB)</span>').html_safe, PARAMETRO[:viaticos_febrero_2015], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url" %>
 
         <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
           <i class="icon-py-etiqueta"></i> 
@@ -717,7 +714,6 @@
       </p>
     </div>
   </li>
-
   <!--NUEVO CONJUNTO DE DATOS-->
 
 
@@ -745,5 +741,126 @@
       </p>
     </div>
   </li>
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">29</span>
+    <div class="celda col-sm-3">
+      <span itemprop="name">PROYECTO DE PRIMERA INFANCIA - FONACIDE</span><br>
+
+      <div class="acciones">
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_primera_infancia_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_primera_infancia_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene los datos de los establecimientos escolares del MEC que están incluidos en el Proyecto de Atención Educativa Oportuna, para el Desarrollo Integral a niños y niñas de 3 y 4 años en Asunción y 10 departamentos geográficos del país. El proyecto es financiado por el Fondo Nacional de Inversión Pública y Desarrollo (FONACIDE) a través del Fondo para la Excelencia de la Educación y la Investigación. Dentro de este grupo se incluyen a 16 poblaciones indígenas, será la primera experiencia de jardín infantil en poblaciones indígenas.</p>
+    </div>
+  </li>
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">30</span>
+    <div class="celda col-sm-3">
+      <span itemprop="name">NIVEL DE FORMACI&Oacute;N DE DOCENTES</span><br>
+
+      <div class="acciones">
+
+        <%= link_to ('<i class="fa fa-file-text-o"></i><span class="hidden-xs"> Descargar (32,9KB)</span>').html_safe, PARAMETRO[:nivel_formacion], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene datos del nivel de formaci&oacute;n de docentes que enseñan materias en Educación Media (datos del año 2013).</p>
+    </div>
+  </li>
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">31</span>
+    <div class="celda col-sm-3">
+      <span itemprop="name">COMPATIBILIDAD DE LA FORMACI&Oacute;N DE DOCENTES PARA ENSE&Ntilde;AR MATERIAS DE EDUCACI&Oacute;N MEDIA</span><br>
+
+      <div class="acciones">
+
+        <%= link_to ('<i class="fa fa-file-text-o"></i><span class="hidden-xs"> Por departamento (150,6KB)</span>').html_safe, PARAMETRO[:materia_titulo_compatible_departamento], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url" %>
+        <%= link_to ('<i class="fa fa-file-text-o"></i><span class="hidden-xs"> Por sector (62,4KB)</span>').html_safe, PARAMETRO[:materia_titulo_compatible_sector], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url" %>
+        <%= link_to ('<i class="fa fa-file-text-o"></i><span class="hidden-xs"> Por nivel (53,5KB)</span>').html_safe, PARAMETRO[:materia_titulo_compatible_nivel], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url" %>
+        <%= link_to ('<i class="fa fa-file-text-o"></i><span class="hidden-xs"> Por &aacute;rea (52,6KB)</span>').html_safe, PARAMETRO[:materia_titulo_compatible_area], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene datos de la compatibilidad entre las formaciones de docentes y las materias que se ense&ntilde;an en Educación Media.</p>
+    </div>
+  </li>
+
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">32</span>
+    <div class="celda col-sm-3">
+      <span itemprop="name">DIRECTORIO DE COORDINACIONES DEPARTAMENTALES DE SUPERVISIÓN Y SUPERVISIONES EDUCATIVAS:  ADMINISTRATIVAS Y PEDAGÓGICAS</span><br>
+
+      <div class="acciones">
+
+        <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar (72,1KB)</span>').html_safe, PARAMETRO[:directorio_coordinadores_supervisores], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene información sobre la ubicación geográfica de las Coordinaciones Departamentales de Supervisión  así como de las Supervisiones Educativas (Administrativas y Pedagógicas) tales como el departamento, distrito, barrio/localidad y dirección  donde se encuentran asentados. Además de los personas responsables de dichas dependencias y la cantidad de instituciones a su cargo.</p>
+    </div>
+  </li>
+
+  <!--NUEVO CONJUNTO DE DATOS-->
+  <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+    <span class="celda col-sm-1 text-right text-muted contador">33</span>
+    <div class="celda col-sm-3">
+      <span itemprop="name">FONACIDE - ESTABLECIMIENTOS SIN DATOS EN EL MEC DE LA EJECUCI&Oacute;N DE OBRAS</span><br>
+
+      <div class="acciones">
+
+        <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_requerimientos_sinejecucion_url), :title => "Ir al diccionario", :itemprop => "url" %>
+        <%= link_to ('<i class="icon-py-datos"></i><span class="hidden-xs"> Ver Datos</span>').html_safe, mec_custom_url(data_requerimientos_sinejecucion_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+
+        <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+          <i class="icon-py-etiqueta"></i> 
+          <span class="visible-xs-inline" data-ver="true">Ver</span>
+          <span class="hidden" data-ocultar="true">Ocultar</span>
+          descripción
+        </a>
+
+      </div>
+    </div>
+    <div class="celda col-sm-8 hidden-xs" itemprop="description">
+      <p>Contiene los datos de los Establecimientos Educativos priorizados a través de la Microplanificación que debieran de recibir intervención en Infraestructura en el marco del Fonacide, y de los cuales el Ministerio de Educación y Cultura no tiene datos de la ejecución de la obras.</p>
+    </div>
+  </li>
+
 
 </ul>

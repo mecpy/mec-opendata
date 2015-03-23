@@ -127,10 +127,10 @@ angular.module('tideApp')
         var percentage = d3.format(".1%")
 
         var msg = "";
-        msg += "<strong class='text-muted'>"+d["MateriaDescripcion"]+"</strong>";
-        msg += "<p class='text-info'>"+number(d["totalProfesores"])+" profesores enseñan la materia.</p>";
-        msg += "<p class='text-muted'>"+number(d["conTituloYFormacionCompatible"])+" ("+percentage(d["conTituloYFormacionCompatible"]/d["totalProfesores"])+") tienen título compatible con la materia y formación compatible con enseñanza en Ed. Media</p>";
-        msg += "<p class='text-muted'>"+number(d["conTituloCompatible"])+" ("+percentage(d["conTituloCompatible"]/d["totalProfesores"])+") tienen título compatible con la materia pero su formación puede no ser comptaible con enseñanza en Ed. Media</p>";
+        msg += "<strong class='text-muted' style='color:#000;padding:10px;font-weight:bold;'>"+d["MateriaDescripcion"]+"</strong>";
+        msg += "<p class='text-info' style='color:#000;padding:10px 0 0 10px;'>"+number(d["totalProfesores"])+" profesores enseñan la materia.</p>";
+        msg += "<p class='text-muted' style='color:#000;padding-left:10px;'>"+number(d["conTituloYFormacionCompatible"])+" ("+percentage(d["conTituloYFormacionCompatible"]/d["totalProfesores"])+") tienen título compatible con la materia y formación compatible con enseñanza en Ed. Media</p>";
+        //msg += "<p class='text-muted'>"+number(d["conTituloCompatible"])+" ("+percentage(d["conTituloCompatible"]/d["totalProfesores"])+") tienen título compatible con la materia pero su formación puede no ser comptaible con enseñanza en Ed. Media</p>";
 
         return msg;
     }

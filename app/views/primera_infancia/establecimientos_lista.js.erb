@@ -1,0 +1,19 @@
+$("#establecimientos-lista").html("<%= escape_javascript(render :partial => "establecimientos_lista", :locals => { :establecimientos => @establecimientos}) %>");
+<% if @establecimientos.present? %>
+
+  <% parametros = "?form_buscar_establecimientos[anio]=#{params[:form_buscar_establecimientos][:anio]}"
+     parametros += "&form_buscar_establecimientos_codigo_establecimiento=#{params[:form_buscar_establecimientos_codigo_establecimiento]}"
+     parametros += "&form_buscar_establecimientos_nombre_departamento=#{params[:form_buscar_establecimientos_nombre_departamento]}"
+     parametros += "&form_buscar_establecimientos_nombre_distrito=#{params[:form_buscar_establecimientos_nombre_distrito]}"
+     parametros += "&form_buscar_establecimientos_nombre_zona=#{params[:form_buscar_establecimientos_nombre_zona]}"
+     parametros += "&form_buscar_establecimientos_nombre_barrio_localidad=#{params[:form_buscar_establecimientos_nombre_barrio_localidad]}"
+     parametros += "&form_buscar_establecimientos_direccion=#{params[:form_buscar_establecimientos_direccion]}" 
+     parametros += "&form_buscar_establecimientos[programa]=#{params[:form_buscar_establecimientos][:programa]}" 
+     parametros += "&page=#{(params[:page].present? ? params[:page] : 1)}" %>
+  $("#ubicaciones-geograficas").append("<%= escape_javascript(render :partial => "link_to_ubicaciones_geograficas", :locals => {:parametros => parametros } )%>")
+
+<% else %>
+  
+  $("#ubicaciones-geograficas").html('');
+
+<% end %>

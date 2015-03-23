@@ -3,6 +3,20 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+  post "data/requerimientos_sinejecucion_lista" => 'requerimientos_sinejecucion#lista', :as => :data_requerimientos_sinejecucion_lista
+  get "data/requerimientos_sinejecucion_lista" => 'requerimientos_sinejecucion#lista', :as => :report_requerimientos_sinejecucion_lista
+  get 'data/requerimientos_sinejecucion' => 'requerimientos_sinejecucion#index', :as => :data_requerimientos_sinejecucion
+  get 'def/requerimientos_sinejecucion' => 'requerimientos_sinejecucion#diccionario', :as => :def_requerimientos_sinejecucion
+
+  get "data/primera_infancia_instituciones" => 'primera_infancia#primera_infancia_instituciones', :as => :data_primera_infancia_instituciones
+  post "data/primera_infancia_ubicaciones_geograficas" => 'primera_infancia#primera_infancia_ubicaciones_geograficas', :as => :data_primera_infancia_ubicaciones_geograficas
+  post "data/primera_infancia_ubicacion_geografica" => 'primera_infancia#primera_infancia_ubicacion_geografica', :as => :data_primera_infancia_ubicacion_geografica  
+  get "data/primera_infancia_lista" => 'primera_infancia#lista', :as => :report_primera_infancia_lista
+  post "data/primera_infancia_lista" => 'primera_infancia#lista', :as => :data_primera_infancia_lista
+  get 'data/primera_infancia' => 'primera_infancia#index', :as => :data_primera_infancia
+  get 'def/primera_infancia' => 'primera_infancia#diccionario', :as => :def_primera_infancia
+  get "id/primera_infancia/:codigo_primera_infancia" => "primera_infancia#primera_infancia_doc", :as => :id_primera_infancia
+  get "doc/primera_infancia/:codigo_primera_infancia" => "primera_infancia#primera_infancia_doc", :as => :doc_eprimera_infancia
 
   get 'app/niveles_formaciones_docentes' => 'visualizaciones#niveles_formaciones_docentes', :as => :app_niveles_formaciones_docentes
   get 'app/compatibilidad_formacion_educacion_media' => 'visualizaciones#compatibilidad_formacion_educacion_media', :as => :app_compatibilidad_formacion_educacion_media
