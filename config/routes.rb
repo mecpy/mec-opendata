@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   
   get 'app/mapa_establecimientos' => 'mapa_establecimientos#index', :as => :report_mapa_establecimientos
   post 'app/mapa_establecimientos' => 'mapa_establecimientos#index', :as => :app_mapa_establecimientos
+  get 'app/mapa_establecimientos/datos' => 'mapa_establecimientos#datos', :as => :app_mapa_establecimientos_datos
+  #url local de ruby(puede ser ajax o no) #url para acceso externo con ajax #alias
 
   post 'app/mapa_matriculaciones' => 'mapa_matriculaciones#index', :as => :app_mapa_matriculaciones2
   get 'app/mapa_matriculaciones' => 'mapa_matriculaciones#index', :as => :app_mapa_matriculaciones

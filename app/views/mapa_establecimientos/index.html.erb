@@ -1,3 +1,4 @@
+<!--  
 <div id="slide-panel">
     <div id="menu-content" class="tab-content">
         <div id="menuA" class="tab-pane fade in active">
@@ -38,14 +39,142 @@
         </div>
     </div>
 </div>
+-->
+
+<%= form_tag mec_custom_url(app_mapa_establecimientos_url), :remote => true, :id => "form-mapa-establecimientos" do  %>
+  <form id="for-mapa-establecimientos">
+  Codigo Departamento:<br/>
+  <input type="text" name="codigo_departamento">
+  <br/>
+  Departamento:<br/>
+  <input type="text" name="nombre_departamento">
+  <br/>
+  Codigo Distrito:<br/>
+  <input type="text" name="codigo_distrito">
+  <br/>
+  Distrito:<br/>
+  <input type="text" name="nombre_distrito">
+  <br/>
+  Codigo Barrio/Localidad:<br/>
+  <input type="text" name="codigo_barrio_localidad">
+  <br/>
+  Barrio/Localidad:<br/>
+  <input type="text" name="nombre_barrio_localidad">
+  <br/><br/>
+  <input type="submit" value="Submit">
+  <div id="mapa-establecimientos-lista">
+</form>
+
+<% end %>
+
+<script>
+  $(document).ready(function () {
+    
+    obtenerEstablecimientos();
+    //clusterDepartamento();
+    //clusterDistrito();
+    //clusterBarrioLocalidad();
+  });
+
+  var obtenerEstablecimientos = function(){
+
+    var tipo = {
+      tipo:'1' //establecimientos
+    };
+
+    /*Llamada AJAX para el submit del form de filtros*/
+    $.ajax(
+    {
+        url : 'http://localhost:3000/app/mapa_establecimientos/datos',
+        type: "POST",
+        data : tipo,
+        dataType: 'json',
+        headers: {'X-Requested-With': 'XMLHttpRequest'},
+        success:function(data, textStatus, jqXHR) 
+        {
+            console.log('INDEX');
+            console.log(JSON.parse(data[0].e_geojson));
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            console.log(textStatus);
+        }
+    });
+
+  };
+  
+  var clusterDepartamento = function(){
+    
+    var tipo = {
+      tipo:'00' //cluster departamento
+    };
+
+    $.ajax({
+      url: "http://localhost:3000/app/mapa_establecimientos",
+      type: "GET",
+      dataType: "json",
+      data: tipo,
+      success: function(result) {
+        console.log(result);
+      },
+      error: function(jqXHR, textStatus, errorThrown){
+        console.log(textStatus);
+      }
+    });
+
+  };
+
+  var clusterDistrito = function(){
+    
+    var tipo = {
+      tipo:'0000' //cluster distrito
+    };
+
+    $.ajax({
+      url: "http://localhost:3000/app/mapa_establecimientos",
+      type: "GET",
+      dataType: "json",
+      data: tipo,
+      success: function(result) {
+        console.log(result);
+      },
+      error: function(jqXHR, textStatus, errorThrown){
+        console.log(textStatus);
+      }
+    });
+
+  };
+
+  var clusterBarrioLocalidad = function(){
+    
+    var tipo = {
+      tipo:'000000' //cluster barrio/localidad
+    };
+
+    $.ajax({
+      url: "http://localhost:3000/app/mapa_establecimientos",
+      type: "GET",
+      dataType: "json",
+      data: tipo,
+      success: function(result) {
+        console.log(result);
+      },
+      error: function(jqXHR, textStatus, errorThrown){
+        console.log(textStatus);
+      }
+    });
+
+  };
+
+</script>
 
 <script>
 
-  $(document).ready(function () {
+  /*$(document).ready(function () {
       var map = draw_map();
       draw_sidetag(map);
       add_filter_listeners(map);
-  });
+  });*/
 
   function draw_map() {
       startLoading();

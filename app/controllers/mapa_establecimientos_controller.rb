@@ -30,7 +30,10 @@ MA 02111-1301, USA.
 
 
 class MapaEstablecimientosController < ApplicationController
-  before_filter :set_headers
+  
+  before_action :set_headers
+
+  skip_before_filter :verify_authenticity_token, :only => [:datos]
 
   def index
     
@@ -42,60 +45,87 @@ class MapaEstablecimientosController < ApplicationController
           render :layout => 'application_mapa_establecimientos'
         end
       }
-      format.json { self.resumen_json }
     end
+
   end
-  
-  
-  
-  def resumen_json
 
-    cond = []
-    args = []
+  def datos
 
-    if params[:anho].present?
+    condicion=[]
+    query=''
+    msg=''
 
-      cond << "anho = ?"
-      args << params[:anho]
+    if params[:tipo].present?
+        
+      if params[:tipo]=='01' # tipo:01 -> centroide de los departamentos
+        
+        condicion = "(COALESCE(nombre_barrio_localidad, '') = '') AND (COALESCE(nombre_distrito, '') = '') AND (NOT (COALESCE(nombre_departamento, '') = ''))"
+        query = "SELECT row_to_json(egeojson) As e_geojson
+                FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features
+                FROM (SELECT 'Feature' As type
+                , ST_AsGeoJSON(vmc.geom)::json As geometry
+                , row_to_json((SELECT l FROM (SELECT vmc.nombre_departamento As nombre_departamento) As l)) As properties
+                FROM v_mapa_centroide As vmc WHERE " + condicion + ") As f) As egeojson"
+      
+      elsif params[:tipo]=='02' # tipo:02 -> centroide de los distritos
+        
+        condicion = "(COALESCE(nombre_barrio_localidad, '') = '') AND (NOT (COALESCE(nombre_distrito, '') = '')) AND (NOT (COALESCE(nombre_departamento, '') = ''))"
+        query = "SELECT row_to_json(egeojson) As e_geojson
+                FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features
+                FROM (SELECT 'Feature' As type
+                , ST_AsGeoJSON(vmc.geom)::json As geometry
+                , row_to_json((SELECT l FROM (SELECT vmc.nombre_departamento As nombre_departamento, vmc.nombre_distrito As nombre_distrito) As l)) As properties
+                FROM v_mapa_centroide As vmc WHERE " + condicion + ") As f) As egeojson"
+      
+      elsif params[:tipo]=='03' # tipo:03 -> centroide de los barrio/localidad
+        
+        condicion = "((NOT COALESCE(nombre_barrio_localidad, '') = '')) AND (NOT (COALESCE(nombre_distrito, '') = '')) AND (NOT (COALESCE(nombre_departamento, '') = ''))"
+        query = "SELECT row_to_json(egeojson) As e_geojson
+                FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features
+                FROM (SELECT 'Feature' As type
+                , ST_AsGeoJSON(vmc.geom)::json As geometry
+                , row_to_json((SELECT l FROM (SELECT vmc.nombre_departamento As nombre_departamento, vmc.nombre_distrito As nombre_distrito,
+                  vmc.nombre_barrio_localidad As nombre_barrio_localidad) As l)) As properties
+                FROM v_mapa_centroide As vmc WHERE " + condicion + ") As f) As egeojson"
+
+      elsif params[:tipo]=='11' # tipo:11 -> establecimientos
+
+        query = "SELECT row_to_json(egeojson) As e_geojson
+                FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features
+                FROM (SELECT 'Feature' As type
+                , ST_AsGeoJSON(ST_SetSRID(ST_MakePoint(round(dms2dd(es.longitud),10), round(dms2dd(es.latitud),10)),0))::json As geometry
+                , row_to_json((SELECT l FROM (SELECT es.anio::text As periodo, es.codigo_establecimiento As codigo_establecimiento, 
+                  es.nombre_departamento As nombre_departamento, es.nombre_distrito As nombre_distrito, es.nombre_barrio_localidad As nombre_barrio_localidad,
+                  es.nombre_zona As nombre_zona, es.proyecto_111 As proyecto111, es.proyecto_822 As proyecto822) As l)) As properties
+                FROM establecimientos As es WHERE es.anio=2014 AND (NOT es.longitud='') AND (NOT es.latitud='') limit 100 ) 
+                As f) As egeojson"
+      
+      elsif params[:tipo]=='12' # tipo:12 -> instituciones
+        
+        if params[:establecimientos].present?
+          #establecimientos = ActiveSupport::JSON.decode(params[:establecimientos])
+          establecimientos=params[:establecimientos]
+          #condicion = "periodo = " +  2014.to_s + "codigo_establecimiento = ANY (" + establecimientos + ")"
+          condicion = "vdi.periodo = " +  2014.to_s + " AND vdi.codigo_departamento = '06'" + " AND vdi.codigo_establecimiento = ANY('" + establecimientos + "')"
+          query = "SELECT DISTINCT ON(vdi.codigo_establecimiento) codigo_establecimiento, vdi.nombre_departamento, vdi.nombre_distrito, vdi.nombre_barrio_localidad,
+                  (SELECT array_to_json(array_agg(row_to_json(t)))
+                  FROM ( 
+                    SELECT di.codigo_institucion, di.nombre_institucion 
+                    FROM v_directorios_instituciones di 
+                    WHERE vdi.codigo_establecimiento = di.codigo_establecimiento
+                    AND vdi.periodo = di.periodo)
+                 As t)
+                As institucion
+                FROM v_directorios_instituciones vdi WHERE " + condicion + " ORDER BY vdi.codigo_establecimiento ASC"
+        else
+          msg='Ha ocurrido un error. Inténtelo más tarde.'
+        end
+      
+      end
+      results = ActiveRecord::Base.connection.execute(query)
+      render :json => results.to_json
 
     end
-    
-    if params[:nivel].present?
-
-      cond << "nivel = ?"
-      args << params[:nivel]
-
-    end
-
-    if params[:subnivel].present?
-
-      cond << "subnivel = ?"
-      args << params[:subnivel]
-
-    end
-
-    if params[:nombre_zona].present?
-
-      cond << "nombre_zona = ?"
-      args << params[:nombre_zona]
-
-    end
-
-    if params[:sector_o_tipo_gestion].present?
-
-      cond << "sector_o_tipo_gestion = ?"
-      args << params[:sector_o_tipo_gestion]
-
-    end
-
-    cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-
-
-    @matriculaciones = cond.size > 0 ? MapaMatriculacion.where(cond).
-      group(:nombre_departamento).sum(:cantidad) :
-      MapaMatriculacion.group(:nombre_departamento).sum(:cantidad)
-    
-    render :json => @matriculaciones.to_json
 
   end
 
