@@ -55,6 +55,8 @@ class MapaEstablecimientosController < ApplicationController
     query=''
     msg=''
 
+    requiere_geojson = [ "01", "02", "03", "11" ]
+
     if params[:tipo_consulta].present?
         
       if params[:tipo_consulta]=='01' # tipo_consulta:01 -> centroide de los departamentos
@@ -97,7 +99,7 @@ class MapaEstablecimientosController < ApplicationController
                 , row_to_json((SELECT l FROM (SELECT es.anio::text As periodo, es.codigo_establecimiento As codigo_establecimiento, 
                   es.nombre_departamento As nombre_departamento, es.nombre_distrito As nombre_distrito, es.nombre_barrio_localidad As nombre_barrio_localidad,
                   es.nombre_zona As nombre_zona, es.proyecto_111 As proyecto111, es.proyecto_822 As proyecto822) As l)) As properties
-                FROM establecimientos As es WHERE es.anio=2014 AND (NOT es.longitud='') AND (NOT es.latitud='') limit 100 ) 
+                FROM establecimientos As es WHERE es.anio=2014 AND (NOT es.longitud='') AND (NOT es.latitud='') ) 
                 As f) As egeojson"
       
       elsif params[:tipo_consulta]=='12' # tipo_consulta:12 -> instituciones
@@ -116,8 +118,13 @@ class MapaEstablecimientosController < ApplicationController
       
       end
 
-      results = ActiveRecord::Base.connection.execute(query)
-      render :json => results.to_json
+        results = ActiveRecord::Base.connection.execute(query)
+        
+        if requiere_geojson.include? params[:tipo_consulta]
+          results = results.values.to_json.gsub!('\\', '')[3..-4]
+        end
+        
+        render :json => results
 
     end
 
