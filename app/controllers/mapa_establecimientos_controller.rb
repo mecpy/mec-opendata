@@ -55,9 +55,9 @@ class MapaEstablecimientosController < ApplicationController
     query=''
     msg=''
 
-    if params[:tipo].present?
+    if params[:tipo_consulta].present?
         
-      if params[:tipo]=='01' # tipo:01 -> centroide de los departamentos
+      if params[:tipo_consulta]=='01' # tipo_consulta:01 -> centroide de los departamentos
         
         condicion = "(COALESCE(nombre_barrio_localidad, '') = '') AND (COALESCE(nombre_distrito, '') = '') AND (NOT (COALESCE(nombre_departamento, '') = ''))"
         query = "SELECT row_to_json(egeojson) As e_geojson
@@ -67,7 +67,7 @@ class MapaEstablecimientosController < ApplicationController
                 , row_to_json((SELECT l FROM (SELECT vmc.nombre_departamento As nombre_departamento) As l)) As properties
                 FROM v_mapa_centroide As vmc WHERE " + condicion + ") As f) As egeojson"
       
-      elsif params[:tipo]=='02' # tipo:02 -> centroide de los distritos
+      elsif params[:tipo_consulta]=='02' # tipo_consulta:02 -> centroide de los distritos
         
         condicion = "(COALESCE(nombre_barrio_localidad, '') = '') AND (NOT (COALESCE(nombre_distrito, '') = '')) AND (NOT (COALESCE(nombre_departamento, '') = ''))"
         query = "SELECT row_to_json(egeojson) As e_geojson
@@ -77,7 +77,7 @@ class MapaEstablecimientosController < ApplicationController
                 , row_to_json((SELECT l FROM (SELECT vmc.nombre_departamento As nombre_departamento, vmc.nombre_distrito As nombre_distrito) As l)) As properties
                 FROM v_mapa_centroide As vmc WHERE " + condicion + ") As f) As egeojson"
       
-      elsif params[:tipo]=='03' # tipo:03 -> centroide de los barrio/localidad
+      elsif params[:tipo_consulta]=='03' # tipo_consulta:03 -> centroide de los barrio/localidad
         
         condicion = "((NOT COALESCE(nombre_barrio_localidad, '') = '')) AND (NOT (COALESCE(nombre_distrito, '') = '')) AND (NOT (COALESCE(nombre_departamento, '') = ''))"
         query = "SELECT row_to_json(egeojson) As e_geojson
@@ -88,7 +88,7 @@ class MapaEstablecimientosController < ApplicationController
                   vmc.nombre_barrio_localidad As nombre_barrio_localidad) As l)) As properties
                 FROM v_mapa_centroide As vmc WHERE " + condicion + ") As f) As egeojson"
 
-      elsif params[:tipo]=='11' # tipo:11 -> establecimientos
+      elsif params[:tipo_consulta]=='11' # tipo_consulta:11 -> establecimientos
 
         query = "SELECT row_to_json(egeojson) As e_geojson
                 FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features
@@ -100,28 +100,22 @@ class MapaEstablecimientosController < ApplicationController
                 FROM establecimientos As es WHERE es.anio=2014 AND (NOT es.longitud='') AND (NOT es.latitud='') limit 100 ) 
                 As f) As egeojson"
       
-      elsif params[:tipo]=='12' # tipo:12 -> instituciones
+      elsif params[:tipo_consulta]=='12' # tipo_consulta:12 -> instituciones
         
         if params[:establecimientos].present?
-          #establecimientos = ActiveSupport::JSON.decode(params[:establecimientos])
+
           establecimientos=params[:establecimientos]
-          #condicion = "periodo = " +  2014.to_s + "codigo_establecimiento = ANY (" + establecimientos + ")"
-          condicion = "vdi.periodo = " +  2014.to_s + " AND vdi.codigo_departamento = '06'" + " AND vdi.codigo_establecimiento = ANY('" + establecimientos + "')"
-          query = "SELECT DISTINCT ON(vdi.codigo_establecimiento) codigo_establecimiento, vdi.nombre_departamento, vdi.nombre_distrito, vdi.nombre_barrio_localidad,
-                  (SELECT array_to_json(array_agg(row_to_json(t)))
-                  FROM ( 
-                    SELECT di.codigo_institucion, di.nombre_institucion 
-                    FROM v_directorios_instituciones di 
-                    WHERE vdi.codigo_establecimiento = di.codigo_establecimiento
-                    AND vdi.periodo = di.periodo)
-                 As t)
-                As institucion
-                FROM v_directorios_instituciones vdi WHERE " + condicion + " ORDER BY vdi.codigo_establecimiento ASC"
+          condicion = "periodo = " +  2014.to_s + " AND codigo_establecimiento = ANY(array" + establecimientos.to_s.gsub("\"", "'") + ")"
+          query = "SELECT vdi.nombre_departamento, vdi.nombre_distrito, vdi.nombre_barrio_localidad,
+                  vdi.codigo_institucion, vdi.nombre_institucion
+                  FROM v_directorios_instituciones vdi
+                  WHERE " + condicion + " ORDER BY nombre_departamento ASC, nombre_distrito ASC, nombre_barrio_localidad ASC"
         else
           msg='Ha ocurrido un error. Inténtelo más tarde.'
         end
       
       end
+
       results = ActiveRecord::Base.connection.execute(query)
       render :json => results.to_json
 
