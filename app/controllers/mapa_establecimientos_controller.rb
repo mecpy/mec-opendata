@@ -95,7 +95,7 @@ class MapaEstablecimientosController < ApplicationController
         query = "SELECT row_to_json(egeojson) As e_geojson
                 FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features
                 FROM (SELECT 'Feature' As type
-                , ST_AsGeoJSON(ST_SetSRID(ST_MakePoint(round(dms2dd(es.longitud),10), round(dms2dd(es.latitud),10)),4326))::json As geometry
+                , ST_AsGeoJSON(es.geom)::json As geometry
                 , row_to_json((SELECT l FROM (SELECT es.anio::text As periodo, es.codigo_establecimiento As codigo_establecimiento, 
                   es.nombre_departamento As nombre_departamento, es.nombre_distrito As nombre_distrito, es.nombre_barrio_localidad As nombre_barrio_localidad,
                   es.nombre_zona As nombre_zona, es.proyecto_111 As proyecto111, es.proyecto_822 As proyecto822) As l)) As properties
@@ -118,13 +118,13 @@ class MapaEstablecimientosController < ApplicationController
       
       end
 
-        results = ActiveRecord::Base.connection.execute(query)
-        
-        if requiere_geojson.include? params[:tipo_consulta]
-          results = results.values.to_json.gsub!('\\', '')[3..-4]
-        end
-        
-        render :json => results
+      results = ActiveRecord::Base.connection.execute(query)
+
+      if requiere_geojson.include? params[:tipo_consulta]
+        results = results.values.to_json.gsub!('\\', '')[3..-4]
+      end
+      
+      render :json => results
 
     end
 
