@@ -121,7 +121,8 @@ class MapaEstablecimientosController < ApplicationController
       results = ActiveRecord::Base.connection.execute(query)
 
       if requiere_geojson.include? params[:tipo_consulta]
-        results = results.values.to_json.gsub!('\\', '')[3..-4]
+        results = results.values.to_json.gsub!('\\', '')[3..-4] #sin topojson
+        #results = convert_to_topojson(results) #con topojson
       end
       
       render :json => results
@@ -130,6 +131,34 @@ class MapaEstablecimientosController < ApplicationController
 
   end
 
+def convert_to_topojson(geojson)
+
+  require 'open3'
+
+  topojson = '';
+  file = Tempfile.new(['input', '.json'])
+  
+  begin
+
+    file.write(geojson)
+    file.close
+
+    cmd = "topojson #{file.path} -p"
+
+    Open3.popen3(cmd) do |stdin, stdout, stderr|
+      stdout.each_line { |line| topojson += line }
+      stdin.close
+      stdout.close
+      stderr.close
+    end
+
+  ensure
+    file.unlink
+    return topojson
+  end
+
+end
+
   def set_headers
     headers['Access-Control-Allow-Origin'] = '*'
     headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
@@ -137,5 +166,4 @@ class MapaEstablecimientosController < ApplicationController
     headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
   end
   
-
 end
