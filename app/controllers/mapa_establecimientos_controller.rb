@@ -117,12 +117,21 @@ class MapaEstablecimientosController < ApplicationController
         end
       
       end
-
-      results = ActiveRecord::Base.connection.execute(query)
+      #beginning_time = Time.now
+      results = ActiveRecord::Base.connection.execute(query) #572.835837 MILISEGUNDOS
+      #end_time = Time.now
+      #puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
 
       if requiere_geojson.include? params[:tipo_consulta]
-        results = results.values.to_json.gsub!('\\', '')[3..-4] #sin topojson
-        #results = convert_to_topojson(results) #con topojson
+        #beginning_time = Time.now
+        results = results.values.to_json.gsub!('\\', '')[3..-4] #sin topojson 881.889067 MILISEGUNDOS
+        #end_time = Time.now
+        #puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
+
+        #beginning_time = Time.now
+        #results = convert_to_topojson(results) #con topojson 1154.345258 MILISEGUNDOS
+        #end_time = Time.now
+        #puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
       end
       
       render :json => results
