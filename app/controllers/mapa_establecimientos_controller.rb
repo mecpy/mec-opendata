@@ -78,17 +78,16 @@ class MapaEstablecimientosController < ApplicationController
         results = File.read("#{Rails.root}/app/assets/javascripts/geometrias/topojson_establecimientos_2014.json")
 
       elsif params[:tipo_consulta]=='12' # tipo_consulta:12 -> instituciones
-        
-        if params[:establecimientos].present?
 
+        if params[:establecimientos].present? and params[:periodo].present?
           establecimientos=params[:establecimientos]
-          condicion = "periodo = " +  2014.to_s + " AND codigo_establecimiento = ANY(array" + establecimientos.to_s.gsub("\"", "'") + ")"
+          condicion = "vdi.periodo = " +  params[:periodo] + " AND vdi.codigo_establecimiento = ANY(array" + establecimientos.to_s.gsub("\"", "'") + ")"
           query = "SELECT vdi.nombre_departamento, vdi.nombre_distrito, vdi.nombre_barrio_localidad,
-                  vdi.codigo_institucion, vdi.nombre_institucion
+                  vdi.codigo_institucion, vdi.nombre_institucion, vdi.codigo_establecimiento
                   FROM v_directorios_instituciones vdi
                   WHERE " + condicion + " ORDER BY nombre_departamento ASC, nombre_distrito ASC, nombre_barrio_localidad ASC"
         else
-          msg='Ha ocurrido un error. Inténtelo más tarde.'
+          puts 'Parámetros incorrectos'
         end
       
       end

@@ -65,10 +65,12 @@ class MapaEstablecimientosActualizacionesController < ApplicationController
     nombre_archivo = "topojson_barrio_localidad.json"
     estado << consulta(query, nombre_archivo)
 
+    log = Time.now
+    log = log.inspect
     if estado.include?(false)
-      respuesta = "Error"
+      respuesta = "[ #{log.inspect} ] Error!!! Ha ocurrido un imprevisto en la actualización de las geometrías. Por favor, realice manualmente el proceso."
     else
-      respuesta = "Actualizacion"
+      respuesta = "[ #{log.inspect} ] Success!! Actualización correcta de las geometrías."
     end
 
     render :json => respuesta
@@ -127,4 +129,4 @@ end
 
 #Crear la carpeta geometrias en mec-opendata/app/assets/javascripts
 #curl -X POST http://localhost:3000/app/mapa_establecimientos_actualizaciones
-#curl -X POST http://localhost:3000/app/mapa_establecimientos_actualizaciones -u "mecpy:mecpy2015"
+#curl -X POST http://localhost:3000/app/mapa_establecimientos_actualizaciones -u "mecpy:mecpy2015" > /tmp/log/crontab.log
