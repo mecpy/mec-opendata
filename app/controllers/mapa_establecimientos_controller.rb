@@ -50,58 +50,33 @@ class MapaEstablecimientosController < ApplicationController
   end
 
   def datos
+    
+    beginning_time = Time.now
 
     condicion=[]
     query=''
     msg=''
 
-    requiere_geojson = [ "01", "02", "03", "11" ]
+    requiere_consulta = [ "12" ]
 
     if params[:tipo_consulta].present?
         
       if params[:tipo_consulta]=='01' # tipo_consulta:01 -> centroide de los departamentos
         
-        condicion = "(COALESCE(nombre_barrio_localidad, '') = '') AND (COALESCE(nombre_distrito, '') = '') AND (NOT (COALESCE(nombre_departamento, '') = ''))"
-        query = "SELECT row_to_json(egeojson) As e_geojson
-                FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features
-                FROM (SELECT 'Feature' As type
-                , ST_AsGeoJSON(vmc.geom)::json As geometry
-                , row_to_json((SELECT l FROM (SELECT vmc.nombre_departamento As nombre_departamento) As l)) As properties
-                FROM v_mapa_centroide As vmc WHERE " + condicion + ") As f) As egeojson"
+        results = File.read("#{Rails.root}/app/assets/javascripts/geometrias/topojson_departamentos.json")
       
       elsif params[:tipo_consulta]=='02' # tipo_consulta:02 -> centroide de los distritos
         
-        condicion = "(COALESCE(nombre_barrio_localidad, '') = '') AND (NOT (COALESCE(nombre_distrito, '') = '')) AND (NOT (COALESCE(nombre_departamento, '') = ''))"
-        query = "SELECT row_to_json(egeojson) As e_geojson
-                FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features
-                FROM (SELECT 'Feature' As type
-                , ST_AsGeoJSON(vmc.geom)::json As geometry
-                , row_to_json((SELECT l FROM (SELECT vmc.nombre_departamento As nombre_departamento, vmc.nombre_distrito As nombre_distrito) As l)) As properties
-                FROM v_mapa_centroide As vmc WHERE " + condicion + ") As f) As egeojson"
+        results = File.read("#{Rails.root}/app/assets/javascripts/geometrias/topojson_distritos.json")
       
       elsif params[:tipo_consulta]=='03' # tipo_consulta:03 -> centroide de los barrio/localidad
         
-        condicion = "((NOT COALESCE(nombre_barrio_localidad, '') = '')) AND (NOT (COALESCE(nombre_distrito, '') = '')) AND (NOT (COALESCE(nombre_departamento, '') = ''))"
-        query = "SELECT row_to_json(egeojson) As e_geojson
-                FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features
-                FROM (SELECT 'Feature' As type
-                , ST_AsGeoJSON(vmc.geom)::json As geometry
-                , row_to_json((SELECT l FROM (SELECT vmc.nombre_departamento As nombre_departamento, vmc.nombre_distrito As nombre_distrito,
-                  vmc.nombre_barrio_localidad As nombre_barrio_localidad) As l)) As properties
-                FROM v_mapa_centroide As vmc WHERE " + condicion + ") As f) As egeojson"
+        results = File.read("#{Rails.root}/app/assets/javascripts/geometrias/topojson_barrio_localidad.json")
 
       elsif params[:tipo_consulta]=='11' # tipo_consulta:11 -> establecimientos
 
-        query = "SELECT row_to_json(egeojson) As e_geojson
-                FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features
-                FROM (SELECT 'Feature' As type
-                , ST_AsGeoJSON(es.geom)::json As geometry
-                , row_to_json((SELECT l FROM (SELECT es.anio::text As periodo, es.codigo_establecimiento As codigo_establecimiento, 
-                  es.nombre_departamento As nombre_departamento, es.nombre_distrito As nombre_distrito, es.nombre_barrio_localidad As nombre_barrio_localidad,
-                  es.nombre_zona As nombre_zona, es.proyecto_111 As proyecto111, es.proyecto_822 As proyecto822) As l)) As properties
-                FROM establecimientos As es WHERE es.anio=2014 AND (NOT es.longitud='') AND (NOT es.latitud='') ) 
-                As f) As egeojson"
-      
+        results = File.read("#{Rails.root}/app/assets/javascripts/geometrias/topojson_establecimientos_2014.json")
+
       elsif params[:tipo_consulta]=='12' # tipo_consulta:12 -> instituciones
         
         if params[:establecimientos].present?
@@ -117,56 +92,22 @@ class MapaEstablecimientosController < ApplicationController
         end
       
       end
+
       #beginning_time = Time.now
-      results = ActiveRecord::Base.connection.execute(query) #572.835837 MILISEGUNDOS
       #end_time = Time.now
       #puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
 
-      if requiere_geojson.include? params[:tipo_consulta]
-        #beginning_time = Time.now
-        results = results.values.to_json.gsub!('\\', '')[3..-4] #sin topojson 881.889067 MILISEGUNDOS
-        #end_time = Time.now
-        #puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
-
-        #beginning_time = Time.now
-        #results = convert_to_topojson(results) #con topojson 1154.345258 MILISEGUNDOS
-        #end_time = Time.now
-        #puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
+      if requiere_consulta.include? params[:tipo_consulta]
+        results = ActiveRecord::Base.connection.execute(query)
       end
       
       render :json => results
+      end_time = Time.now
+      puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
 
     end
 
   end
-
-def convert_to_topojson(geojson)
-
-  require 'open3'
-
-  topojson = '';
-  file = Tempfile.new(['input', '.json'])
-  
-  begin
-
-    file.write(geojson)
-    file.close
-
-    cmd = "topojson #{file.path} -p"
-
-    Open3.popen3(cmd) do |stdin, stdout, stderr|
-      stdout.each_line { |line| topojson += line }
-      stdin.close
-      stdout.close
-      stderr.close
-    end
-
-  ensure
-    file.unlink
-    return topojson
-  end
-
-end
 
   def set_headers
     headers['Access-Control-Allow-Origin'] = '*'
