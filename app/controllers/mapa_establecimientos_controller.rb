@@ -57,8 +57,6 @@ class MapaEstablecimientosController < ApplicationController
     query=''
     msg=''
 
-    requiere_consulta = [ "12" ]
-
     if params[:tipo_consulta].present?
         
       if params[:tipo_consulta]=='01' # tipo_consulta:01 -> centroide de los departamentos
@@ -79,26 +77,13 @@ class MapaEstablecimientosController < ApplicationController
 
       elsif params[:tipo_consulta]=='12' # tipo_consulta:12 -> instituciones
 
-        if params[:establecimientos].present? and params[:periodo].present?
-          establecimientos=params[:establecimientos]
-          condicion = "vdi.periodo = " +  params[:periodo] + " AND vdi.codigo_establecimiento = ANY(array" + establecimientos.to_s.gsub("\"", "'") + ")"
-          query = "SELECT vdi.nombre_departamento, vdi.nombre_distrito, vdi.nombre_barrio_localidad,
-                  vdi.codigo_institucion, vdi.nombre_institucion, vdi.codigo_establecimiento
-                  FROM v_directorios_instituciones vdi
-                  WHERE " + condicion + " ORDER BY nombre_departamento ASC, nombre_distrito ASC, nombre_barrio_localidad ASC"
-        else
-          puts 'Parámetros incorrectos'
-        end
+        results = File.read("#{Rails.root}/app/assets/javascripts/geometrias/instituciones_2014.json")
       
       end
 
       #beginning_time = Time.now
       #end_time = Time.now
       #puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
-
-      if requiere_consulta.include? params[:tipo_consulta]
-        results = ActiveRecord::Base.connection.execute(query)
-      end
       
       render :json => results
       end_time = Time.now

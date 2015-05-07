@@ -25,10 +25,23 @@ class MapaEstablecimientosActualizacionesController < ApplicationController
                   , row_to_json((SELECT l FROM (SELECT es.anio::text As periodo, es.codigo_establecimiento As codigo_establecimiento, 
                     es.nombre_departamento As nombre_departamento, es.nombre_distrito As nombre_distrito, es.nombre_barrio_localidad As nombre_barrio_localidad,
                     es.nombre_zona As nombre_zona, es.proyecto_111 As proyecto111, es.proyecto_822 As proyecto822) As l)) As properties
-                  FROM establecimientos As es WHERE es.anio=#{p} AND (NOT es.longitud='') AND (NOT es.latitud='') ) 
+                  FROM establecimientos As es WHERE es.anio=#{p} AND (NOT es.longitud='') AND (NOT es.latitud='') 
+                  ORDER BY es.nombre_departamento ASC, es.nombre_distrito ASC, es.nombre_barrio_localidad ASC ) 
                   As f) As egeojson"
       nombre_archivo = "topojson_establecimientos_#{p}.json"
-      estado << consulta(query, nombre_archivo)
+      estado << consulta(query, 1,  nombre_archivo)
+    end
+
+    #Instituciones
+    periodos = [2014, 2012]
+    for p in periodos
+      query = "SELECT vdi.nombre_departamento, vdi.nombre_distrito, vdi.nombre_barrio_localidad,
+              vdi.codigo_institucion, vdi.nombre_institucion, vdi.codigo_establecimiento
+              FROM v_directorios_instituciones vdi JOIN establecimientos es 
+              ON(vdi.periodo=es.anio AND vdi.codigo_establecimiento=es.codigo_establecimiento)
+              WHERE vdi.periodo=2014 AND (NOT es.longitud='') AND (NOT es.latitud='') 
+              ORDER BY vdi.nombre_departamento ASC, vdi.nombre_distrito ASC, vdi.nombre_barrio_localidad ASC"
+      estado << consulta(query, 2, nombre_archivo)
     end
 
     #Departamentos
@@ -40,7 +53,7 @@ class MapaEstablecimientosActualizacionesController < ApplicationController
             , row_to_json((SELECT l FROM (SELECT vmc.nombre_departamento As nombre_departamento) As l)) As properties
             FROM v_mapa_centroide As vmc WHERE " + condicion + ") As f) As egeojson"
     nombre_archivo = "topojson_departamentos.json"
-    estado << consulta(query, nombre_archivo)
+    estado << consulta(query, 1, nombre_archivo)
 
     #Distritos
     condicion = "(COALESCE(nombre_barrio_localidad, '') = '') AND (NOT (COALESCE(nombre_distrito, '') = '')) AND (NOT (COALESCE(nombre_departamento, '') = ''))"
@@ -51,7 +64,7 @@ class MapaEstablecimientosActualizacionesController < ApplicationController
             , row_to_json((SELECT l FROM (SELECT vmc.nombre_departamento As nombre_departamento, vmc.nombre_distrito As nombre_distrito) As l)) As properties
             FROM v_mapa_centroide As vmc WHERE " + condicion + ") As f) As egeojson"
     nombre_archivo = "topojson_distritos.json"
-    estado << consulta(query, nombre_archivo)
+    estado << consulta(query, 1, nombre_archivo)
 
     #Barrio/Localidades
     condicion = "((NOT COALESCE(nombre_barrio_localidad, '') = '')) AND (NOT (COALESCE(nombre_distrito, '') = '')) AND (NOT (COALESCE(nombre_departamento, '') = ''))"
@@ -63,7 +76,7 @@ class MapaEstablecimientosActualizacionesController < ApplicationController
               vmc.nombre_barrio_localidad As nombre_barrio_localidad) As l)) As properties
             FROM v_mapa_centroide As vmc WHERE " + condicion + ") As f) As egeojson"
     nombre_archivo = "topojson_barrio_localidad.json"
-    estado << consulta(query, nombre_archivo)
+    estado << consulta(query, 1, nombre_archivo)
 
     log = Time.now
     log = log.inspect
@@ -77,14 +90,21 @@ class MapaEstablecimientosActualizacionesController < ApplicationController
 
   end
 
-  def consulta(query, nombre_archivo)
+  def consulta(query, tipo_query, nombre_archivo)
     
     estado = false
 
     begin
       results = ActiveRecord::Base.connection.execute(query)
-      results = results.values.to_json.gsub!('\\', '')[3..-4]
-      estado = convert_to_topojson(results, nombre_archivo)
+      if tipo_query == 1
+        results = results.values.to_json.gsub!('\\', '')[3..-4]
+        estado = convert_to_topojson(results, nombre_archivo)
+      elsif tipo_query == 2
+        file = File.open("#{Rails.root}/app/assets/javascripts/geometrias/#{nombre_archivo}", "w")
+        file.write(results.to_json)
+        file.close unless file == nil
+        estado = true
+      end
     rescue Exception => e
       estado = false
       puts e.message  
