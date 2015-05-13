@@ -78,6 +78,51 @@ class MapaEstablecimientosController < ApplicationController
       elsif params[:tipo_consulta]=='12' # tipo_consulta:12 -> instituciones
 
         results = File.read("#{Rails.root}/app/assets/javascripts/geometrias/instituciones_2014.json")
+
+      elsif params[:tipo_consulta]=='13'
+
+        codigo_establecimiento = params[:establecimiento]
+        
+        instituciones = VDirectorioInstitucion.
+          select("periodo, codigo_institucion, nombre_institucion").
+          where(codigo_establecimiento: codigo_establecimiento).
+          order("codigo_institucion desc, periodo asc")
+
+        ci = ''
+        results = Array.new()
+        institucion = Object.new()
+        contador = 0
+
+        instituciones.each do |i|
+
+          cantidad_matriculados = cantidad_total_matriculados_por_anio(codigo_establecimiento, i.codigo_institucion, i.periodo)
+          if cantidad_matriculados == 0
+            cantidad_matriculados = "--"
+          end
+
+          periodo_matriculacion = { "#{i.periodo}" => cantidad_matriculados.to_s }
+
+          if ci == i.codigo_institucion
+            institucion['cantidad_matriculados'] << periodo_matriculacion
+          else
+            if ci != ''
+              contador = contador + 1
+            end
+            ci = i.codigo_institucion
+            institucion = Object.new()
+            institucion = { "codigo_institucion" => i.codigo_institucion, "nombre_institucion" => i.nombre_institucion, "cantidad_matriculados" => [] }
+            institucion['cantidad_matriculados'] << periodo_matriculacion
+            results[contador] = institucion
+          end
+
+        end
+
+        #results = Array.new
+        #for i in instituciones
+        #  results << {i.periodo, i.codigo_institucion, i.nombre_institucion}
+        #end
+        #query = ""
+        #results = ActiveRecord::Base.connection.execute(query)
       
       end
 
@@ -90,6 +135,19 @@ class MapaEstablecimientosController < ApplicationController
       puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
 
     end
+
+  end
+
+  def cantidad_total_matriculados_por_anio(codigo_establecimiento, codigo_institucion, anio)
+
+    total_eeb = MatriculacionEducacionEscolarBasica.filtrar_por_anio(anio).filtrar_por_codigo_institucion_and_codigo_establecimiento(codigo_institucion, codigo_establecimiento).sum("total_matriculados")
+    total_ei = MatriculacionEducacionInclusiva.filtrar_por_anio(anio).filtrar_por_codigo_institucion_and_codigo_establecimiento(codigo_institucion, codigo_establecimiento).sum("matricula_inicial_especial+matricula_primer_y_segundo_ciclo_especial+matricula_tercer_ciclo_especial+matricula_programas_especiales")
+    total_ep = MatriculacionEducacionPermanente.filtrar_por_anio(anio).filtrar_por_codigo_institucion_and_codigo_establecimiento(codigo_institucion, codigo_establecimiento).sum("matricula_ebbja+matricula_fpi+matricula_emapja+matricula_emdja+matricula_fp")
+    total_es = MatriculacionEducacionSuperior.filtrar_por_anio(anio).filtrar_por_codigo_institucion_and_codigo_establecimiento(codigo_institucion, codigo_establecimiento).sum("matricula_ets+matricula_fed+matricula_fdes+matricula_pd")
+    total_i = MatriculacionInicial.filtrar_por_anio(anio).filtrar_por_codigo_institucion_and_codigo_establecimiento(codigo_institucion, codigo_establecimiento).sum("total_matriculados")
+    total_em = MatriculacionEducacionMedia.filtrar_por_anio(anio).filtrar_por_codigo_institucion_and_codigo_establecimiento(codigo_institucion, codigo_establecimiento).sum("matricula_cientifico+matricula_tecnico+matricula_media_abierta+matricula_formacion_profesional_media")
+
+    (total_eeb.to_i + total_ei.to_i + total_ep.to_i + total_es.to_i + total_i.to_i + total_em.to_i)
 
   end
 
