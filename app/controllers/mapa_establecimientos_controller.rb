@@ -73,7 +73,10 @@ class MapaEstablecimientosController < ApplicationController
 
       elsif params[:tipo_consulta]=='11' # tipo_consulta:11 -> establecimientos
 
-        results = File.read("#{Rails.root}/app/assets/javascripts/geometrias/topojson_establecimientos_2014.json")
+        if params[:periodo].present?
+          periodo = params[:periodo]
+          results = File.read("#{Rails.root}/app/assets/javascripts/geometrias/topojson_establecimientos_#{periodo}.json")
+        end
 
       elsif params[:tipo_consulta]=='12' # tipo_consulta:12 -> instituciones
 

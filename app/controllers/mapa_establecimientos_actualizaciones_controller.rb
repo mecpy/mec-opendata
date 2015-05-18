@@ -41,6 +41,7 @@ class MapaEstablecimientosActualizacionesController < ApplicationController
               ON(vdi.periodo=es.anio AND vdi.codigo_establecimiento=es.codigo_establecimiento)
               WHERE vdi.periodo=2014 AND (NOT es.longitud='') AND (NOT es.latitud='') 
               ORDER BY vdi.nombre_departamento ASC, vdi.nombre_distrito ASC, vdi.nombre_barrio_localidad ASC"
+      nombre_archivo = "instituciones_#{p}.json"
       estado << consulta(query, 2, nombre_archivo)
     end
 
