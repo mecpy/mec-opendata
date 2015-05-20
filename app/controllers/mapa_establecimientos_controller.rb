@@ -106,15 +106,15 @@ class MapaEstablecimientosController < ApplicationController
           periodo_matriculacion = { "#{i.periodo}" => cantidad_matriculados.to_s }
 
           if ci == i.codigo_institucion
-            institucion['cantidad_matriculados'] << periodo_matriculacion
+            institucion['cantidad_matriculados'][:"#{i.periodo}"] = cantidad_matriculados.to_s
           else
             if ci != ''
               contador = contador + 1
             end
             ci = i.codigo_institucion
             institucion = Object.new()
-            institucion = { "codigo_institucion" => i.codigo_institucion, "nombre_institucion" => i.nombre_institucion, "cantidad_matriculados" => [] }
-            institucion['cantidad_matriculados'] << periodo_matriculacion
+            institucion = { "codigo_institucion" => i.codigo_institucion, "nombre_institucion" => i.nombre_institucion, "cantidad_matriculados" => {} }
+            institucion['cantidad_matriculados'][:"#{i.periodo}"] = cantidad_matriculados.to_s
             results[contador] = institucion
           end
 
