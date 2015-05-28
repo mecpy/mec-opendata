@@ -1,0 +1,3 @@
+[submodule "public/yvy-ui"]
+	path = public/yvy-ui
+	url = https://github.com/CEAMSO/yvy-ui.git
