@@ -39,11 +39,7 @@ class MapaEstablecimientosController < ApplicationController
     
     respond_to do |format|
       format.html {
-        if params[:embedded].present? and params[:embedded] == 'true'
-          render :layout => 'application_embedded'
-        else
-          render :layout => 'application_mapa_establecimientos'
-        end
+        render :layout => 'application_mapa_establecimientos'
       }
     end
 

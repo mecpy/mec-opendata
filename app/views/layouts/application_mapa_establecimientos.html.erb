@@ -1,57 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Datos Abiertos del Ministerio de Educación y Cultura</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <%= favicon_link_tag 'favicon.ico' %>
-        <%= javascript_include_tag "application" %>
-        <%= javascript_include_tag 'https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js' %>
-        <%= javascript_include_tag 'http://maps.google.com/maps/api/js?sensor=true' %>
-        <%= javascript_include_tag 'mapa/geojson.min.js' %>
-        <%= javascript_include_tag 'mapa/leaflet.markercluster.js' %>
-        <%= javascript_include_tag 'mapa/Google.js' %>
-        <%= javascript_include_tag 'mapa/jquery.flexslider-min.js' %>
-        <%= javascript_include_tag 'mapa/select2.min.js' %> <!-- Permite darle formato a los 'select' -->
-        <%= javascript_include_tag 'mapa/sprintf.min.js' %> <!-- sprintf.js is a complete open source JavaScript sprintf implementation for the browser and node.js. -->
-        <%= javascript_include_tag 'mapa/spin.js' %> <!-- Genera el loading mientras se cargan los mapas -->
-        <%= javascript_include_tag "ie10-viewport-bug-workaround" %>
-        <%= javascript_include_tag 'mapa/config.js' %> 
-        <%= javascript_include_tag 'mapa/imgs.js' %>
-        <%= javascript_include_tag 'mapa/viviendas.js' %>
-        <%= stylesheet_link_tag "application", :media => "all" %>
-        <%= stylesheet_link_tag 'slider.css' %>
-        <%= stylesheet_link_tag 'mapa/select2.min.css' %>
-        <%= stylesheet_link_tag 'mapa/MarkerCluster.css' %>
-        <%= stylesheet_link_tag 'mapa/MarkerCluster.Default.css' %>
-        <%= stylesheet_link_tag 'https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' %>
-        <%= stylesheet_link_tag 'mapa/flexslider.css' %>
-        <%= csrf_meta_tags %>
+  <head>
+    <title>Ministerio de Educación y Cultura - Paraguay</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%= favicon_link_tag 'favicon.ico' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
 
-        <!-- http://papaparse.com/ es un potente parseador-->
-        <!-- toastr.js is a Javascript library for non-blocking notifications.-->
-    </head>
-    <body>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+              m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-        <div id="main_container">
+    ga('create', 'UA-52762572-1', 'auto');
+    ga('send', 'pageview');
 
-            <div id="header">
-                <%= render :partial => "layouts/header" %>
-            </div>
+  </script>
 
-            <div class="caja container-fluid" id="main_content">
+  <body>
 
-                <%= yield %>
+    <div id="main_container">
 
-            </div>
+      <div id="header">
+        <%= render :partial => "layouts/header" %>
+      </div>
 
-            <div id="footer">
-                <%= render :partial => "layouts/footer" %>
-            </div>
+      <div id="main_content"> <!-- class="caja container-fluid" ajusta el contenido del html sin que toque los bordes de la pantalla -->
 
-        </div>
+        <%= yield %>
 
-    </body>
+      </div>
+
+    </div>
+
+  </body>
+
 </html>

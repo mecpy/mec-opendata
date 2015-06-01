@@ -42,6 +42,8 @@ Rails.application.routes.draw do
 
   post 'app/mapa_establecimientos_actualizaciones' => 'mapa_establecimientos_actualizaciones#actualizacion', :as => :app_mapa_establecimientos_actualizaciones
 
+  get '/mapa_embedded', to: redirect('mapa_establecimientos/dist/#/mapa')
+
   post 'app/mapa_matriculaciones' => 'mapa_matriculaciones#index', :as => :app_mapa_matriculaciones2
   get 'app/mapa_matriculaciones' => 'mapa_matriculaciones#index', :as => :app_mapa_matriculaciones
 
