@@ -127,7 +127,7 @@ class MapaEstablecimientosActualizacionesController < ApplicationController
       ruta_destino = "#{Rails.root}/app/assets/javascripts/geometrias/#{nombre_archivo}"
       file.write(geojson)
       file.close
-      cmd = "topojson -o #{ruta_destino} #{file.path} -p"
+      cmd = "topojson -o #{ruta_destino} #{file.path} -p -q 1e5"
       Open3.popen3(cmd) do |stdin, stdout, stderr|
         estado = true
         stdin.close
