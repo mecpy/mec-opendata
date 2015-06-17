@@ -41,11 +41,11 @@
 
       <div 
         class="vista-previa col-sm-5 col-sm-offset-1 enlace" 
-        style="background-image:url('<%= image_url("thumbnails/mapa_establecimientos.png") %>')"
-        data-titulo='Mapa de Establecimientos e Instituciones'
-        data-descripcion='En el Conjunto de Datos "Establecimientos Escolares" se encuentra el mapa con las ubicaciones geográficas de los Establecimientos y sus respectivas Instituciones.'
-        data-imagen='<%= image_url('destacados/mapa_establecimientos.png') %>'
-        data-enlace='<%= mec_custom_url(data_establecimientos_url).html_safe %>'
+        style="background-image:url('<%= image_url("thumbnails/mapa_establecimientos2.png") %>')"
+        data-titulo='Mapa de Establecimientos'
+        data-descripcion='Mapa que contiene las ubicaciones geográficas de los Establecimientos Escolares.'
+        data-imagen='<%= image_url('destacados/mapa_establecimientos2.png') %>'
+        data-enlace='<%= mec_custom_url(app_mapa_establecimientos_url).html_safe %>'
         onclick="seleccionar(this);">
       </div>
 
@@ -106,8 +106,8 @@
   var stepsListado = [
     {
       intro: "Bienvenido al Portal de Datos Abiertos del Ministerio de Educaci&oacute;n y Cultura.\
-          </br></br>Este tutorial te guiará paso a paso a través de las diferentes funcionalidades disponibles. \
-          </br></br>Podr&aacute;s navegar fácilmente a través de la guía por medio del mouse, o por medio del teclado haciendo simplemente uso de las teclas:\
+          <br /><br />Este tutorial te guiará paso a paso a través de las diferentes funcionalidades disponibles. \
+          <br /><br />Podr&aacute;s navegar fácilmente a través de la guía por medio del mouse, o por medio del teclado haciendo simplemente uso de las teclas:\
           <p><u><i>Para Navegar:</i></u></p>\
           <ul>\
           <li><%= image_tag('intro_images/right.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %>  IZQ</li>\
@@ -119,7 +119,7 @@
             <li><%= image_tag('intro_images/esc.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %>ESC</li>\
           </ul>\
           Pulsa en siguiente para comenzar.\
-          </br>Y, ¡COMENCEMOS!"
+          <br />Y, ¡COMENCEMOS!"
     },
     {
       element: "#tab-portalmec",
@@ -130,24 +130,31 @@
       element: "#tab-listadatos",
       intro: "Haciendo click sobre la secci&oacute;n <b>Lista de Datos</b>, podr&aacute;s ver el listado de los Conjuntos de Datos que forman \
           parte del portal del MEC con sus respectivos Diccionarios.\
-          </br></br>En un Conjunto de Datos, podr&aacute;s realizar filtros y descargas de la informaci&oacute;m de tu inter&eacute;s.\
-          </br></br>En el Diccionario de Datos, se describen los atributos que contiene un Conjunto de Datos, incluyendo los tipos de datos y las restricciones que se apliquen a cada uno.",
+          <br /><br />En un Conjunto de Datos, podr&aacute;s realizar filtros y descargas de la informaci&oacute;m de tu inter&eacute;s.\
+          <br /><br />En el Diccionario de Datos, se describen los atributos que contiene un Conjunto de Datos, incluyendo los tipos de datos y las restricciones que se apliquen a cada uno.",
       position: "right"
     },
     {
       element: "#tab-visualizaciones",
       intro: "Si te interesan las gr&aacute;ficas y estad&iacute;sticas, puedes visitar el apartado <b>Visualizaciones</b>.\
 <%= image_tag('intro_images/mapa_matriculados.png', class: 'img-responsive').to_s.gsub("\"", "'").html_safe %> \
-        </br></br>Aqu&iacute;, encontrar&aacute;s todo lo relacionado a visualizaciones. \
+        <br /><br />Aqu&iacute;, encontrar&aacute;s todo lo relacionado a visualizaciones. \
   <%= image_tag('intro_images/docentes.png', class: 'img-responsive').to_s.gsub("\"", "'").html_safe %> \
-                            </br></br>¡No dejes de visitarlas!",
+                            <br /><br />¡No dejes de visitarlas!",
+          position: "left"
+        },
+        {
+          element: "#tab-mapaestablecimientos",
+          intro: "Si estas buscando la ubicación de un Establecimiento Escolar, puedes visitar el apartado <b>Mapa de Establecimientos</b>.\
+          <br /><br />En el mapa podr&aacute;s aplicar filtros, calcular la distancia entre dos establecimientos e inclusive obtener la cobertura de cada establecimiento.\
+            <br /><br />¡Debes probarlo!",
           position: "left"
         },
         {
           element: "#tab-participa",
           intro: "Si quieres hacernos alguna consulta, realizar sugerencias de cambios o adiciones dentro del Portal.\
               Por favor, no dudes en hacerlo siguiendo la sección <b>Participa</b>.\
-              </br></br>¡Cont&aacute;ctanos!</br>¡Tu ayuda nos ser&aacute; de mucha utilidad!",
+              <br /><br />¡Cont&aacute;ctanos!<br />¡Tu ayuda nos ser&aacute; de mucha utilidad!",
           position: "left"
         },
         {
@@ -165,14 +172,14 @@
         {
           element: '#tab-redessociales',
           intro: "<b>¡Redes Sociales!</b>\
-              </br></br>En este apartado, podrás ir a nuestros Sitios Oficiales en Facebook, Twitter, y YouTube. ¡Visitanos!\
-              </br></br>Además, tendrás la posibilidad de compartir con tus amigos el contenido que te parezca de mayor interés por medio de Facebook, Twitter y Google+.",
+              <br /><br />En este apartado, podrás ir a nuestros Sitios Oficiales en Facebook, Twitter, y YouTube. ¡Visitanos!\
+              <br /><br />Además, tendrás la posibilidad de compartir con tus amigos el contenido que te parezca de mayor interés por medio de Facebook, Twitter y Google+.",
           position: "left"
         },
         {
           element: '#tab-datosabiertos',
           intro: "Por &uacute;ltimo, ¡Recuerda!\
-              </br>Siempre que quieras volver a la Página Principal, solo debes hacer click sobre la sección <b>Datos Abiertos</b> y, ¡listo!",
+              <br />Siempre que quieras volver a la Página Principal, solo debes hacer click sobre la sección <b>Datos Abiertos</b> y, ¡listo!",
           position: "right"
         }
       ];
