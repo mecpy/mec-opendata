@@ -1,8 +1,13 @@
 <iframe id="myIframe" src="http://localhost:3000/yvy-ui/dist/#/mapa" width="100%" style="overflow-y: hidden;" scrolling="no" seamless="seamless"></iframe>
 
 <script type="text/javascript" language="javascript">
-	var body = $(window).outerHeight(true) - 60;
+	$('html').css('height', '100%');
+	$('body').css('height', '100%');
+	$('#main_container').css('height', '100%');
+	$('#main_content').css('height', '100%');
+	$('#myIframe').css('height', '100%');
+/*	var body = $(window).outerHeight(true) - 55;
 	var header = $('#header').outerHeight(true);
 	var content = body - header;
 	document.getElementById('myIframe').style.height = (content+'px');
-</script>
+*/</script>
