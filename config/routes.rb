@@ -37,6 +37,12 @@ Rails.application.routes.draw do
   
   get 'app/mapa_establecimientos' => 'mapa_establecimientos#index', :as => :report_mapa_establecimientos
   post 'app/mapa_establecimientos' => 'mapa_establecimientos#index', :as => :app_mapa_establecimientos
+  get 'app/mapa_establecimientos/datos' => 'mapa_establecimientos#datos', :as => :app_mapa_establecimientos_datos
+  post 'app/mapa_establecimientos/datos' => 'mapa_establecimientos#datos', :as => :app_data_mapa_establecimientos_datos
+
+  post 'app/mapa_establecimientos_actualizaciones' => 'mapa_establecimientos_actualizaciones#actualizacion', :as => :app_mapa_establecimientos_actualizaciones
+
+  get '/mapa_embedded', to: redirect('mapa_establecimientos/dist/#/mapa')
 
   post 'app/mapa_matriculaciones' => 'mapa_matriculaciones#index', :as => :app_mapa_matriculaciones2
   get 'app/mapa_matriculaciones' => 'mapa_matriculaciones#index', :as => :app_mapa_matriculaciones

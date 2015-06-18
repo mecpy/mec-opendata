@@ -140,7 +140,7 @@
         <h3>
           Niveles de Formaciones de Docentes en Educaci&oacute;n Media
           <small>
-            <span class="text-info">por el MEC</span>
+            <span class="text-danger">por el MEC</span>
           </small>
         </h3>
         <p>     
@@ -157,7 +157,7 @@
         <h3>
           Compatibilidad de Formaci&oacute;n en Educaci&oacute;n Media
           <small>
-            <span class="text-info">por el MEC</span>
+            <span class="text-danger">por el MEC</span>
           </small>
         </h3>
         <p>     
@@ -174,11 +174,29 @@
         <h3>
           Materias que se ense&ntilde;an en Educaci&oacute;n Media
           <small>
-            <span class="text-info">por el MEC</span>
+            <span class="text-danger">por el MEC</span>
           </small>
         </h3>
         <p>     
           <%= link_to "Ir a la visualizaci&oacute;n".html_safe, mec_custom_url(app_materias_educacion_media_url), :class => "btn btn-primary", :role => "button" %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="vista no-cargada col-sm-6 col-md-4">
+    <div class="thumbnail well">
+      <%= link_to image_tag('destacados/mapa_establecimientos2.png', :class => 'img-responsive enlace'), mec_custom_url(app_mapa_establecimientos_url) %>
+      <div class="caption">
+        <h3>
+          Mapa de Establecimientos
+          <small>
+            <span class="text-danger">por el MEC</span>
+          </small>
+        </h3>
+        <p>Al año 2014</p>
+        <p>     
+          <%= link_to "Ir a la visualizaci&oacute;n".html_safe, mec_custom_url(app_mapa_establecimientos_url), :class => "btn btn-primary", :role => "button" %>
         </p>
       </div>
     </div>

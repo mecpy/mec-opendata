@@ -30,72 +30,123 @@ MA 02111-1301, USA.
 
 
 class MapaEstablecimientosController < ApplicationController
-  before_filter :set_headers
+  
+  before_action :set_headers
+
+  skip_before_filter :verify_authenticity_token, :only => [:datos]
 
   def index
     
     respond_to do |format|
       format.html {
-        if params[:embedded].present? and params[:embedded] == 'true'
-          render :layout => 'application_embedded'
-        else
-          render :layout => 'application_mapa_establecimientos'
-        end
+        render :layout => 'application_mapa_establecimientos'
       }
-      format.json { self.resumen_json }
     end
+
   end
-  
-  
-  
-  def resumen_json
 
-    cond = []
-    args = []
-
-    if params[:anho].present?
-
-      cond << "anho = ?"
-      args << params[:anho]
-
-    end
+  def datos
     
-    if params[:nivel].present?
+    beginning_time = Time.now
 
-      cond << "nivel = ?"
-      args << params[:nivel]
+    condicion=[]
+    query=''
+    msg=''
+
+    if params[:tipo_consulta].present?
+        
+      if params[:tipo_consulta]=='01' # tipo_consulta:01 -> centroide de los departamentos
+        
+        results = File.read("#{Rails.root}/app/assets/javascripts/geometrias/topojson_departamentos.json")
+      
+      elsif params[:tipo_consulta]=='02' # tipo_consulta:02 -> centroide de los distritos
+        
+        results = File.read("#{Rails.root}/app/assets/javascripts/geometrias/topojson_distritos.json")
+      
+      elsif params[:tipo_consulta]=='03' # tipo_consulta:03 -> centroide de los barrio/localidad
+        
+        results = File.read("#{Rails.root}/app/assets/javascripts/geometrias/topojson_barrio_localidad.json")
+
+      elsif params[:tipo_consulta]=='11' # tipo_consulta:11 -> establecimientos
+
+        if params[:periodo].present?
+          periodo = params[:periodo]
+          results = File.read("#{Rails.root}/app/assets/javascripts/geometrias/topojson_establecimientos_#{periodo}.json")
+        end
+
+      elsif params[:tipo_consulta]=='12' # tipo_consulta:12 -> instituciones
+
+        results = File.read("#{Rails.root}/app/assets/javascripts/geometrias/instituciones_2014.json")
+
+      elsif params[:tipo_consulta]=='13'
+
+        codigo_establecimiento = params[:establecimiento]
+        
+        instituciones = VDirectorioInstitucion.
+          select("periodo, codigo_institucion, nombre_institucion").
+          where(codigo_establecimiento: codigo_establecimiento).
+          order("codigo_institucion desc, periodo asc")
+
+        ci = ''
+        results = Array.new()
+        institucion = Object.new()
+        contador = 0
+
+        instituciones.each do |i|
+
+          cantidad_matriculados = cantidad_total_matriculados_por_anio(codigo_establecimiento, i.codigo_institucion, i.periodo)
+          if cantidad_matriculados == 0
+            cantidad_matriculados = "--"
+          end
+
+          periodo_matriculacion = { "#{i.periodo}" => cantidad_matriculados.to_s }
+
+          if ci == i.codigo_institucion
+            institucion['cantidad_matriculados'][:"#{i.periodo}"] = cantidad_matriculados.to_s
+          else
+            if ci != ''
+              contador = contador + 1
+            end
+            ci = i.codigo_institucion
+            institucion = Object.new()
+            institucion = { "codigo_institucion" => i.codigo_institucion, "nombre_institucion" => i.nombre_institucion, "cantidad_matriculados" => {} }
+            institucion['cantidad_matriculados'][:"#{i.periodo}"] = cantidad_matriculados.to_s
+            results[contador] = institucion
+          end
+
+        end
+
+        #results = Array.new
+        #for i in instituciones
+        #  results << {i.periodo, i.codigo_institucion, i.nombre_institucion}
+        #end
+        #query = ""
+        #results = ActiveRecord::Base.connection.execute(query)
+      
+      end
+
+      #beginning_time = Time.now
+      #end_time = Time.now
+      #puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
+      
+      render :json => results
+      end_time = Time.now
+      puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
 
     end
 
-    if params[:subnivel].present?
+  end
 
-      cond << "subnivel = ?"
-      args << params[:subnivel]
+  def cantidad_total_matriculados_por_anio(codigo_establecimiento, codigo_institucion, anio)
 
-    end
+    total_eeb = MatriculacionEducacionEscolarBasica.filtrar_por_anio(anio).filtrar_por_codigo_institucion_and_codigo_establecimiento(codigo_institucion, codigo_establecimiento).sum("total_matriculados")
+    total_ei = MatriculacionEducacionInclusiva.filtrar_por_anio(anio).filtrar_por_codigo_institucion_and_codigo_establecimiento(codigo_institucion, codigo_establecimiento).sum("matricula_inicial_especial+matricula_primer_y_segundo_ciclo_especial+matricula_tercer_ciclo_especial+matricula_programas_especiales")
+    total_ep = MatriculacionEducacionPermanente.filtrar_por_anio(anio).filtrar_por_codigo_institucion_and_codigo_establecimiento(codigo_institucion, codigo_establecimiento).sum("matricula_ebbja+matricula_fpi+matricula_emapja+matricula_emdja+matricula_fp")
+    total_es = MatriculacionEducacionSuperior.filtrar_por_anio(anio).filtrar_por_codigo_institucion_and_codigo_establecimiento(codigo_institucion, codigo_establecimiento).sum("matricula_ets+matricula_fed+matricula_fdes+matricula_pd")
+    total_i = MatriculacionInicial.filtrar_por_anio(anio).filtrar_por_codigo_institucion_and_codigo_establecimiento(codigo_institucion, codigo_establecimiento).sum("total_matriculados")
+    total_em = MatriculacionEducacionMedia.filtrar_por_anio(anio).filtrar_por_codigo_institucion_and_codigo_establecimiento(codigo_institucion, codigo_establecimiento).sum("matricula_cientifico+matricula_tecnico+matricula_media_abierta+matricula_formacion_profesional_media")
 
-    if params[:nombre_zona].present?
-
-      cond << "nombre_zona = ?"
-      args << params[:nombre_zona]
-
-    end
-
-    if params[:sector_o_tipo_gestion].present?
-
-      cond << "sector_o_tipo_gestion = ?"
-      args << params[:sector_o_tipo_gestion]
-
-    end
-
-    cond = cond.join(" and ").lines.to_a + args if cond.size > 0
-
-
-    @matriculaciones = cond.size > 0 ? MapaMatriculacion.where(cond).
-      group(:nombre_departamento).sum(:cantidad) :
-      MapaMatriculacion.group(:nombre_departamento).sum(:cantidad)
-    
-    render :json => @matriculaciones.to_json
+    (total_eeb.to_i + total_ei.to_i + total_ep.to_i + total_es.to_i + total_i.to_i + total_em.to_i)
 
   end
 
@@ -106,5 +157,4 @@ class MapaEstablecimientosController < ApplicationController
     headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
   end
   
-
 end
