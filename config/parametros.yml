@@ -42,10 +42,13 @@ development:
   matriculaciones_departamentos_distritos_csv: /data/matriculaciones_departamentos_distritos_2012.csv
   matriculaciones_departamentos_distritos_json: /data/matriculaciones_departamentos_distritos_2012.json
 
-  ejecucion_fiscal_xlsx: /data/ejecucion_al_28022015.xlsx
+  ejecucion_fiscal_xlsx: /data/ejecucion_al_31052015.xlsx
   
   viaticos_diciembre_2014: /data/viaticos_diciembre_2014_.xls
   viaticos_febrero_2015: /data/viaticos_febrero_2015.xls
+  viaticos_marzo_2015: /data/viaticos_marzo_2015.xls
+  viaticos_abril_2015: /data/viaticos_abril_2015.xls
+  viaticos_mayo_2015: /data/viaticos_mayo_2015.xls
   
   resumen_anual_remuneraciones_personal_xlsx: /data/resumen_anual_remuneraciones_personal_2014.xlsx
   directorio_coordinadores_supervisores: /data/coordinadores_y_supervisores_032015.xlsx
@@ -106,10 +109,13 @@ production:
   matriculaciones_departamentos_distritos_json: /data/matriculaciones_departamentos_distritos_2012.json
 
 
-  ejecucion_fiscal_xlsx: http://datos.mec.gov.py/data/ejecucion_al_28022015.xlsx
+  ejecucion_fiscal_xlsx: http://datos.mec.gov.py/data/ejecucion_al_31052015.xlsx
   
   viaticos_diciembre_2014: http://datos.mec.gov.py/data/viaticos_diciembre_2014_.xls
   viaticos_febrero_2015: http://datos.mec.gov.py/data/viaticos_febrero_2015.xls
+  viaticos_marzo_2015: http://datos.mec.gov.py/data/viaticos_marzo_2015.xls
+  viaticos_abril_2015: http://datos.mec.gov.py/data/viaticos_abril_2015.xls
+  viaticos_mayo_2015: http://datos.mec.gov.py/data/viaticos_mayo_2015.xls
   
   resumen_anual_remuneraciones_personal_xlsx: http://datos.mec.gov.py/data/resumen_anual_remuneraciones_personal_2014.xlsx
 

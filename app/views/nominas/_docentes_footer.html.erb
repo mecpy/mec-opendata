@@ -1,4 +1,5 @@
 <% if nomina.present? %>
+
   <tr>
     <td colspan="10" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate nomina, :params => params %></div></td>
 
@@ -58,18 +59,24 @@
 
       <br /><br />
 
+      <% if (params[:form_buscar_nominas][:ano_periodo_pago].to_i == 2014 && params[:form_buscar_nominas][:mes_periodo_pago].to_i > 5) || (params[:form_buscar_nominas][:ano_periodo_pago].to_i > 2014 )%>
+
       <div style="float:left;">Descargar la N&oacute;mina completa de docentes:</div>
 
-      <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%= link_to "PDF#{image_star}".html_safe, "https://mega.co.nz/#!dk5F0Cxb!oJgF9cQ_3gC8N4bHPqKER1eiOzsV81N7gdf-PMbBOzY", :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
-        <br />
-        <span style="color:silver;">61,8MB <br /> junio 2014</span>
-        <meta itemprop="name" content="Nomina de funcionarios docentes junio 2014">
-        <meta itemprop="description" content="Listado de funcionarios docentes de junio del año 2014">
-        <meta itemprop="encodingFormat" content="pdf">
+        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+          <%= descargar_documento(11, params[:form_buscar_nominas][:ano_periodo_pago], params[:form_buscar_nominas][:mes_periodo_pago], "pdf")%>
+          <br />
+          
+          <meta itemprop="name" content="Nomina de funcionarios docentes ">
+          <meta itemprop="description" content="Listado de funcionarios docentes">
+          <meta itemprop="encodingFormat" content="pdf">
+        </div>
+
       </div>
 
-      <div style="float:left;text-align:center;margin-left:10px;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+    <% end %>
+
+     <!--  <div style="float:left;text-align:center;margin-left:10px;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
         <%= link_to "PDF#{image_star}".html_safe, "https://mega.co.nz/#!FoByxCpC!kqiue2krvjtukETMOx4QHj7iXkprIly96LjGpA9AqkQ", :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
         <br />
         <span style="color:silver;">61,6MB <br /> julio 2014</span>
@@ -139,17 +146,19 @@
         <meta itemprop="name" content="Nomina de funcionarios docentes febrero 2015">
         <meta itemprop="description" content="Listado de funcionarios docentes de febrero del año 2015">
         <meta itemprop="encodingFormat" content="pdf">
-      </div>
+      </div> -->
 
-      <div style="float:left;text-align:center;margin-left:10px;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%= link_to "CSV#{image_star * 3}".html_safe, "https://mega.co.nz/#!U8onyb4b!N0Q6cTglHVLsXYvzSymVwUZIxyMLccOb5tfKlfjzdBM" , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page' %><br />
-        <span style="color:silver;">120,5 MB <br /> agosto 2014</span>
-        <meta itemprop="name" content="Funcionarios Docentes agosto 2014">
-        <meta itemprop="description" content="Listado de funcionarios docentes al mes de agosto del año 2014">
-        <meta itemprop="encodingFormat" content="csv">
-      </div>
+       <% if (params[:form_buscar_nominas][:ano_periodo_pago].to_i > 2013 && params[:form_buscar_nominas][:mes_periodo_pago].to_i > 7)  || (params[:form_buscar_nominas][:ano_periodo_pago].to_i > 2014) %>
 
-      <div style="float:left;text-align:center;margin-left:10px;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+          <div style="float:left;text-align:center;margin-left:10px;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+            <%= descargar_documento(11, params[:form_buscar_nominas][:ano_periodo_pago], params[:form_buscar_nominas][:mes_periodo_pago], "csv") %><br />
+            
+            <meta itemprop="name" content="Funcionarios Docentes ">
+            <meta itemprop="description" content="Listado de funcionarios docentes">
+            <meta itemprop="encodingFormat" content="csv">
+          </div>
+
+     <!--  <div style="float:left;text-align:center;margin-left:10px;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
         <%= link_to "CSV#{image_star * 3}".html_safe, "https://mega.co.nz/#!A8Qx2aJR!b6wDL_hf5QxqEAjmxPxlLr0mefe4u8sJEpHy0knmVcM" , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page' %><br />
         <span style="color:silver;">166,8 MB <br /> setiembre 2014</span>
         <meta itemprop="name" content="Funcionarios Docentes setiembre 2014">
@@ -195,9 +204,13 @@
         <meta itemprop="name" content="Funcionarios Docentes febrero 2015">
         <meta itemprop="description" content="Listado de funcionarios docentes al mes de febrero del año 2015">
         <meta itemprop="encodingFormat" content="csv">
-      </div>
+      </div> -->
 
       <div style="clear:both;"></div>
+
+      <% end %>
+
+      
     </td>
 
   </tr>

@@ -39,4 +39,61 @@ module ApplicationHelper
 
   end
 
+
+  def descargar_documento(numero, anio, mes, tipo_documento)
+
+    html = ""
+    image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;')
+
+      if anio.present?
+
+        descarga_dataset = DescargaDataset.find_by("numero_dataset = ? and periodo = ? and mes =? and tipo_documento = ?", numero, anio, mes, tipo_documento)
+
+        if descarga_dataset.present?
+
+          if  Rails.env == "development"
+
+            documento = descarga_dataset.url_development+"."+ tipo_documento
+
+          elsif Rails.env == "production"
+
+            documento = descarga_dataset.url_production+"."+ tipo_documento
+
+          end
+
+            
+            if tipo_documento == "xlsx"
+
+              html += link_to("XLS#{image_star * 2}".html_safe, documento , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url")
+              html += " <br />"
+              html += "<span style='color:silver;'>("+descarga_dataset.size+")</span>"
+
+            elsif tipo_documento == "csv"
+
+              html += link_to("CSV#{image_star * 3}".html_safe, documento , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url")
+              html += " <br />"
+              html += "<span style='color:silver;'>("+descarga_dataset.size+")</span>"
+
+            elsif tipo_documento == "json"
+
+              html += link_to("JSON#{image_star * 3}".html_safe, documento , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url")
+              html += " <br />"
+              html += "<span style='color:silver;'>("+descarga_dataset.size+")</span>"
+
+            elsif tipo_documento == "pdf"
+
+              html += link_to("PDF#{image_star}".html_safe, documento , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url")
+              html += " <br />"
+              html += "<span style='color:silver;'>("+descarga_dataset.size+")</span>"
+
+          end
+        
+        end
+
+      end
+
+      html.html_safe
+
+  end
+
 end

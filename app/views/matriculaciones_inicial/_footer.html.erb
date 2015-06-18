@@ -50,41 +50,45 @@
         <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_matriculaciones_inicial_lista_url(parametros_csv)) , :targer => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page'%>
         <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_matriculaciones_inicial_lista_url(parametros_json)) , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
         <br /><br />
-        
-     <div style="float:left;">Descargar todas las Matriculaciones filtradas:</div>
-        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_inicial_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url" %>
-        <meta itemprop="name" content="Matriculaciones Educación Inicial 2012">
-        <meta itemprop="description" content="Listado de matriculaciones en educación inicial correspondiente al año 2012">
-        <meta itemprop="encodingFormat" content="pdf">
-        </div>
-        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%= link_to "XLS#{image_star * 2}".html_safe, PARAMETRO[:matriculaciones_educacion_inicial_xlsx], :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url"%>
-          <br />
-        <span style="color:silver;">(576,2KB)</span>
-        <meta itemprop="name" content="Matriculaciones Educación Inicial 2012">
-        <meta itemprop="description" content="Listado de matriculaciones en educación inicial correspondiente al año 2012">
-        <meta itemprop="encodingFormat" content="xls">
-         </div>
-        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%= link_to "CSV#{image_star * 3}".html_safe, PARAMETRO[:matriculaciones_educacion_inicial_csv], :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url"%>
-          <br />
-        <span style="color:silver;">(578,4KB)</span>
-        <meta itemprop="name" content="Matriculaciones Educación Inicial 2012">
-        <meta itemprop="description" content="Listado de matriculaciones en educación inicial correspondiente al año 2012">
-        <meta itemprop="encodingFormat" content="csv">
-        </div>
-        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%= link_to "JSON#{image_star * 3}".html_safe, PARAMETRO[:matriculaciones_educacion_inicial_json], :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url"%>
-          <br />
-        <span style="color:silver;">(2,9MB)</span>
-        <meta itemprop="name" content="Matriculaciones Educación Inicial 2012">
-        <meta itemprop="description" content="Listado de matriculaciones en educación inicial correspondiente al año 2012">
-        <meta itemprop="encodingFormat" content="json">
-      </div>
 
-      <div style="clear:both;"></div>
-    
+      <% if params[:form_buscar_matriculaciones_inicial][:anio].present? %>
+        
+         <div style="float:left;">Descargar todas las Matriculaciones filtradas:</div>
+            <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+            <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_inicial_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url" %>
+            <meta itemprop="name" content="Matriculaciones Educación Inicial "+params[:form_buscar_matriculaciones_inicial][:anio]+"">
+            <meta itemprop="description" content="Listado de matriculaciones en educación inicial correspondiente al año "+params[:form_buscar_matriculaciones_inicial][:anio]+"">
+            <meta itemprop="encodingFormat" content="pdf">
+            </div>
+            <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+            <%= descargar_documento(8, params[:form_buscar_matriculaciones_inicial][:anio], "0", "xlsx")%>
+              <br />
+           
+            <meta itemprop="name" content="Matriculaciones Educación Inicial "+params[:form_buscar_matriculaciones_inicial][:anio]+"">
+            <meta itemprop="description" content="Listado de matriculaciones en educación inicial correspondiente al año "+params[:form_buscar_matriculaciones_inicial][:anio]+"">
+            <meta itemprop="encodingFormat" content="xls">
+             </div>
+            <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+            <%= descargar_documento(8, params[:form_buscar_matriculaciones_inicial][:anio], "0", "csv")%>
+              <br />
+            
+            <meta itemprop="name" content="Matriculaciones Educación Inicial "+params[:form_buscar_matriculaciones_inicial][:anio]+"">
+            <meta itemprop="description" content="Listado de matriculaciones en educación inicial correspondiente al año "+params[:form_buscar_matriculaciones_inicial][:anio]+"">
+            <meta itemprop="encodingFormat" content="csv">
+            </div>
+            <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+            <%= descargar_documento(8, params[:form_buscar_matriculaciones_inicial][:anio], "0", "json")%>
+              <br />
+            
+            <meta itemprop="name" content="Matriculaciones Educación Inicial "+params[:form_buscar_matriculaciones_inicial][:anio]+"">
+            <meta itemprop="description" content="Listado de matriculaciones en educación inicial correspondiente al año "+params[:form_buscar_matriculaciones_inicial][:anio]+"">
+            <meta itemprop="encodingFormat" content="json">
+          </div>
+
+          <div style="clear:both;"></div>
+
+      <% end %>
+
       </td>
  
     </tr>

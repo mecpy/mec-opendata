@@ -52,40 +52,44 @@
         <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(report_matriculaciones_educacion_escolar_basica_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
         <br /><br />
         
-        <div style="float:left;">Descargar todas las Matriculaciones Filtradas:</div>
-        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_educacion_escolar_basica_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url" %>
-        <meta itemprop="name" content="Matriculaciones Educación Escolar Básica 2012">
-        <meta itemprop="description" content="Listado de matriculaciones en educación escolar básica correspondiente al año 2012">
-        <meta itemprop="encodingFormat" content="pdf">
-        </div>
-        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%= link_to "XLS#{image_star * 2}".html_safe, PARAMETRO[:matriculaciones_educacion_escolar_basica_xlsx], :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url"%>
-        <br />
-        <span style="color:silver;">(746,2KB)</span>
-        <meta itemprop="name" content="Matriculaciones Educación Escolar Básica 2012">
-        <meta itemprop="description" content="Listado de matriculaciones en educación escolar básica correspondiente al año 2012">
-        <meta itemprop="encodingFormat" content="xls">
-       </div>
-        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%= link_to "CSV#{image_star * 3}".html_safe, PARAMETRO[:matriculaciones_educacion_escolar_basica_csv], :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url"%>
-        <br />
-        <span style="color:silver;">(1,1MB)</span>
-        <meta itemprop="name" content="Matriculaciones Educación Escolar Básica 2012">
-        <meta itemprop="description" content="Listado de matriculaciones en educación escolar básica correspondiente al año 2012">
-        <meta itemprop="encodingFormat" content="csv">
-        </div>
-        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%= link_to "JSON#{image_star * 3}".html_safe, PARAMETRO[:matriculaciones_educacion_escolar_basica_json], :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url"%>
-          <br />
-        <span style="color:silver;">(4,8MB)</span>
-        <meta itemprop="name" content="Matriculaciones Educación Escolar Básica 2012">
-        <meta itemprop="description" content="Listado de matriculaciones en educación escolar básica correspondiente al año 2012">
-        <meta itemprop="encodingFormat" content="json">
-      </div>
+        <% if params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio].present? %>
 
-      <div style="clear:both;"></div>
+          <div style="float:left;">Descargar todas las Matriculaciones Filtradas:</div>
+          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+          <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_educacion_escolar_basica_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url" %>
+          <meta itemprop="name" content="Matriculaciones Educación Escolar Básica "+params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio]+"">
+          <meta itemprop="description" content="Listado de matriculaciones en educación escolar básica correspondiente al año "+params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio]+"">
+          <meta itemprop="encodingFormat" content="pdf">
+          </div>
+          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+          <%= descargar_documento(4, params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio], "0", "xlsx")%>
+          <br />
+          
+          <meta itemprop="name" content="Matriculaciones Educación Escolar Básica "+params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio]+"">
+          <meta itemprop="description" content="Listado de matriculaciones en educación escolar básica correspondiente al año "+params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio]+"">
+          <meta itemprop="encodingFormat" content="xls">
+         </div>
+          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+          <%= descargar_documento(4, params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio], "0", "csv")%>
+          <br />
+         
+          <meta itemprop="name" content="Matriculaciones Educación Escolar Básica "+params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio]+"">
+          <meta itemprop="description" content="Listado de matriculaciones en educación escolar básica correspondiente al año "+params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio]+"">
+          <meta itemprop="encodingFormat" content="csv">
+          </div>
+          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+          <%= descargar_documento(4, params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio], "0", "json")%>
+            <br />
+          
+          <meta itemprop="name" content="Matriculaciones Educación Escolar Básica "+params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio]+"">
+          <meta itemprop="description" content="Listado de matriculaciones en educación escolar básica correspondiente al año "+params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio]+"">
+          <meta itemprop="encodingFormat" content="json">
+        </div>
+
+        <div style="clear:both;"></div>
     
+      <% end %>
+
       </td>
  
     </tr>

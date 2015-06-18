@@ -16,7 +16,7 @@ class RequerimientosSinejecucionController < ApplicationController
   def diccionario
     
     require 'json'
-    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/requerimientos_sinejecucion.json")
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/requerimientos_aulas.json")
     @diccionario_requerimientos_sinejecucion = JSON.parse(file)
 
   end
@@ -164,12 +164,80 @@ class RequerimientosSinejecucionController < ApplicationController
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
     
     if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-    
+
+      if params[:form_buscar_requerimientos_sinejecucion][:tipo].present?
+
+        if params[:form_buscar_requerimientos_sinejecucion][:tipo].to_i == 1
+
+            @requerimientos_aulas = VRequerimientoAula.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+   
+        
+        elsif params[:form_buscar_requerimientos_sinejecucion][:tipo].to_i == 2
+        
+            @requerimientos_sanitarios = VRequerimientoSanitario.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+   
+
+        elsif params[:form_buscar_requerimientos_sinejecucion][:tipo].to_i == 3
+
+            @requerimientos_otros_espacios = VRequerimientoOtroEspacio.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+         
+
+         elsif params[:form_buscar_requerimientos_sinejecucion][:tipo].to_i == 4
+
+            @requerimientos_mobiliarios = VRequerimientoMobiliario.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+          
+        end
+
+      else
+
+        @requerimientos_aulas = VRequerimientoAula.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+        @requerimientos_sanitarios = VRequerimientoSanitario.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+        @requerimientos_otros_espacios = VRequerimientoOtroEspacio.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+        @requerimientos_mobiliarios = VRequerimientoMobiliario.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+
+      end
+
+
       @requerimientos_sinejecucion = VRequerimientoSinejecucion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+    
     else
-    
+
+
+      if params[:form_buscar_requerimientos_sinejecucion][:tipo].present?
+
+        if params[:form_buscar_requerimientos_sinejecucion][:tipo].to_i == 1
+
+          @requerimientos_aulas = VRequerimientoAula.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+   
+        
+        elsif params[:form_buscar_requerimientos_sinejecucion][:tipo].to_i == 2
+        
+          @requerimientos_sanitarios = VRequerimientoSanitario.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+   
+
+        elsif params[:form_buscar_requerimientos_sinejecucion][:tipo].to_i == 3
+
+          @requerimientos_otros_espacios = VRequerimientoOtroEspacio.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+         
+
+         elsif params[:form_buscar_requerimientos_sinejecucion][:tipo].to_i == 4
+
+          @requerimientos_mobiliarios = VRequerimientoMobiliario.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+          
+        end
+
+      else
+
+          @requerimientos_aulas = VRequerimientoAula.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+          @requerimientos_sanitarios = VRequerimientoSanitario.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+          @requerimientos_otros_espacios = VRequerimientoOtroEspacio.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+          @requerimientos_mobiliarios = VRequerimientoMobiliario.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+
+      end
+
+
       @requerimientos_sinejecucion = VRequerimientoSinejecucion.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
-    
+
     end
     
     @total_registros = VRequerimientoSinejecucion.count 

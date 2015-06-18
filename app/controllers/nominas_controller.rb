@@ -55,7 +55,7 @@ class NominasController< ApplicationController
 
     if params[:form_buscar_nominas_nombre_objeto_gasto].present?
 
-      cond << "nombre_objeto_gasto ilike ?"
+      cond << "sin_acentos(nombre_objeto_gasto || codigo_objeto_gasto) ilike ?"
       args << "%#{quita_acentos(params[:form_buscar_nominas_nombre_objeto_gasto])}%"
 
     end
@@ -293,7 +293,7 @@ class NominasController< ApplicationController
 
     if params[:form_buscar_nominas_nombre_objeto_gasto].present?
 
-      cond << "nombre_objeto_gasto ilike ?"
+      cond << "sin_acentos(nombre_objeto_gasto || codigo_objeto_gasto) ilike ?"
       args << "%#{quita_acentos(params[:form_buscar_nominas_nombre_objeto_gasto])}%"
 
     end

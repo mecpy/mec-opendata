@@ -16,4 +16,8 @@ module MatriculacionesEducacionInclusivaHelper
     Rails.env == "development" ? data_matriculaciones_educacion_inclusiva_lista_url(parametros_development) : "#{PARAMETRO[:subdominio]}data/matriculaciones_educacion_inclusiva_lista#{parametros_production}"
 
   end
+
+
+  
+
 end

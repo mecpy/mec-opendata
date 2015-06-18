@@ -48,41 +48,47 @@
               <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_instituciones_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
           </div>
           <br /><br />
+          
+          <% if params[:form_buscar_instituciones][:anio].present? %>
+
           <div id="tab-descargas-total">
               <div style="float:left;">Descargar todas las Instituciones:</div>
               <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
   <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_instituciones_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
-                  <meta itemprop="name" content="Instituciones Educativas 2012">
+                  <meta itemprop="name" content="Instituciones Educativas ">
                   <meta itemprop="description" content="Listado de instituciones educativas correspondiente al año 2012">
                   <meta itemprop="encodingFormat" content="pdf">
               </div>
               <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-                  <%= link_to "XLS#{image_star * 2}".html_safe, PARAMETRO[:instituciones_xlsx], :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url"%>
+                  <%= descargar_documento(3, params[:form_buscar_instituciones][:anio], "0", "xlsx")%>
                   <br />
-                  <span style="color:silver;">(1,6MB)</span>
-                  <meta itemprop="name" content="Instituciones Educativas 2012">
-                  <meta itemprop="description" content="Listado de instituciones educativas correspondiente al año 2012">
+                  
+                  <meta itemprop="name" content="Instituciones Educativas "+params[:form_buscar_instituciones][:anio]+"">
+                  <meta itemprop="description" content="Listado de instituciones educativas correspondiente al año "+params[:form_buscar_instituciones][:anio]+"">
                   <meta itemprop="encodingFormat" content="xls">
               </div>
               <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-                  <%= link_to "CSV#{image_star * 3}".html_safe, PARAMETRO[:instituciones_csv], :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url"%>
+                  <%= descargar_documento(3, params[:form_buscar_instituciones][:anio], "0", "csv")%>
                   <br />
-                  <span style="color:silver;">(2,6MB)</span>
-                  <meta itemprop="name" content="Instituciones Educativas 2012">
-                  <meta itemprop="description" content="Listado de instituciones educativas correspondiente al año 2012">
+                  
+                  <meta itemprop="name" content="Instituciones Educativas "+params[:form_buscar_instituciones][:anio]+"">
+                  <meta itemprop="description" content="Listado de instituciones educativas correspondiente al año "+params[:form_buscar_instituciones][:anio]+"">
                   <meta itemprop="encodingFormat" content="csv">
               </div>
               <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-                  <%= link_to "JSON#{image_star * 3}".html_safe,PARAMETRO[:instituciones_json], :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url"%>
+                  <%= descargar_documento(3, params[:form_buscar_instituciones][:anio], "0", "json")%>
                   <br />
-                  <span style="color:silver;">(9,1MB)</span>
-                  <meta itemprop="name" content="Instituciones Educativas 2012">
-                  <meta itemprop="description" content="Listado de instituciones educativas correspondiente al año 2012">
+                  
+                  <meta itemprop="name" content="Instituciones Educativas "+params[:form_buscar_instituciones][:anio]+"">
+                  <meta itemprop="description" content="Listado de instituciones educativas correspondiente al año "+params[:form_buscar_instituciones][:anio]+"">
                   <meta itemprop="encodingFormat" content="json">
               </div>
 
               <div style="clear:both;"></div>
           </div>
+
+       <% end %>
+
       </td>
 
   </tr>
