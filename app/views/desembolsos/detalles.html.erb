@@ -1,0 +1,8 @@
+<%#
+# To change this license header, choose License Headers in Project Properties.
+# To change this template file, choose Tools | Templates
+# and open the template in the editor.
+%>
+<% if @rendicion.present? %>
+$("#desembolsos-detalles-<%= @rendicion.first.periodo %>-<%= @rendicion.first.pago%>-<%= @rendicion.first.codigo_nautilus%>-<%= @rendicion.first.codigo_persona %>-<%= @rendicion.first.id_tipo_especialidad %>").html("<%= escape_javascript( render :partial => 'detalles') %>");
+<% end %>

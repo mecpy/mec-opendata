@@ -1,0 +1,36 @@
+<% if rendicion.present? and rendicion.first.periodo.present? %>
+
+<%= link_to image_tag("folder_table.png"), "#", :id => "link-to-desembolsos-detalles-#{rendicion.first.periodo}-#{rendicion.first.pago}-#{rendicion.first.codigo_nautilus}-#{rendicion.first.codigo_persona}-#{rendicion.first.id_tipo_especialidad}", :title => "Haga click para ver el detalle." %>
+
+<script type="text/javascript">
+  $("#desembolsos-lista #link-to-desembolsos-detalles-<%= rendicion.first.periodo %>-<%= rendicion.first.pago%>-<%= rendicion.first.codigo_nautilus %>-<%= rendicion.first.codigo_persona %>-<%= rendicion.first.id_tipo_especialidad %>").bind("click", function () {
+
+      var tr_size = $.trim($("#desembolsos-detalles-<%= rendicion.first.periodo %>-<%= rendicion.first.pago%>-<%= rendicion.first.codigo_nautilus %>-<%= rendicion.first.codigo_persona %>-<%= rendicion.first.id_tipo_especialidad %>").html()).length
+
+      $('.desembolsos-detalles').remove();
+
+      if (tr_size == 0) {
+
+          $(this).parent().parent().after("<tr id=\"desembolsos-detalles-<%= rendicion.first.periodo %>-<%= rendicion.first.pago%>-<%= rendicion.first.codigo_nautilus %>-<%= rendicion.first.codigo_persona %>-<%= rendicion.first.id_tipo_especialidad%>\" class=\"desembolsos-detalles\"></tr>");
+
+          $("#desembolsos-detalles-<%= rendicion.first.periodo %>-<%= rendicion.first.pago%>-<%= rendicion.first.codigo_nautilus %>-<%= rendicion.first.codigo_persona %>-<%= rendicion.first.id_tipo_especialidad %>").html("<%= escape_javascript("<tr><td colspan='9' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")
+
+          $.ajax({
+              type: 'POST',
+              url: "<%= mec_custom_url(data_desembolsos_detalles_url) %>",
+              data: {periodo: '<%= rendicion.first.periodo %>',
+                  pago: '<%= rendicion.first.pago %>',
+                  codigo_nautilus: '<%= rendicion.first.codigo_nautilus %>',
+                  codigo_persona: '<%= rendicion.first.codigo_persona %>',
+                  id_tipo_especialidad: '<%= rendicion.first.id_tipo_especialidad %>'},
+              dataType: 'script'
+          });
+
+      }
+
+      return false;
+  });
+
+</script>
+
+<% end %>

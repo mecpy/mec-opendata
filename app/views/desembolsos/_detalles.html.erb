@@ -1,0 +1,46 @@
+<td colspan="10">
+
+  <hr style="border-bottom: 2px dashed silver;" />
+  
+  <h3>Detalles de la Rendici&oacute;n<span style='color:#000;'> </span></h3>
+
+  <table class="table table-striped table-bordered table-hover" style="font-size:10px;">
+    <thead>
+
+      <tr>
+        <th>Codigo</th>
+        <th>Grupo</th>
+        <th>Objeto de Gasto</th>
+        <th style="text-align:right;">Importe</th>
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+        <% total = 0 %>
+      <% @rendicion.each do |r| %>
+        
+        <% total += total + r.importe %>
+        
+        <tr>
+          <td><%= r.codigo_objeto_gasto %></td>
+          <td><%= r.grupo_objeto_gasto %></td>
+          <td><%= r.objeto_gasto %></td>
+          <td style="text-align:right;"><%= number_to_currency(r.importe, :unit => '', :precision => 0) if r.importe.present? %></td>
+        </tr>
+
+      <% end %>
+
+      <tr style="font-weight:bold;color:#000;">
+        <td colspan=3>Total</td>
+        <td style="text-align:right;"><%= number_to_currency(obtener_total_importe(@rendicion.first.periodo, @rendicion.first.pago, @rendicion.first.codigo_nautilus, @rendicion.first.codigo_persona, @rendicion.first.id_tipo_especialidad), :unit => '', :precision => 0) %></td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+  <hr style="border-bottom: 2px dashed silver;" />
+
+</td>

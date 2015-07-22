@@ -1,0 +1,5 @@
+$("#rendiciones-lista, #rendiciones-lista-clone").html("<%= escape_javascript(render :partial => "lista", :locals => { :rendiciones => @rendiciones}) %>");
+$("#rendiciones-footer").html("<%= escape_javascript(render :partial => "footer", :locals => { :rendiciones => @rendiciones}) %>");
+
+MDTable.create('#rendiciones-lista', [0,1,2,3,4,5,6,7,8,9]);
+MDTable.create('#rendiciones-lista-clone', [0,1,2,3,4,5,6,7,8,9]);

@@ -1,0 +1,195 @@
+[
+    {
+        "nombre": "Nivel",
+        "descripcion": "Se refiere al nivel educativo beneficiario del desembolso",
+        "tipo": "xsd:gYear",
+        "restricciones": "No más de 50 caracteres",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "Educación Media"
+    }, {
+        "nombre": "Periodo",
+        "descripcion": "Se refiere al periodo al cual corresponden los datos",
+        "tipo": "xsd:gYear",
+        "restricciones": "Sólo permite la carga de datos del año de su captura",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "2014"
+    }, {
+        "nombre": "Pago",
+        "descripcion": "Se refiere al n&uacute;mero de pago al cual corresponden los datos",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "Sólo permite la carga de datos del pago de su captura",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "1"
+    }, {
+        "nombre": "C&oacute;digo Nautilus",
+        "descripcion": "Se refiere c&oacute;digo de la instituci&oacute;n beneficiaria del desembolso registrada desde el Sistema de Gesti&oacute;n Acad&eacute;mica Nautilus",
+        "tipo": "xsd:string",
+        "restricciones": "No más de 10 caracteres",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "20072"
+    }, {
+        "nombre": "C&oacute;digo Establecimiento",
+        "descripcion": "C&oacute;digo de establecimiento permite identificar en forma &uacute;nica los diferentes establecimientos educativos que se encuentran en el país.\nEl Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o m&aacute;s instituciones educativas con sus respectivos niveles/modalidades de educaci&oacute;n.",
+        "tipo": "xsd:string",
+        "restricciones": "No más de 7 caracteres",
+        "referencia": {
+            "texto": "Reglamento del Sistema de Información de Estadística Continua (SIEC)",
+            "enlace": "http://www.mec.gov.py/planificacion_educativa/Revistas/Reglamento_SIEC.pdf"
+        },
+        "ejemplo": "0406005"
+    }, {
+        "nombre": "C&oacute;digo de la Instituci&oacute;n",
+        "descripcion": "Identifica a la institución como una entidad y organización independiente que funciona dentro de un establecimiento escolar. Una institución educativa puede poseer diferentes locales escolares ubicados en un mismo o en diferentes departamentos geográficos. El código está compuesto por un número secuencial. El SIEC considera una misma institución cuando varios niveles o modalidades tienen una organización, gestión y administración única. Por ejemplo: Centro Regional de Educación Gral. Patricio Escobar de Encarnación, Colegio Santa Clara de Asunción",
+        "tipo": "xsd:string",
+        "restricciones": "No más de 5 caracteres",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "2875"
+    }, {
+        "nombre": "Denominaci&oacute;n de la Instituci&oacute;n",
+        "descripcion": "Denominaci&oacute;n de la Instituci&oacute;n por la cual es reconocida para los procesos de Gesti&oacute;n Acad&eacute;mica",
+        "tipo": "xsd:string",
+        "restricciones": "No más de 100 caracteres",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "COLEGIO NACIONAL PRESIDENTE FRANCO"
+    }, {
+        "nombre": "C&oacute;digo de la persona",
+        "descripcion": "Se refiere al código de la persona responsable del cobro del desembolso. Puede ser representado por su N&uacute;mero de C&eacute;dula de Identidad",
+        "tipo": "xsd:string",
+        "restricciones": "Mayor a cero",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "446544"
+    }, {
+        "nombre": "Nombre Departamento",
+        "descripcion": "Se refiere al nombre del departamento geogr&aacute;fico en donde se encuentra la instituci&oacute;n",
+        "tipo": "xsd:string",
+        "restricciones": "No m&aacute;s de 50 caracteres",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "Central"
+    
+    }, {
+        "nombre": "Nombre Distrito",
+        "descripcion": "Se refiere al nombre del distrito geogr&aacute;fico en donde se encuentra la instituci&oacute;n",
+        "tipo": "xsd:string",
+        "restricciones": "No m&aacute;s de 100 caracteres",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "Ciudad del Este"
+    
+    },{
+        "nombre": "Nombre de la persona",
+        "descripcion": "Se refiere al nombre de la persona beneficiaria del cobro del desembolso",
+        "tipo": "xsd:string",
+        "restricciones": "No m&aacute;s de 100 caracteres",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "MARIA ROMINA ARCE RIQUELME"
+    }, {
+        "nombre": "Monto Desembolso 834",
+        "descripcion": "Se refiere al monto otorgado para los Gastos Corrientes",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "Mayor o igual a cero",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "120000"
+    }, {
+        "nombre": "Monto Rendición 834",
+        "descripcion": "Se refiere al monto rendido para los Gastos Corrientes",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "Mayor o igual a cero",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "120000"
+    }, {
+        "nombre": "Saldo Rendición 834",
+        "descripcion": "Se refiere al monto que representa la diferencia entre los otorgado y lo rendido hasta la fecha",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "Mayor o igual a cero",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "100000"
+     }, {
+        "nombre": "Estado Transferencia 834",
+        "descripcion": "Se refiere al estado de la Transferencia para las Rendiciones del 834",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "No m&aacute;s de 50 caracteres",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "ADEUDA"
+    }, {
+        "nombre": "Monto Desembolso 894",
+        "descripcion": "Se refiere al monto otorgado para los Gastos Capital",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "Mayor o igual a cero",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "120000"
+    }, {
+        "nombre": "Monto Rendición 894",
+        "descripcion": "Se refiere al monto rendido para los Gastos Capital",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "Mayor o igual a cero",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "120000"
+    }, {
+        "nombre": "Saldo Rendición 894",
+        "descripcion": "Se refiere al monto que representa la diferencia entre los otorgado y lo rendido hasta la fecha",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "Mayor o igual a cero",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "100000"
+     }, {
+        "nombre": "Estado Transferencia 894",
+        "descripcion": "Se refiere al estado de la Transferencia para las Rendiciones del 894",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "No m&aacute;s de 50 caracteres",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "ADEUDA"
+    }
+]

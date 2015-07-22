@@ -1,0 +1,5 @@
+$("#desembolsos-lista, #desembolsos-lista-clone").html("<%= escape_javascript(render :partial => "lista", :locals => { :desembolsos => @desembolsos}) %>");
+$("#desembolsos-footer").html("<%= escape_javascript(render :partial => "footer", :locals => { :desembolsos => @desembolsos}) %>");
+
+MDTable.create('#desembolsos-lista', [0,1,2,3,4,5,6,7,8,9]);
+MDTable.create('#desembolsos-lista-clone', [0,1,2,3,4,5,6,7,8,9]);

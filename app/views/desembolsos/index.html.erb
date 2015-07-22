@@ -1,0 +1,599 @@
+<%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
+<div>
+    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_desembolsos_url), :id => "tab-diccionario", :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
+    <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
+    <h2>
+        <span itemprop="name" id="tab-titulo">DESEMBOLSOS EN BASE A LA LEY DE GRATUIDAD DE LA EDUCACI&Oacute;N MEDIA</span>
+        <meta itemprop="url" content="http://datos.mec.gov.py/data/desembolsos">  
+        <meta itemprop="description"
+              content="Contiene los datos de montos otorgados a las Instituciones de Educaci&oacute;n Media en concepto de Ley de Gratuidad."
+              />
+        <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+        <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
+            <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
+            <meta itemprop="url" content="http://datos.mec.gov.py/">
+            <meta itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura">
+        </span>
+        <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+            <meta itemprop="name" content="Ministerio de Educación y Cultura">
+            <meta itemprop="url" content="http://www.mec.gov.py/">
+            <meta itemprop="email" content="datosabiertos@mec.gov.py">
+        </span>
+        <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+            <meta itemprop="name" content="Miguel Andr&eacute;s Morel">
+            <meta itemprop="email" content="datosabiertos@mec.gov.py">
+        </span>
+        <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+        <meta itemprop="keywords" style="display: none;" content="desembolso,gratuidad,media"/>
+        <meta itemprop="version" style="display: none;" content="1.0">
+        </span>
+    </h2>
+</div>
+
+<%= form_tag mec_custom_url(data_desembolsos_lista_url(nil)), :remote => true, :id => "form-buscar-desembolsos" do  %>
+  <div class="table-responsive">
+      <table class="table table-small-font table-bordered table-striped">
+          <thead>
+              <tr>
+
+                  <th data-priority="1" id="tab-filtros-lista">
+                      <span data-titulo="true">Periodo</span>
+
+                      <span class="orden periodo">
+                          <i class="filtro fa fa-sort"></i>
+                          <i class="descendente fa fa-sort-desc"></i>
+                          <i class="ascendente fa fa-sort-asc"></i>
+                      </span>
+
+                      <%= select :form_buscar_desembolsos, :periodo, [2015,2014,2013,2012,2011], {}, {:class => 'form-control input-sm'} %>
+                  </th>
+
+                  <th data-priority="1" id="tab-filtros-texto">
+                      <span data-titulo="true">Pago</span>
+
+                      <span class="orden pago">
+                          <i class="filtro fa fa-sort"></i>
+                          <i class="descendente fa fa-sort-desc"></i>
+                          <i class="ascendente fa fa-sort-asc"></i>
+                      </span>
+                      <%= select :form_buscar_desembolsos, :pago, [1,2], {}, {:class => 'form-control input-sm'} %>
+                  </th>
+
+                  <th data-priority="1">
+                      <span data-titulo="true">C&oacute;digo Nautilus</span>
+
+                      <span class="orden codigo_nautilus">
+                          <i class="filtro fa fa-sort"></i>
+                          <i class="descendente fa fa-sort-desc"></i>
+                          <i class="ascendente fa fa-sort-asc"></i>
+                      </span>
+
+          <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_desembolsos_codigo_nautilus, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-desembolsos', '#form_buscar_desembolsos_codigo_nautilus');"><i class="fa fa-times"></i></span>
+          </div>
+
+          <%= hidden_field_tag :form_buscar_desembolsos_codigo_nautilus_id %>
+          <%= autocomplete_help(  ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_nautilus, 
+                atributo_tipo: :text, 
+                model: :VDirectorioInstitucion, 
+                limit: 10,
+                cadena_consulta: "codigo_nautilus",
+                orden: "codigo_nautilus")), 
+            parametro_id: "form_buscar_desembolsos_codigo_nautilus", 
+            resultado_id: "form_buscar_desembolsos_codigo_nautilus_id",
+            min_length: 2
+            ) %>
+
+          </th>
+
+          <th data-priority="1">
+              <span data-titulo="true">C&oacute;digo Establecimiento</span>
+
+              <span class="orden codigo_establecimiento">
+                  <i class="filtro fa fa-sort"></i>
+                  <i class="descendente fa fa-sort-desc"></i>
+                  <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+          <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_desembolsos_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-desembolsos', '#form_buscar_desembolsos_codigo_establecimiento');"><i class="fa fa-times"></i></span>
+          </div>
+
+          <%= hidden_field_tag :form_buscar_desembolsos_codigo_establecimiento_id %>
+          <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_establecimiento, 
+                atributo_tipo: :text, 
+                model: :VRequerimientoAula, 
+                limit: 10,
+                cadena_consulta: "codigo_establecimiento",
+                orden: "codigo_establecimiento")), 
+            parametro_id: "form_buscar_desembolsos_codigo_establecimiento", 
+            resultado_id: "form_buscar_desembolsos_codigo_establecimiento_id",
+            min_length: 2
+            ) %>
+
+          </th>
+
+          <th data-priority="1">
+              <span data-titulo="true">C&oacute;digo Instituci&oacute;n</span>
+
+              <span class="orden codigo_institucion">
+                  <i class="filtro fa fa-sort"></i>
+                  <i class="descendente fa fa-sort-desc"></i>
+                  <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+          <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_desembolsos_codigo_institucion, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-desembolsos', '#form_buscar_desembolsos_codigo_institucion');"><i class="fa fa-times"></i></span>
+          </div>
+
+          <%= hidden_field_tag :form_buscar_desembolsos_codigo_institucion_id %>
+          <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_institucion, 
+                atributo_tipo: :text, 
+                model: :VDirectorioInstitucion, 
+                limit: 10,
+                cadena_consulta: "codigo_institucion",
+                orden: "codigo_institucion")), 
+            parametro_id: "form_buscar_desembolsos_codigo_institucion", 
+            resultado_id: "form_buscar_desembolsos_codigo_institucion_id",
+            min_length: 2
+            ) %>
+
+          </th>
+
+
+          <th data-priority="1">
+              <span data-titulo="true">Denominaci&oacute;n Instituci&oacute;</span>
+
+              <span class="orden denominacion_institucion">
+                  <i class="filtro fa fa-sort"></i>
+                  <i class="descendente fa fa-sort-desc"></i>
+                  <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+          <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_desembolsos_denominacion_institucion, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-desembolsos', '#form_buscar_desembolsos_denominacion_institucion');"><i class="fa fa-times"></i></span>
+          </div>
+
+          <%= hidden_field_tag :form_buscar_desembolsos_denominacion_institucion_id %>
+          <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :denominacion_institucion, 
+                atributo_tipo: :text, 
+                model: :VDirectorioInstitucion, 
+                limit: 10,
+                cadena_consulta: "denominacion_institucion",
+                orden: "denominacion_institucion")), 
+            parametro_id: "form_buscar_desembolsos_denominacion_institucion", 
+            resultado_id: "form_buscar_desembolsos_denominacion_institucion_id",
+            min_length: 2
+            ) %>
+
+          </th>
+
+          <th data-priority="1">
+              <span data-titulo="true">Departamento</span>
+
+              <span class="orden nombre_departamento">
+                  <i class="filtro fa fa-sort"></i>
+                  <i class="descendente fa fa-sort-desc"></i>
+                  <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+          <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_desembolsos_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-desembolsos', '#form_buscar_desembolsos_nombre_departamento');"><i class="fa fa-times"></i></span>
+          </div>
+
+          <%= hidden_field_tag :form_buscar_desembolsos_nombre_departamento_id %>
+          <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_departamento, 
+                atributo_tipo: :text, 
+                model: :VDirectorioInstitucion, 
+                limit: 10,
+                cadena_consulta: "nombre_departamento",
+                orden: "nombre_departamento")), 
+            parametro_id: "form_buscar_desembolsos_nombre_departamento", 
+            resultado_id: "form_buscar_desembolsos_nombre_departamento_id",
+            min_length: 2
+            ) %>
+
+          </th>
+
+
+
+          <th data-priority="1">
+              <span data-titulo="true">Distrito</span>
+
+              <span class="orden nombre_distrito">
+                  <i class="filtro fa fa-sort"></i>
+                  <i class="descendente fa fa-sort-desc"></i>
+                  <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+          <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_desembolsos_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-desembolsos', '#form_buscar_desembolsos_nombre_distrito');"><i class="fa fa-times"></i></span>
+          </div>
+
+          <%= hidden_field_tag :form_buscar_desembolsos_nombre_distrito_id %>
+          <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_distrito, 
+                atributo_tipo: :text, 
+                model: :VDirectorioInstitucion, 
+                limit: 10,
+                cadena_consulta: "nombre_distrito",
+                orden: "nombre_distrito")), 
+            parametro_id: "form_buscar_desembolsos_nombre_distrito", 
+            resultado_id: "form_buscar_desembolsos_nombre_distrito_id",
+            min_length: 2
+            ) %>
+
+          </th>
+
+
+          <th data-priority="1">
+              <span data-titulo="true">N° Documento</span>
+
+              <span class="orden codigo_trabajador">
+                  <i class="filtro fa fa-sort"></i>
+                  <i class="descendente fa fa-sort-desc"></i>
+                  <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+          <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_nominas_codigo_persona, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-desembolsos', '#form_buscar_desembolsos_codigo_persona');"><i class="fa fa-times"></i></span>
+          </div>
+
+          <%= hidden_field_tag :form_buscar_desembolsos_codigo_persona_id %>
+          <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_persona, 
+                atributo_tipo: :text, 
+                model: :VNomina, 
+                limit: 10,
+                cadena_consulta: "codigo_persona",
+                orden: "codigo_persona")), 
+            parametro_id: "form_buscar_desembolsos_codigo_persona", 
+            resultado_id: "form_buscar_desembolsos_codigo_persona_id",
+            min_length: 2
+            ) %>
+
+          </th>
+
+          <th data-priority="1">
+              <span data-titulo="true">Nombre Completo</span>
+
+              <span class="orden nombre_persona">
+                  <i class="filtro fa fa-sort"></i>
+                  <i class="descendente fa fa-sort-desc"></i>
+                  <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+          <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_desembolsos_nombre_persona, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-desembolsos', '#form_buscar_desembolsos_nombre_persona');"><i class="fa fa-times"></i></span>
+          </div>
+
+          <%= hidden_field_tag :form_buscar_desembolsos_nombre_persona_id %>
+          <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_persona, 
+                atributo_tipo: :text, 
+                model: :VNomina, 
+                limit: 10,
+                cadena_consulta: "nombre_persona",
+                orden: "nombre_persona")), 
+            parametro_id: "form_buscar_desembolsos_nombre_persona", 
+            resultado_id: "form_buscar_desembolsos_nombre_persona_id",
+            min_length: 2
+            ) %>
+
+          </th>
+
+          <th data-priority="1" >
+              <span data-titulo="true">Descripci&oacute;n Tipo Especialidad</span>
+
+              <span class="orden tipo_especialidad">
+                  <i class="filtro fa fa-sort"></i>
+                  <i class="descendente fa fa-sort-desc"></i>
+                  <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <%= select :form_buscar_desembolsos, :tipo_especialidad, [["Bachillerato Técnico Industrial", 1],["Bachillerato Técnico en Servicio", 2],["Bachillerato Técnico Agropecuario", 3],["Bachillerato Científico", 4],["Bachillerato Científico EMA", 5]], {}, {:class => 'form-control input-sm'} %>
+          </th>
+
+
+          <th>
+              <span data-titulo="true">Total Alumnos</span>
+              <span class="orden total">
+                  <i class="filtro fa fa-sort"></i>
+                  <i class="descendente fa fa-sort-desc"></i>
+                  <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+          <div class="input-group input-group-sm">
+              <span class="input-group-addon">
+                  <%= select_tag(:form_buscar_desembolsos_total_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+              </span>
+              <%= number_field_tag :form_buscar_desembolsos_total, nil, :class => 'form-control', :placeholder => '' %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-desembolsos', '#form_buscar_desembolsos_total');"><i class="fa fa-times"></i></span>
+          </div>
+          </th>
+
+          <th data-priority="1" id="tab-filtros-texto">
+              <span data-titulo="true">1er. Monto <br/>Capital</span>
+
+              <span class="orden primer_monto_capital">
+                  <i class="filtro fa fa-sort"></i>
+                  <i class="descendente fa fa-sort-desc"></i>
+                  <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+          </th>
+
+          <th data-priority="1" id="tab-filtros-texto">
+              <span data-titulo="true">1er. Monto <br/>Corriente</span>
+
+              <span class="orden primer_monto_corriente">
+                  <i class="filtro fa fa-sort"></i>
+                  <i class="descendente fa fa-sort-desc"></i>
+                  <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+          </th>
+
+          <th data-priority="1" id="tab-filtros-texto">
+              <span data-titulo="true">2do. Monto <br/>Capital</span>
+
+              <span class="orden primer_monto_capital">
+                  <i class="filtro fa fa-sort"></i>
+                  <i class="descendente fa fa-sort-desc"></i>
+                  <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+          </th>
+
+          <th data-priority="1" id="tab-filtros-texto">
+              <span data-titulo="true">2do. Monto <br/>Corriente</span>
+
+              <span class="orden primer_monto_corriente">
+                  <i class="filtro fa fa-sort"></i>
+                  <i class="descendente fa fa-sort-desc"></i>
+                  <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+          </th>
+          
+          <th data-priority="1" id="tab-filtros-texto">
+              <span data-titulo="true">Total</span>
+              <span class="orden total">
+                  <i class="filtro fa fa-sort"></i>
+                  <i class="descendente fa fa-sort-desc"></i>
+                  <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+          </th>
+          
+          
+          <th data-priority="1" id="tab-filtros-texto">
+              <span data-titulo="true">% <br/>Rendici&oacute;n</span>
+              <span class="orden porcentaje_rendicion">
+                  <i class="filtro fa fa-sort"></i>
+                  <i class="descendente fa fa-sort-desc"></i>
+                  <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+          </th>
+          
+          <th style="width:16px;"></th>
+
+          </tr>
+          </thead>
+
+          <tbody id="desembolsos-lista"></tbody>
+
+      </table>
+  </div>
+<% end %>
+
+<table class="table table-striped table-bordered table-hover">
+    <tbody id="desembolsos-footer"></tbody>
+</table>
+
+<script type="text/javascript">
+
+  $("#form-buscar-desembolsos").bind("submit", function () {
+
+      $("#desembolsos-lista").html("<%= escape_javascript("<tr><td colspan='16' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")
+
+  })
+
+  $("#form_buscar_desembolsos_periodo").bind('change', function () {
+      $.ajaxQ.abortAll();
+      $("#form-buscar-desembolsos").submit();
+
+  })
+
+  $("#form_buscar_desembolsos_pago").bind('change', function () {
+      $.ajaxQ.abortAll();
+      $("#form-buscar-desembolsos").submit();
+
+  })
+
+  $("#form_buscar_desembolsos_codigo_establecimiento").bind('change', function () {
+
+      $.ajaxQ.abortAll();
+      $("#form-buscar-desembolsos").submit();
+
+  })
+
+  $("#form_buscar_desembolsos_codigo_institucion").bind('change', function () {
+
+      $.ajaxQ.abortAll();
+      $("#form-buscar-desembolsos").submit();
+
+  })
+
+
+  $("#form_buscar_desembolsos_codigo_nautilus").bind('change', function () {
+
+      $.ajaxQ.abortAll();
+      $("#form-buscar-desembolsos").submit();
+
+  })
+
+
+
+  $("#form_buscar_desembolsos_codigo_persona").bind('change', function () {
+      $.ajaxQ.abortAll();
+      $("#form-buscar-desembolsos").submit();
+
+  })
+
+  $("#form_buscar_desembolsos_tipo_especialidad").bind('change', function () {
+      $.ajaxQ.abortAll();
+      $("#form-buscar-desembolsos").submit();
+
+  })
+
+
+  $(".table-bordered input").bind('change', function () {
+      $.ajaxQ.abortAll();
+      $("#form-buscar-desembolsos").submit();
+
+  })
+
+  //LIMPIAR FORMULARIO DE BUSQUEDA
+  valor_defecto = [{
+          id: '#form_buscar_desembolsos_periodo',
+          valor: 2015
+      }];
+  resetForm("#form-buscar-desembolsos", valor_defecto);
+
+</script>
+
+<script>
+  var stepsListado = [
+      {
+          intro: "Esta ayuda te mostrar&aacute; los elementos del Conjunto de Datos:\
+          </br><b>Listado de montos otorgados en base a la Ley de Gratuidad de la Educaci&oacute;n Media</b>.\
+          </br></br>Este tutorial te guiará paso a paso a través de las diferentes funcionalidades disponibles. \
+          </br></br>Podr&aacute;s navegar fácilmente a través de la guía por medio del mouse, o por medio del teclado haciendo simplemente uso de las teclas:\
+          <p><u><i>Para Navegar:</i></u></p>\
+          <ul>\
+            <li><%= image_tag('intro_images/right.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %> IZQ</li>\
+            <li><%= image_tag('intro_images/left.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %> DER</li>\
+            <li><%= image_tag('intro_images/enter.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %> ENTER</li>\
+          </ul>\
+          <p><u><i>Para Salir:</i></u></p>\
+          <ul>\
+            <li><%= image_tag('intro_images/esc.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %> ESC</li>\
+          </ul>\
+          Pulsa en siguiente para comenzar.\
+          </br>Y, ¡COMENCEMOS!"
+      },
+      {
+          element: "#tab-titulo",
+          intro: "En esta sección, puedes ver el Nombre del Conjunto de Datos.",
+          position: "right"
+      },
+      {
+          element: "#tab-leyenda",
+          intro: "Mientras que aqu&iacute;, puedes ver una pequeña explicaci&oacute;n referente al estado actual en que se encuentra el Conjunto de Datos.",
+          position: "bottom"
+      },
+      {
+          element: "#tab-diccionario",
+          intro: "Si tienes dudas acerca del significado de alg&uacute;n atributo del Conjunto de Datos, puedes ir al Diccionario siguiendo este enlace.\
+          </br></br>El Diccionario de Datos describe los atributos que contiene un Conjunto de Datos, incluyendo el tipo de dato y las restricciones que se apliquen a cada uno.",
+          position: "left"
+      },
+      {
+          element: '#tab-filtros-lista',
+          intro: "Echemos un vistazo a los filtros. ¿Alguna vez los has utilizado?</br> ¡Son muy &uacute;tiles \
+          cuando buscas informaci&oacute;n espec&iacute;fica! \
+          </br></br>Este filtro utiliza una lista desplegable. Permite realizar las b&uacute;squedas de acuerdo al item que selecciones.\
+          </br>¡Intentalo!",
+          position: "right"
+      },
+      {
+          element: '#tab-filtros-texto',
+          intro: "Este filtro permite realizar las b&uacute;squedas de acuerdo al texto que escribas en su secci&oacute;n.\
+          </br>¡Tienes que Probarlo!",
+          position: "right"
+      },
+      {
+          element: "#tab-establecimiento",
+          intro: "Si te interesan los datos de un Establecimiento, haciendo click sobre este enlace podr&iacute;as obtener\
+          informaci&oacute;n espec&iacute;fica del mismo.\
+          </br><%= image_tag('intro_images/resumen_establecimiento.png', style: 'width:220px;height:220px').to_s.gsub("\"", "'").html_safe %>\
+          </br></br>Por ejemplo: Datos del Establecimiento, Instituciones del Establecimiento y la Ubicaci&oacute;n Geogr&aacute;fica.",
+          position: "bottom-left-aligned"
+      },
+      {
+          element: "#tab-institucion",
+          intro: "As&iacute; tambi&eacute;n, si te interesan los datos de una Instituci&oacute;n, haciendo click sobre este enlace podr&iacute;as obtener\
+          informaci&oacute;n espec&iacute;fica de la misma.\
+          </br><%= image_tag('intro_images/resumen_institucion.png', style: 'width:220px;height:220px').to_s.gsub("\"", "'").html_safe %>\
+          </br></br>Por ejemplo: Datos de la Instituci&oacute;n, Matriculaciones en la Instituci&oacute;n y la Ubicaci&oacute;n Geogr&aacute;fica.",
+          position: "bottom-left-aligned"
+      },
+      {
+          element: '#tab-cantidad-registros',
+          intro: "A modo de informaci&oacute;n, aquí puedes ver un resumen de los resultados de tu búsqueda dentro del Conjunto de Datos.",
+          position: "top"
+      },
+      {
+          element: '#tab-paginacion',
+          intro: "Cuando la lista de resultados es muy extensa, solo se muestran 15 registros. El resto se encuentra en las dem&aacute;s p&aacute;ginas de la tabla.\
+          </br></br>¡Desplázate entre las páginas para acceder a todos los resultados de tu b&uacute;squeda!",
+          position: "top"
+      },
+      {
+          element: '#tab-descargas-filtradas',
+          intro: "Seg&uacute;n tu b&uacute;squeda, descarga los resultados en formato XLS, CSV o JSON.\
+          </br></br>El formato <b>XLS</b>, se abre normalmente con Microsoft Excel. \
+          Es un formato cotidiano que podemos encontrar, \
+          aunque no resulta ser del todo ventajoso, ya que se trata de un formato propietario.\
+          </br></br>El formato <b>CSV</b>, es un tipo de documento de texto plano, en el cual los datos son tabulados en columnas separadas por comas (o punto y coma) y filas separadas por saltos de l&iacute;nea.\
+          Puede ser exportada a una hoja de c&aacute;lculo Excel. As&iacute; tambi&eacute;n, provee agilidad para realizar importaciones y exportaciones sobre Bases de Datos.\
+          </br></br>El formato <b>JSON</b>, es un formato de archivo muy fácil de leer por cualquier lenguaje de programación.\
+          Esta simplicidad facilita su procesamiento para las computadoras en comparación a otros formatos.",
+          position: "top"
+      },
+      {
+          element: '#tab-descargas-total',
+          intro: "Si necesitas todos los datos, puedes descargarlos haciendo click sobre el formato que te sea de mayor utilidad.\
+          </br></br>Ten en cuenta nuestras recomendaciones del punto anterior.\
+          </br></br>Los formatos que tienes disponibles son: XLS, CSV y JSON",
+          position: "top"
+      },
+      {
+          element: '#tab-descargas-planillas',
+          intro: "¿Encontraste toda la informaci&oacute;n que necesitabas? \
+          </br></br>Si no la encontraste, aqu&iacute; puedes descargar las planillas de Establecimientos Escolares Priorizadas Elegibles seg&uacute;n FONACIDE",
+          position: "top"
+      },
+      {
+          element: '#tab-microdata',
+          intro: "Por &uacute;ltimo, ¿Has escuchado sobre los Microdatos en HTML? \
+          </br></br>Para obtener m&aacute;s informaci&oacuten sobre ellos, puedes hacer click sobre este icono. \
+          </br></br>Esta especificaci&oacute;n define el mecanismo de Microdatos HTML, el cual facilita el procesamiento autom&aacute;tico de los Documentos HTML.",
+          position: "top"
+      }
+  ];
+
+  $('#start-tour').click(function () {
+
+      introJs().setOptions({
+          doneLabel: 'Salir',
+          nextLabel: 'Siguiente &rarr;',
+          prevLabel: '&larr; Anterior',
+          skipLabel: 'Salir',
+          steps: stepsListado
+      }).start();
+
+  });
+
+</script>
+<style>
+    .introjs-helperNumberLayer{
+        width: 23px;
+        height: 23px;
+        padding: 0px;
+    }
+    #start-tour{
+        cursor: pointer;
+    }
+</style>

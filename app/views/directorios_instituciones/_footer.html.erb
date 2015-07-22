@@ -45,7 +45,7 @@
   <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_instituciones_lista_url(parametros_pdf)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat'%>
         <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_directorios_instituciones_lista_url(parametros_xls)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
         <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_directorios_instituciones_lista_url(parametros_csv)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
-        <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_directorios_instituciones_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+        <%= link_to "JSON#{image_star * 4}".html_safe, mec_custom_url(data_directorios_instituciones_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
       </div>
       <br /><br />
       <div id="tab-descargas-total">
@@ -73,7 +73,7 @@
           <meta itemprop="encodingFormat" content="csv">
         </div>
         <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-          <%= link_to "JSON#{image_star * 3}".html_safe,mec_custom_url(data_directorios_instituciones_lista_url(parametros_json_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url"%>
+          <%= link_to "JSON#{image_star * 4}".html_safe,mec_custom_url(data_directorios_instituciones_lista_url(parametros_json_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url"%>
           <br />
           <span style="color:silver;">(7,3MB)</span>
           <meta itemprop="name" content="Directorio de Instituciones Educativas 2012/2014">

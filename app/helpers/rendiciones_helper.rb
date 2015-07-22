@@ -1,0 +1,2 @@
+module RendicionesHelper
+end

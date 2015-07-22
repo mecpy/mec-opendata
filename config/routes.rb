@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  post "data/rendiciones_lista" => 'rendiciones#lista', :as => :data_rendiciones_lista
+  get "data/rendiciones_lista" => 'rendiciones#lista', :as => :report_rendiciones_lista
+  get 'data/rendiciones' => 'rendiciones#index', :as => :data_rendiciones
+  get 'def/rendiciones' => 'rendiciones#diccionario', :as => :def_rendiciones
+
+  post "data/desembolsos_lista" => 'desembolsos#lista', :as => :data_desembolsos_lista
+  get "data/desembolsos_lista" => 'desembolsos#lista', :as => :report_desembolsos_lista
+  get 'data/desembolsos' => 'desembolsos#index', :as => :data_desembolsos
+  get 'def/desembolsos' => 'desembolsos#diccionario', :as => :def_desembolsos
+  post "data/desembolsos_detalles" => 'desembolsos#detalles', :as => :data_desembolsos_detalles
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -53,7 +53,7 @@
       <% end %>
       <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_establecimientos_lista_url(parametros_xls)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
       <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_establecimientos_lista_url(parametros_csv)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
-      <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_establecimientos_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+      <%= link_to "JSON#{image_star * 4}".html_safe, mec_custom_url(data_establecimientos_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
       <br /><br />
 
       <% if params[:form_buscar_establecimientos][:anio].present? %>

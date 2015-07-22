@@ -13,6 +13,14 @@
         <li><%= link_to "Portal MEC", "http://mec.gov.py", :id => "tab-portalmec", :target => '_blank', :title => "Ir al Portal del MEC" %></li>
         <li><%= link_to "Lista de Datos", mec_custom_url(data_url), :id => "tab-listadatos", :class => ('active current' if current_page?(data_path)), :title => "Ir a Datos" %></li>
         <li><%= link_to "Visualizaciones", mec_custom_url(data_visualizaciones_url), :id => "tab-visualizaciones", :class => ('active current' if current_page?(data_visualizaciones_path)), :title => "Ir a Visualizaciones" %></li>
+        <li class="dropdown">
+        
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Aplicaciones <span class="caret"></span></a>
+          <ul class='dropdown-menu' role='menu'>
+            <li><%= link_to "Contralor de FONACIDE", "http://www.mec.gov.py/contralorfonacide/", target: '_blank' %></li>
+          </ul>
+        
+        </li>
         <li><%= link_to "Mapa", mec_custom_url(app_mapa_establecimientos_url), :id => "tab-mapaestablecimientos", :class => ('active current' if current_page?(app_mapa_establecimientos_url)), :title => "Ir al Mapa de Establecimientos" %></li>
         <li><%= link_to "Participa", mec_custom_url(contactos_url), :id => "tab-participa", :class => ('active current' if current_page?(contactos_path)), :title => "Ir al Formulario de Contactos" %></li>
         <li><%= link_to "Acerca de", mec_custom_url(about_url), :id => "tab-acercade", :class => ('active current' if current_page?(about_url)), :title => "Ir al Acerca de" %></li>
