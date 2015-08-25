@@ -139,48 +139,85 @@ class RendicionesController < ApplicationController
 
       require 'csv'
       
-      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        rendiciones_csv = Rendicion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
-      else
-        rendiciones_csv = Rendicion.ordenado_periodo_orden_nivel.where(cond)
-      end
+      rendiciones_csv = Rendicion.ordenado_periodo_orden_nivel.where(cond)
+      
+      #if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      #  rendiciones_csv = Rendicion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+     # else
+      #  rendiciones_csv = Rendicion.ordenado_periodo_orden_nivel.where(cond)
+     # end
 
       csv = CSV.generate do |csv|
         # header row
         
-        csv << ["periodo", "pago", "codigo_nautilus", "codigo_establecimiento", "codigo_institucion", "denominacion_institucion", "nombre_departamento", "nombre_distrito", "codigo_persona", "nombre_persona", "tipo_especialidad", "total", "primer_monto_capital", "primer_monto_corriente", "segundo_monto_capital", "segundo_monto_corriente"]
+        csv << ["nivel", "periodo","pago", "codigo_establecimiento", "codigo_institucion", "denominacion_institucion", "nombre_departamento", "nombre_distrito", "codigo_persona", "nombre_persona", "monto_desembolso_834", "monto_rendicion_834", "saldo_rendicion_834", "estado_transferencia_834", "monto_desembolso_894", "monto_rendicion_894", "saldo_rendicion_894", "estado_transferencia_894" ]
  
         # data rows
         rendiciones_csv.each do |n|
-          csv << [n.periodo, n.pago, n.codigo_nautilus, n.codigo_establecimiento, n.codigo_institucion, n.denominacion_institucion, n.nombre_departamento, n.nombre_distrito, n.codigo_persona, n.nombre_persona, n.tipo_especialidad, n.total, n.primer_monto_capital, n.primer_monto_corriente, n.segundo_monto_capital, n.segundo_monto_corriente]
+          csv << [n.nivel, n.periodo, n.codigo_establecimiento, n.codigo_institucion, n.denominacion_institucion, n.nombre_departamento, n.nombre_distrito, n.codigo_persona, n.nombre_persona, n.monto_desembolso_834, n.monto_rendicion_834, n.saldo_rendicion_834, n.estado_transferencia_834, n.monto_desembolso_894, n.monto_rendicion_894, n.saldo_rendicion_894, n.estado_transferencia_894]
         end
 
       end
     
-      send_data(csv, :type => 'text/csv', :filename => "desembolso_#{Time.now.strftime('%Y%m%d')}.csv")
+      send_data(csv, :type => 'text/csv', :filename => "rendicion_#{Time.now.strftime('%Y%m%d')}.csv")
 
     elsif params[:format] == 'xlsx'
-      
-      respond_to do |format|
-      
-        format.xlsx {
-          
-          columnas = [:periodo, :pago, :codigo_nautilus, :codigo_establecimiento, :codigo_institucion, :denominacion_institucion, :nombre_departamento, :nombre_distrito, :codigo_persona, :nombre_persona, :tipo_especialidad, :total, :primer_monto_capital, :primer_monto_corriente, :segundo_monto_capital, :segundo_monto_corriente]
-          
-          if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-            send_data Rendicion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).to_xlsx(:columns => columnas).to_stream.read, 
-            :filename => "rendicion_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
-            :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
-            disposition: 'attachment'
-          else
-            send_data Rendicion.ordenado_periodo_orden_nivel.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
-            :filename => "rendicion_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
-            :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
-            disposition: 'attachment'
-          end
-        }
-      
+
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        rendiciones_xlsx = Rendicion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+        #       send_data Rendicion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).to_xlsx(:columns => columnas).to_stream.read, 
+        #       :filename => "rendicion_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
+        #       :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
+        #       disposition: 'attachment'
+      else
+        rendiciones_xlsx = Rendicion.ordenado_periodo_orden_nivel.where(cond)
+        #       send_data Rendicion.ordenado_periodo_orden_nivel.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
+        #       :filename => "rendicion_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
+        #       :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
+        #       disposition: 'attachment'
       end
+
+      
+      p = Axlsx::Package.new
+        
+      p.workbook.add_worksheet(:name => "Rendiciones") do |sheet|
+          
+        sheet.add_row [:nivel, :periodo, :pago, :codigo_establecimiento, :codigo_institucion, :denominacion_institucion, :nombre_departamento, :nombre_distrito, :codigo_persona, :nombre_persona, :monto_desembolso_834, :monto_rendicion_834, :saldo_rendicion_834, :estado_transferencia_834, :monto_desembolso_894, :monto_rendicion_894, :saldo_rendicion_894, :estado_transferencia_894] 
+
+        rendiciones_xlsx.each do |r|
+              
+          sheet.add_row [r.nivel, r.periodo, r.pago, r.codigo_establecimiento, r.codigo_institucion, r.denominacion_institucion, r.nombre_departamento, r.nombre_distrito, r.codigo_persona, r.nombre_persona, r.monto_desembolso_834, r.monto_rendicion_834, r.saldo_rendicion_834, r.estado_transferencia_834, r.monto_desembolso_894, r.monto_rendicion_894, r.saldo_rendicion_894, r.estado_transferencia_894]
+                
+        end
+
+      end
+            
+      p.use_shared_strings = true
+      
+      send_data p.to_stream.read, filename: "rendiciones_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
+      
+      
+      
+      # respond_to do |format|
+      
+      #   format.xlsx {
+          
+      #     columnas = [:nivel, :periodo, :pago, :codigo_nautilus, :codigo_establecimiento, :codigo_institucion, :denominacion_institucion, :nombre_departamento, :nombre_distrito, :codigo_persona, :nombre_persona, :monto_desembolso_834, :monto_rendicion_834, :saldo_rendicion_834, :estado_transferencia_834, :monto_desembolso_894, :monto_rendicion_894, :saldo_rendicion_894, :estado_transferencia_894]
+          
+      #     if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+      #       send_data Rendicion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).to_xlsx(:columns => columnas).to_stream.read, 
+      #       :filename => "rendicion_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
+      #       :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
+      #       disposition: 'attachment'
+      #     else
+      #       send_data Rendicion.ordenado_periodo_orden_nivel.where(cond).to_xlsx(:columns => columnas).to_stream.read, 
+      #       :filename => "rendicion_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", 
+      #       :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", 
+      #       disposition: 'attachment'
+      #     end
+      #   }
+      
+      # end
 
     elsif params[:format] == 'pdf'
 
@@ -192,7 +229,7 @@ class RendicionesController < ApplicationController
         rendicion = Rendicion.ordenado_periodo_orden_nivel.where(cond)
       end
    
-      report.layout.config.list(:desembolso) do
+      report.layout.config.list(:rendicion) do
         
         # Define the variables used in list.
         use_stores :total_page => 0
@@ -218,29 +255,31 @@ class RendicionesController < ApplicationController
     
       end
 
-      rendicion.each do |d|
+      rendicion.each do |r|
       
-        report.list(:desembolso).add_row do |row|
+        report.list(:rendicion).add_row do |row|
 
-          row.values  periodo: d.periodo,
-            pago: d.pago, 
-            codigo_nautilus: d.codigo_nautilus, 
-            codigo_establecimiento: d.codigo_establecimiento, 
-            codigo_institucion: d.codigo_institucion, 
-            denominacion_institucion: d.denominacion_institucion, 
-            nombre_departamento: d.nombre_departamento, 
-            nombre_distrito: d.nombre_distrito, 
-            codigo_persona: d.codigo_persona, 
-            nombre_persona: d.nombre_persona, 
-            tipo_especialidad: d.tipo_especialidad, 
-            total: d.total, 
-            primer_monto_capital: d.primer_monto_capital, 
-            primer_monto_corriente: d.primer_monto_corriente, 
-            segundo_monto_capital: d.segundo_monto_capital, 
-            segundo_monto_corriente: d.segundo_monto_corriente
+          row.values  nivel: r.nivel,
+            periodo: r.periodo, 
+            pago: r.pago, 
+            codigo_establecimiento: r.codigo_establecimiento, 
+            codigo_institucion: r.codigo_institucion, 
+            denominacion_institucion: r.denominacion_institucion, 
+            nombre_departamento: r.nombre_departamento, 
+            nombre_distrito: r.nombre_distrito, 
+            codigo_persona: r.codigo_persona, 
+            nombre_persona: r.nombre_persona, 
+            monto_desembolso_834: r.monto_desembolso_834, 
+            monto_rendicion_834: r.monto_rendicion_834, 
+            saldo_rendicion_834: r.saldo_rendicion_834, 
+            estado_transferencia_834: r.estado_transferencia_834, 
+            monto_desembolso_894: r.monto_desembolso_894, 
+            monto_rendicion_894: r.monto_rendicion_894, 
+            saldo_rendicion_894: r.saldo_rendicion_894, 
+            estado_transferencia_894: r.estado_transferencia_894
         end
 
-        report.page.list(:desembolso) do |list|
+        report.page.list(:rendicion) do |list|
         
           list.store.total_page +=  0
 
@@ -253,13 +292,18 @@ class RendicionesController < ApplicationController
         disposition: 'attachment'
 
     else
-
+      if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
+        @rendiciones_todos = Rendicion.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+      else
+        @rendiciones_todos = Rendicion.ordenado_periodo_orden_nivel.where(cond)
+      end
+      
       respond_to do |f|
 
         f.js
+        f.json {render :json => @rendiciones_todos , :methods => :uri}
 
       end 
-
     end
   end
 end

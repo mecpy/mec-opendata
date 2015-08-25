@@ -38,7 +38,7 @@
           <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
           <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", id:'tab-microdata', :style => "width:32px; margin-bottom:10px;" %></a></br>
           <div id="tab-descargas-filtradas">
-              <span>Descargar Desembolsos Filtrados:</span>
+              <span>Descargar Rendiciones Filtrados:</span>
 
               <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
 
@@ -50,35 +50,35 @@
           <br />
           <br /> 
           <div id="tab-descargas-total">
-              <div style="float:left;">Descargar todos los Desembolsos Procesados:</div>
+              <div style="float:left;">Descargar todos los Rendiciones Procesados:</div>
               <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
                   <%= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_rendiciones_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
-                  <meta itemprop="name" content="Desembolsos 2015">
-                  <meta itemprop="description" content="Listado de Desembolsos correspondientes al año 2015">
+                  <meta itemprop="name" content="Rendiciones 2015">
+                  <meta itemprop="description" content="Listado de Rendiciones correspondientes al año 2015">
                   <meta itemprop="encodingFormat" content="pdf">
               </div>
               <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
                   <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_rendiciones_lista_url(parametros_xls_todos)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
                   <br />
-                  <span style="color:silver;">(113KB)</span>
-                  <meta itemprop="name" content="Desembolsos 2015">
-                  <meta itemprop="description" content="Listado de Desembolsos correspondientes al año 2015">
+                  <span style="color:silver;">(828KB)</span>
+                  <meta itemprop="name" content="Rendiciones 2015">
+                  <meta itemprop="description" content="Listado de Rendiciones correspondientes al año 2015">
                   <meta itemprop="encodingFormat" content="xls">
               </div>
               <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
                   <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_rendiciones_lista_url(parametros_csv_todos)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
                   <br />
-                  <span style="color:silver;">(399KB)</span>
-                  <meta itemprop="name" content="Desembolsos 2015">
-                  <meta itemprop="description" content="Listado de Desembolsos correspondientes al año 2015">
+                  <span style="color:silver;">(1.486KB)</span>
+                  <meta itemprop="name" content="Rendiciones 2015">
+                  <meta itemprop="description" content="Listado de Rendiciones correspondientes al año 2015">
                   <meta itemprop="encodingFormat" content="csv">
               </div>
               <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
                   <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_rendiciones_lista_url(parametros_json_todos)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
                   <br />
                   <span style="color:silver;">(768KB)</span>
-                  <meta itemprop="name" content="Desembolsos 2015">
-                  <meta itemprop="description" content="Listado de Desembolsos correspondientes al año 2015">
+                  <meta itemprop="name" content="Rendiciones 2015">
+                  <meta itemprop="description" content="Listado de Rendiciones correspondientes al año 2015">
                   <meta itemprop="encodingFormat" content="json">
               </div>
 

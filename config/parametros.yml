@@ -42,7 +42,7 @@ development:
   matriculaciones_departamentos_distritos_csv: /data/matriculaciones_departamentos_distritos_2012.csv
   matriculaciones_departamentos_distritos_json: /data/matriculaciones_departamentos_distritos_2012.json
 
-  ejecucion_fiscal_xlsx: /data/ejecucion_al_30062015.xls
+  ejecucion_fiscal_xlsx: /data/ejecucion_al_31072015.xls
   
   viaticos_diciembre_2014: /data/viaticos_diciembre_2014_.xls
   viaticos_febrero_2015: /data/viaticos_febrero_2015.xls
@@ -50,6 +50,7 @@ development:
   viaticos_abril_2015: /data/viaticos_abril_2015.xls
   viaticos_mayo_2015: /data/viaticos_mayo_2015.xls
   viaticos_junio_2015: /data/viaticos_junio_2015.xls
+  viaticos_julio_2015: /data/viaticos_julio_2015.xls
   
   resumen_anual_remuneraciones_personal_xlsx: /data/resumen_anual_remuneraciones_personal_2014.xlsx
   directorio_coordinadores_supervisores: /data/coordinadores_y_supervisores_032015.xlsx
@@ -66,6 +67,8 @@ development:
 
   comisionados_aa_oee_2014: /data/comisionados_aa_oee_2014.xls
   comisionados_aa_oee_2015: /data/comisionados_aa_oee_2015.xls
+
+  instituciones_utilizadas_agrupaciones_politicas: /data/instituciones_utilizadas_agrupaciones_politicas.xls
 
 production:
 
@@ -112,7 +115,7 @@ production:
   matriculaciones_departamentos_distritos_json: /data/matriculaciones_departamentos_distritos_2012.json
 
 
-  ejecucion_fiscal_xlsx: http://datos.mec.gov.py/data/ejecucion_al_30062015.xls
+  ejecucion_fiscal_xlsx: http://datos.mec.gov.py/data/ejecucion_al_31072015.xls
   
   viaticos_diciembre_2014: http://datos.mec.gov.py/data/viaticos_diciembre_2014_.xls
   viaticos_febrero_2015: http://datos.mec.gov.py/data/viaticos_febrero_2015.xls
@@ -120,6 +123,7 @@ production:
   viaticos_abril_2015: http://datos.mec.gov.py/data/viaticos_abril_2015.xls
   viaticos_mayo_2015: http://datos.mec.gov.py/data/viaticos_mayo_2015.xls
   viaticos_junio_2015: http://datos.mec.gov.py/data/viaticos_junio_2015.xls
+  viaticos_julio_2015: http://datos.mec.gov.py/data/viaticos_julio_2015.xls
   
   resumen_anual_remuneraciones_personal_xlsx: http://datos.mec.gov.py/data/resumen_anual_remuneraciones_personal_2014.xlsx
 
@@ -137,3 +141,5 @@ production:
 
   comisionados_aa_oee_2014: http://datos.mec.gov.py/data/comisionados_aa_oee_2014.xls
   comisionados_aa_oee_2015: http://datos.mec.gov.py/data/comisionados_aa_oee_2015.xls
+
+  instituciones_utilizadas_agrupaciones_politicas: http://datos.mec.gov.py/data/instituciones_utilizadas_agrupaciones_politicas.xls

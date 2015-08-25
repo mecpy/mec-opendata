@@ -31,7 +31,7 @@
 <form class="navbar-form navbar-left" role="search">
   <div class="form-group">
     <%= label_tag "Periodo", nil, :class => 'col-sm-4 label-combo' %>
-    <div class="col-sm-4">
+    <div class="col-sm-5">
       <%= select :institucion, :anio, periodos_instituciones, {}, { :class => 'form-control' } %>
     </div>
   </div>
@@ -40,7 +40,7 @@
 <div class="clearfix"></div>
 <hr>
 
-<% if @institucion.present? %>
+<% if @establecimiento.present? %>
   <div class="row" id="bloques">
 
     <div class="col-sm-6 bloque">
