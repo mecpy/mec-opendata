@@ -1,338 +1,339 @@
 <%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
-<div>
-  <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_matriculaciones_educacion_inclusiva_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
-  <h1>
-    <span itemprop="name">Matriculaciones por Educación Inclusiva</span>
-    <meta itemprop="description" content="
-          Corresponde a la cantidad de matriculados por ciclo/niveles/programas especiales de educación inclusiva con sus correspondientes códigos identificatorios."/>
-    <meta itemprop="url" content="http://datos.mec.gov.py/data/matriculaciones_educacion_inclusiva">
-    <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
-    <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
-      <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
-      <meta itemprop="url" content="http://datos.mec.gov.py/">
-      <meta itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura">
-    </span>
-    <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
-      <meta itemprop="name" content="Ministerio de Educación y Cultura">
-      <meta itemprop="url" content="http://www.mec.gov.py/">
-      <meta itemprop="email" content="datosabiertos@mec.gov.py">
-    </span>
-    <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
-      <meta itemprop="name" content="Juan Barrios">
-      <meta itemprop="email" content="datosabiertos@mec.gov.py">
-    </span>
-    <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
-    <meta itemprop="keywords" style="display: none;" content="educación,matriculaciones,educación inclusiva"/>
-    <meta itemprop="version" style="display: none;" content="1.0"/>
-  </h1>
-</div>
 
-<%= form_tag mec_custom_url(data_matriculaciones_educacion_inclusiva_lista_url(nil,nil)), :remote => true, :id => "form-buscar-matriculaciones-educacion-inclusiva" do  %>
-  <div class="table-responsive">
-    <table class="table table-small-font table-bordered table-striped">
-      <thead>
-        <tr>
+<div itemscope="" itemtype="https://schema.org/Dataset">
 
-          <th data-priority="1">
-            <span data-titulo="true">Periodo</span>
-
-            <span class="orden anio">
-              <i class="filtro fa fa-sort"></i>
-              <i class="descendente fa fa-sort-desc"></i>
-              <i class="ascendente fa fa-sort-asc"></i>
-            </span>
-
-            <%= select :form_buscar_matriculaciones_educacion_inclusiva, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
-          </th>
-
-          <th data-priority="1">
-            <span data-titulo="true">C&oacute;digo Establecimiento</span>
-
-            <span class="orden codigo_establecimiento">
-              <i class="filtro fa fa-sort"></i>
-              <i class="descendente fa fa-sort-desc"></i>
-              <i class="ascendente fa fa-sort-asc"></i>
-            </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_codigo_establecimiento');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_inclusiva_codigo_establecimiento_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_establecimiento, 
-            atributo_tipo: :text, 
-            model: :MatriculacionEducacionInclusiva, 
-            limit: 10,
-            cadena_consulta: "codigo_establecimiento",
-            orden: "codigo_establecimiento")), 
-        parametro_id: "form_buscar_matriculaciones_educacion_inclusiva_codigo_establecimiento", 
-        resultado_id: "form_buscar_matriculaciones_educacion_inclusiva_codigo_establecimiento_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Código Institución</span>
-
-        <span class="orden codigo_institucion">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_codigo_institucion, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_codigo_institucion');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_inclusiva_codigo_institucion_id %>
-      <%= autocomplete_help(  ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_institucion, 
-            atributo_tipo: :int, 
-            model: :MatriculacionEducacionInclusiva, 
-            limit: 10,
-            cadena_consulta: "codigo_institucion",
-            orden: "codigo_institucion")), 
-        parametro_id: "form_buscar_matriculaciones_educacion_inclusiva_codigo_institucion", 
-        resultado_id: "form_buscar_matriculaciones_educacion_inclusiva_codigo_institucion_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Instituci&oacute;n</span>
-
-        <span class="orden nombre_institucion">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_institucion, 
-            atributo_tipo: :text, 
-            model: :MatriculacionEducacionInclusiva, 
-            limit: 10,
-            cadena_consulta: "nombre_institucion",
-            orden: "nombre_institucion")), 
-        parametro_id: "form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion", 
-        resultado_id: "form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Departamento</span>
-
-        <span class="orden nombre_departamento">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_departamento, 
-            atributo_tipo: :text, 
-            model: :MatriculacionEducacionInclusiva, 
-            limit: 10,
-            cadena_consulta: "nombre_departamento",
-            orden: "nombre_departamento")), 
-        parametro_id: "form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento", 
-        resultado_id: "form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Distrito</span>
-
-        <span class="orden nombre_distrito">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_distrito, 
-            atributo_tipo: :text, 
-            model: :MatriculacionEducacionInclusiva, 
-            limit: 10,
-            cadena_consulta: "nombre_distrito",
-            orden: "nombre_distrito")), 
-        parametro_id: "form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito", 
-        resultado_id: "form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Barrio/Localidad</span>
-
-        <span class="orden nombre_barrio_localidad">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_barrio_localidad, 
-            atributo_tipo: :text, 
-            model: :MatriculacionEducacionInclusiva, 
-            limit: 10,
-            cadena_consulta: "nombre_barrio_localidad",
-            orden: "nombre_barrio_localidad")), 
-        parametro_id: "form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad", 
-        resultado_id: "form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Zona</span>
-
-        <span class="orden nombre_zona">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-        <%= select :form_buscar_matriculaciones_educacion_inclusiva, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Sector o Tipo Gestión</span>
-
-        <span class="orden sector_o_tipo_gestion">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_sector_o_tipo_gestion, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_sector_o_tipo_gestion');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_inclusiva_sector_o_tipo_gestion_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :sector_o_tipo_gestion, 
-            atributo_tipo: :text, 
-            model: :MatriculacionEducacionInclusiva, 
-            limit: 10,
-            cadena_consulta: "sector_o_tipo_gestion",
-            orden: "sector_o_tipo_gestion")), 
-        parametro_id: "form_buscar_matriculaciones_educacion_inclusiva_sector_o_tipo_gestion", 
-        resultado_id: "form_buscar_matriculaciones_educacion_inclusiva_sector_o_tipo_gestion_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th>
-        <span data-titulo="true">Matricula Inicial Especial</span>
-        <span class="orden matricula_inicial_especial">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <span class="input-group-addon">
-          <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
-        </span>
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial, nil, :class => 'form-control', :placeholder => '' %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial');"><i class="fa fa-times"></i></span>
-      </div>
-      </th>
-
-      <th>
-        <span data-titulo="true">Matricula 1er y 2do Ciclo Especial</span>
-        <span class="orden matricula_primer_y_segundo_ciclo_especial">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <span class="input-group-addon">
-          <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
-        </span>
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial, nil, :class => 'form-control', :placeholder => '' %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial');"><i class="fa fa-times"></i></span>
-      </div>
-      </th>
-
-      <th>
-        <span data-titulo="true">Matricula 3er Ciclo Especial</span>
-        <span class="orden matricula_tercer_ciclo_especial">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <span class="input-group-addon">
-          <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
-        </span>
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial, nil, :class => 'form-control', :placeholder => '' %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial');"><i class="fa fa-times"></i></span>
-      </div>
-      </th>
-
-      <th>
-        <span data-titulo="true">Matricula Programas Especiales</span>
-        <span class="orden matricula_programas_especiales">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <span class="input-group-addon">
-          <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
-        </span>
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales, nil, :class => 'form-control', :placeholder => '' %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales');"><i class="fa fa-times"></i></span>
-      </div>
-      </th>
-
-      </tr>
-      </thead>
-
-      <tbody id="matriculaciones-educacion-inclusiva-lista"></tbody>
-
-    </table>
+  <div>
+    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_matriculaciones_educacion_inclusiva_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
+    <h1>
+      <span>Matriculaciones por Educación Inclusiva</span>
+      <meta itemprop="name" style="display: none;" content="MATRICULA EDUCACION INCLUSIVA">
+      <meta itemprop="description" content="
+            Corresponde a la cantidad de matriculados por ciclo/niveles/programas especiales de educación inclusiva con sus correspondientes códigos identificatorios."/>
+      <meta itemprop="url" content= <%= mec_custom_url(data_matriculaciones_educacion_inclusiva_url) %> >
+      <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+      <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+        <meta itemprop="name" content="Ministerio de Educación y Cultura">
+        <meta itemprop="url" content="http://www.mec.gov.py/">
+        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      </span>
+      <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+        <meta itemprop="name" content="Juan Barrios">
+        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      </span>
+      <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+      <meta itemprop="keywords" style="display: none;" content="educación,matriculaciones,educación inclusiva"/>
+      <meta itemprop="version" style="display: none;" content="1.0"/>
+    </h1>
   </div>
-<% end %>
 
-<table class="table table-striped table-bordered table-hover">
-  <tbody id="matriculaciones-educacion-inclusiva-footer"></tbody>
-</table>
+  <%= form_tag mec_custom_url(data_matriculaciones_educacion_inclusiva_lista_url(nil,nil)), :remote => true, :id => "form-buscar-matriculaciones-educacion-inclusiva" do  %>
+    <div class="table-responsive">
+      <table class="table table-small-font table-bordered table-striped">
+        <thead>
+          <tr>
+
+            <th data-priority="1">
+              <span data-titulo="true">Periodo</span>
+
+              <span class="orden anio">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <%= select :form_buscar_matriculaciones_educacion_inclusiva, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
+            </th>
+
+            <th data-priority="1">
+              <span data-titulo="true">C&oacute;digo Establecimiento</span>
+
+              <span class="orden codigo_establecimiento">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_codigo_establecimiento');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_matriculaciones_educacion_inclusiva_codigo_establecimiento_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_establecimiento, 
+              atributo_tipo: :text, 
+              model: :MatriculacionEducacionInclusiva, 
+              limit: 10,
+              cadena_consulta: "codigo_establecimiento",
+              orden: "codigo_establecimiento")), 
+          parametro_id: "form_buscar_matriculaciones_educacion_inclusiva_codigo_establecimiento", 
+          resultado_id: "form_buscar_matriculaciones_educacion_inclusiva_codigo_establecimiento_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Código Institución</span>
+
+          <span class="orden codigo_institucion">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_codigo_institucion, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_codigo_institucion');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_matriculaciones_educacion_inclusiva_codigo_institucion_id %>
+        <%= autocomplete_help(  ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_institucion, 
+              atributo_tipo: :int, 
+              model: :MatriculacionEducacionInclusiva, 
+              limit: 10,
+              cadena_consulta: "codigo_institucion",
+              orden: "codigo_institucion")), 
+          parametro_id: "form_buscar_matriculaciones_educacion_inclusiva_codigo_institucion", 
+          resultado_id: "form_buscar_matriculaciones_educacion_inclusiva_codigo_institucion_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Instituci&oacute;n</span>
+
+          <span class="orden nombre_institucion">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_institucion, 
+              atributo_tipo: :text, 
+              model: :MatriculacionEducacionInclusiva, 
+              limit: 10,
+              cadena_consulta: "nombre_institucion",
+              orden: "nombre_institucion")), 
+          parametro_id: "form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion", 
+          resultado_id: "form_buscar_matriculaciones_educacion_inclusiva_nombre_institucion_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Departamento</span>
+
+          <span class="orden nombre_departamento">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_departamento, 
+              atributo_tipo: :text, 
+              model: :MatriculacionEducacionInclusiva, 
+              limit: 10,
+              cadena_consulta: "nombre_departamento",
+              orden: "nombre_departamento")), 
+          parametro_id: "form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento", 
+          resultado_id: "form_buscar_matriculaciones_educacion_inclusiva_nombre_departamento_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Distrito</span>
+
+          <span class="orden nombre_distrito">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_distrito, 
+              atributo_tipo: :text, 
+              model: :MatriculacionEducacionInclusiva, 
+              limit: 10,
+              cadena_consulta: "nombre_distrito",
+              orden: "nombre_distrito")), 
+          parametro_id: "form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito", 
+          resultado_id: "form_buscar_matriculaciones_educacion_inclusiva_nombre_distrito_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Barrio/Localidad</span>
+
+          <span class="orden nombre_barrio_localidad">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_barrio_localidad, 
+              atributo_tipo: :text, 
+              model: :MatriculacionEducacionInclusiva, 
+              limit: 10,
+              cadena_consulta: "nombre_barrio_localidad",
+              orden: "nombre_barrio_localidad")), 
+          parametro_id: "form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad", 
+          resultado_id: "form_buscar_matriculaciones_educacion_inclusiva_nombre_barrio_localidad_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Zona</span>
+
+          <span class="orden nombre_zona">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+          <%= select :form_buscar_matriculaciones_educacion_inclusiva, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Sector o Tipo Gestión</span>
+
+          <span class="orden sector_o_tipo_gestion">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_inclusiva_sector_o_tipo_gestion, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_sector_o_tipo_gestion');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_matriculaciones_educacion_inclusiva_sector_o_tipo_gestion_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :sector_o_tipo_gestion, 
+              atributo_tipo: :text, 
+              model: :MatriculacionEducacionInclusiva, 
+              limit: 10,
+              cadena_consulta: "sector_o_tipo_gestion",
+              orden: "sector_o_tipo_gestion")), 
+          parametro_id: "form_buscar_matriculaciones_educacion_inclusiva_sector_o_tipo_gestion", 
+          resultado_id: "form_buscar_matriculaciones_educacion_inclusiva_sector_o_tipo_gestion_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th>
+          <span data-titulo="true">Matricula Inicial Especial</span>
+          <span class="orden matricula_inicial_especial">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matricula 1er y 2do Ciclo Especial</span>
+          <span class="orden matricula_primer_y_segundo_ciclo_especial">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matricula 3er Ciclo Especial</span>
+          <span class="orden matricula_tercer_ciclo_especial">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matricula Programas Especiales</span>
+          <span class="orden matricula_programas_especiales">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        </tr>
+        </thead>
+
+        <tbody id="matriculaciones-educacion-inclusiva-lista"></tbody>
+
+      </table>
+    </div>
+  <% end %>
+
+  <table class="table table-striped table-bordered table-hover">
+    <tbody id="matriculaciones-educacion-inclusiva-footer"></tbody>
+  </table>
+
+</div>
 
 <script type="text/javascript">
 

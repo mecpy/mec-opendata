@@ -1,273 +1,274 @@
 <%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
-<div>
-  <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_nomina_docentes_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
-  <!--<div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>-->
-  <h1>
-    <span itemprop="name">Nómina de Funcionarios Docentes</span>
-    <meta itemprop="url" content="http://datos.mec.gov.py/data/nomina_docentes">  
-    <meta itemprop="description"
-          content="Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación."/>
-    <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31">
-    <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
-      <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
-      <meta itemprop="url" content="http://datos.mec.gov.py/">
-      <meta itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura">
+
+<div itemscope="" itemtype="https://schema.org/Dataset">
+
+  <div>
+    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_nomina_docentes_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
+    <!--<div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>-->
+    <h1>
+      <span>Nómina de Funcionarios Docentes</span>
+      <meta itemprop="name" style="display: none;" content="NOMINA DE FUNCIONARIOS DOCENTES">
+      <meta itemprop="description"
+            content="Contiene todos los datos de la nómina de funcionarios docentes, conforme a lo establecido en la ley 5189/14. El formato de los datos sigue la recomendaci&oacute;n propuesta por la Secretar&iacute;a de la Funci&oacute;n P&uacute;blica."/>
+      <meta itemprop="temporal" style="display: none;" content="2014-01-01/2015-12-31">
+      <meta itemprop="url" content= <%= mec_custom_url(data_nomina_docentes_url) %> >
+      <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+          <meta itemprop="name" content="Ministerio de Educación y Cultura">
+          <meta itemprop="url" content="http://www.mec.gov.py/">
+          <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      </span>
+      <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+          <meta itemprop="name" content="Juan Barrios">
+          <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      </span>
+      <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+      <meta itemprop="keywords" style="display: none;" content="educación,nóminas,docentes"/>
+      <meta itemprop="version" style="display: none;" content="1.0"/>
+    </h1>
+    <span style="font-size: 12px;font-weight: bold;color:silver;">
+      <i>
+        La información presentada para el último periodo está sujeta a ajustes por parte de MEC debido a la dinámica de movimientos mensual de funcionarios.<br />Ley 5189/2014 Art. 5: "Queda expresamente prohibida la utilización de los datos contenidos en estos documentos para fines comerciales.
+      </i>
     </span>
-    <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
-      <meta itemprop="name" content="Ministerio de Educación y Cultura">
-      <meta itemprop="url" content="http://www.mec.gov.py/">
-      <meta itemprop="email" content="datosabiertos@mec.gov.py">
-    </span>
-    <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
-      <meta itemprop="name" content="Juan Barrios">
-      <meta itemprop="email" content="datosabiertos@mec.gov.py">
-    </span>
-    <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
-    <meta itemprop="keywords" style="display: none;" content="educación,establecimientos,escolar,geografico"/>
-    <meta itemprop="version" style="display: none;" content="1.0"/>
-  </h1>
-  <span style="font-size: 12px;font-weight: bold;color:silver;">
-    <i>
-      La información presentada para el último periodo está sujeta a ajustes por parte de MEC debido a la dinámica de movimientos mensual de funcionarios.<br />Ley 5189/2014 Art. 5: "Queda expresamente prohibida la utilización de los datos contenidos en estos documentos para fines comerciales.
-    </i>
-  </span>
-</div>
-
-<%= form_tag mec_custom_url(data_nomina_docentes_lista_url(nil)), :remote => true, :id => "form-buscar-nominas" do  %>
-  <div class="table-responsive">
-    <table class="table table-small-font table-bordered table-striped">
-      <thead>
-        <tr>
-
-          <th data-priority="1">
-            <span data-titulo="true">Año</span>
-
-            <span class="orden ano_periodo_pago">
-              <i class="filtro fa fa-sort"></i>
-              <i class="descendente fa fa-sort-desc"></i>
-              <i class="ascendente fa fa-sort-asc"></i>
-            </span>
-
-            <%= select :form_buscar_nominas, :ano_periodo_pago, options_periodos_nominas, {}, {:class => 'form-control input-sm'} %>
-          </th>
-
-          <th data-priority="1">
-            <%= label_tag "Mes" %>
-
-            <span class="orden mes_periodo_pago">
-              <i class="filtro fa fa-sort"></i>
-              <i class="descendente fa fa-sort-desc"></i>
-              <i class="ascendente fa fa-sort-asc"></i>
-            </span>
-
-            <%= select :form_buscar_nominas, :mes_periodo_pago, options_meses_nominas, {}, {:class => 'form-control input-sm'} %>
-          </th>
-
-          <th data-priority="1">
-            <span data-titulo="true">N° Documento</span>
-
-            <span class="orden codigo_trabajador">
-              <i class="filtro fa fa-sort"></i>
-              <i class="descendente fa fa-sort-desc"></i>
-              <i class="ascendente fa fa-sort-asc"></i>
-            </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_nominas_codigo_trabajador, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-nominas', '#form_buscar_nominas_codigo_trabajador');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_nominas_codigo_trabajador_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_trabajador, 
-            atributo_tipo: :text, 
-            model: :VNomina, 
-            limit: 10,
-            cadena_consulta: "codigo_trabajador",
-            cadena_consulta_adicional: "(es_categoria_administrativa=0)",
-            orden: "codigo_trabajador")), 
-        parametro_id: "form_buscar_nominas_codigo_trabajador", 
-        resultado_id: "form_buscar_nominas_codigo_trabajador_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Nombre Completo</span>
-
-        <span class="orden nombre_trabajador">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_nominas_nombre_trabajador, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-nominas', '#form_buscar_nominas_nombre_trabajador');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_nominas_nombre_trabajador_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_trabajador, 
-            atributo_tipo: :text, 
-            model: :VNomina, 
-            limit: 10,
-            cadena_consulta: "nombre_trabajador",
-            cadena_consulta_adicional: "(es_categoria_administrativa=0)",
-            orden: "nombre_trabajador")), 
-        parametro_id: "form_buscar_nominas_nombre_trabajador", 
-        resultado_id: "form_buscar_nominas_nombre_trabajador_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Objeto de Gasto</span>
-
-        <span class="orden nombre_objeto_gasto">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_nominas_nombre_objeto_gasto, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-nominas', '#form_buscar_nominas_nombre_objeto_gasto');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_nominas_nombre_objeto_gasto_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_objeto_gasto, 
-            atributo_tipo: :text, 
-            model: :VNomina, 
-            limit: 10,
-            cadena_consulta: "nombre_objeto_gasto",
-            cadena_consulta_adicional: "(es_categoria_administrativa=0)",
-            orden: "nombre_objeto_gasto")), 
-        parametro_id: "form_buscar_nominas_nombre_objeto_gasto", 
-        resultado_id: "form_buscar_nominas_nombre_objeto_gasto_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Estado</span>
-
-        <span class="orden estado">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_nominas_estado, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-nominas', '#form_buscar_nominas_estado');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_nominas_estado_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :estado, 
-            atributo_tipo: :text, 
-            model: :VNomina, 
-            limit: 10,
-            cadena_consulta: "estado",
-            cadena_consulta_adicional: "(es_categoria_administrativa=0)",
-            orden: "estado")), 
-        parametro_id: "form_buscar_nominas_estado", 
-        resultado_id: "form_buscar_nominas_estado_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Antigüedad</span>
-
-        <span class="orden antiguedad_docente">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_nominas_antiguedad_docente, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-nominas', '#form_buscar_nominas_antiguedad_docente');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_nominas_antiguedad_docente_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :antiguedad_docente, 
-            atributo_tipo: :text, 
-            model: :VNomina, 
-            limit: 10,
-            cadena_consulta: "antiguedad_docente",
-            cadena_consulta_adicional: "(es_categoria_administrativa=0)",
-            orden: "antiguedad_docente")), 
-        parametro_id: "form_buscar_nominas_antiguedad_docente", 
-        resultado_id: "form_buscar_nominas_antiguedad_docente_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Numero Matriculación</span>
-
-        <span class="orden numero_matriculacion">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_nominas_numero_matriculacion, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-nominas', '#form_buscar_nominas_numero_matriculacion');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_nominas_numero_matriculacion_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :numero_matriculacion, 
-            atributo_tipo: :int, 
-            model: :VNomina, 
-            limit: 10,
-            cadena_consulta: "numero_matriculacion",
-            cadena_consulta_adicional: "(es_categoria_administrativa=0)",
-            orden: "numero_matriculacion")), 
-        parametro_id: "form_buscar_nominas_numero_matriculacion", 
-        resultado_id: "form_buscar_nominas_numero_matriculacion_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th>
-        <span data-titulo="true">Asignaci&oacute;n</span>
-        <span class="orden asignacion">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <span class="input-group-addon">
-          <%= select_tag(:form_buscar_nominas_asignacion_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
-        </span>
-        <%= number_field_tag :form_buscar_nominas_asignacion, nil, :class => 'form-control', :placeholder => '' %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-nominas', '#form_buscar_nominas_asignacion');"><i class="fa fa-times"></i></span>
-      </div>
-      </th>
-
-      <th style="width:16px;"></th>
-
-      </tr>
-      </thead>
-
-      <tbody id="nominas-lista"></tbody>
-
-    </table>
   </div>
-<% end %>
 
-<table class="table table-striped table-bordered table-hover">
-  <tbody id="nominas-footer"></tbody>
-</table>
+  <%= form_tag mec_custom_url(data_nomina_docentes_lista_url(nil)), :remote => true, :id => "form-buscar-nominas" do  %>
+    <div class="table-responsive">
+      <table class="table table-small-font table-bordered table-striped">
+        <thead>
+          <tr>
+
+            <th data-priority="1">
+              <span data-titulo="true">Año</span>
+
+              <span class="orden ano_periodo_pago">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <%= select :form_buscar_nominas, :ano_periodo_pago, options_periodos_nominas, {}, {:class => 'form-control input-sm'} %>
+            </th>
+
+            <th data-priority="1">
+              <%= label_tag "Mes" %>
+
+              <span class="orden mes_periodo_pago">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <%= select :form_buscar_nominas, :mes_periodo_pago, options_meses_nominas, {}, {:class => 'form-control input-sm'} %>
+            </th>
+
+            <th data-priority="1">
+              <span data-titulo="true">N° Documento</span>
+
+              <span class="orden codigo_trabajador">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_nominas_codigo_trabajador, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-nominas', '#form_buscar_nominas_codigo_trabajador');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_nominas_codigo_trabajador_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_trabajador, 
+              atributo_tipo: :text, 
+              model: :VNomina, 
+              limit: 10,
+              cadena_consulta: "codigo_trabajador",
+              cadena_consulta_adicional: "(es_categoria_administrativa=0)",
+              orden: "codigo_trabajador")), 
+          parametro_id: "form_buscar_nominas_codigo_trabajador", 
+          resultado_id: "form_buscar_nominas_codigo_trabajador_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Nombre Completo</span>
+
+          <span class="orden nombre_trabajador">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_nominas_nombre_trabajador, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-nominas', '#form_buscar_nominas_nombre_trabajador');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_nominas_nombre_trabajador_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_trabajador, 
+              atributo_tipo: :text, 
+              model: :VNomina, 
+              limit: 10,
+              cadena_consulta: "nombre_trabajador",
+              cadena_consulta_adicional: "(es_categoria_administrativa=0)",
+              orden: "nombre_trabajador")), 
+          parametro_id: "form_buscar_nominas_nombre_trabajador", 
+          resultado_id: "form_buscar_nominas_nombre_trabajador_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Objeto de Gasto</span>
+
+          <span class="orden nombre_objeto_gasto">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_nominas_nombre_objeto_gasto, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-nominas', '#form_buscar_nominas_nombre_objeto_gasto');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_nominas_nombre_objeto_gasto_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_objeto_gasto, 
+              atributo_tipo: :text, 
+              model: :VNomina, 
+              limit: 10,
+              cadena_consulta: "nombre_objeto_gasto",
+              cadena_consulta_adicional: "(es_categoria_administrativa=0)",
+              orden: "nombre_objeto_gasto")), 
+          parametro_id: "form_buscar_nominas_nombre_objeto_gasto", 
+          resultado_id: "form_buscar_nominas_nombre_objeto_gasto_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Estado</span>
+
+          <span class="orden estado">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_nominas_estado, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-nominas', '#form_buscar_nominas_estado');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_nominas_estado_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :estado, 
+              atributo_tipo: :text, 
+              model: :VNomina, 
+              limit: 10,
+              cadena_consulta: "estado",
+              cadena_consulta_adicional: "(es_categoria_administrativa=0)",
+              orden: "estado")), 
+          parametro_id: "form_buscar_nominas_estado", 
+          resultado_id: "form_buscar_nominas_estado_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Antigüedad</span>
+
+          <span class="orden antiguedad_docente">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_nominas_antiguedad_docente, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-nominas', '#form_buscar_nominas_antiguedad_docente');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_nominas_antiguedad_docente_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :antiguedad_docente, 
+              atributo_tipo: :text, 
+              model: :VNomina, 
+              limit: 10,
+              cadena_consulta: "antiguedad_docente",
+              cadena_consulta_adicional: "(es_categoria_administrativa=0)",
+              orden: "antiguedad_docente")), 
+          parametro_id: "form_buscar_nominas_antiguedad_docente", 
+          resultado_id: "form_buscar_nominas_antiguedad_docente_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Numero Matriculación</span>
+
+          <span class="orden numero_matriculacion">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_nominas_numero_matriculacion, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-nominas', '#form_buscar_nominas_numero_matriculacion');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_nominas_numero_matriculacion_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :numero_matriculacion, 
+              atributo_tipo: :int, 
+              model: :VNomina, 
+              limit: 10,
+              cadena_consulta: "numero_matriculacion",
+              cadena_consulta_adicional: "(es_categoria_administrativa=0)",
+              orden: "numero_matriculacion")), 
+          parametro_id: "form_buscar_nominas_numero_matriculacion", 
+          resultado_id: "form_buscar_nominas_numero_matriculacion_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th>
+          <span data-titulo="true">Asignaci&oacute;n</span>
+          <span class="orden asignacion">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_nominas_asignacion_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_nominas_asignacion, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-nominas', '#form_buscar_nominas_asignacion');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th style="width:16px;"></th>
+
+        </tr>
+        </thead>
+
+        <tbody id="nominas-lista"></tbody>
+
+      </table>
+    </div>
+  <% end %>
+
+  <table class="table table-striped table-bordered table-hover">
+    <tbody id="nominas-footer"></tbody>
+  </table>
+
+</div>
 
 <script type="text/javascript">
 

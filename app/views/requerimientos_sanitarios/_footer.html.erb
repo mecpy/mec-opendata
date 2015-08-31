@@ -50,36 +50,45 @@
           <br />
           <br /> 
           <div id="tab-descargas-total">
+              
               <div style="float:left;">Descargar todos los Requerimientos de Sanitarios Procesados:</div>
+              
               <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
   <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_instituciones_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
                   <meta itemprop="name" content="Requerimientos de Sanitarios 2015">
                   <meta itemprop="description" content="Listado de requerimientos de sanitarios correspondientes al año 2015">
                   <meta itemprop="encodingFormat" content="pdf">
+                  <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" /> 
               </div>
+
               <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-                  <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_requerimientos_sanitarios_lista_url(parametros_xls_todos)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
+                  <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_requerimientos_sanitarios_lista_url(parametros_xls_todos)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url", :content => mec_custom_url(data_requerimientos_sanitarios_lista_url(parametros_xls_todos)) %>
                   <br />
                   <span style="color:silver;">(310,9KB)</span>
                   <meta itemprop="name" content="Requerimientos de Sanitarios 2015">
                   <meta itemprop="description" content="Listado de requerimientos de sanitarios correspondientes al año 2015">
                   <meta itemprop="encodingFormat" content="xls">
+                  <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" /> 
               </div>
+
               <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-                  <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_sanitarios_lista_url(parametros_csv_todos)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
+                  <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_sanitarios_lista_url(parametros_csv_todos)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url", :content => mec_custom_url(data_requerimientos_sanitarios_lista_url(parametros_csv_todos)) %>
                   <br />
                   <span style="color:silver;">(1,1MB)</span>
                   <meta itemprop="name" content="Requerimientos de Sanitarios 2015">
                   <meta itemprop="description" content="Listado de requerimientos de sanitarios correspondientes al año 2015">
                   <meta itemprop="encodingFormat" content="csv">
+                  <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" /> 
               </div>
+
               <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-                  <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_sanitarios_lista_url(parametros_json_todos)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+                  <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_requerimientos_sanitarios_lista_url(parametros_json_todos)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url", :content => mec_custom_url(data_requerimientos_sanitarios_lista_url(parametros_json_todos)) %>
                   <br />
                   <span style="color:silver;">(2,7MB)</span>
                   <meta itemprop="name" content="Requerimientos de Sanitarios 2015">
                   <meta itemprop="description" content="Listado de requerimientos de sanitarios correspondientes al año 2015">
                   <meta itemprop="encodingFormat" content="json">
+                  <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" /> 
               </div>
 
               <div style="clear:both;"></div>

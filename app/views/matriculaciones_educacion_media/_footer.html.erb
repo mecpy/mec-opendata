@@ -53,36 +53,41 @@
 
       <% if params[:form_buscar_matriculaciones_educacion_media][:anio].present? %>
 
-         <div style="float:left;">Descargar todas las Matriculaciones filtradas:</div>
-            <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+          <div style="float:left;">Descargar todas las Matriculaciones filtradas:</div>
+        
+          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
             <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_educacion_media_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
             <meta itemprop="name" content="Matriculaciones Educación Media "+params[:form_buscar_matriculaciones_educacion_media][:anio]+"">
             <meta itemprop="description" content="Listado de matriculaciones en educación media correspondiente al año "+params[:form_buscar_matriculaciones_educacion_media][:anio]+"">
             <meta itemprop="encodingFormat" content="pdf">
-            </div>
-            <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+            <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+          </div>
+
+          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
             <%= descargar_documento(9, params[:form_buscar_matriculaciones_educacion_media][:anio], "0", "xlsx")%>
-              <br />
-            
+            <br />
             <meta itemprop="name" content="Matriculaciones Educación Media "+params[:form_buscar_matriculaciones_educacion_media][:anio]+"">
             <meta itemprop="description" content="Listado de matriculaciones en educación media correspondiente al año "+params[:form_buscar_matriculaciones_educacion_media][:anio]+"">
             <meta itemprop="encodingFormat" content="xls">
-             </div>
-            <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+            <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+           </div>
+
+          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
             <%=descargar_documento(9, params[:form_buscar_matriculaciones_educacion_media][:anio], "0", "csv")%>
-              <br />
-            
+            <br />
             <meta itemprop="name" content="Matriculaciones Educación Media "+params[:form_buscar_matriculaciones_educacion_media][:anio]+"">
             <meta itemprop="description" content="Listado de matriculaciones en educación media correspondiente al año "+params[:form_buscar_matriculaciones_educacion_media][:anio]+"">
             <meta itemprop="encodingFormat" content="csv">
-            </div>
-            <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+            <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+          </div>
+
+          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
             <%= descargar_documento(9, params[:form_buscar_matriculaciones_educacion_media][:anio], "0", "json")%>
-              <br />
-            
+            <br />
             <meta itemprop="name" content="Matriculaciones Educación Media "+params[:form_buscar_matriculaciones_educacion_media][:anio]+"">
             <meta itemprop="description" content="Listado de matriculaciones en educación media correspondiente al año "+params[:form_buscar_matriculaciones_educacion_media][:anio]+"">
             <meta itemprop="encodingFormat" content="json">
+            <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
           </div>
 
           <div style="clear:both;"></div>

@@ -3,227 +3,233 @@
 <%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
 <%= render :partial => "layouts/gmaps", :locals => { :ancho_maps => "100%", :altura_maps => "350px"} %>
 
-<div>
-  <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_primera_infancia_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
-  <!--<div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>-->
-  <h1>
-    <span itemprop="name">PROYECTO DE PRIMERA INFANCIA - FONACIDE</span>
-    <meta itemprop="description"
-          content="Contiene los datos de los establecimientos escolares del MEC que están incluidos en el Proyecto de Atención Educativa Oportuna, para el Desarrollo Integral a niños y niñas de 3 y 4 años en Asunción y 10 departamentos geográficos del país. El proyecto es financiado por el Fondo Nacional de Inversión Pública y Desarrollo (FONACIDE) a través del Fondo para la Excelencia de la Educación y la Investigación. Dentro de este grupo se incluyen a 16 poblaciones indígenas, será la primera experiencia de jardín infantil en poblaciones indígenas."/>
-    <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31">
-    <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
-      <meta itemprop="name" content="Ministerio de Educación y Cultura">
-      <meta itemprop="url" content="http://www.mec.gov.py/">
-      <meta itemprop="email" content="datosabiertos@mec.gov.py">
-    </span>
-    <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
-      <meta itemprop="name" content="Juan Barrios">
-      <meta itemprop="email" content="datosabiertos@mec.gov.py">
-    </span>
-    <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
-    <meta itemprop="keywords" style="display: none;" content="educación,establecimientos,escolar,geografico"/>
-    <meta itemprop="version" style="display: none;" content="1.0"/>
-  </h1>
-</div>
+<div itemscope="" itemtype="https://schema.org/Dataset">
 
-<%= form_tag mec_custom_url(data_primera_infancia_lista_url(nil)), :remote => true, :id => "form-buscar-establecimientos" do  %>
-  <div class="table-responsive">
-    <table id="establecimientos-tabla" class="table table-small-font table-bordered table-striped">
-      <thead>
-        <tr>
-
-          <th data-priority="1" id="ubicaciones-geograficas"> 
-            <span data-titulo="true" class="hidden">Mapa</span>
-            <%= link_to "", "#", :id => "link-to-ubicaciones-geograficas", :class => "link-to-ubicaciones-geograficas fa-lg icon-py-mapa", :title => "Haga click para ver el mapa con las instituciones de esta página."%>
-          </th>
-
-          <th data-priority="1">
-            <span data-titulo="true">Período</span>
-
-            <span class="orden anio">
-              <i class="filtro fa fa-sort"></i>
-              <i class="descendente fa fa-sort-desc"></i>
-              <i class="ascendente fa fa-sort-asc"></i>
-            </span>
-            <%= select :form_buscar_establecimientos, :anio, [2014], {}, :class => 'form-control input-sm' %>
-          </th>
-
-          <th data-priority="1">
-            <span data-titulo="true">Código Establecimiento</span>
-
-            <span class="orden codigo_establecimiento">
-              <i class="filtro fa fa-sort"></i>
-              <i class="descendente fa fa-sort-desc"></i>
-              <i class="ascendente fa fa-sort-asc"></i>
-            </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_establecimientos_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_codigo_establecimiento');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_establecimientos_codigo_establecimiento_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_establecimiento, 
-            atributo_tipo: :text, 
-            model: :Establecimiento, 
-            limit: 10,
-            cadena_consulta: "codigo_establecimiento",
-            orden: "codigo_establecimiento")), 
-        parametro_id: "form_buscar_establecimientos_codigo_establecimiento", 
-        resultado_id: "form_buscar_establecimientos_codigo_establecimiento_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Departamento</span>
-
-        <span class="orden nombre_departamento">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_establecimientos_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_nombre_departamento');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_establecimientos_nombre_departamento_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_departamento, 
-            atributo_tipo: :text, 
-            model: :Establecimiento, 
-            limit: 10,
-            cadena_consulta: "nombre_departamento",
-            orden: "nombre_departamento")), 
-        parametro_id: "form_buscar_establecimientos_nombre_departamento", 
-        resultado_id: "form_buscar_establecimientos_nombre_departamento_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Distrito</span>
-
-        <span class="orden nombre_distrito">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_establecimientos_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_nombre_distrito');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_establecimientos_nombre_distrito_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_distrito, 
-            atributo_tipo: :text, 
-            model: :Establecimiento, 
-            limit: 10,
-            cadena_consulta: "nombre_distrito",
-            orden: "nombre_distrito")), 
-        parametro_id: "form_buscar_establecimientos_nombre_distrito", 
-        resultado_id: "form_buscar_establecimientos_nombre_distrito_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Zona</span>
-
-        <span class="orden nombre_zona">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-        <%= select :form_buscar_establecimientos, :nombre_zona, ['','RURAL','URBANA'], {}, {:class => 'form-control input-sm'} %>
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Localidad/Barrio</span>
-
-        <span class="orden nombre_barrio_localidad">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_establecimientos_nombre_barrio_localidad, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_nombre_barrio_localidad');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_establecimientos_nombre_barrio_localidad_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_barrio_localidad, 
-            atributo_tipo: :text, 
-            model: :Establecimiento, 
-            limit: 10,
-            cadena_consulta: "nombre_barrio_localidad",
-            orden: "nombre_barrio_localidad")), 
-        parametro_id: "form_buscar_establecimientos_nombre_barrio_localidad", 
-        resultado_id: "form_buscar_establecimientos_nombre_barrio_localidad_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Direcci&oacute;n</span>
-
-        <span class="orden direccion">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_establecimientos_direccion, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_direccion');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_establecimientos_direccion_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :direccion, 
-            atributo_tipo: :text, 
-            model: :Establecimiento, 
-            limit: 10,
-            cadena_consulta: "direccion",
-            orden: "direccion")), 
-        parametro_id: "form_buscar_establecimientos_direccion", 
-        resultado_id: "form_buscar_establecimientos_direccion_id",
-        min_length: 2
-        ) %>
-
-      </th>
-      
-      <th data-priority="1">
-        <span data-titulo="true">Programa</span>
-
-        <span class="orden programa">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-        <%= select :form_buscar_establecimientos, :programa, [["",""],["Jornada Extendida", 1]], {}, :class => 'form-control input-sm' %>
-      </th>
-
-      </tr>
-      </thead>
-
-      <tbody id="establecimientos-lista"></tbody>
-
-    </table>
+  <div>
+    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_primera_infancia_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
+    <!--<div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>-->
+    <h1>
+      <span>PROYECTO DE PRIMERA INFANCIA - FONACIDE</span>
+      <meta itemprop="name" style="display: none;" content="PROYECTO DE PRIMERA INFANCIA - FONACIDE">
+      <meta itemprop="description"
+            content="Contiene los datos de los establecimientos escolares del MEC que están incluidos en el Proyecto de Atención Educativa Oportuna, para el Desarrollo Integral a niños y niñas de 3 y 4 años en Asunción y 10 departamentos geográficos del país. El proyecto es financiado por el Fondo Nacional de Inversión Pública y Desarrollo (FONACIDE) a través del Fondo para la Excelencia de la Educación y la Investigación. Dentro de este grupo se incluyen a 16 poblaciones indígenas, será la primera experiencia de jardín infantil en poblaciones indígenas."/>
+      <meta itemprop="temporal" style="display: none;" content="2014-01-01/2014-12-31">
+      <meta itemprop="url" content= <%= mec_custom_url(data_primera_infancia_url) %> >
+      <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+        <meta itemprop="name" content="Ministerio de Educación y Cultura">
+        <meta itemprop="url" content="http://www.mec.gov.py/">
+        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      </span>
+      <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+        <meta itemprop="name" content="Juan Barrios">
+        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      </span>
+      <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+      <meta itemprop="keywords" style="display: none;" content="educación,proyecto,infancia,fonacide"/>
+      <meta itemprop="version" style="display: none;" content="1.0"/>
+    </h1>
   </div>
-<% end %>
 
-<table class="table table-striped table-bordered table-hover">
-  <tbody id="establecimientos-footer"></tbody>
-</table>
+  <%= form_tag mec_custom_url(data_primera_infancia_lista_url(nil)), :remote => true, :id => "form-buscar-establecimientos" do  %>
+    <div class="table-responsive">
+      <table id="establecimientos-tabla" class="table table-small-font table-bordered table-striped">
+        <thead>
+          <tr>
+
+            <th data-priority="1" id="ubicaciones-geograficas"> 
+              <span data-titulo="true" class="hidden">Mapa</span>
+              <%= link_to "", "#", :id => "link-to-ubicaciones-geograficas", :class => "link-to-ubicaciones-geograficas fa-lg icon-py-mapa", :title => "Haga click para ver el mapa con las instituciones de esta página."%>
+            </th>
+
+            <th data-priority="1">
+              <span data-titulo="true">Período</span>
+
+              <span class="orden anio">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+              <%= select :form_buscar_establecimientos, :anio, [2014], {}, :class => 'form-control input-sm' %>
+            </th>
+
+            <th data-priority="1">
+              <span data-titulo="true">Código Establecimiento</span>
+
+              <span class="orden codigo_establecimiento">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_establecimientos_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_codigo_establecimiento');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_establecimientos_codigo_establecimiento_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_establecimiento, 
+              atributo_tipo: :text, 
+              model: :Establecimiento, 
+              limit: 10,
+              cadena_consulta: "codigo_establecimiento",
+              orden: "codigo_establecimiento")), 
+          parametro_id: "form_buscar_establecimientos_codigo_establecimiento", 
+          resultado_id: "form_buscar_establecimientos_codigo_establecimiento_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Departamento</span>
+
+          <span class="orden nombre_departamento">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_establecimientos_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_nombre_departamento');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_establecimientos_nombre_departamento_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_departamento, 
+              atributo_tipo: :text, 
+              model: :Establecimiento, 
+              limit: 10,
+              cadena_consulta: "nombre_departamento",
+              orden: "nombre_departamento")), 
+          parametro_id: "form_buscar_establecimientos_nombre_departamento", 
+          resultado_id: "form_buscar_establecimientos_nombre_departamento_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Distrito</span>
+
+          <span class="orden nombre_distrito">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_establecimientos_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_nombre_distrito');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_establecimientos_nombre_distrito_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_distrito, 
+              atributo_tipo: :text, 
+              model: :Establecimiento, 
+              limit: 10,
+              cadena_consulta: "nombre_distrito",
+              orden: "nombre_distrito")), 
+          parametro_id: "form_buscar_establecimientos_nombre_distrito", 
+          resultado_id: "form_buscar_establecimientos_nombre_distrito_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Zona</span>
+
+          <span class="orden nombre_zona">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+          <%= select :form_buscar_establecimientos, :nombre_zona, ['','RURAL','URBANA'], {}, {:class => 'form-control input-sm'} %>
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Localidad/Barrio</span>
+
+          <span class="orden nombre_barrio_localidad">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_establecimientos_nombre_barrio_localidad, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_nombre_barrio_localidad');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_establecimientos_nombre_barrio_localidad_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_barrio_localidad, 
+              atributo_tipo: :text, 
+              model: :Establecimiento, 
+              limit: 10,
+              cadena_consulta: "nombre_barrio_localidad",
+              orden: "nombre_barrio_localidad")), 
+          parametro_id: "form_buscar_establecimientos_nombre_barrio_localidad", 
+          resultado_id: "form_buscar_establecimientos_nombre_barrio_localidad_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Direcci&oacute;n</span>
+
+          <span class="orden direccion">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_establecimientos_direccion, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-establecimientos', '#form_buscar_establecimientos_direccion');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_establecimientos_direccion_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :direccion, 
+              atributo_tipo: :text, 
+              model: :Establecimiento, 
+              limit: 10,
+              cadena_consulta: "direccion",
+              orden: "direccion")), 
+          parametro_id: "form_buscar_establecimientos_direccion", 
+          resultado_id: "form_buscar_establecimientos_direccion_id",
+          min_length: 2
+          ) %>
+
+        </th>
+        
+        <th data-priority="1">
+          <span data-titulo="true">Programa</span>
+
+          <span class="orden programa">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+          <%= select :form_buscar_establecimientos, :programa, [["",""],["Jornada Extendida", 1]], {}, :class => 'form-control input-sm' %>
+        </th>
+
+        </tr>
+        </thead>
+
+        <tbody id="establecimientos-lista"></tbody>
+
+      </table>
+    </div>
+  <% end %>
+
+  <table class="table table-striped table-bordered table-hover">
+    <tbody id="establecimientos-footer"></tbody>
+  </table>
+
+</div>
 
 <script type="text/javascript">
 

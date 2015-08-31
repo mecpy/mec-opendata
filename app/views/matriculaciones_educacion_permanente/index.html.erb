@@ -1,354 +1,355 @@
 <%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
-<div>
-  <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_matriculaciones_educacion_permanente_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
-  <h1>
-    <span itemprop="name">Matriculaciones Educación Permanente</span>
-    <meta itemprop="description" content="Se refiere a la cantidad de matriculados en las diferentes modalidades de educación permanente con sus correspondientes códigos identificatorios."/>
-    <meta itemprop="url" content="http://datos.mec.gov.py/data/matriculaciones_educacion_permanente">
-    <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
-    <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
-      <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
-      <meta itemprop="url" content="http://datos.mec.gov.py/">
-      <meta itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura">
-    </span>
-    <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
-      <meta itemprop="name" content="Ministerio de Educación y Cultura">
-      <meta itemprop="url" content="http://www.mec.gov.py/">
-      <meta itemprop="email" content="datosabiertos@mec.gov.py">
-    </span>
-    <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
-      <meta itemprop="name" content="Juan Barrios">
-      <meta itemprop="email" content="datosabiertos@mec.gov.py">
-    </span>
-    <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
-    <meta itemprop="keywords" style="display: none;" content="educación,matriculaciones,educación permanente"/>
-    <meta itemprop="version" style="display: none;" content="1.0"/>
-  </h1>
-</div>
 
-<%= form_tag mec_custom_url(data_matriculaciones_educacion_permanente_lista_url(nil)), :remote => true, :id => "form-buscar-matriculaciones-educacion-permanente" do  %>
-  <div class="table-responsive">
-    <table class="table table-small-font table-bordered table-striped">
-      <thead>
-        <tr>
+<div itemscope="" itemtype="https://schema.org/Dataset">
 
-          <th data-priority="1">
-            <span data-titulo="true">Periodo</span>
-
-            <span class="orden anio">
-              <i class="filtro fa fa-sort"></i>
-              <i class="descendente fa fa-sort-desc"></i>
-              <i class="ascendente fa fa-sort-asc"></i>
-            </span>
-
-            <%= select :form_buscar_matriculaciones_educacion_permanente, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
-          </th>
-
-          <th data-priority="1">
-            <span data-titulo="true">C&oacute;digo Establecimiento</span>
-
-            <span class="orden codigo_establecimiento">
-              <i class="filtro fa fa-sort"></i>
-              <i class="descendente fa fa-sort-desc"></i>
-              <i class="ascendente fa fa-sort-asc"></i>
-            </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_codigo_establecimiento');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_permanente_codigo_establecimiento_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_establecimiento, 
-            atributo_tipo: :text, 
-            model: :MatriculacionEducacionPermanente, 
-            limit: 10,
-            cadena_consulta: "codigo_establecimiento",
-            orden: "codigo_establecimiento")), 
-        parametro_id: "form_buscar_matriculaciones_educacion_permanente_codigo_establecimiento", 
-        resultado_id: "form_buscar_matriculaciones_educacion_permanente_codigo_establecimiento_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Código Institución</span>
-
-        <span class="orden codigo_institucion">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_codigo_institucion, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_codigo_institucion');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_permanente_codigo_institucion_id %>
-      <%= autocomplete_help(  ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_institucion, 
-            atributo_tipo: :int, 
-            model: :MatriculacionEducacionPermanente, 
-            limit: 10,
-            cadena_consulta: "codigo_institucion",
-            orden: "codigo_institucion")), 
-        parametro_id: "form_buscar_matriculaciones_educacion_permanente_codigo_institucion", 
-        resultado_id: "form_buscar_matriculaciones_educacion_permanente_codigo_institucion_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Instituci&oacute;n</span>
-
-        <span class="orden nombre_institucion">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_institucion, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_nombre_institucion');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_institucion_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_institucion, 
-            atributo_tipo: :text, 
-            model: :MatriculacionEducacionPermanente, 
-            limit: 10,
-            cadena_consulta: "nombre_institucion",
-            orden: "nombre_institucion")), 
-        parametro_id: "form_buscar_matriculaciones_educacion_permanente_nombre_institucion", 
-        resultado_id: "form_buscar_matriculaciones_educacion_permanente_nombre_institucion_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Departamento</span>
-
-        <span class="orden nombre_departamento">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_nombre_departamento');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_departamento_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_departamento, 
-            atributo_tipo: :text, 
-            model: :MatriculacionEducacionPermanente, 
-            limit: 10,
-            cadena_consulta: "nombre_departamento",
-            orden: "nombre_departamento")), 
-        parametro_id: "form_buscar_matriculaciones_educacion_permanente_nombre_departamento", 
-        resultado_id: "form_buscar_matriculaciones_educacion_permanente_nombre_departamento_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Distrito</span>
-
-        <span class="orden nombre_distrito">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_nombre_distrito');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_distrito_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_distrito, 
-            atributo_tipo: :text, 
-            model: :MatriculacionEducacionPermanente, 
-            limit: 10,
-            cadena_consulta: "nombre_distrito",
-            orden: "nombre_distrito")), 
-        parametro_id: "form_buscar_matriculaciones_educacion_permanente_nombre_distrito", 
-        resultado_id: "form_buscar_matriculaciones_educacion_permanente_nombre_distrito_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Barrio/Localidad</span>
-
-        <span class="orden nombre_barrio_localidad">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_barrio_localidad, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_nombre_barrio_localidad');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_barrio_localidad_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_barrio_localidad, 
-            atributo_tipo: :text, 
-            model: :MatriculacionEducacionPermanente, 
-            limit: 10,
-            cadena_consulta: "nombre_barrio_localidad",
-            orden: "nombre_barrio_localidad")), 
-        parametro_id: "form_buscar_matriculaciones_educacion_permanente_nombre_barrio_localidad", 
-        resultado_id: "form_buscar_matriculaciones_educacion_permanente_nombre_barrio_localidad_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Zona</span>
-
-        <span class="orden nombre_zona">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-        <%= select :form_buscar_matriculaciones_educacion_permanente, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Sector o Tipo Gestión</span>
-
-        <span class="orden sector_o_tipo_gestion">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_sector_o_tipo_gestion, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_sector_o_tipo_gestion');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_matriculaciones_educacion_permanente_sector_o_tipo_gestion_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :sector_o_tipo_gestion, 
-            atributo_tipo: :text, 
-            model: :MatriculacionEducacionPermanente, 
-            limit: 10,
-            cadena_consulta: "sector_o_tipo_gestion",
-            orden: "sector_o_tipo_gestion")), 
-        parametro_id: "form_buscar_matriculaciones_educacion_permanente_sector_o_tipo_gestion", 
-        resultado_id: "form_buscar_matriculaciones_educacion_permanente_sector_o_tipo_gestion_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th>
-        <span data-titulo="true">Matricula EBBJA</span>
-        <span class="orden matricula_ebbja">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <span class="input-group-addon">
-          <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
-        </span>
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_ebbja, nil, :class => 'form-control', :placeholder => '' %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_ebbja');"><i class="fa fa-times"></i></span>
-      </div>
-      </th>
-
-      <th>
-        <span data-titulo="true">Matricula FPI</span>
-        <span class="orden matricula_fpi">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <span class="input-group-addon">
-          <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
-        </span>
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_fpi, nil, :class => 'form-control', :placeholder => '' %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_fpi');"><i class="fa fa-times"></i></span>
-      </div>
-      </th>
-
-      <th>
-        <span data-titulo="true">Matricula EMAPJA</span>
-        <span class="orden matricula_emapja">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <span class="input-group-addon">
-          <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
-        </span>
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_emapja, nil, :class => 'form-control', :placeholder => '' %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_emapja');"><i class="fa fa-times"></i></span>
-      </div>
-      </th>
-
-      <th>
-        <span data-titulo="true">Matricula EMDJA</span>
-        <span class="orden matricula_emdja">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <span class="input-group-addon">
-          <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
-        </span>
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_emdja, nil, :class => 'form-control', :placeholder => '' %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_emdja');"><i class="fa fa-times"></i></span>
-      </div>
-      </th>
-
-      <th>
-        <span data-titulo="true">Matricula FP</span>
-        <span class="orden matricula_fp">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <span class="input-group-addon">
-          <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_fp_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
-        </span>
-        <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_fp, nil, :class => 'form-control', :placeholder => '' %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_fp');"><i class="fa fa-times"></i></span>
-      </div>
-      </th>
-
-      </tr>
-      </thead>
-
-      <tbody id="lista"></tbody>
-
-    </table>
+  <div>
+    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_matriculaciones_educacion_permanente_url), :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
+    <h1>
+      <span>Matriculaciones Educación Permanente</span>
+      <meta itemprop="name" style="display: none;" content="MATRICULA EDUCACION PERMANENTE">
+      <meta itemprop="description" content="Se refiere a la cantidad de matriculados en las diferentes modalidades de educación permanente con sus correspondientes códigos identificatorios."/>
+      <meta itemprop="url" content= <%= mec_custom_url(data_matriculaciones_educacion_permanente_url) %> >
+      <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+      <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+        <meta itemprop="name" content="Ministerio de Educación y Cultura">
+        <meta itemprop="url" content="http://www.mec.gov.py/">
+        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      </span>
+      <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+        <meta itemprop="name" content="Juan Barrios">
+        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      </span>
+      <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+      <meta itemprop="keywords" style="display: none;" content="educación,matriculaciones,educación permanente"/>
+      <meta itemprop="version" style="display: none;" content="1.0"/>
+    </h1>
   </div>
-<% end %>
 
-<table class="table table-striped table-bordered table-hover">
-  <tbody id="matriculaciones-educacion-permanente-footer"></tbody>
-</table>
+  <%= form_tag mec_custom_url(data_matriculaciones_educacion_permanente_lista_url(nil)), :remote => true, :id => "form-buscar-matriculaciones-educacion-permanente" do  %>
+    <div class="table-responsive">
+      <table class="table table-small-font table-bordered table-striped">
+        <thead>
+          <tr>
+
+            <th data-priority="1">
+              <span data-titulo="true">Periodo</span>
+
+              <span class="orden anio">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <%= select :form_buscar_matriculaciones_educacion_permanente, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
+            </th>
+
+            <th data-priority="1">
+              <span data-titulo="true">C&oacute;digo Establecimiento</span>
+
+              <span class="orden codigo_establecimiento">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_codigo_establecimiento');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_matriculaciones_educacion_permanente_codigo_establecimiento_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_establecimiento, 
+              atributo_tipo: :text, 
+              model: :MatriculacionEducacionPermanente, 
+              limit: 10,
+              cadena_consulta: "codigo_establecimiento",
+              orden: "codigo_establecimiento")), 
+          parametro_id: "form_buscar_matriculaciones_educacion_permanente_codigo_establecimiento", 
+          resultado_id: "form_buscar_matriculaciones_educacion_permanente_codigo_establecimiento_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Código Institución</span>
+
+          <span class="orden codigo_institucion">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_codigo_institucion, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_codigo_institucion');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_matriculaciones_educacion_permanente_codigo_institucion_id %>
+        <%= autocomplete_help(  ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_institucion, 
+              atributo_tipo: :int, 
+              model: :MatriculacionEducacionPermanente, 
+              limit: 10,
+              cadena_consulta: "codigo_institucion",
+              orden: "codigo_institucion")), 
+          parametro_id: "form_buscar_matriculaciones_educacion_permanente_codigo_institucion", 
+          resultado_id: "form_buscar_matriculaciones_educacion_permanente_codigo_institucion_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Instituci&oacute;n</span>
+
+          <span class="orden nombre_institucion">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_institucion, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_nombre_institucion');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_institucion_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_institucion, 
+              atributo_tipo: :text, 
+              model: :MatriculacionEducacionPermanente, 
+              limit: 10,
+              cadena_consulta: "nombre_institucion",
+              orden: "nombre_institucion")), 
+          parametro_id: "form_buscar_matriculaciones_educacion_permanente_nombre_institucion", 
+          resultado_id: "form_buscar_matriculaciones_educacion_permanente_nombre_institucion_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Departamento</span>
+
+          <span class="orden nombre_departamento">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_nombre_departamento');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_departamento_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_departamento, 
+              atributo_tipo: :text, 
+              model: :MatriculacionEducacionPermanente, 
+              limit: 10,
+              cadena_consulta: "nombre_departamento",
+              orden: "nombre_departamento")), 
+          parametro_id: "form_buscar_matriculaciones_educacion_permanente_nombre_departamento", 
+          resultado_id: "form_buscar_matriculaciones_educacion_permanente_nombre_departamento_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Distrito</span>
+
+          <span class="orden nombre_distrito">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_nombre_distrito');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_distrito_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_distrito, 
+              atributo_tipo: :text, 
+              model: :MatriculacionEducacionPermanente, 
+              limit: 10,
+              cadena_consulta: "nombre_distrito",
+              orden: "nombre_distrito")), 
+          parametro_id: "form_buscar_matriculaciones_educacion_permanente_nombre_distrito", 
+          resultado_id: "form_buscar_matriculaciones_educacion_permanente_nombre_distrito_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Barrio/Localidad</span>
+
+          <span class="orden nombre_barrio_localidad">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_barrio_localidad, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_nombre_barrio_localidad');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_matriculaciones_educacion_permanente_nombre_barrio_localidad_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_barrio_localidad, 
+              atributo_tipo: :text, 
+              model: :MatriculacionEducacionPermanente, 
+              limit: 10,
+              cadena_consulta: "nombre_barrio_localidad",
+              orden: "nombre_barrio_localidad")), 
+          parametro_id: "form_buscar_matriculaciones_educacion_permanente_nombre_barrio_localidad", 
+          resultado_id: "form_buscar_matriculaciones_educacion_permanente_nombre_barrio_localidad_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Zona</span>
+
+          <span class="orden nombre_zona">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+          <%= select :form_buscar_matriculaciones_educacion_permanente, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Sector o Tipo Gestión</span>
+
+          <span class="orden sector_o_tipo_gestion">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_matriculaciones_educacion_permanente_sector_o_tipo_gestion, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_sector_o_tipo_gestion');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_matriculaciones_educacion_permanente_sector_o_tipo_gestion_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :sector_o_tipo_gestion, 
+              atributo_tipo: :text, 
+              model: :MatriculacionEducacionPermanente, 
+              limit: 10,
+              cadena_consulta: "sector_o_tipo_gestion",
+              orden: "sector_o_tipo_gestion")), 
+          parametro_id: "form_buscar_matriculaciones_educacion_permanente_sector_o_tipo_gestion", 
+          resultado_id: "form_buscar_matriculaciones_educacion_permanente_sector_o_tipo_gestion_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th>
+          <span data-titulo="true">Matricula EBBJA</span>
+          <span class="orden matricula_ebbja">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_ebbja, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_ebbja');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matricula FPI</span>
+          <span class="orden matricula_fpi">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_fpi, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_fpi');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matricula EMAPJA</span>
+          <span class="orden matricula_emapja">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_emapja, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_emapja');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matricula EMDJA</span>
+          <span class="orden matricula_emdja">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_emdja, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_emdja');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matricula FP</span>
+          <span class="orden matricula_fp">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_fp_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_fp, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_fp');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        </tr>
+        </thead>
+
+        <tbody id="lista"></tbody>
+
+      </table>
+    </div>
+  <% end %>
+
+  <table class="table table-striped table-bordered table-hover">
+    <tbody id="matriculaciones-educacion-permanente-footer"></tbody>
+  </table>
+
+</div>
 
 <script type="text/javascript">
 

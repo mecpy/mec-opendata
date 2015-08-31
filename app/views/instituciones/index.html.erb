@@ -1,502 +1,508 @@
 <%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
-<div>
-  <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_instituciones_url), :id => "tab-diccionario", :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
-  <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
-  <h1>
-    <span itemprop="name" id="tab-titulo">Datos Espec&iacute;ficos de Instituciones Educativas</span>
-    <meta itemprop="description"
-          content="Contiene datos de los niveles/modalidades de educación ofertados por las instituciones educativas; región administrativa a la que pertenece la institución educativa; tipo de organización, participación comunitaria, dirección del establecimiento escolar, servicio disponible (internet, telefono, correo electronico, etc.). Una institución educativa puede poseer diferentes locales escolares ubicados en un mismo o en diferentes departamentos geográficos. El SIEC considera una misma institución cuando varios niveles o modalidades tienen una organización, gestión y administración única. Por ejemplo: Centro Regional de Educación Gral. Patricio Escobar de Encarnación, Colegio Santa Clara de Asunción."
-          />
-    <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
-    <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
-      <meta itemprop="name" content="Ministerio de Educación y Cultura">
-      <meta itemprop="url" content="http://www.mec.gov.py/">
-      <meta itemprop="email" content="datosabiertos@mec.gov.py">
-    </span>
-    <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
-      <meta itemprop="name" content="Juan Barrios">
-      <meta itemprop="email" content="datosabiertos@mec.gov.py">
-    </span>
-    <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
-    <meta itemprop="keywords" style="display: none;" content="educación,instituciones"/>
-    <meta itemprop="version" style="display: none;" content="1.0">
-  </h1>
-</div>
 
-<%= form_tag mec_custom_url(data_instituciones_lista_url(nil)), :remote => true, :id => "form-buscar-instituciones" do  %>
-  <div class="table-responsive">
-    <table class="table table-small-font table-bordered table-striped">
-      <thead>
-        <tr>
-
-          <th data-priority="1" id="tab-filtros-lista">
-            <span data-titulo="true">Período</span>
-
-            <span class="orden anio">
-              <i class="filtro fa fa-sort"></i>
-              <i class="descendente fa fa-sort-desc"></i>
-              <i class="ascendente fa fa-sort-asc"></i>
-            </span>
-
-        <%= select :form_buscar_instituciones, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
-      </th>
-
-      <th data-priority="1" id="tab-filtros-texto">
-        <span data-titulo="true">Código Establecimiento</span>
-
-        <span class="orden codigo_establecimiento">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_instituciones_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_codigo_establecimiento');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_instituciones_codigo_establecimiento_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_establecimiento, 
-            atributo_tipo: :text, 
-            model: :Institucion, 
-            limit: 10,
-            cadena_consulta: "codigo_establecimiento",
-            orden: "codigo_establecimiento")), 
-        parametro_id: "form_buscar_instituciones_codigo_establecimiento", 
-        resultado_id: "form_buscar_instituciones_codigo_establecimiento_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Código Institución</span>
-
-        <span class="orden codigo_institucion">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_instituciones_codigo_institucion, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_codigo_institucion');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_instituciones_codigo_institucion_id %>
-      <%= autocomplete_help(  ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_institucion, 
-            atributo_tipo: :text, 
-            model: :Institucion, 
-            limit: 10,
-            cadena_consulta: "codigo_institucion",
-            orden: "codigo_institucion")), 
-        parametro_id: "form_buscar_instituciones_codigo_institucion", 
-        resultado_id: "form_buscar_instituciones_codigo_institucion_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Institución</span>
-
-        <span class="orden nombre_institucion">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_instituciones_nombre_institucion, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_nombre_institucion');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_instituciones_nombre_institucion_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_institucion, 
-            atributo_tipo: :text, 
-            model: :Institucion, 
-            limit: 10,
-            cadena_consulta: "nombre_institucion",
-            orden: "nombre_institucion")), 
-        parametro_id: "form_buscar_instituciones_nombre_institucion", 
-        resultado_id: "form_buscar_instituciones_nombre_institucion_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Departamento</span>
-
-        <span class="orden nombre_departamento">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_instituciones_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_nombre_departamento');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_instituciones_nombre_departamento_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_departamento, 
-            atributo_tipo: :text, 
-            model: :Institucion, 
-            limit: 10,
-            cadena_consulta: "nombre_departamento",
-            orden: "nombre_departamento")), 
-        parametro_id: "form_buscar_instituciones_nombre_departamento", 
-        resultado_id: "form_buscar_instituciones_nombre_departamento_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Distrito</span>
-
-        <span class="orden nombre_distrito">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_instituciones_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_nombre_distrito');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_instituciones_nombre_distrito_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_distrito, 
-            atributo_tipo: :text, 
-            model: :Institucion, 
-            limit: 10,
-            cadena_consulta: "nombre_distrito",
-            orden: "nombre_distrito")), 
-        parametro_id: "form_buscar_instituciones_nombre_distrito", 
-        resultado_id: "form_buscar_instituciones_nombre_distrito_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Localidad/Barrio</span>
-
-        <span class="orden nombre_barrio_localidad">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_instituciones_nombre_barrio_localidad, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_nombre_barrio_localidad');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_instituciones_nombre_barrio_localidad_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_barrio_localidad, 
-            atributo_tipo: :text, 
-            model: :Institucion, 
-            limit: 10,
-            cadena_consulta: "nombre_barrio_localidad",
-            orden: "nombre_barrio_localidad")), 
-        parametro_id: "form_buscar_instituciones_nombre_barrio_localidad", 
-        resultado_id: "form_buscar_instituciones_nombre_barrio_localidad_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Zona</span>
-
-        <span class="orden nombre_zona">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-        <%= select :form_buscar_instituciones, :nombre_zona, ['','RURAL','URBANA'], {}, {:class => 'form-control input-sm'} %>
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Sector</span>
-
-        <span class="orden sector_o_tipo_gestion">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-        
-        <%= select :form_buscar_instituciones, :sector_o_tipo_gestion, ['','OFICIAL', 'PRIV.SUBVENCIONADA','PRIVADA'], {}, {:class => 'form-control input-sm'} %>
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Regi&oacute;n Administrativa</span>
-
-        <span class="orden nombre_region_administrativa">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_instituciones_nombre_region_administrativa, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_nombre_region_administrativa');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_instituciones_nombre_region_administrativa_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_region_administrativa, 
-            atributo_tipo: :text, 
-            model: :Institucion, 
-            limit: 10,
-            cadena_consulta: "nombre_region_administrativa",
-            orden: "nombre_region_administrativa")), 
-        parametro_id: "form_buscar_instituciones_nombre_region_administrativa", 
-        resultado_id: "form_buscar_instituciones_nombre_region_administrativa_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Supervisor/a</span>
-
-        <span class="orden nombre_supervisor">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_instituciones_nombre_supervisor, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_nombre_supervisor');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_instituciones_nombre_supervisor_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_supervisor, 
-            atributo_tipo: :text, 
-            model: :Institucion, 
-            limit: 10,
-            cadena_consulta: "nombre_supervisor",
-            orden: "nombre_supervisor")), 
-        parametro_id: "form_buscar_instituciones_nombre_supervisor", 
-        resultado_id: "form_buscar_instituciones_nombre_supervisor_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Nivel/Modalidad</span>
-
-        <span class="orden niveles_modalidades">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_instituciones_niveles_modalidades, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_niveles_modalidades');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_instituciones_niveles_modalidades_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :niveles_modalidades, 
-            atributo_tipo: :text, 
-            model: :Institucion, 
-            limit: 10,
-            cadena_consulta: "niveles_modalidades",
-            orden: "niveles_modalidades")), 
-        parametro_id: "form_buscar_instituciones_niveles_modalidades", 
-        resultado_id: "form_buscar_instituciones_niveles_modalidades_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Tipo Organizaci&oacute;n</span>
-
-        <span class="orden nombre_tipo_organizacion">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_instituciones_nombre_tipo_organizacion, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_nombre_tipo_organizacion');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_instituciones_nombre_tipo_organizacion_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_tipo_organizacion, 
-            atributo_tipo: :text, 
-            model: :Institucion, 
-            limit: 10,
-            cadena_consulta: "nombre_tipo_organizacion",
-            orden: "nombre_tipo_organizacion")), 
-        parametro_id: "form_buscar_instituciones_nombre_tipo_organizacion", 
-        resultado_id: "form_buscar_instituciones_nombre_tipo_organizacion_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Participación Comunitaria</span>
-
-        <span class="orden participacion_comunitaria">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group-sm">
-        <%= select :form_buscar_instituciones, :participacion_comunitaria, ['','SI','NO'], {}, {:class => 'form-control input-sm'} %>
-      </div>
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Direcci&oacute;n</span>
-
-        <span class="orden direccion">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_instituciones_direccion, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_direccion');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_instituciones_direccion_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :direccion, 
-            atributo_tipo: :text, 
-            model: :Institucion, 
-            limit: 10,
-            cadena_consulta: "direccion",
-            orden: "direccion")), 
-        parametro_id: "form_buscar_instituciones_direccion", 
-        resultado_id: "form_buscar_instituciones_direccion_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Tel&eacute;fono</span>
-
-        <span class="orden nro_telefono">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_instituciones_nro_telefono, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_nro_telefono');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_instituciones_nro_telefono_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nro_telefono, 
-            atributo_tipo: :text, 
-            model: :Institucion, 
-            limit: 10,
-            cadena_consulta: "nro_telefono",
-            orden: "nro_telefono")), 
-        parametro_id: "form_buscar_instituciones_nro_telefono", 
-        resultado_id: "form_buscar_instituciones_nro_telefono_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">¿Tiene Internet?</span>
-
-        <span class="orden tiene_internet">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group-sm">
-        <%= select :form_buscar_instituciones, :tiene_internet, ['','SI','NO'], {}, {:class => 'form-control input-sm'} %>
-      </div>
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">P&aacute;gina Web</span>
-
-        <span class="orden paginaweb">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_instituciones_paginaweb, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_paginaweb');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_instituciones_paginaweb_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :paginaweb, 
-            atributo_tipo: :text, 
-            model: :Institucion, 
-            limit: 10,
-            cadena_consulta: "paginaweb",
-            orden: "paginaweb")), 
-        parametro_id: "form_buscar_instituciones_paginaweb", 
-        resultado_id: "form_buscar_instituciones_paginaweb_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Correo Electr&oacute;nico</span>
-
-        <span class="orden correo_electronico">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_instituciones_correo_electronico, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_correo_electronico');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_instituciones_correo_electronico_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :correo_electronico, 
-            atributo_tipo: :text, 
-            model: :Institucion, 
-            limit: 10,
-            cadena_consulta: "correo_electronico",
-            orden: "correo_electronico")), 
-        parametro_id: "form_buscar_instituciones_correo_electronico", 
-        resultado_id: "form_buscar_instituciones_correo_electronico_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      </tr>
-      </thead>
-
-      <tbody id="instituciones-lista"></tbody>
-
-    </table>
+<div itemscope="" itemtype="https://schema.org/Dataset">
+  <div>
+    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_instituciones_url), :id => "tab-diccionario", :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
+    <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
+    <h1>
+      <span id="tab-titulo">Datos Espec&iacute;ficos de Instituciones Educativas</span>
+      <meta itemprop="name" content="DATOS ESPEC&Iacute;FICOS DE INSTITUCIONES EDUCATIVAS">
+      <meta itemprop="description"
+            content="Contiene datos de los niveles/modalidades de educación ofertados por las instituciones educativas; región administrativa a la que pertenece la institución educativa; tipo de organización, participación comunitaria, dirección del establecimiento escolar, servicio disponible (internet, telefono, correo electronico, etc.). Una institución educativa puede poseer diferentes locales escolares ubicados en un mismo o en diferentes departamentos geográficos. El SIEC considera una misma institución cuando varios niveles o modalidades tienen una organización, gestión y administración única. Por ejemplo: Centro Regional de Educación Gral. Patricio Escobar de Encarnación, Colegio Santa Clara de Asunción."
+            />
+      <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+      <meta itemprop="url" content= <%= mec_custom_url(data_instituciones_url) %> >
+      <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+        <meta itemprop="name" content="Ministerio de Educación y Cultura">
+        <meta itemprop="url" content="http://www.mec.gov.py/">
+        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      </span>
+      <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+        <meta itemprop="name" content="Juan Barrios">
+        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      </span>
+      <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+      <meta itemprop="keywords" style="display: none;" content="educación,instituciones"/>
+      <meta itemprop="version" style="display: none;" content="1.0">
+    </h1>
   </div>
-<% end %>
 
-<table class="table table-striped table-bordered table-hover">
-  <tbody id="instituciones-footer"></tbody>
-</table>
+  <%= form_tag mec_custom_url(data_instituciones_lista_url(nil)), :remote => true, :id => "form-buscar-instituciones" do  %>
+    <div class="table-responsive">
+      <table class="table table-small-font table-bordered table-striped">
+        <thead>
+          <tr>
+
+            <th data-priority="1" id="tab-filtros-lista">
+              <span data-titulo="true">Período</span>
+
+              <span class="orden anio">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+          <%= select :form_buscar_instituciones, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
+        </th>
+
+        <th data-priority="1" id="tab-filtros-texto">
+          <span data-titulo="true">Código Establecimiento</span>
+
+          <span class="orden codigo_establecimiento">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_instituciones_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_codigo_establecimiento');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_instituciones_codigo_establecimiento_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_establecimiento, 
+              atributo_tipo: :text, 
+              model: :Institucion, 
+              limit: 10,
+              cadena_consulta: "codigo_establecimiento",
+              orden: "codigo_establecimiento")), 
+          parametro_id: "form_buscar_instituciones_codigo_establecimiento", 
+          resultado_id: "form_buscar_instituciones_codigo_establecimiento_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Código Institución</span>
+
+          <span class="orden codigo_institucion">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_instituciones_codigo_institucion, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_codigo_institucion');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_instituciones_codigo_institucion_id %>
+        <%= autocomplete_help(  ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_institucion, 
+              atributo_tipo: :text, 
+              model: :Institucion, 
+              limit: 10,
+              cadena_consulta: "codigo_institucion",
+              orden: "codigo_institucion")), 
+          parametro_id: "form_buscar_instituciones_codigo_institucion", 
+          resultado_id: "form_buscar_instituciones_codigo_institucion_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Institución</span>
+
+          <span class="orden nombre_institucion">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_instituciones_nombre_institucion, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_nombre_institucion');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_instituciones_nombre_institucion_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_institucion, 
+              atributo_tipo: :text, 
+              model: :Institucion, 
+              limit: 10,
+              cadena_consulta: "nombre_institucion",
+              orden: "nombre_institucion")), 
+          parametro_id: "form_buscar_instituciones_nombre_institucion", 
+          resultado_id: "form_buscar_instituciones_nombre_institucion_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Departamento</span>
+
+          <span class="orden nombre_departamento">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_instituciones_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_nombre_departamento');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_instituciones_nombre_departamento_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_departamento, 
+              atributo_tipo: :text, 
+              model: :Institucion, 
+              limit: 10,
+              cadena_consulta: "nombre_departamento",
+              orden: "nombre_departamento")), 
+          parametro_id: "form_buscar_instituciones_nombre_departamento", 
+          resultado_id: "form_buscar_instituciones_nombre_departamento_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Distrito</span>
+
+          <span class="orden nombre_distrito">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_instituciones_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_nombre_distrito');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_instituciones_nombre_distrito_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_distrito, 
+              atributo_tipo: :text, 
+              model: :Institucion, 
+              limit: 10,
+              cadena_consulta: "nombre_distrito",
+              orden: "nombre_distrito")), 
+          parametro_id: "form_buscar_instituciones_nombre_distrito", 
+          resultado_id: "form_buscar_instituciones_nombre_distrito_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Localidad/Barrio</span>
+
+          <span class="orden nombre_barrio_localidad">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_instituciones_nombre_barrio_localidad, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_nombre_barrio_localidad');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_instituciones_nombre_barrio_localidad_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_barrio_localidad, 
+              atributo_tipo: :text, 
+              model: :Institucion, 
+              limit: 10,
+              cadena_consulta: "nombre_barrio_localidad",
+              orden: "nombre_barrio_localidad")), 
+          parametro_id: "form_buscar_instituciones_nombre_barrio_localidad", 
+          resultado_id: "form_buscar_instituciones_nombre_barrio_localidad_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Zona</span>
+
+          <span class="orden nombre_zona">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+          <%= select :form_buscar_instituciones, :nombre_zona, ['','RURAL','URBANA'], {}, {:class => 'form-control input-sm'} %>
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Sector</span>
+
+          <span class="orden sector_o_tipo_gestion">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+          
+          <%= select :form_buscar_instituciones, :sector_o_tipo_gestion, ['','OFICIAL', 'PRIV.SUBVENCIONADA','PRIVADA'], {}, {:class => 'form-control input-sm'} %>
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Regi&oacute;n Administrativa</span>
+
+          <span class="orden nombre_region_administrativa">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_instituciones_nombre_region_administrativa, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_nombre_region_administrativa');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_instituciones_nombre_region_administrativa_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_region_administrativa, 
+              atributo_tipo: :text, 
+              model: :Institucion, 
+              limit: 10,
+              cadena_consulta: "nombre_region_administrativa",
+              orden: "nombre_region_administrativa")), 
+          parametro_id: "form_buscar_instituciones_nombre_region_administrativa", 
+          resultado_id: "form_buscar_instituciones_nombre_region_administrativa_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Supervisor/a</span>
+
+          <span class="orden nombre_supervisor">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_instituciones_nombre_supervisor, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_nombre_supervisor');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_instituciones_nombre_supervisor_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_supervisor, 
+              atributo_tipo: :text, 
+              model: :Institucion, 
+              limit: 10,
+              cadena_consulta: "nombre_supervisor",
+              orden: "nombre_supervisor")), 
+          parametro_id: "form_buscar_instituciones_nombre_supervisor", 
+          resultado_id: "form_buscar_instituciones_nombre_supervisor_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Nivel/Modalidad</span>
+
+          <span class="orden niveles_modalidades">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_instituciones_niveles_modalidades, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_niveles_modalidades');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_instituciones_niveles_modalidades_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :niveles_modalidades, 
+              atributo_tipo: :text, 
+              model: :Institucion, 
+              limit: 10,
+              cadena_consulta: "niveles_modalidades",
+              orden: "niveles_modalidades")), 
+          parametro_id: "form_buscar_instituciones_niveles_modalidades", 
+          resultado_id: "form_buscar_instituciones_niveles_modalidades_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Tipo Organizaci&oacute;n</span>
+
+          <span class="orden nombre_tipo_organizacion">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_instituciones_nombre_tipo_organizacion, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_nombre_tipo_organizacion');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_instituciones_nombre_tipo_organizacion_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_tipo_organizacion, 
+              atributo_tipo: :text, 
+              model: :Institucion, 
+              limit: 10,
+              cadena_consulta: "nombre_tipo_organizacion",
+              orden: "nombre_tipo_organizacion")), 
+          parametro_id: "form_buscar_instituciones_nombre_tipo_organizacion", 
+          resultado_id: "form_buscar_instituciones_nombre_tipo_organizacion_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Participación Comunitaria</span>
+
+          <span class="orden participacion_comunitaria">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group-sm">
+          <%= select :form_buscar_instituciones, :participacion_comunitaria, ['','SI','NO'], {}, {:class => 'form-control input-sm'} %>
+        </div>
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Direcci&oacute;n</span>
+
+          <span class="orden direccion">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_instituciones_direccion, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_direccion');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_instituciones_direccion_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :direccion, 
+              atributo_tipo: :text, 
+              model: :Institucion, 
+              limit: 10,
+              cadena_consulta: "direccion",
+              orden: "direccion")), 
+          parametro_id: "form_buscar_instituciones_direccion", 
+          resultado_id: "form_buscar_instituciones_direccion_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Tel&eacute;fono</span>
+
+          <span class="orden nro_telefono">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_instituciones_nro_telefono, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_nro_telefono');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_instituciones_nro_telefono_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nro_telefono, 
+              atributo_tipo: :text, 
+              model: :Institucion, 
+              limit: 10,
+              cadena_consulta: "nro_telefono",
+              orden: "nro_telefono")), 
+          parametro_id: "form_buscar_instituciones_nro_telefono", 
+          resultado_id: "form_buscar_instituciones_nro_telefono_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">¿Tiene Internet?</span>
+
+          <span class="orden tiene_internet">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group-sm">
+          <%= select :form_buscar_instituciones, :tiene_internet, ['','SI','NO'], {}, {:class => 'form-control input-sm'} %>
+        </div>
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">P&aacute;gina Web</span>
+
+          <span class="orden paginaweb">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_instituciones_paginaweb, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_paginaweb');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_instituciones_paginaweb_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :paginaweb, 
+              atributo_tipo: :text, 
+              model: :Institucion, 
+              limit: 10,
+              cadena_consulta: "paginaweb",
+              orden: "paginaweb")), 
+          parametro_id: "form_buscar_instituciones_paginaweb", 
+          resultado_id: "form_buscar_instituciones_paginaweb_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Correo Electr&oacute;nico</span>
+
+          <span class="orden correo_electronico">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_instituciones_correo_electronico, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-instituciones', '#form_buscar_instituciones_correo_electronico');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_instituciones_correo_electronico_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :correo_electronico, 
+              atributo_tipo: :text, 
+              model: :Institucion, 
+              limit: 10,
+              cadena_consulta: "correo_electronico",
+              orden: "correo_electronico")), 
+          parametro_id: "form_buscar_instituciones_correo_electronico", 
+          resultado_id: "form_buscar_instituciones_correo_electronico_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        </tr>
+        </thead>
+
+        <tbody id="instituciones-lista"></tbody>
+
+      </table>
+    </div>
+  <% end %>
+
+  <table class="table table-striped table-bordered table-hover">
+    <tbody id="instituciones-footer"></tbody>
+  </table>
+
+</div>
 
 <script type="text/javascript">
 

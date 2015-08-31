@@ -61,28 +61,27 @@ module ApplicationHelper
 
           end
 
-            
             if tipo_documento == "xlsx"
 
-              html += link_to("XLS#{image_star * 2}".html_safe, documento , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url")
+              html += link_to("XLS#{image_star * 2}".html_safe, documento , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url", :content => documento)
               html += " <br />"
               html += "<span style='color:silver;'>("+descarga_dataset.size+")</span>"
 
             elsif tipo_documento == "csv"
 
-              html += link_to("CSV#{image_star * (numero == 11 || numero == 12 ? 4 : 3)}".html_safe, documento , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url")
+              html += link_to("CSV#{image_star * (numero == 11 || numero == 12 ? 4 : 3)}".html_safe, documento , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url", :content => documento)
               html += " <br />"
               html += "<span style='color:silver;'>("+descarga_dataset.size+")</span>"
 
             elsif tipo_documento == "json"
 
-              html += link_to("JSON#{image_star * (numero < 3 ? 4 : 3)}".html_safe, documento , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url")
+              html += link_to("JSON#{image_star * (numero < 3 ? 4 : 3)}".html_safe, documento , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url", :content => documento)
               html += " <br />"
               html += "<span style='color:silver;'>("+descarga_dataset.size+")</span>"
 
             elsif tipo_documento == "pdf"
 
-              html += link_to("PDF#{image_star}".html_safe, documento , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url")
+              html += link_to("PDF#{image_star}".html_safe, documento , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url", :content => documento)
               html += " <br />"
               html += "<span style='color:silver;'>("+descarga_dataset.size+")</span>"
 

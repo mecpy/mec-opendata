@@ -1,406 +1,407 @@
 <%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
-<div>
-  <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_servicios_basicos_url), :id => "tab-diccionario", :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
-  <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
-  <h2>
-    <span itemprop="name" id="tab-titulo">Servicios Básicos de los Establecimientos según FONACIDE</span>
-    <meta itemprop="url" content="http://datos.mec.gov.py/data/servicios_basicos">  
-    <meta itemprop="description"
-          content="Contiene información sobre la ubicación geográfica de los establecimientos escolares tales como el departamento, distrito,barrio/localidad donde se encuentran asentados, además de la zona (urbana o rural) a la cual pertenecen, y los datos georreferenciadas como las coordenadas planas (en metros) y geograficas. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación. Se contiene inforamaci&oacute; sobre su estructura actual, abastecimiento de agua, severvicio de sanitario acutal, suministro de energ&iacute;a el&eacute;ctrica, si cuenta con plano, t&iacute;tulo de propiedad y mecanismo de prevenci&oac&oacute;n de incendio."
-          />
-    <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
-    <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
-      <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
-      <meta itemprop="url" content="http://datos.mec.gov.py/">
-      <meta itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura">
-    </span>
-    <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
-      <meta itemprop="name" content="Ministerio de Educación y Cultura">
-      <meta itemprop="url" content="http://www.mec.gov.py/">
-      <meta itemprop="email" content="datosabiertos@mec.gov.py">
-    </span>
-    <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
-      <meta itemprop="name" content="Juan Barrios">
-      <meta itemprop="email" content="datosabiertos@mec.gov.py">
-    </span>
-    <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
-    <meta itemprop="keywords" style="display: none;" content="educación,establecimientos,escolar,estado,local,servicios,básicos"/>
-    <meta itemprop="version" style="display: none;" content="1.0">
-  </h2>
-</div>
 
-<%= form_tag mec_custom_url(data_servicios_basicos_lista_url(nil)), :remote => true, :id => "form-buscar-servicios-basicos" do  %>
-  <div class="table-responsive">
-    <table class="table table-small-font table-bordered table-striped">
-      <thead>
-        <tr>
-
-          <th data-priority="1" id="tab-filtros-lista">
-            <span data-titulo="true">Periodo</span>
-
-            <span class="orden periodo">
-              <i class="filtro fa fa-sort"></i>
-              <i class="descendente fa fa-sort-desc"></i>
-              <i class="ascendente fa fa-sort-asc"></i>
-            </span>
-
-        <%= select :form_buscar_servicios_basicos, :periodo, [2014], {}, {:class => 'form-control input-sm'} %>
-      </th>
-
-      <th data-priority="1" id="tab-filtros-texto">
-        <span data-titulo="true">Departamento</span>
-
-        <span class="orden nombre_departamento">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_servicios_basicos_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_nombre_departamento');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_servicios_basicos_nombre_departamento_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_departamento, 
-            atributo_tipo: :text, 
-            model: :VServicioBasico, 
-            limit: 10,
-            cadena_consulta: "nombre_departamento",
-            orden: "nombre_departamento", 
-            descripcion_total: :nombre_departamento,
-            descripcion_elegida: :nombre_departamento)), 
-        parametro_id: "form_buscar_servicios_basicos_nombre_departamento", 
-        resultado_id: "form_buscar_servicios_basicos_nombre_departamento_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Distrito</span>
-
-        <span class="orden nombre_distrito">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_servicios_basicos_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_nombre_distrito');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_servicios_basicos_nombre_distrito_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_distrito, 
-            atributo_tipo: :text, 
-            model: :VServicioBasico, 
-            limit: 10,
-            cadena_consulta: "nombre_distrito",
-            orden: "nombre_distrito", 
-            descripcion_total: :nombre_distrito,
-            descripcion_elegida: :nombre_distrito)), 
-        parametro_id: "form_buscar_servicios_basicos_nombre_distrito", 
-        resultado_id: "form_buscar_servicios_basicos_nombre_distrito_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">C&oacute;digo Establecimiento</span>
-
-        <span class="orden codigo_establecimiento">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_servicios_basicos_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_codigo_establecimiento');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_servicios_basicos_codigo_establecimiento_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_establecimiento, 
-            atributo_tipo: :text, 
-            model: :VServicioBasico, 
-            limit: 10,
-            cadena_consulta: "codigo_establecimiento",
-            orden: "codigo_establecimiento", 
-            descripcion_total: :codigo_establecimiento,
-            descripcion_elegida: :codigo_establecimiento)), 
-        parametro_id: "form_buscar_servicios_basicos_codigo_establecimiento", 
-        resultado_id: "form_buscar_servicios_basicos_codigo_establecimiento_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Barrio/Localidad</span>
-
-        <span class="orden nombre_barrio_localidad">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_servicios_basicos_nombre_barrio_localidad, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_nombre_barrio_localidad');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_servicios_basicos_nombre_barrio_localidad_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_barrio_localidad, 
-            atributo_tipo: :text, 
-            model: :VServicioBasico, 
-            limit: 10,
-            cadena_consulta: "nombre_barrio_localidad",
-            orden: "nombre_barrio_localidad", 
-            descripcion_total: :nombre_barrio_localidad,
-            descripcion_elegida: :nombre_barrio_localidad)), 
-        parametro_id: "form_buscar_servicios_basicos_nombre_barrio_localidad", 
-        resultado_id: "form_buscar_servicios_basicos_nombre_barrio_localidad_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Zona</span>
-
-        <span class="orden nombre_zona">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-        <%= select :form_buscar_servicios_basicos, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Nombre de Asentamiento o Colonia</span>
-
-        <span class="orden nombre_asentamiento_colonia">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_servicios_basicos_nombre_asentamiento_colonia, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_nombre_asentamiento_colonia');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_servicios_basicos_nombre_asentamiento_colonia_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_asentamiento_colonia, 
-            atributo_tipo: :text, 
-            model: :VServicioBasico, 
-            limit: 10,
-            cadena_consulta: "nombre_asentamiento_colonia",
-            orden: "nombre_asentamiento_colonia", 
-            descripcion_total: :nombre_asentamiento_colonia,
-            descripcion_elegida: :nombre_asentamiento_colonia)), 
-        parametro_id: "form_buscar_servicios_basicos_nombre_asentamiento_colonia", 
-        resultado_id: "form_buscar_servicios_basicos_nombre_asentamiento_colonia_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Suministro</br>Energ&iacute;a El&eacute;ctrica</span>
-
-        <span class="orden suministro_energia_electrica">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_servicios_basicos_suministro_energia_electrica, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_suministro_energia_electrica');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_servicios_basicos_suministro_energia_electrica_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :suministro_energia_electrica, 
-            atributo_tipo: :text, 
-            model: :VServicioBasico, 
-            limit: 10,
-            cadena_consulta: "suministro_energia_electrica",
-            orden: "suministro_energia_electrica", 
-            descripcion_total: :suministro_energia_electrica,
-            descripcion_elegida: :suministro_energia_electrica)), 
-        parametro_id: "form_buscar_servicios_basicos_suministro_energia_electrica", 
-        resultado_id: "form_buscar_servicios_basicos_suministro_energia_electrica_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Abastecimiento de Agua</span>
-
-        <span class="orden abastecimiento_agua">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_servicios_basicos_abastecimiento_agua, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_abastecimiento_agua');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_servicios_basicos_abastecimiento_agua_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :abastecimiento_agua, 
-            atributo_tipo: :text, 
-            model: :VServicioBasico, 
-            limit: 10,
-            cadena_consulta: "abastecimiento_agua",
-            orden: "abastecimiento_agua", 
-            descripcion_total: :abastecimiento_agua,
-            descripcion_elegida: :abastecimiento_agua)), 
-        parametro_id: "form_buscar_servicios_basicos_abastecimiento_agua", 
-        resultado_id: "form_buscar_servicios_basicos_abastecimiento_agua_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Servicio Sanitario Actual</span>
-
-        <span class="orden servicio_sanitario_actual">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_servicios_basicos_servicio_sanitario_actual, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_servicio_sanitario_actual');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_servicios_basicos_servicio_sanitario_actual_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :servicio_sanitario_actual, 
-            atributo_tipo: :text, 
-            model: :VServicioBasico, 
-            limit: 10,
-            cadena_consulta: "servicio_sanitario_actual",
-            orden: "servicio_sanitario_actual", 
-            descripcion_total: :servicio_sanitario_actual,
-            descripcion_elegida: :servicio_sanitario_actual)), 
-        parametro_id: "form_buscar_servicios_basicos_servicio_sanitario_actual", 
-        resultado_id: "form_buscar_servicios_basicos_servicio_sanitario_actual_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">T&iacute;tulo de Propiedad</span>
-
-        <span class="orden titulo_de_propiedad">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_servicios_basicos_titulo_de_propiedad, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_titulo_de_propiedad');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_servicios_basicos_titulo_de_propiedad_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :titulo_de_propiedad, 
-            atributo_tipo: :text, 
-            model: :VServicioBasico, 
-            limit: 10,
-            cadena_consulta: "titulo_de_propiedad",
-            orden: "titulo_de_propiedad", 
-            descripcion_total: :titulo_de_propiedad,
-            descripcion_elegida: :titulo_de_propiedad)), 
-        parametro_id: "form_buscar_servicios_basicos_titulo_de_propiedad", 
-        resultado_id: "form_buscar_servicios_basicos_titulo_de_propiedad_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Cuenta con Plano</span>
-
-        <span class="orden cuenta_plano">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_servicios_basicos_cuenta_plano, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_cuenta_plano');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_servicios_basicos_cuenta_plano_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :cuenta_plano, 
-            atributo_tipo: :text, 
-            model: :VServicioBasico, 
-            limit: 10,
-            cadena_consulta: "cuenta_plano",
-            orden: "cuenta_plano", 
-            descripcion_total: :cuenta_plano,
-            descripcion_elegida: :cuenta_plano)), 
-        parametro_id: "form_buscar_servicios_basicos_cuenta_plano", 
-        resultado_id: "form_buscar_servicios_basicos_cuenta_plano_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      <th data-priority="1">
-        <span data-titulo="true">Cuenta con</br>Prevenci&oacute;n de Incendio</span>
-
-        <span class="orden prevencion_incendio">
-          <i class="filtro fa fa-sort"></i>
-          <i class="descendente fa fa-sort-desc"></i>
-          <i class="ascendente fa fa-sort-asc"></i>
-        </span>
-
-      <div class="input-group input-group-sm">
-        <%= text_field_tag :form_buscar_servicios_basicos_prevencion_incendio, nil, :class => 'form-control', :placeholder => "" %>
-        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_prevencion_incendio');"><i class="fa fa-times"></i></span>
-      </div>
-
-      <%= hidden_field_tag :form_buscar_servicios_basicos_prevencion_incendio_id %>
-      <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :prevencion_incendio, 
-            atributo_tipo: :text, 
-            model: :VServicioBasico, 
-            limit: 10,
-            cadena_consulta: "prevencion_incendio",
-            orden: "prevencion_incendio", 
-            descripcion_total: :prevencion_incendio,
-            descripcion_elegida: :prevencion_incendio)), 
-        parametro_id: "form_buscar_servicios_basicos_prevencion_incendio", 
-        resultado_id: "form_buscar_servicios_basicos_prevencion_incendio_id",
-        min_length: 2
-        ) %>
-
-      </th>
-
-      </tr>
-      </thead>
-
-      <tbody id="servicios-basicos-lista"></tbody>
-
-    </table>
+<div itemscope="" itemtype="https://schema.org/Dataset">
+
+  <div>
+    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_servicios_basicos_url), :id => "tab-diccionario", :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
+    <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
+    <h2>
+      <span id="tab-titulo">Servicios Básicos de los Establecimientos según FONACIDE</span>
+      <meta itemprop="name" style="display: none;" content="Servicios B&aacute;sicos de los Establecimientos seg&uacute;n FONACIDE">
+      <meta itemprop="description"
+            content="Contiene datos generales de los establecimientos escolares, relacionados a la ubicación geográfica, servicios básicos e infraestructura."
+            />
+      <meta itemprop="temporal" style="display: none;" content="2015-01-01/2015-12-31"/>
+      <meta itemprop="url" content= <%= mec_custom_url(data_servicios_basicos_url) %> >
+      <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+        <meta itemprop="name" content="Ministerio de Educación y Cultura">
+        <meta itemprop="url" content="http://www.mec.gov.py/">
+        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      </span>
+      <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+        <meta itemprop="name" content="Juan Barrios">
+        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      </span>
+      <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+      <meta itemprop="keywords" style="display: none;" content="educación,establecimientos,escolar,estado,local,servicios,básicos,fonacide"/>
+      <meta itemprop="version" style="display: none;" content="1.0">
+    </h2>
   </div>
-<% end %>
 
-<table class="table table-striped table-bordered table-hover">
-  <tbody id="servicios-basicos-footer"></tbody>
-</table>
+  <%= form_tag mec_custom_url(data_servicios_basicos_lista_url(nil)), :remote => true, :id => "form-buscar-servicios-basicos" do  %>
+    <div class="table-responsive">
+      <table class="table table-small-font table-bordered table-striped">
+        <thead>
+          <tr>
+
+            <th data-priority="1" id="tab-filtros-lista">
+              <span data-titulo="true">Periodo</span>
+
+              <span class="orden periodo">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+          <%= select :form_buscar_servicios_basicos, :periodo, [2014], {}, {:class => 'form-control input-sm'} %>
+        </th>
+
+        <th data-priority="1" id="tab-filtros-texto">
+          <span data-titulo="true">Departamento</span>
+
+          <span class="orden nombre_departamento">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_servicios_basicos_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_nombre_departamento');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_servicios_basicos_nombre_departamento_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_departamento, 
+              atributo_tipo: :text, 
+              model: :VServicioBasico, 
+              limit: 10,
+              cadena_consulta: "nombre_departamento",
+              orden: "nombre_departamento", 
+              descripcion_total: :nombre_departamento,
+              descripcion_elegida: :nombre_departamento)), 
+          parametro_id: "form_buscar_servicios_basicos_nombre_departamento", 
+          resultado_id: "form_buscar_servicios_basicos_nombre_departamento_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Distrito</span>
+
+          <span class="orden nombre_distrito">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_servicios_basicos_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_nombre_distrito');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_servicios_basicos_nombre_distrito_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_distrito, 
+              atributo_tipo: :text, 
+              model: :VServicioBasico, 
+              limit: 10,
+              cadena_consulta: "nombre_distrito",
+              orden: "nombre_distrito", 
+              descripcion_total: :nombre_distrito,
+              descripcion_elegida: :nombre_distrito)), 
+          parametro_id: "form_buscar_servicios_basicos_nombre_distrito", 
+          resultado_id: "form_buscar_servicios_basicos_nombre_distrito_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">C&oacute;digo Establecimiento</span>
+
+          <span class="orden codigo_establecimiento">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_servicios_basicos_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_codigo_establecimiento');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_servicios_basicos_codigo_establecimiento_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_establecimiento, 
+              atributo_tipo: :text, 
+              model: :VServicioBasico, 
+              limit: 10,
+              cadena_consulta: "codigo_establecimiento",
+              orden: "codigo_establecimiento", 
+              descripcion_total: :codigo_establecimiento,
+              descripcion_elegida: :codigo_establecimiento)), 
+          parametro_id: "form_buscar_servicios_basicos_codigo_establecimiento", 
+          resultado_id: "form_buscar_servicios_basicos_codigo_establecimiento_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Barrio/Localidad</span>
+
+          <span class="orden nombre_barrio_localidad">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_servicios_basicos_nombre_barrio_localidad, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_nombre_barrio_localidad');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_servicios_basicos_nombre_barrio_localidad_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_barrio_localidad, 
+              atributo_tipo: :text, 
+              model: :VServicioBasico, 
+              limit: 10,
+              cadena_consulta: "nombre_barrio_localidad",
+              orden: "nombre_barrio_localidad", 
+              descripcion_total: :nombre_barrio_localidad,
+              descripcion_elegida: :nombre_barrio_localidad)), 
+          parametro_id: "form_buscar_servicios_basicos_nombre_barrio_localidad", 
+          resultado_id: "form_buscar_servicios_basicos_nombre_barrio_localidad_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Zona</span>
+
+          <span class="orden nombre_zona">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+          <%= select :form_buscar_servicios_basicos, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Nombre de Asentamiento o Colonia</span>
+
+          <span class="orden nombre_asentamiento_colonia">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_servicios_basicos_nombre_asentamiento_colonia, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_nombre_asentamiento_colonia');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_servicios_basicos_nombre_asentamiento_colonia_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_asentamiento_colonia, 
+              atributo_tipo: :text, 
+              model: :VServicioBasico, 
+              limit: 10,
+              cadena_consulta: "nombre_asentamiento_colonia",
+              orden: "nombre_asentamiento_colonia", 
+              descripcion_total: :nombre_asentamiento_colonia,
+              descripcion_elegida: :nombre_asentamiento_colonia)), 
+          parametro_id: "form_buscar_servicios_basicos_nombre_asentamiento_colonia", 
+          resultado_id: "form_buscar_servicios_basicos_nombre_asentamiento_colonia_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Suministro</br>Energ&iacute;a El&eacute;ctrica</span>
+
+          <span class="orden suministro_energia_electrica">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_servicios_basicos_suministro_energia_electrica, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_suministro_energia_electrica');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_servicios_basicos_suministro_energia_electrica_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :suministro_energia_electrica, 
+              atributo_tipo: :text, 
+              model: :VServicioBasico, 
+              limit: 10,
+              cadena_consulta: "suministro_energia_electrica",
+              orden: "suministro_energia_electrica", 
+              descripcion_total: :suministro_energia_electrica,
+              descripcion_elegida: :suministro_energia_electrica)), 
+          parametro_id: "form_buscar_servicios_basicos_suministro_energia_electrica", 
+          resultado_id: "form_buscar_servicios_basicos_suministro_energia_electrica_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Abastecimiento de Agua</span>
+
+          <span class="orden abastecimiento_agua">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_servicios_basicos_abastecimiento_agua, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_abastecimiento_agua');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_servicios_basicos_abastecimiento_agua_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :abastecimiento_agua, 
+              atributo_tipo: :text, 
+              model: :VServicioBasico, 
+              limit: 10,
+              cadena_consulta: "abastecimiento_agua",
+              orden: "abastecimiento_agua", 
+              descripcion_total: :abastecimiento_agua,
+              descripcion_elegida: :abastecimiento_agua)), 
+          parametro_id: "form_buscar_servicios_basicos_abastecimiento_agua", 
+          resultado_id: "form_buscar_servicios_basicos_abastecimiento_agua_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Servicio Sanitario Actual</span>
+
+          <span class="orden servicio_sanitario_actual">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_servicios_basicos_servicio_sanitario_actual, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_servicio_sanitario_actual');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_servicios_basicos_servicio_sanitario_actual_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :servicio_sanitario_actual, 
+              atributo_tipo: :text, 
+              model: :VServicioBasico, 
+              limit: 10,
+              cadena_consulta: "servicio_sanitario_actual",
+              orden: "servicio_sanitario_actual", 
+              descripcion_total: :servicio_sanitario_actual,
+              descripcion_elegida: :servicio_sanitario_actual)), 
+          parametro_id: "form_buscar_servicios_basicos_servicio_sanitario_actual", 
+          resultado_id: "form_buscar_servicios_basicos_servicio_sanitario_actual_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">T&iacute;tulo de Propiedad</span>
+
+          <span class="orden titulo_de_propiedad">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_servicios_basicos_titulo_de_propiedad, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_titulo_de_propiedad');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_servicios_basicos_titulo_de_propiedad_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :titulo_de_propiedad, 
+              atributo_tipo: :text, 
+              model: :VServicioBasico, 
+              limit: 10,
+              cadena_consulta: "titulo_de_propiedad",
+              orden: "titulo_de_propiedad", 
+              descripcion_total: :titulo_de_propiedad,
+              descripcion_elegida: :titulo_de_propiedad)), 
+          parametro_id: "form_buscar_servicios_basicos_titulo_de_propiedad", 
+          resultado_id: "form_buscar_servicios_basicos_titulo_de_propiedad_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Cuenta con Plano</span>
+
+          <span class="orden cuenta_plano">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_servicios_basicos_cuenta_plano, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_cuenta_plano');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_servicios_basicos_cuenta_plano_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :cuenta_plano, 
+              atributo_tipo: :text, 
+              model: :VServicioBasico, 
+              limit: 10,
+              cadena_consulta: "cuenta_plano",
+              orden: "cuenta_plano", 
+              descripcion_total: :cuenta_plano,
+              descripcion_elegida: :cuenta_plano)), 
+          parametro_id: "form_buscar_servicios_basicos_cuenta_plano", 
+          resultado_id: "form_buscar_servicios_basicos_cuenta_plano_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        <th data-priority="1">
+          <span data-titulo="true">Cuenta con</br>Prevenci&oacute;n de Incendio</span>
+
+          <span class="orden prevencion_incendio">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_servicios_basicos_prevencion_incendio, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-servicios-basicos', '#form_buscar_servicios_basicos_prevencion_incendio');"><i class="fa fa-times"></i></span>
+        </div>
+
+        <%= hidden_field_tag :form_buscar_servicios_basicos_prevencion_incendio_id %>
+        <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :prevencion_incendio, 
+              atributo_tipo: :text, 
+              model: :VServicioBasico, 
+              limit: 10,
+              cadena_consulta: "prevencion_incendio",
+              orden: "prevencion_incendio", 
+              descripcion_total: :prevencion_incendio,
+              descripcion_elegida: :prevencion_incendio)), 
+          parametro_id: "form_buscar_servicios_basicos_prevencion_incendio", 
+          resultado_id: "form_buscar_servicios_basicos_prevencion_incendio_id",
+          min_length: 2
+          ) %>
+
+        </th>
+
+        </tr>
+        </thead>
+
+        <tbody id="servicios-basicos-lista"></tbody>
+
+      </table>
+    </div>
+  <% end %>
+
+  <table class="table table-striped table-bordered table-hover">
+    <tbody id="servicios-basicos-footer"></tbody>
+  </table>
+
+</div>
 
 <script type="text/javascript">
 

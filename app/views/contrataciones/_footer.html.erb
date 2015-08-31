@@ -48,36 +48,44 @@
       <br /><br />
         
       <div style="float:left;">Descargar todas las Contrataciones:</div>
+        
         <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_instituciones_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
-        <meta itemprop="name" content="Contrataciones 2014">
-        <meta itemprop="description" content="Listado de instituciones educativas correspondiente al año 2012">
-        <meta itemprop="encodingFormat" content="pdf">
+          <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_instituciones_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
+          <meta itemprop="name" content="Contrataciones">
+          <meta itemprop="description" content="Listado de contrataciones correspondiente al año 2014/2015">
+          <meta itemprop="encodingFormat" content="pdf">
+          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
         </div>
+
         <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-          <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_contrataciones_lista_url(parametros_xls_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url"%>
+          <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_contrataciones_lista_url(parametros_xls_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url", :content => mec_custom_url(data_contrataciones_lista_url(parametros_xls_todos)) %>
           <br />
           <span style="color:silver;"></span>
-        <meta itemprop="name" content="Instituciones Educativas 2012">
-        <meta itemprop="description" content="Listado de instituciones educativas correspondiente al año 2012">
-        <meta itemprop="encodingFormat" content="xls">
-         </div>
-        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_contrataciones_lista_url(parametros_csv_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url"%>
-        <br />
-        <span style="color:silver;"></span>
-        <meta itemprop="name" content="Instituciones Educativas 2012">
-        <meta itemprop="description" content="Listado de instituciones educativas correspondiente al año 2012">
-        <meta itemprop="encodingFormat" content="csv">
+          <meta itemprop="name" content="Contrataciones">
+          <meta itemprop="description" content="Listado de contrataciones correspondiente al año 2014/2015">
+          <meta itemprop="encodingFormat" content="xls">
+          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
         </div>
+
         <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-        <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_contrataciones_lista_url(parametros_json_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url"%>
-        <br />
-        <span style="color:silver;"></span>
-        <meta itemprop="name" content="Instituciones Educativas 2012">
-        <meta itemprop="description" content="Listado de instituciones educativas correspondiente al año 2012">
-        <meta itemprop="encodingFormat" content="json">
-      </div>
+          <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_contrataciones_lista_url(parametros_csv_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url", :content => mec_custom_url(data_contrataciones_lista_url(parametros_csv_todos)) %>
+          <br />
+          <span style="color:silver;"></span>
+          <meta itemprop="name" content="Contrataciones">
+          <meta itemprop="description" content="Listado de contrataciones correspondiente al año 2014/2015">
+          <meta itemprop="encodingFormat" content="csv">
+          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+        </div>
+
+        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+          <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_contrataciones_lista_url(parametros_json_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url", :content => mec_custom_url(data_contrataciones_lista_url(parametros_json_todos)) %>
+          <br />
+          <span style="color:silver;"></span>
+          <meta itemprop="name" content="Contrataciones">
+          <meta itemprop="description" content="Listado de contrataciones correspondiente al año 2014/2015">
+          <meta itemprop="encodingFormat" content="json">
+          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+        </div>
 
       <div style="clear:both;"></div>
 

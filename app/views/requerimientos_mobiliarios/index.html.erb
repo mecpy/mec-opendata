@@ -1,369 +1,369 @@
 <%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
-<div>
-    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_requerimientos_mobiliarios_url), :id => "tab-diccionario", :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
-    <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
-    <h2>
-        <span itemprop="name" id="tab-titulo">Establecimientos Escolares Priorizados Elegibles - FONACIDE: MOBILIARIOS</span><br/>
-        <meta itemprop="url" content="http://datos.mec.gov.py/data/requerimientos_mobiliarios">  
-        <meta itemprop="description"
-              content="Contiene datos de los requerimientos de mobiliarios con que se cuentan en las distintas Intstituciones Educativas. Los requerimientos son priorizados por distrito, de modo a saber el grado de necesidad con que se los solicita."
-              />
-        <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
-        <span itemprop="catalog" itemscope itemtype="https://schema.org/DataCatalog" style="display: none;">
-            <meta itemprop="name" content="Datos Abiertos del Ministerio de Educación y Cultura">
-            <meta itemprop="url" content="http://datos.mec.gov.py/">
-            <meta itemprop="description" content="Datos Abiertos del Ministerio de Educación y Cultura">
-        </span>
-        <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
-            <meta itemprop="name" content="Ministerio de Educación y Cultura">
-            <meta itemprop="url" content="http://www.mec.gov.py/">
-            <meta itemprop="email" content="datosabiertos@mec.gov.py">
-        </span>
-        <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
-            <meta itemprop="name" content="Juan Barrios">
-            <meta itemprop="email" content="datosabiertos@mec.gov.py">
-        </span>
-        <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
-        <meta itemprop="keywords" style="display: none;" content="educación,instituciones,requerimientos,mobiliarios"/>
-        <meta itemprop="version" style="display: none;" content="1.0">
-    </h2>
-    <span style="font-size: 12px;font-weight: bold;color:silver;" id="tab-leyenda">
-        <i>
-            La informaci&oacute;n presentada en la p&aacute;gina puede presentar diferencias con las planillas remitidas, esto es debido a que los datos de las planillas se encuentran en proceso de validaci&oacute;n de c&oacute;digos.
-            Si desea acceder a las planillas remitidas, las mismas est&aacute;n <a href="http://datos.mec.gov.py/data/establecimientos_escolares_priorizados_elegibles_fonacide" target="_blank">disponibles en formato EXCEL en el Catalogo de datos.</a>
-        </i>
-    </span>
-</div>
 
+<div itemscope="" itemtype="https://schema.org/Dataset">
 
-<%= form_tag mec_custom_url(data_requerimientos_mobiliarios_lista_url(nil)), :remote => true, :id => "form-buscar-requerimientos-mobiliarios" do  %>
-  <div class="table-responsive">
-      <table class="table table-small-font table-bordered table-striped">
-          <thead>
-              <tr>
-
-                  <th data-priority="1" id="tab-filtros-lista">
-                      <span data-titulo="true">Periodo</span>
-
-                      <span class="orden periodo">
-                          <i class="filtro fa fa-sort"></i>
-                          <i class="descendente fa fa-sort-desc"></i>
-                          <i class="ascendente fa fa-sort-asc"></i>
-                      </span>
-
-                      <%= select :form_buscar_requerimientos_mobiliarios, :periodo, [2015], {}, {:class => 'form-control input-sm'} %>
-                  </th>
-
-                  <th data-priority="1" id="tab-filtros-texto">
-                      <span data-titulo="true">Departamento</span>
-
-                      <span class="orden nombre_departamento">
-                          <i class="filtro fa fa-sort"></i>
-                          <i class="descendente fa fa-sort-desc"></i>
-                          <i class="ascendente fa fa-sort-asc"></i>
-                      </span>
-
-          <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_requerimientos_mobiliarios_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_nombre_departamento');"><i class="fa fa-times"></i></span>
-          </div>
-
-          <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_nombre_departamento_id %>
-          <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_departamento, 
-                atributo_tipo: :text, 
-                model: :VRequerimientoMobiliario, 
-                limit: 10,
-                cadena_consulta: "nombre_departamento",
-                orden: "nombre_departamento")), 
-            parametro_id: "form_buscar_requerimientos_mobiliarios_nombre_departamento", 
-            resultado_id: "form_buscar_requerimientos_mobiliarios_nombre_departamento_id",
-            min_length: 2
-            ) %>
-
-          </th>
-
-          <th data-priority="1">
-              <span data-titulo="true">Distrito</span>
-
-              <span class="orden nombre_distrito">
-                  <i class="filtro fa fa-sort"></i>
-                  <i class="descendente fa fa-sort-desc"></i>
-                  <i class="ascendente fa fa-sort-asc"></i>
-              </span>
-
-          <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_requerimientos_mobiliarios_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_nombre_distrito');"><i class="fa fa-times"></i></span>
-          </div>
-
-          <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_nombre_distrito_id %>
-          <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_distrito, 
-                atributo_tipo: :text, 
-                model: :VRequerimientoMobiliario, 
-                limit: 10,
-                cadena_consulta: "nombre_distrito",
-                orden: "nombre_distrito")), 
-            parametro_id: "form_buscar_requerimientos_mobiliarios_nombre_distrito", 
-            resultado_id: "form_buscar_requerimientos_mobiliarios_nombre_distrito_id",
-            min_length: 2
-            ) %>
-
-          </th>
-
-          <th data-priority="1">
-              <span data-titulo="true">N&uacute;mero</br>Prioridad</span>
-
-              <span class="orden numero_prioridad">
-                  <i class="filtro fa fa-sort"></i>
-                  <i class="descendente fa fa-sort-desc"></i>
-                  <i class="ascendente fa fa-sort-asc"></i>
-              </span>
-
-          <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_requerimientos_mobiliarios_numero_prioridad, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_numero_prioridad');"><i class="fa fa-times"></i></span>
-          </div>
-
-          <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_numero_prioridad_id %>
-          <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :numero_prioridad, 
-                atributo_tipo: :int, 
-                model: :VRequerimientoMobiliario, 
-                limit: 10,
-                cadena_consulta: "numero_prioridad",
-                orden: "numero_prioridad")), 
-            parametro_id: "form_buscar_requerimientos_mobiliarios_numero_prioridad", 
-            resultado_id: "form_buscar_requerimientos_mobiliarios_numero_prioridad_id",
-            min_length: 2
-            ) %>
-
-          </th>
-
-          <th data-priority="1">
-              <span data-titulo="true">C&oacute;digo Establecimiento</span>
-
-              <span class="orden codigo_establecimiento">
-                  <i class="filtro fa fa-sort"></i>
-                  <i class="descendente fa fa-sort-desc"></i>
-                  <i class="ascendente fa fa-sort-asc"></i>
-              </span>
-
-          <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_requerimientos_mobiliarios_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_codigo_establecimiento');"><i class="fa fa-times"></i></span>
-          </div>
-
-          <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_codigo_establecimiento_id %>
-          <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_establecimiento, 
-                atributo_tipo: :text, 
-                model: :VRequerimientoMobiliario, 
-                limit: 10,
-                cadena_consulta: "codigo_establecimiento",
-                orden: "codigo_establecimiento")), 
-            parametro_id: "form_buscar_requerimientos_mobiliarios_codigo_establecimiento", 
-            resultado_id: "form_buscar_requerimientos_mobiliarios_codigo_establecimiento_id",
-            min_length: 2
-            ) %>
-
-          </th>
-
-          <th data-priority="1">
-              <span data-titulo="true">C&oacute;digo Instituci&oacute;n</span>
-
-              <span class="orden codigo_institucion">
-                  <i class="filtro fa fa-sort"></i>
-                  <i class="descendente fa fa-sort-desc"></i>
-                  <i class="ascendente fa fa-sort-asc"></i>
-              </span>
-
-          <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_requerimientos_mobiliarios_codigo_institucion, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_codigo_institucion');"><i class="fa fa-times"></i></span>
-          </div>
-
-          <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_codigo_institucion_id %>
-          <%= autocomplete_help(  ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_institucion, 
-                atributo_tipo: :text, 
-                model: :VRequerimientoMobiliario, 
-                limit: 10,
-                cadena_consulta: "codigo_institucion",
-                orden: "codigo_institucion")), 
-            parametro_id: "form_buscar_requerimientos_mobiliarios_codigo_institucion", 
-            resultado_id: "form_buscar_requerimientos_mobiliarios_codigo_institucion_id",
-            min_length: 2
-            ) %>
-
-          </th>
-
-          <th data-priority="1">
-              <span data-titulo="true">Instituci&oacute;n</span>
-
-              <span class="orden nombre_institucion">
-                  <i class="filtro fa fa-sort"></i>
-                  <i class="descendente fa fa-sort-desc"></i>
-                  <i class="ascendente fa fa-sort-asc"></i>
-              </span>
-
-          <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_requerimientos_mobiliarios_nombre_institucion, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_nombre_institucion');"><i class="fa fa-times"></i></span>
-          </div>
-
-          <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_nombre_institucion_id %>
-          <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_institucion, 
-                atributo_tipo: :text, 
-                model: :VRequerimientoMobiliario, 
-                limit: 10,
-                cadena_consulta: "nombre_institucion",
-                orden: "nombre_institucion")), 
-            parametro_id: "form_buscar_requerimientos_mobiliarios_nombre_institucion", 
-            resultado_id: "form_buscar_requerimientos_mobiliarios_nombre_institucion_id",
-            min_length: 2
-            ) %>
-
-          </th>
-
-          <th data-priority="1">
-              <span data-titulo="true">Zona</span>
-
-              <span class="orden nombre_zona">
-                  <i class="filtro fa fa-sort"></i>
-                  <i class="descendente fa fa-sort-desc"></i>
-                  <i class="ascendente fa fa-sort-asc"></i>
-              </span>
-
-              <%= select :form_buscar_requerimientos_mobiliarios, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
-          </th>
-
-          <th data-priority="1">
-              <span data-titulo="true">Nivel</br>Educativo Beneficiado</span>
-
-              <span class="orden nivel_educativo_beneficiado">
-                  <i class="filtro fa fa-sort"></i>
-                  <i class="descendente fa fa-sort-desc"></i>
-                  <i class="ascendente fa fa-sort-asc"></i>
-              </span>
-
-          <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_requerimientos_mobiliarios_nivel_educativo_beneficiado, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_nivel_educativo_beneficiado');"><i class="fa fa-times"></i></span>
-          </div>
-
-          <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_nivel_educativo_beneficiado_id %>
-          <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nivel_educativo_beneficiado, 
-                atributo_tipo: :text, 
-                model: :VRequerimientoMobiliario, 
-                limit: 10,
-                cadena_consulta: "nivel_educativo_beneficiado",
-                orden: "nivel_educativo_beneficiado")), 
-            parametro_id: "form_buscar_requerimientos_mobiliarios_nivel_educativo_beneficiado", 
-            resultado_id: "form_buscar_requerimientos_mobiliarios_nivel_educativo_beneficiado_id",
-            min_length: 2
-            ) %>
-
-          </th>
-
-          <th data-priority="1">
-              <span data-titulo="true">Nombre del Mobiliario</span>
-
-              <span class="orden nombre_mobiliario">
-                  <i class="filtro fa fa-sort"></i>
-                  <i class="descendente fa fa-sort-desc"></i>
-                  <i class="ascendente fa fa-sort-asc"></i>
-              </span>
-
-          <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_requerimientos_mobiliarios_nombre_mobiliario, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_nombre_mobiliario');"><i class="fa fa-times"></i></span>
-          </div>
-
-          <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_nombre_mobiliario_id %>
-          <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_mobiliario, 
-                atributo_tipo: :text, 
-                model: :VRequerimientoMobiliario, 
-                limit: 10,
-                cadena_consulta: "nombre_mobiliario",
-                orden: "nombre_mobiliario")), 
-            parametro_id: "form_buscar_requerimientos_mobiliarios_nombre_mobiliario", 
-            resultado_id: "form_buscar_requerimientos_mobiliarios_nombre_mobiliario_id",
-            min_length: 2
-            ) %>
-
-          </th>
-
-          <th data-priority="1">
-              <span data-titulo="true">Cantidad Requerida</span>
-              <span class="orden cantidad_requerida">
-                  <i class="filtro fa fa-sort"></i>
-                  <i class="descendente fa fa-sort-desc"></i>
-                  <i class="ascendente fa fa-sort-asc"></i>
-              </span>
-
-          <div class="input-group input-group-sm">
-              <span class="input-group-addon">
-                  <%= select_tag(:form_buscar_requerimientos_mobiliarios_cantidad_requerida_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
-              </span>
-              <%= number_field_tag :form_buscar_requerimientos_mobiliarios_cantidad_requerida, nil, :class => 'form-control', :placeholder => '' %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_cantidad_requerida');"><i class="fa fa-times"></i></span>
-          </div>
-          </th>
-
-          <th data-priority="1">
-              <span data-titulo="true">N&uacute;mero de Beneficiados</span>
-              <span class="orden numero_beneficiados">
-                  <i class="filtro fa fa-sort"></i>
-                  <i class="descendente fa fa-sort-desc"></i>
-                  <i class="ascendente fa fa-sort-asc"></i>
-              </span>
-
-          <div class="input-group input-group-sm">
-              <span class="input-group-addon">
-                  <%= select_tag(:form_buscar_requerimientos_mobiliarios_numero_beneficiados_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
-              </span>
-              <%= number_field_tag :form_buscar_requerimientos_mobiliarios_numero_beneficiados, nil, :class => 'form-control', :placeholder => '' %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_numero_beneficiados');"><i class="fa fa-times"></i></span>
-          </div>
-          </th>
-
-          <th data-priority="1">
-              <span data-titulo="true">Justificaci&oacute;n</span>
-
-              <span class="orden justificacion">
-                  <i class="filtro fa fa-sort"></i>
-                  <i class="descendente fa fa-sort-desc"></i>
-                  <i class="ascendente fa fa-sort-asc"></i>
-              </span>
-
-          <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_requerimientos_mobiliarios_justificacion, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_justificacion');"><i class="fa fa-times"></i></span>
-          </div>
-
-          <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_justificacion_id %>
-          <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :justificacion, 
-                atributo_tipo: :text, 
-                model: :VRequerimientoMobiliario, 
-                limit: 10,
-                cadena_consulta: "justificacion",
-                orden: "justificacion")), 
-            parametro_id: "form_buscar_requerimientos_mobiliarios_justificacion", 
-            resultado_id: "form_buscar_requerimientos_mobiliarios_justificacion_id",
-            min_length: 2
-            ) %>
-
-          </th>
-
-          </tr>
-          </thead>
-
-          <tbody id="requerimientos-mobiliarios-lista"></tbody>
-
-      </table>
+  <div>
+      <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_requerimientos_mobiliarios_url), :id => "tab-diccionario", :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
+      <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
+      <h2>
+          <span id="tab-titulo">Establecimientos Escolares Priorizados Elegibles - FONACIDE: MOBILIARIOS</span><br/>
+          <meta itemprop="name" style="display: none;" content="ESTABLECIMIENTOS ESCOLARES PRIORIZADOS ELEGIBLES - FONACIDE: MOBILIARIOS">
+          <meta itemprop="description"
+                content="Corresponde a los requerimientos de mobiliarios, muebles o equipamientos de aulas correspondientes a las instituciones educativas del país priorizadas por distrito y por período." />
+          <meta itemprop="temporal" style="display: none;" content="2015-01-01/2015-12-31"/>
+          <meta itemprop="url" content= <%= mec_custom_url(data_requerimientos_mobiliarios_url) %> >
+          <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+              <meta itemprop="name" content="Ministerio de Educación y Cultura">
+              <meta itemprop="url" content="http://www.mec.gov.py/">
+              <meta itemprop="email" content="datosabiertos@mec.gov.py">
+          </span>
+          <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+              <meta itemprop="name" content="Juan Barrios">
+              <meta itemprop="email" content="datosabiertos@mec.gov.py">
+          </span>
+          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+          <meta itemprop="keywords" style="display: none;" content="educación,instituciones,requerimientos,mobiliarios,fonacide"/>
+          <meta itemprop="version" style="display: none;" content="1.0">
+      </h2>
+      <span style="font-size: 12px;font-weight: bold;color:silver;" id="tab-leyenda">
+          <i>
+              La informaci&oacute;n presentada en la p&aacute;gina puede presentar diferencias con las planillas remitidas, esto es debido a que los datos de las planillas se encuentran en proceso de validaci&oacute;n de c&oacute;digos.
+              Si desea acceder a las planillas remitidas, las mismas est&aacute;n <a href="http://datos.mec.gov.py/data/establecimientos_escolares_priorizados_elegibles_fonacide" target="_blank">disponibles en formato EXCEL en el Catalogo de datos.</a>
+          </i>
+      </span>
   </div>
-<% end %>
 
-<table class="table table-striped table-bordered table-hover">
-    <tbody id="requerimientos-mobiliarios-footer"></tbody>
-</table>
+
+  <%= form_tag mec_custom_url(data_requerimientos_mobiliarios_lista_url(nil)), :remote => true, :id => "form-buscar-requerimientos-mobiliarios" do  %>
+    <div class="table-responsive">
+        <table class="table table-small-font table-bordered table-striped">
+            <thead>
+                <tr>
+
+                    <th data-priority="1" id="tab-filtros-lista">
+                        <span data-titulo="true">Periodo</span>
+
+                        <span class="orden periodo">
+                            <i class="filtro fa fa-sort"></i>
+                            <i class="descendente fa fa-sort-desc"></i>
+                            <i class="ascendente fa fa-sort-asc"></i>
+                        </span>
+
+                        <%= select :form_buscar_requerimientos_mobiliarios, :periodo, [2015], {}, {:class => 'form-control input-sm'} %>
+                    </th>
+
+                    <th data-priority="1" id="tab-filtros-texto">
+                        <span data-titulo="true">Departamento</span>
+
+                        <span class="orden nombre_departamento">
+                            <i class="filtro fa fa-sort"></i>
+                            <i class="descendente fa fa-sort-desc"></i>
+                            <i class="ascendente fa fa-sort-asc"></i>
+                        </span>
+
+            <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_requerimientos_mobiliarios_nombre_departamento, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_nombre_departamento');"><i class="fa fa-times"></i></span>
+            </div>
+
+            <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_nombre_departamento_id %>
+            <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_departamento, 
+                  atributo_tipo: :text, 
+                  model: :VRequerimientoMobiliario, 
+                  limit: 10,
+                  cadena_consulta: "nombre_departamento",
+                  orden: "nombre_departamento")), 
+              parametro_id: "form_buscar_requerimientos_mobiliarios_nombre_departamento", 
+              resultado_id: "form_buscar_requerimientos_mobiliarios_nombre_departamento_id",
+              min_length: 2
+              ) %>
+
+            </th>
+
+            <th data-priority="1">
+                <span data-titulo="true">Distrito</span>
+
+                <span class="orden nombre_distrito">
+                    <i class="filtro fa fa-sort"></i>
+                    <i class="descendente fa fa-sort-desc"></i>
+                    <i class="ascendente fa fa-sort-asc"></i>
+                </span>
+
+            <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_requerimientos_mobiliarios_nombre_distrito, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_nombre_distrito');"><i class="fa fa-times"></i></span>
+            </div>
+
+            <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_nombre_distrito_id %>
+            <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_distrito, 
+                  atributo_tipo: :text, 
+                  model: :VRequerimientoMobiliario, 
+                  limit: 10,
+                  cadena_consulta: "nombre_distrito",
+                  orden: "nombre_distrito")), 
+              parametro_id: "form_buscar_requerimientos_mobiliarios_nombre_distrito", 
+              resultado_id: "form_buscar_requerimientos_mobiliarios_nombre_distrito_id",
+              min_length: 2
+              ) %>
+
+            </th>
+
+            <th data-priority="1">
+                <span data-titulo="true">N&uacute;mero</br>Prioridad</span>
+
+                <span class="orden numero_prioridad">
+                    <i class="filtro fa fa-sort"></i>
+                    <i class="descendente fa fa-sort-desc"></i>
+                    <i class="ascendente fa fa-sort-asc"></i>
+                </span>
+
+            <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_requerimientos_mobiliarios_numero_prioridad, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_numero_prioridad');"><i class="fa fa-times"></i></span>
+            </div>
+
+            <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_numero_prioridad_id %>
+            <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :numero_prioridad, 
+                  atributo_tipo: :int, 
+                  model: :VRequerimientoMobiliario, 
+                  limit: 10,
+                  cadena_consulta: "numero_prioridad",
+                  orden: "numero_prioridad")), 
+              parametro_id: "form_buscar_requerimientos_mobiliarios_numero_prioridad", 
+              resultado_id: "form_buscar_requerimientos_mobiliarios_numero_prioridad_id",
+              min_length: 2
+              ) %>
+
+            </th>
+
+            <th data-priority="1">
+                <span data-titulo="true">C&oacute;digo Establecimiento</span>
+
+                <span class="orden codigo_establecimiento">
+                    <i class="filtro fa fa-sort"></i>
+                    <i class="descendente fa fa-sort-desc"></i>
+                    <i class="ascendente fa fa-sort-asc"></i>
+                </span>
+
+            <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_requerimientos_mobiliarios_codigo_establecimiento, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_codigo_establecimiento');"><i class="fa fa-times"></i></span>
+            </div>
+
+            <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_codigo_establecimiento_id %>
+            <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_establecimiento, 
+                  atributo_tipo: :text, 
+                  model: :VRequerimientoMobiliario, 
+                  limit: 10,
+                  cadena_consulta: "codigo_establecimiento",
+                  orden: "codigo_establecimiento")), 
+              parametro_id: "form_buscar_requerimientos_mobiliarios_codigo_establecimiento", 
+              resultado_id: "form_buscar_requerimientos_mobiliarios_codigo_establecimiento_id",
+              min_length: 2
+              ) %>
+
+            </th>
+
+            <th data-priority="1">
+                <span data-titulo="true">C&oacute;digo Instituci&oacute;n</span>
+
+                <span class="orden codigo_institucion">
+                    <i class="filtro fa fa-sort"></i>
+                    <i class="descendente fa fa-sort-desc"></i>
+                    <i class="ascendente fa fa-sort-asc"></i>
+                </span>
+
+            <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_requerimientos_mobiliarios_codigo_institucion, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_codigo_institucion');"><i class="fa fa-times"></i></span>
+            </div>
+
+            <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_codigo_institucion_id %>
+            <%= autocomplete_help(  ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_institucion, 
+                  atributo_tipo: :text, 
+                  model: :VRequerimientoMobiliario, 
+                  limit: 10,
+                  cadena_consulta: "codigo_institucion",
+                  orden: "codigo_institucion")), 
+              parametro_id: "form_buscar_requerimientos_mobiliarios_codigo_institucion", 
+              resultado_id: "form_buscar_requerimientos_mobiliarios_codigo_institucion_id",
+              min_length: 2
+              ) %>
+
+            </th>
+
+            <th data-priority="1">
+                <span data-titulo="true">Instituci&oacute;n</span>
+
+                <span class="orden nombre_institucion">
+                    <i class="filtro fa fa-sort"></i>
+                    <i class="descendente fa fa-sort-desc"></i>
+                    <i class="ascendente fa fa-sort-asc"></i>
+                </span>
+
+            <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_requerimientos_mobiliarios_nombre_institucion, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_nombre_institucion');"><i class="fa fa-times"></i></span>
+            </div>
+
+            <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_nombre_institucion_id %>
+            <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_institucion, 
+                  atributo_tipo: :text, 
+                  model: :VRequerimientoMobiliario, 
+                  limit: 10,
+                  cadena_consulta: "nombre_institucion",
+                  orden: "nombre_institucion")), 
+              parametro_id: "form_buscar_requerimientos_mobiliarios_nombre_institucion", 
+              resultado_id: "form_buscar_requerimientos_mobiliarios_nombre_institucion_id",
+              min_length: 2
+              ) %>
+
+            </th>
+
+            <th data-priority="1">
+                <span data-titulo="true">Zona</span>
+
+                <span class="orden nombre_zona">
+                    <i class="filtro fa fa-sort"></i>
+                    <i class="descendente fa fa-sort-desc"></i>
+                    <i class="ascendente fa fa-sort-asc"></i>
+                </span>
+
+                <%= select :form_buscar_requerimientos_mobiliarios, :nombre_zona, ['','RURAL', 'URBANA'], {}, {:class => 'form-control input-sm'} %>
+            </th>
+
+            <th data-priority="1">
+                <span data-titulo="true">Nivel</br>Educativo Beneficiado</span>
+
+                <span class="orden nivel_educativo_beneficiado">
+                    <i class="filtro fa fa-sort"></i>
+                    <i class="descendente fa fa-sort-desc"></i>
+                    <i class="ascendente fa fa-sort-asc"></i>
+                </span>
+
+            <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_requerimientos_mobiliarios_nivel_educativo_beneficiado, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_nivel_educativo_beneficiado');"><i class="fa fa-times"></i></span>
+            </div>
+
+            <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_nivel_educativo_beneficiado_id %>
+            <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nivel_educativo_beneficiado, 
+                  atributo_tipo: :text, 
+                  model: :VRequerimientoMobiliario, 
+                  limit: 10,
+                  cadena_consulta: "nivel_educativo_beneficiado",
+                  orden: "nivel_educativo_beneficiado")), 
+              parametro_id: "form_buscar_requerimientos_mobiliarios_nivel_educativo_beneficiado", 
+              resultado_id: "form_buscar_requerimientos_mobiliarios_nivel_educativo_beneficiado_id",
+              min_length: 2
+              ) %>
+
+            </th>
+
+            <th data-priority="1">
+                <span data-titulo="true">Nombre del Mobiliario</span>
+
+                <span class="orden nombre_mobiliario">
+                    <i class="filtro fa fa-sort"></i>
+                    <i class="descendente fa fa-sort-desc"></i>
+                    <i class="ascendente fa fa-sort-asc"></i>
+                </span>
+
+            <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_requerimientos_mobiliarios_nombre_mobiliario, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_nombre_mobiliario');"><i class="fa fa-times"></i></span>
+            </div>
+
+            <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_nombre_mobiliario_id %>
+            <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :nombre_mobiliario, 
+                  atributo_tipo: :text, 
+                  model: :VRequerimientoMobiliario, 
+                  limit: 10,
+                  cadena_consulta: "nombre_mobiliario",
+                  orden: "nombre_mobiliario")), 
+              parametro_id: "form_buscar_requerimientos_mobiliarios_nombre_mobiliario", 
+              resultado_id: "form_buscar_requerimientos_mobiliarios_nombre_mobiliario_id",
+              min_length: 2
+              ) %>
+
+            </th>
+
+            <th data-priority="1">
+                <span data-titulo="true">Cantidad Requerida</span>
+                <span class="orden cantidad_requerida">
+                    <i class="filtro fa fa-sort"></i>
+                    <i class="descendente fa fa-sort-desc"></i>
+                    <i class="ascendente fa fa-sort-asc"></i>
+                </span>
+
+            <div class="input-group input-group-sm">
+                <span class="input-group-addon">
+                    <%= select_tag(:form_buscar_requerimientos_mobiliarios_cantidad_requerida_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+                </span>
+                <%= number_field_tag :form_buscar_requerimientos_mobiliarios_cantidad_requerida, nil, :class => 'form-control', :placeholder => '' %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_cantidad_requerida');"><i class="fa fa-times"></i></span>
+            </div>
+            </th>
+
+            <th data-priority="1">
+                <span data-titulo="true">N&uacute;mero de Beneficiados</span>
+                <span class="orden numero_beneficiados">
+                    <i class="filtro fa fa-sort"></i>
+                    <i class="descendente fa fa-sort-desc"></i>
+                    <i class="ascendente fa fa-sort-asc"></i>
+                </span>
+
+            <div class="input-group input-group-sm">
+                <span class="input-group-addon">
+                    <%= select_tag(:form_buscar_requerimientos_mobiliarios_numero_beneficiados_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+                </span>
+                <%= number_field_tag :form_buscar_requerimientos_mobiliarios_numero_beneficiados, nil, :class => 'form-control', :placeholder => '' %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_numero_beneficiados');"><i class="fa fa-times"></i></span>
+            </div>
+            </th>
+
+            <th data-priority="1">
+                <span data-titulo="true">Justificaci&oacute;n</span>
+
+                <span class="orden justificacion">
+                    <i class="filtro fa fa-sort"></i>
+                    <i class="descendente fa fa-sort-desc"></i>
+                    <i class="ascendente fa fa-sort-asc"></i>
+                </span>
+
+            <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_requerimientos_mobiliarios_justificacion, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-requerimientos-mobiliarios', '#form_buscar_requerimientos_mobiliarios_justificacion');"><i class="fa fa-times"></i></span>
+            </div>
+
+            <%= hidden_field_tag :form_buscar_requerimientos_mobiliarios_justificacion_id %>
+            <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :justificacion, 
+                  atributo_tipo: :text, 
+                  model: :VRequerimientoMobiliario, 
+                  limit: 10,
+                  cadena_consulta: "justificacion",
+                  orden: "justificacion")), 
+              parametro_id: "form_buscar_requerimientos_mobiliarios_justificacion", 
+              resultado_id: "form_buscar_requerimientos_mobiliarios_justificacion_id",
+              min_length: 2
+              ) %>
+
+            </th>
+
+            </tr>
+            </thead>
+
+            <tbody id="requerimientos-mobiliarios-lista"></tbody>
+
+        </table>
+    </div>
+  <% end %>
+
+  <table class="table table-striped table-bordered table-hover">
+      <tbody id="requerimientos-mobiliarios-footer"></tbody>
+  </table>
+
+</div>
 
 <script type="text/javascript">
 
