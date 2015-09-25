@@ -181,6 +181,10 @@ class DirectoriosInstitucionesController < ApplicationController
 
       end
     
+    elsif params[:format] == 'md5_csv'
+
+      
+
     else
       
       @directorios_instituciones_todos = VDirectorioInstitucion.orden_dep_dis.where(cond).all
