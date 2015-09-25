@@ -5,7 +5,18 @@ class DirectoriosInstitucionesController < ApplicationController
     
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/directorios_instituciones.json")
-    @diccionario_directorio_instituciones = JSON.parse(file)
+    directorio = JSON.parse(file)
+    @directorios_instituciones = clean_json(directorio)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@directorios_instituciones)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@directorios_instituciones, params[:nombre]), :filename => "diccionario_directorio_instituciones.pdf", :type => "application/pdf")
+
+    end
 
   end
 

@@ -51,7 +51,25 @@
       </li>
 
     <% end %>
-  </ul>      
+  </ul>
+
+  <div class="row">
+    <%
+      parametros_pdf = { :format => 'pdf', :nombre => nombre }
+      parametros_json_table_schema = { :format => 'json', :nombre => nombre }
+    %>
+
+    <h4>Descargar diccionario:</h4>
+    <ul>
+      <li>
+        <%= link_to "JSON TABLE SCHEMA".html_safe, mec_custom_url(parametros_json_table_schema), :target => "_blank", :class => 'icon icon-page_white_text_width' %>
+      </li>
+      <li>
+        <%= link_to "PDF".html_safe, mec_custom_url(parametros_pdf), :target => "_blank", :class => 'icon icon-page_white_acrobat' %>
+      </li>
+    </ul>
+  </div>
+
 <% else %>
   No se encontraron registros.
 <% end %>

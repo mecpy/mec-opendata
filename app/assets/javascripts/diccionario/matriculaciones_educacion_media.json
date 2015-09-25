@@ -91,7 +91,7 @@
         "ejemplo": "URBANA"
     }, {
         "nombre": "CODIGO_ESTABLECIMIENTO",
-        "descripcion": "Código de establecimiento permite identificar en forma única los diferentes establecimientos educativos que se encuentran en el país.\nEl Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación.",
+        "descripcion": "Código de establecimiento permite identificar en forma única los diferentes establecimientos educativos que se encuentran en el país. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación.",
         "tipo": "xsd:string",
         "restricciones": "No más de 7 caracteres",
         "referencia": {
