@@ -1,0 +1,133 @@
+[
+    {
+        "nombre": "CODIGO_PRODUCTO",
+        "descripcion": "Se refiere al código identificador del bien",
+        "tipo": "xsd:string",
+        "restricciones": "Único. No más de 14 caracteres",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "541-046-000594"
+    }, {
+        "nombre": "OBJETO_GASTO_CODIGO",
+        "descripcion": "Se refiere al código del objeto de gasto relacionado al bien.",
+        "tipo": "xsd:string",
+        "restricciones": "No m&aacute;s de 3 caracteres",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "340"
+    }, {
+        "nombre": "OBJETO_GASTO",
+        "descripcion": "Corresponde a la descripción del nombre del objeto de gasto correspondiente al código.",
+        "tipo": "xsd:string",
+        "restricciones": "No m&aacute;s de 100 caracteres",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "BIENES DE CONSUMO DE OFICINAS E INSUMOS"
+    }, {
+        "nombre": "NATURALEZA_PRODUCTO",
+        "descripcion": "Corresponde a la descripción de la naturaleza del bien.",
+        "tipo": "xsd:date",
+        "restricciones": "No m&aacute;s de 100 caracteres",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "ARTICULOS DE LIBRERIA"
+    }, {
+        "nombre": "CONCEPTO_CODIGO",
+        "descripcion": "Se refiere al código del concepto relacionado al bien.",
+        "tipo": "xsd:string",
+        "restricciones": "No m&aacute;s de 3 caracteres.",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "021"
+    }, {
+        "nombre": "CONCEPTO",
+        "descripcion": "Corresponde a la descripción del nombre del concepto correspondiente al código.",
+        "tipo": "xsd:string",
+        "restricciones": "No m&aacute;s de 100 caracteres",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "TIJERAS"
+    }, {
+        "nombre": "CODIGO_CLASIFICADOR_BIEN",
+        "descripcion": "Se refiere al código clasificador del bien",
+        "tipo": "xsd:string",
+        "restricciones": "No m&aacute;s de 20 caracteres",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "2.5.1.01.01.04"
+    }, {
+        "nombre": "CLASIFICADOR_BIEN",
+        "descripcion": "Corresponde a la descripción del nombre del clasificador correspondiente al código",
+        "tipo": "xsd:string",
+        "restricciones": "No m&aacute;s de 100 caracteres",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "Bienes de Consumo de Oficina e Insumos"
+    }, {
+        "nombre": "DESCRIPCIÓN",
+        "descripcion": "Corresponde a la descripción del nombre del bien correspondiente al código del producto",
+        "tipo": "xsd:string",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "SOBRE TARJETON AVON DE 80 GR"
+    }, {
+        "nombre": "UNIDAD_MEDIDA",
+        "descripcion": "Corresponde a la descripción del nombre de la unidad de medida vinculada al bien.",
+        "tipo": "xsd:string",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "UNIDAD"
+    } , {
+        "nombre": "CANTIDAD_MAXIMA",
+        "descripcion": "Se refiere a la cantidad máxima del bien.",
+        "tipo": "xsd:integerPositive",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "100"
+    } , {
+        "nombre": "CANTIDAD_MINIMA",
+        "descripcion": "Se refiere a la cantidad mínima del bien.",
+        "tipo": "xsd:integerPositive",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "10"
+    } , {
+        "nombre": "CANTIDAD_ACTUAL",
+        "descripcion": "Se refiere a la cantidad actual del bien.",
+        "tipo": "xsd:integerPositive",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "50"
+    }
+]

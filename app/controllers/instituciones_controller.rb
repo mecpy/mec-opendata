@@ -260,7 +260,7 @@ class InstitucionesController < ApplicationController
     if params[:institucion] && params[:institucion][:anio].present?
       @anio = params[:institucion][:anio]
     else
-      @anio = 2014
+      @anio = 2012
     end
     
     

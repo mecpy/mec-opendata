@@ -1036,7 +1036,7 @@
             <div class="acciones">
 
                 <div style="display:inline-block" itemprop="distribution" itemscope="" itemtype="https://schema.org/DataDownload">
-                    <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar (156,5KB)</span>').html_safe, PARAMETRO[:ejecucion_fiscal_xlsx], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url", :content => "http://datos.mec.gov.py/data/ejecucion_al_31072015.xls" %>
+                    <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar (174KB)</span>').html_safe, PARAMETRO[:ejecucion_fiscal_xlsx], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url", :content => "http://datos.mec.gov.py/data/ejecucion_al_31072015.xls" %>
                     <meta itemprop="name" content="Presupuesto de Ingresos y Egresos del Ejercicio Fiscal">
                     <meta itemprop="description" content="Listado del presupuesto de Ingresos y Egresos del Ejercicio Fiscal">
                     <meta itemprop="encodingFormat" content="xls">
@@ -1128,6 +1128,14 @@
                     <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar julio 2015 (527KB)</span>').html_safe, PARAMETRO[:viaticos_julio_2015], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url", :content => "http://datos.mec.gov.py/data/viaticos_julio_2015.xls" %>
                     <meta itemprop="name" content="Viaticos (Julio 2015)">
                     <meta itemprop="description" content="Listado de viaticos correspondiente a julio 2015">
+                    <meta itemprop="encodingFormat" content="xls">
+                    <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+                </div>
+
+                <div style="display:inline-block" itemprop="distribution" itemscope="" itemtype="https://schema.org/DataDownload">
+                    <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar agosto 2015 (558,5KB)</span>').html_safe, PARAMETRO[:viaticos_agosto_2015], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url", :content => "http://datos.mec.gov.py/data/viaticos_agosto_2015.xls" %>
+                    <meta itemprop="name" content="Viaticos (Agosto 2015)">
+                    <meta itemprop="description" content="Listado de viaticos correspondiente a agosto 2015">
                     <meta itemprop="encodingFormat" content="xls">
                     <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
                 </div>
@@ -1490,6 +1498,8 @@
         <div class="celda col-sm-3">
             <span itemprop="name">NOMINA DE LOCALES ESCOLARES A SER USUFRUCTUADOS EN LAS ELECCIONES INTERNAS-MUNICIPALES 2015 SIMULTANEAS DE LOS PARTIDOS, CONCERTACIONES Y MOVIMIENTOS POLITICOS.</span><br>
 
+
+
             <div class="acciones">
 
                 <div style="display:inline-block" itemprop="distribution" itemscope="" itemtype="https://schema.org/DataDownload">
@@ -1526,6 +1536,46 @@
         <meta itemprop="keywords" style="display: none;" content="educación,nóminas,elecciones,municipales,partidos politicos"/>
         <meta itemprop="version" style="display: none;" content="1.0"/>
         <meta itemprop="url" style="display: none;" content="http://datos.mec.gov.py/data#locales-elecciones-municipales" >
+    </li>
+
+
+
+<!--NUEVO CONJUNTO DE DATOS-->
+    <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+        <span class="celda col-sm-1 text-right text-muted contador">36</span>
+        <div class="celda col-sm-3">
+            <span itemprop="name">INVENTARIOS</span><br>
+
+            <div class="acciones">
+
+                <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_productos_url), :title => "Ir al diccionario" %>
+                <%= link_to ("<i class='icon-py-datos'></i><span class='hidden-xs'> Ver Datos #{image_star * 3}</span>").html_safe, mec_custom_url(data_productos_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+
+                <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+                    <i class="icon-py-etiqueta"></i> 
+                    <span class="visible-xs-inline" data-ver="true">Ver</span>
+                    <span class="hidden" data-ocultar="true">Ocultar</span>
+                    descripción
+                </a>
+
+            </div>
+        </div>
+        <div class="celda col-sm-8 hidden-xs" itemprop="description">
+          <p>Contiene información de los bienes existentes en los depósitos del MEC con la cantidad actual de cada bien hasta el mes de agosto del 2015.</p>
+        </div>
+        <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+        <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+            <meta itemprop="name" content="Ministerio de Educación y Cultura">
+            <meta itemprop="url" content="http://www.mec.gov.py/">
+            <meta itemprop="email" content="datosabiertos@mec.gov.py">
+        </span>
+        <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+            <meta itemprop="name" content="Juan Barrios">
+            <meta itemprop="email" content="datosabiertos@mec.gov.py">
+        </span>
+        <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+        <meta itemprop="keywords" style="display: none;" content="educación,instituciones"/>
+        <meta itemprop="version" style="display: none;" content="1.0">
     </li>
 
 </ul>

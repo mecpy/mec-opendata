@@ -1,0 +1,530 @@
+<%= javascript_include_tag "/assets/views/datos_ver_view.js?body=1" %>
+
+<div itemscope="" itemtype="https://schema.org/Dataset">
+  <div>
+    <%= link_to ('<i class="icon-py-manual"></i> Ver diccionario').html_safe, mec_custom_url(def_productos_url), :id => "tab-diccionario", :class => "pull-right btn-lg hidden-xs", :title => "Ir al diccionario" %>
+    <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
+    <h1>
+      <span id="tab-titulo">Inventarios</span>
+      <meta itemprop="name" content="INVENTARIOS">
+      <meta itemprop="description"
+            content="Inventarios"
+            />
+      <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+      <meta itemprop="url" content= <%= mec_custom_url(data_productos_url) %> >
+      <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+        <meta itemprop="name" content="Ministerio de Educación y Cultura">
+        <meta itemprop="url" content="http://www.mec.gov.py/">
+        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      </span>
+      <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+        <meta itemprop="name" content="Juan Barrios">
+        <meta itemprop="email" content="datosabiertos@mec.gov.py">
+      </span>
+      <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+      <meta itemprop="keywords" style="display: none;" content="educación,instituciones"/>
+      <meta itemprop="version" style="display: none;" content="1.0">
+    </h1>
+    <span style="font-size: 12px;font-weight: bold;color:silver;">
+      <i>
+        La información presentada corresponde al corte del mes de agosto del 2015. 
+      </i>
+    </span>
+  </div>
+
+  <%= form_tag mec_custom_url(data_productos_lista_url(nil)), :remote => true, :id => "form-buscar-productos" do  %>
+    
+    <div class="table-responsive">
+      <table class="table table-small-font table-bordered table-striped">
+        <thead>
+          
+          <tr>
+
+            <th data-priority="1" id="tab-filtros-texto">
+              
+              <span data-titulo="true">Código Producto</span>
+
+              <span class="orden producto_codigo">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_productos_producto_codigo, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-productos', '#form_buscar_productos_producto_codigo');"><i class="fa fa-times"></i></span>
+              </div>
+
+              <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :producto_codigo,
+                    atributo_tipo: :text, 
+                    model: :Producto, 
+                    limit: 10,
+                    cadena_consulta: "producto_codigo",
+                    orden: "producto_codigo")), 
+                  parametro_id: "form_buscar_productos_producto_codigo", 
+                  resultado_id: "form_buscar_productos_producto_codigo",
+                  min_length: 2
+              ) %>
+
+            </th>
+
+
+            <th data-priority="1" id="tab-filtros-texto">
+              <span data-titulo="true">Código Objeto Gasto</span>
+
+              <span class="orden objeto_gasto_codigo">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_productos_objeto_gasto_codigo, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-productos', '#form_buscar_productos_objeto_gasto_codigo');"><i class="fa fa-times"></i></span>
+              </div>
+
+              <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :objeto_gasto_codigo, 
+                    atributo_tipo: :text, 
+                    model: :Producto, 
+                    limit: 10,
+                    cadena_consulta: "objeto_gasto_codigo",
+                    orden: "objeto_gasto_codigo")), 
+                  parametro_id: "form_buscar_productos_objeto_gasto_codigo", 
+                  resultado_id: "form_buscar_productos_objeto_gasto_codigo",
+                  min_length: 2
+              ) %>
+
+            </th>
+
+            <th data-priority="1" id="tab-filtros-texto">
+              
+              <span data-titulo="true">Objeto Gasto</span>
+
+              <span class="orden objeto_gasto">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_productos_objeto_gasto, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-productos', '#form_buscar_productos_objeto_gasto');"><i class="fa fa-times"></i></span>
+              </div>
+
+              <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :objeto_gasto,
+                    atributo_tipo: :text, 
+                    model: :Producto, 
+                    limit: 10,
+                    cadena_consulta: "objeto_gasto",
+                    orden: "objeto_gasto")), 
+                  parametro_id: "form_buscar_productos_objeto_gasto", 
+                  resultado_id: "form_buscar_productos_objeto_gasto",
+                  min_length: 2
+              ) %>
+
+            </th>
+
+            <th data-priority="1" id="tab-filtros-texto">
+             
+              <span data-titulo="true">Naturaleza Producto</span>
+
+              <span class="orden naturaleza_producto">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_productos_naturaleza_producto, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-productos', '#form_buscar_productos_naturaleza_producto');"><i class="fa fa-times"></i></span>
+              </div>
+
+              <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :naturaleza_producto,
+                    atributo_tipo: :text, 
+                    model: :Producto, 
+                    limit: 10,
+                    cadena_consulta: "naturaleza_producto",
+                    orden: "naturaleza_producto")), 
+                  parametro_id: "form_buscar_productos_naturaleza_producto", 
+                  resultado_id: "form_buscar_productos_naturaleza_producto_id",
+                  min_length: 2
+              ) %>
+
+            </th> 
+
+            <th data-priority="1" id="tab-filtros-texto">
+              
+              <span data-titulo="true">Concepto Codigo </span>
+
+              <span class="orden concepto_codigo">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_productos_concepto_codigo, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-productos', '#form_buscar_productos_concepto_codigo');"><i class="fa fa-times"></i></span>
+              </div>
+
+              <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :concepto_codigo,
+                    atributo_tipo: :text, 
+                    model: :Producto, 
+                    limit: 10,
+                    cadena_consulta: "concepto_codigo",
+                    orden: "concepto_codigo")), 
+                  parametro_id: "form_buscar_productos_concepto_codigo", 
+                  resultado_id: "form_buscar_productos_concepto_codigo",
+                  min_length: 2
+              ) %>
+
+            </th> 
+
+            <th data-priority="1" id="tab-filtros-texto">
+              
+              <span data-titulo="true">Concepto</span>
+
+              <span class="orden concepto">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_productos_concepto, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-productos', '#form_buscar_productos_concepto');"><i class="fa fa-times"></i></span>
+              </div>
+
+              <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :concepto,
+                    atributo_tipo: :text, 
+                    model: :Producto, 
+                    limit: 10,
+                    cadena_consulta: "concepto",
+                    orden: "concepto")), 
+                parametro_id: "form_buscar_productos_concepto", 
+                resultado_id: "form_buscar_productos_concepto_id",
+                min_length: 2
+              ) %>
+
+            </th> 
+
+            <th data-priority="1" id="tab-filtros-texto">
+              
+              <span data-titulo="true">Codigo Clasificador Bien</span>
+
+              <span class="orden codigo_clasificador_bien">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_productos_codigo_clasificador_bien, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-productos', '#form_buscar_productos_codigo_clasificador_bien');"><i class="fa fa-times"></i></span>
+              </div>
+
+              <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :codigo_clasificador_bien,
+                    atributo_tipo: :text, 
+                    model: :Producto, 
+                    limit: 10,
+                    cadena_consulta: "codigo_clasificador_bien",
+                    orden: "codigo_clasificador_bien")), 
+                  parametro_id: "form_buscar_productos_codigo_clasificador_bien", 
+                  resultado_id: "form_buscar_productos_codigo_clasificador_bien_id",
+                  min_length: 2
+              ) %>
+
+            </th> 
+
+            <th data-priority="1" id="tab-filtros-texto">
+              
+              <span data-titulo="true">Clasificador del Bien</span>
+
+              <span class="orden clasificador_bien">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_productos_clasificador_bien, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-productos', '#form_buscar_productos_clasificador_bien');"><i class="fa fa-times"></i></span>
+              </div>
+
+              <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :descripcion,
+                    atributo_tipo: :text, 
+                    model: :Producto, 
+                    limit: 10,
+                    cadena_consulta: "clasificador_bien",
+                    orden: "clasificador_bien")), 
+                  parametro_id: "form_buscar_productos_clasificador_bien", 
+                  resultado_id: "form_buscar_productos_clasificador_bien",
+                  min_length: 2
+              ) %>
+
+            </th>
+
+            <th data-priority="1" id="tab-filtros-texto">
+              
+              <span data-titulo="true">Descripcion</span>
+
+              <span class="descripcion">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_productos_descripcion, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-productos', '#form_buscar_productos_descripcion');"><i class="fa fa-times"></i></span>
+              </div>
+
+            </th> 
+
+            <th data-priority="1" id="tab-filtros-texto">
+             
+              <span data-titulo="true">Unidad Medida</span>
+
+              <span class="unidad_medida">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_productos_unidad_medida ,nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-productos', '#form_buscar_productos_unidad_medida');"><i class="fa fa-times"></i></span>
+              </div>
+
+              <%= autocomplete_help( ruta: mec_custom_url( autocompletar_path(atributo_id: :unidad_medida,
+                    atributo_tipo: :text, 
+                    model: :Producto, 
+                    limit: 10,
+                    cadena_consulta: "unidad_medida",
+                    orden: "unidad_medida")), 
+                  parametro_id: "form_buscar_productos_unidad_medida", 
+                  resultado_id: "form_buscar_productos_unidad_medida_id",
+                  min_length: 2
+              ) %>
+
+            </th> 
+
+            <th data-priority="1">
+            
+              <span data-titulo="true">Cantidad Actual</span>
+            
+              <span class="orden cantidad_actual">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <div class="input-group input-group-sm">
+                <span class="input-group-addon">
+                  <%= select_tag(:form_buscar_productos_cantidad_actual_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+                </span>
+                <%= number_field_tag :form_buscar_productos_cantidad_actual, nil, :class => 'form-control', :placeholder => '' %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-productos', '#form_buscar_productos_cantidad_actual');"><i class="fa fa-times"></i></span>
+              </div>
+          
+            </th>
+
+            <th data-priority="1">
+            
+              <span data-titulo="true">Cantidad Máxima</span>
+            
+              <span class="orden cantidad_maxima">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <div class="input-group input-group-sm">
+                <span class="input-group-addon">
+                  <%= select_tag(:form_buscar_productos_cantidad_maxima_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+                </span>
+              
+                <%= number_field_tag :form_buscar_productos_cantidad_maxima, nil, :class => 'form-control', :placeholder => '' %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-productos', '#form_buscar_productos_cantidad_maxima');"><i class="fa fa-times"></i></span>
+            
+              </div>
+          
+            </th>
+
+            <th data-priority="1">
+            
+              <span data-titulo="true">Cantidad Mínima</span>
+            
+              <span class="orden cantidad_minima">
+                <i class="filtro fa fa-sort"></i>
+                <i class="descendente fa fa-sort-desc"></i>
+                <i class="ascendente fa fa-sort-asc"></i>
+              </span>
+
+              <div class="input-group input-group-sm">
+                <span class="input-group-addon">
+                  <%= select_tag(:form_buscar_productos_cantidad_minima_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+                </span>
+                
+                <%= number_field_tag :form_buscar_productos_cantidad_minima, nil, :class => 'form-control', :placeholder => '' %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-productos', '#form_buscar_productos_cantidad_minima');"><i class="fa fa-times"></i></span>
+              </div>
+          
+            </th>       
+
+          </tr>
+
+        </thead>
+
+        <tbody id="productos-lista"></tbody>
+
+      </table>
+    </div>
+  <% end %>
+
+  <table class="table table-striped table-bordered table-hover">
+    <tbody id="productos-footer"></tbody>
+  </table>
+
+</div>
+
+<script type="text/javascript">
+
+  $("#form-buscar-produtos").bind("submit", function() {
+
+    $("#productos-lista").html("<%= escape_javascript("<tr><td colspan='10' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}").html_safe %></td></tr>")
+
+  })
+
+  $(".table-bordered input").bind('change', function() {
+    $.ajaxQ.abortAll();
+    $("#form-buscar-productos").submit();
+
+  })
+
+  $("#form-buscar-productos").submit();
+
+</script>
+
+<script>
+  var stepsListado = [
+    {
+      intro: "Esta ayuda te mostrar&aacute; los elementos del Conjunto de Datos:\
+          </br><b>Datos Espec&iacute;ficos de Instituciones Educativas</b>.\
+          </br></br>Este tutorial te guiará paso a paso a través de las diferentes funcionalidades disponibles. \
+          </br></br>Podr&aacute;s navegar fácilmente a través de la guía por medio del mouse, o por medio del teclado haciendo simplemente uso de las teclas:\
+          <p><u><i>Para Navegar:</i></u></p>\
+          <ul>\
+            <li><%= image_tag('intro_images/right.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %> IZQ</li>\
+            <li><%= image_tag('intro_images/left.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %> DER</li>\
+            <li><%= image_tag('intro_images/enter.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %> ENTER</li>\
+          </ul>\
+          <p><u><i>Para Salir:</i></u></p>\
+          <ul>\
+            <li><%= image_tag('intro_images/esc.png', style: 'width:22px;').to_s.gsub("\"", "'").html_safe %> ESC</li>\
+          </ul>\
+          Pulsa en siguiente para comenzar.\
+          </br>Y, ¡COMENCEMOS!"
+    },
+    {
+      element: "#tab-titulo",
+      intro: "En esta sección, puedes ver el Nombre del Conjunto de Datos.",
+      position: "right"
+    },
+    {
+      element: "#tab-diccionario",
+      intro: "Si tienes dudas acerca del significado de alg&uacute;n atributo del Conjunto de Datos, puedes ir al Diccionario siguiendo este enlace.\
+          </br></br>El Diccionario de Datos describe los atributos que contiene un Conjunto de Datos, incluyendo el tipo de dato y las restricciones que se apliquen a cada uno.",
+      position: "left"
+    },
+    {
+      element: '#tab-filtros-lista',
+      intro: "Echemos un vistazo a los filtros. ¿Alguna vez los has utilizado?</br> ¡Son muy &uacute;tiles \
+          cuando buscas informaci&oacute;n espec&iacute;fica! \
+          </br></br>Este filtro utiliza una lista desplegable. Permite realizar las b&uacute;squedas de acuerdo al item que selecciones.\
+          </br>¡Intentalo!",
+      position: "right"
+    },
+    {
+      element: '#tab-filtros-texto',
+      intro: "Este filtro permite realizar las b&uacute;squedas de acuerdo al texto que escribas en su secci&oacute;n.\
+          </br>¡Tienes que Probarlo!",
+      position: "right"
+    },
+    {
+      element: "#tab-establecimiento",
+      intro: "Si te interesan los datos de un Establecimiento, haciendo click sobre este enlace podr&iacute;as obtener\
+          informaci&oacute;n espec&iacute;fica del mismo.\
+          </br><%= image_tag('intro_images/resumen_establecimiento.png', style: 'width:220px;height:220px').to_s.gsub("\"", "'").html_safe %>\
+          </br></br>Por ejemplo: Datos del Establecimiento, Instituciones del Establecimiento y la Ubicaci&oacute;n Geogr&aacute;fica.",
+      position: "bottom-left-aligned"
+    },
+    {
+      element: "#tab-institucion",
+      intro: "As&iacute; tambi&eacute;n, si te interesan los datos de una Instituci&oacute;n, haciendo click sobre este enlace podr&iacute;as obtener\
+          informaci&oacute;n espec&iacute;fica de la misma.\
+          </br><%= image_tag('intro_images/resumen_institucion.png', style: 'width:220px;height:220px').to_s.gsub("\"", "'").html_safe %> \
+          </br></br>Por ejemplo: Datos de la Instituci&oacute;n, Matriculaciones en la Instituci&oacute;n y la Ubicaci&oacute;n Geogr&aacute;fica.",
+      position: "bottom-left-aligned"
+    },
+    {
+      element: '#tab-cantidad-registros',
+      intro: "A modo de informaci&oacute;n, aquí puedes ver un resumen de los resultados de tu búsqueda dentro del Conjunto de Datos.",
+      position: "top"
+    },
+    {
+      element: '#tab-paginacion',
+      intro: "Cuando la lista de resultados es muy extensa, solo se muestran 15 registros. El resto se encuentra en las dem&aacute;s p&aacute;ginas de la tabla.\
+          </br></br>¡Desplázate entre las páginas para acceder a todos los resultados de tu b&uacute;squeda!",
+      position: "top"
+    },
+    {
+      element: '#tab-descargas-filtradas',
+      intro: "Seg&uacute;n tu b&uacute;squeda, descarga los resultados en formato XLS, CSV o JSON.\
+          </br></br>El formato <b>XLS</b>, se abre normalmente con Microsoft Excel. \
+          Es un formato cotidiano que podemos encontrar, \
+          aunque no resulta ser del todo ventajoso, ya que se trata de un formato propietario.\
+          </br></br>El formato <b>CSV</b>, es un tipo de documento de texto plano, en el cual los datos son tabulados en columnas separadas por comas (o punto y coma) y filas separadas por saltos de l&iacute;nea.\
+          Puede ser exportada a una hoja de c&aacute;lculo Excel. As&iacute; tambi&eacute;n, provee agilidad para realizar importaciones y exportaciones sobre Bases de Datos.\
+          </br></br>El formato <b>JSON</b>, es un formato de archivo muy fácil de leer por cualquier lenguaje de programación.\
+          Esta simplicidad facilita su procesamiento para las computadoras en comparación a otros formatos.",
+      position: "top"
+    },
+    {
+      element: '#tab-descargas-total',
+      intro: "Si necesitas todos los datos, puedes descargarlos haciendo click sobre el formato que te sea de mayor utilidad.\
+          </br></br>Ten en cuenta nuestras recomendaciones del punto anterior.\
+          </br></br>Los formatos que tienes disponibles son: XLS, CSV y JSON",
+      position: "top"
+    },
+    {
+      element: '#tab-microdata',
+      intro: "Por &uacute;ltimo, ¿Has escuchado sobre los Microdatos en HTML? \
+          </br></br>Para obtener m&aacute;s informaci&oacuten sobre ellos, puedes hacer click sobre este icono. \
+          </br></br>Esta especificaci&oacute;n define el mecanismo de Microdatos HTML, el cual facilita el procesamiento autom&aacute;tico de los Documentos HTML.",
+      position: "top"
+    }
+  ];
+
+  $('#start-tour').click(function() {
+
+    introJs().setOptions({
+      doneLabel: 'Salir',
+      nextLabel: 'Siguiente &rarr;',
+      prevLabel: '&larr; Anterior',
+      skipLabel: 'Salir',
+      steps: stepsListado
+    }).start();
+
+  });
+</script>
+<style>
+  .introjs-helperNumberLayer{
+    width: 23px;
+    height: 23px;
+    padding: 0px;
+  }
+  #start-tour{
+    cursor: pointer;
+  }
+</style>

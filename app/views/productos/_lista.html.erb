@@ -1,0 +1,33 @@
+<% if productos.present? %>
+  
+  <% @productos.each do |p| %>
+
+    <tr>
+
+      <td><%= p.producto_codigo %></td>
+      <td><%= p.objeto_gasto_codigo %></td>
+      <td><%= p.objeto_gasto %></td>
+      <td><%= p.naturaleza_producto %></td>
+      <td><%= p.concepto_codigo %></td>       
+      <td><%= p.concepto %></td>       
+      <td><%= p.codigo_clasificador_bien %></td>       
+      <td><%= p.clasificador_bien %></td>       
+      <td><%= p.descripcion %></td>       
+      <td><%= p.unidad_medida %></td>       
+      <td><%= p.cantidad_actual %></td>       
+      <td><%= p.cantidad_maxima %></td>       
+      <td><%= p.cantidad_minima %></td>       
+         
+    </tr>
+  
+  <% end %>
+  
+  <% else %>
+
+  <tr>
+    
+    <td colspan="12"><p class='none-result'>No se han encontrado resultados.</p></td>
+  
+  </tr>
+
+<% end %>

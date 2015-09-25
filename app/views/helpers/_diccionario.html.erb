@@ -3,11 +3,11 @@
 
     <li class="row hidden-xs titulos">
       <div class="celda col-sm-3" id="tab-nombre">Nombre</div>
-      <div class="celda col-sm-4" id="tab-descripcion">Descripción</div>
+      <div class="celda col-sm-3" id="tab-descripcion">Descripción</div>
       <div class="celda col-sm-1" id="tab-tipo">Tipo</div>
       <div class="celda col-sm-2" id="tab-restricciones">Restricciones</div>
       <div class="celda col-sm-1" id="tab-referencia">Referencia</div>
-      <div class="celda col-sm-1" id="tab-ejemplo">Ejemplo</div>
+      <div class="celda col-sm-2" id="tab-ejemplo">Ejemplo</div>
     </li>
 
     <% diccionario.each do |d| %>
@@ -20,7 +20,7 @@
         </div>
 
         <label class="col-xs-12 visible-xs">Descripción</label>
-        <div class="celda col-sm-4">
+        <div class="celda col-sm-3">
           <%= d['descripcion'].html_safe %>
         </div>
 
@@ -40,7 +40,7 @@
         </div>
 
         <label class="col-xs-12 visible-xs">Ejemplo</label>
-        <div class="celda col-sm-1">
+        <div class="celda col-sm-2">
           <% if d['ejemplo'] == 'url_anho_cod_geo' %>
             <%= link_to "Ver ejemplo", mec_custom_url(def_ejemplo_anio_cod_geo_path).html_safe, target:"_blank" %>
           <% else %>

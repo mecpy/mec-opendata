@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  post "data/inventarios_lista" => 'productos#lista', :as => :data_productos_lista
+  get "data/inventarios_lista" => 'productos#lista', :as => :report_productos_lista
+  get 'data/inventarios' => 'productos#index', :as => :data_productos
+  get 'def/inventarios' => 'productos#diccionario', :as => :def_productos
+
   post "data/rendiciones_lista" => 'rendiciones#lista', :as => :data_rendiciones_lista
   get "data/rendiciones_lista" => 'rendiciones#lista', :as => :report_rendiciones_lista
   get 'data/rendiciones' => 'rendiciones#index', :as => :data_rendiciones
