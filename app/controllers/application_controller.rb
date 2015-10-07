@@ -166,11 +166,8 @@ class ApplicationController < ActionController::Base
 
   def generate_md5(path_file)
 
-    path_file = '/home/sebastian/Escritorio/Dataset_establecimiento_2015.xls'
-
-    md5 = Digest::MD5.new
-    md5.update content
-    md5.hexdigest
+    md5 = Digest::MD5.file(path_file).hexdigest
+    return md5
     
   end
 

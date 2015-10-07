@@ -183,7 +183,8 @@ class DirectoriosInstitucionesController < ApplicationController
     
     elsif params[:format] == 'md5_csv'
 
-      
+      path_file = '/home/desa3/Escritorio/Establecimientos_Confirmados_VIRTUAL.csv'
+      send_data(generate_md5(path_file), :filename => "directorio_instituciones_"+params[:form_buscar_directorios_instituciones][:periodo]+".md5", :type => "application/txt")
 
     else
       

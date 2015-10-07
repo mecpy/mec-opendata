@@ -34,6 +34,10 @@
     parametros_pdf_todos = { :format => 'pdf', "form_buscar_directorios_instituciones[periodo]" => params[:form_buscar_directorios_instituciones][:periodo] }
   %>
 
+  <%
+    parametros_md5_csv = { :format => 'md5_csv', "form_buscar_directorios_instituciones[periodo]" => params[:form_buscar_directorios_instituciones][:periodo] }
+  %>
+
     <td colspan="12" class="row-descargar">
       <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
       <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", id:'tab-microdata', :style => "width:32px; margin-bottom:10px;" %></a></br>
@@ -48,49 +52,54 @@
         <%= link_to "JSON#{image_star * 4}".html_safe, mec_custom_url(data_directorios_instituciones_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
       </div>
       <br /><br />
-      <div id="tab-descargas-total">
 
-        <div style="float:left;">Descargar todo el Directorio de Instituciones:</div>
+      <% if params[:form_buscar_directorios_instituciones][:periodo].present? %>
+        
+        <div id="tab-descargas-total">
 
-        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-  <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_instituciones_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
-          <meta itemprop="name" content="Directorio de Instituciones Educativas 2012/2014">
-          <meta itemprop="description" content="Listado de directorio de instituciones educativas correspondiente al año 2012/2014">
-          <meta itemprop="encodingFormat" content="pdf">
-          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-        </div>
+          <div style="float:left;">Descargar todo el Directorio de Instituciones:</div>
 
-        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-          <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_directorios_instituciones_lista_url(parametros_xls_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url", :content => mec_custom_url(data_directorios_instituciones_lista_url(parametros_xls_todos)) %>
-          <br />
-          <span style="color:silver;">(1,0MB)</span>
-          <meta itemprop="name" content="Directorio de Instituciones Educativas 2012/2014">
-          <meta itemprop="description" content="Listado de directorio de instituciones educativas correspondiente al año 2012/2014">
-          <meta itemprop="encodingFormat" content="xls">
-          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-        </div>
+          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+    <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_instituciones_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
+            <meta itemprop="name" content="Directorio de Instituciones Educativas 2012/2014">
+            <meta itemprop="description" content="Listado de directorio de instituciones educativas correspondiente al año 2012/2014">
+            <meta itemprop="encodingFormat" content="pdf">
+            <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+          </div>
 
-        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-          <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_directorios_instituciones_lista_url(parametros_csv_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url", :content => mec_custom_url(data_directorios_instituciones_lista_url(parametros_csv_todos)) %>
-          <br />
-          <span style="color:silver;">(2,5MB)</span>
-          <meta itemprop="name" content="Directorio de Instituciones Educativas 2012/2014">
-          <meta itemprop="description" content="Listado de directorio de instituciones educativas correspondiente al año 2012/2014">
-          <meta itemprop="encodingFormat" content="csv">
-          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-        </div>
+          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+            <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_directorios_instituciones_lista_url(parametros_xls_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url", :content => mec_custom_url(data_directorios_instituciones_lista_url(parametros_xls_todos)) %>
+            <br />
+            <span style="color:silver;">(1,0MB)</span>
+            <meta itemprop="name" content="Directorio de Instituciones Educativas 2012/2014">
+            <meta itemprop="description" content="Listado de directorio de instituciones educativas correspondiente al año 2012/2014">
+            <meta itemprop="encodingFormat" content="xls">
+            <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+          </div>
 
-        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-          <%= link_to "JSON#{image_star * 4}".html_safe, mec_custom_url(data_directorios_instituciones_lista_url(parametros_json_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url", :content => mec_custom_url(data_directorios_instituciones_lista_url(parametros_json_todos)) %>
-          <br />
-          <span style="color:silver;">(7,3MB)</span>
-          <meta itemprop="name" content="Directorio de Instituciones Educativas 2012/2014">
-          <meta itemprop="description" content="Listado de directorio de instituciones educativas correspondiente al año 2012/2014">
-          <meta itemprop="encodingFormat" content="json">
-          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-        </div>
+          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+            <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_directorios_instituciones_lista_url(parametros_csv_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url", :content => mec_custom_url(data_directorios_instituciones_lista_url(parametros_csv_todos)) %>
+            <br />
+            <span style="color:silver;">(2,5MB)</span>
+            <meta itemprop="name" content="Directorio de Instituciones Educativas 2012/2014">
+            <meta itemprop="description" content="Listado de directorio de instituciones educativas correspondiente al año 2012/2014">
+            <meta itemprop="encodingFormat" content="csv">
+            <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+          </div>
 
-        <%= link_to "MD5".html_safe, mec_custom_url(data_directorios_instituciones_lista_url( {:format => 'csv_md5'} )), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width' %>
+          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+            <%= link_to "JSON#{image_star * 4}".html_safe, mec_custom_url(data_directorios_instituciones_lista_url(parametros_json_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url", :content => mec_custom_url(data_directorios_instituciones_lista_url(parametros_json_todos)) %>
+            <br />
+            <span style="color:silver;">(7,3MB)</span>
+            <meta itemprop="name" content="Directorio de Instituciones Educativas 2012/2014">
+            <meta itemprop="description" content="Listado de directorio de instituciones educativas correspondiente al año 2012/2014">
+            <meta itemprop="encodingFormat" content="json">
+            <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+          </div>
+
+          <%= link_to "MD5".html_safe, mec_custom_url(data_directorios_instituciones_lista_url( parametros_md5_csv )), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width' %>
+
+        <% end %>
 
         <div style="clear:both;"></div>
       </div>
