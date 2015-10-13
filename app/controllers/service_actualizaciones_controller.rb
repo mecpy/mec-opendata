@@ -1,7 +1,7 @@
-class MapaEstablecimientosActualizacionesController < ApplicationController
+class ServiceActualizacionesController < ApplicationController
 
-  skip_before_filter :verify_authenticity_token, :only => [:actualizacion]
-  before_filter :authenticate, :only => [:actualizacion]
+  skip_before_filter :verify_authenticity_token, :only => [:actualizacion, :generar_csv_json]
+  before_filter :authenticate, :only => [:actualizacion, :generar_csv_json]
 
   def authenticate
     if APP_CONFIG[:perform_authentication]
@@ -9,6 +9,15 @@ class MapaEstablecimientosActualizacionesController < ApplicationController
         username == APP_CONFIG[:username] && password == APP_CONFIG[:password]
       end
     end
+  end
+
+  def generar_csv_json
+    csv = 
+    "
+      COPY 
+    "
+    ActiveRecord::Base.connection.execute()
+    return 'GENERACION CORRECTA'
   end
 
   def actualizacion
@@ -144,7 +153,6 @@ class MapaEstablecimientosActualizacionesController < ApplicationController
     end
 
   end
-
 
 end
 

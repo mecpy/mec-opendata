@@ -1,11 +1,16 @@
 <% if matriculaciones_inicial.present? %>
-<tr>
-
-      <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate matriculaciones_inicial, :params => params %></div></td>
     
+    <tr>
+      <td colspan="12" style="text-align:center;">
+        <div class="flickr_pagination"><%= ajax_will_paginate matriculaciones_inicial, :params => params %>
+        </div>
+      </td>
     </tr>
 
-    <tr><td colspan="12">Cantidad de registros encontrados: <%= @matriculaciones_inicial_todos.size %> de <%= @total_registros %></td></tr>
+    <tr>
+      <td colspan="12">Cantidad de registros encontrados: <%= @matriculaciones_inicial_todos.size %> de <%= @total_registros %>
+      </td>
+    </tr>
 
     <tr>
 
@@ -35,24 +40,27 @@
           parametros_pdf_todos = { :format => 'pdf', "form_buscar_matriculaciones_inicial[anio]" => params[:form_buscar_matriculaciones_inicial][:anio] }
       %>
 
-      <%= parametros_pdf %>
-
       <td colspan="12" class="row-descargar">
         
         <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
-        <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a></br>
-        <span>Descargar Matriculaciones Filtradas:</span>
+        <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a>
+        </br>
 
-        <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
+        <% if params[:form_buscar_matriculaciones_inicial][:anio].present? %>
 
-        <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_inicial_lista_url(parametros_pdf)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat'%>
-        <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_matriculaciones_inicial_lista_url(parametros_xls)) , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
-        <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_matriculaciones_inicial_lista_url(parametros_csv)) , :targer => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page'%>
-        <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_matriculaciones_inicial_lista_url(parametros_json)) , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
-        <br /><br />
+          <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
 
-      <% if params[:form_buscar_matriculaciones_inicial][:anio].present? %>
-        
+          <!-- DESCARGAS FILTRADAS -->
+          <span>Descargar Matriculaciones Filtradas:</span>
+
+          <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_inicial_lista_url(parametros_pdf)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat'%>
+          <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_matriculaciones_inicial_lista_url(parametros_xls)) , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
+          <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_matriculaciones_inicial_lista_url(parametros_csv)) , :targer => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page'%>
+          <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_matriculaciones_inicial_lista_url(parametros_json)) , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+          <br /><br />
+          
+
+          <!-- DESCARGAS TOTALES -->
           <div style="float:left;">Descargar todas las Matriculaciones filtradas:</div>
 
           <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
@@ -92,7 +100,11 @@
 
           <div style="clear:both;"></div>
 
-      <% end %>
+        <% else %>
+          <div class="bg-primary">
+            <center><h3>¡Atención! Las descargas realizan por <b>periodo</b></h3></center>
+          </div>
+        <% end %>
 
       </td>
  
