@@ -15,7 +15,18 @@ class MatriculacionesInicialController < ApplicationController
     
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/matriculaciones_inicial.json")
-    @diccionario_matriculaciones_inicial = JSON.parse(file)
+    diccionario = JSON.parse(file)
+    @diccionario_matriculaciones_inicial = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_matriculaciones_inicial)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_matriculaciones_inicial, params[:nombre]), :filename => "diccionario_matriculaciones_inicial.pdf", :type => "application/pdf")
+
+    end
 
   end
 

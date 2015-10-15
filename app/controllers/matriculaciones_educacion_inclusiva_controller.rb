@@ -1,4 +1,5 @@
 class MatriculacionesEducacionInclusivaController < ApplicationController
+
   def index
     @matriculaciones_educacion_inclusiva = MatriculacionEducacionInclusiva.orden_dep_dis.paginate :per_page => 15, :page => params[:page]
     respond_to do |f|
@@ -7,12 +8,23 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
 
     end
   end
-  
+
   def diccionario
     
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/matriculaciones_educacion_inclusiva.json")
-    @diccionario_matriculaciones_educacion_inclusiva = JSON.parse(file)
+    diccionario = JSON.parse(file)
+    @diccionario_matriculaciones_educacion_inclusiva = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_matriculaciones_educacion_inclusiva)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_matriculaciones_educacion_inclusiva, params[:nombre]), :filename => "diccionario_matriculaciones_educacion_inclusiva.pdf", :type => "application/pdf")
+
+    end
 
   end
   

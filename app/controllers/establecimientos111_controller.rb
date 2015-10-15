@@ -3,14 +3,6 @@ class Establecimientos111Controller < ApplicationController
   
   before_filter :redireccionar_uri
 
-  def diccionario
-    
-    require 'json'
-    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/establecimientos111.json")
-    @diccionario_establecimientos111 = JSON.parse(file)
-
-  end
-
   def index
 
     @establecimientos = Establecimiento111.orden_dep_dis.paginate :per_page => 15, :page => params[:page]
@@ -18,6 +10,25 @@ class Establecimientos111Controller < ApplicationController
     respond_to do |f|
 
       f.html {render :layout => 'application'}
+
+    end
+
+  end
+
+  def diccionario
+    
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/establecimientos111.json")
+    diccionario = JSON.parse(file)
+    @diccionario_establecimientos111 = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_establecimientos111)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_establecimientos111, params[:nombre]), :filename => "diccionario_establecimientos111.pdf", :type => "application/pdf")
 
     end
 

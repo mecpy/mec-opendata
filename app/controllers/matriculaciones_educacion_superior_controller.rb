@@ -13,7 +13,18 @@ class MatriculacionesEducacionSuperiorController < ApplicationController
     
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/matriculaciones_educacion_superior.json")
-    @diccionario_matriculaciones_educacion_superior = JSON.parse(file)
+    diccionario = JSON.parse(file)
+    @diccionario_matriculaciones_educacion_superior = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_matriculaciones_educacion_superior)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_matriculaciones_educacion_superior, params[:nombre]), :filename => "diccionario_matriculaciones_educacion_superior.pdf", :type => "application/pdf")
+
+    end
     
   end
 

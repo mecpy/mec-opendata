@@ -15,8 +15,18 @@ class MatriculacionesEducacionEscolarBasicaController < ApplicationController
 
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/matriculaciones_educacion_escolar_basica.json")
-    @diccionario_matriculaciones_educacion_escolar_basica = JSON.parse(file)
-       
+    diccionario = JSON.parse(file)
+    @diccionario_matriculaciones_educacion_escolar_basica = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_matriculaciones_educacion_escolar_basica)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_matriculaciones_educacion_escolar_basica, params[:nombre]), :filename => "diccionario_matriculaciones_educacion_escolar_basica.pdf", :type => "application/pdf")
+
+    end
     
   end
 

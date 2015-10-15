@@ -53,7 +53,7 @@
     <% end %>
   </ul>
 
-  <div class="row">
+  <div class="row" id="tab-descargas">
     <%
       parametros_pdf = { :format => 'pdf', :nombre => nombre }
       parametros_json_table_schema = { :format => 'json', :nombre => nombre }
@@ -216,6 +216,13 @@
       element: '#tab-ejemplo',
       intro: "El <b>Ejemplo</b>, representa	los valores de ejemplo.",
       position: "left"
+    },
+    {
+      element: '#tab-descargas',
+      intro: "Si necesitas descargar el diccionario, lo puedes hacer en el formato PDF o bien, en el formato JSON TABLE SCHEMA.\
+          </br></br>El formato <b>PDF (Portable Document Format)</b>, es un formato de almacenamiento para documentos digitales independiente de plataformas de software o hardware.\
+          </br></br>El formato <b>JSON TABLE SCHEMA</b> define un esquema simple para datos tabulares diseñado para ser expresable en JSON.",
+      position: "top"
     },
     {
       element: '#tab-referencias',

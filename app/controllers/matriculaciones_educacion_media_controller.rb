@@ -13,7 +13,18 @@ class MatriculacionesEducacionMediaController < ApplicationController
     
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/matriculaciones_educacion_media.json")
-    @diccionario_matriculaciones_educacion_media = JSON.parse(file)
+    diccionario = JSON.parse(file)
+    @diccionario_matriculaciones_educacion_media = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_matriculaciones_educacion_media)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_matriculaciones_educacion_media, params[:nombre]), :filename => "diccionario_matriculaciones_educacion_media.pdf", :type => "application/pdf")
+
+    end
     
   end
 

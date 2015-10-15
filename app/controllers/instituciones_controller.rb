@@ -1,13 +1,5 @@
 class InstitucionesController < ApplicationController
   before_filter :redireccionar_uri
-  
-  def diccionario
-
-    require 'json'
-    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/instituciones.json")
-    @diccionario_instituciones = JSON.parse(file)
-    
-  end
 
   def index
 
@@ -19,6 +11,25 @@ class InstitucionesController < ApplicationController
 
     end
 
+  end
+
+  def diccionario
+
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/instituciones.json")
+    diccionario = JSON.parse(file)
+    @diccionario_instituciones = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_instituciones)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_instituciones, params[:nombre]), :filename => "diccionario_instituciones.pdf", :type => "application/pdf")
+
+    end
+    
   end
 
   def lista

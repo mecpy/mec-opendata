@@ -14,7 +14,18 @@ class ContratacionesController < ApplicationController
 
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/contrataciones.json")
-    @diccionario_contrataciones = JSON.parse(file)
+    diccionario = JSON.parse(file)
+    @diccionario_contrataciones = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_contrataciones)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_contrataciones, params[:nombre]), :filename => "diccionario_contrataciones.pdf", :type => "application/pdf")
+
+    end
     
   end
 

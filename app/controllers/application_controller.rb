@@ -144,10 +144,10 @@ class ApplicationController < ActionController::Base
       "\n        {\n" +
       "            \"name\": " + ((row['nombre'] == "") ? "\"\"" : ("\"" + row['nombre'] + "\"") ) + ",\n" +
       "            \"title\": " + ((row['nombre'] == "") ? "\"\"" : ("\"" + (row['nombre'].capitalize).gsub("_", " ") + "\"") ) + ",\n" +
-      "            \"example\": " + ((row['ejemplo'] == "") ? "\"\"" : ("\"" + row['ejemplo'] + "\"") ) + ",\n" +
+      "            \"example\": " + ((row['ejemplo'] == "") ? "\"\"" : ("\"" + row['ejemplo'].gsub('"', '\"') + "\"") ) + ",\n" +
       "            \"type\": " + ((row['type'] == "") ? "null" : ("\"" + row['tipo'] + "\"") ) + ",\n" +
       "            \"restrictions\": " + ((row['restricciones'] == "") ? "\"\"" : ("\"" + row['restricciones'] + "\"") ) + ",\n" +
-      "            \"description\": " + ((row['descripcion'] == "") ? "\"\"" : ("\"" + row['descripcion'] + "\"") ) + "\n" +
+      "            \"description\": " + ((row['descripcion'] == "") ? "\"\"" : ("\"" + row['descripcion'].gsub('"', '\"') + "\"") ) + "\n" +
       "        }" + ((index+1 == len) ? "\n" : ",")
 
     end
