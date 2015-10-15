@@ -1,101 +1,117 @@
 <% if matriculaciones_educacion_permanente.present? %>
-<tr>
+  <tr>
+    <td colspan="12" style="text-align:center;">
+      <div class="flickr_pagination"><%= ajax_will_paginate matriculaciones_educacion_permanente, :params => params %>
+      </div>
+    </td>
+  </tr>
 
-      <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate matriculaciones_educacion_permanente, :params => params %></div></td>
-    
-    </tr>
+  <tr>
+    <td colspan="12">Cantidad de registros encontrados: <%= @matriculaciones_educacion_permanente_todos.size %> de <%= @total_registros %>
+    </td>
+  </tr>
 
-    <tr><td colspan="12">Cantidad de registros encontrados: <%= @matriculaciones_educacion_permanente_todos.size %> de <%= @total_registros %></td></tr>
+  <tr>
 
-    <tr>
+    <%  
+        parametros_csv = { :format => 'csv' }
+        parametros_csv = parametros_csv.merge(params) 
+        parametros_csv_todos = { :format => 'csv', "form_buscar_matriculaciones_educacion_permanente[anio]" => params[:form_buscar_matriculaciones_educacion_permanente][:anio]}
+    %>
 
-      <%  
-          parametros_csv = { :format => 'csv' }
-          parametros_csv = parametros_csv.merge(params) 
-          parametros_csv_todos = { :format => 'csv', "form_buscar_matriculaciones_educacion_permanente[anio]" => params[:form_buscar_matriculaciones_educacion_permanente][:anio]}
-      %>
+    <% 
+        parametros_xls = { :format => 'xlsx'}
+        parametros_xls = parametros_xls.merge(params) 
+        parametros_xls_todos = { :format => 'xlsx', "form_buscar_matriculaciones_educacion_permanente[anio]" => params[:form_buscar_matriculaciones_educacion_permanente][:anio] }
+    %>
 
-      <% 
-          parametros_xls = { :format => 'xlsx'}
-          parametros_xls = parametros_xls.merge(params) 
-          parametros_xls_todos = { :format => 'xlsx', "form_buscar_matriculaciones_educacion_permanente[anio]" => params[:form_buscar_matriculaciones_educacion_permanente][:anio] }
-      %>
+    <%  %>
 
-      <%  %>
+    <% 
+        parametros_json = { :format => 'json' }
+        parametros_json = parametros_json.merge(params) 
+        parametros_json_todos = { :format => 'json', "form_buscar_matriculaciones_educacion_permanente[anio]" => params[:form_buscar_matriculaciones_educacion_permanente][:anio] }
+    %>
 
-      <% 
-          parametros_json = { :format => 'json' }
-          parametros_json = parametros_json.merge(params) 
-          parametros_json_todos = { :format => 'json', "form_buscar_matriculaciones_educacion_permanente[anio]" => params[:form_buscar_matriculaciones_educacion_permanente][:anio] }
-      %>
+    <% 
+        parametros_pdf = { :format => 'pdf' }
+        parametros_pdf = parametros_pdf.merge(params) 
+        parametros_pdf_todos = { :format => 'pdf', "form_buscar_matriculaciones_educacion_permanente[anio]" => params[:form_buscar_matriculaciones_educacion_permanente][:anio] }
+    %>
 
-      <% 
-          parametros_pdf = { :format => 'pdf' }
-          parametros_pdf = parametros_pdf.merge(params) 
-          parametros_pdf_todos = { :format => 'pdf', "form_buscar_matriculaciones_educacion_permanente[anio]" => params[:form_buscar_matriculaciones_educacion_permanente][:anio] }
-      %>
+    <td colspan="12" class="row-descargar">
+      
+      <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
+      <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a>
+      <br />
 
-      <%= parametros_pdf %>
+      <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
 
-      <td colspan="12" class="row-descargar">
-        
-        <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
-        <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a></br>
-        <span>Descargar Matriculaciones Filtradas:<span>
+      <!-- DESCARGAS FILTRADAS -->
+      <span data-toggle="tooltip-descarga-filtrada" title="Para las descargas filtradas, mínimamente se debe incluir el filtro por periodo">Descargar Matriculaciones Filtradas:</span>
 
-        <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
-
-        <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_educacion_permanente_lista_url(parametros_pdf)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat'%>
+      <% if params[:form_buscar_matriculaciones_educacion_permanente][:anio].present? && @matriculaciones_educacion_permanente_todos.size > 0 %>
         <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_matriculaciones_educacion_permanente_lista_url(parametros_xls)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
         <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_matriculaciones_educacion_permanente_lista_url(parametros_csv)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
         <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_matriculaciones_educacion_permanente_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
-        <br /><br />
+      <% else %>
+        <%= link_to "XLS#{image_star * 2}".html_safe, "#", :onclick => "alert('Para las descargas filtradas, mínimamente se debe incluir el filtro por periodo');return false;", :style => "margin-left:10px;", :class => 'icon icon-page_excel'  %>
+        <%= link_to "CSV#{image_star * 3}".html_safe, "#", :onclick => "alert('Para las descargas filtradas, mínimamente se debe incluir el filtro por periodo');return false;", :style => "margin-left:10px;", :class => 'icon icon-page'  %>
+        <%= link_to "JSON#{image_star * 3}".html_safe, "#", :onclick => "alert('Para las descargas filtradas, mínimamente se debe incluir el filtro por periodo');return false;", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'  %>
+      <% end %>
 
+      <br /><br />
+        
+      
       <% if params[:form_buscar_matriculaciones_educacion_permanente][:anio].present? %>
 
-          <div style="float:left;">Descargar todas las Matriculaciones filtradas:</div>
+        <!-- DESCARGAS TOTALES -->
+        <div style="float:left;" data-toggle="tooltip-descarga-total" title="Las descargas totales se realizan por periodo">Descargar todas las Matriculaciones filtradas:</div>
 
-          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-            <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_educacion_permanente_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url" %>
-            <meta itemprop="name" content="Matriculaciones Educación Permanente "+params[:form_buscar_matriculaciones_educacion_permanente][:anio]+"">
-            <meta itemprop="description" content="Listado de matriculaciones en educación permanente correspondiente al año "+params[:form_buscar_matriculaciones_educacion_permanente][:anio]+"">
-            <meta itemprop="encodingFormat" content="pdf">
-            <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-          </div>
+        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+          <%= descargar_documento(6, params[:form_buscar_matriculaciones_educacion_permanente][:anio], "0", "xlsx")%>
+          <br />
+          <meta itemprop="name" content="Matriculaciones Educación Permanente "+params[:form_buscar_matriculaciones_educacion_permanente][:anio]+"">
+          <meta itemprop="description" content="Listado de matriculaciones en educación permanente correspondiente al año "+params[:form_buscar_matriculaciones_educacion_permanente][:anio]+"">
+          <meta itemprop="encodingFormat" content="xls">
+          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+        </div>
 
-          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-            <%= descargar_documento(6, params[:form_buscar_matriculaciones_educacion_permanente][:anio], "0", "xlsx")%>
-            <br />
-            <meta itemprop="name" content="Matriculaciones Educación Permanente "+params[:form_buscar_matriculaciones_educacion_permanente][:anio]+"">
-            <meta itemprop="description" content="Listado de matriculaciones en educación permanente correspondiente al año "+params[:form_buscar_matriculaciones_educacion_permanente][:anio]+"">
-            <meta itemprop="encodingFormat" content="xls">
-            <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-          </div>
+        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+          <%= descargar_documento(6, params[:form_buscar_matriculaciones_educacion_permanente][:anio], "0", "csv")%>
+          <br />
+          <meta itemprop="name" content="Matriculaciones Educación Permanente "+params[:form_buscar_matriculaciones_educacion_permanente][:anio]+"">
+          <meta itemprop="description" content="Listado de matriculaciones en educación permanente correspondiente al año "+params[:form_buscar_matriculaciones_educacion_permanente][:anio]+"">
+          <meta itemprop="encodingFormat" content="csv">
+          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+        </div>
+        
+        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+          <%= descargar_documento(6, params[:form_buscar_matriculaciones_educacion_permanente][:anio], "0", "json")%>
+          <br />
+          <meta itemprop="name" content="Matriculaciones Educación Permanente "+params[:form_buscar_matriculaciones_educacion_permanente][:anio]+"">
+          <meta itemprop="description" content="Listado de matriculaciones en educación permanente correspondiente al año "+params[:form_buscar_matriculaciones_educacion_permanente][:anio]+"">
+          <meta itemprop="encodingFormat" content="json">
+          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+        </div>
 
-          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-            <%= descargar_documento(6, params[:form_buscar_matriculaciones_educacion_permanente][:anio], "0", "csv")%>
-            <br />
-            <meta itemprop="name" content="Matriculaciones Educación Permanente "+params[:form_buscar_matriculaciones_educacion_permanente][:anio]+"">
-            <meta itemprop="description" content="Listado de matriculaciones en educación permanente correspondiente al año "+params[:form_buscar_matriculaciones_educacion_permanente][:anio]+"">
-            <meta itemprop="encodingFormat" content="csv">
-            <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-          </div>
-          
-          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-            <%= descargar_documento(6, params[:form_buscar_matriculaciones_educacion_permanente][:anio], "0", "json")%>
-            <br />
-            <meta itemprop="name" content="Matriculaciones Educación Permanente "+params[:form_buscar_matriculaciones_educacion_permanente][:anio]+"">
-            <meta itemprop="description" content="Listado de matriculaciones en educación permanente correspondiente al año "+params[:form_buscar_matriculaciones_educacion_permanente][:anio]+"">
-            <meta itemprop="encodingFormat" content="json">
-            <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-          </div>
+      <% else %>
 
-          <div style="clear:both;"></div>
+        <div class="bg-primary">
+          <center><h4>¡Atención! Las descargas <b>totales</b> se realizan por <b>periodo</b></h4></center>
+        </div>
 
-        <% end %>
+      <% end %>
 
-      </td>
- 
-    </tr>
+      <div style="clear:both;"></div>
+
+    </td>
+
+  </tr>
 
 <% end %>
+
+<script>
+  $('[data-toggle="tooltip-descarga-filtrada"]').tooltip();
+  $('[data-toggle="tooltip-descarga-total"]').tooltip();
+</script>
