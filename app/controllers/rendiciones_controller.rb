@@ -12,7 +12,19 @@ class RendicionesController < ApplicationController
   def diccionario
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/rendiciones.json")
-    @diccionario_rendiciones = JSON.parse(file)
+    diccionario = JSON.parse(file)
+    @diccionario_rendiciones = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_rendiciones)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_rendiciones, params[:nombre]), :filename => "diccionario_rendiciones.pdf", :type => "application/pdf")
+
+    end
+
   end
 
   def lista

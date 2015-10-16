@@ -1,14 +1,6 @@
 # -*- encoding : utf-8 -*-
 class NominasController< ApplicationController
   before_filter :redireccionar_uri
-  
-  def diccionario
-    
-    require 'json'
-    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/nomina_administrativos.json")
-    @diccionario_nomina_administrativos = JSON.parse(file)
-
-  end
 
   def index
     
@@ -17,6 +9,25 @@ class NominasController< ApplicationController
       f.html {render :layout => 'layouts/application'}
   
     end
+  end
+
+  def diccionario
+    
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/nomina_administrativos.json")
+    diccionario = JSON.parse(file)
+    @diccionario_nomina_administrativos = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_nomina_administrativos)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_nomina_administrativos, params[:nombre]), :filename => "diccionario_nomina_administrativos.pdf", :type => "application/pdf")
+
+    end
+
   end
 
   def lista
@@ -243,7 +254,18 @@ class NominasController< ApplicationController
     
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/nomina_docentes.json")
-    @diccionario_nomina_docentes = JSON.parse(file)
+    diccionario = JSON.parse(file)
+    @diccionario_nomina_docentes = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_nomina_docentes)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_nomina_docentes, params[:nombre]), :filename => "diccionario_nomina_docentes.pdf", :type => "application/pdf")
+
+    end
 
   end
   

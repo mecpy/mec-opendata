@@ -17,7 +17,18 @@ class RequerimientosOtrosEspaciosController < ApplicationController
     
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/requerimientos_otros_espacios.json")
-    @diccionario_requerimientos_otros_espacios = JSON.parse(file)
+    diccionario = JSON.parse(file)
+    @diccionario_requerimientos_otros_espacios = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_requerimientos_otros_espacios)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_requerimientos_otros_espacios, params[:nombre]), :filename => "diccionario_requerimientos_otros_espacios.pdf", :type => "application/pdf")
+
+    end
 
   end
 

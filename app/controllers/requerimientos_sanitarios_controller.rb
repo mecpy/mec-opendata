@@ -17,7 +17,18 @@ class RequerimientosSanitariosController < ApplicationController
     
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/requerimientos_sanitarios.json")
-    @diccionario_requerimientos_sanitarios = JSON.parse(file)
+    diccionario = JSON.parse(file)
+    @diccionario_requerimientos_sanitarios = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_requerimientos_sanitarios)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_requerimientos_sanitarios, params[:nombre]), :filename => "diccionario_requerimientos_sanitarios.pdf", :type => "application/pdf")
+
+    end
 
   end
 

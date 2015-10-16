@@ -16,7 +16,18 @@ class RegistrosTitulosController < ApplicationController
     
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/registros_titulos.json")
-    @diccionario_registros_titulos = JSON.parse(file)
+    diccionario = JSON.parse(file)
+    @diccionario_registros_titulos = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_registros_titulos)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_registros_titulos, params[:nombre]), :filename => "diccionario_registros_titulos.pdf", :type => "application/pdf")
+
+    end
 
   end
 
