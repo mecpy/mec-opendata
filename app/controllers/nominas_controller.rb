@@ -92,6 +92,13 @@ class NominasController< ApplicationController
 
     end
 
+    if params[:form_buscar_nominas][:sexo].present?
+
+      cond << "sexo = ?"
+      args << params[:form_buscar_nominas][:sexo]
+
+    end
+
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
     
     if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
@@ -115,11 +122,11 @@ class NominasController< ApplicationController
 
       csv = CSV.generate do |csv|
         # header row
-        csv << ["mes_periodo_pago", "ano_periodo_pago", "codigo_concepto_nomina", "nombre_concepto_nomina", "codigo_trabajador", "nombre_trabajador", "anhos_antiguedad_administrativo", "meses_antiguedad_administrativo", "anhos_antiguedad_docente", "meses_antiguedad_docente", "codigo_puesto", "numero_tipo_presupuesto_puesto", "codigo_dependencia", "nombre_dependencia", "codigo_cargo", "nombre_cargo", "codigo_categoria_rubro", "monto_categoria_rubro", "cantidad", "asignacion"]
+        csv << ["mes_periodo_pago", "ano_periodo_pago", "codigo_concepto_nomina", "nombre_concepto_nomina", "codigo_trabajador", "nombre_trabajador", "anhos_antiguedad_administrativo", "meses_antiguedad_administrativo", "anhos_antiguedad_docente", "meses_antiguedad_docente", "codigo_puesto", "numero_tipo_presupuesto_puesto", "codigo_dependencia", "nombre_dependencia", "codigo_cargo", "nombre_cargo", "codigo_categoria_rubro", "monto_categoria_rubro", "cantidad", "asignacion", "sexo"]
  
         # data rows
         nominas_csv.each do |n|
-          csv << [n.mes_periodo_pago, n.ano_periodo_pago, n.codigo_concepto_nomina, n.nombre_concepto_nomina, n.codigo_trabajador, n.nombre_trabajador, n.anhos_antiguedad_administrativo, n.meses_antiguedad_administrativo, n.anhos_antiguedad_docente, n.meses_antiguedad_docente, n.codigo_puesto, n.numero_tipo_presupuesto_puesto, n.codigo_dependencia, n.nombre_dependencia, n.codigo_cargo, n.nombre_cargo, n.codigo_categoria_rubro, n.monto_categoria_rubro, n.cantidad, n.asignacion]
+          csv << [n.mes_periodo_pago, n.ano_periodo_pago, n.codigo_concepto_nomina, n.nombre_concepto_nomina, n.codigo_trabajador, n.nombre_trabajador, n.anhos_antiguedad_administrativo, n.meses_antiguedad_administrativo, n.anhos_antiguedad_docente, n.meses_antiguedad_docente, n.codigo_puesto, n.numero_tipo_presupuesto_puesto, n.codigo_dependencia, n.nombre_dependencia, n.codigo_cargo, n.nombre_cargo, n.codigo_categoria_rubro, n.monto_categoria_rubro, n.cantidad, n.asignacion, n.sexo]
         end
 
       end
@@ -132,7 +139,7 @@ class NominasController< ApplicationController
       
         format.xlsx {
           
-          columnas = [:mes_periodo_pago, :ano_periodo_pago, :codigo_concepto_nomina, :nombre_concepto_nomina, :codigo_trabajador, :nombre_trabajador, :anhos_antiguedad_administrativo, :meses_antiguedad_administrativo, :anhos_antiguedad_docente, :meses_antiguedad_docente, :codigo_puesto, :numero_tipo_presupuesto_puesto, :codigo_dependencia, :nombre_dependencia, :codigo_cargo, :nombre_cargo, :codigo_categoria_rubro, :monto_categoria_rubro, :cantidad, :asignacion]
+          columnas = [:mes_periodo_pago, :ano_periodo_pago, :codigo_concepto_nomina, :nombre_concepto_nomina, :codigo_trabajador, :nombre_trabajador, :anhos_antiguedad_administrativo, :meses_antiguedad_administrativo, :anhos_antiguedad_docente, :meses_antiguedad_docente, :codigo_puesto, :numero_tipo_presupuesto_puesto, :codigo_dependencia, :nombre_dependencia, :codigo_cargo, :nombre_cargo, :codigo_categoria_rubro, :monto_categoria_rubro, :cantidad, :asignacion, :sexo]
           
           if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
             send_data Nomina.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).to_xlsx(:columns => columnas).to_stream.read, 
@@ -204,6 +211,7 @@ class NominasController< ApplicationController
             cantidad: n.cantidad.to_i,     
             asignacion: n.asignacion,
             monto_devuelto: n.monto_devuelto
+            #,sexo: n.monto_devuelto
 
         end
 
@@ -348,6 +356,13 @@ class NominasController< ApplicationController
 
     end
 
+    if params[:form_buscar_nominas][:sexo].present?
+
+      cond << "sexo = ?"
+      args << params[:form_buscar_nominas][:sexo]
+
+    end
+
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
     
     if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
@@ -371,11 +386,11 @@ class NominasController< ApplicationController
 
       csv = CSV.generate do |csv|
         # header row
-        csv << ["mes_periodo_pago", "ano_periodo_pago", "codigo_concepto_nomina", "nombre_concepto_nomina", "codigo_trabajador", "nombre_trabajador", "anhos_antiguedad_administrativo", "meses_antiguedad_administrativo", "anhos_antiguedad_docente", "meses_antiguedad_docente", "codigo_puesto", "numero_tipo_presupuesto_puesto", "codigo_dependencia", "nombre_dependencia", "codigo_cargo", "nombre_cargo", "codigo_categoria_rubro", "monto_categoria_rubro", "cantidad", "asignacion"]
+        csv << ["mes_periodo_pago", "ano_periodo_pago", "codigo_concepto_nomina", "nombre_concepto_nomina", "codigo_trabajador", "nombre_trabajador", "anhos_antiguedad_administrativo", "meses_antiguedad_administrativo", "anhos_antiguedad_docente", "meses_antiguedad_docente", "codigo_puesto", "numero_tipo_presupuesto_puesto", "codigo_dependencia", "nombre_dependencia", "codigo_cargo", "nombre_cargo", "codigo_categoria_rubro", "monto_categoria_rubro", "cantidad", "asignacion", "sexo"]
  
         # data rows
         nominas_csv.each do |n|
-          csv << [n.mes_periodo_pago, n.ano_periodo_pago, n.codigo_concepto_nomina, n.nombre_concepto_nomina, n.codigo_trabajador, n.nombre_trabajador, n.anhos_antiguedad_administrativo, n.meses_antiguedad_administrativo, n.anhos_antiguedad_docente, n.meses_antiguedad_docente, n.codigo_puesto, n.numero_tipo_presupuesto_puesto, n.codigo_dependencia, n.nombre_dependencia, n.codigo_cargo, n.nombre_cargo, n.codigo_categoria_rubro, n.monto_categoria_rubro, n.cantidad, n.asignacion]
+          csv << [n.mes_periodo_pago, n.ano_periodo_pago, n.codigo_concepto_nomina, n.nombre_concepto_nomina, n.codigo_trabajador, n.nombre_trabajador, n.anhos_antiguedad_administrativo, n.meses_antiguedad_administrativo, n.anhos_antiguedad_docente, n.meses_antiguedad_docente, n.codigo_puesto, n.numero_tipo_presupuesto_puesto, n.codigo_dependencia, n.nombre_dependencia, n.codigo_cargo, n.nombre_cargo, n.codigo_categoria_rubro, n.monto_categoria_rubro, n.cantidad, n.asignacion, n.sexo]
         end
 
       end
@@ -388,7 +403,7 @@ class NominasController< ApplicationController
       
         format.xlsx {
           
-          columnas = [:mes_periodo_pago, :ano_periodo_pago, :codigo_concepto_nomina, :nombre_concepto_nomina, :codigo_trabajador, :nombre_trabajador, :anhos_antiguedad_administrativo, :meses_antiguedad_administrativo, :anhos_antiguedad_docente, :meses_antiguedad_docente, :codigo_puesto, :numero_tipo_presupuesto_puesto, :codigo_dependencia, :nombre_dependencia, :codigo_cargo, :nombre_cargo, :codigo_categoria_rubro, :monto_categoria_rubro, :cantidad, :asignacion]
+          columnas = [:mes_periodo_pago, :ano_periodo_pago, :codigo_concepto_nomina, :nombre_concepto_nomina, :codigo_trabajador, :nombre_trabajador, :anhos_antiguedad_administrativo, :meses_antiguedad_administrativo, :anhos_antiguedad_docente, :meses_antiguedad_docente, :codigo_puesto, :numero_tipo_presupuesto_puesto, :codigo_dependencia, :nombre_dependencia, :codigo_cargo, :nombre_cargo, :codigo_categoria_rubro, :monto_categoria_rubro, :cantidad, :asignacion, :sexo]
           
           if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
             send_data Nomina.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).to_xlsx(:columns => columnas).to_stream.read, 
@@ -460,6 +475,7 @@ class NominasController< ApplicationController
             cantidad: n.cantidad.to_i, 
             numero_matriculacion: n.numero_matriculacion,       
             asignacion: n.asignacion
+            #,sexo: n.sexo
 
         end
 
