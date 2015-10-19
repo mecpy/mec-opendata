@@ -31,7 +31,7 @@
     <% 
         parametros_json = { :format => 'json' }
         parametros_json = parametros_json.merge(params) 
-        parametros_json_todos = { :format => 'json', "form_buscar_matriculaciones_educacion_escolar_basica[anio]" => params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio] }
+        parametros_json_todos = { :format => 'json', :anio => params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio] }
     %>
 
     <% 
@@ -40,7 +40,9 @@
         parametros_pdf_todos = { :format => 'pdf', "form_buscar_matriculaciones_educacion_escolar_basica[anio]" => params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio] }
     %>
 
-    <%= parametros_pdf %>
+    <%
+        parametros_md5_csv = { :format => 'md5_csv', "form_buscar_matriculaciones_educacion_escolar_basica[anio]" => params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio] }
+    %>
 
     <td colspan="12" class="row-descargar">
       
@@ -87,6 +89,10 @@
           <meta itemprop="description" content="Listado de matriculaciones en educación escolar básica correspondiente al año "+params[:form_buscar_matriculaciones_educacion_escolar_basica][:anio]+"">
           <meta itemprop="encodingFormat" content="csv">
           <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" /> 
+        </div>
+
+        <div style="float:left;text-align:center;">
+          <%= link_to "MD5/CSV".html_safe, mec_custom_url(data_matriculaciones_educacion_escolar_basica_lista_url( parametros_md5_csv )), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_md5' %>
         </div>
 
         <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">

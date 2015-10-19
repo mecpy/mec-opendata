@@ -38,6 +38,10 @@
       parametros_pdf_todos = { :format => 'pdf', "form_buscar_matriculaciones_departamentos_distritos[anio]" => params[:form_buscar_matriculaciones_departamentos_distritos][:anio] }
     %>
 
+    <%
+        parametros_md5_csv = { :format => 'md5_csv', "form_buscar_matriculaciones_departamentos_distritos[anio]" => params[:form_buscar_matriculaciones_departamentos_distritos][:anio] }
+    %>
+
     <td colspan="8" class="row-descargar">
 
       <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
@@ -83,6 +87,10 @@
           <meta itemprop="description" content="Listado de matriculaciones por departamento y distrito correspondiente al año "+params[:form_buscar_matriculaciones_departamentos_distritos][:anio]+"">
           <meta itemprop="encodingFormat" content="csv">
           <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+        </div>
+
+        <div style="float:left;text-align:center;">
+          <%= link_to "MD5/CSV".html_safe, mec_custom_url(data_matriculaciones_departamentos_distritos_lista_url( parametros_md5_csv )), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_md5' %>
         </div>
 
         <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">

@@ -253,6 +253,13 @@ class MatriculacionesEducacionMediaController < ApplicationController
         type: 'application/pdf', 
         disposition: 'attachment'
 
+    elsif params[:format] == 'md5_csv'
+      
+      filename = "matriculaciones_educacion_media_" + params[:form_buscar_matriculaciones_educacion_media][:anio]
+      path_file = "#{Rails.root}/public/data/" + filename + ".csv"
+      send_data(generate_md5(path_file), :filename => filename+".md5", :type => "application/txt")
+
+
     else
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
