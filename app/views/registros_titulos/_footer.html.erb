@@ -1,41 +1,46 @@
 <% if registros_titulos.present? %>
+  
   <tr>
-
-      <td colspan="11" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate registros_titulos, :params => params %></div></td>
-
+    <td colspan="11" style="text-align:center;">
+      <div class="flickr_pagination"><%= ajax_will_paginate registros_titulos, :params => params %>
+      </div>
+    </td>
   </tr>
 
-  <tr><td colspan="11">Cantidad de registros encontrados: <%= @registros_titulos_todos.size %> de <%= @total_registros %></td></tr>
+  <tr>
+    <td colspan="11">Cantidad de registros encontrados: <%= @registros_titulos_todos.size %> de <%= @total_registros %>
+    </td>
+  </tr>
 
   <tr>
 
-      <%  
+    <%  
       parametros_csv = { :format => 'csv' }
       parametros_csv = parametros_csv.merge(params) 
       parametros_csv_todos = { :format => 'csv', "form_buscar_registros_titulos[anio]" => params[:form_buscar_registros_titulos][:anio], "form_buscar_registros_titulos[mes]" => params[:form_buscar_registros_titulos][:mes], "form_buscar_registros_titulos[gobierno_actual]" => params[:form_buscar_registros_titulos][:gobierno_actual]}
     %>
 
-      <% 
+    <% 
       parametros_xls = { :format => 'xlsx'}
       parametros_xls = parametros_xls.merge(params) 
       parametros_xls_todos = { :format => 'xlsx', "form_buscar_registros_titulos[anio]" => params[:form_buscar_registros_titulos][:anio], "form_buscar_registros_titulos[mes]" => params[:form_buscar_registros_titulos][:mes], "form_buscar_registros_titulos[gobierno_actual]" => params[:form_buscar_registros_titulos][:gobierno_actual] }
     %>
 
-      <%  %>
-
-      <% 
+    <% 
       parametros_json = { :format => 'json' }
       parametros_json = parametros_json.merge(params) 
       parametros_json_todos = { :format => 'json', "form_buscar_registros_titulos[anio]" => params[:form_buscar_registros_titulos][:anio], "form_buscar_registros_titulos[mes]" => params[:form_buscar_registros_titulos][:mes], "form_buscar_registros_titulos[gobierno_actual]" => params[:form_buscar_registros_titulos][:gobierno_actual] }
     %>
 
-      <% 
+    <% 
       parametros_pdf = { :format => 'pdf' }
       parametros_pdf = parametros_pdf.merge(params) 
       parametros_pdf_todos = { :format => 'pdf', "form_buscar_registros_titulos[anio]" => params[:form_buscar_registros_titulos][:anio], "form_buscar_registros_titulos[mes]" => params[:form_buscar_registros_titulos][:mes], "form_buscar_registros_titulos[gobierno_actual]" => params[:form_buscar_registros_titulos][:gobierno_actual] }
     %>
 
-      <%= parametros_pdf %>
+    <%
+      parametros_md5_csv = { :format => 'md5_csv' }
+    %>
 
       <td colspan="8" class="row-descargar">
 

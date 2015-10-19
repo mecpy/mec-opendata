@@ -179,6 +179,12 @@ class ContratacionesController < ApplicationController
       
       send_data p.to_stream.read, filename: "contrataciones_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
+    elsif params[:format] == 'md5_csv'
+      
+      filename = "contrataciones"
+      path_file = "#{Rails.root}/public/data/" + filename + ".csv"
+      send_data(generate_md5(path_file), :filename => filename+".md5", :type => "application/txt")
+
     else
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?

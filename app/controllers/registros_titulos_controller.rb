@@ -225,6 +225,12 @@ class RegistrosTitulosController < ApplicationController
         type: 'application/pdf', 
         disposition: 'attachment'
 
+    elsif params[:format] == 'md5_csv'
+      
+      filename = "registros_titulos"
+      path_file = "#{Rails.root}/public/data/" + filename + ".csv.zip"
+      send_data(generate_md5(path_file), :filename => filename+".md5", :type => "application/txt")
+
     else
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?

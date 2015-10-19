@@ -1,11 +1,15 @@
 <% if contrataciones.present? %>
   
   <tr>
-    <td colspan="10" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate contrataciones, :params => params %></div></td>
+    <td colspan="10" style="text-align:center;">
+      <div class="flickr_pagination"><%= ajax_will_paginate contrataciones, :params => params %>
+      </div>
+    </td>
   </tr>
 
   <tr>
-    <td colspan="10">Cantidad de registros encontrados: <%= @contrataciones_todos.size %> de <%= @total_registros %></td>
+    <td colspan="10">Cantidad de registros encontrados: <%= @contrataciones_todos.size %> de <%= @total_registros %>
+    </td>
   </tr>
 
   <tr>
@@ -34,63 +38,73 @@
         parametros_pdf_todos = { :format => 'pdf', "form_buscar_contrataciones[ejercicio_fiscal]" => params[:form_buscar_contrataciones][:ejercicio_fiscal] }
     %>
 
+    <%
+        parametros_md5_csv = { :format => 'md5_csv' }
+    %>
+
     <td colspan="12" class="row-descargar">
+
       <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
-      <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a></br>
-      <span>Descargar Contrataciones Filtradas:</span>
+      <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a>
+      <br />
 
       <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
 
-      <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_instituciones_lista_url(parametros_pdf)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat'%>
+      <!-- DESCARGAS FILTRADAS -->
+      <span data-toggle="tooltip-descarga-filtrada" title="Realizar descargas filtradas">Descargar Contrataciones Filtradas:</span>
+
       <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_contrataciones_lista_url(parametros_xls)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
       <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_contrataciones_lista_url(parametros_csv)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
       <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_contrataciones_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
       <br /><br />
-        
-      <div style="float:left;">Descargar todas las Contrataciones:</div>
-        
-        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-          <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_instituciones_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
-          <meta itemprop="name" content="Contrataciones">
-          <meta itemprop="description" content="Listado de contrataciones correspondiente al año 2014/2015">
-          <meta itemprop="encodingFormat" content="pdf">
-          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-        </div>
 
-        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-          <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_contrataciones_lista_url(parametros_xls_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url", :content => mec_custom_url(data_contrataciones_lista_url(parametros_xls_todos)) %>
-          <br />
-          <span style="color:silver;"></span>
-          <meta itemprop="name" content="Contrataciones">
-          <meta itemprop="description" content="Listado de contrataciones correspondiente al año 2014/2015">
-          <meta itemprop="encodingFormat" content="xls">
-          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-        </div>
 
-        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-          <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_contrataciones_lista_url(parametros_csv_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url", :content => mec_custom_url(data_contrataciones_lista_url(parametros_csv_todos)) %>
-          <br />
-          <span style="color:silver;"></span>
-          <meta itemprop="name" content="Contrataciones">
-          <meta itemprop="description" content="Listado de contrataciones correspondiente al año 2014/2015">
-          <meta itemprop="encodingFormat" content="csv">
-          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-        </div>
+      <!-- DESCARGAS TOTALES -->
+      <div style="float:left;" data-toggle="tooltip-descarga-total" title="Realizar descargas totales">Descargar todas las Contrataciones:</div>
 
-        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-          <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_contrataciones_lista_url(parametros_json_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url", :content => mec_custom_url(data_contrataciones_lista_url(parametros_json_todos)) %>
-          <br />
-          <span style="color:silver;"></span>
-          <meta itemprop="name" content="Contrataciones">
-          <meta itemprop="description" content="Listado de contrataciones correspondiente al año 2014/2015">
-          <meta itemprop="encodingFormat" content="json">
-          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-        </div>
+      <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%= descargar_documento(16, "0", "0", "xlsx")%>
+        <br />
+        <span style="color:silver;"></span>
+        <meta itemprop="name" content="Contrataciones">
+        <meta itemprop="description" content="Listado de contrataciones correspondiente al año 2014/2015">
+        <meta itemprop="encodingFormat" content="xls">
+        <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+      </div>
+
+      <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%= descargar_documento(16, "0", "0", "csv")%>
+        <br />
+        <span style="color:silver;"></span>
+        <meta itemprop="name" content="Contrataciones">
+        <meta itemprop="description" content="Listado de contrataciones correspondiente al año 2014/2015">
+        <meta itemprop="encodingFormat" content="csv">
+        <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+      </div>
+
+      <div style="float:left;text-align:center;">
+        <%= link_to "MD5/CSV".html_safe, mec_custom_url(data_contrataciones_lista_url( parametros_md5_csv )), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_md5' %>
+      </div>
+
+      <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+        <%= descargar_documento(16, "0", "0", "json")%>
+        <br />
+        <span style="color:silver;"></span>
+        <meta itemprop="name" content="Contrataciones">
+        <meta itemprop="description" content="Listado de contrataciones correspondiente al año 2014/2015">
+        <meta itemprop="encodingFormat" content="json">
+        <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+      </div>
 
       <div style="clear:both;"></div>
 
-      </td>
- 
-    </tr>
+    </td>
+
+  </tr>
+
+  <script>
+    $('[data-toggle="tooltip-descarga-filtrada"]').tooltip();
+    $('[data-toggle="tooltip-descarga-total"]').tooltip();
+  </script>
 
 <% end %>
