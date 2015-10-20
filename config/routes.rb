@@ -56,7 +56,7 @@ Rails.application.routes.draw do
   get 'app/mapa_establecimientos/datos' => 'mapa_establecimientos#datos', :as => :app_mapa_establecimientos_datos
   post 'app/mapa_establecimientos/datos' => 'mapa_establecimientos#datos', :as => :app_data_mapa_establecimientos_datos
 
-  post 'app/service_actualizaciones_actualizacion' => 'service_actualizaciones#actualizacion', :as => :app_service_actualizaciones_actualizacion
+  post 'app/service_actualizaciones_actualizacion_geometrias' => 'service_actualizaciones#actualizacion_geometrias', :as => :app_service_actualizaciones_actualizacion_geometrias
   post 'app/service_actualizaciones_generar_csv_json' => 'service_actualizaciones#generar_csv_json', :as => :app_service_actualizaciones_generar_csv_json
 
   get '/mapa_embedded', to: redirect('mapa_establecimientos/dist/#/mapa')

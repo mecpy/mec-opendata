@@ -1,7 +1,7 @@
 class ServiceActualizacionesController < ApplicationController
 
-  skip_before_filter :verify_authenticity_token, :only => [:actualizacion, :generar_csv_json]
-  before_filter :authenticate, :only => [:actualizacion, :generar_csv_json]
+  skip_before_filter :verify_authenticity_token, :only => [:actualizacion_geometrias, :generar_csv_json]
+  before_filter :authenticate, :only => [:actualizacion_geometrias, :generar_csv_json]
 
   def authenticate
     if APP_CONFIG[:perform_authentication]
@@ -11,16 +11,8 @@ class ServiceActualizacionesController < ApplicationController
     end
   end
 
-  def generar_csv_json
-    csv = 
-    "
-      COPY 
-    "
-    ActiveRecord::Base.connection.execute()
-    return 'GENERACION CORRECTA'
-  end
-
-  def actualizacion
+  #ACTUALIZACION DE LAS GEOMETRIAS DEL MAPA
+  def actualizacion_geometrias
 
     estado = []
 
@@ -154,8 +146,56 @@ class ServiceActualizacionesController < ApplicationController
 
   end
 
+  #ACTUALIZACION DE LOS CSV Y JSON PARA LAS DESCARGAS
+  def generar_csv_json
+    nombre_archivo = 'matricula_inicial.csv'
+    query = 
+    "
+    COPY 
+    (
+      SELECT *
+      FROM matriculaciones_inicial
+    )
+    TO '/tmp/#{nombre_archivo}'
+    WITH CSV HEADER FORCE QUOTE *;
+    "
+
+    ActiveRecord::Base.connection.execute(query)
+
+    copiar_archivos()
+
+    respuesta = 'GENERACION CORRECTA'
+    render :json => respuesta
+  end
+
+  private
+  def copiar_archivos()
+
+    require 'open3'
+
+    begin
+      cmd = "find /tmp -name \"*.csv\" -exec cp {} #{Rails.root}/public/data \\;"
+      Open3.popen3(cmd) do |stdin, stdout, stderr|
+        stdin.close
+        stdout.close
+        stderr.close
+      end
+    rescue Exception => e
+      puts e.message  
+      puts e.backtrace.inspect
+    end
+  end
+
+
 end
 
 #Crear la carpeta geometrias en mec-opendata/app/assets/javascripts
-#curl -X POST http://localhost:3000/app/mapa_establecimientos_actualizaciones
-#curl -X POST http://localhost:3000/app/mapa_establecimientos_actualizaciones -u "mecpy:mecpy2015" > /tmp/log/crontab.log
+#curl -X POST http://localhost:3000/app/service_actualizaciones_actualizacion_geometrias
+#curl -X POST http://localhost:3000/app/service_actualizaciones_actualizacion_geometrias -u "mecpy:mecpy2015" > /tmp/crontab.log
+
+#curl -X POST http://localhost:3000/app/service_actualizaciones_generar_csv_json -u "mecpy:mecpy2015" > /tmp/crontab.log
+
+
+#INSTALACION DE NODE.JS EN CENTOS
+#https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-a-centos-7-server
+#npm install -g topojson
