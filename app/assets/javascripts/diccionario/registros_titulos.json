@@ -149,5 +149,15 @@
             "enlace": ""
         },
         "ejemplo": "SI"
+    }, {
+        "nombre": "SEXO",
+        "descripcion": "Indica el sexo de la persona cuyo título fue registrado",
+        "tipo": "xsd:string",
+        "restricciones": "FEMENINO, MASCULINO",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "MASCULINO"
     }
 ]

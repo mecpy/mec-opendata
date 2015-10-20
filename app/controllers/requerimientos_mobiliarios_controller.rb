@@ -17,7 +17,18 @@ class RequerimientosMobiliariosController < ApplicationController
     
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/requerimientos_mobiliarios.json")
-    @diccionario_requerimientos_mobiliarios = JSON.parse(file)
+    diccionario = JSON.parse(file)
+    @diccionario_requerimientos_mobiliarios = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_requerimientos_mobiliarios)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_requerimientos_mobiliarios, params[:nombre]), :filename => "diccionario_requerimientos_mobiliarios.pdf", :type => "application/pdf")
+
+    end
 
   end
 

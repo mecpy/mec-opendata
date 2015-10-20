@@ -149,5 +149,15 @@
             "enlace": ""
         },
         "ejemplo": "1.658.232"
+    }, {
+        "nombre": "SEXO",
+        "descripcion": "Indica el sexo de la persona",
+        "tipo": "xsd:string",
+        "restricciones": "FEMENINO, MASCULINO",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "MASCULINO"
     }
 ]

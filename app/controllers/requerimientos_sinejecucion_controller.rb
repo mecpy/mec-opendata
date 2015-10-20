@@ -16,8 +16,19 @@ class RequerimientosSinejecucionController < ApplicationController
   def diccionario
     
     require 'json'
-    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/requerimientos_aulas.json")
-    @diccionario_requerimientos_sinejecucion = JSON.parse(file)
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/requerimientos_sinejecucion.json")
+    diccionario = JSON.parse(file)
+    @diccionario_requerimientos_sinejecucion = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_requerimientos_sinejecucion)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_requerimientos_sinejecucion, params[:nombre]), :filename => "diccionario_requerimientos_sinejecucion.pdf", :type => "application/pdf")
+
+    end
 
   end
 

@@ -1,4 +1,5 @@
 class DesembolsosController < ApplicationController
+  
   def index
     @desembolsos = VDesembolsos.paginate :per_page => 15, :page => params[:page]
 
@@ -12,7 +13,19 @@ class DesembolsosController < ApplicationController
   def diccionario
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/desembolsos.json")
-    @diccionario_desembolsos = JSON.parse(file)
+    diccionario = JSON.parse(file)
+    @diccionario_desembolsos = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_desembolsos)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_desembolsos, params[:nombre]), :filename => "diccionario_desembolsos.pdf", :type => "application/pdf")
+
+    end
+
   end
 
   def lista

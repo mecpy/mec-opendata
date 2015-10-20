@@ -1,24 +1,5 @@
 class DirectoriosInstitucionesController < ApplicationController
   before_filter :redireccionar_uri
-  
-  def diccionario
-    
-    require 'json'
-    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/directorios_instituciones.json")
-    directorio = JSON.parse(file)
-    @directorios_instituciones = clean_json(directorio)
-
-    if params[:format] == 'json'
-      
-      generate_json_table_schema(@directorios_instituciones)
-
-    elsif params[:format] == 'pdf'
-      
-      send_data(generate_pdf(@directorios_instituciones, params[:nombre]), :filename => "diccionario_directorio_instituciones.pdf", :type => "application/pdf")
-
-    end
-
-  end
 
   def index
 
@@ -27,6 +8,25 @@ class DirectoriosInstitucionesController < ApplicationController
     respond_to do |f|
 
       f.html {render :layout => 'application'}
+
+    end
+
+  end
+
+  def diccionario
+    
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/directorios_instituciones.json")
+    diccionario = JSON.parse(file)
+    @diccionario_directorios_instituciones = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_directorios_instituciones)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_directorios_instituciones, params[:nombre]), :filename => "diccionario_directorios_instituciones.pdf", :type => "application/pdf")
 
     end
 
