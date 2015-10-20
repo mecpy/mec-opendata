@@ -3,6 +3,7 @@ class ServiceActualizacionesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:actualizacion_geometrias, :generar_csv_json]
   before_filter :authenticate, :only => [:actualizacion_geometrias, :generar_csv_json]
 
+
   def authenticate
     if APP_CONFIG[:perform_authentication]
       authenticate_or_request_with_http_basic do |username, password|
@@ -11,7 +12,10 @@ class ServiceActualizacionesController < ApplicationController
     end
   end
 
-  #ACTUALIZACION DE LAS GEOMETRIAS DEL MAPA
+
+  ##############################################
+  ###ACTUALIZACION DE LAS GEOMETRIAS DEL MAPA###
+  ##############################################
   def actualizacion_geometrias
 
     estado = []
@@ -92,6 +96,7 @@ class ServiceActualizacionesController < ApplicationController
 
   end
 
+
   def consulta(query, tipo_query, nombre_archivo)
     
     estado = false
@@ -146,8 +151,28 @@ class ServiceActualizacionesController < ApplicationController
 
   end
 
-  #ACTUALIZACION DE LOS CSV Y JSON PARA LAS DESCARGAS
+
+  ########################################################
+  ###ACTUALIZACION DE LOS CSV Y JSON PARA LAS DESCARGAS###
+  ########################################################
   def generar_csv_json
+    
+    begin
+      crear_archivo_csv_json()
+      respuesta = generar_log("Success!! Actualización correcta de los archivos para descargas.")
+    rescue Exception => e
+      puts e.message  
+      puts e.backtrace.inspect
+      respuesta = generar_log("Error!!! Ha ocurrido un imprevisto en la actualización de los archivos para descargas. Por favor, intentenlo más tarde o contacte con el administrador.")
+    end
+
+    render :json => respuesta
+
+  end
+
+  def crear_archivo_csv_json()
+
+    #CSV
     nombre_archivo = 'matricula_inicial.csv'
     query = 
     "
@@ -159,22 +184,63 @@ class ServiceActualizacionesController < ApplicationController
     TO '/tmp/#{nombre_archivo}'
     WITH CSV HEADER FORCE QUOTE *;
     "
+    #ejecutar_query(query)
+    #copiar_archivo_a_rails(nombre_archivo)
 
-    ActiveRecord::Base.connection.execute(query)
+    #JSON
+    nombre_archivo = 'matricula_inicial.json'
+    query = 
+    "
+    COPY 
+    (SELECT array_to_json(array_agg(t)) 
+    FROM (select * from matriculaciones_inicial) t)
+    TO '/tmp/#{nombre_archivo}';
+    "
+    ejecutar_query(query)
+    zip_archivo(nombre_archivo)
+    #copiar_archivo_a_rails(nombre_archivo+'.zip')
 
-    copiar_archivos()
-
-    respuesta = 'GENERACION CORRECTA'
-    render :json => respuesta
   end
 
   private
-  def copiar_archivos()
+  def generar_log(mensaje)
+    log = Time.now
+    log = log.inspect
+    return "[ #{log.inspect} ] " + mensaje
+  end
+
+
+  private
+  def ejecutar_query(query)
+    ActiveRecord::Base.connection.execute(query)
+  end
+
+
+  private
+  def copiar_archivo_a_rails(nombre_archivo)
 
     require 'open3'
 
     begin
-      cmd = "find /tmp -name \"*.csv\" -exec cp {} #{Rails.root}/public/data \\;"
+      cmd = "cp /tmp/#{nombre_archivo} #{Rails.root}/public/data"
+      Open3.popen3(cmd) do |stdin, stdout, stderr|
+        stdin.close
+        stdout.close
+        stderr.close
+      end
+    rescue Exception => e
+      puts e.message  
+      puts e.backtrace.inspect
+    end
+  end
+
+  private
+  def zip_archivo(nombre_archivo)
+
+    require 'open3'
+
+    begin
+      cmd = "zip -j #{Rails.root}/public/data/#{nombre_archivo}.zip /tmp/#{nombre_archivo}"
       Open3.popen3(cmd) do |stdin, stdout, stderr|
         stdin.close
         stdout.close
@@ -199,3 +265,7 @@ end
 #INSTALACION DE NODE.JS EN CENTOS
 #https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-a-centos-7-server
 #npm install -g topojson
+
+#INSTALACION DE ZIP
+#sudo apt-get install zip
+#yum install zip
