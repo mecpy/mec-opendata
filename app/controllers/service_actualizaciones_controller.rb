@@ -172,33 +172,7 @@ class ServiceActualizacionesController < ApplicationController
 
   def crear_archivo_csv_json()
 
-    #CSV
-    nombre_archivo = 'matricula_inicial.csv'
-    query = 
-    "
-    COPY 
-    (
-      SELECT *
-      FROM matriculaciones_inicial
-    )
-    TO '/tmp/#{nombre_archivo}'
-    WITH CSV HEADER FORCE QUOTE *;
-    "
-    #ejecutar_query(query)
-    #copiar_archivo_a_rails(nombre_archivo)
-
-    #JSON
-    nombre_archivo = 'matricula_inicial.json'
-    query = 
-    "
-    COPY 
-    (SELECT array_to_json(array_agg(t)) 
-    FROM (select * from matriculaciones_inicial) t)
-    TO '/tmp/#{nombre_archivo}';
-    "
-    ejecutar_query(query)
-    zip_archivo(nombre_archivo)
-    #copiar_archivo_a_rails(nombre_archivo+'.zip')
+    descargas_matriculas();   
 
   end
 
@@ -209,49 +183,55 @@ class ServiceActualizacionesController < ApplicationController
     return "[ #{log.inspect} ] " + mensaje
   end
 
-
-  private
-  def ejecutar_query(query)
-    ActiveRecord::Base.connection.execute(query)
-  end
-
-
-  private
-  def copiar_archivo_a_rails(nombre_archivo)
-
-    require 'open3'
-
-    begin
-      cmd = "cp /tmp/#{nombre_archivo} #{Rails.root}/public/data"
-      Open3.popen3(cmd) do |stdin, stdout, stderr|
-        stdin.close
-        stdout.close
-        stderr.close
-      end
-    rescue Exception => e
-      puts e.message  
-      puts e.backtrace.inspect
-    end
-  end
-
   private
   def zip_archivo(nombre_archivo)
 
     require 'open3'
 
-    begin
-      cmd = "zip -j #{Rails.root}/public/data/#{nombre_archivo}.zip /tmp/#{nombre_archivo}"
-      Open3.popen3(cmd) do |stdin, stdout, stderr|
-        stdin.close
-        stdout.close
-        stderr.close
-      end
-    rescue Exception => e
-      puts e.message  
-      puts e.backtrace.inspect
+    cmd = "zip -j #{Rails.root}/public/data/#{nombre_archivo}.zip /tmp/#{nombre_archivo}"
+    Open3.popen3(cmd) do |stdin, stdout, stderr|
+      stdin.close
+      stdout.close
+      stderr.close
     end
+
   end
 
+  def descargas_matriculas
+
+    require 'csv'
+    c = Curl::Easy.new("http://localhost:3000/app/service_actualizaciones_actualizacion_geometrias")
+    c.http_auth_types = :basic
+    c.username = 'mecpy'
+    c.password = 'mecpy2015'
+    c.perform
+
+=begin
+    anios = [2013, 2012]
+    for year in anios
+        
+        nombre_archivo = matricula_inici
+        
+        cond = "anio = #{year}"
+        matriculaciones_inicial_csv = MatriculacionInicial.ordenado_institucion.where(cond)
+
+        CSV.open("/home/sebastian/Escritorio/file.csv", "wb", {:force_quotes => true}) do |csv|
+          # header row
+          csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
+            "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad",
+            "nombre_barrio_localidad", "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion",
+            "maternal", "prejardin", "jardin", "preescolar",  "total_matriculados", "anho_cod_geo", "inicial_noformal"]
+
+          # data rows
+          matriculaciones_inicial_csv.each do |mi|
+            csv << [mi.anio, mi.codigo_establecimiento, mi.codigo_departamento, mi.nombre_departamento,
+              mi.codigo_distrito, mi.nombre_distrito, mi.codigo_zona, mi.nombre_zona, mi.codigo_barrio_localidad,
+              mi.nombre_barrio_localidad, mi.codigo_institucion, mi.nombre_institucion, mi.sector_o_tipo_gestion,
+              mi.maternal, mi.prejardin, mi.jardin, mi.preescolar, mi.total_matriculados, mi.anho_cod_geo, mi.inicial_noformal ]
+          end      
+        end
+=end
+  end
 
 end
 
@@ -269,3 +249,7 @@ end
 #INSTALACION DE ZIP
 #sudo apt-get install zip
 #yum install zip
+
+
+#Para el CURL
+#http://stackoverflow.com/questions/16162266/unable-to-install-curb-gem
