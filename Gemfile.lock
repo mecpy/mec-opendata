@@ -60,7 +60,6 @@ GEM
       sass (~> 3.2.19)
     csv_builder (2.1.1)
       actionpack (>= 3.0.0)
-    curb (0.8.8)
     daemons (1.2.3)
     erubis (2.7.0)
     eventmachine (1.0.8)
@@ -207,7 +206,6 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   compass
   csv_builder (= 2.1.1)
-  curb (~> 0.8.8)
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails (= 4.1.2)
@@ -218,6 +216,7 @@ DEPENDENCIES
   rails (= 4.1.0)
   ransack (= 1.2.3)
   recaptcha
+  rubyzip
   sass-rails (~> 4.0.3)
   scrypt (= 1.2.1)
   sdoc (~> 0.4.0)

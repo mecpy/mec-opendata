@@ -170,7 +170,7 @@ class ServiceActualizacionesController < ApplicationController
 
   end
 
-  def crear_archivo_csv_json()
+  def crear_archivo_csv_json
 
     descargas_matriculas();   
 
@@ -184,38 +184,31 @@ class ServiceActualizacionesController < ApplicationController
   end
 
   private
-  def zip_archivo(nombre_archivo)
+  def zip_archivo(nombre_archivo, extensions)
 
-    require 'open3'
-
-    cmd = "zip -j #{Rails.root}/public/data/#{nombre_archivo}.zip /tmp/#{nombre_archivo}"
-    Open3.popen3(cmd) do |stdin, stdout, stderr|
-      stdin.close
-      stdout.close
-      stderr.close
+    folder = "#{Rails.root}/public/data/"
+    for e in extensions
+      filename = nombre_archivo + "." + e
+      zipfile_name = "#{Rails.root}/public/data/" + filename + ".zip"
+      Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
+        zipfile.add(filename, folder + filename)
+      end
+      FileUtils.rm (folder + filename)
     end
 
   end
 
   def descargas_matriculas
 
-    require 'csv'
-    c = Curl::Easy.new("http://localhost:3000/app/service_actualizaciones_actualizacion_geometrias")
-    c.http_auth_types = :basic
-    c.username = 'mecpy'
-    c.password = 'mecpy2015'
-    c.perform
-
-=begin
     anios = [2013, 2012]
     for year in anios
         
-        nombre_archivo = matricula_inici
-        
+        nombre_archivo = "matriculaciones_inicial_#{year}"
         cond = "anio = #{year}"
-        matriculaciones_inicial_csv = MatriculacionInicial.ordenado_institucion.where(cond)
+        matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond)
 
-        CSV.open("/home/sebastian/Escritorio/file.csv", "wb", {:force_quotes => true}) do |csv|
+        #DESCARGA CSV
+        CSV.open("#{Rails.root}/public/data/#{nombre_archivo}.csv", "wb", {:force_quotes => true}) do |csv|
           # header row
           csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
             "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad",
@@ -223,17 +216,51 @@ class ServiceActualizacionesController < ApplicationController
             "maternal", "prejardin", "jardin", "preescolar",  "total_matriculados", "anho_cod_geo", "inicial_noformal"]
 
           # data rows
-          matriculaciones_inicial_csv.each do |mi|
+          matriculaciones_inicial.each do |mi|
             csv << [mi.anio, mi.codigo_establecimiento, mi.codigo_departamento, mi.nombre_departamento,
               mi.codigo_distrito, mi.nombre_distrito, mi.codigo_zona, mi.nombre_zona, mi.codigo_barrio_localidad,
               mi.nombre_barrio_localidad, mi.codigo_institucion, mi.nombre_institucion, mi.sector_o_tipo_gestion,
               mi.maternal, mi.prejardin, mi.jardin, mi.preescolar, mi.total_matriculados, mi.anho_cod_geo, mi.inicial_noformal ]
           end      
         end
-=end
-  end
 
-end
+        #DESCARGA XLS
+        p = Axlsx::Package.new
+      
+        p.workbook.add_worksheet(:name => "Matriculaciones EI") do |sheet|
+          
+          sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
+            :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad,
+            :nombre_barrio_localidad, :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion,
+            :maternal, :prejardin, :jardin, :preescolar, :total_matriculados, :anho_cod_geo, :inicial_noformal ] 
+            
+          matriculaciones_inicial.each do |m|
+              
+            sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad,
+              m.nombre_barrio_localidad, m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion,
+              m.maternal, m.prejardin, m.jardin, m.preescolar, m.total_matriculados, m.anho_cod_geo, m.inicial_noformal ] 
+            
+          end
+
+        end
+
+         p.serialize("#{Rails.root}/public/data/#{nombre_archivo}.xlsx")
+
+         #DESCARGA JSON
+         File.open("#{Rails.root}/public/data/#{nombre_archivo}.json","w") do |f|
+          f.write(matriculaciones_inicial.to_json)
+        end
+
+        #DESCARGA ZIP
+        #zip_archivo(nombre_archivo, ['xlsx', 'csv', 'json'])
+
+
+    end
+
+  end #end function
+
+end #end class service
 
 #Crear la carpeta geometrias en mec-opendata/app/assets/javascripts
 #curl -X POST http://localhost:3000/app/service_actualizaciones_actualizacion_geometrias
@@ -245,11 +272,3 @@ end
 #INSTALACION DE NODE.JS EN CENTOS
 #https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-a-centos-7-server
 #npm install -g topojson
-
-#INSTALACION DE ZIP
-#sudo apt-get install zip
-#yum install zip
-
-
-#Para el CURL
-#http://stackoverflow.com/questions/16162266/unable-to-install-curb-gem
