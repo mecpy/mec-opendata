@@ -140,6 +140,26 @@
         },
         "ejemplo": "0"
     }, {
+        "nombre": "MATRICULA_ETS_VARON",
+        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en cursos a nivel terciario no universitario de Educación Superior, donde los son de dos y más años de duración, con estructura curricular modular elaborada a partir de las demandas y que tienen un fuerte acento en el sector terciario de producción (servicios) con predominio del sector privado",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "0"
+    }, {
+        "nombre": "MATRICULA_ETS_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en cursos a nivel terciario no universitario de Educación Superior, donde los son de dos y más años de duración, con estructura curricular modular elaborada a partir de las demandas y que tienen un fuerte acento en el sector terciario de producción (servicios) con predominio del sector privado",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "0"
+    }, {
         "nombre": "MATRICULA_FED",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en cursos de Profesorado en Educación Inicial (3 años de duración), Profesorado en Educación Escolar Básica —1.° y 2.° ciclo— (3 años de duración), Profesorado para Educación Escolar Básica —3.er ciclo—, por áreas de especialidad (4 años de duración) y Profesorado para la Educación Media, por áreas de especialidad (3 años de duración) de Educación Superior, además se desarrollan cursos de especialización en Ciencias de la Educación, Orientación Educacional y Vocacional, Evaluación y Administración Escolar, entre otros, de 2 años de duración respectivamente. Otros tipos de cursos se refieren a la profesionalización de docentes, a fin de brindar título docente a los bachilleres en servicio y a profesionales universitarios que ejercen la docencia sin contar con formación pedagógica",
         "tipo": "xsd:positiveInteger",
@@ -150,8 +170,48 @@
         },
         "ejemplo": "60"
     }, {
+        "nombre": "MATRICULA_FED_VARON",
+        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en cursos de Profesorado en Educación Inicial (3 años de duración), Profesorado en Educación Escolar Básica —1.° y 2.° ciclo— (3 años de duración), Profesorado para Educación Escolar Básica —3.er ciclo—, por áreas de especialidad (4 años de duración) y Profesorado para la Educación Media, por áreas de especialidad (3 años de duración) de Educación Superior, además se desarrollan cursos de especialización en Ciencias de la Educación, Orientación Educacional y Vocacional, Evaluación y Administración Escolar, entre otros, de 2 años de duración respectivamente. Otros tipos de cursos se refieren a la profesionalización de docentes, a fin de brindar título docente a los bachilleres en servicio y a profesionales universitarios que ejercen la docencia sin contar con formación pedagógica",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "30"
+    }, {
+        "nombre": "MATRICULA_FED_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en cursos de Profesorado en Educación Inicial (3 años de duración), Profesorado en Educación Escolar Básica —1.° y 2.° ciclo— (3 años de duración), Profesorado para Educación Escolar Básica —3.er ciclo—, por áreas de especialidad (4 años de duración) y Profesorado para la Educación Media, por áreas de especialidad (3 años de duración) de Educación Superior, además se desarrollan cursos de especialización en Ciencias de la Educación, Orientación Educacional y Vocacional, Evaluación y Administración Escolar, entre otros, de 2 años de duración respectivamente. Otros tipos de cursos se refieren a la profesionalización de docentes, a fin de brindar título docente a los bachilleres en servicio y a profesionales universitarios que ejercen la docencia sin contar con formación pedagógica",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "30"
+    }, {
         "nombre": "MATRICULA_FDES",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en cursos de formación docente en servicios de Educación Superior, que se refieren a la profesionalización de docentes, a fin de brindar título docente a los bachilleres en servicio",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "0"
+    }, {
+        "nombre": "MATRICULA_FDES_VARON",
+        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en cursos de formación docente en servicios de Educación Superior, que se refieren a la profesionalización de docentes, a fin de brindar título docente a los bachilleres en servicio",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "0"
+    }, {
+        "nombre": "MATRICULA_FDES_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en cursos de formación docente en servicios de Educación Superior, que se refieren a la profesionalización de docentes, a fin de brindar título docente a los bachilleres en servicio",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -169,6 +229,26 @@
             "enlace": ""
         },
         "ejemplo": "265"
+    }, {
+        "nombre": "MATRICULA_PD_VARON",
+        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en cursos profesionalización docente de Educación Superior, dirigido a profesionales universitarios que ejercen la docencia sin contar con formación pedagógica",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "165"
+    }, {
+        "nombre": "MATRICULA_PD_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en cursos profesionalización docente de Educación Superior, dirigido a profesionales universitarios que ejercen la docencia sin contar con formación pedagógica",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "100"
     }, {
         "nombre": "ANHO_COD_GEO",
         "descripcion": "Se refiere al año de captura de los datos georreferenciados censales, teniendo en cuenta que por cada año censal pueden diferir los codigos de distritos o codigos de localidades, como a si también las descripciones. La cartografía nacional fue proveída por al Dirección General de Estadística, Encuestas y Censos (DGEEC - http://www.dgeec.gov.py/)",

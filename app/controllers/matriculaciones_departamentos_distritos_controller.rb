@@ -88,25 +88,26 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
       require 'csv'
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        matriculaciones_departamentos_distritos_csv = MatriculacionDepartamentoDistrito.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+        matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
       else
-        matriculaciones_departamentos_distritos_csv = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
+        matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
       end
 
       csv = CSV.generate do |csv|
         # header row
         csv << ["anio", "codigo_departamento", "nombre_departamento",
           "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona",
-          "sector_o_tipo_gestion", "cantidad_matriculados", "anho_cod_geo" ]
- 
-        # data rows
-        matriculaciones_departamentos_distritos_csv.each do |e|
-          csv << [e.anio, e.codigo_departamento, e.nombre_departamento, 
-            e.codigo_distrito, e.nombre_distrito,e.codigo_zona, e.nombre_zona,
-            e.sector_o_tipo_gestion, e.cantidad_matriculados, e.anho_cod_geo ]
-        end
+          "sector_o_tipo_gestion", "anho_cod_geo",
+          "cantidad_matriculados_varon", "cantidad_matriculados_mujer"]
 
-      end
+        # data rows
+        matriculaciones_departamentos_distritos.each do |m|
+          csv << [m.anio, m.codigo_departamento, m.nombre_departamento,
+            m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona,
+            m.sector_o_tipo_gestion, m.anho_cod_geo,
+            m.cantidad_matriculados_varon, m.cantidad_matriculados_mujer]
+        end      
+       end
       
       send_data(csv, :type => 'text/csv', :filename => "matriculaciones_departamentos_distritos_#{Time.now.strftime('%Y%m%d')}.csv")
 
@@ -118,22 +119,19 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
         @matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
       end
 
-      p = Axlsx::Package.new
-      
-      p.workbook.add_worksheet(:name => "Matriculaciones") do |sheet|
-          
-        sheet.add_row [:anio, :codigo_departamento, :nombre_departamento, 
+      p = Axlsx::Package.new     
+      p.workbook.add_worksheet(:name => "Matriculaciones EDD") do |sheet|          
+        sheet.add_row [:anio, :codigo_departamento, :nombre_departamento,
           :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona,
-          :sector_o_tipo_gestion, :cantidad_matriculados, :anho_cod_geo ]
-
-        @matriculaciones_departamentos_distritos.each do |m|
-            
-          sheet.add_row [m.anio, m.codigo_departamento, m.nombre_departamento, 
-            m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona,
-            m.sector_o_tipo_gestion, m.cantidad_matriculados, m.anho_cod_geo ]
+          :sector_o_tipo_gestion, :anho_cod_geo,
+          :cantidad_matriculados_varon, :cantidad_matriculados_mujer]
           
+        matriculaciones_departamentos_distritos.each do |m|              
+          sheet.add_row [m.anio, m.codigo_departamento, m.nombre_departamento,
+            m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona,
+            m.sector_o_tipo_gestion, m.anho_cod_geo,
+            m.cantidad_matriculados_varon, m.cantidad_matriculados_mujer]
         end
-
       end
       
       p.use_shared_strings = true

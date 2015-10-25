@@ -139,6 +139,26 @@
             "enlace": ""
         },
         "ejemplo": "104"
+   }, {
+        "nombre": "1ER._GRADO_VARON",
+        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el primer grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "54"
+   }, {
+        "nombre": "1ER._GRADO_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en el primer grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "50"
     }, {
         "nombre": "2DO._GRADO",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en el segundo grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
@@ -150,6 +170,26 @@
         },
         "ejemplo": "117"
     }, {
+        "nombre": "2DO._GRADO_VARON",
+        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el segundo grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "100"
+    }, {
+        "nombre": "2DO._GRADO_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en el segundo grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "17"
+    }, {
         "nombre": "3ER._GRADO",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en el tercer grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
         "tipo": "xsd:positiveInteger",
@@ -159,6 +199,26 @@
             "enlace": ""
         },
         "ejemplo": "137"
+    }, {
+        "nombre": "3ER._GRADO_VARON",
+        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el tercer grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "100"
+    }, {
+        "nombre": "3ER._GRADO_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en el tercer grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "37"
     }, {
         "nombre": "4TO._GRADO",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en el cuarto grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
@@ -170,6 +230,26 @@
         },
         "ejemplo": "122"
     }, {
+        "nombre": "4TO._GRADO_VARON",
+        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el cuarto grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "100"
+    }, {
+        "nombre": "4TO._GRADO_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en el cuarto grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "22"
+    }, {
         "nombre": "5TO._GRADO",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en el quinto grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
         "tipo": "xsd:positiveInteger",
@@ -179,6 +259,26 @@
             "enlace": ""
         },
         "ejemplo": "139"
+    }, {
+        "nombre": "5TO._GRADO_VARON",
+        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el quinto grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "100"
+    }, {
+        "nombre": "5TO._GRADO_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en el quinto grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "39"
     }, {
         "nombre": "6TO._GRADO",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en el sexto grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
@@ -190,8 +290,48 @@
         },
         "ejemplo": "109"
     }, {
+        "nombre": "6TO._GRADO_VARON",
+        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el sexto grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "100"
+    }, {
+        "nombre": "6TO._GRADO_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en el sexto grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "9"
+    }, {
         "nombre": "7MO._GRADO",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en el septimo grado correspondiente al nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "0"
+    }, {
+        "nombre": "7MO._GRADO_VARON",
+        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el septimo grado correspondiente al nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "0"
+    }, {
+        "nombre": "7MO._GRADO_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en el septimo grado correspondiente al nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -210,6 +350,26 @@
         },
         "ejemplo": "0"
     }, {
+        "nombre": "8VO._GRADO_VARON",
+        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el octavo grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "0"
+    }, {
+        "nombre": "8VO._GRADO_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en el octavo grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "0"
+    }, {
         "nombre": "9NO._GRADO",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en el noveno grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
         "tipo": "xsd:positiveInteger",
@@ -220,6 +380,26 @@
         },
         "ejemplo": "120"
     }, {
+        "nombre": "9NO._GRADO_VARON",
+        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el noveno grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "80"
+    }, {
+        "nombre": "9NO._GRADO_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en el noveno grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "40"
+    }, {
         "nombre": "TOTAL_MATRICULADOS",
         "descripcion": "Representa la cantidad total de estudiantes inscriptos en la institución de los grados del nivel Educación Escolar Básica",
         "tipo": "xsd:positiveInteger",
@@ -229,6 +409,26 @@
             "enlace": ""
         },
         "ejemplo": "728"
+    }, {
+        "nombre": "TOTAL_MATRICULADOS_VARON",
+        "descripcion": "Representa la cantidad total de estudiantes varones inscriptos en la institución de los grados del nivel Educación Escolar Básica",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "428"
+    }, {
+        "nombre": "TOTAL_MATRICULADOS_MUJER",
+        "descripcion": "Representa la cantidad total de estudiantes mujeres inscriptas en la institución de los grados del nivel Educación Escolar Básica",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "300"
     }, {
         "nombre": "ANHO_COD_GEO",
         "descripcion": "Se refiere al año de captura de los datos georreferenciados censales, teniendo en cuenta que por cada año censal pueden diferir los codigos de distritos o codigos de localidades, como a si también las descripciones. La cartografía nacional fue proveída por al Dirección General de Estadística, Encuestas y Censos (DGEEC - http://www.dgeec.gov.py/)",

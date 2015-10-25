@@ -202,7 +202,10 @@ class ServiceActualizacionesController < ApplicationController
 
     anios = [2013, 2012]
     for year in anios
-        
+
+        ###
+        ###MATRICULAS EDUCACION INICIAL###
+        ###
         nombre_archivo = "matriculaciones_inicial_#{year}"
         cond = "anio = #{year}"
         matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond)
@@ -211,45 +214,386 @@ class ServiceActualizacionesController < ApplicationController
         CSV.open("#{Rails.root}/public/data/#{nombre_archivo}.csv", "wb", {:force_quotes => true}) do |csv|
           # header row
           csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
-            "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad",
-            "nombre_barrio_localidad", "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion",
-            "maternal", "prejardin", "jardin", "preescolar",  "total_matriculados", "anho_cod_geo", "inicial_noformal"]
+            "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
+            "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
+            "maternal_varon", "maternal_mujer", "prejardin_varon", "prejardin_mujer", "jardin_varon", "jardin_mujer",
+            "preescolar_varon", "preescolar_mujer", "total_matriculados_varon", "total_matriculados_mujer",
+            "inicial_noformal_varon", "inicial_noformal_mujer"]
 
           # data rows
-          matriculaciones_inicial.each do |mi|
-            csv << [mi.anio, mi.codigo_establecimiento, mi.codigo_departamento, mi.nombre_departamento,
-              mi.codigo_distrito, mi.nombre_distrito, mi.codigo_zona, mi.nombre_zona, mi.codigo_barrio_localidad,
-              mi.nombre_barrio_localidad, mi.codigo_institucion, mi.nombre_institucion, mi.sector_o_tipo_gestion,
-              mi.maternal, mi.prejardin, mi.jardin, mi.preescolar, mi.total_matriculados, mi.anho_cod_geo, mi.inicial_noformal ]
+          matriculaciones_inicial.each do |m|
+            csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.maternal_varon, m.maternal_mujer, m.prejardin_varon, m.prejardin_mujer, m.jardin_varon, m.jardin_mujer,
+              m.preescolar_varon, m.preescolar_mujer, m.total_matriculados_varon, m.total_matriculados_mujer,
+              m.inicial_noformal_varon, m.inicial_noformal_mujer]
+          end      
+        end
+
+        #DESCARGA XLS
+        p = Axlsx::Package.new      
+        p.workbook.add_worksheet(:name => "Matriculaciones EI") do |sheet|          
+          sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
+            :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
+            :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
+            :maternal_varon, :maternal_mujer, :prejardin_varon, :prejardin_mujer, :jardin_varon, :jardin_mujer,
+            :preescolar_varon, :preescolar_mujer, :total_matriculados_varon, :total_matriculados_mujer,
+            :inicial_noformal_varon, :inicial_noformal_mujer]
+            
+          matriculaciones_inicial.each do |m|              
+            sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.maternal_varon, m.maternal_mujer, m.prejardin_varon, m.prejardin_mujer, m.jardin_varon, m.jardin_mujer,
+              m.preescolar_varon, m.preescolar_mujer, m.total_matriculados_varon, m.total_matriculados_mujer,
+              m.inicial_noformal_varon, m.inicial_noformal_mujer]            
+          end
+        end
+
+        p.serialize("#{Rails.root}/public/data/#{nombre_archivo}.xlsx")
+
+        #DESCARGA JSON
+        File.open("#{Rails.root}/public/data/#{nombre_archivo}.json","w") do |f|
+          f.write(matriculaciones_inicial.to_json)
+        end
+
+        #DESCARGA ZIP
+        #zip_archivo(nombre_archivo, ['xlsx', 'csv', 'json'])
+
+
+        ###
+        ###MATRICULAS EDUCACION ESCOLAR BASICA###
+        ###
+        nombre_archivo = "matriculaciones_educacion_escolar_basica_#{year}"
+        cond = "anio = #{year}"
+        matriculaciones_educacion_escolar_basica = MatriculacionEducacionEscolarBasica.ordenado_institucion.where(cond)
+
+        #DESCARGA CSV
+        CSV.open("#{Rails.root}/public/data/#{nombre_archivo}.csv", "wb", {:force_quotes => true}) do |csv|
+          # header row
+          csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
+            "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
+            "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
+            "primer_grado_varon", "primer_grado_mujer", "segundo_grado_varon", "segundo_grado_mujer", "tercer_grado_varon", "tercer_grado_mujer",
+            "cuarto_grado_varon", "cuarto_grado_mujer", "quinto_grado_varon", "quinto_grado_mujer", "sexto_grado_varon", "sexto_grado_mujer",
+            "septimo_grado_varon", "septimo_grado_mujer", "octavo_grado_varon", "octavo_grado_mujer","noveno_grado_varon", "noveno_grado_mujer",
+            "total_matriculados_varon", "total_matriculados_mujer"]
+
+          # data rows
+          matriculaciones_educacion_escolar_basica.each do |m|
+            csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.primer_grado_varon, m.primer_grado_mujer, m.segundo_grado_varon, m.segundo_grado_mujer, m.tercer_grado_varon, m.tercer_grado_mujer,
+              m.cuarto_grado_varon, m.cuarto_grado_mujer, m.quinto_grado_varon, m.quinto_grado_mujer, m.sexto_grado_varon, m.sexto_grado_mujer,
+              m.septimo_grado_varon, m.septimo_grado_mujer, m.octavo_grado_varon, m.octavo_grado_mujer, m.noveno_grado_varon, m.noveno_grado_mujer,
+              m.total_matriculados_varon, m.total_matriculados_mujer ]
           end      
         end
 
         #DESCARGA XLS
         p = Axlsx::Package.new
-      
-        p.workbook.add_worksheet(:name => "Matriculaciones EI") do |sheet|
-          
+        p.workbook.add_worksheet(:name => "Matriculaciones EEB") do |sheet|         
           sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
-            :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad,
-            :nombre_barrio_localidad, :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion,
-            :maternal, :prejardin, :jardin, :preescolar, :total_matriculados, :anho_cod_geo, :inicial_noformal ] 
+            :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
+            :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
+            :primer_grado_varon, :primer_grado_mujer, :segundo_grado_varon, :segundo_grado_mujer, :tercer_grado_varon, :tercer_grado_mujer,
+            :cuarto_grado_varon, :cuarto_grado_mujer, :quinto_grado_varon, :quinto_grado_mujer, :sexto_grado_varon, :sexto_grado_mujer,
+            :septimo_grado_varon, :septimo_grado_mujer, :octavo_grado_varon, :octavo_grado_mujer, :noveno_grado_varon, :noveno_grado_mujer,
+            :total_matriculados_varon, :total_matriculados_mujer] 
             
-          matriculaciones_inicial.each do |m|
-              
+          matriculaciones_educacion_escolar_basica.each do |m|             
             sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
-              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad,
-              m.nombre_barrio_localidad, m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion,
-              m.maternal, m.prejardin, m.jardin, m.preescolar, m.total_matriculados, m.anho_cod_geo, m.inicial_noformal ] 
-            
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.primer_grado_varon, m.primer_grado_mujer, m.segundo_grado_varon, m.segundo_grado_mujer, m.tercer_grado_varon, m.tercer_grado_mujer,
+              m.cuarto_grado_varon, m.cuarto_grado_mujer, m.quinto_grado_varon, m.quinto_grado_mujer, m.sexto_grado_varon, m.sexto_grado_mujer,
+              m.septimo_grado_varon, m.septimo_grado_mujer, m.octavo_grado_varon, m.octavo_grado_mujer, m.noveno_grado_varon, m.noveno_grado_mujer,
+              m.total_matriculados_varon, m.total_matriculados_mujer ]          
           end
-
         end
 
-         p.serialize("#{Rails.root}/public/data/#{nombre_archivo}.xlsx")
+        p.serialize("#{Rails.root}/public/data/#{nombre_archivo}.xlsx")
 
-         #DESCARGA JSON
-         File.open("#{Rails.root}/public/data/#{nombre_archivo}.json","w") do |f|
-          f.write(matriculaciones_inicial.to_json)
+        #DESCARGA JSON
+        File.open("#{Rails.root}/public/data/#{nombre_archivo}.json","w") do |f|
+          f.write(matriculaciones_educacion_escolar_basica.to_json)
+        end
+
+        #DESCARGA ZIP
+        #zip_archivo(nombre_archivo, ['xlsx', 'csv', 'json'])
+
+
+        ###
+        ###MATRICULAS EDUCACION MEDIA###
+        ###
+        nombre_archivo = "matriculaciones_educacion_media_#{year}"
+        cond = "anio = #{year}"
+        matriculaciones_educacion_media = MatriculacionEducacionMedia.ordenado_institucion.where(cond)
+
+        #DESCARGA CSV
+        CSV.open("#{Rails.root}/public/data/#{nombre_archivo}.csv", "wb", {:force_quotes => true}) do |csv|
+          # header row
+          csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
+            "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
+            "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
+            "matricula_cientifico_varon", "matricula_cientifico_mujer", "matricula_tecnico_varon", "matricula_tecnico_mujer",
+            "matricula_media_abierta_varon", "matricula_media_abierta_mujer", "matricula_formacion_profesional_media_varon", "matricula_formacion_profesional_media_mujer"]
+
+          # data rows
+          matriculaciones_educacion_media.each do |m|
+            csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.matricula_cientifico_varon, m.matricula_cientifico_mujer, m.matricula_tecnico_varon, m.matricula_tecnico_mujer,
+              m.matricula_media_abierta_varon, m.matricula_media_abierta_mujer, m.matricula_formacion_profesional_media_varon, m.matricula_formacion_profesional_media_mujer]
+          end      
+        end
+
+        #DESCARGA XLS
+        p = Axlsx::Package.new    
+        p.workbook.add_worksheet(:name => "Matriculaciones EEM") do |sheet|        
+          sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
+            :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
+            :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
+            :matricula_cientifico_varon, :matricula_cientifico_mujer, :matricula_tecnico_varon, :matricula_tecnico_mujer,
+            :matricula_media_abierta_varon, :matricula_media_abierta_mujer, :matricula_formacion_profesional_media_varon, :matricula_formacion_profesional_media_mujer] 
+            
+          matriculaciones_educacion_media.each do |m|              
+            sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.matricula_cientifico_varon, m.matricula_cientifico_mujer, m.matricula_tecnico_varon, m.matricula_tecnico_mujer,
+              m.matricula_media_abierta_varon, m.matricula_media_abierta_mujer, m.matricula_formacion_profesional_media_varon, m.matricula_formacion_profesional_media_mujer]      
+          end
+        end
+
+        p.serialize("#{Rails.root}/public/data/#{nombre_archivo}.xlsx")
+
+        #DESCARGA JSON
+        File.open("#{Rails.root}/public/data/#{nombre_archivo}.json","w") do |f|
+          f.write(matriculaciones_educacion_media.to_json)
+        end
+
+        #DESCARGA ZIP
+        #zip_archivo(nombre_archivo, ['xlsx', 'csv', 'json'])
+
+
+        ###
+        ###MATRICULAS EDUCACION INCLUSIVA###
+        ###
+        nombre_archivo = "matriculaciones_educacion_inclusiva_#{year}"
+        cond = "anio = #{year}"
+        matriculaciones_educacion_inclusiva = MatriculacionEducacionInclusiva.ordenado_institucion.where(cond)
+
+        #DESCARGA CSV
+        CSV.open("#{Rails.root}/public/data/#{nombre_archivo}.csv", "wb", {:force_quotes => true}) do |csv|
+          # header row
+          csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
+            "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
+            "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
+            "matricula_inicial_especial_varon", "matricula_inicial_especial_mujer", "matricula_primer_y_segundo_ciclo_especial_varon", "matricula_primer_y_segundo_ciclo_especial_mujer",
+            "matricula_tercer_ciclo_especial_varon", "matricula_tercer_ciclo_especial_mujer", "matricula_programas_especiales_varon", "matricula_programas_especiales_mujer"]
+
+          # data rows
+          matriculaciones_educacion_inclusiva.each do |m|
+            csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.matricula_inicial_especial_varon, m.matricula_inicial_especial_mujer, m.matricula_primer_y_segundo_ciclo_especial_varon, m.matricula_primer_y_segundo_ciclo_especial_mujer,
+              m.matricula_tercer_ciclo_especial_varon, m.matricula_tercer_ciclo_especial_mujer, m.matricula_programas_especiales_varon, m.matricula_programas_especiales_mujer]
+          end      
+        end
+
+        #DESCARGA XLS
+        p = Axlsx::Package.new      
+        p.workbook.add_worksheet(:name => "Matriculaciones EI") do |sheet|          
+          sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
+            :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
+            :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
+            :matricula_inicial_especial_varon, :matricula_inicial_especial_mujer, :matricula_primer_y_segundo_ciclo_especial_varon, :matricula_primer_y_segundo_ciclo_especial_mujer,
+            :matricula_tercer_ciclo_especial_varon, :matricula_tercer_ciclo_especial_mujer, :matricula_programas_especiales_varon, :matricula_programas_especiales_mujer] 
+            
+          matriculaciones_educacion_inclusiva.each do |m|             
+            sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.matricula_inicial_especial_varon, m.matricula_inicial_especial_mujer, m.matricula_primer_y_segundo_ciclo_especial_varon, m.matricula_primer_y_segundo_ciclo_especial_mujer,
+              m.matricula_tercer_ciclo_especial_varon, m.matricula_tercer_ciclo_especial_mujer, m.matricula_programas_especiales_varon, m.matricula_programas_especiales_mujer]           
+          end
+        end
+
+        p.serialize("#{Rails.root}/public/data/#{nombre_archivo}.xlsx")
+
+        #DESCARGA JSON
+        File.open("#{Rails.root}/public/data/#{nombre_archivo}.json","w") do |f|
+          f.write(matriculaciones_educacion_inclusiva.to_json)
+        end
+
+        #DESCARGA ZIP
+        #zip_archivo(nombre_archivo, ['xlsx', 'csv', 'json'])
+
+
+        ###
+        ###MATRICULAS EDUCACION PERMANENTE###
+        ###
+        nombre_archivo = "matriculaciones_educacion_permanente_#{year}"
+        cond = "anio = #{year}"
+        matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.ordenado_institucion.where(cond)
+
+        #DESCARGA CSV
+        CSV.open("#{Rails.root}/public/data/#{nombre_archivo}.csv", "wb", {:force_quotes => true}) do |csv|
+          # header row
+          csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
+            "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
+            "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
+            "matricula_ebbja_varon", "matricula_ebbja_mujer", "matricula_fpi_varon", "matricula_fpi_mujer",
+            "matricula_emapja_varon", "matricula_emapja_mujer", "matricula_emdja_varon", "matricula_emdja_mujer",
+            "matricula_fp_varon", "matricula_fp_mujer"]
+
+          # data rows
+          matriculaciones_educacion_permanente.each do |m|
+            csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.matricula_ebbja_varon, m.matricula_ebbja_mujer, m.matricula_fpi_varon, m.matricula_fpi_mujer,
+              m.matricula_emapja_varon, m.matricula_emapja_mujer, m.matricula_emdja_varon, m.matricula_emdja_mujer,
+              m.matricula_fp_varon, m.matricula_fp_mujer]
+          end      
+        end
+
+        #DESCARGA XLS
+        p = Axlsx::Package.new     
+        p.workbook.add_worksheet(:name => "Matriculaciones EP") do |sheet|       
+          sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
+            :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
+            :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
+            :matricula_ebbja_varon, :matricula_ebbja_mujer, :matricula_fpi_varon, :matricula_fpi_mujer,
+            :matricula_emapja_varon, :matricula_emapja_mujer, :matricula_emdja_varon, :matricula_emdja_mujer,
+            :matricula_fp_varon, :matricula_fp_mujer]
+            
+          matriculaciones_educacion_permanente.each do |m|          
+            sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.matricula_ebbja_varon, m.matricula_ebbja_mujer, m.matricula_fpi_varon, m.matricula_fpi_mujer,
+              m.matricula_emapja_varon, m.matricula_emapja_mujer, m.matricula_emdja_varon, m.matricula_emdja_mujer,
+              m.matricula_fp_varon, m.matricula_fp_mujer]            
+          end
+        end
+
+        p.serialize("#{Rails.root}/public/data/#{nombre_archivo}.xlsx")
+
+        #DESCARGA JSON
+        File.open("#{Rails.root}/public/data/#{nombre_archivo}.json","w") do |f|
+          f.write(matriculaciones_educacion_permanente.to_json)
+        end
+
+        #DESCARGA ZIP
+        #zip_archivo(nombre_archivo, ['xlsx', 'csv', 'json'])
+
+
+        ###
+        ###MATRICULAS EDUCACION SUPERIOR###
+        ###
+        nombre_archivo = "matriculaciones_educacion_superior_#{year}"
+        cond = "anio = #{year}"
+        matriculaciones_educacion_superior = MatriculacionEducacionSuperior.ordenado_institucion.where(cond)
+
+        #DESCARGA CSV
+        CSV.open("#{Rails.root}/public/data/#{nombre_archivo}.csv", "wb", {:force_quotes => true}) do |csv|
+          # header row
+          csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
+            "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
+            "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
+            "matricula_ets_varon", "matricula_ets_mujer", "matricula_fed_varon", "matricula_fed_mujer",
+            "matricula_fdes_varon", "matricula_fdes_mujer", "matricula_pd_varon", "matricula_pd_mujer"]
+
+          # data rows
+          matriculaciones_educacion_superior.each do |m|
+            csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.matricula_ets_varon, m.matricula_ets_mujer, m.matricula_fed_varon, m.matricula_fed_mujer,
+              m.matricula_fdes_varon, m.matricula_fdes_mujer, m.matricula_pd_varon, m.matricula_pd_mujer]
+          end      
+        end
+
+        #DESCARGA XLS
+        p = Axlsx::Package.new     
+        p.workbook.add_worksheet(:name => "Matriculaciones ES") do |sheet|         
+          sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
+            :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
+            :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
+            :matricula_ets_varon, :matricula_ets_mujer, :matricula_fed_varon, :matricula_fed_mujer,
+            :matricula_fdes_varon, :matricula_fdes_mujer, :matricula_pd_varon, :matricula_pd_mujer]
+            
+          matriculaciones_educacion_superior.each do |m|             
+            sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.matricula_ets_varon, m.matricula_ets_mujer, m.matricula_fed_varon, m.matricula_fed_mujer,
+              m.matricula_fdes_varon, m.matricula_fdes_mujer, m.matricula_pd_varon, m.matricula_pd_mujer]           
+          end
+        end
+
+        p.serialize("#{Rails.root}/public/data/#{nombre_archivo}.xlsx")
+
+        #DESCARGA JSON
+        File.open("#{Rails.root}/public/data/#{nombre_archivo}.json","w") do |f|
+          f.write(matriculaciones_educacion_superior.to_json)
+        end
+
+        #DESCARGA ZIP
+        #zip_archivo(nombre_archivo, ['xlsx', 'csv', 'json'])
+
+
+        ###
+        ###MATRICULAS DEPARTAMENTOS Y DISTRITOS###
+        ###
+        nombre_archivo = "matriculaciones_departamentos_distritos_#{year}"
+        cond = "anio = #{year}"
+        matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
+
+        #DESCARGA CSV
+        CSV.open("#{Rails.root}/public/data/#{nombre_archivo}.csv", "wb", {:force_quotes => true}) do |csv|
+          # header row
+          csv << ["anio", "codigo_departamento", "nombre_departamento",
+            "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona",
+            "sector_o_tipo_gestion", "anho_cod_geo",
+            "cantidad_matriculados_varon", "cantidad_matriculados_mujer"]
+
+          # data rows
+          matriculaciones_departamentos_distritos.each do |m|
+            csv << [m.anio, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona,
+              m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.cantidad_matriculados_varon, m.cantidad_matriculados_mujer]
+          end      
+         end
+
+        #DESCARGA XLS
+        p = Axlsx::Package.new     
+        p.workbook.add_worksheet(:name => "Matriculaciones EDD") do |sheet|          
+          sheet.add_row [:anio, :codigo_departamento, :nombre_departamento,
+            :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona,
+            :sector_o_tipo_gestion, :anho_cod_geo,
+            :cantidad_matriculados_varon, :cantidad_matriculados_mujer]
+            
+          matriculaciones_departamentos_distritos.each do |m|              
+            sheet.add_row [m.anio, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona,
+              m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.cantidad_matriculados_varon, m.cantidad_matriculados_mujer]
+          end
+        end
+
+        p.serialize("#{Rails.root}/public/data/#{nombre_archivo}.xlsx")
+
+        #DESCARGA JSON
+        File.open("#{Rails.root}/public/data/#{nombre_archivo}.json","w") do |f|
+          f.write(matriculaciones_departamentos_distritos.to_json)
         end
 
         #DESCARGA ZIP

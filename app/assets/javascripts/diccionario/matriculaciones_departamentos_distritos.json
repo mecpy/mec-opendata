@@ -90,6 +90,26 @@
         },
         "ejemplo": "93354"
     }, {
+        "nombre": "CANTIDAD_MATRICULADOS_VARON",
+        "descripcion": "Representa la cantidad total de matriculados varones en los departamentos por distrito",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "53354"
+    }, {
+        "nombre": "CANTIDAD_MATRICULADOS_MUJER",
+        "descripcion": "Representa la cantidad total de matriculadas mujeres en los departamentos por distrito",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "40000"
+    }, {
         "nombre": "ANHO_COD_GEO",
         "descripcion": "Se refiere al año de captura de los datos georreferenciados censales, teniendo en cuenta que por cada año censal pueden diferir los codigos de distritos o codigos de localidades, como a si también las descripciones. La cartografía nacional fue proveída por al Dirección General de Estadística, Encuestas y Censos (DGEEC - http://www.dgeec.gov.py/)",
         "tipo": "xsd:gYear",

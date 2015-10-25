@@ -182,18 +182,28 @@ class MatriculacionesEducacionEscolarBasicaController < ApplicationController
       require 'csv'
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        matriculaciones_educacion_escolar_basica_csv = MatriculacionEducacionEscolarBasica.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+        matriculaciones_educacion_escolar_basica = MatriculacionEducacionEscolarBasica.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
       else
-        matriculaciones_educacion_escolar_basica_csv = MatriculacionEducacionEscolarBasica.ordenado_institucion.where(cond)
+        matriculaciones_educacion_escolar_basica = MatriculacionEducacionEscolarBasica.ordenado_institucion.where(cond)
       end
 
       csv = CSV.generate do |csv|
-        csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad",
-          "nombre_barrio_localidad", "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "primer_grado", "segundo_grado", "tercer_grado", "cuarto_grado", "quinto_grado", "sexto_grado", "septimo_grado", "octavo_grado", "noveno_grado", "total_matriculados", "anho_cod_geo" ]
+        csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
+            "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
+            "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
+            "primer_grado_varon", "primer_grado_mujer", "segundo_grado_varon", "segundo_grado_mujer", "tercer_grado_varon", "tercer_grado_mujer",
+            "cuarto_grado_varon", "cuarto_grado_mujer", "quinto_grado_varon", "quinto_grado_mujer", "sexto_grado_varon", "sexto_grado_mujer",
+            "septimo_grado_varon", "septimo_grado_mujer", "octavo_grado_varon", "octavo_grado_mujer","noveno_grado_varon", "noveno_grado_mujer",
+            "total_matriculados_varon", "total_matriculados_mujer"]
  
-        matriculaciones_educacion_escolar_basica_csv.each do |meeb|
-          csv << [meeb.anio, meeb.codigo_establecimiento, meeb.codigo_departamento, meeb.nombre_departamento, meeb.codigo_distrito, meeb.nombre_distrito, meeb.codigo_zona, meeb.nombre_zona, meeb.codigo_barrio_localidad, meeb.nombre_barrio_localidad, meeb.sector_o_tipo_gestion, meeb.codigo_institucion, meeb.nombre_institucion,
-            meeb.primer_grado, meeb.segundo_grado, meeb.tercer_grado, meeb.cuarto_grado, meeb.quinto_grado, meeb.sexto_grado, meeb.septimo_grado, meeb.octavo_grado, meeb.noveno_grado, meeb.total_matriculados, meeb.anho_cod_geo ]
+        matriculaciones_educacion_escolar_basica.each do |m|
+            csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.primer_grado_varon, m.primer_grado_mujer, m.segundo_grado_varon, m.segundo_grado_mujer, m.tercer_grado_varon, m.tercer_grado_mujer,
+              m.cuarto_grado_varon, m.cuarto_grado_mujer, m.quinto_grado_varon, m.quinto_grado_mujer, m.sexto_grado_varon, m.sexto_grado_mujer,
+              m.septimo_grado_varon, m.septimo_grado_mujer, m.octavo_grado_varon, m.octavo_grado_mujer, m.noveno_grado_varon, m.noveno_grado_mujer,
+              m.total_matriculados_varon, m.total_matriculados_mujer ]
         end
 
       end
@@ -203,25 +213,30 @@ class MatriculacionesEducacionEscolarBasicaController < ApplicationController
     elsif params[:format] == 'xlsx'
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        @matriculaciones_educacion_escolar_basica = MatriculacionEducacionEscolarBasica.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+        matriculaciones_educacion_escolar_basica = MatriculacionEducacionEscolarBasica.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
       else
-        @matriculaciones_educacion_escolar_basica = MatriculacionEducacionEscolarBasica.ordenado_institucion.where(cond)
+        matriculaciones_educacion_escolar_basica = MatriculacionEducacionEscolarBasica.ordenado_institucion.where(cond)
       end
 
-      p = Axlsx::Package.new
-      
+      p = Axlsx::Package.new  
       p.workbook.add_worksheet(:name => "Matriculaciones EEB") do |sheet|
-          
-        sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad,
-          :nombre_barrio_localidad, :sector_o_tipo_gestion, :codigo_institucion, :nombre_institucion, :primer_grado, :segundo_grado, :tercer_grado, :cuarto_grado, :quinto_grado, :sexto_grado, :septimo_grado, :octavo_grado, :noveno_grado, :total_matriculados, :anho_cod_geo ]
-          
-        @matriculaciones_educacion_escolar_basica.each do |meeb|
+        sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
+            :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
+            :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
+            :primer_grado_varon, :primer_grado_mujer, :segundo_grado_varon, :segundo_grado_mujer, :tercer_grado_varon, :tercer_grado_mujer,
+            :cuarto_grado_varon, :cuarto_grado_mujer, :quinto_grado_varon, :quinto_grado_mujer, :sexto_grado_varon, :sexto_grado_mujer,
+            :septimo_grado_varon, :septimo_grado_mujer, :octavo_grado_varon, :octavo_grado_mujer, :noveno_grado_varon, :noveno_grado_mujer,
+            :total_matriculados_varon, :total_matriculados_mujer] 
             
-          sheet.add_row [meeb.anio, meeb.codigo_establecimiento, meeb.codigo_departamento, meeb.nombre_departamento, meeb.codigo_distrito, meeb.nombre_distrito, meeb.codigo_zona, meeb.nombre_zona, meeb.codigo_barrio_localidad,
-            meeb.nombre_barrio_localidad, meeb.sector_o_tipo_gestion, meeb.codigo_institucion, meeb.nombre_institucion, meeb.primer_grado, meeb.segundo_grado, meeb.tercer_grado, meeb.cuarto_grado, meeb.quinto_grado, meeb.sexto_grado, meeb.septimo_grado, meeb.octavo_grado, meeb.noveno_grado, meeb.total_matriculados, meeb.anho_cod_geo ]
-          
+          matriculaciones_educacion_escolar_basica.each do |m|              
+            sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.primer_grado_varon, m.primer_grado_mujer, m.segundo_grado_varon, m.segundo_grado_mujer, m.tercer_grado_varon, m.tercer_grado_mujer,
+              m.cuarto_grado_varon, m.cuarto_grado_mujer, m.quinto_grado_varon, m.quinto_grado_mujer, m.sexto_grado_varon, m.sexto_grado_mujer,
+              m.septimo_grado_varon, m.septimo_grado_mujer, m.octavo_grado_varon, m.octavo_grado_mujer, m.noveno_grado_varon, m.noveno_grado_mujer,
+              m.total_matriculados_varon, m.total_matriculados_mujer ]
         end
-
       end
       
       p.use_shared_strings = true

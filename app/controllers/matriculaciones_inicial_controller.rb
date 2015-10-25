@@ -148,24 +148,28 @@ class MatriculacionesInicialController < ApplicationController
       require 'csv'
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        matriculaciones_inicial_csv = MatriculacionInicial.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+        matriculaciones_inicial = MatriculacionInicial.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
       else
-        matriculaciones_inicial_csv = MatriculacionInicial.ordenado_institucion.where(cond)
+        matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond)
       end
 
       csv = CSV.generate do |csv|
         # header row
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
-          "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad",
-          "nombre_barrio_localidad", "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion",
-          "maternal", "prejardin", "jardin", "preescolar",  "total_matriculados", "anho_cod_geo", "inicial_noformal"]
+            "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
+            "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
+            "maternal_varon", "maternal_mujer", "prejardin_varon", "prejardin_mujer", "jardin_varon", "jardin_mujer",
+            "preescolar_varon", "preescolar_mujer", "total_matriculados_varon", "total_matriculados_mujer",
+            "inicial_noformal_varon", "inicial_noformal_mujer"]
  
         # data rows
-        matriculaciones_inicial_csv.each do |mi|
-          csv << [mi.anio, mi.codigo_establecimiento, mi.codigo_departamento, mi.nombre_departamento,
-            mi.codigo_distrito, mi.nombre_distrito, mi.codigo_zona, mi.nombre_zona, mi.codigo_barrio_localidad,
-            mi.nombre_barrio_localidad, mi.codigo_institucion, mi.nombre_institucion, mi.sector_o_tipo_gestion,
-            mi.maternal, mi.prejardin, mi.jardin, mi.preescolar, mi.total_matriculados, mi.anho_cod_geo, mi.inicial_noformal ]
+          matriculaciones_inicial.each do |m|
+            csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.maternal_varon, m.maternal_mujer, m.prejardin_varon, m.prejardin_mujer, m.jardin_varon, m.jardin_mujer,
+              m.preescolar_varon, m.preescolar_mujer, m.total_matriculados_varon, m.total_matriculados_mujer,
+              m.inicial_noformal_varon, m.inicial_noformal_mujer]
         end
 
       end
@@ -175,29 +179,28 @@ class MatriculacionesInicialController < ApplicationController
     elsif params[:format] == 'xlsx'
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        @matriculaciones_inicial = MatriculacionInicial.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+        matriculaciones_inicial = MatriculacionInicial.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
       else
-        @matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond)
+        matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond)
       end
 
-      p = Axlsx::Package.new
-      
-      p.workbook.add_worksheet(:name => "Matriculaciones EI") do |sheet|
-          
+      p = Axlsx::Package.new      
+      p.workbook.add_worksheet(:name => "Matriculaciones EI") do |sheet|          
         sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
-          :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad,
-          :nombre_barrio_localidad, :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion,
-          :maternal, :prejardin, :jardin, :preescolar, :total_matriculados, :anho_cod_geo, :inicial_noformal ] 
+            :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
+            :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
+            :maternal_varon, :maternal_mujer, :prejardin_varon, :prejardin_mujer, :jardin_varon, :jardin_mujer,
+            :preescolar_varon, :preescolar_mujer, :total_matriculados_varon, :total_matriculados_mujer,
+            :inicial_noformal_varon, :inicial_noformal_mujer]
           
-        @matriculaciones_inicial.each do |m|
-            
+        matriculaciones_inicial.each do |m|            
           sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
-            m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad,
-            m.nombre_barrio_localidad, m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion,
-            m.maternal, m.prejardin, m.jardin, m.preescolar, m.total_matriculados, m.anho_cod_geo, m.inicial_noformal ] 
-          
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.maternal_varon, m.maternal_mujer, m.prejardin_varon, m.prejardin_mujer, m.jardin_varon, m.jardin_mujer,
+              m.preescolar_varon, m.preescolar_mujer, m.total_matriculados_varon, m.total_matriculados_mujer,
+              m.inicial_noformal_varon, m.inicial_noformal_mujer]          
         end
-
       end
       
       p.use_shared_strings = true
