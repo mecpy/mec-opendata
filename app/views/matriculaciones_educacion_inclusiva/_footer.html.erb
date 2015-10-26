@@ -71,7 +71,7 @@
       <% if params[:form_buscar_matriculaciones_educacion_inclusiva][:anio].present? %>
 
         <!-- DESCARGAS TOTALES -->
-        <div style="float:left;" data-toggle="tooltip-descarga-total" title="Las descargas totales se realizan por periodo">Descargar todas las Matriculaciones filtradas:</div>
+        <div style="float:left;" data-toggle="tooltip-descarga-total" title="Las descargas totales se realizan por periodo">Descargar todas las Matriculaciones del año <b><%= params[:form_buscar_matriculaciones_educacion_inclusiva][:anio] %></b>:</div>
 
         <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
           <%= descargar_documento(5, params[:form_buscar_matriculaciones_educacion_inclusiva][:anio], "0", "xlsx")%>

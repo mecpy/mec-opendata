@@ -132,6 +132,20 @@ class MatriculacionesInicialController < ApplicationController
       args << params[:form_buscar_matriculaciones_inicial_total_matriculados]
 
     end
+
+    if params[:form_buscar_matriculaciones_inicial_total_matriculados_varon].present?
+
+      cond << "total_matriculados_varon #{params[:form_buscar_matriculaciones_inicial_total_matriculados_varon_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_total_matriculados_varon]
+
+    end
+
+    if params[:form_buscar_matriculaciones_inicial_total_matriculados_mujer].present?
+
+      cond << "total_matriculados_mujer #{params[:form_buscar_matriculaciones_inicial_total_matriculados_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_total_matriculados_mujer]
+
+    end
   
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
     

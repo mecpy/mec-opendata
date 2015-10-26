@@ -337,6 +337,40 @@
         </div>
         </th>
 
+        <th>
+          <span data-titulo="true">Total Matriculados Varón</span>
+          <span class="orden total_matriculados_varon">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_inicial_total_matriculados_varon_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_inicial_total_matriculados_varon, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_total_matriculados_varon');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Total Matriculados Mujer</span>
+          <span class="orden total_matriculados_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_inicial_total_matriculados_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_inicial_total_matriculados_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_total_matriculados_mujer');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
         </tr>
         </thead>
 

@@ -153,11 +153,11 @@
         "nombre": "SEXO",
         "descripcion": "Indica el sexo de la persona",
         "tipo": "xsd:string",
-        "restricciones": "FEMENINO, MASCULINO",
+        "restricciones": "VARON, MUJER",
         "referencia": {
             "texto": "",
             "enlace": ""
         },
-        "ejemplo": "MASCULINO"
+        "ejemplo": "VARON"
     }
 ]

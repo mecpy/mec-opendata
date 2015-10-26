@@ -72,6 +72,20 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
 
     end
 
+    if params[:form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados_varon].present?
+
+      cond << "cantidad_matriculados_varon #{params[:form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados_varon_operador]} ?"
+      args << params[:form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados_varon]
+
+    end
+
+    if params[:form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados_mujer].present?
+
+      cond << "cantidad_matriculados_mujer #{params[:form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados_mujer]
+
+    end
+
 
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
     
