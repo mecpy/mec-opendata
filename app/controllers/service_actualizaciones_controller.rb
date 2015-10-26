@@ -175,7 +175,7 @@ class ServiceActualizacionesController < ApplicationController
     #descargas_matriculas();
     #descargas_contrataciones();
     #descargas_registros_titulos();
-    descargas_nominas();
+    #descargas_nominas();
 
   end
 
@@ -695,66 +695,132 @@ class ServiceActualizacionesController < ApplicationController
 
   def descargas_nominas
       
-    anios = [2013, 2012]
+    anios = [2014, 2015]
     for year in anios
 
-        ###
-        ###MATRICULAS EDUCACION INICIAL###
-        ###
-        nombre_archivo = "matriculaciones_inicial_#{year}"
-        cond = "anio = #{year}"
-        matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond)
-
-        #DESCARGA CSV
-        CSV.open("#{Rails.root}/public/data/#{nombre_archivo}.csv", "wb", {:force_quotes => true}) do |csv|
-          # header row
-          csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
-            "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
-            "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
-            "maternal_varon", "maternal_mujer", "prejardin_varon", "prejardin_mujer", "jardin_varon", "jardin_mujer",
-            "preescolar_varon", "preescolar_mujer", "total_matriculados_varon", "total_matriculados_mujer",
-            "inicial_noformal_varon", "inicial_noformal_mujer"]
-
-          # data rows
-          matriculaciones_inicial.each do |m|
-            csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
-              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
-              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.maternal_varon, m.maternal_mujer, m.prejardin_varon, m.prejardin_mujer, m.jardin_varon, m.jardin_mujer,
-              m.preescolar_varon, m.preescolar_mujer, m.total_matriculados_varon, m.total_matriculados_mujer,
-              m.inicial_noformal_varon, m.inicial_noformal_mujer]
-          end      
+        meses = case year
+        when 2014
+          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        when 2015
+          [1, 2, 3, 4, 5, 6, 7]
         end
 
-        #DESCARGA XLS
-        p = Axlsx::Package.new      
-        p.workbook.add_worksheet(:name => "Matriculaciones EI") do |sheet|          
-          sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
-            :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
-            :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
-            :maternal_varon, :maternal_mujer, :prejardin_varon, :prejardin_mujer, :jardin_varon, :jardin_mujer,
-            :preescolar_varon, :preescolar_mujer, :total_matriculados_varon, :total_matriculados_mujer,
-            :inicial_noformal_varon, :inicial_noformal_mujer]
-            
-          matriculaciones_inicial.each do |m|              
-            sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
-              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
-              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.maternal_varon, m.maternal_mujer, m.prejardin_varon, m.prejardin_mujer, m.jardin_varon, m.jardin_mujer,
-              m.preescolar_varon, m.preescolar_mujer, m.total_matriculados_varon, m.total_matriculados_mujer,
-              m.inicial_noformal_varon, m.inicial_noformal_mujer]            
+        for month in meses
+
+          ###
+          ###NOMINA ADMINISTRATIVOS###
+          ###
+          nombre_archivo = "funcionarios_administrativos_#{year}_#{month}"
+          cond = "n.ano_periodo_pago = #{year} and n.mes_periodo_pago = #{month} and n.es_categoria_administrativa = 1"
+          query = 
+          "
+          SELECT
+            n.ano_periodo_pago as anio,
+            n.mes_periodo_pago as mes,
+            n.codigo_trabajador as documento,
+            n.nombre_trabajador as funcionario,
+                CASE
+                    WHEN n.numero_tipo_presupuesto_puesto = 1 THEN 'Permanente'::text
+                    WHEN n.numero_tipo_presupuesto_puesto = 2 THEN 'Contratado'::text
+                    WHEN n.numero_tipo_presupuesto_puesto = 5 THEN 'Comisionado'::text
+                    WHEN n.numero_tipo_presupuesto_puesto = 3 THEN 'Ad-Honorem'::text
+                    ELSE NULL::text
+                END AS estado,
+                ((n.anhos_antiguedad_administrativo || ' año/s y '::text) || n.meses_antiguedad_administrativo) || ' mes/es'::text AS antiguedad_administrativo,
+                n.numero_matriculacion, 
+                n.codigo_objeto_gasto,
+                n.nombre_objeto_gasto as objeto_gasto,
+                n.codigo_concepto_nomina as codigo_concepto,
+                n.nombre_concepto_nomina as concepto,
+                n.codigo_dependencia_efectiva as codigo_dependencia,
+                n.nombre_dependencia_efectiva as dependencia,
+                n.codigo_cargo_efectivo codigo_cargo,
+                n.nombre_cargo_efectivo cargo,
+                n.codigo_categoria_rubro,
+                n.monto_categoria_rubro::int,
+                n.cantidad::int,
+                n.asignacion::int
+          FROM
+              nomina n
+          where
+              " + cond + "
+          order by
+              n.nombre_trabajador
+          "
+          nominas_administrativos = ActiveRecord::Base.connection.exec_query(query)
+
+          #DESCARGA CSV
+          CSV.open("#{Rails.root}/public/data/#{nombre_archivo}.csv", "wb", {:force_quotes => true}) do |csv|
+            # header row
+            csv << ["anio", "mes", "documento", "funcionario", "estado", "antiguedad_administrativo", "numero_matriculacion", "codigo_objeto_gasto", "objeto_gasto", "codigo_concepto", "concepto", "codigo_dependencia", "dependencia", "codigo_cargo", "cargo", "codigo_categoria_rubro", "monto_categoria_rubro", "cantidad", "asignacion", "sexo"]
+     
+            # data rows
+            nominas_administrativos.each do |n|
+              csv << [ n['anio'], n['mes'], n['documento'], n['funcionario'], n['estado'], n['antiguedad_administrativo'], n['numero_matriculacion'], n['codigo_objeto_gasto'], n['objeto_gasto'], n['codigo_concepto'], n['concepto'], n['codigo_dependencia'], n['dependencia'], n['codigo_cargo'], n['cargo'], n['codigo_categoria_rubro'], n['monto_categoria_rubro'], n['cantidad'], n['asignacion'], n['sexo'] ]
+            end
           end
+
+          #DESCARGA ZIP
+          zip_archivo(nombre_archivo, ['csv'])
+
+
+          ###
+          ###NOMINA DOCENTES###
+          ###
+          nombre_archivo = "funcionarios_docentes_#{year}_#{month}"
+          cond = "n.ano_periodo_pago = #{year} and n.mes_periodo_pago = #{month} and n.es_categoria_administrativa = 0"
+          query = 
+          "
+          SELECT
+            n.ano_periodo_pago as anio,
+            n.mes_periodo_pago as mes,
+            n.codigo_trabajador as documento,
+            n.nombre_trabajador as funcionario,
+                CASE
+                    WHEN n.numero_tipo_presupuesto_puesto = 1 THEN 'Permanente'::text
+                    WHEN n.numero_tipo_presupuesto_puesto = 2 THEN 'Contratado'::text
+                    WHEN n.numero_tipo_presupuesto_puesto = 5 THEN 'Comisionado'::text
+                    WHEN n.numero_tipo_presupuesto_puesto = 3 THEN 'Ad-Honorem'::text
+                    ELSE NULL::text
+                END AS estado,
+                ((n.anhos_antiguedad_docente || ' año/s y '::text) || n.meses_antiguedad_docente) || ' mes/es'::text AS antiguedad_docente,
+                n.numero_matriculacion, 
+                n.codigo_objeto_gasto,
+                n.nombre_objeto_gasto as objeto_gasto,
+                n.codigo_concepto_nomina as codigo_concepto,
+                n.nombre_concepto_nomina as concepto,
+                n.codigo_dependencia_efectiva as codigo_institucion,
+                n.nombre_dependencia_efectiva as institucion,
+                n.codigo_cargo_efectivo codigo_cargo,
+                n.nombre_cargo_efectivo cargo,
+                n.codigo_categoria_rubro,
+                n.monto_categoria_rubro::int,
+                n.cantidad::int,
+                n.asignacion::int
+          FROM
+              nomina n
+          where
+              " + cond + "
+          order by
+              n.nombre_trabajador
+          "
+          nominas_docentes = ActiveRecord::Base.connection.execute(query)
+
+          #DESCARGA CSV
+          CSV.open("#{Rails.root}/public/data/#{nombre_archivo}.csv", "wb", {:force_quotes => true}) do |csv|
+            # header row
+            csv << ["anio", "mes", "documento", "funcionario", "estado", "antiguedad_administrativo", "numero_matriculacion", "codigo_objeto_gasto", "objeto_gasto", "codigo_concepto", "concepto", "codigo_dependencia", "dependencia", "codigo_cargo", "cargo", "codigo_categoria_rubro", "monto_categoria_rubro", "cantidad", "asignacion", "sexo"]
+     
+            # data rows
+            nominas_docentes.each do |n|
+              csv << [ n['anio'], n['mes'], n['documento'], n['funcionario'], n['estado'], n['antiguedad_administrativo'], n['numero_matriculacion'], n['codigo_objeto_gasto'], n['objeto_gasto'], n['codigo_concepto'], n['concepto'], n['codigo_dependencia'], n['dependencia'], n['codigo_cargo'], n['cargo'], n['codigo_categoria_rubro'], n['monto_categoria_rubro'], n['cantidad'], n['asignacion'], n['sexo'] ]
+            end
+          end
+
+          #DESCARGA ZIP
+          zip_archivo(nombre_archivo, ['csv'])
+
         end
-
-        p.serialize("#{Rails.root}/public/data/#{nombre_archivo}.xlsx")
-
-        #DESCARGA JSON
-        File.open("#{Rails.root}/public/data/#{nombre_archivo}.json","w") do |f|
-          f.write(matriculaciones_inicial.to_json)
-        end
-
-        #DESCARGA ZIP
-        #zip_archivo(nombre_archivo, ['xlsx', 'csv', 'json'])
 
     end
 
