@@ -172,7 +172,10 @@ class ServiceActualizacionesController < ApplicationController
 
   def crear_archivo_csv_json
 
-    descargas_matriculas();   
+    #descargas_matriculas();
+    #descargas_contrataciones();
+    #descargas_registros_titulos();
+    descargas_nominas();
 
   end
 
@@ -599,10 +602,163 @@ class ServiceActualizacionesController < ApplicationController
         #DESCARGA ZIP
         #zip_archivo(nombre_archivo, ['xlsx', 'csv', 'json'])
 
+    end #end for
+
+  end #end function "descargas_matriculas"
+
+
+  def descargas_contrataciones
+
+    ###
+    ###CONTRATACIONES###
+    ###
+    nombre_archivo = "contrataciones"
+    cond = ""
+    contrataciones = Contratacion.ordenado.where(cond)
+
+    #DESCARGA CSV
+    CSV.open("#{Rails.root}/public/data/#{nombre_archivo}.csv", "wb", {:force_quotes => true}) do |csv|
+      # header row
+      csv << ["llamado_publico", "estado_llamado_id", "estado_llamado", "ejercicio_fiscal", "categoria_id", "categoria", "nombre", "descripcion", "fecha_apertura_oferta", "fecha_contrato", "fecha_vigencia_contrato", "proveedor_id", "proveedor_ruc", "proveedor", "modalidad_id", "modalidad", "monto_adjudicado"]
+
+      # data rows
+      contrataciones.each do |c|
+        csv << [ c.llamado_publico, c.estado_llamado_id, c.estado_llamado, c.ejercicio_fiscal, c.categoria_id, c.categoria, c.nombre, c.descripcion, c.fecha_apertura_oferta, c.fecha_contrato,c.fecha_vigencia_contrato, c.proveedor_id, c.proveedor_ruc, c.proveedor, c.modalidad_id, c.modalidad, c.monto_adjudicado ]
+      end      
+     end
+
+    #DESCARGA XLS
+    p = Axlsx::Package.new     
+    p.workbook.add_worksheet(:name => "Matriculaciones EDD") do |sheet|          
+      sheet.add_row ["llamado_publico", "estado_llamado_id", "estado_llamado", "ejercicio_fiscal", "categoria_id", "categoria", "nombre", "descripcion", "fecha_apertura_oferta", "fecha_contrato", "fecha_vigencia_contrato", "proveedor_id", "proveedor_ruc", "proveedor", "modalidad_id", "modalidad", "monto_adjudicado"]
+        
+      contrataciones.each do |c|              
+        sheet.add_row [ c.llamado_publico, c.estado_llamado_id, c.estado_llamado, c.ejercicio_fiscal, c.categoria_id, c.categoria, c.nombre, c.descripcion, c.fecha_apertura_oferta, c.fecha_contrato,c.fecha_vigencia_contrato, c.proveedor_id, c.proveedor_ruc, c.proveedor, c.modalidad_id, c.modalidad, c.monto_adjudicado ]
+      end
+    end
+
+    p.serialize("#{Rails.root}/public/data/#{nombre_archivo}.xlsx")
+
+    #DESCARGA JSON
+    File.open("#{Rails.root}/public/data/#{nombre_archivo}.json","w") do |f|
+      f.write(contrataciones.to_json)
+    end
+
+    #DESCARGA ZIP
+    #zip_archivo(nombre_archivo, ['xlsx', 'csv', 'json'])
+
+  end #end function "descargas_contrataciones"
+
+
+  def descargas_registros_titulos
+
+    ###
+    ###REGISTROS TITULOS###
+    ###
+    nombre_archivo = "registros_titulos"
+    cond = ""
+    registros_titulos = RegistroTitulo.orden_anio_mes.where(cond)
+
+    #DESCARGA CSV
+    CSV.open("#{Rails.root}/public/data/#{nombre_archivo}.csv", "wb", {:force_quotes => true}) do |csv|
+      # header row
+      csv << ["anio", "mes", "documento", "nombre_completo", "carrera_id", "carrera", "titulo_id", "titulo", "numero_resolucion", "fecha_resolucion", "tipo_institucion_id", "tipo_institucion", "institucion_id","institucion", "gobierno_actual", "sexo" ]
+
+      # data rows
+      registros_titulos.each do |rt|
+        csv << [rt.anio, rt.mes, rt.documento, rt.nombre_completo, rt.carrera_id, rt.carrera, rt.titulo_id, rt.titulo, rt.numero_resolucion, rt.fecha_resolucion, rt.tipo_institucion_id, rt.tipo_institucion, rt.institucion_id, rt.institucion, rt.gobierno_actual, rt.sexo ]
+      end      
+     end
+
+    #DESCARGA XLS
+    p = Axlsx::Package.new     
+    p.workbook.add_worksheet(:name => "Matriculaciones EDD") do |sheet|          
+      sheet.add_row ["anio", "mes", "documento", "nombre_completo", "carrera_id", "carrera", "titulo_id", "titulo", "numero_resolucion", "fecha_resolucion", "tipo_institucion_id", "tipo_institucion", "institucion_id","institucion", "gobierno_actual", "sexo" ]
+        
+      registros_titulos.each do |rt|              
+        sheet.add_row [rt.anio, rt.mes, rt.documento, rt.nombre_completo, rt.carrera_id, rt.carrera, rt.titulo_id, rt.titulo, rt.numero_resolucion, rt.fecha_resolucion, rt.tipo_institucion_id, rt.tipo_institucion, rt.institucion_id, rt.institucion, rt.gobierno_actual, rt.sexo ]
+      end
+    end
+
+    p.serialize("#{Rails.root}/public/data/#{nombre_archivo}.xlsx")
+
+    #DESCARGA JSON
+    File.open("#{Rails.root}/public/data/#{nombre_archivo}.json","w") do |f|
+      f.write(registros_titulos.to_json)
+    end
+
+    #DESCARGA ZIP
+    zip_archivo(nombre_archivo, ['xlsx', 'csv', 'json'])
+
+  end #end function "descargas_registros_titulos"
+
+
+  def descargas_nominas
+      
+    anios = [2013, 2012]
+    for year in anios
+
+        ###
+        ###MATRICULAS EDUCACION INICIAL###
+        ###
+        nombre_archivo = "matriculaciones_inicial_#{year}"
+        cond = "anio = #{year}"
+        matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond)
+
+        #DESCARGA CSV
+        CSV.open("#{Rails.root}/public/data/#{nombre_archivo}.csv", "wb", {:force_quotes => true}) do |csv|
+          # header row
+          csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
+            "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
+            "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
+            "maternal_varon", "maternal_mujer", "prejardin_varon", "prejardin_mujer", "jardin_varon", "jardin_mujer",
+            "preescolar_varon", "preescolar_mujer", "total_matriculados_varon", "total_matriculados_mujer",
+            "inicial_noformal_varon", "inicial_noformal_mujer"]
+
+          # data rows
+          matriculaciones_inicial.each do |m|
+            csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.maternal_varon, m.maternal_mujer, m.prejardin_varon, m.prejardin_mujer, m.jardin_varon, m.jardin_mujer,
+              m.preescolar_varon, m.preescolar_mujer, m.total_matriculados_varon, m.total_matriculados_mujer,
+              m.inicial_noformal_varon, m.inicial_noformal_mujer]
+          end      
+        end
+
+        #DESCARGA XLS
+        p = Axlsx::Package.new      
+        p.workbook.add_worksheet(:name => "Matriculaciones EI") do |sheet|          
+          sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
+            :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
+            :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
+            :maternal_varon, :maternal_mujer, :prejardin_varon, :prejardin_mujer, :jardin_varon, :jardin_mujer,
+            :preescolar_varon, :preescolar_mujer, :total_matriculados_varon, :total_matriculados_mujer,
+            :inicial_noformal_varon, :inicial_noformal_mujer]
+            
+          matriculaciones_inicial.each do |m|              
+            sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.maternal_varon, m.maternal_mujer, m.prejardin_varon, m.prejardin_mujer, m.jardin_varon, m.jardin_mujer,
+              m.preescolar_varon, m.preescolar_mujer, m.total_matriculados_varon, m.total_matriculados_mujer,
+              m.inicial_noformal_varon, m.inicial_noformal_mujer]            
+          end
+        end
+
+        p.serialize("#{Rails.root}/public/data/#{nombre_archivo}.xlsx")
+
+        #DESCARGA JSON
+        File.open("#{Rails.root}/public/data/#{nombre_archivo}.json","w") do |f|
+          f.write(matriculaciones_inicial.to_json)
+        end
+
+        #DESCARGA ZIP
+        #zip_archivo(nombre_archivo, ['xlsx', 'csv', 'json'])
 
     end
 
-  end #end function
+  end #end function "descargas_nominas"
 
 end #end class service
 

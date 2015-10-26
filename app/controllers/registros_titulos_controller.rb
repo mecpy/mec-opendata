@@ -144,9 +144,9 @@ class RegistrosTitulosController < ApplicationController
       require 'csv'
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        registros_titulos_csv = RegistroTitulo.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+        registros_titulos = RegistroTitulo.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
       else
-        registros_titulos_csv = RegistroTitulo.orden_anio_mes.where(cond)
+        registros_titulos = RegistroTitulo.orden_anio_mes.where(cond)
       end
 
       csv = CSV.generate do |csv|
@@ -154,7 +154,7 @@ class RegistrosTitulosController < ApplicationController
         csv << ["anio", "mes", "documento", "nombre_completo", "carrera_id", "carrera", "titulo_id", "titulo", "numero_resolucion", "fecha_resolucion", "tipo_institucion_id", "tipo_institucion", "institucion_id","institucion", "gobierno_actual", "sexo" ]
  
         # data rows
-        registros_titulos_csv.each do |rt|
+        registros_titulos.each do |rt|
           csv << [rt.anio, rt.mes, rt.documento, rt.nombre_completo, rt.carrera_id, rt.carrera, rt.titulo_id, rt.titulo, rt.numero_resolucion, rt.fecha_resolucion, rt.tipo_institucion_id, rt.tipo_institucion, rt.institucion_id, rt.institucion, rt.gobierno_actual, rt.sexo ]
         end
 
@@ -165,9 +165,9 @@ class RegistrosTitulosController < ApplicationController
     elsif params[:format] == 'xlsx'
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        registros_titulos_xls = RegistroTitulo.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+        registros_titulos = RegistroTitulo.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
       else
-        registros_titulos_xls = RegistroTitulo.orden_anio_mes.where(cond)
+        registros_titulos = RegistroTitulo.orden_anio_mes.where(cond)
       end
        
       p = Axlsx::Package.new
@@ -176,7 +176,7 @@ class RegistrosTitulosController < ApplicationController
           
         sheet.add_row ["anio", "mes", "documento", "nombre_completo", "carrera_id", "carrera", "titulo_id", "titulo", "numero_resolucion", "fecha_resolucion", "tipo_institucion_id", "tipo_institucion", "institucion_id","institucion", "gobierno_actual", "sexo" ]
 
-        registros_titulos_xls.each do |rt|
+        registros_titulos.each do |rt|
               
           sheet.add_row [rt.anio, rt.mes, rt.documento, rt.nombre_completo, rt.carrera_id, rt.carrera, rt.titulo_id, rt.titulo, rt.numero_resolucion, rt.fecha_resolucion, rt.tipo_institucion_id, rt.tipo_institucion, rt.institucion_id, rt.institucion, rt.gobierno_actual, rt.sexo ]
                 

@@ -26,8 +26,6 @@
         parametros_xls_todos = { :format => 'xlsx', "form_buscar_matriculaciones_inicial[anio]" => params[:form_buscar_matriculaciones_inicial][:anio] }
     %>
 
-    <%  %>
-
     <% 
         parametros_json = { :format => 'json' }
         parametros_json = parametros_json.merge(params) 
@@ -93,7 +91,7 @@
         </div>
 
         <div style="float:left;text-align:center;">
-          <%= link_to "MD5/CSV".html_safe, mec_custom_url(data_matriculaciones_inicial_lista_url( parametros_md5_csv )), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_md5' %>
+          <%= link_to "MD5/CSV".html_safe, mec_custom_url(data_nomina_administrativos_lista_url( parametros_md5_csv )), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_md5' %>
         </div>
 
         <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
