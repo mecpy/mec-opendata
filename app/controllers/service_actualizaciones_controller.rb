@@ -172,10 +172,10 @@ class ServiceActualizacionesController < ApplicationController
 
   def crear_archivo_csv_json
 
-    #descargas_matriculas();
-    #descargas_contrataciones();
-    #descargas_registros_titulos();
-    #descargas_nominas();
+    descargas_matriculas();
+    descargas_contrataciones();
+    descargas_registros_titulos();
+    descargas_nominas();
 
   end
 
@@ -193,6 +193,9 @@ class ServiceActualizacionesController < ApplicationController
     for e in extensions
       filename = nombre_archivo + "." + e
       zipfile_name = "#{Rails.root}/public/data/" + filename + ".zip"
+      if File.exist?(zipfile_name)
+        FileUtils.rm (zipfile_name)
+      end
       Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
         zipfile.add(filename, folder + filename)
       end
@@ -702,7 +705,7 @@ class ServiceActualizacionesController < ApplicationController
         when 2014
           [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
         when 2015
-          [1, 2, 3, 4, 5, 6, 7]
+          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
         end
 
         for month in meses

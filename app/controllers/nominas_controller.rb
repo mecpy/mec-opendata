@@ -107,9 +107,6 @@ class NominasController< ApplicationController
       @nomina = VNomina.es_administrativo.ordenado_anio_mes_nombre.where(cond).paginate(page: params[:page], per_page: 15)
     end
 
-    first_time = Nomina.select("ano_periodo_pago", "mes_periodo_pago").es_administrativo.order(codigo_periodo_pago: :desc).limit(1)
-    puts first_time
-
     #@total_registros_encontrados = VNomina.count :conditions => cond
     #@total_registros = VNomina.count 
 

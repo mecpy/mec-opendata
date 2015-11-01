@@ -292,16 +292,18 @@
     $.ajaxQ.abortAll();
     $("#form-buscar-nominas").submit();
 
-  })
+  });
+
+  <% obtener_ultimo_periodo_mes(1) %>
 
   //LIMPIAR FORMULARIO DE BUSQUEDA
   valor_defecto = [{
       id: '#form_buscar_nominas_ano_periodo_pago',
-      valor: <%= 2014 %>
+      valor: <%= @nomina_ultimo[0].ano_periodo_pago %>
     },
     {
       id: '#form_buscar_nominas_mes_periodo_pago',
-      valor: <%= 3 %>
+      valor: <%= @nomina_ultimo[0].mes_periodo_pago %>
     }];
   resetForm("#form-buscar-nominas", valor_defecto);
 
