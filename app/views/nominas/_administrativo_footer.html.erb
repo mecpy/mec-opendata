@@ -63,7 +63,7 @@
       <% if (params[:form_buscar_nominas][:ano_periodo_pago].to_i >= 2014 && params[:form_buscar_nominas][:mes_periodo_pago].present? ) %>
 
         <!-- DESCARGAS TOTALES -->
-        <div style="float:left;" data-toggle="tooltip-descarga-total" title="Las descargas totales se realizan por periodo y mes">Descargar la N&oacute;mina completa de funcionarios administrativos del lapso <b><%= params[:form_buscar_nominas][:ano_periodo_pago] + ' - ' + params[:form_buscar_nominas][:mes_periodo_pago] %></b>:</div>
+        <div style="float:left;" data-toggle="tooltip-descarga-total" title="Las descargas totales se realizan por periodo y mes">Descargar la N&oacute;mina completa de funcionarios administrativos del lapso <b><%= params[:form_buscar_nominas][:ano_periodo_pago] + '/' + obtener_mes(params[:form_buscar_nominas][:mes_periodo_pago]) %></b>:</div>
 
         <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
           <%=descargar_documento(12, params[:form_buscar_nominas][:ano_periodo_pago], params[:form_buscar_nominas][:mes_periodo_pago], "pdf")%>

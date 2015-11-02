@@ -10,21 +10,22 @@ module ApplicationHelper
   end
 
   def obtener_mes(mes)
-
+    
+    mes = mes.to_i
     case mes
-    when 1 then "enero"
-    when 2 then "febrero"
-    when 3 then "marzo"
-    when 4 then "abril"
-    when 5 then "mayo"
-    when 6 then "junio"
-    when 7 then "julio"
-    when 8 then "agosto"
-    when 9 then "setiembre"
-    when 10 then "octubre"
-    when 11 then "noviembre"
-    when 12 then "diciembre"
-    else ""
+      when 1 then "enero"
+      when 2 then "febrero"
+      when 3 then "marzo"
+      when 4 then "abril"
+      when 5 then "mayo"
+      when 6 then "junio"
+      when 7 then "julio"
+      when 8 then "agosto"
+      when 9 then "setiembre"
+      when 10 then "octubre"
+      when 11 then "noviembre"
+      when 12 then "diciembre"
+      else ""
     end
 
   end
