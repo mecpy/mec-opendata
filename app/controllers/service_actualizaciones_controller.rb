@@ -699,14 +699,9 @@ class ServiceActualizacionesController < ApplicationController
   def descargas_nominas
       
     anios = [2014, 2015]
+    meses = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    
     for year in anios
-
-        meses = case year
-        when 2014
-          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-        when 2015
-          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-        end
 
         for month in meses
 
