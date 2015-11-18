@@ -172,6 +172,8 @@ class ServiceActualizacionesController < ApplicationController
 
   def crear_archivo_csv_json
 
+    descargas_establecimientos();
+    descargas_directorios_instituciones();
     descargas_matriculas();
     descargas_contrataciones();
     descargas_registros_titulos();
@@ -204,10 +206,125 @@ class ServiceActualizacionesController < ApplicationController
 
   end
 
+  def descargas_establecimientos
+
+    anios = Establecimiento.select(:anio).distinct
+    for year in anios
+        
+        year=year.anio
+        ###
+        ###ESTABLECIMIENTOS###
+        ###
+        nombre_archivo = "establecimientos_#{year}"
+        cond = "anio = #{year}"
+        establecimientos = Establecimiento.orden_dep_dis.where(cond)
+
+        #DESCARGA CSV
+        CSV.open("#{Rails.root}/public/data/#{nombre_archivo}.csv", "wb", {:force_quotes => true}) do |csv|
+          # header row
+          csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad",
+            "nombre_barrio_localidad", "direccion", "coordenadas_y", "coordenadas_x", "latitud", "longitud", "anho_cod_geo", "uri"]
+   
+          # data rows
+          establecimientos.each do |e|
+            csv << [e.anio, e.codigo_establecimiento, e.codigo_departamento, e.nombre_departamento, e.codigo_distrito, e.nombre_distrito, e.codigo_zona, e.nombre_zona, e.codigo_barrio_localidad,
+              e.nombre_barrio_localidad, e.direccion, e.coordenadas_y, e.coordenadas_x, e.latitud, e.longitud, e.anho_cod_geo, e.uri ]
+          end
+        end
+
+        #DESCARGA XLS
+        p = Axlsx::Package.new      
+        p.workbook.add_worksheet(:name => "Establecimientos") do |sheet|          
+          sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad, :direccion, :coordenadas_y, :coordenadas_x, :latitud, :longitud, :anho_cod_geo, :uri] 
+            
+          establecimientos.each do |e|              
+            sheet.add_row [e.anio, e.codigo_establecimiento, e.codigo_departamento, e.nombre_departamento, e.codigo_distrito, e.nombre_distrito, e.codigo_zona, e.nombre_zona, e.codigo_barrio_localidad, e.nombre_barrio_localidad, e.direccion, e.coordenadas_y, e.coordenadas_x, e.latitud, e.longitud, e.anho_cod_geo, e.uri]
+          end
+        end
+
+        p.serialize("#{Rails.root}/public/data/#{nombre_archivo}.xlsx")
+
+        #DESCARGA JSON
+        File.open("#{Rails.root}/public/data/#{nombre_archivo}.json","w") do |f|
+          f.write(establecimientos.to_json)
+        end
+
+        #DESCARGA ZIP
+        #zip_archivo(nombre_archivo, ['xlsx', 'csv', 'json'])
+    
+    end #end for
+
+  end #end function "descargas_establecimientos"
+
+
+  def descargas_directorios_instituciones
+
+    anios = VDirectorioInstitucion.select(:periodo).distinct
+    for year in anios
+        
+        year=year.periodo
+
+        ###
+        ###DIRECTORIOS DE INSTITUCIONES###
+        ###
+        nombre_archivo = "directorios_instituciones_#{year}"
+        cond = "periodo = #{year}"
+        directorios_instituciones = VDirectorioInstitucion.orden_dep_dis.where(cond)
+
+        #DESCARGA CSV
+        CSV.open("#{Rails.root}/public/data/#{nombre_archivo}.csv", "wb", {:force_quotes => true}) do |csv|
+          # header row
+          csv << ["periodo", "codigo_departamento", "nombre_departamento", "codigo_distrito", "nombre_distrito", 
+            "codigo_barrio_localidad","nombre_barrio_localidad", "codigo_zona", "nombre_zona",
+            "codigo_establecimiento", "codigo_institucion", "nombre_institucion", "anho_cod_geo", 
+            "uri_establecimiento", "uri_institucion"]
+   
+          # data rows
+          directorios_instituciones.each do |i|
+            csv << [i.periodo, i.codigo_departamento, i.nombre_departamento, i.codigo_distrito, i.nombre_distrito,
+              i.codigo_barrio_localidad, i.nombre_barrio_localidad, i.codigo_zona, i.nombre_zona,
+              i.codigo_establecimiento, i.codigo_institucion, i.nombre_institucion, i.anho_cod_geo, 
+              i.uri_establecimiento,i.uri_institucion]
+          end
+        end
+
+        #DESCARGA XLS
+        p = Axlsx::Package.new      
+        p.workbook.add_worksheet(:name => "Directorio de Instituciones") do |sheet|          
+          sheet.add_row [:periodo, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito,
+          :codigo_barrio_localidad, :nombre_barrio_localidad, :codigo_zona, :nombre_zona,
+          :codigo_establecimiento, :codigo_institucion, :nombre_institucion, :anho_cod_geo,
+          :uri_establecimiento,:uri_institucion]
+            
+          directorios_instituciones.each do |i|              
+            sheet.add_row [i.periodo, i.codigo_departamento, i.nombre_departamento, i.codigo_distrito, i.nombre_distrito,
+            i.codigo_barrio_localidad, i.nombre_barrio_localidad, i.codigo_zona, i.nombre_zona,
+            i.codigo_establecimiento, i.codigo_institucion, i.nombre_institucion, i.anho_cod_geo, 
+            i.uri_establecimiento,i.uri_institucion]
+          end
+        end
+
+        p.serialize("#{Rails.root}/public/data/#{nombre_archivo}.xlsx")
+
+        #DESCARGA JSON
+        File.open("#{Rails.root}/public/data/#{nombre_archivo}.json","w") do |f|
+          f.write(directorios_instituciones.to_json)
+        end
+
+        #DESCARGA ZIP
+        #zip_archivo(nombre_archivo, ['xlsx', 'csv', 'json'])
+    
+    end #end for
+
+  end #end function "descargas_directorios_instituciones"
+
+
   def descargas_matriculas
 
-    anios = [2013, 2012]
+    anios = MatriculacionInicial.select(:anio).distinct
     for year in anios
+        
+        year=year.anio
 
         ###
         ###MATRICULAS EDUCACION INICIAL###
@@ -697,12 +814,13 @@ class ServiceActualizacionesController < ApplicationController
 
 
   def descargas_nominas
-      
-    anios = [2014, 2015]
+     
+    anios = Nomina.select(:ano_periodo_pago).distinct.order(ano_periodo_pago: :desc).limit(2)
     meses = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     
     for year in anios
 
+        year=year.ano_periodo_pago
         for month in meses
 
           ###
