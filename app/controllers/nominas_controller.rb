@@ -230,8 +230,8 @@ class NominasController< ApplicationController
 
     elsif params[:format] == 'md5_csv'
       
-      filename = "funcionarios_administrativos" + params[:form_buscar_nominas][:ano_periodo_pago] + "_" + params[:form_buscar_nominas][:mes_periodo_pago]
-      path_file = "#{Rails.root}/public/data/" + filename + ".csv"
+      filename = "funcionarios_administrativos_" + params[:form_buscar_nominas][:ano_periodo_pago] + "_" + params[:form_buscar_nominas][:mes_periodo_pago]
+      path_file = "#{Rails.root}/public/data/" + filename + ".csv.zip"
       send_data(generate_md5(path_file), :filename => filename+".md5", :type => "application/txt")
 
     else
@@ -500,8 +500,8 @@ class NominasController< ApplicationController
 
     elsif params[:format] == 'md5_csv'
       
-      filename = "funcionarios_docentes" + params[:form_buscar_nominas][:ano_periodo_pago] + "_" + params[:form_buscar_nominas][:mes_periodo_pago]
-      path_file = "#{Rails.root}/public/data/" + filename + ".csv"
+      filename = "funcionarios_docentes_" + params[:form_buscar_nominas][:ano_periodo_pago] + "_" + params[:form_buscar_nominas][:mes_periodo_pago]
+      path_file = "#{Rails.root}/public/data/" + filename + ".csv.zip"
       send_data(generate_md5(path_file), :filename => filename+".md5", :type => "application/txt")
 
     else

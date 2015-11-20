@@ -36,10 +36,12 @@ module NominasHelper
 
   def obtener_ultimo_periodo_mes(tipo_nomina)
     # tipo_nomina=1 -> 'es_administrativo' ; tipo_nomina=0 -> 'es_docente'
+    anios = Nomina.select(:ano_periodo_pago).order(ano_periodo_pago: :desc).limit(1)
+
     if tipo_nomina == 1
-      @nomina_ultimo = Nomina.select("ano_periodo_pago", "mes_periodo_pago").es_administrativo.order(ano_periodo_pago: :desc, mes_periodo_pago: :desc).limit(1)
+      @nomina_ultimo = Nomina.select("ano_periodo_pago", "mes_periodo_pago").es_administrativo.where("ano_periodo_pago = ?", anios[0].ano_periodo_pago).order(mes_periodo_pago: :desc).limit(1)
     else
-      @nomina_ultimo = Nomina.select("ano_periodo_pago", "mes_periodo_pago").es_docente.order(ano_periodo_pago: :desc, mes_periodo_pago: :desc).limit(1)
+      @nomina_ultimo = Nomina.select("ano_periodo_pago", "mes_periodo_pago").es_docente.where("ano_periodo_pago = ?", anios[0].ano_periodo_pago).order(mes_periodo_pago: :desc).limit(1)
     end
   end
 
