@@ -147,16 +147,16 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
           "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
           "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
-          "matricula_inicial_especial_varon", "matricula_inicial_especial_mujer", "matricula_primer_y_segundo_ciclo_especial_varon", "matricula_primer_y_segundo_ciclo_especial_mujer",
-          "matricula_tercer_ciclo_especial_varon", "matricula_tercer_ciclo_especial_mujer", "matricula_programas_especiales_varon", "matricula_programas_especiales_mujer"]
+          "matricula_inicial_especial_hombre", "matricula_inicial_especial_mujer", "matricula_primer_y_segundo_ciclo_especial_hombre", "matricula_primer_y_segundo_ciclo_especial_mujer",
+          "matricula_tercer_ciclo_especial_hombre", "matricula_tercer_ciclo_especial_mujer", "matricula_programas_especiales_hombre", "matricula_programas_especiales_mujer"]
 
         # data rows
         matriculaciones_educacion_inclusiva.each do |m|
           csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
             m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
             m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-            m.matricula_inicial_especial_varon, m.matricula_inicial_especial_mujer, m.matricula_primer_y_segundo_ciclo_especial_varon, m.matricula_primer_y_segundo_ciclo_especial_mujer,
-            m.matricula_tercer_ciclo_especial_varon, m.matricula_tercer_ciclo_especial_mujer, m.matricula_programas_especiales_varon, m.matricula_programas_especiales_mujer]
+            m.matricula_inicial_especial_hombre, m.matricula_inicial_especial_mujer, m.matricula_primer_y_segundo_ciclo_especial_hombre, m.matricula_primer_y_segundo_ciclo_especial_mujer,
+            m.matricula_tercer_ciclo_especial_hombre, m.matricula_tercer_ciclo_especial_mujer, m.matricula_programas_especiales_hombre, m.matricula_programas_especiales_mujer]
         end      
       end
     
@@ -175,15 +175,15 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
         sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
           :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
           :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
-          :matricula_inicial_especial_varon, :matricula_inicial_especial_mujer, :matricula_primer_y_segundo_ciclo_especial_varon, :matricula_primer_y_segundo_ciclo_especial_mujer,
-          :matricula_tercer_ciclo_especial_varon, :matricula_tercer_ciclo_especial_mujer, :matricula_programas_especiales_varon, :matricula_programas_especiales_mujer] 
+          :matricula_inicial_especial_hombre, :matricula_inicial_especial_mujer, :matricula_primer_y_segundo_ciclo_especial_hombre, :matricula_primer_y_segundo_ciclo_especial_mujer,
+          :matricula_tercer_ciclo_especial_hombre, :matricula_tercer_ciclo_especial_mujer, :matricula_programas_especiales_hombre, :matricula_programas_especiales_mujer] 
           
         matriculaciones_educacion_inclusiva.each do |m|             
           sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
             m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
             m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-            m.matricula_inicial_especial_varon, m.matricula_inicial_especial_mujer, m.matricula_primer_y_segundo_ciclo_especial_varon, m.matricula_primer_y_segundo_ciclo_especial_mujer,
-            m.matricula_tercer_ciclo_especial_varon, m.matricula_tercer_ciclo_especial_mujer, m.matricula_programas_especiales_varon, m.matricula_programas_especiales_mujer]           
+            m.matricula_inicial_especial_hombre, m.matricula_inicial_especial_mujer, m.matricula_primer_y_segundo_ciclo_especial_hombre, m.matricula_primer_y_segundo_ciclo_especial_mujer,
+            m.matricula_tercer_ciclo_especial_hombre, m.matricula_tercer_ciclo_especial_mujer, m.matricula_programas_especiales_hombre, m.matricula_programas_especiales_mujer]           
         end
       end
       

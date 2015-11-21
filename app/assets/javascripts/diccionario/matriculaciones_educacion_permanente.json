@@ -140,8 +140,8 @@
         },
         "ejemplo": "131"
     }, {
-        "nombre": "MATRICULA_EBBJA_VARON",
-        "descripcion": "Representa la cantidad de matriculados varones en los cuatro ciclos de Educación Básica Bilingüe para Jóvenes y Adultos de la Modalidad de Atención Educativa correspondiente al nivel de Educación General Básica y Educación Permanente que es considerada como una formación supletoria , que atiende los requerimientos de las personas mayores de 15 años y más que quedaron excluidas de la Educación Escolar Básica para satisfacer sus necesidades de aprendizaje",
+        "nombre": "MATRICULA_EBBJA_HOMBRE",
+        "descripcion": "Representa la cantidad de matriculados hombres en los cuatro ciclos de Educación Básica Bilingüe para Jóvenes y Adultos de la Modalidad de Atención Educativa correspondiente al nivel de Educación General Básica y Educación Permanente que es considerada como una formación supletoria , que atiende los requerimientos de las personas mayores de 15 años y más que quedaron excluidas de la Educación Escolar Básica para satisfacer sus necesidades de aprendizaje",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -170,8 +170,8 @@
         },
         "ejemplo": "0"
     }, {
-        "nombre": "MATRICULA_FPI_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en Formación Profesional Inicial de la Modalidad de Atención Educativa correspondiente al nivel de Educación General Básica y Educación Permanente que busca potenciar al joven y al adulto para innovar, crear y seguir aprendiendo, a partir de una conceptualización del trabajo como humanización del hombre, oportunidad de realización personal y necesidad de un nuevo perfil de conocimientos, habilidades y aptitudes",
+        "nombre": "MATRICULA_FPI_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en Formación Profesional Inicial de la Modalidad de Atención Educativa correspondiente al nivel de Educación General Básica y Educación Permanente que busca potenciar al joven y al adulto para innovar, crear y seguir aprendiendo, a partir de una conceptualización del trabajo como humanización del hombre, oportunidad de realización personal y necesidad de un nuevo perfil de conocimientos, habilidades y aptitudes",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -200,8 +200,8 @@
         },
         "ejemplo": "613"
     }, {
-        "nombre": "MATRICULA_EMAPJA_VARON",
-        "descripcion": "Representa la cantidad de matriculados varones en la modalidad de Educación Media Alternativa para Jovenes y Adultos dirigida a las personas que no han finalizado sus estudios correspondientes al nivel medio con el fin de acceder a la titulación y de proseguir estudios de Educación Superior; la enseñanza se organiza en cuatro ámbitos del conocimiento (propedéutico y profesionalizante), de carácter modular y con un modelo pedagógico basado en las competencias transversales (aprender a emprender, aprender a aprender). Edad teórica de inicio: 17 años",
+        "nombre": "MATRICULA_EMAPJA_HOMBRE",
+        "descripcion": "Representa la cantidad de matriculados hombres en la modalidad de Educación Media Alternativa para Jovenes y Adultos dirigida a las personas que no han finalizado sus estudios correspondientes al nivel medio con el fin de acceder a la titulación y de proseguir estudios de Educación Superior; la enseñanza se organiza en cuatro ámbitos del conocimiento (propedéutico y profesionalizante), de carácter modular y con un modelo pedagógico basado en las competencias transversales (aprender a emprender, aprender a aprender). Edad teórica de inicio: 17 años",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -230,8 +230,8 @@
         },
         "ejemplo": "0"
     }, {
-        "nombre": "MATRICULA_EMDJA_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en la modalidad de Educación Media a Distancia de Jovenes y Adultos dirigida a las personas que no han finalizado sus estudios correspondientes al nivel medio con el fin de acceder a la titulación y de proseguir estudios de Educación Superior; la enseñanza se organiza en cuatro ámbitos del conocimiento (propedéutico y profesionalizante), de carácter modular y con un modelo pedagógico basado en las competencias transversales (aprender a emprender, aprender a aprender). Edad teórica de inicio: 17 años. Otorga el título de bachiller en educación media a distancia",
+        "nombre": "MATRICULA_EMDJA_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en la modalidad de Educación Media a Distancia de Jovenes y Adultos dirigida a las personas que no han finalizado sus estudios correspondientes al nivel medio con el fin de acceder a la titulación y de proseguir estudios de Educación Superior; la enseñanza se organiza en cuatro ámbitos del conocimiento (propedéutico y profesionalizante), de carácter modular y con un modelo pedagógico basado en las competencias transversales (aprender a emprender, aprender a aprender). Edad teórica de inicio: 17 años. Otorga el título de bachiller en educación media a distancia",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -260,8 +260,8 @@
         },
         "ejemplo": "0"
     }, {
-        "nombre": "MATRICULA_FP_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en formacion profesional correspondiente al Nivel de Educación Permanente, es una modalidad que implementa un currículum especial con enfoque a la formación de mano de obra calificada para una ocupación laboral específica",
+        "nombre": "MATRICULA_FP_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en formacion profesional correspondiente al Nivel de Educación Permanente, es una modalidad que implementa un currículum especial con enfoque a la formación de mano de obra calificada para una ocupación laboral específica",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {

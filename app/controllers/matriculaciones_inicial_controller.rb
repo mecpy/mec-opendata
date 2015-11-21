@@ -133,10 +133,10 @@ class MatriculacionesInicialController < ApplicationController
 
     end
 
-    if params[:form_buscar_matriculaciones_inicial_total_matriculados_varon].present?
+    if params[:form_buscar_matriculaciones_inicial_total_matriculados_hombre].present?
 
-      cond << "total_matriculados_varon #{params[:form_buscar_matriculaciones_inicial_total_matriculados_varon_operador]} ?"
-      args << params[:form_buscar_matriculaciones_inicial_total_matriculados_varon]
+      cond << "total_matriculados_hombre #{params[:form_buscar_matriculaciones_inicial_total_matriculados_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_total_matriculados_hombre]
 
     end
 
@@ -172,18 +172,18 @@ class MatriculacionesInicialController < ApplicationController
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
             "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
             "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
-            "maternal_varon", "maternal_mujer", "prejardin_varon", "prejardin_mujer", "jardin_varon", "jardin_mujer",
-            "preescolar_varon", "preescolar_mujer", "total_matriculados_varon", "total_matriculados_mujer",
-            "inicial_noformal_varon", "inicial_noformal_mujer"]
+            "maternal_hombre", "maternal_mujer", "prejardin_hombre", "prejardin_mujer", "jardin_hombre", "jardin_mujer",
+            "preescolar_hombre", "preescolar_mujer", "total_matriculados_hombre", "total_matriculados_mujer",
+            "inicial_noformal_hombre", "inicial_noformal_mujer"]
  
         # data rows
           matriculaciones_inicial.each do |m|
             csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
               m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.maternal_varon, m.maternal_mujer, m.prejardin_varon, m.prejardin_mujer, m.jardin_varon, m.jardin_mujer,
-              m.preescolar_varon, m.preescolar_mujer, m.total_matriculados_varon, m.total_matriculados_mujer,
-              m.inicial_noformal_varon, m.inicial_noformal_mujer]
+              m.maternal_hombre, m.maternal_mujer, m.prejardin_hombre, m.prejardin_mujer, m.jardin_hombre, m.jardin_mujer,
+              m.preescolar_hombre, m.preescolar_mujer, m.total_matriculados_hombre, m.total_matriculados_mujer,
+              m.inicial_noformal_hombre, m.inicial_noformal_mujer]
         end
 
       end
@@ -203,17 +203,17 @@ class MatriculacionesInicialController < ApplicationController
         sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
             :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
             :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
-            :maternal_varon, :maternal_mujer, :prejardin_varon, :prejardin_mujer, :jardin_varon, :jardin_mujer,
-            :preescolar_varon, :preescolar_mujer, :total_matriculados_varon, :total_matriculados_mujer,
-            :inicial_noformal_varon, :inicial_noformal_mujer]
+            :maternal_hombre, :maternal_mujer, :prejardin_hombre, :prejardin_mujer, :jardin_hombre, :jardin_mujer,
+            :preescolar_hombre, :preescolar_mujer, :total_matriculados_hombre, :total_matriculados_mujer,
+            :inicial_noformal_hombre, :inicial_noformal_mujer]
           
         matriculaciones_inicial.each do |m|            
           sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
               m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.maternal_varon, m.maternal_mujer, m.prejardin_varon, m.prejardin_mujer, m.jardin_varon, m.jardin_mujer,
-              m.preescolar_varon, m.preescolar_mujer, m.total_matriculados_varon, m.total_matriculados_mujer,
-              m.inicial_noformal_varon, m.inicial_noformal_mujer]          
+              m.maternal_hombre, m.maternal_mujer, m.prejardin_hombre, m.prejardin_mujer, m.jardin_hombre, m.jardin_mujer,
+              m.preescolar_hombre, m.preescolar_mujer, m.total_matriculados_hombre, m.total_matriculados_mujer,
+              m.inicial_noformal_hombre, m.inicial_noformal_mujer]          
         end
       end
       

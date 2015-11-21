@@ -167,10 +167,10 @@ class MatriculacionesEducacionEscolarBasicaController < ApplicationController
 
     end
 
-    if params[:form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados_varon].present?
+    if params[:form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados_hombre].present?
 
-      cond << "total_matriculados_varon #{params[:form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados_varon_operador]} ?"
-      args << params[:form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados_varon]
+      cond << "total_matriculados_hombre #{params[:form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados_hombre]
 
     end
 
@@ -205,19 +205,19 @@ class MatriculacionesEducacionEscolarBasicaController < ApplicationController
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
             "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
             "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
-            "primer_grado_varon", "primer_grado_mujer", "segundo_grado_varon", "segundo_grado_mujer", "tercer_grado_varon", "tercer_grado_mujer",
-            "cuarto_grado_varon", "cuarto_grado_mujer", "quinto_grado_varon", "quinto_grado_mujer", "sexto_grado_varon", "sexto_grado_mujer",
-            "septimo_grado_varon", "septimo_grado_mujer", "octavo_grado_varon", "octavo_grado_mujer","noveno_grado_varon", "noveno_grado_mujer",
-            "total_matriculados_varon", "total_matriculados_mujer"]
+            "primer_grado_hombre", "primer_grado_mujer", "segundo_grado_hombre", "segundo_grado_mujer", "tercer_grado_hombre", "tercer_grado_mujer",
+            "cuarto_grado_hombre", "cuarto_grado_mujer", "quinto_grado_hombre", "quinto_grado_mujer", "sexto_grado_hombre", "sexto_grado_mujer",
+            "septimo_grado_hombre", "septimo_grado_mujer", "octavo_grado_hombre", "octavo_grado_mujer","noveno_grado_hombre", "noveno_grado_mujer",
+            "total_matriculados_hombre", "total_matriculados_mujer"]
  
         matriculaciones_educacion_escolar_basica.each do |m|
             csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
               m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.primer_grado_varon, m.primer_grado_mujer, m.segundo_grado_varon, m.segundo_grado_mujer, m.tercer_grado_varon, m.tercer_grado_mujer,
-              m.cuarto_grado_varon, m.cuarto_grado_mujer, m.quinto_grado_varon, m.quinto_grado_mujer, m.sexto_grado_varon, m.sexto_grado_mujer,
-              m.septimo_grado_varon, m.septimo_grado_mujer, m.octavo_grado_varon, m.octavo_grado_mujer, m.noveno_grado_varon, m.noveno_grado_mujer,
-              m.total_matriculados_varon, m.total_matriculados_mujer ]
+              m.primer_grado_hombre, m.primer_grado_mujer, m.segundo_grado_hombre, m.segundo_grado_mujer, m.tercer_grado_hombre, m.tercer_grado_mujer,
+              m.cuarto_grado_hombre, m.cuarto_grado_mujer, m.quinto_grado_hombre, m.quinto_grado_mujer, m.sexto_grado_hombre, m.sexto_grado_mujer,
+              m.septimo_grado_hombre, m.septimo_grado_mujer, m.octavo_grado_hombre, m.octavo_grado_mujer, m.noveno_grado_hombre, m.noveno_grado_mujer,
+              m.total_matriculados_hombre, m.total_matriculados_mujer ]
         end
 
       end
@@ -237,19 +237,19 @@ class MatriculacionesEducacionEscolarBasicaController < ApplicationController
         sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
             :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
             :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
-            :primer_grado_varon, :primer_grado_mujer, :segundo_grado_varon, :segundo_grado_mujer, :tercer_grado_varon, :tercer_grado_mujer,
-            :cuarto_grado_varon, :cuarto_grado_mujer, :quinto_grado_varon, :quinto_grado_mujer, :sexto_grado_varon, :sexto_grado_mujer,
-            :septimo_grado_varon, :septimo_grado_mujer, :octavo_grado_varon, :octavo_grado_mujer, :noveno_grado_varon, :noveno_grado_mujer,
-            :total_matriculados_varon, :total_matriculados_mujer] 
+            :primer_grado_hombre, :primer_grado_mujer, :segundo_grado_hombre, :segundo_grado_mujer, :tercer_grado_hombre, :tercer_grado_mujer,
+            :cuarto_grado_hombre, :cuarto_grado_mujer, :quinto_grado_hombre, :quinto_grado_mujer, :sexto_grado_hombre, :sexto_grado_mujer,
+            :septimo_grado_hombre, :septimo_grado_mujer, :octavo_grado_hombre, :octavo_grado_mujer, :noveno_grado_hombre, :noveno_grado_mujer,
+            :total_matriculados_hombre, :total_matriculados_mujer] 
             
           matriculaciones_educacion_escolar_basica.each do |m|              
             sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
               m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.primer_grado_varon, m.primer_grado_mujer, m.segundo_grado_varon, m.segundo_grado_mujer, m.tercer_grado_varon, m.tercer_grado_mujer,
-              m.cuarto_grado_varon, m.cuarto_grado_mujer, m.quinto_grado_varon, m.quinto_grado_mujer, m.sexto_grado_varon, m.sexto_grado_mujer,
-              m.septimo_grado_varon, m.septimo_grado_mujer, m.octavo_grado_varon, m.octavo_grado_mujer, m.noveno_grado_varon, m.noveno_grado_mujer,
-              m.total_matriculados_varon, m.total_matriculados_mujer ]
+              m.primer_grado_hombre, m.primer_grado_mujer, m.segundo_grado_hombre, m.segundo_grado_mujer, m.tercer_grado_hombre, m.tercer_grado_mujer,
+              m.cuarto_grado_hombre, m.cuarto_grado_mujer, m.quinto_grado_hombre, m.quinto_grado_mujer, m.sexto_grado_hombre, m.sexto_grado_mujer,
+              m.septimo_grado_hombre, m.septimo_grado_mujer, m.octavo_grado_hombre, m.octavo_grado_mujer, m.noveno_grado_hombre, m.noveno_grado_mujer,
+              m.total_matriculados_hombre, m.total_matriculados_mujer ]
         end
       end
       

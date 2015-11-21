@@ -339,18 +339,18 @@ class ServiceActualizacionesController < ApplicationController
           csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
             "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
             "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
-            "maternal_varon", "maternal_mujer", "prejardin_varon", "prejardin_mujer", "jardin_varon", "jardin_mujer",
-            "preescolar_varon", "preescolar_mujer", "total_matriculados_varon", "total_matriculados_mujer",
-            "inicial_noformal_varon", "inicial_noformal_mujer"]
+            "maternal_hombre", "maternal_mujer", "prejardin_hombre", "prejardin_mujer", "jardin_hombre", "jardin_mujer",
+            "preescolar_hombre", "preescolar_mujer", "total_matriculados_hombre", "total_matriculados_mujer",
+            "inicial_noformal_hombre", "inicial_noformal_mujer"]
 
           # data rows
           matriculaciones_inicial.each do |m|
             csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
               m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.maternal_varon, m.maternal_mujer, m.prejardin_varon, m.prejardin_mujer, m.jardin_varon, m.jardin_mujer,
-              m.preescolar_varon, m.preescolar_mujer, m.total_matriculados_varon, m.total_matriculados_mujer,
-              m.inicial_noformal_varon, m.inicial_noformal_mujer]
+              m.maternal_hombre, m.maternal_mujer, m.prejardin_hombre, m.prejardin_mujer, m.jardin_hombre, m.jardin_mujer,
+              m.preescolar_hombre, m.preescolar_mujer, m.total_matriculados_hombre, m.total_matriculados_mujer,
+              m.inicial_noformal_hombre, m.inicial_noformal_mujer]
           end      
         end
 
@@ -360,17 +360,17 @@ class ServiceActualizacionesController < ApplicationController
           sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
             :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
             :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
-            :maternal_varon, :maternal_mujer, :prejardin_varon, :prejardin_mujer, :jardin_varon, :jardin_mujer,
-            :preescolar_varon, :preescolar_mujer, :total_matriculados_varon, :total_matriculados_mujer,
-            :inicial_noformal_varon, :inicial_noformal_mujer]
+            :maternal_hombre, :maternal_mujer, :prejardin_hombre, :prejardin_mujer, :jardin_hombre, :jardin_mujer,
+            :preescolar_hombre, :preescolar_mujer, :total_matriculados_hombre, :total_matriculados_mujer,
+            :inicial_noformal_hombre, :inicial_noformal_mujer]
             
           matriculaciones_inicial.each do |m|              
             sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
               m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.maternal_varon, m.maternal_mujer, m.prejardin_varon, m.prejardin_mujer, m.jardin_varon, m.jardin_mujer,
-              m.preescolar_varon, m.preescolar_mujer, m.total_matriculados_varon, m.total_matriculados_mujer,
-              m.inicial_noformal_varon, m.inicial_noformal_mujer]            
+              m.maternal_hombre, m.maternal_mujer, m.prejardin_hombre, m.prejardin_mujer, m.jardin_hombre, m.jardin_mujer,
+              m.preescolar_hombre, m.preescolar_mujer, m.total_matriculados_hombre, m.total_matriculados_mujer,
+              m.inicial_noformal_hombre, m.inicial_noformal_mujer]            
           end
         end
 
@@ -398,20 +398,20 @@ class ServiceActualizacionesController < ApplicationController
           csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
             "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
             "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
-            "primer_grado_varon", "primer_grado_mujer", "segundo_grado_varon", "segundo_grado_mujer", "tercer_grado_varon", "tercer_grado_mujer",
-            "cuarto_grado_varon", "cuarto_grado_mujer", "quinto_grado_varon", "quinto_grado_mujer", "sexto_grado_varon", "sexto_grado_mujer",
-            "septimo_grado_varon", "septimo_grado_mujer", "octavo_grado_varon", "octavo_grado_mujer","noveno_grado_varon", "noveno_grado_mujer",
-            "total_matriculados_varon", "total_matriculados_mujer"]
+            "primer_grado_hombre", "primer_grado_mujer", "segundo_grado_hombre", "segundo_grado_mujer", "tercer_grado_hombre", "tercer_grado_mujer",
+            "cuarto_grado_hombre", "cuarto_grado_mujer", "quinto_grado_hombre", "quinto_grado_mujer", "sexto_grado_hombre", "sexto_grado_mujer",
+            "septimo_grado_hombre", "septimo_grado_mujer", "octavo_grado_hombre", "octavo_grado_mujer","noveno_grado_hombre", "noveno_grado_mujer",
+            "total_matriculados_hombre", "total_matriculados_mujer"]
 
           # data rows
           matriculaciones_educacion_escolar_basica.each do |m|
             csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
               m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.primer_grado_varon, m.primer_grado_mujer, m.segundo_grado_varon, m.segundo_grado_mujer, m.tercer_grado_varon, m.tercer_grado_mujer,
-              m.cuarto_grado_varon, m.cuarto_grado_mujer, m.quinto_grado_varon, m.quinto_grado_mujer, m.sexto_grado_varon, m.sexto_grado_mujer,
-              m.septimo_grado_varon, m.septimo_grado_mujer, m.octavo_grado_varon, m.octavo_grado_mujer, m.noveno_grado_varon, m.noveno_grado_mujer,
-              m.total_matriculados_varon, m.total_matriculados_mujer ]
+              m.primer_grado_hombre, m.primer_grado_mujer, m.segundo_grado_hombre, m.segundo_grado_mujer, m.tercer_grado_hombre, m.tercer_grado_mujer,
+              m.cuarto_grado_hombre, m.cuarto_grado_mujer, m.quinto_grado_hombre, m.quinto_grado_mujer, m.sexto_grado_hombre, m.sexto_grado_mujer,
+              m.septimo_grado_hombre, m.septimo_grado_mujer, m.octavo_grado_hombre, m.octavo_grado_mujer, m.noveno_grado_hombre, m.noveno_grado_mujer,
+              m.total_matriculados_hombre, m.total_matriculados_mujer ]
           end      
         end
 
@@ -421,19 +421,19 @@ class ServiceActualizacionesController < ApplicationController
           sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
             :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
             :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
-            :primer_grado_varon, :primer_grado_mujer, :segundo_grado_varon, :segundo_grado_mujer, :tercer_grado_varon, :tercer_grado_mujer,
-            :cuarto_grado_varon, :cuarto_grado_mujer, :quinto_grado_varon, :quinto_grado_mujer, :sexto_grado_varon, :sexto_grado_mujer,
-            :septimo_grado_varon, :septimo_grado_mujer, :octavo_grado_varon, :octavo_grado_mujer, :noveno_grado_varon, :noveno_grado_mujer,
-            :total_matriculados_varon, :total_matriculados_mujer] 
+            :primer_grado_hombre, :primer_grado_mujer, :segundo_grado_hombre, :segundo_grado_mujer, :tercer_grado_hombre, :tercer_grado_mujer,
+            :cuarto_grado_hombre, :cuarto_grado_mujer, :quinto_grado_hombre, :quinto_grado_mujer, :sexto_grado_hombre, :sexto_grado_mujer,
+            :septimo_grado_hombre, :septimo_grado_mujer, :octavo_grado_hombre, :octavo_grado_mujer, :noveno_grado_hombre, :noveno_grado_mujer,
+            :total_matriculados_hombre, :total_matriculados_mujer] 
             
           matriculaciones_educacion_escolar_basica.each do |m|             
             sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
               m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.primer_grado_varon, m.primer_grado_mujer, m.segundo_grado_varon, m.segundo_grado_mujer, m.tercer_grado_varon, m.tercer_grado_mujer,
-              m.cuarto_grado_varon, m.cuarto_grado_mujer, m.quinto_grado_varon, m.quinto_grado_mujer, m.sexto_grado_varon, m.sexto_grado_mujer,
-              m.septimo_grado_varon, m.septimo_grado_mujer, m.octavo_grado_varon, m.octavo_grado_mujer, m.noveno_grado_varon, m.noveno_grado_mujer,
-              m.total_matriculados_varon, m.total_matriculados_mujer ]          
+              m.primer_grado_hombre, m.primer_grado_mujer, m.segundo_grado_hombre, m.segundo_grado_mujer, m.tercer_grado_hombre, m.tercer_grado_mujer,
+              m.cuarto_grado_hombre, m.cuarto_grado_mujer, m.quinto_grado_hombre, m.quinto_grado_mujer, m.sexto_grado_hombre, m.sexto_grado_mujer,
+              m.septimo_grado_hombre, m.septimo_grado_mujer, m.octavo_grado_hombre, m.octavo_grado_mujer, m.noveno_grado_hombre, m.noveno_grado_mujer,
+              m.total_matriculados_hombre, m.total_matriculados_mujer ]          
           end
         end
 
@@ -461,16 +461,16 @@ class ServiceActualizacionesController < ApplicationController
           csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
             "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
             "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
-            "matricula_cientifico_varon", "matricula_cientifico_mujer", "matricula_tecnico_varon", "matricula_tecnico_mujer",
-            "matricula_media_abierta_varon", "matricula_media_abierta_mujer", "matricula_formacion_profesional_media_varon", "matricula_formacion_profesional_media_mujer"]
+            "matricula_cientifico_hombre", "matricula_cientifico_mujer", "matricula_tecnico_hombre", "matricula_tecnico_mujer",
+            "matricula_media_abierta_hombre", "matricula_media_abierta_mujer", "matricula_formacion_profesional_media_hombre", "matricula_formacion_profesional_media_mujer"]
 
           # data rows
           matriculaciones_educacion_media.each do |m|
             csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
               m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.matricula_cientifico_varon, m.matricula_cientifico_mujer, m.matricula_tecnico_varon, m.matricula_tecnico_mujer,
-              m.matricula_media_abierta_varon, m.matricula_media_abierta_mujer, m.matricula_formacion_profesional_media_varon, m.matricula_formacion_profesional_media_mujer]
+              m.matricula_cientifico_hombre, m.matricula_cientifico_mujer, m.matricula_tecnico_hombre, m.matricula_tecnico_mujer,
+              m.matricula_media_abierta_hombre, m.matricula_media_abierta_mujer, m.matricula_formacion_profesional_media_hombre, m.matricula_formacion_profesional_media_mujer]
           end      
         end
 
@@ -480,15 +480,15 @@ class ServiceActualizacionesController < ApplicationController
           sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
             :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
             :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
-            :matricula_cientifico_varon, :matricula_cientifico_mujer, :matricula_tecnico_varon, :matricula_tecnico_mujer,
-            :matricula_media_abierta_varon, :matricula_media_abierta_mujer, :matricula_formacion_profesional_media_varon, :matricula_formacion_profesional_media_mujer] 
+            :matricula_cientifico_hombre, :matricula_cientifico_mujer, :matricula_tecnico_hombre, :matricula_tecnico_mujer,
+            :matricula_media_abierta_hombre, :matricula_media_abierta_mujer, :matricula_formacion_profesional_media_hombre, :matricula_formacion_profesional_media_mujer] 
             
           matriculaciones_educacion_media.each do |m|              
             sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
               m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.matricula_cientifico_varon, m.matricula_cientifico_mujer, m.matricula_tecnico_varon, m.matricula_tecnico_mujer,
-              m.matricula_media_abierta_varon, m.matricula_media_abierta_mujer, m.matricula_formacion_profesional_media_varon, m.matricula_formacion_profesional_media_mujer]      
+              m.matricula_cientifico_hombre, m.matricula_cientifico_mujer, m.matricula_tecnico_hombre, m.matricula_tecnico_mujer,
+              m.matricula_media_abierta_hombre, m.matricula_media_abierta_mujer, m.matricula_formacion_profesional_media_hombre, m.matricula_formacion_profesional_media_mujer]      
           end
         end
 
@@ -516,16 +516,16 @@ class ServiceActualizacionesController < ApplicationController
           csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
             "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
             "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
-            "matricula_inicial_especial_varon", "matricula_inicial_especial_mujer", "matricula_primer_y_segundo_ciclo_especial_varon", "matricula_primer_y_segundo_ciclo_especial_mujer",
-            "matricula_tercer_ciclo_especial_varon", "matricula_tercer_ciclo_especial_mujer", "matricula_programas_especiales_varon", "matricula_programas_especiales_mujer"]
+            "matricula_inicial_especial_hombre", "matricula_inicial_especial_mujer", "matricula_primer_y_segundo_ciclo_especial_hombre", "matricula_primer_y_segundo_ciclo_especial_mujer",
+            "matricula_tercer_ciclo_especial_hombre", "matricula_tercer_ciclo_especial_mujer", "matricula_programas_especiales_hombre", "matricula_programas_especiales_mujer"]
 
           # data rows
           matriculaciones_educacion_inclusiva.each do |m|
             csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
               m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.matricula_inicial_especial_varon, m.matricula_inicial_especial_mujer, m.matricula_primer_y_segundo_ciclo_especial_varon, m.matricula_primer_y_segundo_ciclo_especial_mujer,
-              m.matricula_tercer_ciclo_especial_varon, m.matricula_tercer_ciclo_especial_mujer, m.matricula_programas_especiales_varon, m.matricula_programas_especiales_mujer]
+              m.matricula_inicial_especial_hombre, m.matricula_inicial_especial_mujer, m.matricula_primer_y_segundo_ciclo_especial_hombre, m.matricula_primer_y_segundo_ciclo_especial_mujer,
+              m.matricula_tercer_ciclo_especial_hombre, m.matricula_tercer_ciclo_especial_mujer, m.matricula_programas_especiales_hombre, m.matricula_programas_especiales_mujer]
           end      
         end
 
@@ -535,15 +535,15 @@ class ServiceActualizacionesController < ApplicationController
           sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
             :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
             :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
-            :matricula_inicial_especial_varon, :matricula_inicial_especial_mujer, :matricula_primer_y_segundo_ciclo_especial_varon, :matricula_primer_y_segundo_ciclo_especial_mujer,
-            :matricula_tercer_ciclo_especial_varon, :matricula_tercer_ciclo_especial_mujer, :matricula_programas_especiales_varon, :matricula_programas_especiales_mujer] 
+            :matricula_inicial_especial_hombre, :matricula_inicial_especial_mujer, :matricula_primer_y_segundo_ciclo_especial_hombre, :matricula_primer_y_segundo_ciclo_especial_mujer,
+            :matricula_tercer_ciclo_especial_hombre, :matricula_tercer_ciclo_especial_mujer, :matricula_programas_especiales_hombre, :matricula_programas_especiales_mujer] 
             
           matriculaciones_educacion_inclusiva.each do |m|             
             sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
               m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.matricula_inicial_especial_varon, m.matricula_inicial_especial_mujer, m.matricula_primer_y_segundo_ciclo_especial_varon, m.matricula_primer_y_segundo_ciclo_especial_mujer,
-              m.matricula_tercer_ciclo_especial_varon, m.matricula_tercer_ciclo_especial_mujer, m.matricula_programas_especiales_varon, m.matricula_programas_especiales_mujer]           
+              m.matricula_inicial_especial_hombre, m.matricula_inicial_especial_mujer, m.matricula_primer_y_segundo_ciclo_especial_hombre, m.matricula_primer_y_segundo_ciclo_especial_mujer,
+              m.matricula_tercer_ciclo_especial_hombre, m.matricula_tercer_ciclo_especial_mujer, m.matricula_programas_especiales_hombre, m.matricula_programas_especiales_mujer]           
           end
         end
 
@@ -571,18 +571,18 @@ class ServiceActualizacionesController < ApplicationController
           csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
             "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
             "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
-            "matricula_ebbja_varon", "matricula_ebbja_mujer", "matricula_fpi_varon", "matricula_fpi_mujer",
-            "matricula_emapja_varon", "matricula_emapja_mujer", "matricula_emdja_varon", "matricula_emdja_mujer",
-            "matricula_fp_varon", "matricula_fp_mujer"]
+            "matricula_ebbja_hombre", "matricula_ebbja_mujer", "matricula_fpi_hombre", "matricula_fpi_mujer",
+            "matricula_emapja_hombre", "matricula_emapja_mujer", "matricula_emdja_hombre", "matricula_emdja_mujer",
+            "matricula_fp_hombre", "matricula_fp_mujer"]
 
           # data rows
           matriculaciones_educacion_permanente.each do |m|
             csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
               m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.matricula_ebbja_varon, m.matricula_ebbja_mujer, m.matricula_fpi_varon, m.matricula_fpi_mujer,
-              m.matricula_emapja_varon, m.matricula_emapja_mujer, m.matricula_emdja_varon, m.matricula_emdja_mujer,
-              m.matricula_fp_varon, m.matricula_fp_mujer]
+              m.matricula_ebbja_hombre, m.matricula_ebbja_mujer, m.matricula_fpi_hombre, m.matricula_fpi_mujer,
+              m.matricula_emapja_hombre, m.matricula_emapja_mujer, m.matricula_emdja_hombre, m.matricula_emdja_mujer,
+              m.matricula_fp_hombre, m.matricula_fp_mujer]
           end      
         end
 
@@ -592,17 +592,17 @@ class ServiceActualizacionesController < ApplicationController
           sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
             :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
             :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
-            :matricula_ebbja_varon, :matricula_ebbja_mujer, :matricula_fpi_varon, :matricula_fpi_mujer,
-            :matricula_emapja_varon, :matricula_emapja_mujer, :matricula_emdja_varon, :matricula_emdja_mujer,
-            :matricula_fp_varon, :matricula_fp_mujer]
+            :matricula_ebbja_hombre, :matricula_ebbja_mujer, :matricula_fpi_hombre, :matricula_fpi_mujer,
+            :matricula_emapja_hombre, :matricula_emapja_mujer, :matricula_emdja_hombre, :matricula_emdja_mujer,
+            :matricula_fp_hombre, :matricula_fp_mujer]
             
           matriculaciones_educacion_permanente.each do |m|          
             sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
               m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.matricula_ebbja_varon, m.matricula_ebbja_mujer, m.matricula_fpi_varon, m.matricula_fpi_mujer,
-              m.matricula_emapja_varon, m.matricula_emapja_mujer, m.matricula_emdja_varon, m.matricula_emdja_mujer,
-              m.matricula_fp_varon, m.matricula_fp_mujer]            
+              m.matricula_ebbja_hombre, m.matricula_ebbja_mujer, m.matricula_fpi_hombre, m.matricula_fpi_mujer,
+              m.matricula_emapja_hombre, m.matricula_emapja_mujer, m.matricula_emdja_hombre, m.matricula_emdja_mujer,
+              m.matricula_fp_hombre, m.matricula_fp_mujer]            
           end
         end
 
@@ -630,16 +630,16 @@ class ServiceActualizacionesController < ApplicationController
           csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
             "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
             "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
-            "matricula_ets_varon", "matricula_ets_mujer", "matricula_fed_varon", "matricula_fed_mujer",
-            "matricula_fdes_varon", "matricula_fdes_mujer", "matricula_pd_varon", "matricula_pd_mujer"]
+            "matricula_ets_hombre", "matricula_ets_mujer", "matricula_fed_hombre", "matricula_fed_mujer",
+            "matricula_fdes_hombre", "matricula_fdes_mujer", "matricula_pd_hombre", "matricula_pd_mujer"]
 
           # data rows
           matriculaciones_educacion_superior.each do |m|
             csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
               m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.matricula_ets_varon, m.matricula_ets_mujer, m.matricula_fed_varon, m.matricula_fed_mujer,
-              m.matricula_fdes_varon, m.matricula_fdes_mujer, m.matricula_pd_varon, m.matricula_pd_mujer]
+              m.matricula_ets_hombre, m.matricula_ets_mujer, m.matricula_fed_hombre, m.matricula_fed_mujer,
+              m.matricula_fdes_hombre, m.matricula_fdes_mujer, m.matricula_pd_hombre, m.matricula_pd_mujer]
           end      
         end
 
@@ -649,15 +649,15 @@ class ServiceActualizacionesController < ApplicationController
           sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
             :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
             :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
-            :matricula_ets_varon, :matricula_ets_mujer, :matricula_fed_varon, :matricula_fed_mujer,
-            :matricula_fdes_varon, :matricula_fdes_mujer, :matricula_pd_varon, :matricula_pd_mujer]
+            :matricula_ets_hombre, :matricula_ets_mujer, :matricula_fed_hombre, :matricula_fed_mujer,
+            :matricula_fdes_hombre, :matricula_fdes_mujer, :matricula_pd_hombre, :matricula_pd_mujer]
             
           matriculaciones_educacion_superior.each do |m|             
             sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
               m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.matricula_ets_varon, m.matricula_ets_mujer, m.matricula_fed_varon, m.matricula_fed_mujer,
-              m.matricula_fdes_varon, m.matricula_fdes_mujer, m.matricula_pd_varon, m.matricula_pd_mujer]           
+              m.matricula_ets_hombre, m.matricula_ets_mujer, m.matricula_fed_hombre, m.matricula_fed_mujer,
+              m.matricula_fdes_hombre, m.matricula_fdes_mujer, m.matricula_pd_hombre, m.matricula_pd_mujer]           
           end
         end
 
@@ -685,14 +685,14 @@ class ServiceActualizacionesController < ApplicationController
           csv << ["anio", "codigo_departamento", "nombre_departamento",
             "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona",
             "sector_o_tipo_gestion", "anho_cod_geo",
-            "cantidad_matriculados_varon", "cantidad_matriculados_mujer"]
+            "cantidad_matriculados_hombre", "cantidad_matriculados_mujer"]
 
           # data rows
           matriculaciones_departamentos_distritos.each do |m|
             csv << [m.anio, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona,
               m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.cantidad_matriculados_varon, m.cantidad_matriculados_mujer]
+              m.cantidad_matriculados_hombre, m.cantidad_matriculados_mujer]
           end      
          end
 
@@ -702,13 +702,13 @@ class ServiceActualizacionesController < ApplicationController
           sheet.add_row [:anio, :codigo_departamento, :nombre_departamento,
             :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona,
             :sector_o_tipo_gestion, :anho_cod_geo,
-            :cantidad_matriculados_varon, :cantidad_matriculados_mujer]
+            :cantidad_matriculados_hombre, :cantidad_matriculados_mujer]
             
           matriculaciones_departamentos_distritos.each do |m|              
             sheet.add_row [m.anio, m.codigo_departamento, m.nombre_departamento,
               m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona,
               m.sector_o_tipo_gestion, m.anho_cod_geo,
-              m.cantidad_matriculados_varon, m.cantidad_matriculados_mujer]
+              m.cantidad_matriculados_hombre, m.cantidad_matriculados_mujer]
           end
         end
 

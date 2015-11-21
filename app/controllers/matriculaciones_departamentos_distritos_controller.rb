@@ -72,10 +72,10 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
 
     end
 
-    if params[:form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados_varon].present?
+    if params[:form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados_hombre].present?
 
-      cond << "cantidad_matriculados_varon #{params[:form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados_varon_operador]} ?"
-      args << params[:form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados_varon]
+      cond << "cantidad_matriculados_hombre #{params[:form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_departamentos_distritos_cantidad_matriculados_hombre]
 
     end
 
@@ -112,14 +112,14 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
         csv << ["anio", "codigo_departamento", "nombre_departamento",
           "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona",
           "sector_o_tipo_gestion", "anho_cod_geo",
-          "cantidad_matriculados_varon", "cantidad_matriculados_mujer"]
+          "cantidad_matriculados_hombre", "cantidad_matriculados_mujer"]
 
         # data rows
         matriculaciones_departamentos_distritos.each do |m|
           csv << [m.anio, m.codigo_departamento, m.nombre_departamento,
             m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona,
             m.sector_o_tipo_gestion, m.anho_cod_geo,
-            m.cantidad_matriculados_varon, m.cantidad_matriculados_mujer]
+            m.cantidad_matriculados_hombre, m.cantidad_matriculados_mujer]
         end      
        end
       
@@ -128,9 +128,9 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
     elsif params[:format] == 'xlsx'
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        @matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+        matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
       else
-        @matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
+        matriculaciones_departamentos_distritos = MatriculacionDepartamentoDistrito.orden_dep_dis.where(cond)
       end
 
       p = Axlsx::Package.new     
@@ -138,13 +138,13 @@ class MatriculacionesDepartamentosDistritosController < ApplicationController
         sheet.add_row [:anio, :codigo_departamento, :nombre_departamento,
           :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona,
           :sector_o_tipo_gestion, :anho_cod_geo,
-          :cantidad_matriculados_varon, :cantidad_matriculados_mujer]
+          :cantidad_matriculados_hombre, :cantidad_matriculados_mujer]
           
         matriculaciones_departamentos_distritos.each do |m|              
           sheet.add_row [m.anio, m.codigo_departamento, m.nombre_departamento,
             m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona,
             m.sector_o_tipo_gestion, m.anho_cod_geo,
-            m.cantidad_matriculados_varon, m.cantidad_matriculados_mujer]
+            m.cantidad_matriculados_hombre, m.cantidad_matriculados_mujer]
         end
       end
       

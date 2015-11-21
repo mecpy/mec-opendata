@@ -140,8 +140,8 @@
         },
         "ejemplo": "0"
     }, {
-        "nombre": "MATRICULA_ETS_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en cursos a nivel terciario no universitario de Educación Superior, donde los son de dos y más años de duración, con estructura curricular modular elaborada a partir de las demandas y que tienen un fuerte acento en el sector terciario de producción (servicios) con predominio del sector privado",
+        "nombre": "MATRICULA_ETS_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en cursos a nivel terciario no universitario de Educación Superior, donde los son de dos y más años de duración, con estructura curricular modular elaborada a partir de las demandas y que tienen un fuerte acento en el sector terciario de producción (servicios) con predominio del sector privado",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -170,8 +170,8 @@
         },
         "ejemplo": "60"
     }, {
-        "nombre": "MATRICULA_FED_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en cursos de Profesorado en Educación Inicial (3 años de duración), Profesorado en Educación Escolar Básica —1.° y 2.° ciclo— (3 años de duración), Profesorado para Educación Escolar Básica —3.er ciclo—, por áreas de especialidad (4 años de duración) y Profesorado para la Educación Media, por áreas de especialidad (3 años de duración) de Educación Superior, además se desarrollan cursos de especialización en Ciencias de la Educación, Orientación Educacional y Vocacional, Evaluación y Administración Escolar, entre otros, de 2 años de duración respectivamente. Otros tipos de cursos se refieren a la profesionalización de docentes, a fin de brindar título docente a los bachilleres en servicio y a profesionales universitarios que ejercen la docencia sin contar con formación pedagógica",
+        "nombre": "MATRICULA_FED_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en cursos de Profesorado en Educación Inicial (3 años de duración), Profesorado en Educación Escolar Básica —1.° y 2.° ciclo— (3 años de duración), Profesorado para Educación Escolar Básica —3.er ciclo—, por áreas de especialidad (4 años de duración) y Profesorado para la Educación Media, por áreas de especialidad (3 años de duración) de Educación Superior, además se desarrollan cursos de especialización en Ciencias de la Educación, Orientación Educacional y Vocacional, Evaluación y Administración Escolar, entre otros, de 2 años de duración respectivamente. Otros tipos de cursos se refieren a la profesionalización de docentes, a fin de brindar título docente a los bachilleres en servicio y a profesionales universitarios que ejercen la docencia sin contar con formación pedagógica",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -200,8 +200,8 @@
         },
         "ejemplo": "0"
     }, {
-        "nombre": "MATRICULA_FDES_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en cursos de formación docente en servicios de Educación Superior, que se refieren a la profesionalización de docentes, a fin de brindar título docente a los bachilleres en servicio",
+        "nombre": "MATRICULA_FDES_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en cursos de formación docente en servicios de Educación Superior, que se refieren a la profesionalización de docentes, a fin de brindar título docente a los bachilleres en servicio",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -230,8 +230,8 @@
         },
         "ejemplo": "265"
     }, {
-        "nombre": "MATRICULA_PD_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en cursos profesionalización docente de Educación Superior, dirigido a profesionales universitarios que ejercen la docencia sin contar con formación pedagógica",
+        "nombre": "MATRICULA_PD_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en cursos profesionalización docente de Educación Superior, dirigido a profesionales universitarios que ejercen la docencia sin contar con formación pedagógica",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {

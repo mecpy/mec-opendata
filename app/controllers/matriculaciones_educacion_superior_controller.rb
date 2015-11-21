@@ -155,16 +155,16 @@ class MatriculacionesEducacionSuperiorController < ApplicationController
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
           "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
           "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
-          "matricula_ets_varon", "matricula_ets_mujer", "matricula_fed_varon", "matricula_fed_mujer",
-          "matricula_fdes_varon", "matricula_fdes_mujer", "matricula_pd_varon", "matricula_pd_mujer"]
+          "matricula_ets_hombre", "matricula_ets_mujer", "matricula_fed_hombre", "matricula_fed_mujer",
+          "matricula_fdes_hombre", "matricula_fdes_mujer", "matricula_pd_hombre", "matricula_pd_mujer"]
 
         # data rows
         matriculaciones_educacion_superior.each do |m|
           csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
             m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
             m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-            m.matricula_ets_varon, m.matricula_ets_mujer, m.matricula_fed_varon, m.matricula_fed_mujer,
-            m.matricula_fdes_varon, m.matricula_fdes_mujer, m.matricula_pd_varon, m.matricula_pd_mujer]
+            m.matricula_ets_hombre, m.matricula_ets_mujer, m.matricula_fed_hombre, m.matricula_fed_mujer,
+            m.matricula_fdes_hombre, m.matricula_fdes_mujer, m.matricula_pd_hombre, m.matricula_pd_mujer]
         end      
       end
     
@@ -183,15 +183,15 @@ class MatriculacionesEducacionSuperiorController < ApplicationController
         sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
           :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
           :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
-          :matricula_ets_varon, :matricula_ets_mujer, :matricula_fed_varon, :matricula_fed_mujer,
-          :matricula_fdes_varon, :matricula_fdes_mujer, :matricula_pd_varon, :matricula_pd_mujer]
+          :matricula_ets_hombre, :matricula_ets_mujer, :matricula_fed_hombre, :matricula_fed_mujer,
+          :matricula_fdes_hombre, :matricula_fdes_mujer, :matricula_pd_hombre, :matricula_pd_mujer]
           
         matriculaciones_educacion_superior.each do |m|             
           sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
             m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
             m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-            m.matricula_ets_varon, m.matricula_ets_mujer, m.matricula_fed_varon, m.matricula_fed_mujer,
-            m.matricula_fdes_varon, m.matricula_fdes_mujer, m.matricula_pd_varon, m.matricula_pd_mujer]           
+            m.matricula_ets_hombre, m.matricula_ets_mujer, m.matricula_fed_hombre, m.matricula_fed_mujer,
+            m.matricula_fdes_hombre, m.matricula_fdes_mujer, m.matricula_pd_hombre, m.matricula_pd_mujer]           
         end
       end
       

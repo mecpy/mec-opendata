@@ -159,18 +159,18 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
           "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
           "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
-          "matricula_ebbja_varon", "matricula_ebbja_mujer", "matricula_fpi_varon", "matricula_fpi_mujer",
-          "matricula_emapja_varon", "matricula_emapja_mujer", "matricula_emdja_varon", "matricula_emdja_mujer",
-          "matricula_fp_varon", "matricula_fp_mujer"]
+          "matricula_ebbja_hombre", "matricula_ebbja_mujer", "matricula_fpi_hombre", "matricula_fpi_mujer",
+          "matricula_emapja_hombre", "matricula_emapja_mujer", "matricula_emdja_hombre", "matricula_emdja_mujer",
+          "matricula_fp_hombre", "matricula_fp_mujer"]
 
         # data rows
         matriculaciones_educacion_permanente.each do |m|
           csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
             m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
             m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-            m.matricula_ebbja_varon, m.matricula_ebbja_mujer, m.matricula_fpi_varon, m.matricula_fpi_mujer,
-            m.matricula_emapja_varon, m.matricula_emapja_mujer, m.matricula_emdja_varon, m.matricula_emdja_mujer,
-            m.matricula_fp_varon, m.matricula_fp_mujer]
+            m.matricula_ebbja_hombre, m.matricula_ebbja_mujer, m.matricula_fpi_hombre, m.matricula_fpi_mujer,
+            m.matricula_emapja_hombre, m.matricula_emapja_mujer, m.matricula_emdja_hombre, m.matricula_emdja_mujer,
+            m.matricula_fp_hombre, m.matricula_fp_mujer]
         end      
       end
       
@@ -189,17 +189,17 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
         sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
           :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
           :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
-          :matricula_ebbja_varon, :matricula_ebbja_mujer, :matricula_fpi_varon, :matricula_fpi_mujer,
-          :matricula_emapja_varon, :matricula_emapja_mujer, :matricula_emdja_varon, :matricula_emdja_mujer,
-          :matricula_fp_varon, :matricula_fp_mujer]
+          :matricula_ebbja_hombre, :matricula_ebbja_mujer, :matricula_fpi_hombre, :matricula_fpi_mujer,
+          :matricula_emapja_hombre, :matricula_emapja_mujer, :matricula_emdja_hombre, :matricula_emdja_mujer,
+          :matricula_fp_hombre, :matricula_fp_mujer]
           
         matriculaciones_educacion_permanente.each do |m|          
           sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
             m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
             m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-            m.matricula_ebbja_varon, m.matricula_ebbja_mujer, m.matricula_fpi_varon, m.matricula_fpi_mujer,
-            m.matricula_emapja_varon, m.matricula_emapja_mujer, m.matricula_emdja_varon, m.matricula_emdja_mujer,
-            m.matricula_fp_varon, m.matricula_fp_mujer]            
+            m.matricula_ebbja_hombre, m.matricula_ebbja_mujer, m.matricula_fpi_hombre, m.matricula_fpi_mujer,
+            m.matricula_emapja_hombre, m.matricula_emapja_mujer, m.matricula_emdja_hombre, m.matricula_emdja_mujer,
+            m.matricula_fp_hombre, m.matricula_fp_mujer]            
         end
       end
       
