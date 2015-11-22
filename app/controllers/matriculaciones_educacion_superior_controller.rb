@@ -106,11 +106,39 @@ class MatriculacionesEducacionSuperiorController < ApplicationController
 
     end
 
+    if params[:form_buscar_matriculaciones_educacion_superior_matricula_ets_hombre].present?
+
+      cond << "matricula_ets_hombre #{params[:form_buscar_matriculaciones_educacion_superior_matricula_ets_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_superior_matricula_ets_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_superior_matricula_ets_mujer].present?
+
+      cond << "matricula_ets_mujer #{params[:form_buscar_matriculaciones_educacion_superior_matricula_ets_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_superior_matricula_ets_mujer]
+
+    end
+
 
     if params[:form_buscar_matriculaciones_educacion_superior_matricula_fed].present?
 
       cond << "matricula_fed #{params[:form_buscar_matriculaciones_educacion_superior_matricula_fed_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_superior_matricula_fed]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_superior_matricula_fed_hombre].present?
+
+      cond << "matricula_fed_hombre #{params[:form_buscar_matriculaciones_educacion_superior_matricula_fed_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_superior_matricula_fed_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_superior_matricula_fed_mujer].present?
+
+      cond << "matricula_fed_mujer #{params[:form_buscar_matriculaciones_educacion_superior_matricula_fed_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_superior_matricula_fed_mujer]
 
     end
 
@@ -122,11 +150,39 @@ class MatriculacionesEducacionSuperiorController < ApplicationController
 
     end
 
+    if params[:form_buscar_matriculaciones_educacion_superior_matricula_fdes_hombre].present?
+
+      cond << "matricula_fdes_hombre #{params[:form_buscar_matriculaciones_educacion_superior_matricula_fdes_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_superior_matricula_fdes_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_superior_matricula_fdes_mujer].present?
+
+      cond << "matricula_fdes_mujer #{params[:form_buscar_matriculaciones_educacion_superior_matricula_fdes_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_superior_matricula_fdes_mujer]
+
+    end
+
 
     if params[:form_buscar_matriculaciones_educacion_superior_matricula_pd].present?
 
       cond << "matricula_pd #{params[:form_buscar_matriculaciones_educacion_superior_matricula_pd_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_superior_matricula_pd]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_superior_matricula_pd_hombre].present?
+
+      cond << "matricula_pd_hombre #{params[:form_buscar_matriculaciones_educacion_superior_matricula_pd_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_superior_matricula_pd_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_superior_matricula_pd_mujer].present?
+
+      cond << "matricula_pd_mujer #{params[:form_buscar_matriculaciones_educacion_superior_matricula_pd_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_superior_matricula_pd_mujer]
 
     end
 

@@ -253,7 +253,7 @@
         </th>
 
         <th>
-          <span data-titulo="true">Matricula Inicial Especial</span>
+          <span data-titulo="true">Matrícula Inicial Especial</span>
           <span class="orden matricula_inicial_especial">
             <i class="filtro fa fa-sort"></i>
             <i class="descendente fa fa-sort-desc"></i>
@@ -270,7 +270,41 @@
         </th>
 
         <th>
-          <span data-titulo="true">Matricula 1er y 2do Ciclo Especial</span>
+          <span data-titulo="true">Matrícula Inicial Especial<br />Hombre</span>
+          <span class="orden matricula_inicial_especial_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula Inicial Especial<br />Mujer</span>
+          <span class="orden matricula_inicial_especial_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial_mujer');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula 1er y 2do Ciclo Especial</span>
           <span class="orden matricula_primer_y_segundo_ciclo_especial">
             <i class="filtro fa fa-sort"></i>
             <i class="descendente fa fa-sort-desc"></i>
@@ -287,7 +321,41 @@
         </th>
 
         <th>
-          <span data-titulo="true">Matricula 3er Ciclo Especial</span>
+          <span data-titulo="true">Matrícula 1er y 2do Ciclo Especial<br />Hombre</span>
+          <span class="orden matricula_primer_y_segundo_ciclo_especial_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula 1er y 2do Ciclo Especial<br />Mujer</span>
+          <span class="orden matricula_primer_y_segundo_ciclo_especial_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_mujer');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula 3er Ciclo Especial</span>
           <span class="orden matricula_tercer_ciclo_especial">
             <i class="filtro fa fa-sort"></i>
             <i class="descendente fa fa-sort-desc"></i>
@@ -304,7 +372,41 @@
         </th>
 
         <th>
-          <span data-titulo="true">Matricula Programas Especiales</span>
+          <span data-titulo="true">Matrícula 3er Ciclo Especial<br />Hombre</span>
+          <span class="orden matricula_tercer_ciclo_especial_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula 3er Ciclo Especial<br />Mujer</span>
+          <span class="orden matricula_tercer_ciclo_especial_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial_mujer');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula Programas Especiales</span>
           <span class="orden matricula_programas_especiales">
             <i class="filtro fa fa-sort"></i>
             <i class="descendente fa fa-sort-desc"></i>
@@ -317,6 +419,40 @@
           </span>
           <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales, nil, :class => 'form-control', :placeholder => '' %>
           <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula Programas Especiales<br />Hombre</span>
+          <span class="orden matricula_programas_especiales_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula Programas Especiales<br />Mujer</span>
+          <span class="orden matricula_programas_especiales_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-inclusiva', '#form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_mujer');"><i class="fa fa-times"></i></span>
         </div>
         </th>
 

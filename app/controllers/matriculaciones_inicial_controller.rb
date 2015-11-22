@@ -105,11 +105,37 @@ class MatriculacionesInicialController < ApplicationController
       args << params[:form_buscar_matriculaciones_inicial_maternal]
 
     end
+
+    if params[:form_buscar_matriculaciones_inicial_maternal_hombre].present?
+
+      cond << "maternal_hombre #{params[:form_buscar_matriculaciones_inicial_maternal_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_maternal_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_inicial_maternal_mujer].present?
+
+      cond << "maternal_mujer #{params[:form_buscar_matriculaciones_inicial_maternal_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_maternal_mujer]
+
+    end
     
     if params[:form_buscar_matriculaciones_inicial_prejardin].present?
 
       cond << "prejardin #{params[:form_buscar_matriculaciones_inicial_prejardin_operador]} ?"
       args << params[:form_buscar_matriculaciones_inicial_prejardin]
+    end
+
+    if params[:form_buscar_matriculaciones_inicial_prejardin_hombre].present?
+
+      cond << "prejardin_hombre #{params[:form_buscar_matriculaciones_inicial_prejardin_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_prejardin_hombre]
+    end
+
+    if params[:form_buscar_matriculaciones_inicial_prejardin_mujer].present?
+
+      cond << "prejardin_mujer #{params[:form_buscar_matriculaciones_inicial_prejardin_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_prejardin_mujer]
     end
 
     if params[:form_buscar_matriculaciones_inicial_jardin].present?
@@ -118,11 +144,39 @@ class MatriculacionesInicialController < ApplicationController
       args << params[:form_buscar_matriculaciones_inicial_jardin]
 
     end
+
+    if params[:form_buscar_matriculaciones_inicial_jardin_hombre].present?
+
+      cond << "jardin_hombre #{params[:form_buscar_matriculaciones_inicial_jardin_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_jardin_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_inicial_jardin_mujer].present?
+
+      cond << "jardin_mujer #{params[:form_buscar_matriculaciones_inicial_jardin_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_jardin_mujer]
+
+    end
    
     if params[:form_buscar_matriculaciones_inicial_preescolar].present?
 
       cond << "preescolar #{params[:form_buscar_matriculaciones_inicial_preescolar_operador]} ?"
       args << params[:form_buscar_matriculaciones_inicial_preescolar]
+
+    end
+
+    if params[:form_buscar_matriculaciones_inicial_preescolar_hombre].present?
+
+      cond << "preescolar_hombre #{params[:form_buscar_matriculaciones_inicial_preescolar_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_preescolar_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_inicial_preescolar_mujer].present?
+
+      cond << "preescolar_mujer #{params[:form_buscar_matriculaciones_inicial_preescolar_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_preescolar_mujer]
 
     end
    

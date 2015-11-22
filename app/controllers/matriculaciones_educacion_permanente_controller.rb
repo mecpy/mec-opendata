@@ -107,16 +107,66 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
 
     end
 
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_hombre].present?
+
+      cond << "matricula_ebbja_hombre #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_mujer].present?
+
+      cond << "matricula_ebbja_mujer #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_mujer]
+
+    end
+
     if params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi].present?
 
       cond << "matricula_fpi #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi]
+      
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_hombre].present?
+
+      cond << "matricula_fpi_hombre #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_hombre].present?
+
+      cond << "matricula_fpi_hombre #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_mujer].present?
+
+      cond << "matricula_fpi_mujer #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_mujer]
+
     end
 
     if params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja].present?
 
       cond << "matricula_emapja #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_hombre].present?
+
+      cond << "matricula_emapja_hombre #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_mujer].present?
+
+      cond << "matricula_emapja_mujer #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_mujer]
 
     end
    
@@ -126,11 +176,40 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
       args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja]
 
     end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_hombre].present?
+
+      cond << "matricula_emdja_hombre #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_mujer].present?
+
+      cond << "matricula_emdja_mujer #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_mujer]
+
+    end
+
    
     if params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp].present?
 
       cond << "matricula_fp #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp_hombre].present?
+
+      cond << "matricula_fp_hombre #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp_mujer].present?
+
+      cond << "matricula_fp_mujer #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp_mujer]
 
     end
 

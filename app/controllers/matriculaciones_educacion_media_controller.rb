@@ -105,10 +105,38 @@ class MatriculacionesEducacionMediaController < ApplicationController
 
     end
 
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_hombre].present?
+
+      cond << "matricula_cientifico_hombre #{params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_mujer].present?
+
+      cond << "matricula_cientifico_mujer #{params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_mujer]
+
+    end
+
     if params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico].present?
 
       cond << "matricula_tecnico #{params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_hombre].present?
+
+      cond << "matricula_tecnico_hombre #{params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_mujer].present?
+
+      cond << "matricula_tecnico_mujer #{params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_mujer]
 
     end
 
@@ -119,10 +147,38 @@ class MatriculacionesEducacionMediaController < ApplicationController
 
     end
 
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_hombre].present?
+
+      cond << "matricula_media_abierta_hombre #{params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_mujer].present?
+
+      cond << "matricula_media_abierta_mujer #{params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_mujer]
+
+    end
+
     if params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media].present?
 
       cond << "matricula_formacion_profesional_media #{params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_hombre].present?
+
+      cond << "matricula_formacion_profesional_media_hombre #{params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_mujer].present?
+
+      cond << "matricula_formacion_profesional_media_mujer #{params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_mujer]
 
     end
 

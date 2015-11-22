@@ -102,10 +102,39 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
       args << params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial]
 
     end
+
+    if params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial_hombre].present?
+
+      cond << "matricula_inicial_especial_hombre #{params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial_mujer].present?
+
+      cond << "matricula_inicial_especial_mujer #{params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_inicial_especial_mujer]
+
+    end
+
     if params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial].present?
 
       cond << "matricula_primer_y_segundo_ciclo_especial #{params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_hombre].present?
+
+      cond << "matricula_primer_y_segundo_ciclo_especial_hombre #{params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_mujer].present?
+
+      cond << "matricula_primer_y_segundo_ciclo_especial_mujer #{params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_primer_y_segundo_ciclo_especial_mujer]
 
     end
     
@@ -115,10 +144,39 @@ class MatriculacionesEducacionInclusivaController < ApplicationController
       args << params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial]
 
     end
+
+    if params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial_hombre].present?
+
+      cond << "matricula_tercer_ciclo_especial_hombre #{params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial_mujer].present?
+
+      cond << "matricula_tercer_ciclo_especial_mujer #{params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_tercer_ciclo_especial_mujer]
+
+    end
+
     if params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales].present?
 
       cond << "matricula_programas_especiales #{params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_hombre].present?
+
+      cond << "matricula_programas_especiales_hombre #{params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_mujer].present?
+
+      cond << "matricula_programas_especiales_mujer #{params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_inclusiva_matricula_programas_especiales_mujer]
 
     end
     
