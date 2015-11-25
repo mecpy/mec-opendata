@@ -140,8 +140,8 @@
         },
         "ejemplo": "79"
     }, {
-        "nombre": "MATERNAL_VARON",
-        "descripcion": "Representa la cantidad de alumnos varones matriculados en maternal de la etapa incial del Sistema Educativo Nacional correspondiente al nivel Educación Inicial Formal, la modalidad atiende a niños de 0 a 2 años, a quienes se brinda atención y estimulación integral durante el día, en media jornada o en jornada completa",
+        "nombre": "MATERNAL_HOMBRE",
+        "descripcion": "Representa la cantidad de alumnos hombres matriculados en maternal de la etapa incial del Sistema Educativo Nacional correspondiente al nivel Educación Inicial Formal, la modalidad atiende a niños de 0 a 2 años, a quienes se brinda atención y estimulación integral durante el día, en media jornada o en jornada completa",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -170,8 +170,8 @@
         },
         "ejemplo": "106"
     }, {
-        "nombre": "PREJARDIN_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en prejardin de la etapa incial del nivel Educación Inicial Formal, la modalidad atiende a niños de 3 años, a quienes se brinda atención y estimulación integral durante el día, en media jornada o en jornada completa",
+        "nombre": "PREJARDIN_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en prejardin de la etapa incial del nivel Educación Inicial Formal, la modalidad atiende a niños de 3 años, a quienes se brinda atención y estimulación integral durante el día, en media jornada o en jornada completa",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -200,8 +200,8 @@
         },
         "ejemplo": "54"
     }, {
-        "nombre": "JARDIN_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en jardin de la etapa incial del nivel Educación Escolar Básica, la modalidad atiende a niños de 4 años, que contempla actividades educativas tendientes a desarrollar todas las dimensiones de la personalidad de los infantes",
+        "nombre": "JARDIN_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en jardin de la etapa incial del nivel Educación Escolar Básica, la modalidad atiende a niños de 4 años, que contempla actividades educativas tendientes a desarrollar todas las dimensiones de la personalidad de los infantes",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -230,8 +230,8 @@
         },
         "ejemplo": "16"
     }, {
-        "nombre": "PREESCOLAR_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en preescolar de la etapa incial del nivel Educación Inicial Formal, la modalidad atiende a niños de 5 años, busca estimular el desarrollo integral de todos los aspectos de su personalidad",
+        "nombre": "PREESCOLAR_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en preescolar de la etapa incial del nivel Educación Inicial Formal, la modalidad atiende a niños de 5 años, busca estimular el desarrollo integral de todos los aspectos de su personalidad",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -260,8 +260,8 @@
         },
         "ejemplo": "255"
     }, {
-        "nombre": "TOTAL_MATRICULADOS_VARON",
-        "descripcion": "Representa la cantidad total de estudiantes varones inscriptos en la institución de los grados del nivel Inicial de la Educación Inicial Formal",
+        "nombre": "TOTAL_MATRICULADOS_HOMBRE",
+        "descripcion": "Representa la cantidad total de estudiantes hombres inscriptos en la institución de los grados del nivel Inicial de la Educación Inicial Formal",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -300,7 +300,7 @@
         },
         "ejemplo": "36"
     }, {
-        "nombre": "NOFORMAL_VARON",
+        "nombre": "NOFORMAL_HOMBRE",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en la modalidad que atiende a niños menores de 6  años que no tienen acceso a la Educación Inicial Formal e implementada en Mitã Róga y otras organizaciones educativas que funcionan en casas de familias, escuelas, iglesias, municipalidades, etc., atendidos por voluntarios/as, como padres de familias, estudiantes, maestros/as o enfermeros/as",
         "tipo": "xsd:gYear",
         "restricciones": "",

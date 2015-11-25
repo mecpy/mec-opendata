@@ -140,8 +140,8 @@
         },
         "ejemplo": "571"
     }, {
-        "nombre": "MATRICULA_CIENTIFICO_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos del 1° al 3° curso de la Educación Media, con orientación hacia el Bachillerato Científico, comprende tres énfasis: Letras y Artes; Ciencias Sociales; y Ciencias Básicas y Tecnología",
+        "nombre": "MATRICULA_CIENTIFICO_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos del 1° al 3° curso de la Educación Media, con orientación hacia el Bachillerato Científico, comprende tres énfasis: Letras y Artes; Ciencias Sociales; y Ciencias Básicas y Tecnología",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -170,8 +170,8 @@
         },
         "ejemplo": "528"
     }, {
-        "nombre": "MATRICULA_TECNICO_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos del 1° al 3° curso de la Educación Media, en la modalidad de Bachillerato Técnico (Industrial, Servicios y Agropecuario)",
+        "nombre": "MATRICULA_TECNICO_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos del 1° al 3° curso de la Educación Media, en la modalidad de Bachillerato Técnico (Industrial, Servicios y Agropecuario)",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -200,8 +200,8 @@
         },
         "ejemplo": "142"
     }, {
-        "nombre": "MATRICULA_MEDIA_ABIERTA_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en la modalidad Media Abierta que está dirigida a jóvenes de 15 a 20 años que han terminado el noveno grado de la Educación Escolar Básica, pero que no han ingresado por alguna razón a la Educación Media convencional. Este modelo educativo permite un aprendizaje flexible, según el ritmo y las posibilidades de tiempo de cada estudiante. Pretende con una oferta diferente de formación, dar respuesta a diferentes necesidades de aprendizaje y albergar a jóvenes en situaciones de deserción escolar",
+        "nombre": "MATRICULA_MEDIA_ABIERTA_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en la modalidad Media Abierta que está dirigida a jóvenes de 15 a 20 años que han terminado el noveno grado de la Educación Escolar Básica, pero que no han ingresado por alguna razón a la Educación Media convencional. Este modelo educativo permite un aprendizaje flexible, según el ritmo y las posibilidades de tiempo de cada estudiante. Pretende con una oferta diferente de formación, dar respuesta a diferentes necesidades de aprendizaje y albergar a jóvenes en situaciones de deserción escolar",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -230,8 +230,8 @@
         },
         "ejemplo": "180"
     }, {
-        "nombre": "MATRICULA_FORMACION_PROFESIONAL_MEDIA_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en la modalidad de Formación Profesional de la Media, programas educativos orientados hacia la capacitación laboral, ofrece oportunidades de profesionalización de distinto grado de calificación y especialidad. La formación profesional está dirigida a la formación en áreas relacionadas con la producción de bienes y servicios.<br>Para cursar la formación profesional se requiere haber concluido los 6 años de la Educación Escolar Básica",
+        "nombre": "MATRICULA_FORMACION_PROFESIONAL_MEDIA_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en la modalidad de Formación Profesional de la Media, programas educativos orientados hacia la capacitación laboral, ofrece oportunidades de profesionalización de distinto grado de calificación y especialidad. La formación profesional está dirigida a la formación en áreas relacionadas con la producción de bienes y servicios.<br>Para cursar la formación profesional se requiere haber concluido los 6 años de la Educación Escolar Básica",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {

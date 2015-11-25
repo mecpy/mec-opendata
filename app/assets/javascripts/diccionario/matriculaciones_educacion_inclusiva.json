@@ -90,8 +90,8 @@
         },
         "ejemplo": "113"
     }, {
-        "nombre": "MATRICULA_INICIAL_ESPECIAL_VARON",
-        "descripcion": "Representa la cantidad de alumnos varones matriculados en las etapas del nivel inicial como maternal, jardin, prejardin y preescolar del Sistema Educativo Nacional correspondiente al nivel Educación Especial, donde se desarrolla además de la enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as de esas etapas,la modalidad orientada a impartir educacion general o profesional y/o brindar tratamientos correctivos a personas con problemas de tipo fisico, intelectual, sensorial,emocional y del aprendizaje.",
+        "nombre": "MATRICULA_INICIAL_ESPECIAL_HOMBRE",
+        "descripcion": "Representa la cantidad de alumnos hombres matriculados en las etapas del nivel inicial como maternal, jardin, prejardin y preescolar del Sistema Educativo Nacional correspondiente al nivel Educación Especial, donde se desarrolla además de la enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as de esas etapas,la modalidad orientada a impartir educacion general o profesional y/o brindar tratamientos correctivos a personas con problemas de tipo fisico, intelectual, sensorial,emocional y del aprendizaje.",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -120,8 +120,8 @@
         },
         "ejemplo": "0"
     }, {
-        "nombre": "MATRICULA_1ER. Y 2DO.CICLO_ESPECIAL_VARON",
-        "descripcion": "Representa la cantidad de alumnos varones matriculados desde el primer grado hasta el sexto grado del Sistema Educativo Nacional correspondiente al nivel Educación Especial, donde se desarrolla además de la enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as de esos grados,una modalidad orientada a impartir educacion general o profesional y/o brindar tratamientos correctivos a personas con problemas de tipo fisico, intelectual, sensorial,emocional y del aprendizaje.",
+        "nombre": "MATRICULA_1ER. Y 2DO.CICLO_ESPECIAL_HOMBRE",
+        "descripcion": "Representa la cantidad de alumnos hombres matriculados desde el primer grado hasta el sexto grado del Sistema Educativo Nacional correspondiente al nivel Educación Especial, donde se desarrolla además de la enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as de esos grados,una modalidad orientada a impartir educacion general o profesional y/o brindar tratamientos correctivos a personas con problemas de tipo fisico, intelectual, sensorial,emocional y del aprendizaje.",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -150,8 +150,8 @@
         },
         "ejemplo": "0"
     }, {
-        "nombre": "MATRICULA_3ER.CICLO_ESPECIAL_VARON",
-        "descripcion": "Representa la cantidad de alumnos varones matriculados desde el septimo grado hasta el noveno grado del Sistema Educativo Nacional correspondiente al nivel Educación Especial, donde se desarrolla además de la enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as de esos grados, una modalidad orientada a impartir educacion general o profesional y/o brindar tratamientos correctivos a personas con problemas de tipo fisico, intelectual, sensorial,emocional y del aprendizaje.",
+        "nombre": "MATRICULA_3ER.CICLO_ESPECIAL_HOMBRE",
+        "descripcion": "Representa la cantidad de alumnos hombres matriculados desde el septimo grado hasta el noveno grado del Sistema Educativo Nacional correspondiente al nivel Educación Especial, donde se desarrolla además de la enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as de esos grados, una modalidad orientada a impartir educacion general o profesional y/o brindar tratamientos correctivos a personas con problemas de tipo fisico, intelectual, sensorial,emocional y del aprendizaje.",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -180,8 +180,8 @@
         },
         "ejemplo": "118"
     }, {
-        "nombre": "MATRICULA_PROGRAMAS_ESPECIALES_VARON",
-        "descripcion": "Representa la cantidad de matriculados varones que atiende exclusivamente a niños/as con necesidades educativas especiales, correspondiente al nivel de Educación Especial.",
+        "nombre": "MATRICULA_PROGRAMAS_ESPECIALES_HOMBRE",
+        "descripcion": "Representa la cantidad de matriculados hombres que atiende exclusivamente a niños/as con necesidades educativas especiales, correspondiente al nivel de Educación Especial.",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {

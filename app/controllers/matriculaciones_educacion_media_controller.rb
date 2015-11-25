@@ -105,10 +105,38 @@ class MatriculacionesEducacionMediaController < ApplicationController
 
     end
 
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_hombre].present?
+
+      cond << "matricula_cientifico_hombre #{params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_mujer].present?
+
+      cond << "matricula_cientifico_mujer #{params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_mujer]
+
+    end
+
     if params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico].present?
 
       cond << "matricula_tecnico #{params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_hombre].present?
+
+      cond << "matricula_tecnico_hombre #{params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_mujer].present?
+
+      cond << "matricula_tecnico_mujer #{params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_mujer]
 
     end
 
@@ -119,10 +147,38 @@ class MatriculacionesEducacionMediaController < ApplicationController
 
     end
 
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_hombre].present?
+
+      cond << "matricula_media_abierta_hombre #{params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_mujer].present?
+
+      cond << "matricula_media_abierta_mujer #{params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_mujer]
+
+    end
+
     if params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media].present?
 
       cond << "matricula_formacion_profesional_media #{params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_hombre].present?
+
+      cond << "matricula_formacion_profesional_media_hombre #{params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_mujer].present?
+
+      cond << "matricula_formacion_profesional_media_mujer #{params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_mujer]
 
     end
 
@@ -151,16 +207,16 @@ class MatriculacionesEducacionMediaController < ApplicationController
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
             "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
             "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
-            "matricula_cientifico_varon", "matricula_cientifico_mujer", "matricula_tecnico_varon", "matricula_tecnico_mujer",
-            "matricula_media_abierta_varon", "matricula_media_abierta_mujer", "matricula_formacion_profesional_media_varon", "matricula_formacion_profesional_media_mujer"]
+            "matricula_cientifico_hombre", "matricula_cientifico_mujer", "matricula_tecnico_hombre", "matricula_tecnico_mujer",
+            "matricula_media_abierta_hombre", "matricula_media_abierta_mujer", "matricula_formacion_profesional_media_hombre", "matricula_formacion_profesional_media_mujer"]
  
         # data rows
         matriculaciones_educacion_media.each do |m|
           csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
             m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
             m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-            m.matricula_cientifico_varon, m.matricula_cientifico_mujer, m.matricula_tecnico_varon, m.matricula_tecnico_mujer,
-            m.matricula_media_abierta_varon, m.matricula_media_abierta_mujer, m.matricula_formacion_profesional_media_varon, m.matricula_formacion_profesional_media_mujer]
+            m.matricula_cientifico_hombre, m.matricula_cientifico_mujer, m.matricula_tecnico_hombre, m.matricula_tecnico_mujer,
+            m.matricula_media_abierta_hombre, m.matricula_media_abierta_mujer, m.matricula_formacion_profesional_media_hombre, m.matricula_formacion_profesional_media_mujer]
         end      
        end
     
@@ -179,15 +235,15 @@ class MatriculacionesEducacionMediaController < ApplicationController
         sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
           :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
           :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
-          :matricula_cientifico_varon, :matricula_cientifico_mujer, :matricula_tecnico_varon, :matricula_tecnico_mujer,
-          :matricula_media_abierta_varon, :matricula_media_abierta_mujer, :matricula_formacion_profesional_media_varon, :matricula_formacion_profesional_media_mujer] 
+          :matricula_cientifico_hombre, :matricula_cientifico_mujer, :matricula_tecnico_hombre, :matricula_tecnico_mujer,
+          :matricula_media_abierta_hombre, :matricula_media_abierta_mujer, :matricula_formacion_profesional_media_hombre, :matricula_formacion_profesional_media_mujer] 
           
         matriculaciones_educacion_media.each do |m|              
           sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
             m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
             m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
-            m.matricula_cientifico_varon, m.matricula_cientifico_mujer, m.matricula_tecnico_varon, m.matricula_tecnico_mujer,
-            m.matricula_media_abierta_varon, m.matricula_media_abierta_mujer, m.matricula_formacion_profesional_media_varon, m.matricula_formacion_profesional_media_mujer]      
+            m.matricula_cientifico_hombre, m.matricula_cientifico_mujer, m.matricula_tecnico_hombre, m.matricula_tecnico_mujer,
+            m.matricula_media_abierta_hombre, m.matricula_media_abierta_mujer, m.matricula_formacion_profesional_media_hombre, m.matricula_formacion_profesional_media_mujer]      
         end
       end
       

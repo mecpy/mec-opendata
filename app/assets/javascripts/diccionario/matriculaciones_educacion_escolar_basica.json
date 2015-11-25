@@ -140,8 +140,8 @@
         },
         "ejemplo": "104"
    }, {
-        "nombre": "1ER._GRADO_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el primer grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "nombre": "1ER._GRADO_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en el primer grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -170,8 +170,8 @@
         },
         "ejemplo": "117"
     }, {
-        "nombre": "2DO._GRADO_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el segundo grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "nombre": "2DO._GRADO_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en el segundo grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -200,8 +200,8 @@
         },
         "ejemplo": "137"
     }, {
-        "nombre": "3ER._GRADO_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el tercer grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "nombre": "3ER._GRADO_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en el tercer grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -230,8 +230,8 @@
         },
         "ejemplo": "122"
     }, {
-        "nombre": "4TO._GRADO_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el cuarto grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "nombre": "4TO._GRADO_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en el cuarto grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -260,8 +260,8 @@
         },
         "ejemplo": "139"
     }, {
-        "nombre": "5TO._GRADO_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el quinto grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "nombre": "5TO._GRADO_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en el quinto grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -290,8 +290,8 @@
         },
         "ejemplo": "109"
     }, {
-        "nombre": "6TO._GRADO_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el sexto grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "nombre": "6TO._GRADO_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en el sexto grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -320,8 +320,8 @@
         },
         "ejemplo": "0"
     }, {
-        "nombre": "7MO._GRADO_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el septimo grado correspondiente al nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "nombre": "7MO._GRADO_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en el septimo grado correspondiente al nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -350,8 +350,8 @@
         },
         "ejemplo": "0"
     }, {
-        "nombre": "8VO._GRADO_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el octavo grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "nombre": "8VO._GRADO_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en el octavo grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -380,8 +380,8 @@
         },
         "ejemplo": "120"
     }, {
-        "nombre": "9NO._GRADO_VARON",
-        "descripcion": "Representa la cantidad de estudiantes varones inscriptos en el noveno grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
+        "nombre": "9NO._GRADO_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en el noveno grado del nivel Educación Escolar Básica, enseñanza obligatoria destinada a satisfacer las necesidades básicas de educación de niños/as",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -410,8 +410,8 @@
         },
         "ejemplo": "728"
     }, {
-        "nombre": "TOTAL_MATRICULADOS_VARON",
-        "descripcion": "Representa la cantidad total de estudiantes varones inscriptos en la institución de los grados del nivel Educación Escolar Básica",
+        "nombre": "TOTAL_MATRICULADOS_HOMBRE",
+        "descripcion": "Representa la cantidad total de estudiantes hombres inscriptos en la institución de los grados del nivel Educación Escolar Básica",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {

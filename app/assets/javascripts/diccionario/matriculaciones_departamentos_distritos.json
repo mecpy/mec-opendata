@@ -90,8 +90,8 @@
         },
         "ejemplo": "93354"
     }, {
-        "nombre": "CANTIDAD_MATRICULADOS_VARON",
-        "descripcion": "Representa la cantidad total de matriculados varones en los departamentos por distrito",
+        "nombre": "CANTIDAD_MATRICULADOS_HOMBRE",
+        "descripcion": "Representa la cantidad total de matriculados hombres en los departamentos por distrito",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
