@@ -10,7 +10,7 @@
       <meta itemprop="description" content="Se refiere a la cantidad total de matriculados por departamento/distrito según sector y zona."
             />
       <meta itemprop="url" content= <%= mec_custom_url(data_matriculaciones_departamentos_distritos_url) %> >
-      <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+      <meta itemprop="temporal" style="display: none;" content="2012-01-01/2013-12-31"/>
       <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
         <meta itemprop="name" content="Ministerio de Educación y Cultura">
         <meta itemprop="url" content="http://www.mec.gov.py/">
@@ -41,7 +41,7 @@
                 <i class="ascendente fa fa-sort-asc"></i>
               </span>
 
-              <%= select :form_buscar_matriculaciones_departamentos_distritos, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
+              <%= select :form_buscar_matriculaciones_departamentos_distritos, :anio, [2013, 2012], {}, {:class => 'form-control input-sm'} %>
             </th>
 
             <th data-priority="1">
@@ -229,7 +229,7 @@
   //LIMPIAR FORMULARIO DE BUSQUEDA
   valor_defecto = [{
       id: '#form_buscar_matriculaciones_departamentos_distritos_anio',
-      valor: 2012
+      valor: 2013
     }];
   resetForm("#form-buscar-matriculaciones-departamentos-distritos", valor_defecto);
 
