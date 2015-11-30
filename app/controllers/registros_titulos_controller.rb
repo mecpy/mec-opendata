@@ -16,7 +16,18 @@ class RegistrosTitulosController < ApplicationController
     
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/registros_titulos.json")
-    @diccionario_registros_titulos = JSON.parse(file)
+    diccionario = JSON.parse(file)
+    @diccionario_registros_titulos = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_registros_titulos)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_registros_titulos, params[:nombre]), :filename => "diccionario_registros_titulos.pdf", :type => "application/pdf")
+
+    end
 
   end
 
@@ -110,6 +121,13 @@ class RegistrosTitulosController < ApplicationController
 
     end
 
+    if params[:form_buscar_registros_titulos][:sexo].present?
+
+      cond << "sexo = ?"
+      args << "#{params[:form_buscar_registros_titulos][:sexo]}"
+
+    end
+
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
     
     if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
@@ -126,18 +144,18 @@ class RegistrosTitulosController < ApplicationController
       require 'csv'
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        registros_titulos_csv = RegistroTitulo.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+        registros_titulos = RegistroTitulo.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
       else
-        registros_titulos_csv = RegistroTitulo.orden_anio_mes.where(cond)
+        registros_titulos = RegistroTitulo.orden_anio_mes.where(cond)
       end
 
       csv = CSV.generate do |csv|
         # header row
-        csv << ["anio", "mes", "documento", "nombre_completo", "carrera_id", "carrera", "titulo_id", "titulo", "numero_resolucion", "fecha_resolucion", "tipo_institucion_id", "tipo_institucion", "institucion_id","institucion", "gobierno_actual" ]
+        csv << ["anio", "mes", "documento", "nombre_completo", "carrera_id", "carrera", "titulo_id", "titulo", "numero_resolucion", "fecha_resolucion", "tipo_institucion_id", "tipo_institucion", "institucion_id","institucion", "gobierno_actual", "sexo" ]
  
         # data rows
-        registros_titulos_csv.each do |rt|
-          csv << [rt.anio, rt.mes, rt.documento, rt.nombre_completo, rt.carrera_id, rt.carrera, rt.titulo_id, rt.titulo, rt.numero_resolucion, rt.fecha_resolucion, rt.tipo_institucion_id, rt.tipo_institucion, rt.institucion_id, rt.institucion, rt.gobierno_actual ]
+        registros_titulos.each do |rt|
+          csv << [rt.anio, rt.mes, rt.documento, rt.nombre_completo, rt.carrera_id, rt.carrera, rt.titulo_id, rt.titulo, rt.numero_resolucion, rt.fecha_resolucion, rt.tipo_institucion_id, rt.tipo_institucion, rt.institucion_id, rt.institucion, rt.gobierno_actual, rt.sexo ]
         end
 
       end
@@ -147,20 +165,20 @@ class RegistrosTitulosController < ApplicationController
     elsif params[:format] == 'xlsx'
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        registros_titulos_xls = RegistroTitulo.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+        registros_titulos = RegistroTitulo.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
       else
-        registros_titulos_xls = RegistroTitulo.orden_anio_mes.where(cond)
+        registros_titulos = RegistroTitulo.orden_anio_mes.where(cond)
       end
        
       p = Axlsx::Package.new
         
       p.workbook.add_worksheet(:name => "RegistroTitulo") do |sheet|
           
-        sheet.add_row ["anio", "mes", "documento", "nombre_completo", "carrera_id", "carrera", "titulo_id", "titulo", "numero_resolucion", "fecha_resolucion", "tipo_institucion_id", "tipo_institucion", "institucion_id","institucion", "gobierno_actual" ]
+        sheet.add_row ["anio", "mes", "documento", "nombre_completo", "carrera_id", "carrera", "titulo_id", "titulo", "numero_resolucion", "fecha_resolucion", "tipo_institucion_id", "tipo_institucion", "institucion_id","institucion", "gobierno_actual", "sexo" ]
 
-        registros_titulos_xls.each do |rt|
+        registros_titulos.each do |rt|
               
-          sheet.add_row [rt.anio, rt.mes, rt.documento, rt.nombre_completo, rt.carrera_id, rt.carrera, rt.titulo_id, rt.titulo, rt.numero_resolucion, rt.fecha_resolucion, rt.tipo_institucion_id, rt.tipo_institucion, rt.institucion_id, rt.institucion, rt.gobierno_actual ]
+          sheet.add_row [rt.anio, rt.mes, rt.documento, rt.nombre_completo, rt.carrera_id, rt.carrera, rt.titulo_id, rt.titulo, rt.numero_resolucion, rt.fecha_resolucion, rt.tipo_institucion_id, rt.tipo_institucion, rt.institucion_id, rt.institucion, rt.gobierno_actual, rt.sexo ]
                 
         end
 
@@ -206,6 +224,12 @@ class RegistrosTitulosController < ApplicationController
       send_data report.generate, filename: "registros_titulos_#{Time.now.strftime('%d%m%Y__%H%M')}.pdf", 
         type: 'application/pdf', 
         disposition: 'attachment'
+
+    elsif params[:format] == 'md5_csv'
+      
+      filename = "registros_titulos"
+      path_file = "#{Rails.root}/public/data/" + filename + ".csv.zip"
+      send_data(generate_md5(path_file), :filename => filename+".md5", :type => "application/txt")
 
     else
       

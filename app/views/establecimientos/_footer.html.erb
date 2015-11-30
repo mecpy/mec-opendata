@@ -1,106 +1,139 @@
 <% if establecimientos.present? %>
 
   <tr>
-
-    <td colspan="13" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate establecimientos, :params => params %></div></td>
-
+    <td colspan="13" style="text-align:center;">
+      <div class="flickr_pagination"><%= ajax_will_paginate establecimientos, :params => params %>
+      </div>
+    </td>
   </tr>
 
-  <tr><td colspan="13">Cantidad de registros encontrados: <%= @establecimientos_todos.size %> de <%= @total_registros %></td></tr>
+  <tr>
+    <td colspan="13">Cantidad de registros encontrados: <%= @establecimientos_todos.size %> de <%= @total_registros %>
+    </td>
+  </tr>
 
   <tr>
 
     <%  
-    parametros_csv = { :format => 'csv' }
-    parametros_csv = parametros_csv.merge(params) 
-    parametros_csv_todos = { :format => 'csv', "form_buscar_establecimientos[anio]" => params[:form_buscar_establecimientos][:anio]}
-  %>
+      parametros_csv = { :format => 'csv' }
+      parametros_csv = parametros_csv.merge(params) 
+      parametros_csv_todos = { :format => 'csv', "form_buscar_establecimientos[anio]" => params[:form_buscar_establecimientos][:anio]}
+    %>
 
     <% 
-    parametros_xls = { :format => 'xlsx'}
-    parametros_xls = parametros_xls.merge(params) 
-    parametros_xls_todos = { :format => 'xlsx', "form_buscar_establecimientos[anio]" => params[:form_buscar_establecimientos][:anio] }
-  %>
-
-    <%  %>
+      parametros_xls = { :format => 'xlsx'}
+      parametros_xls = parametros_xls.merge(params) 
+      parametros_xls_todos = { :format => 'xlsx', "form_buscar_establecimientos[anio]" => params[:form_buscar_establecimientos][:anio] }
+    %>
 
     <% 
-    parametros_json = { :format => 'json' }
-    parametros_json = parametros_json.merge(params) 
-    parametros_json_todos = { :format => 'json', "form_buscar_establecimientos[anio]" => params[:form_buscar_establecimientos][:anio] }
-  %>
+      parametros_json = { :format => 'json' }
+      parametros_json = parametros_json.merge(params) 
+      parametros_json_todos = { :format => 'json', "form_buscar_establecimientos[anio]" => params[:form_buscar_establecimientos][:anio] }
+    %>
 
     <% 
-    parametros_pdf = { :format => 'pdf' }
-    parametros_pdf = parametros_pdf.merge(params) 
-    parametros_pdf_todos = { :format => 'pdf', "form_buscar_establecimientos[anio]" => params[:form_buscar_establecimientos][:anio] }
-  %>
+      parametros_pdf = { :format => 'pdf' }
+      parametros_pdf = parametros_pdf.merge(params) 
+      parametros_pdf_todos = { :format => 'pdf', "form_buscar_establecimientos[anio]" => params[:form_buscar_establecimientos][:anio] }
+    %>
 
-    <%= parametros_pdf %>
+    <%
+      parametros_md5_csv = { :format => 'md5_csv', "form_buscar_establecimientos[anio]" => params[:form_buscar_establecimientos][:anio] }
+    %>
 
     <td colspan="13" class="row-descargar">
 
       <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
-      <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a></br>
-      <span>Descargar Establecimientos Filtrados:</span>
+      <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a>
+      <br />
 
       <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
 
-      <% unless params[:form_buscar_establecimientos_nombre_departamento].present? && params[:form_buscar_establecimientos_nombre_departamento].size > 2 %>
+      <!-- DESCARGAS FILTRADAS -->
+      <span data-toggle="tooltip-descarga-filtrada" title="Para las descargas filtradas, mínimamente se debe incluir el filtro por periodo">Descargar Establecimientos Filtrados:</span>
+
+      <% if params[:form_buscar_establecimientos][:anio].present? && @establecimientos_todos.size > 0 && params[:form_buscar_establecimientos_nombre_departamento].present? && params[:form_buscar_establecimientos_nombre_departamento].size > 2 %>
         <%= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_establecimientos_lista_url(parametros_pdf)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat' %>
       <% else %>
-        <%= link_to "PDF#{image_star}".html_safe, "#" , :onclick => "alert('Es obligatorio filtrar por departamento.');return false;", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat' %>
+        <%= link_to "PDF#{image_star}".html_safe, "#" , :onclick => "alert('Para las descargas filtradas en PDF, mínimamente se debe incluir el filtro por periodo y departamento');return false;", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat' %>
       <% end %>
-      <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_establecimientos_lista_url(parametros_xls)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
-      <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_establecimientos_lista_url(parametros_csv)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
-      <%= link_to "JSON#{image_star * 4}".html_safe, mec_custom_url(data_establecimientos_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+
+      <% if params[:form_buscar_establecimientos][:anio].present? && @establecimientos_todos.size > 0 %>
+        <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_establecimientos_lista_url(parametros_xls)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
+        <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_establecimientos_lista_url(parametros_csv)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
+        <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_establecimientos_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+      <% else %>
+        <%= link_to "XLS#{image_star * 2}".html_safe, "#", :onclick => "alert('Para las descargas filtradas, mínimamente se debe incluir el filtro por periodo');return false;", :style => "margin-left:10px;", :class => 'icon icon-page_excel'  %>
+        <%= link_to "CSV#{image_star * 3}".html_safe, "#", :onclick => "alert('Para las descargas filtradas, mínimamente se debe incluir el filtro por periodo');return false;", :style => "margin-left:10px;", :class => 'icon icon-page'  %>
+        <%= link_to "JSON#{image_star * 3}".html_safe, "#", :onclick => "alert('Para las descargas filtradas, mínimamente se debe incluir el filtro por periodo');return false;", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'  %>
+      <% end %>
+
       <br /><br />
 
       <% if params[:form_buscar_establecimientos][:anio].present? %>
 
-          <div style="float:left;">Descargar todos los Establecimientos:</div>
-          
-          <div itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload" style="float:left;text-align:center;">
-            <%= link_to "PDF#{image_star}".html_safe, "https://mega.co.nz/#!84gjFSjT!Tx_gIHhtqFC5lworhkqIxI8nDsrNbfJGS16f27NlQjM", :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
-            <br />
-            <span style="color:silver;">(28,5MB)</span>
-            <meta itemprop="name" content="Establecimientos Escolares "+params[:form_buscar_establecimientos][:anio]+"">
-            <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año "+params[:form_buscar_establecimientos][:anio]+"">
-            <meta itemprop="encodingFormat" content="pdf">
-            <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-          </div>
+        <!-- DESCARGAS TOTALES -->
+        <div style="float:left;" data-toggle="tooltip-descarga-total" title="Las descargas totales se realizan por periodo">Descargar todos los Establecimientos del año <b><%= params[:form_buscar_establecimientos][:anio] %></b>:</div>
 
-          <div itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload" style="float:left;text-align:center;">
-            <%= descargar_documento(1, params[:form_buscar_establecimientos][:anio], "0", "xlsx")%>
-            <br />
-            <meta itemprop="name" content="Establecimientos Escolares "+params[:form_buscar_establecimientos][:anio]+"">
-            <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año "+params[:form_buscar_establecimientos][:anio]+"">
-            <meta itemprop="encodingFormat" content="xls">
-            <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" /> 
-          </div>
+        <div itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload" style="float:left;text-align:center;">
+          <%= link_to "PDF#{image_star}".html_safe, "https://mega.co.nz/#!84gjFSjT!Tx_gIHhtqFC5lworhkqIxI8nDsrNbfJGS16f27NlQjM", :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
+          <br />
+          <span style="color:silver;">(28,5MB)</span>
+          <meta itemprop="name" content="Establecimientos Escolares "+params[:form_buscar_establecimientos][:anio]+"">
+          <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año "+params[:form_buscar_establecimientos][:anio]+"">
+          <meta itemprop="encodingFormat" content="pdf">
+          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+        </div>
 
-          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-            <%=  descargar_documento(1, params[:form_buscar_establecimientos][:anio], "0", "csv")%>
-            <br />
-            <meta itemprop="name" content="Establecimientos Escolares "+params[:form_buscar_establecimientos][:anio]+"">
-            <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año "+params[:form_buscar_establecimientos][:anio]+"">
-            <meta itemprop="encodingFormat" content="csv">
-            <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-          </div>
+        <div itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload" style="float:left;text-align:center;">
+          <%= descargar_documento(1, params[:form_buscar_establecimientos][:anio], "0", "xlsx")%>
+          <br />
+          <meta itemprop="name" content="Establecimientos Escolares "+params[:form_buscar_establecimientos][:anio]+"">
+          <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año "+params[:form_buscar_establecimientos][:anio]+"">
+          <meta itemprop="encodingFormat" content="xls">
+          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" /> 
+        </div>
 
-          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-            <%= descargar_documento(1, params[:form_buscar_establecimientos][:anio], "0", "json")%>
-            <br />
-            <meta itemprop="name" content="Establecimientos Escolares "+params[:form_buscar_establecimientos][:anio]+"">
-            <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año "+params[:form_buscar_establecimientos][:anio]+"">
-            <meta itemprop="encodingFormat" content="json">
-            <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-          </div>
-    
+        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+          <%=  descargar_documento(1, params[:form_buscar_establecimientos][:anio], "0", "csv")%>
+          <br />
+          <meta itemprop="name" content="Establecimientos Escolares "+params[:form_buscar_establecimientos][:anio]+"">
+          <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año "+params[:form_buscar_establecimientos][:anio]+"">
+          <meta itemprop="encodingFormat" content="csv">
+          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+        </div>
+
+        <div style="float:left;text-align:center;">
+          <%= link_to "MD5/CSV".html_safe, mec_custom_url(data_establecimientos_lista_url( parametros_md5_csv )), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_md5' %>
+        </div>
+
+        <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+          <%= descargar_documento(1, params[:form_buscar_establecimientos][:anio], "0", "json")%>
+          <br />
+          <meta itemprop="name" content="Establecimientos Escolares "+params[:form_buscar_establecimientos][:anio]+"">
+          <meta itemprop="description" content="Listado de establecimientos escolares correspondiente al año "+params[:form_buscar_establecimientos][:anio]+"">
+          <meta itemprop="encodingFormat" content="json">
+          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+        </div>
+
+      <% else %>
+
+        <div class="bg-primary">
+          <center><h4>¡Atención! Las descargas <b>totales</b> se realizan por <b>periodo</b></h4></center>
+        </div>
+
+      <% end %>
 
       <div style="clear:both;"></div>
-      <% end %>
+
     </td>
 
   </tr>
+
+  <script>
+    $('[data-toggle="tooltip-descarga-filtrada"]').tooltip();
+    $('[data-toggle="tooltip-descarga-total"]').tooltip();
+  </script>
+
 <% end %>

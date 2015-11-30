@@ -15,7 +15,18 @@ class MatriculacionesInicialController < ApplicationController
     
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/matriculaciones_inicial.json")
-    @diccionario_matriculaciones_inicial = JSON.parse(file)
+    diccionario = JSON.parse(file)
+    @diccionario_matriculaciones_inicial = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_matriculaciones_inicial)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_matriculaciones_inicial, params[:nombre]), :filename => "diccionario_matriculaciones_inicial.pdf", :type => "application/pdf")
+
+    end
 
   end
 
@@ -94,6 +105,20 @@ class MatriculacionesInicialController < ApplicationController
       args << params[:form_buscar_matriculaciones_inicial_maternal]
 
     end
+
+    if params[:form_buscar_matriculaciones_inicial_maternal_hombre].present?
+
+      cond << "maternal_hombre #{params[:form_buscar_matriculaciones_inicial_maternal_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_maternal_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_inicial_maternal_mujer].present?
+
+      cond << "maternal_mujer #{params[:form_buscar_matriculaciones_inicial_maternal_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_maternal_mujer]
+
+    end
     
     if params[:form_buscar_matriculaciones_inicial_prejardin].present?
 
@@ -101,10 +126,36 @@ class MatriculacionesInicialController < ApplicationController
       args << params[:form_buscar_matriculaciones_inicial_prejardin]
     end
 
+    if params[:form_buscar_matriculaciones_inicial_prejardin_hombre].present?
+
+      cond << "prejardin_hombre #{params[:form_buscar_matriculaciones_inicial_prejardin_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_prejardin_hombre]
+    end
+
+    if params[:form_buscar_matriculaciones_inicial_prejardin_mujer].present?
+
+      cond << "prejardin_mujer #{params[:form_buscar_matriculaciones_inicial_prejardin_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_prejardin_mujer]
+    end
+
     if params[:form_buscar_matriculaciones_inicial_jardin].present?
 
       cond << "jardin #{params[:form_buscar_matriculaciones_inicial_jardin_operador]} ?"
       args << params[:form_buscar_matriculaciones_inicial_jardin]
+
+    end
+
+    if params[:form_buscar_matriculaciones_inicial_jardin_hombre].present?
+
+      cond << "jardin_hombre #{params[:form_buscar_matriculaciones_inicial_jardin_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_jardin_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_inicial_jardin_mujer].present?
+
+      cond << "jardin_mujer #{params[:form_buscar_matriculaciones_inicial_jardin_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_jardin_mujer]
 
     end
    
@@ -114,11 +165,39 @@ class MatriculacionesInicialController < ApplicationController
       args << params[:form_buscar_matriculaciones_inicial_preescolar]
 
     end
+
+    if params[:form_buscar_matriculaciones_inicial_preescolar_hombre].present?
+
+      cond << "preescolar_hombre #{params[:form_buscar_matriculaciones_inicial_preescolar_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_preescolar_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_inicial_preescolar_mujer].present?
+
+      cond << "preescolar_mujer #{params[:form_buscar_matriculaciones_inicial_preescolar_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_preescolar_mujer]
+
+    end
    
     if params[:form_buscar_matriculaciones_inicial_total_matriculados].present?
 
       cond << "total_matriculados #{params[:form_buscar_matriculaciones_inicial_total_matriculados_operador]} ?"
       args << params[:form_buscar_matriculaciones_inicial_total_matriculados]
+
+    end
+
+    if params[:form_buscar_matriculaciones_inicial_total_matriculados_hombre].present?
+
+      cond << "total_matriculados_hombre #{params[:form_buscar_matriculaciones_inicial_total_matriculados_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_total_matriculados_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_inicial_total_matriculados_mujer].present?
+
+      cond << "total_matriculados_mujer #{params[:form_buscar_matriculaciones_inicial_total_matriculados_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_inicial_total_matriculados_mujer]
 
     end
   
@@ -137,24 +216,28 @@ class MatriculacionesInicialController < ApplicationController
       require 'csv'
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        matriculaciones_inicial_csv = MatriculacionInicial.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+        matriculaciones_inicial = MatriculacionInicial.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
       else
-        matriculaciones_inicial_csv = MatriculacionInicial.ordenado_institucion.where(cond)
+        matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond)
       end
 
       csv = CSV.generate do |csv|
         # header row
         csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
-          "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad",
-          "nombre_barrio_localidad", "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion",
-          "maternal", "prejardin", "jardin", "preescolar",  "total_matriculados", "anho_cod_geo", "inicial_noformal"]
+            "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
+            "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
+            "maternal_hombre", "maternal_mujer", "prejardin_hombre", "prejardin_mujer", "jardin_hombre", "jardin_mujer",
+            "preescolar_hombre", "preescolar_mujer", "total_matriculados_hombre", "total_matriculados_mujer",
+            "inicial_noformal_hombre", "inicial_noformal_mujer"]
  
         # data rows
-        matriculaciones_inicial_csv.each do |mi|
-          csv << [mi.anio, mi.codigo_establecimiento, mi.codigo_departamento, mi.nombre_departamento,
-            mi.codigo_distrito, mi.nombre_distrito, mi.codigo_zona, mi.nombre_zona, mi.codigo_barrio_localidad,
-            mi.nombre_barrio_localidad, mi.codigo_institucion, mi.nombre_institucion, mi.sector_o_tipo_gestion,
-            mi.maternal, mi.prejardin, mi.jardin, mi.preescolar, mi.total_matriculados, mi.anho_cod_geo, mi.inicial_noformal ]
+          matriculaciones_inicial.each do |m|
+            csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.maternal_hombre, m.maternal_mujer, m.prejardin_hombre, m.prejardin_mujer, m.jardin_hombre, m.jardin_mujer,
+              m.preescolar_hombre, m.preescolar_mujer, m.total_matriculados_hombre, m.total_matriculados_mujer,
+              m.inicial_noformal_hombre, m.inicial_noformal_mujer]
         end
 
       end
@@ -164,29 +247,28 @@ class MatriculacionesInicialController < ApplicationController
     elsif params[:format] == 'xlsx'
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        @matriculaciones_inicial = MatriculacionInicial.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
+        matriculaciones_inicial = MatriculacionInicial.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
       else
-        @matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond)
+        matriculaciones_inicial = MatriculacionInicial.ordenado_institucion.where(cond)
       end
 
-      p = Axlsx::Package.new
-      
-      p.workbook.add_worksheet(:name => "Matriculaciones EI") do |sheet|
-          
+      p = Axlsx::Package.new      
+      p.workbook.add_worksheet(:name => "Matriculaciones EI") do |sheet|          
         sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
-          :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad,
-          :nombre_barrio_localidad, :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion,
-          :maternal, :prejardin, :jardin, :preescolar, :total_matriculados, :anho_cod_geo, :inicial_noformal ] 
+            :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
+            :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
+            :maternal_hombre, :maternal_mujer, :prejardin_hombre, :prejardin_mujer, :jardin_hombre, :jardin_mujer,
+            :preescolar_hombre, :preescolar_mujer, :total_matriculados_hombre, :total_matriculados_mujer,
+            :inicial_noformal_hombre, :inicial_noformal_mujer]
           
-        @matriculaciones_inicial.each do |m|
-            
+        matriculaciones_inicial.each do |m|            
           sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
-            m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad,
-            m.nombre_barrio_localidad, m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion,
-            m.maternal, m.prejardin, m.jardin, m.preescolar, m.total_matriculados, m.anho_cod_geo, m.inicial_noformal ] 
-          
+              m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+              m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+              m.maternal_hombre, m.maternal_mujer, m.prejardin_hombre, m.prejardin_mujer, m.jardin_hombre, m.jardin_mujer,
+              m.preescolar_hombre, m.preescolar_mujer, m.total_matriculados_hombre, m.total_matriculados_mujer,
+              m.inicial_noformal_hombre, m.inicial_noformal_mujer]          
         end
-
       end
       
       p.use_shared_strings = true
@@ -237,6 +319,12 @@ class MatriculacionesInicialController < ApplicationController
       send_data report.generate, filename: "matriculaciones_inicial_#{Time.now.strftime('%d%m%Y__%H%M')}.pdf", 
         type: 'application/pdf', 
         disposition: 'attachment'
+
+    elsif params[:format] == 'md5_csv'
+      
+      filename = "matriculaciones_inicial_" + params[:form_buscar_matriculaciones_inicial][:anio]
+      path_file = "#{Rails.root}/public/data/" + filename + ".csv"
+      send_data(generate_md5(path_file), :filename => filename+".md5", :type => "application/txt")
 
     else
       

@@ -91,7 +91,7 @@
         "ejemplo": "URBANA"
     }, {
         "nombre": "CODIGO_ESTABLECIMIENTO",
-        "descripcion": "Código de establecimiento permite identificar en forma única los diferentes establecimientos educativos que se encuentran en el país.\nEl Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación.",
+        "descripcion": "Código de establecimiento permite identificar en forma única los diferentes establecimientos educativos que se encuentran en el país. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación.",
         "tipo": "xsd:string",
         "restricciones": "No más de 7 caracteres",
         "referencia": {
@@ -140,6 +140,26 @@
         },
         "ejemplo": "79"
     }, {
+        "nombre": "MATERNAL_HOMBRE",
+        "descripcion": "Representa la cantidad de alumnos hombres matriculados en maternal de la etapa incial del Sistema Educativo Nacional correspondiente al nivel Educación Inicial Formal, la modalidad atiende a niños de 0 a 2 años, a quienes se brinda atención y estimulación integral durante el día, en media jornada o en jornada completa",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "45"
+    }, {
+        "nombre": "MATERNAL_MUJER",
+        "descripcion": "Representa la cantidad de alumnas mujeres matriculadas en maternal de la etapa incial del Sistema Educativo Nacional correspondiente al nivel Educación Inicial Formal, la modalidad atiende a niños de 0 a 2 años, a quienes se brinda atención y estimulación integral durante el día, en media jornada o en jornada completa",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "34"
+    }, {
         "nombre": "PREJARDIN",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en prejardin de la etapa incial del nivel Educación Inicial Formal, la modalidad atiende a niños de 3 años, a quienes se brinda atención y estimulación integral durante el día, en media jornada o en jornada completa",
         "tipo": "xsd:positiveInteger",
@@ -149,6 +169,26 @@
             "enlace": ""
         },
         "ejemplo": "106"
+    }, {
+        "nombre": "PREJARDIN_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en prejardin de la etapa incial del nivel Educación Inicial Formal, la modalidad atiende a niños de 3 años, a quienes se brinda atención y estimulación integral durante el día, en media jornada o en jornada completa",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "53"
+    }, {
+        "nombre": "PREJARDIN_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en prejardin de la etapa incial del nivel Educación Inicial Formal, la modalidad atiende a niños de 3 años, a quienes se brinda atención y estimulación integral durante el día, en media jornada o en jornada completa",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "53"
     }, {
         "nombre": "JARDIN",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en jardin de la etapa incial del nivel Educación Escolar Básica, la modalidad atiende a niños de 4 años, que contempla actividades educativas tendientes a desarrollar todas las dimensiones de la personalidad de los infantes",
@@ -160,6 +200,26 @@
         },
         "ejemplo": "54"
     }, {
+        "nombre": "JARDIN_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en jardin de la etapa incial del nivel Educación Escolar Básica, la modalidad atiende a niños de 4 años, que contempla actividades educativas tendientes a desarrollar todas las dimensiones de la personalidad de los infantes",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "32"
+    }, {
+        "nombre": "JARDIN_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en jardin de la etapa incial del nivel Educación Escolar Básica, la modalidad atiende a niños de 4 años, que contempla actividades educativas tendientes a desarrollar todas las dimensiones de la personalidad de los infantes",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "22"
+    }, {
         "nombre": "PREESCOLAR",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en preescolar de la etapa incial del nivel Educación Inicial Formal, la modalidad atiende a niños de 5 años, busca estimular el desarrollo integral de todos los aspectos de su personalidad",
         "tipo": "xsd:positiveInteger",
@@ -170,6 +230,26 @@
         },
         "ejemplo": "16"
     }, {
+        "nombre": "PREESCOLAR_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en preescolar de la etapa incial del nivel Educación Inicial Formal, la modalidad atiende a niños de 5 años, busca estimular el desarrollo integral de todos los aspectos de su personalidad",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "8"
+    }, {
+        "nombre": "PREESCOLAR_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en preescolar de la etapa incial del nivel Educación Inicial Formal, la modalidad atiende a niños de 5 años, busca estimular el desarrollo integral de todos los aspectos de su personalidad",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "8"
+    }, {
         "nombre": "TOTAL_MATRICULADOS",
         "descripcion": "Representa la cantidad total de estudiantes inscriptos en la institución de los grados del nivel Inicial de la Educación Inicial Formal",
         "tipo": "xsd:positiveInteger",
@@ -179,6 +259,26 @@
             "enlace": ""
         },
         "ejemplo": "255"
+    }, {
+        "nombre": "TOTAL_MATRICULADOS_HOMBRE",
+        "descripcion": "Representa la cantidad total de estudiantes hombres inscriptos en la institución de los grados del nivel Inicial de la Educación Inicial Formal",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "135"
+    }, {
+        "nombre": "TOTAL_MATRICULADOS_MUJER",
+        "descripcion": "Representa la cantidad total de estudiantes mujeres inscriptas en la institución de los grados del nivel Inicial de la Educación Inicial Formal",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "120"
     }, {
         "nombre": "ANHO_COD_GEO",
         "descripcion": "Se refiere al año de captura de los datos georreferenciados censales, teniendo en cuenta que por cada año censal pueden diferir los codigos de distritos o codigos de localidades, como a si también las descripciones. La cartografía nacional fue proveída por al Dirección General de Estadística, Encuestas y Censos (DGEEC - http://www.dgeec.gov.py/)",
@@ -199,5 +299,25 @@
             "enlace": ""
         },
         "ejemplo": "36"
+    }, {
+        "nombre": "NOFORMAL_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes inscriptos en la modalidad que atiende a niños menores de 6  años que no tienen acceso a la Educación Inicial Formal e implementada en Mitã Róga y otras organizaciones educativas que funcionan en casas de familias, escuelas, iglesias, municipalidades, etc., atendidos por voluntarios/as, como padres de familias, estudiantes, maestros/as o enfermeros/as",
+        "tipo": "xsd:gYear",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "23"
+    }, {
+        "nombre": "NOFORMAL_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes inscriptos en la modalidad que atiende a niñas menores de 6  años que no tienen acceso a la Educación Inicial Formal e implementada en Mitã Róga y otras organizaciones educativas que funcionan en casas de familias, escuelas, iglesias, municipalidades, etc., atendidos por voluntarios/as, como padres de familias, estudiantes, maestros/as o enfermeros/as",
+        "tipo": "xsd:gYear",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "13"
     }
 ]

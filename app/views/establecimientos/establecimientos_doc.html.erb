@@ -32,7 +32,7 @@
   <div class="form-group">
     <%= label_tag "Periodo", nil, :class => 'col-sm-4 label-combo' %>
     <div class="col-sm-4">
-      <%= select :establecimiento, :anio, periodos_establecimientos, {}, { :class => 'form-control' } %>
+      <%= select :establecimiento, :anio, [2014, 2012], {}, { :class => 'form-control' } %>
     </div>
   </div>
 </form>

@@ -41,7 +41,7 @@ module EstablecimientosHelper
   end
 
   def periodos_establecimientos
-    [2014, 2012]
+    [2014, 2013, 2012]
   end
 
   

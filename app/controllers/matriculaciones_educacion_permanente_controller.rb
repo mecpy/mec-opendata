@@ -1,7 +1,7 @@
 class MatriculacionesEducacionPermanenteController < ApplicationController
 
   def index
-    @matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.orden_dep_dis.paginate :per_page => 15, :page => params[:page]
+    @matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.ordenado_institucion.paginate :per_page => 15, :page => params[:page]
     
     respond_to do |f|
 
@@ -14,7 +14,18 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
     
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/matriculaciones_educacion_permanente.json")
-    @diccionario_matriculaciones_educacion_permanente = JSON.parse(file)
+    diccionario = JSON.parse(file)
+    @diccionario_matriculaciones_educacion_permanente = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_matriculaciones_educacion_permanente)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_matriculaciones_educacion_permanente, params[:nombre]), :filename => "diccionario_matriculaciones_educacion_permanente.pdf", :type => "application/pdf")
+
+    end
     
   end
 
@@ -96,16 +107,66 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
 
     end
 
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_hombre].present?
+
+      cond << "matricula_ebbja_hombre #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_mujer].present?
+
+      cond << "matricula_ebbja_mujer #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_mujer]
+
+    end
+
     if params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi].present?
 
       cond << "matricula_fpi #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi]
+      
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_hombre].present?
+
+      cond << "matricula_fpi_hombre #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_hombre].present?
+
+      cond << "matricula_fpi_hombre #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_mujer].present?
+
+      cond << "matricula_fpi_mujer #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_mujer]
+
     end
 
     if params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja].present?
 
       cond << "matricula_emapja #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_hombre].present?
+
+      cond << "matricula_emapja_hombre #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_mujer].present?
+
+      cond << "matricula_emapja_mujer #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_mujer]
 
     end
    
@@ -115,6 +176,21 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
       args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja]
 
     end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_hombre].present?
+
+      cond << "matricula_emdja_hombre #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_mujer].present?
+
+      cond << "matricula_emdja_mujer #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_mujer]
+
+    end
+
    
     if params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp].present?
 
@@ -123,12 +199,26 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
 
     end
 
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp_hombre].present?
+
+      cond << "matricula_fp_hombre #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp_mujer].present?
+
+      cond << "matricula_fp_mujer #{params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_permanente_matricula_fp_mujer]
+
+    end
+
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
     
     if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
       @matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
     else
-      @matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+      @matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.ordenado_institucion.where(cond).paginate(page: params[:page], per_page: 15)
     end
 
     @total_registros = MatriculacionEducacionPermanente.count 
@@ -138,26 +228,29 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
       require 'csv'
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        matriculaciones_educacion_permanente_csv = MatriculacionEducacionPermanente.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+        matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
       else
-        matriculaciones_educacion_permanente_csv = MatriculacionEducacionPermanente.orden_dep_dis.where(cond)
+        matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.ordenado_institucion.where(cond)
       end
 
       csv = CSV.generate do |csv|
         # header row
-        csv << ["anio", "codigo_departamento", "nombre_departamento",
-          "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona",
-          "sector_o_tipo_gestion", "codigo_institucion","nombre_institucion", "matricula_ebbja",
-          "matricula_fpi", "matricula_emapja", "matricula_emdja", "matricula_fp", "anho_cod_geo" ]
- 
-        # data rows
-        matriculaciones_educacion_permanente_csv.each do |p|
-          csv << [p.anio, p.codigo_departamento, p.nombre_departamento,
-            p.codigo_distrito, p.nombre_distrito, p.codigo_zona, p.nombre_zona,
-            p.sector_o_tipo_gestion, p.codigo_institucion, p.nombre_institucion, p.matricula_ebbja,
-            p.matricula_fpi, p.matricula_emapja, p.matricula_emdja, p.matricula_fp, p.anho_cod_geo ]
-        end
+        csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
+          "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
+          "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
+          "matricula_ebbja_hombre", "matricula_ebbja_mujer", "matricula_fpi_hombre", "matricula_fpi_mujer",
+          "matricula_emapja_hombre", "matricula_emapja_mujer", "matricula_emdja_hombre", "matricula_emdja_mujer",
+          "matricula_fp_hombre", "matricula_fp_mujer"]
 
+        # data rows
+        matriculaciones_educacion_permanente.each do |m|
+          csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+            m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+            m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+            m.matricula_ebbja_hombre, m.matricula_ebbja_mujer, m.matricula_fpi_hombre, m.matricula_fpi_mujer,
+            m.matricula_emapja_hombre, m.matricula_emapja_mujer, m.matricula_emdja_hombre, m.matricula_emdja_mujer,
+            m.matricula_fp_hombre, m.matricula_fp_mujer]
+        end      
       end
       
       send_data(csv, :type => 'text/csv', :filename => "matriculaciones_educacion_permanente_#{Time.now.strftime('%Y%m%d')}.csv")
@@ -165,29 +258,28 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
     elsif params[:format] == 'xlsx'
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        @matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+        matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
       else
-        @matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.orden_dep_dis.where(cond)
+        matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.ordenado_institucion.where(cond)
       end
 
-      p = Axlsx::Package.new
-      
-      p.workbook.add_worksheet(:name => "Matriculaciones EP") do |sheet|
+      p = Axlsx::Package.new     
+      p.workbook.add_worksheet(:name => "Matriculaciones EP") do |sheet|       
+        sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
+          :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
+          :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
+          :matricula_ebbja_hombre, :matricula_ebbja_mujer, :matricula_fpi_hombre, :matricula_fpi_mujer,
+          :matricula_emapja_hombre, :matricula_emapja_mujer, :matricula_emdja_hombre, :matricula_emdja_mujer,
+          :matricula_fp_hombre, :matricula_fp_mujer]
           
-        sheet.add_row [:anio, :codigo_departamento, :nombre_departamento, 
-          :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona,
-          :sector_o_tipo_gestion, :codigo_institucion, :nombre_institucion, :matricula_ebbja,
-          :matricula_fpi, :matricula_emapja, :matricula_emdja, :matricula_fp, :anho_cod_geo]
-
-        @matriculaciones_educacion_permanente.each do |m|
-            
-          sheet.add_row [m.anio, m.codigo_departamento, m.nombre_departamento, 
-            m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona,
-            m.sector_o_tipo_gestion, m.codigo_institucion, m.nombre_institucion, m.matricula_ebbja,
-            m.matricula_fpi, m.matricula_emapja, m.matricula_emdja, m.matricula_fp, m.anho_cod_geo]
-
+        matriculaciones_educacion_permanente.each do |m|          
+          sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+            m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+            m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+            m.matricula_ebbja_hombre, m.matricula_ebbja_mujer, m.matricula_fpi_hombre, m.matricula_fpi_mujer,
+            m.matricula_emapja_hombre, m.matricula_emapja_mujer, m.matricula_emdja_hombre, m.matricula_emdja_mujer,
+            m.matricula_fp_hombre, m.matricula_fp_mujer]            
         end
-
       end
       
       p.use_shared_strings = true
@@ -202,7 +294,7 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
         matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
       else
-        matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.orden_dep_dis.where(cond)
+        matriculaciones_educacion_permanente = MatriculacionEducacionPermanente.ordenado_institucion.where(cond)
       end
     
       report.start_new_page do |page|
@@ -241,12 +333,18 @@ class MatriculacionesEducacionPermanenteController < ApplicationController
         type: 'application/pdf', 
         disposition: 'attachment'
 
+    elsif params[:format] == 'md5_csv'
+      
+      filename = "matriculaciones_educacion_permanente_" + params[:form_buscar_matriculaciones_educacion_permanente][:anio]
+      path_file = "#{Rails.root}/public/data/" + filename + ".csv"
+      send_data(generate_md5(path_file), :filename => filename+".md5", :type => "application/txt")
+
     else
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
         @matriculaciones_educacion_permanente_todos = MatriculacionEducacionPermanente.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
       else
-        @matriculaciones_educacion_permanente_todos = MatriculacionEducacionPermanente.orden_dep_dis.where(cond)
+        @matriculaciones_educacion_permanente_todos = MatriculacionEducacionPermanente.ordenado_institucion.where(cond)
       end
       
       respond_to do |f|

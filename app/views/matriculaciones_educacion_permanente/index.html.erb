@@ -9,7 +9,7 @@
       <meta itemprop="name" style="display: none;" content="MATRICULA EDUCACION PERMANENTE">
       <meta itemprop="description" content="Se refiere a la cantidad de matriculados en las diferentes modalidades de educación permanente con sus correspondientes códigos identificatorios."/>
       <meta itemprop="url" content= <%= mec_custom_url(data_matriculaciones_educacion_permanente_url) %> >
-      <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+      <meta itemprop="temporal" style="display: none;" content="2012-01-01/2013-12-31"/>
       <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
         <meta itemprop="name" content="Ministerio de Educación y Cultura">
         <meta itemprop="url" content="http://www.mec.gov.py/">
@@ -252,7 +252,7 @@
         </th>
 
         <th>
-          <span data-titulo="true">Matricula EBBJA</span>
+          <span data-titulo="true">Matrícula EBBJA</span>
           <span class="orden matricula_ebbja">
             <i class="filtro fa fa-sort"></i>
             <i class="descendente fa fa-sort-desc"></i>
@@ -269,7 +269,41 @@
         </th>
 
         <th>
-          <span data-titulo="true">Matricula FPI</span>
+          <span data-titulo="true">Matrícula EBBJA<br />Hombre</span>
+          <span class="orden matricula_ebbja_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula EBBJA<br />Mujer</span>
+          <span class="orden matricula_ebbja_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_mujer');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula FPI</span>
           <span class="orden matricula_fpi">
             <i class="filtro fa fa-sort"></i>
             <i class="descendente fa fa-sort-desc"></i>
@@ -286,7 +320,41 @@
         </th>
 
         <th>
-          <span data-titulo="true">Matricula EMAPJA</span>
+          <span data-titulo="true">Matrícula FPI<br />Hombre</span>
+          <span class="orden matricula_fpi_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_fpi_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_fpi_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula FPI<br />Mujer</span>
+          <span class="orden matricula_fpi_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_fpi_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_fpi_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_fpi_mujer');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula EMAPJA</span>
           <span class="orden matricula_emapja">
             <i class="filtro fa fa-sort"></i>
             <i class="descendente fa fa-sort-desc"></i>
@@ -303,7 +371,41 @@
         </th>
 
         <th>
-          <span data-titulo="true">Matricula EMDJA</span>
+          <span data-titulo="true">Matrícula EMAPJA<br />Hombre</span>
+          <span class="orden matricula_emapja_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_emapja_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_emapja_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula EMAPJA<br />Mujer</span>
+          <span class="orden matricula_emapja_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_emapja_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_emapja_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_emapja_mujer');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula EMDJA</span>
           <span class="orden matricula_emdja">
             <i class="filtro fa fa-sort"></i>
             <i class="descendente fa fa-sort-desc"></i>
@@ -320,7 +422,41 @@
         </th>
 
         <th>
-          <span data-titulo="true">Matricula FP</span>
+          <span data-titulo="true">Matrícula EMDJA<br />Hombre</span>
+          <span class="orden matricula_emdja_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_emdja_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_emdja_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula EMDJA<br />Mujer</span>
+          <span class="orden matricula_emdja_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_emdja_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_emdja_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_emdja_mujer');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula FP</span>
           <span class="orden matricula_fp">
             <i class="filtro fa fa-sort"></i>
             <i class="descendente fa fa-sort-desc"></i>
@@ -333,6 +469,40 @@
           </span>
           <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_fp, nil, :class => 'form-control', :placeholder => '' %>
           <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_fp');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula FP<br />Hombre</span>
+          <span class="orden matricula_fp_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_fp_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_fp_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_fp_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula FP<br />Mujer</span>
+          <span class="orden matricula_fp_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_permanente_matricula_fp_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_permanente_matricula_fp_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-permanente', '#form_buscar_matriculaciones_educacion_permanente_matricula_fp_mujer');"><i class="fa fa-times"></i></span>
         </div>
         </th>
 
@@ -371,37 +541,7 @@
 
   })
 
-  $("#form_buscar_matriculaciones_educacion_permanente_matricula_ebbja_operador").bind('change', function() {
-    $.ajaxQ.abortAll();
-    $("#form-buscar-matriculaciones-educacion-permanente").submit();
-
-  })
-
-  $("#form_buscar_matriculaciones_educacion_permanente_matricula_fpi_operador").bind('change', function() {
-    $.ajaxQ.abortAll();
-    $("#form-buscar-matriculaciones-educacion-permanente").submit();
-
-  })
-
-  $("#form_buscar_matriculaciones_educacion_permanente_matricula_emapja_operador").bind('change', function() {
-    $.ajaxQ.abortAll();
-    $("#form-buscar-matriculaciones-educacion-permanente").submit();
-
-  })
-
-  $("#form_buscar_matriculaciones_educacion_permanente_matricula_emdja_operador").bind('change', function() {
-    $.ajaxQ.abortAll();
-    $("#form-buscar-matriculaciones-educacion-permanente").submit();
-
-  })
-
-  $("#form_buscar_matriculaciones_educacion_permanente_matricula_fp_operador").bind('change', function() {
-    $.ajaxQ.abortAll();
-    $("#form-buscar-matriculaciones-educacion-permanente").submit();
-
-  })
-
-  $(".table-bordered input").bind('change', function() {
+  $(".table-bordered :input").bind('change', function() {
     $.ajaxQ.abortAll();
     $("#form-buscar-matriculaciones-educacion-permanente").submit();
 

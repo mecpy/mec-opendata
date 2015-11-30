@@ -1,13 +1,5 @@
 class DirectoriosInstitucionesController < ApplicationController
   before_filter :redireccionar_uri
-  
-  def diccionario
-    
-    require 'json'
-    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/directorios_instituciones.json")
-    @diccionario_directorio_instituciones = JSON.parse(file)
-
-  end
 
   def index
 
@@ -16,6 +8,25 @@ class DirectoriosInstitucionesController < ApplicationController
     respond_to do |f|
 
       f.html {render :layout => 'application'}
+
+    end
+
+  end
+
+  def diccionario
+    
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/directorios_instituciones.json")
+    diccionario = JSON.parse(file)
+    @diccionario_directorios_instituciones = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_directorios_instituciones)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_directorios_instituciones, params[:nombre]), :filename => "diccionario_directorios_instituciones.pdf", :type => "application/pdf")
 
     end
 
@@ -131,28 +142,21 @@ class DirectoriosInstitucionesController < ApplicationController
         directorios_instituciones_xlsx = VDirectorioInstitucion.orden_dep_dis.where(cond).all
       end
        
-      p = Axlsx::Package.new
-        
+      p = Axlsx::Package.new        
       p.workbook.add_worksheet(:name => "DirectorioInstituciones") do |sheet|
-          
         sheet.add_row [:periodo, :codigo_departamento, :nombre_departamento, :codigo_distrito, :nombre_distrito,
           :codigo_barrio_localidad, :nombre_barrio_localidad, :codigo_zona, :nombre_zona,
           :codigo_establecimiento, :codigo_institucion, :nombre_institucion, :anho_cod_geo,
           :uri_establecimiento,:uri_institucion]
-
         directorios_instituciones_xlsx.each do |i|
-              
           sheet.add_row [i.periodo, i.codigo_departamento, i.nombre_departamento, i.codigo_distrito, i.nombre_distrito,
             i.codigo_barrio_localidad, i.nombre_barrio_localidad, i.codigo_zona, i.nombre_zona,
             i.codigo_establecimiento, i.codigo_institucion, i.nombre_institucion, i.anho_cod_geo, 
             i.uri_establecimiento,i.uri_institucion]
-                
         end
-
       end
             
       p.use_shared_strings = true
-      
       send_data p.to_stream.read, filename: "directorios_instituciones_#{Time.now.strftime('%d%m%Y__%H%M')}.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'attachment'
 
     elsif params[:format] == 'json'
@@ -170,6 +174,12 @@ class DirectoriosInstitucionesController < ApplicationController
 
       end
     
+    elsif params[:format] == 'md5_csv'
+      
+      filename = "directorios_instituciones_" + params[:form_buscar_directorios_instituciones][:periodo]
+      path_file = "#{Rails.root}/public/data/" + filename + ".csv"
+      send_data(generate_md5(path_file), :filename => filename+".md5", :type => "application/txt")
+
     else
       
       @directorios_instituciones_todos = VDirectorioInstitucion.orden_dep_dis.where(cond).all

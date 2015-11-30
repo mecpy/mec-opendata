@@ -10,7 +10,7 @@
       <meta itemprop="description" content="
             Se refiere a la cantidad de alumnos matriculados del 1.º al 9.º grado con sus correspondientes códigos identificatorios."/>
       <meta itemprop="url" content="http://datos.mec.gov.py/data/matriculaciones_educacion_escolar_basica">
-      <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+      <meta itemprop="temporal" style="display: none;" content="2012-01-01/2013-12-31"/>
       <meta itemprop="url" content= <%= mec_custom_url(data_matriculaciones_educacion_escolar_basica_url) %> >
       <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
         <meta itemprop="name" content="Ministerio de Educación y Cultura">
@@ -407,7 +407,7 @@
         </th>
 
         <th>
-          <span data-titulo="true">Total Matriculados</span>
+          <span data-titulo="true">Total</span>
           <span class="orden total_matriculados">
             <i class="filtro fa fa-sort"></i>
             <i class="descendente fa fa-sort-desc"></i>
@@ -420,6 +420,40 @@
           </span>
           <%= number_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados, nil, :class => 'form-control', :placeholder => '' %>
           <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-escolar-basica', '#form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Total Hombre</span>
+          <span class="orden total_matriculados_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-escolar-basica', '#form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Total Mujer</span>
+          <span class="orden total_matriculados_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-escolar-basica', '#form_buscar_matriculaciones_educacion_escolar_basica_total_matriculados_mujer');"><i class="fa fa-times"></i></span>
         </div>
         </th>
 

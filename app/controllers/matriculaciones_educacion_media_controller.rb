@@ -1,7 +1,7 @@
 class MatriculacionesEducacionMediaController < ApplicationController
   
   def index
-    @matriculaciones_educacion_media = MatriculacionEducacionMedia.orden_dep_dis.paginate :per_page => 15, :page => params[:page]
+    @matriculaciones_educacion_media = MatriculacionEducacionMedia.ordenado_institucion.paginate :per_page => 15, :page => params[:page]
     respond_to do |f|
 
       f.html {render :layout => 'application'}
@@ -13,7 +13,18 @@ class MatriculacionesEducacionMediaController < ApplicationController
     
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/matriculaciones_educacion_media.json")
-    @diccionario_matriculaciones_educacion_media = JSON.parse(file)
+    diccionario = JSON.parse(file)
+    @diccionario_matriculaciones_educacion_media = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_matriculaciones_educacion_media)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_matriculaciones_educacion_media, params[:nombre]), :filename => "diccionario_matriculaciones_educacion_media.pdf", :type => "application/pdf")
+
+    end
     
   end
 
@@ -94,10 +105,38 @@ class MatriculacionesEducacionMediaController < ApplicationController
 
     end
 
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_hombre].present?
+
+      cond << "matricula_cientifico_hombre #{params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_mujer].present?
+
+      cond << "matricula_cientifico_mujer #{params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_cientifico_mujer]
+
+    end
+
     if params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico].present?
 
       cond << "matricula_tecnico #{params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_hombre].present?
+
+      cond << "matricula_tecnico_hombre #{params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_mujer].present?
+
+      cond << "matricula_tecnico_mujer #{params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_tecnico_mujer]
 
     end
 
@@ -108,10 +147,38 @@ class MatriculacionesEducacionMediaController < ApplicationController
 
     end
 
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_hombre].present?
+
+      cond << "matricula_media_abierta_hombre #{params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_mujer].present?
+
+      cond << "matricula_media_abierta_mujer #{params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_media_abierta_mujer]
+
+    end
+
     if params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media].present?
 
       cond << "matricula_formacion_profesional_media #{params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_operador]} ?"
       args << params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_hombre].present?
+
+      cond << "matricula_formacion_profesional_media_hombre #{params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_hombre_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_hombre]
+
+    end
+
+    if params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_mujer].present?
+
+      cond << "matricula_formacion_profesional_media_mujer #{params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_mujer_operador]} ?"
+      args << params[:form_buscar_matriculaciones_educacion_media_matricula_formacion_profesional_media_mujer]
 
     end
 
@@ -120,7 +187,7 @@ class MatriculacionesEducacionMediaController < ApplicationController
     if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
       @matriculaciones_educacion_media = MatriculacionEducacionMedia.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond).paginate(page: params[:page], per_page: 15)
     else
-      @matriculaciones_educacion_media = MatriculacionEducacionMedia.orden_dep_dis.where(cond).paginate(page: params[:page], per_page: 15)
+      @matriculaciones_educacion_media = MatriculacionEducacionMedia.ordenado_institucion.where(cond).paginate(page: params[:page], per_page: 15)
     end
 
     @total_registros = MatriculacionEducacionMedia.count 
@@ -130,64 +197,54 @@ class MatriculacionesEducacionMediaController < ApplicationController
       require 'csv'
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        matriculaciones_educacion_media_csv = MatriculacionEducacionMedia.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+        matriculaciones_educacion_media = MatriculacionEducacionMedia.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
       else
-        matriculaciones_educacion_media_csv = MatriculacionEducacionMedia.orden_dep_dis.where(cond)
+        matriculaciones_educacion_media = MatriculacionEducacionMedia.ordenado_institucion.where(cond)
       end
 
       csv = CSV.generate do |csv|
         # header row
-        csv << ["anio", "codigo_departamento", "nombre_departamento",
-          "codigo_distrito", "nombre_distrito", "codigo_barrio_localidad",
-          "nombre_barrio_localidad", "codigo_zona", "nombre_zona",
-          "codigo_establecimiento", "codigo_institucion", "nombre_institucion",
-          "sector_o_tipo_gestion", "matricula_cientifico", "matricula_tecnico", 
-          "matricula_media_abierta", "matricula_formacion_profesional_media", "anio_cod_geo" ]
+        csv << ["anio", "codigo_establecimiento", "codigo_departamento", "nombre_departamento",
+            "codigo_distrito", "nombre_distrito", "codigo_zona", "nombre_zona", "codigo_barrio_localidad", "nombre_barrio_localidad",
+            "codigo_institucion", "nombre_institucion", "sector_o_tipo_gestion", "anho_cod_geo",
+            "matricula_cientifico_hombre", "matricula_cientifico_mujer", "matricula_tecnico_hombre", "matricula_tecnico_mujer",
+            "matricula_media_abierta_hombre", "matricula_media_abierta_mujer", "matricula_formacion_profesional_media_hombre", "matricula_formacion_profesional_media_mujer"]
  
         # data rows
-        matriculaciones_educacion_media_csv.each do |e|
-          csv << [e.anio, e.codigo_departamento, e.nombre_departamento,
-            e.codigo_distrito, e.nombre_distrito, e.codigo_barrio_localidad,
-            e.nombre_barrio_localidad, e.codigo_zona, e.nombre_zona,
-            e.codigo_establecimiento, e.codigo_institucion, e.nombre_institucion,
-            e.sector_o_tipo_gestion, e.matricula_cientifico, e.matricula_tecnico,
-            e.matricula_media_abierta, e.matricula_formacion_profesional_media, e.anio_cod_geo ]
-        end
-
-      end
+        matriculaciones_educacion_media.each do |m|
+          csv << [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+            m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+            m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+            m.matricula_cientifico_hombre, m.matricula_cientifico_mujer, m.matricula_tecnico_hombre, m.matricula_tecnico_mujer,
+            m.matricula_media_abierta_hombre, m.matricula_media_abierta_mujer, m.matricula_formacion_profesional_media_hombre, m.matricula_formacion_profesional_media_mujer]
+        end      
+       end
     
       send_data(csv, :type => 'text/csv', :filename => "matriculaciones_educacion_media_#{Time.now.strftime('%Y%m%d')}.csv")
 
     elsif params[:format] == 'xlsx'
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
-        @matriculaciones_educacion_media = MatriculacionEducacionMedia.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
+        matriculaciones_educacion_media = MatriculacionEducacionMedia.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
       else
-        @matriculaciones_educacion_media = MatriculacionEducacionMedia.orden_dep_dis.where(cond)
+        matriculaciones_educacion_media = MatriculacionEducacionMedia.ordenado_institucion.where(cond)
       end
 
-      p = Axlsx::Package.new
-      
-      p.workbook.add_worksheet(:name => "Matriculaciones EM") do |sheet|
+      p = Axlsx::Package.new    
+      p.workbook.add_worksheet(:name => "Matriculaciones EEM") do |sheet|        
+        sheet.add_row [:anio, :codigo_establecimiento, :codigo_departamento, :nombre_departamento,
+          :codigo_distrito, :nombre_distrito, :codigo_zona, :nombre_zona, :codigo_barrio_localidad, :nombre_barrio_localidad,
+          :codigo_institucion, :nombre_institucion, :sector_o_tipo_gestion, :anho_cod_geo,
+          :matricula_cientifico_hombre, :matricula_cientifico_mujer, :matricula_tecnico_hombre, :matricula_tecnico_mujer,
+          :matricula_media_abierta_hombre, :matricula_media_abierta_mujer, :matricula_formacion_profesional_media_hombre, :matricula_formacion_profesional_media_mujer] 
           
-        sheet.add_row [:anio, :codigo_departamento, :nombre_departamento, 
-          :codigo_distrito, :nombre_distrito, :codigo_barrio_localidad,
-          :nombre_barrio_localidad, :codigo_zona, :nombre_zona, 
-          :codigo_establecimiento, :codigo_institucion, :nombre_institucion,
-          :sector_o_tipo_gestion, :matricula_cientifico, :matricula_tecnico,
-          :matricula_media_abierta, :matricula_formacion_profesional_media, :anio_cod_geo]
-
-        @matriculaciones_educacion_media.each do |m|
-            
-          sheet.add_row [m.anio, m.codigo_departamento, m.nombre_departamento, 
-            m.codigo_distrito, m.nombre_distrito, m.codigo_barrio_localidad,
-            m.nombre_barrio_localidad, m.codigo_zona, m.nombre_zona, 
-            m.codigo_establecimiento, m.codigo_institucion, m.nombre_institucion,
-            m.sector_o_tipo_gestion, m.matricula_cientifico, m.matricula_tecnico,
-            m.matricula_media_abierta, m.matricula_formacion_profesional_media, m.anio_cod_geo]
-
+        matriculaciones_educacion_media.each do |m|              
+          sheet.add_row [m.anio, m.codigo_establecimiento, m.codigo_departamento, m.nombre_departamento,
+            m.codigo_distrito, m.nombre_distrito, m.codigo_zona, m.nombre_zona, m.codigo_barrio_localidad, m.nombre_barrio_localidad,
+            m.codigo_institucion, m.nombre_institucion, m.sector_o_tipo_gestion, m.anho_cod_geo,
+            m.matricula_cientifico_hombre, m.matricula_cientifico_mujer, m.matricula_tecnico_hombre, m.matricula_tecnico_mujer,
+            m.matricula_media_abierta_hombre, m.matricula_media_abierta_mujer, m.matricula_formacion_profesional_media_hombre, m.matricula_formacion_profesional_media_mujer]      
         end
-
       end
       
       p.use_shared_strings = true
@@ -202,7 +259,7 @@ class MatriculacionesEducacionMediaController < ApplicationController
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
         matriculaciones_educacion_media = MatriculacionEducacionMedia.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
       else
-        matriculaciones_educacion_media = MatriculacionEducacionMedia.orden_dep_dis.where(cond)
+        matriculaciones_educacion_media = MatriculacionEducacionMedia.ordenado_institucion.where(cond)
       end
     
       report.start_new_page do |page|
@@ -242,12 +299,19 @@ class MatriculacionesEducacionMediaController < ApplicationController
         type: 'application/pdf', 
         disposition: 'attachment'
 
+    elsif params[:format] == 'md5_csv'
+      
+      filename = "matriculaciones_educacion_media_" + params[:form_buscar_matriculaciones_educacion_media][:anio]
+      path_file = "#{Rails.root}/public/data/" + filename + ".csv"
+      send_data(generate_md5(path_file), :filename => filename+".md5", :type => "application/txt")
+
+
     else
       
       if params[:ordenacion_columna].present? && params[:ordenacion_direccion].present?
         @matriculaciones_educacion_media_todos = MatriculacionEducacionMedia.order(params[:ordenacion_columna] + " " + params[:ordenacion_direccion]).where(cond)
       else
-        @matriculaciones_educacion_media_todos = MatriculacionEducacionMedia.orden_dep_dis.where(cond)
+        @matriculaciones_educacion_media_todos = MatriculacionEducacionMedia.ordenado_institucion.where(cond)
       end
       
       respond_to do |f|

@@ -292,6 +292,18 @@
                 <%= select :form_buscar_registros_titulos, :gobierno_actual, [["Todos", 1], ["Si", 2], ["No", 3]], {}, {:class => 'form-control input-sm'} %>
             </th>
 
+            <th data-priority="1">
+                <span data-titulo="true">Sexo</span>
+
+                <span class="orden sexo">
+                    <i class="filtro fa fa-sort"></i>
+                    <i class="descendente fa fa-sort-desc"></i>
+                    <i class="ascendente fa fa-sort-asc"></i>
+                </span>
+
+                <%= select :form_buscar_registros_titulos, :sexo, ['','MUJER','HOMBRE'], {}, {:class => 'form-control input-sm'} %>
+            </th>
+
             </tr>
             </thead>
 

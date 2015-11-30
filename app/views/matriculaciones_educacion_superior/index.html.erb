@@ -9,7 +9,7 @@
       <meta itemprop="name" style="display: none;" content="MATRICULA EDUCACION SUPERIOR">
       <meta itemprop="description" content="Se refiere a la cantidad de matriculados en las diferentes modalidades de educación superior con sus correspondientes códigos identificatorios."/>
       <meta itemprop="url" content= <%= mec_custom_url(data_matriculaciones_educacion_superior_url) %> >
-      <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+      <meta itemprop="temporal" style="display: none;" content="2012-01-01/2013-12-31"/>
       <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
         <meta itemprop="name" content="Ministerio de Educación y Cultura">
         <meta itemprop="url" content="http://www.mec.gov.py/">
@@ -252,7 +252,7 @@
         </th>
 
         <th>
-          <span data-titulo="true">Cantidad de</br>Matriculados Nivel Terciario</span>
+          <span data-titulo="true">Matrícula Nivel Terciario</span>
           <span class="orden matricula_ets">
             <i class="filtro fa fa-sort"></i>
             <i class="descendente fa fa-sort-desc"></i>
@@ -269,7 +269,41 @@
         </th>
 
         <th>
-          <span data-titulo="true">Cantidad de Matriculados</br>Cursos de Profesorado</span>
+          <span data-titulo="true">Matrícula Nivel Terciario<br />Hombre</span>
+          <span class="orden matricula_ets_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_ets_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_ets_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-superior', '#form_buscar_matriculaciones_educacion_superior_matricula_ets_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula Nivel Terciario<br />Mujer</span>
+          <span class="orden matricula_ets_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_ets_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_ets_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-superior', '#form_buscar_matriculaciones_educacion_superior_matricula_ets_mujer');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula Cursos de Profesorado</span>
           <span class="orden matricula_fed">
             <i class="filtro fa fa-sort"></i>
             <i class="descendente fa fa-sort-desc"></i>
@@ -286,7 +320,41 @@
         </th>
 
         <th>
-          <span data-titulo="true">Cantidad de Matriculados</br>Formación Docente</span>
+          <span data-titulo="true">Matrícula Cursos de Profesorado<br />Hombre</span>
+          <span class="orden matricula_fed_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_fed_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_fed_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-superior', '#form_buscar_matriculaciones_educacion_superior_matricula_fed_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula Cursos de Profesorado<br />Mujer</span>
+          <span class="orden matricula_fed_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_fed_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_fed_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-superior', '#form_buscar_matriculaciones_educacion_superior_matricula_fed_mujer');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula Formación Docente</span>
           <span class="orden matricula_fdes">
             <i class="filtro fa fa-sort"></i>
             <i class="descendente fa fa-sort-desc"></i>
@@ -303,7 +371,41 @@
         </th>
 
         <th>
-          <span data-titulo="true">Cantidad de Matriculados</br>Profesionalización Docente</span>
+          <span data-titulo="true">Matrícula Formación Docente<br />Hombre</span>
+          <span class="orden matricula_fdes_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_fdes_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_fdes_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-superior', '#form_buscar_matriculaciones_educacion_superior_matricula_fdes_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula Formación Docente<br />Mujer</span>
+          <span class="orden matricula_fdes_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_fdes_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_fdes_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-superior', '#form_buscar_matriculaciones_educacion_superior_matricula_fdes_mujer');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula Profesionalización Docente</span>
           <span class="orden matricula_pd">
             <i class="filtro fa fa-sort"></i>
             <i class="descendente fa fa-sort-desc"></i>
@@ -316,6 +418,40 @@
             </span>
             <%= number_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_pd, nil, :class => 'form-control', :placeholder => '' %>
             <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-superior', '#form_buscar_matriculaciones_educacion_superior_matricula_pd');"><i class="fa fa-times"></i></span>
+          </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula Profesionalización Docente<br />Hombre</span>
+          <span class="orden matricula_pd_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+          
+          <div class="input-group input-group-sm">
+            <span class="input-group-addon">
+              <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_pd_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+            </span>
+            <%= number_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_pd_hombre, nil, :class => 'form-control', :placeholder => '' %>
+            <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-superior', '#form_buscar_matriculaciones_educacion_superior_matricula_pd_hombre');"><i class="fa fa-times"></i></span>
+          </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Matrícula Profesionalización Docente<br />Mujer</span>
+          <span class="orden matricula_pd_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+          
+          <div class="input-group input-group-sm">
+            <span class="input-group-addon">
+              <%= select_tag(:form_buscar_matriculaciones_educacion_superior_matricula_pd_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+            </span>
+            <%= number_field_tag :form_buscar_matriculaciones_educacion_superior_matricula_pd_mujer, nil, :class => 'form-control', :placeholder => '' %>
+            <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-educacion-superior', '#form_buscar_matriculaciones_educacion_superior_matricula_pd_mujer');"><i class="fa fa-times"></i></span>
           </div>
         </th>
 

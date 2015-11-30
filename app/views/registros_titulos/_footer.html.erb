@@ -1,97 +1,114 @@
 <% if registros_titulos.present? %>
+  
   <tr>
-
-      <td colspan="11" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate registros_titulos, :params => params %></div></td>
-
+    <td colspan="11" style="text-align:center;">
+      <div class="flickr_pagination"><%= ajax_will_paginate registros_titulos, :params => params %>
+      </div>
+    </td>
   </tr>
 
-  <tr><td colspan="11">Cantidad de registros encontrados: <%= @registros_titulos_todos.size %> de <%= @total_registros %></td></tr>
+  <tr>
+    <td colspan="11">Cantidad de registros encontrados: <%= @registros_titulos_todos.size %> de <%= @total_registros %>
+    </td>
+  </tr>
 
   <tr>
 
-      <%  
+    <%  
       parametros_csv = { :format => 'csv' }
       parametros_csv = parametros_csv.merge(params) 
       parametros_csv_todos = { :format => 'csv', "form_buscar_registros_titulos[anio]" => params[:form_buscar_registros_titulos][:anio], "form_buscar_registros_titulos[mes]" => params[:form_buscar_registros_titulos][:mes], "form_buscar_registros_titulos[gobierno_actual]" => params[:form_buscar_registros_titulos][:gobierno_actual]}
     %>
 
-      <% 
+    <% 
       parametros_xls = { :format => 'xlsx'}
       parametros_xls = parametros_xls.merge(params) 
       parametros_xls_todos = { :format => 'xlsx', "form_buscar_registros_titulos[anio]" => params[:form_buscar_registros_titulos][:anio], "form_buscar_registros_titulos[mes]" => params[:form_buscar_registros_titulos][:mes], "form_buscar_registros_titulos[gobierno_actual]" => params[:form_buscar_registros_titulos][:gobierno_actual] }
     %>
 
-      <%  %>
-
-      <% 
+    <% 
       parametros_json = { :format => 'json' }
       parametros_json = parametros_json.merge(params) 
       parametros_json_todos = { :format => 'json', "form_buscar_registros_titulos[anio]" => params[:form_buscar_registros_titulos][:anio], "form_buscar_registros_titulos[mes]" => params[:form_buscar_registros_titulos][:mes], "form_buscar_registros_titulos[gobierno_actual]" => params[:form_buscar_registros_titulos][:gobierno_actual] }
     %>
 
-      <% 
+    <% 
       parametros_pdf = { :format => 'pdf' }
       parametros_pdf = parametros_pdf.merge(params) 
       parametros_pdf_todos = { :format => 'pdf', "form_buscar_registros_titulos[anio]" => params[:form_buscar_registros_titulos][:anio], "form_buscar_registros_titulos[mes]" => params[:form_buscar_registros_titulos][:mes], "form_buscar_registros_titulos[gobierno_actual]" => params[:form_buscar_registros_titulos][:gobierno_actual] }
     %>
 
-      <%= parametros_pdf %>
+    <%
+      parametros_md5_csv = { :format => 'md5_csv' }
+    %>
 
-      <td colspan="8" class="row-descargar">
+    <td colspan="8" class="row-descargar">
 
-          <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
-          <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a></br>
-          <span>Descargar Registros de T&iacute;tulos Filtrados:</span>
+      <%= image_tag "datos-abiertos-nuevo.png", :style => "width:240px; margin-bottom:10px;" %>
+      <a href="http://www.w3.org/TR/microdata/"><%= image_tag "microdata-icon.png", :style => "width:32px; margin-bottom:10px;" %></a>
+      <br />
 
-          <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
+      <% image_star = image_tag('star.png', :style => 'width:12px;padding-bottom:10px;') %>
 
-  <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_departamentos_distritos_lista_url(parametros_pdf)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat'%>
-          <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_registros_titulos_lista_url(parametros_xls)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
-          <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_registros_titulos_lista_url(parametros_csv)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
-          <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_registros_titulos_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
-          <br /><br />
+      <!-- DESCARGAS FILTRADAS -->
+      <span data-toggle="tooltip-descarga-filtrada" title="Para las descargas filtradas, mínimamente se debe incluir el filtro por periodo">Descargar Registros de T&iacute;tulos Filtrados:</span>
 
-          <div style="float:left;">Descargar todos los Registros de T&iacute;tulos:</div>
+      <% if params[:form_buscar_registros_titulos][:anio].present? && @registros_titulos_todos.size > 0 %>
+        <%= link_to "XLS#{image_star * 2}".html_safe, mec_custom_url(data_registros_titulos_lista_url(parametros_xls)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_excel'%>
+        <%= link_to "CSV#{image_star * 3}".html_safe, mec_custom_url(data_registros_titulos_lista_url(parametros_csv)) , :targer => "_target", :style => "margin-left:10px;", :class => 'icon icon-page'%>
+        <%= link_to "JSON#{image_star * 3}".html_safe, mec_custom_url(data_registros_titulos_lista_url(parametros_json)) , :target => "_target", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'%>
+      <% else %>
+        <%= link_to "XLS#{image_star * 2}".html_safe, "#", :onclick => "alert('Para las descargas filtradas, mínimamente se debe incluir el filtro por periodo');return false;", :style => "margin-left:10px;", :class => 'icon icon-page_excel'  %>
+        <%= link_to "CSV#{image_star * 3}".html_safe, "#", :onclick => "alert('Para las descargas filtradas, mínimamente se debe incluir el filtro por periodo');return false;", :style => "margin-left:10px;", :class => 'icon icon-page'  %>
+        <%= link_to "JSON#{image_star * 3}".html_safe, "#", :onclick => "alert('Para las descargas filtradas, mínimamente se debe incluir el filtro por periodo');return false;", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width'  %>
+      <% end %>
+
+      <br /><br />
+
+
+      <!-- DESCARGAS TOTALES -->
+      <div style="float:left;" data-toggle="tooltip-descarga-total" title="Realizar descargas totales (incluye todos los datos)">Descargar todos los Registros de T&iacute;tulos:</div>
           
-          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">        <%#= link_to "PDF#{image_star}".html_safe, mec_custom_url(data_matriculaciones_departamentos_distritos_lista_url(parametros_pdf_todos)), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url"%>
-              <!-- <meta itemprop="name" content="Registro de Títulos hasta setiembre del 2014">
-               <meta itemprop="description" content="Listado de Títulos expedidos por el MEC a setiembre del 2014">
-               <meta itemprop="encodingFormat" content="pdf">
-               </div>
-               <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-              -->  
-              <%= link_to "XLS#{image_star * 2}".html_safe, "https://mega.co.nz/#!UgwgSBoC!kwsMUbLYeWWgUdYy-P0CeQ5zbPNaFVtsfUeAscaBjF0", :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url", :content => "https://mega.co.nz/#!UgwgSBoC!kwsMUbLYeWWgUdYy-P0CeQ5zbPNaFVtsfUeAscaBjF0" %>
-              <br />
-              <span style="color:silver;">(5,1 MB)</span>
-              <meta itemprop="name" content="Registro de Títulos hasta junio del 2015">
-              <meta itemprop="description" content="Listado de Títulos expedidos por el MEC a junio del 2015">
-              <meta itemprop="encodingFormat" content="xls">
-              <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-          </div>
+      <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">  
+          <%= descargar_documento(17, "0", "0", "xlsx.zip")%>
+          <br />
+          <meta itemprop="name" content="Registro de Títulos hasta junio del 2015">
+          <meta itemprop="description" content="Listado de Títulos expedidos por el MEC a junio del 2015">
+          <meta itemprop="encodingFormat" content="xls">
+          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+      </div>
 
-          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-              <%= link_to "CSV#{image_star * 3}".html_safe, "https://mega.co.nz/#!FhRH3JTJ!NRlx1-eF9xC71xVK8rkdpbxDbQCereM8pa9jo1UTqIo", :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url", :content => "https://mega.co.nz/#!FhRH3JTJ!NRlx1-eF9xC71xVK8rkdpbxDbQCereM8pa9jo1UTqIo" %>
-              <br />
-              <span style="color:silver;">(11,2 MB)</span>
-              <meta itemprop="name" content="Registro de Títulos hasta junio del 2015">
-              <meta itemprop="description" content="Listado de Títulos expedidos por el MEC a junio del 2015">
-              <meta itemprop="encodingFormat" content="csv">
-              <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-          </div>
+      <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+          <%= descargar_documento(17, "0", "0", "csv.zip")%>
+          <br />
+          <meta itemprop="name" content="Registro de Títulos hasta junio del 2015">
+          <meta itemprop="description" content="Listado de Títulos expedidos por el MEC a junio del 2015">
+          <meta itemprop="encodingFormat" content="csv">
+          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+      </div>
 
-          <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
-              <%= link_to "JSON#{image_star * 3}".html_safe, "https://mega.co.nz/#!48QgAZDb!DaZU9W2wSPXfsSSXBbgTV-F8nRsT8FB-K02X298JHdc", :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url", :content => "https://mega.co.nz/#!48QgAZDb!DaZU9W2wSPXfsSSXBbgTV-F8nRsT8FB-K02X298JHdc" %>
-              <br />
-              <span style="color:silver;">(27,5 MB)</span>
-              <meta itemprop="name" content="Registro de Títulos hasta junio del 2015">
-              <meta itemprop="description" content="Listado de Títulos expedidos por el MEC a junio del 2015">
-              <meta itemprop="encodingFormat" content="json">
-              <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
-          </div>
+      <div style="float:left;text-align:center;">
+        <%= link_to "MD5/CSV".html_safe, mec_custom_url(data_contrataciones_lista_url( parametros_md5_csv )), :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_md5' %>
+      </div>
 
-          <div style="clear:both;"></div>
+      <div style="float:left;text-align:center;" itemprop="distribution" itemscope itemtype="https://schema.org/DataDownload">
+          <%= descargar_documento(17, "0", "0", "json.zip")%>
+          <br />
+          <meta itemprop="name" content="Registro de Títulos hasta junio del 2015">
+          <meta itemprop="description" content="Listado de Títulos expedidos por el MEC a junio del 2015">
+          <meta itemprop="encodingFormat" content="json">
+          <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+      </div>
 
-      </td>
+      <div style="clear:both;"></div>
+
+    </td>
 
   </tr>
+
+  <script>
+    $('[data-toggle="tooltip-descarga-filtrada"]').tooltip();
+    $('[data-toggle="tooltip-descarga-total"]').tooltip();
+  </script>
+
 <% end %>

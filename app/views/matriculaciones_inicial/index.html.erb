@@ -9,7 +9,7 @@
       <meta itemprop="name" style="display: none;" content="MATRICULA EDUCACION INICIAL">
       <meta itemprop="description" content="Se refiere a la cantidad de matriculados en las etapas maternal, prejardín, jardín y preescolar con sus correspondientes códigos identificatorios."/>
       <meta itemprop="url" content= <%= mec_custom_url(data_matriculaciones_inicial_url) %> >
-      <meta itemprop="temporal" style="display: none;" content="2012-01-01/2012-12-31"/>
+      <meta itemprop="temporal" style="display: none;" content="2012-01-01/2013-12-31"/>
       <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
         <meta itemprop="name" content="Ministerio de Educación y Cultura">
         <meta itemprop="url" content="http://www.mec.gov.py/">
@@ -270,6 +270,40 @@
         </th>
 
         <th>
+          <span data-titulo="true">Maternal Hombre</span>
+          <span class="orden maternal_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_inicial_maternal_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_inicial_maternal_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_maternal_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Maternal Mujer</span>
+          <span class="orden maternal_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_inicial_maternal_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_inicial_maternal_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_maternal_mujer');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
           <span data-titulo="true">Pre-Jardin</span>
           <span class="orden prejardin">
             <i class="filtro fa fa-sort"></i>
@@ -283,6 +317,40 @@
           </span>
           <%= number_field_tag :form_buscar_matriculaciones_inicial_prejardin, nil, :class => 'form-control', :placeholder => '' %>
           <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_prejardin');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Pre-Jardin Hombre</span>
+          <span class="orden prejardin_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_inicial_prejardin_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_inicial_prejardin_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_prejardin_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Pre-Jardin Mujer</span>
+          <span class="orden prejardin_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_inicial_prejardin_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_inicial_prejardin_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_prejardin_mujer');"><i class="fa fa-times"></i></span>
         </div>
         </th>
 
@@ -304,6 +372,40 @@
         </th>
 
         <th>
+          <span data-titulo="true">Jardin Hombre</span>
+          <span class="orden jardin_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_inicial_jardin_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_inicial_jardin_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_jardin_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Jardin Mujer</span>
+          <span class="orden jardin_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_inicial_jardin_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_inicial_jardin_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_jardin_mujer');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
           <span data-titulo="true">Pre-Escolar</span>
           <span class="orden preescolar">
             <i class="filtro fa fa-sort"></i>
@@ -321,7 +423,41 @@
         </th>
 
         <th>
-          <span data-titulo="true">Total Matriculados</span>
+          <span data-titulo="true">Pre-Escolar Hombre</span>
+          <span class="orden preescolar_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_inicial_preescolar_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_inicial_preescolar_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_preescolar_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Pre-Escolar Mujer</span>
+          <span class="orden preescolar_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_inicial_preescolar_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_inicial_preescolar_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_preescolar_mujer');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Total</span>
           <span class="orden total_matriculados">
             <i class="filtro fa fa-sort"></i>
             <i class="descendente fa fa-sort-desc"></i>
@@ -334,6 +470,40 @@
           </span>
           <%= number_field_tag :form_buscar_matriculaciones_inicial_total_matriculados, nil, :class => 'form-control', :placeholder => '' %>
           <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_total_matriculados');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Total Hombre</span>
+          <span class="orden total_matriculados_hombre">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_inicial_total_matriculados_hombre_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_inicial_total_matriculados_hombre, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_total_matriculados_hombre');"><i class="fa fa-times"></i></span>
+        </div>
+        </th>
+
+        <th>
+          <span data-titulo="true">Total Mujer</span>
+          <span class="orden total_matriculados_mujer">
+            <i class="filtro fa fa-sort"></i>
+            <i class="descendente fa fa-sort-desc"></i>
+            <i class="ascendente fa fa-sort-asc"></i>
+          </span>
+
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <%= select_tag(:form_buscar_matriculaciones_inicial_total_matriculados_mujer_operador, options_for_select(['>', '<', '=']), :class => 'form-control input-sm comparador')%>
+          </span>
+          <%= number_field_tag :form_buscar_matriculaciones_inicial_total_matriculados_mujer, nil, :class => 'form-control', :placeholder => '' %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-matriculaciones-inicial', '#form_buscar_matriculaciones_inicial_total_matriculados_mujer');"><i class="fa fa-times"></i></span>
         </div>
         </th>
 

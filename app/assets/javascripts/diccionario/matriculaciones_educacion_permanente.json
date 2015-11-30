@@ -91,7 +91,7 @@
         "ejemplo": "URBANA"
     }, {
         "nombre": "CODIGO_ESTABLECIMIENTO",
-        "descripcion": "Código de establecimiento permite identificar en forma única los diferentes establecimientos educativos que se encuentran en el país.\nEl Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación.",
+        "descripcion": "Código de establecimiento permite identificar en forma única los diferentes establecimientos educativos que se encuentran en el país. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación.",
         "tipo": "xsd:string",
         "restricciones": "No más de 7 caracteres",
         "referencia": {
@@ -140,8 +140,48 @@
         },
         "ejemplo": "131"
     }, {
+        "nombre": "MATRICULA_EBBJA_HOMBRE",
+        "descripcion": "Representa la cantidad de matriculados hombres en los cuatro ciclos de Educación Básica Bilingüe para Jóvenes y Adultos de la Modalidad de Atención Educativa correspondiente al nivel de Educación General Básica y Educación Permanente que es considerada como una formación supletoria , que atiende los requerimientos de las personas mayores de 15 años y más que quedaron excluidas de la Educación Escolar Básica para satisfacer sus necesidades de aprendizaje",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "31"
+    }, {
+        "nombre": "MATRICULA_EBBJA_MUJER",
+        "descripcion": "Representa la cantidad de matriculadas mujeres en los cuatro ciclos de Educación Básica Bilingüe para Jóvenes y Adultos de la Modalidad de Atención Educativa correspondiente al nivel de Educación General Básica y Educación Permanente que es considerada como una formación supletoria , que atiende los requerimientos de las personas mayores de 15 años y más que quedaron excluidas de la Educación Escolar Básica para satisfacer sus necesidades de aprendizaje",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "100"
+    }, {
         "nombre": "MATRICULA_FPI",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en Formación Profesional Inicial de la Modalidad de Atención Educativa correspondiente al nivel de Educación General Básica y Educación Permanente que busca potenciar al joven y al adulto para innovar, crear y seguir aprendiendo, a partir de una conceptualización del trabajo como humanización del hombre, oportunidad de realización personal y necesidad de un nuevo perfil de conocimientos, habilidades y aptitudes",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "0"
+    }, {
+        "nombre": "MATRICULA_FPI_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en Formación Profesional Inicial de la Modalidad de Atención Educativa correspondiente al nivel de Educación General Básica y Educación Permanente que busca potenciar al joven y al adulto para innovar, crear y seguir aprendiendo, a partir de una conceptualización del trabajo como humanización del hombre, oportunidad de realización personal y necesidad de un nuevo perfil de conocimientos, habilidades y aptitudes",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "0"
+    }, {
+        "nombre": "MATRICULA_FPI_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en Formación Profesional Inicial de la Modalidad de Atención Educativa correspondiente al nivel de Educación General Básica y Educación Permanente que busca potenciar al joven y al adulto para innovar, crear y seguir aprendiendo, a partir de una conceptualización del trabajo como humanización del hombre, oportunidad de realización personal y necesidad de un nuevo perfil de conocimientos, habilidades y aptitudes",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {
@@ -160,6 +200,26 @@
         },
         "ejemplo": "613"
     }, {
+        "nombre": "MATRICULA_EMAPJA_HOMBRE",
+        "descripcion": "Representa la cantidad de matriculados hombres en la modalidad de Educación Media Alternativa para Jovenes y Adultos dirigida a las personas que no han finalizado sus estudios correspondientes al nivel medio con el fin de acceder a la titulación y de proseguir estudios de Educación Superior; la enseñanza se organiza en cuatro ámbitos del conocimiento (propedéutico y profesionalizante), de carácter modular y con un modelo pedagógico basado en las competencias transversales (aprender a emprender, aprender a aprender). Edad teórica de inicio: 17 años",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "313"
+    }, {
+        "nombre": "MATRICULA_EMAPJA_MUJER",
+        "descripcion": "Representa la cantidad de matriculadas mujeres en la modalidad de Educación Media Alternativa para Jovenes y Adultos dirigida a las personas que no han finalizado sus estudios correspondientes al nivel medio con el fin de acceder a la titulación y de proseguir estudios de Educación Superior; la enseñanza se organiza en cuatro ámbitos del conocimiento (propedéutico y profesionalizante), de carácter modular y con un modelo pedagógico basado en las competencias transversales (aprender a emprender, aprender a aprender). Edad teórica de inicio: 17 años",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "300"
+    }, {
         "nombre": "MATRICULA_EMDJA",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en la modalidad de Educación Media a Distancia de Jovenes y Adultos dirigida a las personas que no han finalizado sus estudios correspondientes al nivel medio con el fin de acceder a la titulación y de proseguir estudios de Educación Superior; la enseñanza se organiza en cuatro ámbitos del conocimiento (propedéutico y profesionalizante), de carácter modular y con un modelo pedagógico basado en las competencias transversales (aprender a emprender, aprender a aprender). Edad teórica de inicio: 17 años. Otorga el título de bachiller en educación media a distancia",
         "tipo": "xsd:positiveInteger",
@@ -170,8 +230,48 @@
         },
         "ejemplo": "0"
     }, {
+        "nombre": "MATRICULA_EMDJA_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en la modalidad de Educación Media a Distancia de Jovenes y Adultos dirigida a las personas que no han finalizado sus estudios correspondientes al nivel medio con el fin de acceder a la titulación y de proseguir estudios de Educación Superior; la enseñanza se organiza en cuatro ámbitos del conocimiento (propedéutico y profesionalizante), de carácter modular y con un modelo pedagógico basado en las competencias transversales (aprender a emprender, aprender a aprender). Edad teórica de inicio: 17 años. Otorga el título de bachiller en educación media a distancia",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "0"
+    }, {
+        "nombre": "MATRICULA_EMDJA_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en la modalidad de Educación Media a Distancia de Jovenes y Adultos dirigida a las personas que no han finalizado sus estudios correspondientes al nivel medio con el fin de acceder a la titulación y de proseguir estudios de Educación Superior; la enseñanza se organiza en cuatro ámbitos del conocimiento (propedéutico y profesionalizante), de carácter modular y con un modelo pedagógico basado en las competencias transversales (aprender a emprender, aprender a aprender). Edad teórica de inicio: 17 años. Otorga el título de bachiller en educación media a distancia",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "0"
+    }, {
         "nombre": "MATRICULA_FP",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en formacion profesional correspondiente al Nivel de Educación Permanente, es una modalidad que implementa un currículum especial con enfoque a la formación de mano de obra calificada para una ocupación laboral específica",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "0"
+    }, {
+        "nombre": "MATRICULA_FP_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en formacion profesional correspondiente al Nivel de Educación Permanente, es una modalidad que implementa un currículum especial con enfoque a la formación de mano de obra calificada para una ocupación laboral específica",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "0"
+    }, {
+        "nombre": "MATRICULA_FP",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en formacion profesional correspondiente al Nivel de Educación Permanente, es una modalidad que implementa un currículum especial con enfoque a la formación de mano de obra calificada para una ocupación laboral específica",
         "tipo": "xsd:positiveInteger",
         "restricciones": "",
         "referencia": {

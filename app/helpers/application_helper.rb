@@ -10,21 +10,22 @@ module ApplicationHelper
   end
 
   def obtener_mes(mes)
-
+    
+    mes = mes.to_i
     case mes
-    when 1 then "enero"
-    when 2 then "febrero"
-    when 3 then "marzo"
-    when 4 then "abril"
-    when 5 then "mayo"
-    when 6 then "junio"
-    when 7 then "julio"
-    when 8 then "agosto"
-    when 9 then "setiembre"
-    when 10 then "octubre"
-    when 11 then "noviembre"
-    when 12 then "diciembre"
-    else ""
+      when 1 then "enero"
+      when 2 then "febrero"
+      when 3 then "marzo"
+      when 4 then "abril"
+      when 5 then "mayo"
+      when 6 then "junio"
+      when 7 then "julio"
+      when 8 then "agosto"
+      when 9 then "setiembre"
+      when 10 then "octubre"
+      when 11 then "noviembre"
+      when 12 then "diciembre"
+      else ""
     end
 
   end
@@ -47,7 +48,7 @@ module ApplicationHelper
 
       if anio.present?
 
-        descarga_dataset = DescargaDataset.find_by("numero_dataset = ? and periodo = ? and mes =? and tipo_documento = ?", numero, anio, mes, tipo_documento)
+        descarga_dataset = DescargaDataset.find_by("numero_dataset = ? and periodo = ? and mes = ? and tipo_documento = ?", numero, anio, mes, tipo_documento)
 
         if descarga_dataset.present?
 
@@ -61,25 +62,25 @@ module ApplicationHelper
 
           end
 
-            if tipo_documento == "xlsx"
+            if tipo_documento == "xlsx" or tipo_documento == "xlsx.zip"
 
               html += link_to("XLS#{image_star * 2}".html_safe, documento , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_excel', :itemprop => "url", :content => documento)
               html += " <br />"
               html += "<span style='color:silver;'>("+descarga_dataset.size+")</span>"
 
-            elsif tipo_documento == "csv"
+            elsif tipo_documento == "csv" or tipo_documento == "csv.zip"
 
               html += link_to("CSV#{image_star * (numero == 11 || numero == 12 ? 4 : 3)}".html_safe, documento , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page', :itemprop => "url", :content => documento)
               html += " <br />"
               html += "<span style='color:silver;'>("+descarga_dataset.size+")</span>"
 
-            elsif tipo_documento == "json"
+            elsif tipo_documento == "json" or tipo_documento == "json.zip"
 
               html += link_to("JSON#{image_star * (numero < 3 ? 4 : 3)}".html_safe, documento , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_text_width', :itemprop => "url", :content => documento)
               html += " <br />"
               html += "<span style='color:silver;'>("+descarga_dataset.size+")</span>"
 
-            elsif tipo_documento == "pdf"
+            elsif tipo_documento == "pdf" or tipo_documento == "pdf.zip"
 
               html += link_to("PDF#{image_star}".html_safe, documento , :target => "_blank", :style => "margin-left:10px;", :class => 'icon icon-page_white_acrobat', :itemprop => "url", :content => documento)
               html += " <br />"

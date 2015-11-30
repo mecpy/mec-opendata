@@ -91,7 +91,7 @@
         "ejemplo": "URBANA"
     }, {
         "nombre": "CODIGO_ESTABLECIMIENTO",
-        "descripcion": "Código de establecimiento permite identificar en forma única los diferentes establecimientos educativos que se encuentran en el país.\nEl Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación.",
+        "descripcion": "Código de establecimiento permite identificar en forma única los diferentes establecimientos educativos que se encuentran en el país. El Sistema de informacion de Estadística Continua (SIEC) considera “Establecimiento Escolar” a la construcción que existe dentro de un predio (terreno) que se emplea para la enseñanza, donde puede funcionar una o más instituciones educativas con sus respectivos niveles/modalidades de educación.",
         "tipo": "xsd:string",
         "restricciones": "No más de 7 caracteres",
         "referencia": {
@@ -140,6 +140,26 @@
         },
         "ejemplo": "571"
     }, {
+        "nombre": "MATRICULA_CIENTIFICO_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos del 1° al 3° curso de la Educación Media, con orientación hacia el Bachillerato Científico, comprende tres énfasis: Letras y Artes; Ciencias Sociales; y Ciencias Básicas y Tecnología",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "371"
+    }, {
+        "nombre": "MATRICULA_CIENTIFICO_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas del 1° al 3° curso de la Educación Media, con orientación hacia el Bachillerato Científico, comprende tres énfasis: Letras y Artes; Ciencias Sociales; y Ciencias Básicas y Tecnología",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "200"
+    }, {
         "nombre": "MATRICULA_TECNICO",
         "descripcion": "Representa la cantidad de estudiantes inscriptos del 1° al 3° curso de la Educación Media, en la modalidad de Bachillerato Técnico (Industrial, Servicios y Agropecuario)",
         "tipo": "xsd:positiveInteger",
@@ -149,6 +169,26 @@
             "enlace": ""
         },
         "ejemplo": "528"
+    }, {
+        "nombre": "MATRICULA_TECNICO_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos del 1° al 3° curso de la Educación Media, en la modalidad de Bachillerato Técnico (Industrial, Servicios y Agropecuario)",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "328"
+    }, {
+        "nombre": "MATRICULA_TECNICO_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas del 1° al 3° curso de la Educación Media, en la modalidad de Bachillerato Técnico (Industrial, Servicios y Agropecuario)",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "200"
     }, {
         "nombre": "MATRICULA_MEDIA_ABIERTA",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en la modalidad Media Abierta que está dirigida a jóvenes de 15 a 20 años que han terminado el noveno grado de la Educación Escolar Básica, pero que no han ingresado por alguna razón a la Educación Media convencional. Este modelo educativo permite un aprendizaje flexible, según el ritmo y las posibilidades de tiempo de cada estudiante. Pretende con una oferta diferente de formación, dar respuesta a diferentes necesidades de aprendizaje y albergar a jóvenes en situaciones de deserción escolar",
@@ -160,6 +200,26 @@
         },
         "ejemplo": "142"
     }, {
+        "nombre": "MATRICULA_MEDIA_ABIERTA_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en la modalidad Media Abierta que está dirigida a jóvenes de 15 a 20 años que han terminado el noveno grado de la Educación Escolar Básica, pero que no han ingresado por alguna razón a la Educación Media convencional. Este modelo educativo permite un aprendizaje flexible, según el ritmo y las posibilidades de tiempo de cada estudiante. Pretende con una oferta diferente de formación, dar respuesta a diferentes necesidades de aprendizaje y albergar a jóvenes en situaciones de deserción escolar",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "42"
+    }, {
+        "nombre": "MATRICULA_MEDIA_ABIERTA_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en la modalidad Media Abierta que está dirigida a jóvenes de 15 a 20 años que han terminado el noveno grado de la Educación Escolar Básica, pero que no han ingresado por alguna razón a la Educación Media convencional. Este modelo educativo permite un aprendizaje flexible, según el ritmo y las posibilidades de tiempo de cada estudiante. Pretende con una oferta diferente de formación, dar respuesta a diferentes necesidades de aprendizaje y albergar a jóvenes en situaciones de deserción escolar",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "100"
+    }, {
         "nombre": "MATRICULA_FORMACION_PROFESIONAL_MEDIA",
         "descripcion": "Representa la cantidad de estudiantes inscriptos en la modalidad de Formación Profesional de la Media, programas educativos orientados hacia la capacitación laboral, ofrece oportunidades de profesionalización de distinto grado de calificación y especialidad. La formación profesional está dirigida a la formación en áreas relacionadas con la producción de bienes y servicios.<br>Para cursar la formación profesional se requiere haber concluido los 6 años de la Educación Escolar Básica",
         "tipo": "xsd:positiveInteger",
@@ -169,6 +229,26 @@
             "enlace": ""
         },
         "ejemplo": "180"
+    }, {
+        "nombre": "MATRICULA_FORMACION_PROFESIONAL_MEDIA_HOMBRE",
+        "descripcion": "Representa la cantidad de estudiantes hombres inscriptos en la modalidad de Formación Profesional de la Media, programas educativos orientados hacia la capacitación laboral, ofrece oportunidades de profesionalización de distinto grado de calificación y especialidad. La formación profesional está dirigida a la formación en áreas relacionadas con la producción de bienes y servicios.<br>Para cursar la formación profesional se requiere haber concluido los 6 años de la Educación Escolar Básica",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "100"
+    }, {
+        "nombre": "MATRICULA_FORMACION_PROFESIONAL_MEDIA_MUJER",
+        "descripcion": "Representa la cantidad de estudiantes mujeres inscriptas en la modalidad de Formación Profesional de la Media, programas educativos orientados hacia la capacitación laboral, ofrece oportunidades de profesionalización de distinto grado de calificación y especialidad. La formación profesional está dirigida a la formación en áreas relacionadas con la producción de bienes y servicios.<br>Para cursar la formación profesional se requiere haber concluido los 6 años de la Educación Escolar Básica",
+        "tipo": "xsd:positiveInteger",
+        "restricciones": "",
+        "referencia": {
+            "texto": "",
+            "enlace": ""
+        },
+        "ejemplo": "80"
     }, {
         "nombre": "ANHO_COD_GEO",
         "descripcion": "Se refiere al año de captura de los datos georreferenciados censales, teniendo en cuenta que por cada año censal pueden diferir los codigos de distritos o codigos de localidades, como a si también las descripciones. La cartografía nacional fue proveída por al Dirección General de Estadística, Encuestas y Censos (DGEEC - http://www.dgeec.gov.py/)",

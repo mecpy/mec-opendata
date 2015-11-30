@@ -1,14 +1,6 @@
 class ProductosController < ApplicationController
   
   before_filter :redireccionar_uri
-  
-  def diccionario
-    
-    require 'json'
-    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/productos.json")
-    @diccionario_productos = JSON.parse(file)
-
-  end
 
   def index
 
@@ -17,6 +9,25 @@ class ProductosController < ApplicationController
     respond_to do |f|
 
       f.html {render :layout => 'application'}
+
+    end
+
+  end
+
+  def diccionario
+    
+    require 'json'
+    file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/productos.json")
+    diccionario = JSON.parse(file)
+    @diccionario_productos = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_productos)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_productos, params[:nombre]), :filename => "diccionario_productos.pdf", :type => "application/pdf")
 
     end
 

@@ -17,7 +17,18 @@ class ServiciosBasicosController < ApplicationController
 
     require 'json'
     file = File.read("#{Rails.root}/app/assets/javascripts/diccionario/servicios_basicos.json")
-    @diccionario_servicios_basicos = JSON.parse(file)
+    diccionario = JSON.parse(file)
+    @diccionario_servicios_basicos = clean_json(diccionario)
+
+    if params[:format] == 'json'
+      
+      generate_json_table_schema(@diccionario_servicios_basicos)
+
+    elsif params[:format] == 'pdf'
+      
+      send_data(generate_pdf(@diccionario_servicios_basicos, params[:nombre]), :filename => "diccionario_servicios_basicos.pdf", :type => "application/pdf")
+
+    end
     
   end
 

@@ -51,7 +51,25 @@
       </li>
 
     <% end %>
-  </ul>      
+  </ul>
+
+  <div class="row" id="tab-descargas">
+    <%
+      parametros_pdf = { :format => 'pdf', :nombre => nombre }
+      parametros_json_table_schema = { :format => 'json', :nombre => nombre }
+    %>
+
+    <h4>Descargar diccionario:</h4>
+    <ul>
+      <li>
+        <%= link_to "JSON TABLE SCHEMA".html_safe, mec_custom_url(parametros_json_table_schema), :target => "_blank", :class => 'icon icon-page_white_text_width' %>
+      </li>
+      <li>
+        <%= link_to "PDF".html_safe, mec_custom_url(parametros_pdf), :target => "_blank", :class => 'icon icon-page_white_acrobat' %>
+      </li>
+    </ul>
+  </div>
+
 <% else %>
   No se encontraron registros.
 <% end %>
@@ -198,6 +216,13 @@
       element: '#tab-ejemplo',
       intro: "El <b>Ejemplo</b>, representa	los valores de ejemplo.",
       position: "left"
+    },
+    {
+      element: '#tab-descargas',
+      intro: "Si necesitas descargar el diccionario, lo puedes hacer en el formato PDF o bien, en el formato JSON TABLE SCHEMA.\
+          </br></br>El formato <b>PDF (Portable Document Format)</b>, es un formato de almacenamiento para documentos digitales independiente de plataformas de software o hardware.\
+          </br></br>El formato <b>JSON TABLE SCHEMA</b> define un esquema simple para datos tabulares diseñado para ser expresable en JSON.",
+      position: "top"
     },
     {
       element: '#tab-referencias',

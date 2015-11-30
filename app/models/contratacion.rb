@@ -4,4 +4,6 @@ class Contratacion < ActiveRecord::Base
   #self.table_name='v_llamado_detalle'
   self.table_name='contrataciones'
 
+  scope :ordenado, -> { order('ejercicio_fiscal')}
+
 end

@@ -54,4 +54,4 @@ gem 'protected_attributes'
 gem "recaptcha", :require => "recaptcha/rails"
 gem "axlsx", '2.0.1'
 gem 'activerecord-postgis-adapter'
-
+gem 'rubyzip'
