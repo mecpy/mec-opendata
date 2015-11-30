@@ -586,6 +586,7 @@
 
     
     <!--NUEVO CONJUNTO DE DATOS-->
+
     <li id="inventario" class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
         <span class="celda col-sm-1 text-right text-muted contador">15</span>
         <div class="celda col-sm-3">
@@ -1036,7 +1037,7 @@
             <div class="acciones">
 
                 <div style="display:inline-block" itemprop="distribution" itemscope="" itemtype="https://schema.org/DataDownload">
-                    <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar (174KB)</span>').html_safe, PARAMETRO[:ejecucion_fiscal_xlsx], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url", :content => "http://datos.mec.gov.py/data/ejecucion_al_31072015.xls" %>
+                    <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar (180KB)</span>').html_safe, PARAMETRO[:ejecucion_fiscal_xlsx], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url", :content => "http://datos.mec.gov.py/data/ejecucion_al_30092015.xls" %>
                     <meta itemprop="name" content="Presupuesto de Ingresos y Egresos del Ejercicio Fiscal">
                     <meta itemprop="description" content="Listado del presupuesto de Ingresos y Egresos del Ejercicio Fiscal">
                     <meta itemprop="encodingFormat" content="xls">
@@ -1139,6 +1140,24 @@
                     <meta itemprop="encodingFormat" content="xls">
                     <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
                 </div>
+
+                <div style="display:inline-block" itemprop="distribution" itemscope="" itemtype="https://schema.org/DataDownload">
+                    <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar setiembre 2015 (568,5KB)</span>').html_safe, PARAMETRO[:viaticos_setiembre_2015], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url", :content => "http://datos.mec.gov.py/data/viaticos_setiembre_2015.xls" %>
+                    <meta itemprop="name" content="Viaticos (Setiembre 2015)">
+                    <meta itemprop="description" content="Listado de viaticos correspondiente a setiembre 2015">
+                    <meta itemprop="encodingFormat" content="xls">
+                    <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+                </div>
+
+                <div style="display:inline-block" itemprop="distribution" itemscope="" itemtype="https://schema.org/DataDownload">
+                    <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar octubre 2015 (552KB)</span>').html_safe, PARAMETRO[:viaticos_octubre_2015], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url", :content => "http://datos.mec.gov.py/data/viaticos_octubre_2015.xls" %>
+                    <meta itemprop="name" content="Viaticos (Setiembre 2015)">
+                    <meta itemprop="description" content="Listado de viaticos correspondiente a setiembre 2015">
+                    <meta itemprop="encodingFormat" content="xls">
+                    <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+                </div>
+
+
 
                 <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
                     <i class="icon-py-etiqueta"></i> 
@@ -1496,16 +1515,18 @@
     <li id="locales-elecciones-municipales" class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
         <span class="celda col-sm-1 text-right text-muted contador">35</span>
         <div class="celda col-sm-3">
-            <span itemprop="name">NOMINA DE LOCALES ESCOLARES A SER USUFRUCTUADOS EN LAS ELECCIONES INTERNAS-MUNICIPALES 2015 SIMULTANEAS DE LOS PARTIDOS, CONCERTACIONES Y MOVIMIENTOS POLITICOS.</span><br>
+            <span itemprop="name">NOMINA DE LOCALES ESCOLARES A SER USUFRUCTUADOS EN LAS ELECCIONES MUNICIPALES 2015.</span><br>
 
 
 
             <div class="acciones">
 
                 <div style="display:inline-block" itemprop="distribution" itemscope="" itemtype="https://schema.org/DataDownload">
-                    <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Descargar (66,7KB)</span>').html_safe, PARAMETRO[:instituciones_utilizadas_agrupaciones_politicas], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url", :content => "http://datos.mec.gov.py/data/instituciones_utilizadas_agrupaciones_politicas.xls" %>
-                    <meta itemprop="name" content="Nomina de Locales Escolares a ser usufructuados en las elecciones internas-municipales 2015 simultaneas de los partidos, concertaciones y movimientos politicos">
-                    <meta itemprop="description" content="Listado de la nomina de locales escolares a ser usufructuados en las elecciones internas-municipales 2015 simultaneas de los partidos, concertaciones y movimientos politicos">
+                    <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Municipales 2015 (475,5KB)</span>').html_safe, PARAMETRO[:establecimientos_elecciones_municipales_2015], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url", :content => "http://datos.mec.gov.py/data/establecimientos_elecciones_municipales_2015.xls" %>
+                  
+                  <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Internas Municipales 2015 (66,7KB)</span>').html_safe, PARAMETRO[:instituciones_utilizadas_agrupaciones_politicas], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url", :content => "http://datos.mec.gov.py/data/instituciones_utilizadas_agrupaciones_politicas.xls" %>
+                    <meta itemprop="name" content="Nomina de Locales Escolares a ser usufructuados en las elecciones municipales 2015.">
+                    <meta itemprop="description" content="Listado de la nomina de locales escolares a ser usufructuados en las elecciones municipales 2015">
                     <meta itemprop="encodingFormat" content="xls">
                     <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
                 </div>
@@ -1520,7 +1541,7 @@
             </div>
         </div>
         <div class="celda col-sm-8 hidden-xs" itemprop="description">
-            <p>Contiene la nómina de Locales Escolares habilitados por el MEC, a fin de ser usufructuados en las elecciones internas-municipales simultáneas de los partidos, concertaciones y movimientos políticos, a realizarse a nivel nacional, el día domingo 26 de julio del corriente año.</p>
+            <p>Contiene la nómina de Locales Escolares habilitados por el MEC, a fin de ser usufructuados en las elecciones municipales, a realizarse a nivel nacional, el día domingo 15 de noviembre del corriente año.</p>
         </div>
         <meta itemprop="temporal" style="display: none;" content="2015-01-01/2015-12-31">
         <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
@@ -1540,7 +1561,8 @@
 
 
 
-<!--NUEVO CONJUNTO DE DATOS-->
+    <!--NUEVO CONJUNTO DE DATOS-->
+    <!--
     <li class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
         <span class="celda col-sm-1 text-right text-muted contador">36</span>
         <div class="celda col-sm-3">
@@ -1548,8 +1570,8 @@
 
             <div class="acciones">
 
-                <%= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_productos_url), :title => "Ir al diccionario" %>
-                <%= link_to ("<i class='icon-py-datos'></i><span class='hidden-xs'> Ver Datos #{image_star * 3}</span>").html_safe, mec_custom_url(data_productos_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
+                <%#= link_to ('<i class="icon-py-manual"></i><span class="hidden-xs"> Ver Diccionario</span>').html_safe, mec_custom_url(def_productos_url), :title => "Ir al diccionario" %>
+                <%#= link_to ("<i class='icon-py-datos'></i><span class='hidden-xs'> Ver Datos #{image_star * 3}</span>").html_safe, mec_custom_url(data_productos_url), :title => "Ir al Conjunto de Datos", :itemprop => "url" %>
 
                 <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
                     <i class="icon-py-etiqueta"></i> 
@@ -1576,6 +1598,53 @@
         <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
         <meta itemprop="keywords" style="display: none;" content="educación,instituciones"/>
         <meta itemprop="version" style="display: none;" content="1.0">
+    </li>
+-->
+
+    <!--NUEVO CONJUNTO DE DATOS-->
+    <li id="ejecucion-obras-fonacide" class="row" itemprop="dataset" itemscope itemtype="http://schema.org/Dataset">
+        <span class="celda col-sm-1 text-right text-muted contador">36</span>
+        <div class="celda col-sm-3">
+            <span itemprop="name">FONACIDE - EJECUCI&Oacute;N DE OBRAS DE INFRAESTRUCTURA POR GOBERNACIONES Y MUNICIPIOS.</span><br>
+            <div class="acciones">
+
+                <div style="display:inline-block" itemprop="distribution" itemscope="" itemtype="https://schema.org/DataDownload">
+                    <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Obras autorizadas y no autorizadas (1,3MB)</span>').html_safe, PARAMETRO[:fonacide_principal], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url", :content => "http://datos.mec.gov.py/data/2 LISTADO FONACIDE OBRAS AUT. Y NO AUT.xls" %>
+                    <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Resumen por departamentos (233,8KB)</span>').html_safe, PARAMETRO[:fonacide_resumen1], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url", :content => "http://datos.mec.gov.py/data/3 RESUMEN POR DEPARTAMENTO gral.xlsx" %>
+                    <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Resumen por municipios (163,2KB)</span>').html_safe, PARAMETRO[:fonacide_resumen2], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url", :content => "http://datos.mec.gov.py/data/4 RESUMEN POR MUNICIPIO.xlsx" %>
+                    <%= link_to ('<i class="fa fa-file-excel-o"></i><span class="hidden-xs"> Resumen de intervenciones (149,3KB)</span>').html_safe, PARAMETRO[:fonacide_resumen3], :title => "Descargar".html_safe, :target => "_target", :itemprop => "url", :content => "http://datos.mec.gov.py/data/5 resumen interv. fonacide.xlsx" %>
+                    <meta itemprop="name" content="Fonacide - Ejecución de obras de infraestructura por Gobernaciones y Municipios">
+                    <meta itemprop="description" content="Contiene datos de la ejecución de obras de infraestructura en Establecimientos Educativos, realizadas por Gobernaciones y Municipios, en el marco del Fonacide.">
+                    <meta itemprop="encodingFormat" content="xls">
+                    <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode" />
+                </div>
+
+                <a href="Javascript:void(0);" onclick="descripcion(this);" class="visible-xs-inline hidden-sm hidden-md hidden-lg">
+                    <i class="icon-py-etiqueta"></i> 
+                    <span class="visible-xs-inline" data-ver="true">Ver</span>
+                    <span class="hidden" data-ocultar="true">Ocultar</span>
+                    descripción
+                </a>
+
+            </div>
+        </div>
+        <div class="celda col-sm-8 hidden-xs" itemprop="description">
+            <p>Contiene datos de la ejecución de obras de infraestructura en Establecimientos Educativos, realizadas por Gobernaciones y Municipios, en el marco del Fonacide.</p>
+        </div>
+        <meta itemprop="temporal" style="display: none;" content="2015-01-01/2015-12-31">
+        <span itemprop="provider" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+            <meta itemprop="name" content="Ministerio de Educación y Cultura">
+            <meta itemprop="url" content="http://www.mec.gov.py/">
+            <meta itemprop="email" content="datosabiertos@mec.gov.py">
+        </span>
+        <span itemprop="creator" itemscope itemtype="https://schema.org/Person" style="display: none;">
+            <meta itemprop="name" content="Juan Barrios">
+            <meta itemprop="email" content="datosabiertos@mec.gov.py">
+        </span>
+        <meta itemprop="license" style="display: none;" content="https://creativecommons.org/licenses/by/4.0/legalcode"/>
+        <meta itemprop="keywords" style="display: none;" content="educación,nóminas,elecciones,municipales,partidos politicos"/>
+        <meta itemprop="version" style="display: none;" content="1.0"/>
+        <meta itemprop="url" style="display: none;" content="http://datos.mec.gov.py/data#locales-elecciones-municipales" >
     </li>
 
 </ul>
