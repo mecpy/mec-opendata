@@ -47,6 +47,4 @@ config/config.yml
 .rvmrc
 
 /public/data
-
-#Geometrias utilizadas en el mapa que se actualizan periodicamente
 /app/assets/javascripts/geometrias
