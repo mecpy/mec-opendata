@@ -40,7 +40,7 @@
                 <i class="ascendente fa fa-sort-asc"></i>
               </span>
 
-              <%= select :form_buscar_matriculaciones_inicial, :anio, [2012], {}, {:class => 'form-control input-sm'} %>
+              <%= select :form_buscar_matriculaciones_inicial, :anio, [2013, 2012], {}, {:class => 'form-control input-sm'} %>
             </th>
 
             <th data-priority="1">
@@ -551,7 +551,7 @@
   //LIMPIAR FORMULARIO DE BUSQUEDA
   valor_defecto = [{
       id: '#form_buscar_matriculaciones_inicial_anio',
-      valor: 2012
+      valor: 2013
     }];
   resetForm("#form-buscar-matriculaciones-inicial", valor_defecto);
 
